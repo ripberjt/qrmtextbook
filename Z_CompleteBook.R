@@ -2,10 +2,11 @@ getwd()
 
 #  Set working directory
 #  setwd("") # home
-setwd("~/Documents/GitHub/qrm")
+setwd("~/Documents/GitHub/qrmtextbook")
 
 #  attach to the dataset - 
 ds <- read.csv("Class Data Set.csv")
+newdat<-read.csv("w1_w13_longdata.csv")
 #  tbur.data <- read.csv("tburNAomit_data.csv")
 
 #  Required Packages to be installed

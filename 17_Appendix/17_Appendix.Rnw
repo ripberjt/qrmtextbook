@@ -41,8 +41,6 @@ At this point, you now have R downloaded on your device and can be pretty much r
 \label{fig:rsdp}}
 \end{figure}
 
-Here you will scroll down until it looks like this: 
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{17_Appendix/"RStudio Download Page 2".png}
@@ -50,7 +48,8 @@ Here you will scroll down until it looks like this:
 \label{fig:brsdp}}
 \end{figure}
 
-Here you will want to use the links under the installer subtitle for your relevant operating system again. You do not need to use the links under the tarball/zip header. As with R, you should then simply follow the default locations and settings in the Installer of RStudio. As we said before, RStudio simply makes the use of R a little easier and more user friendly. It includes some of the functionality that often makes other statistical softwares preferred for initially teaching students statistics. Once you have R and RStudio downloaded, you are prepared to dive right in. However, before we do that we want to introduce you to some common terminology in the fields of programming as well as statistics that may be helpful in your understanding of R.
+
+Here you will scroll down until it looks like \ref{fig:brsdp}. Then you will want to use the links under the installer subtitle for your relevant operating system again. You do not need to use the links under the tarball/zip header. As with R, you should then simply follow the default locations and settings in the Installer of RStudio. As we said before, RStudio simply makes the use of R a little easier and more user friendly. It includes some of the functionality that often makes other statistical softwares preferred for initially teaching students statistics. Once you have R and RStudio downloaded, you are prepared to dive right in. However, before we do that we want to introduce you to some common terminology in the fields of programming as well as statistics that may be helpful in your understanding of R.
 
 \section{Introduction to Programming}
 
@@ -66,8 +65,7 @@ For the purposes of the book, we will acquire our data by going \href{http://crc
 
 Once this has been done, it is a good idea to check your directory. One easy way to do this is the `list.files()` command which will list all files saved in the folder you have set as your working directory. If you have done this correctly, the data you downloaded should show up as a file. Once you have done this, uploading the data will be easy. Simply write one line of code:
 
-<<echo=TRUE,results="hide">>=
-setwd("~/Documents/GitHub/qrm")
+<<echo=TRUE, eval = FALSE, results="hide">>=
 newdat<-read.csv("w1_w13_longdata.csv")
 @
 

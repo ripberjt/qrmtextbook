@@ -19,23 +19,18 @@
 \usepackage[left=1in, top=1in, right=1.5in, bottom=1in, headsep=.5in]
 {geometry}
 \usepackage{fancyhdr, blindtext}
-\usepackage{diagbox} % add by Aaron 2nd ED - Used to split cells in a table \diagbox
-\usepackage{hyperref} % add by Aaron 2nd ED - Used to add URLS \{url}
-\usepackage{placeins} % add by Aaron 2nd ED to limit position of floats (images/tables). \FloatBarrier
-\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}} % Added by Aaron 2nd ED - this makes the R code chunks single space.
-%-reference- http://stackoverflow.com/questions/20619678/knitr-single-space-code-when-class-defaults-double-space-rnw
-
-\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}% Added by Aaron 2nd ED - to make colored boxes
-% - source - http://tex.stackexchange.com/questions/46828/how-to-highlight-important-parts-with-a-gray-background
-
-\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by Aaron 2nd ED - to center a table
-% - source - http://tex.stackexchange.com/questions/82203/center-table-on-page
+\usepackage{diagbox}
+\usepackage{hyperref} 
+\usepackage{placeins}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}
+\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by 
 
 
 \fancyhf{}
-\fancyhead[LE]{\slshape \rightmark} %section
+\fancyhead[LE]{\slshape \rightmark} 
 \fancyhead[RE]{\thepage}
-\fancyhead[RO]{\slshape \leftmark} % chapter
+\fancyhead[RO]{\slshape \leftmark} 
 \fancyhead[LO]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \pagestyle{fancy}
@@ -95,7 +90,7 @@ Tyler Hughes\\
 Aaron L. Fister\\
 Wesley Wehde}
 
-\date{Last compiled: August 18, 2017}
+\date{\today}
 
 \maketitle
 
@@ -111,7 +106,7 @@ Wesley Wehde}
 This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/ }{Creative Commons Attribution 4.0 International License} (CC BY 4.0). 
 
 \begin{figure}[h]
-\includegraphics[]{Edition3/"CCicon".png}
+\includegraphics[]{"CCicon".png}
 \label{fig:cc}
 \end{figure}
 

@@ -1,0 +1,153 @@
+\BOOKMARK [-1][-]{part.1}{I Theory and Empirical Social Science}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Theories and Social Science}{part.1}% 2
+\BOOKMARK [1][-]{section.1.1}{The Scientific Method}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Theory and Empirical Research}{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.2.1}{Coherent and Internally Consistent}{section.1.2}% 5
+\BOOKMARK [2][-]{subsection.1.2.2}{Theories and Causality}{section.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.2.3}{Generation of Testable Hypothesis}{section.1.2}% 7
+\BOOKMARK [1][-]{section.1.3}{Theory and Functions}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.4}{Theory in Social Science}{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.5}{Outline of the Book}{chapter.1}% 10
+\BOOKMARK [0][-]{chapter.2}{Research Design}{part.1}% 11
+\BOOKMARK [1][-]{section.2.1}{Overview of the Research Process}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.2}{Internal and External Validity}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Major Classes of Designs}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.4}{Threats to Validity}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.5}{Some Common Designs}{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.6}{Plan Meets Reality}{chapter.2}% 17
+\BOOKMARK [0][-]{chapter.3}{Exploring and Visualizing Data}{part.1}% 18
+\BOOKMARK [1][-]{section.3.1}{Characterizing Data}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.1.1}{Central Tendency}{section.3.1}% 20
+\BOOKMARK [2][-]{subsection.3.1.2}{Level of Measurement and Central Tendency}{section.3.1}% 21
+\BOOKMARK [2][-]{subsection.3.1.3}{Moments}{section.3.1}% 22
+\BOOKMARK [2][-]{subsection.3.1.4}{First Moment \205 Expected Value}{section.3.1}% 23
+\BOOKMARK [2][-]{subsection.3.1.5}{The Second Moment \205 Variance and Standard Deviation}{section.3.1}% 24
+\BOOKMARK [2][-]{subsection.3.1.6}{The Third Moment \205 Skewness}{section.3.1}% 25
+\BOOKMARK [2][-]{subsection.3.1.7}{The Fourth Moment \205 Kurtosis}{section.3.1}% 26
+\BOOKMARK [2][-]{subsection.3.1.8}{Order Statistics}{section.3.1}% 27
+\BOOKMARK [2][-]{subsection.3.1.9}{Summary}{section.3.1}% 28
+\BOOKMARK [0][-]{chapter.4}{Probability}{part.1}% 29
+\BOOKMARK [1][-]{section.4.1}{Finding Probabilities}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.2}{Finding Probabilities with the Normal Curve}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.3}{Summary}{chapter.4}% 32
+\BOOKMARK [0][-]{chapter.5}{Inference}{part.1}% 33
+\BOOKMARK [1][-]{section.5.1}{Inference: Populations and Samples}{chapter.5}% 34
+\BOOKMARK [2][-]{subsection.5.1.1}{Populations and Samples}{section.5.1}% 35
+\BOOKMARK [2][-]{subsection.5.1.2}{Sampling and Knowing}{section.5.1}% 36
+\BOOKMARK [2][-]{subsection.5.1.3}{Sampling Strategies}{section.5.1}% 37
+\BOOKMARK [2][-]{subsection.5.1.4}{Sampling Techniques}{section.5.1}% 38
+\BOOKMARK [2][-]{subsection.5.1.5}{So How is it That We Know?}{section.5.1}% 39
+\BOOKMARK [1][-]{section.5.2}{The Normal Distribution}{chapter.5}% 40
+\BOOKMARK [2][-]{subsection.5.2.1}{Standardizing a Normal Distribution and Z-scores}{section.5.2}% 41
+\BOOKMARK [2][-]{subsection.5.2.2}{The Central Limit Theorem}{section.5.2}% 42
+\BOOKMARK [2][-]{subsection.5.2.3}{Populations, Samples and Symbols}{section.5.2}% 43
+\BOOKMARK [1][-]{section.5.3}{Inferences to the Population from the Sample}{chapter.5}% 44
+\BOOKMARK [2][-]{subsection.5.3.1}{Confidence Intervals}{section.5.3}% 45
+\BOOKMARK [2][-]{subsection.5.3.2}{The Logic of Hypothesis Testing}{section.5.3}% 46
+\BOOKMARK [2][-]{subsection.5.3.3}{Some Miscellaneous Notes about Hypothesis Testing}{section.5.3}% 47
+\BOOKMARK [1][-]{section.5.4}{Differences Between Groups}{chapter.5}% 48
+\BOOKMARK [2][-]{subsection.5.4.1}{t-tests}{section.5.4}% 49
+\BOOKMARK [1][-]{section.5.5}{Summary}{chapter.5}% 50
+\BOOKMARK [0][-]{chapter.6}{Association of Variables}{part.1}% 51
+\BOOKMARK [1][-]{section.6.1}{Cross-Tabulation}{chapter.6}% 52
+\BOOKMARK [2][-]{subsection.6.1.1}{Crosstabulation and Control}{section.6.1}% 53
+\BOOKMARK [1][-]{section.6.2}{Covariance}{chapter.6}% 54
+\BOOKMARK [1][-]{section.6.3}{Correlation}{chapter.6}% 55
+\BOOKMARK [1][-]{section.6.4}{Scatterplots}{chapter.6}% 56
+\BOOKMARK [-1][-]{part.2}{II Simple Regression}{}% 57
+\BOOKMARK [0][-]{chapter.7}{The Logic of Ordinary Least Squares Estimation}{part.2}% 58
+\BOOKMARK [1][-]{section.7.1}{Theoretical Models}{chapter.7}% 59
+\BOOKMARK [2][-]{subsection.7.1.1}{Deterministic Linear Model}{section.7.1}% 60
+\BOOKMARK [2][-]{subsection.7.1.2}{Stochastic Linear Model}{section.7.1}% 61
+\BOOKMARK [1][-]{section.7.2}{Estimating Linear Models}{chapter.7}% 62
+\BOOKMARK [2][-]{subsection.7.2.1}{Residuals}{section.7.2}% 63
+\BOOKMARK [1][-]{section.7.3}{An Example of Simple Regression}{chapter.7}% 64
+\BOOKMARK [0][-]{chapter.8}{Linear Estimation and Minimizing Error}{part.2}% 65
+\BOOKMARK [1][-]{section.8.1}{Minimizing Error using Derivatives}{chapter.8}% 66
+\BOOKMARK [2][-]{subsection.8.1.1}{Rules of Derivation}{section.8.1}% 67
+\BOOKMARK [2][-]{subsection.8.1.2}{Critical Points}{section.8.1}% 68
+\BOOKMARK [2][-]{subsection.8.1.3}{Partial Derivation}{section.8.1}% 69
+\BOOKMARK [1][-]{section.8.2}{Deriving OLS Estimators}{chapter.8}% 70
+\BOOKMARK [2][-]{subsection.8.2.1}{OLS Derivation of A}{section.8.2}% 71
+\BOOKMARK [2][-]{subsection.8.2.2}{OLS Derivation of B}{section.8.2}% 72
+\BOOKMARK [2][-]{subsection.8.2.3}{Interpreting B and A}{section.8.2}% 73
+\BOOKMARK [1][-]{section.8.3}{Summary}{chapter.8}% 74
+\BOOKMARK [0][-]{chapter.9}{Bi-Variate Hypothesis Testing and Model Fit}{part.2}% 75
+\BOOKMARK [1][-]{section.9.1}{Hypothesis Tests for Regression Coefficients}{chapter.9}% 76
+\BOOKMARK [2][-]{subsection.9.1.1}{Residual Standard Error}{section.9.1}% 77
+\BOOKMARK [1][-]{section.9.2}{Measuring Goodness of Fit}{chapter.9}% 78
+\BOOKMARK [2][-]{subsection.9.2.1}{Sample Covariance and Correlations}{section.9.2}% 79
+\BOOKMARK [2][-]{subsection.9.2.2}{Coefficient of Determination: R2}{section.9.2}% 80
+\BOOKMARK [1][-]{section.9.3}{Summary}{chapter.9}% 81
+\BOOKMARK [0][-]{chapter.10}{OLS Assumptions and Simple Regression Diagnostics}{part.2}% 82
+\BOOKMARK [1][-]{section.10.1}{A Recap of Modeling Assumptions}{chapter.10}% 83
+\BOOKMARK [1][-]{section.10.2}{When Things Go Bad with Residuals}{chapter.10}% 84
+\BOOKMARK [2][-]{subsection.10.2.1}{``Outlier" Data}{section.10.2}% 85
+\BOOKMARK [2][-]{subsection.10.2.2}{Non-Constant Variance}{section.10.2}% 86
+\BOOKMARK [2][-]{subsection.10.2.3}{Non-Linearity in the Parameters}{section.10.2}% 87
+\BOOKMARK [1][-]{section.10.3}{Application of Residual Diagnostics}{chapter.10}% 88
+\BOOKMARK [2][-]{subsection.10.3.1}{Testing for Non-Linearity}{section.10.3}% 89
+\BOOKMARK [2][-]{subsection.10.3.2}{Testing for Normality in Model Residuals}{section.10.3}% 90
+\BOOKMARK [2][-]{subsection.10.3.3}{Testing for Non-Constant Variance in the Residuals}{section.10.3}% 91
+\BOOKMARK [2][-]{subsection.10.3.4}{Examining Outlier Data}{section.10.3}% 92
+\BOOKMARK [1][-]{section.10.4}{So Now What? Implications of Residual Analysis}{chapter.10}% 93
+\BOOKMARK [1][-]{section.10.5}{Summary}{chapter.10}% 94
+\BOOKMARK [-1][-]{part.3}{III Multiple Regression}{}% 95
+\BOOKMARK [0][-]{chapter.11}{Introduction to Multiple Regression}{part.3}% 96
+\BOOKMARK [1][-]{section.11.1}{Matrix Algebra and Multiple Regression}{chapter.11}% 97
+\BOOKMARK [1][-]{section.11.2}{The Basics of Matrix Algebra}{chapter.11}% 98
+\BOOKMARK [2][-]{subsection.11.2.1}{Matrix Basics}{section.11.2}% 99
+\BOOKMARK [2][-]{subsection.11.2.2}{Vectors}{section.11.2}% 100
+\BOOKMARK [2][-]{subsection.11.2.3}{Matrix Operations}{section.11.2}% 101
+\BOOKMARK [2][-]{subsection.11.2.4}{Transpose}{section.11.2}% 102
+\BOOKMARK [2][-]{subsection.11.2.5}{Adding Matrices}{section.11.2}% 103
+\BOOKMARK [2][-]{subsection.11.2.6}{Multiplication of Matrices}{section.11.2}% 104
+\BOOKMARK [2][-]{subsection.11.2.7}{Identity Matrices}{section.11.2}% 105
+\BOOKMARK [2][-]{subsection.11.2.8}{Matrix Inversion}{section.11.2}% 106
+\BOOKMARK [1][-]{section.11.3}{OLS Regression in Matrix Form}{chapter.11}% 107
+\BOOKMARK [1][-]{section.11.4}{Summary}{chapter.11}% 108
+\BOOKMARK [0][-]{chapter.12}{The Logic of Multiple Regression}{part.3}% 109
+\BOOKMARK [1][-]{section.12.1}{Theoretical Specification}{chapter.12}% 110
+\BOOKMARK [2][-]{subsection.12.1.1}{Assumptions of OLS Regression}{section.12.1}% 111
+\BOOKMARK [1][-]{section.12.2}{Partial Effects}{chapter.12}% 112
+\BOOKMARK [1][-]{section.12.3}{Multiple Regression Example}{chapter.12}% 113
+\BOOKMARK [2][-]{subsection.12.3.1}{Hypothesis Testing and t-tests}{section.12.3}% 114
+\BOOKMARK [1][-]{section.12.4}{Summary}{chapter.12}% 115
+\BOOKMARK [0][-]{chapter.13}{Multiple Regression and Model Building}{part.3}% 116
+\BOOKMARK [1][-]{section.13.1}{Model Building}{chapter.13}% 117
+\BOOKMARK [2][-]{subsection.13.1.1}{Theory and Hypotheses}{section.13.1}% 118
+\BOOKMARK [2][-]{subsection.13.1.2}{Empirical Indicators}{section.13.1}% 119
+\BOOKMARK [2][-]{subsection.13.1.3}{Risks in Model Building}{section.13.1}% 120
+\BOOKMARK [1][-]{section.13.2}{Evils of Stepwise Regression}{chapter.13}% 121
+\BOOKMARK [1][-]{section.13.3}{Summary}{chapter.13}% 122
+\BOOKMARK [0][-]{chapter.14}{Topics in Multiple Regression}{part.3}% 123
+\BOOKMARK [1][-]{section.14.1}{Dummy Variables}{chapter.14}% 124
+\BOOKMARK [1][-]{section.14.2}{Interaction Effects}{chapter.14}% 125
+\BOOKMARK [1][-]{section.14.3}{Standardized Regression Coefficients}{chapter.14}% 126
+\BOOKMARK [1][-]{section.14.4}{Summary}{chapter.14}% 127
+\BOOKMARK [0][-]{chapter.15}{The Art of Regression Diagnostics}{part.3}% 128
+\BOOKMARK [1][-]{section.15.1}{OLS Error Assumptions Revisited}{chapter.15}% 129
+\BOOKMARK [1][-]{section.15.2}{OLS Diagnostic Techniques}{chapter.15}% 130
+\BOOKMARK [2][-]{subsection.15.2.1}{Non-Linearity}{section.15.2}% 131
+\BOOKMARK [2][-]{subsection.15.2.2}{Non-Constant Variance, or Heteroscedasticity}{section.15.2}% 132
+\BOOKMARK [2][-]{subsection.15.2.3}{Independence of E}{section.15.2}% 133
+\BOOKMARK [2][-]{subsection.15.2.4}{Normality of the Residuals}{section.15.2}% 134
+\BOOKMARK [2][-]{subsection.15.2.5}{Outliers, Leverage, and Influence}{section.15.2}% 135
+\BOOKMARK [2][-]{subsection.15.2.6}{Multicollinearity}{section.15.2}% 136
+\BOOKMARK [1][-]{section.15.3}{Summary}{chapter.15}% 137
+\BOOKMARK [-1][-]{part.4}{IV Generalized Linear Models}{}% 138
+\BOOKMARK [0][-]{chapter.16}{Logit Regression}{part.4}% 139
+\BOOKMARK [1][-]{section.16.1}{Generalized Linear Models}{chapter.16}% 140
+\BOOKMARK [1][-]{section.16.2}{Logit Estimation}{chapter.16}% 141
+\BOOKMARK [2][-]{subsection.16.2.1}{Logit Hypothesis Tests}{section.16.2}% 142
+\BOOKMARK [2][-]{subsection.16.2.2}{Goodness of Fit}{section.16.2}% 143
+\BOOKMARK [2][-]{subsection.16.2.3}{Interpreting Logits}{section.16.2}% 144
+\BOOKMARK [1][-]{section.16.3}{Summary}{chapter.16}% 145
+\BOOKMARK [-1][-]{part.5}{V Appendices}{}% 146
+\BOOKMARK [0][-]{chapter.17}{Appendix: Basic R}{part.5}% 147
+\BOOKMARK [1][-]{section.17.1}{Introduction to R}{chapter.17}% 148
+\BOOKMARK [1][-]{section.17.2}{Downloading R and RStudio}{chapter.17}% 149
+\BOOKMARK [1][-]{section.17.3}{Introduction to Programming}{chapter.17}% 150
+\BOOKMARK [1][-]{section.17.4}{Uploading/Reading Data}{chapter.17}% 151
+\BOOKMARK [1][-]{section.17.5}{Data Manipulation in R}{chapter.17}% 152
+\BOOKMARK [1][-]{section.17.6}{Saving/Writing Data}{chapter.17}% 153

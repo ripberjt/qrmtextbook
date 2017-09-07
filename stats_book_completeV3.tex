@@ -69,23 +69,18 @@
 \usepackage[left=1in, top=1in, right=1.5in, bottom=1in, headsep=.5in]
 {geometry}
 \usepackage{fancyhdr, blindtext}
-\usepackage{diagbox} % add by Aaron 2nd ED - Used to split cells in a table \diagbox
-\usepackage{hyperref} % add by Aaron 2nd ED - Used to add URLS \{url}
-\usepackage{placeins} % add by Aaron 2nd ED to limit position of floats (images/tables). \FloatBarrier
-\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}} % Added by Aaron 2nd ED - this makes the R code chunks single space.
-%-reference- http://stackoverflow.com/questions/20619678/knitr-single-space-code-when-class-defaults-double-space-rnw
-
-\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}% Added by Aaron 2nd ED - to make colored boxes
-% - source - http://tex.stackexchange.com/questions/46828/how-to-highlight-important-parts-with-a-gray-background
-
-\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by Aaron 2nd ED - to center a table
-% - source - http://tex.stackexchange.com/questions/82203/center-table-on-page
+\usepackage{diagbox}
+\usepackage{hyperref} 
+\usepackage{placeins}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}
+\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by 
 
 
 \fancyhf{}
-\fancyhead[LE]{\slshape \rightmark} %section
+\fancyhead[LE]{\slshape \rightmark} 
 \fancyhead[RE]{\thepage}
-\fancyhead[RO]{\slshape \leftmark} % chapter
+\fancyhead[RO]{\slshape \leftmark} 
 \fancyhead[LO]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \pagestyle{fancy}
@@ -140,7 +135,7 @@ Tyler Hughes\\
 Aaron L. Fister\\
 Wesley Wehde}
 
-\date{Last compiled: August 18, 2017}
+\date{\today}
 
 \maketitle
 
@@ -156,7 +151,7 @@ Wesley Wehde}
 This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/ }{Creative Commons Attribution 4.0 International License} (CC BY 4.0). 
 
 \begin{figure}[h]
-\includegraphics[]{CCicon.png}
+\includegraphics[]{"CCicon".png}
 \label{fig:cc}
 \end{figure}
 
@@ -1337,7 +1332,7 @@ To find the appropriate value for t, we need to decide what level of confidence 
 ## 	One Sample t-test
 ## 
 ## data:  ds$glbcc_risk
-## t = 97.495, df = 2535, p-value < 0.00000000000000022
+## t = 97.495, df = 2535, p-value < 2.2e-16
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
 ##  5.826388 6.065568
@@ -1860,7 +1855,7 @@ Using an example from the Climate and Weather survey, we might hypothesize that 
 ## 	Pearson's Chi-squared test
 ## 
 ## data:  v2.glbcc.table
-## X-squared = 620.76, df = 2, p-value < 0.00000000000000022
+## X-squared = 620.76, df = 2, p-value < 2.2e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -1948,7 +1943,7 @@ We might, though, want to look at gender as a control variable since we know gen
 ## 	Pearson's Chi-squared test
 ## 
 ## data:  v3.glbcc.table[, , 1]
-## X-squared = 299.39, df = 2, p-value < 0.00000000000000022
+## X-squared = 299.39, df = 2, p-value < 2.2e-16
 \end{verbatim}
 \begin{alltt}
 \hlkwd{assocstats}\hlstd{(v3.glbcc.table[, ,} \hlnum{1}\hlstd{])}
@@ -1985,7 +1980,7 @@ We might, though, want to look at gender as a control variable since we know gen
 ## 	Pearson's Chi-squared test
 ## 
 ## data:  v3.glbcc.table[, , 2]
-## X-squared = 320.43, df = 2, p-value < 0.00000000000000022
+## X-squared = 320.43, df = 2, p-value < 2.2e-16
 \end{verbatim}
 \begin{alltt}
 \hlkwd{assocstats}\hlstd{(v3.glbcc.table[, ,} \hlnum{2}\hlstd{])}
@@ -2348,16 +2343,16 @@ The following example uses a measure of peoples' political ideology to predict t
 ## -8.726 -1.633  0.274  1.459  6.506 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value            Pr(>|t|)    
-## (Intercept) 10.81866    0.14189   76.25 <0.0000000000000002 ***
-## ds$ideol    -1.04635    0.02856  -36.63 <0.0000000000000002 ***
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 10.81866    0.14189   76.25   <2e-16 ***
+## ds$ideol    -1.04635    0.02856  -36.63   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 2.479 on 2511 degrees of freedom
 ##   (34 observations deleted due to missingness)
 ## Multiple R-squared:  0.3483,	Adjusted R-squared:  0.348 
-## F-statistic:  1342 on 1 and 2511 DF,  p-value: < 0.00000000000000022
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: < 2.2e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -2959,16 +2954,16 @@ Before we begin, for this chapter, we need to make a special data set that just 
 ## -8.726 -1.633  0.274  1.459  6.506 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value            Pr(>|t|)    
-## (Intercept) 10.81866    0.14189   76.25 <0.0000000000000002 ***
-## ideol       -1.04635    0.02856  -36.63 <0.0000000000000002 ***
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 10.81866    0.14189   76.25   <2e-16 ***
+## ideol       -1.04635    0.02856  -36.63   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 2.479 on 2511 degrees of freedom
 ##   (34 observations deleted due to missingness)
 ## Multiple R-squared:  0.3483,	Adjusted R-squared:  0.348 
-## F-statistic:  1342 on 1 and 2511 DF,  p-value: < 0.00000000000000022
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: < 2.2e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -3474,16 +3469,16 @@ Our in-class lab example focuses on the relationship between political ideology 
 ## -8.726 -1.633  0.274  1.459  6.506 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value            Pr(>|t|)    
-## (Intercept) 10.81866    0.14189   76.25 <0.0000000000000002 ***
-## ds$ideol    -1.04635    0.02856  -36.63 <0.0000000000000002 ***
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 10.81866    0.14189   76.25   <2e-16 ***
+## ds$ideol    -1.04635    0.02856  -36.63   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 2.479 on 2511 degrees of freedom
 ##   (34 observations deleted due to missingness)
 ## Multiple R-squared:  0.3483,	Adjusted R-squared:  0.348 
-## F-statistic:  1342 on 1 and 2511 DF,  p-value: < 0.00000000000000022
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: < 2.2e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -3526,17 +3521,17 @@ One way to test for non-linearity is to fit the model to a polynomial functional
 ## -8.564 -1.808  0.192  1.448  6.863 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value             Pr(>|t|)    
-## (Intercept)  9.58238    0.28397  33.745 < 0.0000000000000002 ***
-## ideol       -0.34444    0.14274  -2.413               0.0159 *  
-## ideology2   -0.08234    0.01641  -5.018          0.000000558 ***
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  9.58238    0.28397  33.745  < 2e-16 ***
+## ideol       -0.34444    0.14274  -2.413   0.0159 *  
+## ideology2   -0.08234    0.01641  -5.018 5.58e-07 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 2.467 on 2510 degrees of freedom
 ##   (34 observations deleted due to missingness)
 ## Multiple R-squared:  0.3548,	Adjusted R-squared:  0.3543 
-## F-statistic: 690.1 on 2 and 2510 DF,  p-value: < 0.00000000000000022
+## F-statistic: 690.1 on 2 and 2510 DF,  p-value: < 2.2e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -3640,7 +3635,7 @@ According to Figure \ref{fig:QQideology}, it appears as if the residuals are nor
 ## 	Shapiro-Wilk normality test
 ## 
 ## data:  OLS_env$residuals
-## W = 0.98901, p-value = 0.000000000000551
+## W = 0.98901, p-value = 5.51e-13
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -3679,7 +3674,7 @@ The negative slope on the red line in Figure \ref{fig:spreadlvlideology} indicat
 \begin{verbatim}
 ## Non-constant Variance Score Test 
 ## Variance formula: ~ fitted.values 
-## Chisquare = 68.107    Df = 1     p = 0.0000000000000001548597
+## Chisquare = 68.107    Df = 1     p = 1.548597e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -3754,13 +3749,13 @@ Finally, we can produce a plot that combines studentized residuals, ``hat values
 \hlkwd{influencePlot}\hlstd{(OLS_env,} \hlkwc{id.n} \hlstd{=} \hlnum{3}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-##          StudRes         Hat          CookD
-## 20    0.09192603 0.002172497 0.000009202846
-## 30    0.09192603 0.002172497 0.000009202846
-## 90    0.09192603 0.002172497 0.000009202846
-## 589  -3.53030574 0.001334528 0.008289418537
-## 615  -3.53030574 0.001334528 0.008289418537
-## 1054 -3.53030574 0.001334528 0.008289418537
+##          StudRes         Hat        CookD
+## 20    0.09192603 0.002172497 9.202846e-06
+## 30    0.09192603 0.002172497 9.202846e-06
+## 90    0.09192603 0.002172497 9.202846e-06
+## 589  -3.53030574 0.001334528 8.289419e-03
+## 615  -3.53030574 0.001334528 8.289419e-03
+## 1054 -3.53030574 0.001334528 8.289419e-03
 ## pdf 
 ##   2
 \end{verbatim}
@@ -4661,16 +4656,16 @@ As an example, we will use age and ideology to predict perceived climate change 
 ## -8.7913 -1.6252  0.2785  1.4674  6.6075 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value            Pr(>|t|)    
-## (Intercept) 11.096064   0.244640  45.357 <0.0000000000000002 ***
-## ideol       -1.042748   0.028674 -36.366 <0.0000000000000002 ***
-## age         -0.004872   0.003500  -1.392               0.164    
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 11.096064   0.244640  45.357   <2e-16 ***
+## ideol       -1.042748   0.028674 -36.366   <2e-16 ***
+## age         -0.004872   0.003500  -1.392    0.164    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 2.479 on 2510 degrees of freedom
 ## Multiple R-squared:  0.3488,	Adjusted R-squared:  0.3483 
-## F-statistic: 672.2 on 2 and 2510 DF,  p-value: < 0.00000000000000022
+## F-statistic: 672.2 on 2 and 2510 DF,  p-value: < 2.2e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -4692,9 +4687,9 @@ As an example, we will use age and ideology to predict perceived climate change 
 ## -6.4924 -2.1000  0.0799  2.5376  4.5867 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value             Pr(>|t|)    
-## (Intercept)  6.933835   0.267116  25.958 < 0.0000000000000002 ***
-## age         -0.016350   0.004307  -3.796              0.00015 ***
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  6.933835   0.267116  25.958  < 2e-16 ***
+## age         -0.016350   0.004307  -3.796  0.00015 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -4727,15 +4722,15 @@ Note that, when modeled alone, the estimated effect of age on glbccrsk is larger
 ## -3.9492 -0.8502  0.2709  1.3480  2.7332 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value             Pr(>|t|)    
-## (Intercept) 3.991597   0.150478  26.526 < 0.0000000000000002 ***
-## age         0.011007   0.002426   4.537           0.00000598 ***
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 3.991597   0.150478  26.526  < 2e-16 ***
+## age         0.011007   0.002426   4.537 5.98e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 1.725 on 2511 degrees of freedom
 ## Multiple R-squared:  0.00813,	Adjusted R-squared:  0.007735 
-## F-statistic: 20.58 on 1 and 2511 DF,  p-value: 0.000005981
+## F-statistic: 20.58 on 1 and 2511 DF,  p-value: 5.981e-06
 \end{verbatim}
 \begin{alltt}
 \hlstd{ols3.resids} \hlkwb{<-} \hlstd{ols3}\hlopt{\$}\hlstd{residuals}
@@ -4760,14 +4755,14 @@ Note that, when modeled alone, the estimated effect of age on glbccrsk is larger
 ## -8.7913 -1.6252  0.2785  1.4674  6.6075 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value            Pr(>|t|)    
-## ols3.resids -1.04275    0.02866  -36.38 <0.0000000000000002 ***
+##             Estimate Std. Error t value Pr(>|t|)    
+## ols3.resids -1.04275    0.02866  -36.38   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 2.478 on 2512 degrees of freedom
 ## Multiple R-squared:  0.3451,	Adjusted R-squared:  0.3448 
-## F-statistic:  1324 on 1 and 2512 DF,  p-value: < 0.00000000000000022
+## F-statistic:  1324 on 1 and 2512 DF,  p-value: < 2.2e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -4795,16 +4790,16 @@ In this section, we walk through another example of multiple regression. First, 
 ## -8.7913 -1.6252  0.2785  1.4674  6.6075 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value            Pr(>|t|)    
-## (Intercept) 11.096064   0.244640  45.357 <0.0000000000000002 ***
-## age         -0.004872   0.003500  -1.392               0.164    
-## ideol       -1.042748   0.028674 -36.366 <0.0000000000000002 ***
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 11.096064   0.244640  45.357   <2e-16 ***
+## age         -0.004872   0.003500  -1.392    0.164    
+## ideol       -1.042748   0.028674 -36.366   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 2.479 on 2510 degrees of freedom
 ## Multiple R-squared:  0.3488,	Adjusted R-squared:  0.3483 
-## F-statistic: 672.2 on 2 and 2510 DF,  p-value: < 0.00000000000000022
+## F-statistic: 672.2 on 2 and 2510 DF,  p-value: < 2.2e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -4842,17 +4837,17 @@ In the next example education is added to the model.
 ## -8.8092 -1.6355  0.2388  1.4279  6.6334 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value            Pr(>|t|)    
-## (Intercept) 10.841669   0.308416  35.153 <0.0000000000000002 ***
-## age         -0.003246   0.003652  -0.889               0.374    
-## education    0.036775   0.028547   1.288               0.198    
-## ideol       -1.044827   0.029829 -35.027 <0.0000000000000002 ***
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 10.841669   0.308416  35.153   <2e-16 ***
+## age         -0.003246   0.003652  -0.889    0.374    
+## education    0.036775   0.028547   1.288    0.198    
+## ideol       -1.044827   0.029829 -35.027   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 2.437 on 2268 degrees of freedom
 ## Multiple R-squared:  0.3607,	Adjusted R-squared:  0.3598 
-## F-statistic: 426.5 on 3 and 2268 DF,  p-value: < 0.00000000000000022
+## F-statistic: 426.5 on 3 and 2268 DF,  p-value: < 2.2e-16
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -5931,7 +5926,7 @@ We can then compare our results with the original simple regression model result
 ## income       0.0000001922905 0.000002320899   0.08285175
 ## ideol       -1.2235648372311 0.060039031426 -20.37948994
 ##                                                                                                         Pr(>|t|)
-## (Intercept) 0.00000000000000000000000000000000000000000000000000000000000000000000000054921988962793404323143119
+## (Intercept) 0.00000000000000000000000000000000000000000000000000000000000000000000000054921988962793404326183377
 ## age         0.48881482326776815039437451559933833777904510498046875000000000000000000000000000000000000000000000
 ## education   0.78978312137982031870819810137618333101272583007812500000000000000000000000000000000000000000000000
 ## income      0.93396941638148500697269582815351895987987518310546875000000000000000000000000000000000000000000000
@@ -6988,8 +6983,6 @@ At this point, you now have R downloaded on your device and can be pretty much r
 \label{fig:rsdp}}
 \end{figure}
 
-Here you will scroll down until it looks like this: 
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{17_Appendix/"RStudio Download Page 2".png}
@@ -6997,7 +6990,8 @@ Here you will scroll down until it looks like this:
 \label{fig:brsdp}}
 \end{figure}
 
-Here you will want to use the links under the installer subtitle for your relevant operating system again. You do not need to use the links under the tarball/zip header. As with R, you should then simply follow the default locations and settings in the Installer of RStudio. As we said before, RStudio simply makes the use of R a little easier and more user friendly. It includes some of the functionality that often makes other statistical softwares preferred for initially teaching students statistics. Once you have R and RStudio downloaded, you are prepared to dive right in. However, before we do that we want to introduce you to some common terminology in the fields of programming as well as statistics that may be helpful in your understanding of R.
+
+Here you will scroll down until it looks like \ref{fig:brsdp}. Then you will want to use the links under the installer subtitle for your relevant operating system again. You do not need to use the links under the tarball/zip header. As with R, you should then simply follow the default locations and settings in the Installer of RStudio. As we said before, RStudio simply makes the use of R a little easier and more user friendly. It includes some of the functionality that often makes other statistical softwares preferred for initially teaching students statistics. Once you have R and RStudio downloaded, you are prepared to dive right in. However, before we do that we want to introduce you to some common terminology in the fields of programming as well as statistics that may be helpful in your understanding of R.
 
 \section{Introduction to Programming}
 
@@ -7016,7 +7010,6 @@ Once this has been done, it is a good idea to check your directory. One easy way
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{setwd}\hlstd{(}\hlstr{"~/Documents/GitHub/qrm"}\hlstd{)}
 \hlstd{newdat} \hlkwb{<-} \hlkwd{read.csv}\hlstd{(}\hlstr{"w1_w13_longdata.csv"}\hlstd{)}
 \end{alltt}
 \end{kframe}
