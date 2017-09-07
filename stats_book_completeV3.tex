@@ -156,7 +156,7 @@ Wesley Wehde}
 This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/ }{Creative Commons Attribution 4.0 International License} (CC BY 4.0). 
 
 \begin{figure}[h]
-\includegraphics[]{Edition3/"CCicon".png}
+\includegraphics[]{CCicon.png}
 \label{fig:cc}
 \end{figure}
 
@@ -544,7 +544,7 @@ A histogram creates intervals of equal length, called bins, and displays the fre
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{hist}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk)}
+\hlkwd{hist}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -553,7 +553,7 @@ A histogram creates intervals of equal length, called bins, and displays the fre
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(sm)}
-\hlkwd{sm.density}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk,} \hlkwc{model} \hlstd{=} \hlstr{"Normal"}\hlstd{)}
+\hlkwd{sm.density}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk,} \hlkwc{model} \hlstd{=} \hlstr{"Normal"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -602,7 +602,7 @@ Total & 2524 & 100 &  \\ \hline
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# frequency counts for each level}
-\hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{ideol)}
+\hlkwd{table}\hlstd{(ds}\hlopt{\$}\hlstd{ideol)}
 \end{alltt}
 \begin{verbatim}
 ## 
@@ -611,7 +611,7 @@ Total & 2524 & 100 &  \\ \hline
 \end{verbatim}
 \begin{alltt}
 \hlcom{# To view precentages}
-\hlkwd{prop.table}\hlstd{(}\hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{ideol))}
+\hlkwd{prop.table}\hlstd{(}\hlkwd{table}\hlstd{(ds}\hlopt{\$}\hlstd{ideol))}
 \end{alltt}
 \begin{verbatim}
 ## 
@@ -622,7 +622,7 @@ Total & 2524 & 100 &  \\ \hline
 \end{verbatim}
 \begin{alltt}
 \hlcom{# multiply the number by 100 and round to display 3 digits}
-\hlkwd{round}\hlstd{(}\hlkwd{prop.table}\hlstd{(}\hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{ideol)),} \hlnum{3}\hlstd{)} \hlopt{*} \hlnum{100}
+\hlkwd{round}\hlstd{(}\hlkwd{prop.table}\hlstd{(}\hlkwd{table}\hlstd{(ds}\hlopt{\$}\hlstd{ideol)),} \hlnum{3}\hlstd{)} \hlopt{*} \hlnum{100}
 \end{alltt}
 \begin{verbatim}
 ## 
@@ -699,19 +699,19 @@ The mean of a variable can be calculated in \texttt{R} using the \texttt{mean} f
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{mean}\hlstd{(ds}\hlopt{$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{mean}\hlstd{(ds}\hlopt{\$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## [1] 4.652932
 \end{verbatim}
 \begin{alltt}
-\hlkwd{mean}\hlstd{(ds}\hlopt{$}\hlstd{age,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{mean}\hlstd{(ds}\hlopt{\$}\hlstd{age,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## [1] 60.36749
 \end{verbatim}
 \begin{alltt}
-\hlkwd{mean}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{mean}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## [1] 5.945978
@@ -750,19 +750,19 @@ This can also be expressed as $\sqrt{s^2_{x}}$.  The standard deviation of a var
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{sd}\hlstd{(ds}\hlopt{$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{sd}\hlstd{(ds}\hlopt{\$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## [1] 1.731246
 \end{verbatim}
 \begin{alltt}
-\hlkwd{sd}\hlstd{(ds}\hlopt{$}\hlstd{age,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{sd}\hlstd{(ds}\hlopt{\$}\hlstd{age,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## [1] 14.20894
 \end{verbatim}
 \begin{alltt}
-\hlkwd{sd}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{sd}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## [1] 3.071251
@@ -847,7 +847,7 @@ We can visually examine the order statistics of a variable with a boxplot. A box
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{boxplot}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk)}
+\hlkwd{boxplot}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -873,8 +873,8 @@ Another way to compare a variable distribution to a theoretical distribution is 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{qqnorm}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk)}
-\hlkwd{qqline}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk)}
+\hlkwd{qqnorm}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk)}
+\hlkwd{qqline}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -892,21 +892,21 @@ The qq plot provides an easy way to observe departures of a distribution from no
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{summary}\hlstd{(ds}\hlopt{$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{summary}\hlstd{(ds}\hlopt{\$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 ##   1.000   4.000   5.000   4.653   6.000   7.000      23
 \end{verbatim}
 \begin{alltt}
-\hlkwd{summary}\hlstd{(ds}\hlopt{$}\hlstd{age,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{summary}\hlstd{(ds}\hlopt{\$}\hlstd{age,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   18.00   52.00   62.00   60.37   70.00   99.00
 \end{verbatim}
 \begin{alltt}
-\hlkwd{summary}\hlstd{(ds}\hlopt{$}\hlstd{gcclb_risk,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{summary}\hlstd{(ds}\hlopt{\$}\hlstd{gcclb_risk,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## Length  Class   Mode 
@@ -922,7 +922,7 @@ kurtosis.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(psych)}
-\hlkwd{describe}\hlstd{(ds}\hlopt{$}\hlstd{ideol)}
+\hlkwd{describe}\hlstd{(ds}\hlopt{\$}\hlstd{ideol)}
 \end{alltt}
 \begin{verbatim}
 ##    vars    n mean   sd median trimmed  mad min max range  skew kurtosis
@@ -1330,7 +1330,7 @@ To find the appropriate value for t, we need to decide what level of confidence 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{t.test}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk)}
+\hlkwd{t.test}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk)}
 \end{alltt}
 \begin{verbatim}
 ## 
@@ -1382,7 +1382,7 @@ As coded in our dataset, gender (gender) is a numeric variable with a 1 for male
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{ds}\hlopt{$}\hlstd{f.gend} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{gender,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Female"}\hlstd{,}
+\hlstd{ds}\hlopt{\$}\hlstd{f.gend} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{\$}\hlstd{gender,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Female"}\hlstd{,}
     \hlstr{"Male"}\hlstd{))}
 \end{alltt}
 \end{kframe}
@@ -1393,7 +1393,7 @@ As coded in our dataset, gender (gender) is a numeric variable with a 1 for male
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(lattice)}
-\hlkwd{densityplot}\hlstd{(}\hlopt{~}\hlstd{ds}\hlopt{$}\hlstd{glbcc_risk} \hlopt{|} \hlstd{ds}\hlopt{$}\hlstd{f.gend)}
+\hlkwd{densityplot}\hlstd{(}\hlopt{~}\hlstd{ds}\hlopt{\$}\hlstd{glbcc_risk} \hlopt{|} \hlstd{ds}\hlopt{\$}\hlstd{f.gend)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1407,7 +1407,7 @@ Based on the density plots, it appears that some differences exist between males
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{by}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk, ds}\hlopt{$}\hlstd{f.gend, mean,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{by}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk, ds}\hlopt{\$}\hlstd{f.gend, mean,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## ds$f.gend: Female
@@ -1455,10 +1455,10 @@ We can calculate this in \texttt{R}. First, we calculate the $n$ size for males 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{n.total} \hlkwb{<-} \hlkwd{length}\hlstd{(ds}\hlopt{$}\hlstd{gender)}
-\hlstd{nM} \hlkwb{<-} \hlkwd{sum}\hlstd{(ds}\hlopt{$}\hlstd{gender,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlstd{n.total} \hlkwb{<-} \hlkwd{length}\hlstd{(ds}\hlopt{\$}\hlstd{gender)}
+\hlstd{nM} \hlkwb{<-} \hlkwd{sum}\hlstd{(ds}\hlopt{\$}\hlstd{gender,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \hlstd{nF} \hlkwb{<-} \hlstd{n.total} \hlopt{-} \hlstd{nM}
-\hlkwd{by}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk, ds}\hlopt{$}\hlstd{f.gend, sd,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{by}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk, ds}\hlopt{\$}\hlstd{f.gend, sd,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## ds$f.gend: Female
@@ -1506,7 +1506,7 @@ We can calculate this in \texttt{R}. First, we calculate the $n$ size for males 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{by}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk, ds}\hlopt{$}\hlstd{f.gend, mean,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{by}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk, ds}\hlopt{\$}\hlstd{f.gend, mean,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## ds$f.gend: Female
@@ -1525,7 +1525,7 @@ We can calculate this in \texttt{R}. First, we calculate the $n$ size for males 
 ## [1] 5.061625
 \end{verbatim}
 \begin{alltt}
-\hlkwd{t.test}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk} \hlopt{~} \hlstd{ds}\hlopt{$}\hlstd{gender)}
+\hlkwd{t.test}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk} \hlopt{~} \hlstd{ds}\hlopt{\$}\hlstd{gender)}
 \end{alltt}
 \begin{verbatim}
 ## 
@@ -1649,12 +1649,12 @@ Crosstabulations and their associated statistics can be calculated using R.  In 
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# Factor the gender variable}
-\hlstd{ds}\hlopt{$}\hlstd{f.gend} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{gender,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Women"}\hlstd{,}
+\hlstd{ds}\hlopt{\$}\hlstd{f.gend} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{\$}\hlstd{gender,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Women"}\hlstd{,}
     \hlstr{"Men"}\hlstd{))}
 
 \hlcom{# recode glbccrisk to five categories}
 \hlkwd{library}\hlstd{(car)}
-\hlstd{ds}\hlopt{$}\hlstd{r.glbcc_risk} \hlkwb{<-} \hlkwd{recode}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk,} \hlstr{"0:1=1; 2:3=2; 4:6=3; 7:8:=4; 9:10=5; NA=NA"}\hlstd{)}
+\hlstd{ds}\hlopt{\$}\hlstd{r.glbcc_risk} \hlkwb{<-} \hlkwd{recode}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk,} \hlstr{"0:1=1; 2:3=2; 4:6=3; 7:8:=4; 9:10=5; NA=NA"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1665,7 +1665,7 @@ Using the \texttt{table} function, we produce a frequency table reflecting the r
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# create the table}
-\hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{r.glbcc_risk, ds}\hlopt{$}\hlstd{f.gend)}
+\hlkwd{table}\hlstd{(ds}\hlopt{\$}\hlstd{r.glbcc_risk, ds}\hlopt{\$}\hlstd{f.gend)}
 \end{alltt}
 \begin{verbatim}
 ##    
@@ -1678,7 +1678,7 @@ Using the \texttt{table} function, we produce a frequency table reflecting the r
 \end{verbatim}
 \begin{alltt}
 \hlcom{# create the table as an R Object}
-\hlstd{glbcc.table} \hlkwb{<-} \hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{r.glbcc_risk, ds}\hlopt{$}\hlstd{f.gend)}
+\hlstd{glbcc.table} \hlkwb{<-} \hlkwd{table}\hlstd{(ds}\hlopt{\$}\hlstd{r.glbcc_risk, ds}\hlopt{\$}\hlstd{f.gend)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1812,16 +1812,16 @@ Using an example from the Climate and Weather survey, we might hypothesize that 
 \begin{alltt}
 \hlcom{# recode variables ideology to 3 categories}
 \hlkwd{library}\hlstd{(car)}
-\hlstd{ds}\hlopt{$}\hlstd{r.ideol} \hlkwb{<-} \hlkwd{recode}\hlstd{(ds}\hlopt{$}\hlstd{ideol,} \hlstr{"1:2=1; 3:5=2; 6:7=3; NA=NA"}\hlstd{)}
+\hlstd{ds}\hlopt{\$}\hlstd{r.ideol} \hlkwb{<-} \hlkwd{recode}\hlstd{(ds}\hlopt{\$}\hlstd{ideol,} \hlstr{"1:2=1; 3:5=2; 6:7=3; NA=NA"}\hlstd{)}
 
 \hlcom{# factor the variables to add labels.}
-\hlstd{ds}\hlopt{$}\hlstd{f.ideol} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{r.ideol,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{3}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Liberal"}\hlstd{,}
+\hlstd{ds}\hlopt{\$}\hlstd{f.ideol} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{\$}\hlstd{r.ideol,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{3}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Liberal"}\hlstd{,}
     \hlstr{"Moderate"}\hlstd{,} \hlstr{"Conservative"}\hlstd{))}
-\hlstd{ds}\hlopt{$}\hlstd{f.glbcc} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{glbcc,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"GLBCC No"}\hlstd{,}
+\hlstd{ds}\hlopt{\$}\hlstd{f.glbcc} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"GLBCC No"}\hlstd{,}
     \hlstr{"GLBCC Yes"}\hlstd{))}
 
 \hlcom{# 3 Two variable table glbcc~ideology}
-\hlstd{v2.glbcc.table} \hlkwb{<-} \hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{f.glbcc, ds}\hlopt{$}\hlstd{f.ideol)}
+\hlstd{v2.glbcc.table} \hlkwb{<-} \hlkwd{table}\hlstd{(ds}\hlopt{\$}\hlstd{f.glbcc, ds}\hlopt{\$}\hlstd{f.ideol)}
 \hlstd{v2.glbcc.table}
 \end{alltt}
 \begin{verbatim}
@@ -1894,7 +1894,7 @@ We might, though, want to look at gender as a control variable since we know gen
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# factor the variables to add labels.}
-\hlstd{ds}\hlopt{$}\hlstd{f.gend} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{gend,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Women"}\hlstd{,}
+\hlstd{ds}\hlopt{\$}\hlstd{f.gend} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{\$}\hlstd{gend,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Women"}\hlstd{,}
     \hlstr{"Men"}\hlstd{))}
 \end{alltt}
 \end{kframe}
@@ -1906,7 +1906,7 @@ We might, though, want to look at gender as a control variable since we know gen
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# 3 Two variable table glbcc~ideology+gend}
-\hlstd{v3.glbcc.table} \hlkwb{<-} \hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{f.glbcc, ds}\hlopt{$}\hlstd{f.ideol, ds}\hlopt{$}\hlstd{f.gend)}
+\hlstd{v3.glbcc.table} \hlkwb{<-} \hlkwd{table}\hlstd{(ds}\hlopt{\$}\hlstd{f.glbcc, ds}\hlopt{\$}\hlstd{f.ideol, ds}\hlopt{\$}\hlstd{f.gend)}
 \hlstd{v3.glbcc.table}
 \end{alltt}
 \begin{verbatim}
@@ -2071,7 +2071,7 @@ you can see observations that are ``stacked" on the same coordinate. Ha! Just ki
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk)} \hlopt{~} \hlkwd{jitter}\hlstd{(ds}\hlopt{$}\hlstd{ideol),} \hlkwc{col} \hlstd{=} \hlstr{"gray"}\hlstd{)}
+\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk)} \hlopt{~} \hlkwd{jitter}\hlstd{(ds}\hlopt{\$}\hlstd{ideol),} \hlkwc{col} \hlstd{=} \hlstr{"gray"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -2092,10 +2092,10 @@ In this example the lowess function is sensative to missing data.  We will remov
 \hlstd{ds.missing} \hlkwb{<-} \hlkwd{subset}\hlstd{(ds,} \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"glbcc_risk"}\hlstd{,} \hlstr{"ideol"}\hlstd{))}
 \hlstd{ds.missing} \hlkwb{<-} \hlkwd{na.omit}\hlstd{(ds.missing)}  \hlcom{# Generate new dataset with missing values removed}
 
-\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds.missing}\hlopt{$}\hlstd{glbcc_risk)} \hlopt{~} \hlkwd{jitter}\hlstd{(ds.missing}\hlopt{$}\hlstd{ideol),}
+\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds.missing}\hlopt{\$}\hlstd{glbcc_risk)} \hlopt{~} \hlkwd{jitter}\hlstd{(ds.missing}\hlopt{\$}\hlstd{ideol),}
     \hlkwc{col} \hlstd{=} \hlstr{"gray"}\hlstd{)}
-\hlkwd{abline}\hlstd{(}\hlkwd{lm}\hlstd{(ds.missing}\hlopt{$}\hlstd{glbcc_risk} \hlopt{~} \hlstd{ds.missing}\hlopt{$}\hlstd{ideol))}
-\hlkwd{lines}\hlstd{(}\hlkwd{lowess}\hlstd{(ds.missing}\hlopt{$}\hlstd{ideol, ds.missing}\hlopt{$}\hlstd{glbcc_risk),} \hlkwc{lty} \hlstd{=} \hlnum{2}\hlstd{,}
+\hlkwd{abline}\hlstd{(}\hlkwd{lm}\hlstd{(ds.missing}\hlopt{\$}\hlstd{glbcc_risk} \hlopt{~} \hlstd{ds.missing}\hlopt{\$}\hlstd{ideol))}
+\hlkwd{lines}\hlstd{(}\hlkwd{lowess}\hlstd{(ds.missing}\hlopt{\$}\hlstd{ideol, ds.missing}\hlopt{\$}\hlstd{glbcc_risk),} \hlkwc{lty} \hlstd{=} \hlnum{2}\hlstd{,}
     \hlkwc{col} \hlstd{=} \hlstr{"red"}\hlstd{)}
 \hlkwd{rm}\hlstd{(ds.missing)}  \hlcom{# remove the missing data from the environment}
 \hlkwd{dev.off}\hlstd{()}
@@ -2335,7 +2335,7 @@ The following example uses a measure of peoples' political ideology to predict t
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{ols1} \hlkwb{<-} \hlkwd{lm}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk} \hlopt{~} \hlstd{ds}\hlopt{$}\hlstd{ideol)}
+\hlstd{ols1} \hlkwb{<-} \hlkwd{lm}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk} \hlopt{~} \hlstd{ds}\hlopt{\$}\hlstd{ideol)}
 \hlkwd{summary}\hlstd{(ols1)}
 \end{alltt}
 \begin{verbatim}
@@ -2369,9 +2369,9 @@ We can also examine the distribution of the residuals, using a histogram and a d
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{hist}\hlstd{(ols1}\hlopt{$}\hlstd{residual)}
+\hlkwd{hist}\hlstd{(ols1}\hlopt{\$}\hlstd{residual)}
 \hlkwd{library}\hlstd{(sm)}
-\hlkwd{sm.density}\hlstd{(ols1}\hlopt{$}\hlstd{residual,} \hlkwc{model} \hlstd{=} \hlstr{"Normal"}\hlstd{)}
+\hlkwd{sm.density}\hlstd{(ols1}\hlopt{\$}\hlstd{residual,} \hlkwc{model} \hlstd{=} \hlstr{"Normal"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -2988,7 +2988,7 @@ To calculate this in \texttt{R}, based on the model we just ran,  we create an o
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{Se} \hlkwb{<-} \hlkwd{sqrt}\hlstd{(}\hlkwd{sum}\hlstd{(ols1}\hlopt{$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}\hlopt{/}\hlstd{(}\hlkwd{length}\hlstd{(ds.omit}\hlopt{$}\hlstd{glbcc_risk)} \hlopt{-}
+\hlstd{Se} \hlkwb{<-} \hlkwd{sqrt}\hlstd{(}\hlkwd{sum}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}\hlopt{/}\hlstd{(}\hlkwd{length}\hlstd{(ds.omit}\hlopt{\$}\hlstd{glbcc_risk)} \hlopt{-}
     \hlnum{2}\hlstd{))}
 \hlstd{Se}
 \end{alltt}
@@ -3021,7 +3021,7 @@ We can calculate the $SE$ of $A$ and $B$ in \texttt{R} in a few steps. First, we
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{TSSx} \hlkwb{<-} \hlkwd{sum}\hlstd{((ds.omit}\hlopt{$}\hlstd{ideol} \hlopt{-} \hlkwd{mean}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{))}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{TSSx} \hlkwb{<-} \hlkwd{sum}\hlstd{((ds.omit}\hlopt{\$}\hlstd{ideol} \hlopt{-} \hlkwd{mean}\hlstd{(ds.omit}\hlopt{\$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{))}\hlopt{^}\hlnum{2}\hlstd{)}
 \hlstd{TSSx}
 \end{alltt}
 \begin{verbatim}
@@ -3034,7 +3034,7 @@ We can calculate the $SE$ of $A$ and $B$ in \texttt{R} in a few steps. First, we
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{SEa} \hlkwb{<-} \hlstd{Se} \hlopt{*} \hlkwd{sqrt}\hlstd{((}\hlnum{1}\hlopt{/}\hlkwd{length}\hlstd{(ds.omit}\hlopt{$}\hlstd{glbcc_risk))} \hlopt{+} \hlstd{(}\hlkwd{mean}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol,}
+\hlstd{SEa} \hlkwb{<-} \hlstd{Se} \hlopt{*} \hlkwd{sqrt}\hlstd{((}\hlnum{1}\hlopt{/}\hlkwd{length}\hlstd{(ds.omit}\hlopt{\$}\hlstd{glbcc_risk))} \hlopt{+} \hlstd{(}\hlkwd{mean}\hlstd{(ds.omit}\hlopt{\$}\hlstd{ideol,}
     \hlkwc{na.rm} \hlstd{= T)}\hlopt{^}\hlnum{2}\hlopt{/}\hlstd{TSSx))}
 \hlstd{SEa}
 \end{alltt}
@@ -3061,7 +3061,7 @@ Using the standard errors, we can determine how likely it is that our estimate o
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{t} \hlkwb{<-} \hlstd{ols1}\hlopt{$}\hlstd{coef[}\hlnum{2}\hlstd{]}\hlopt{/}\hlstd{SEb}
+\hlstd{t} \hlkwb{<-} \hlstd{ols1}\hlopt{\$}\hlstd{coef[}\hlnum{2}\hlstd{]}\hlopt{/}\hlstd{SEb}
 \hlstd{t}
 \end{alltt}
 \begin{verbatim}
@@ -3086,7 +3086,7 @@ We can easily calculate this in \texttt{R}. First, we calculate the upper limit 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{Bhi} \hlkwb{<-} \hlstd{ols1}\hlopt{$}\hlstd{coef[}\hlnum{2}\hlstd{]} \hlopt{-} \hlnum{1.96} \hlopt{*} \hlstd{SEb}
+\hlstd{Bhi} \hlkwb{<-} \hlstd{ols1}\hlopt{\$}\hlstd{coef[}\hlnum{2}\hlstd{]} \hlopt{-} \hlnum{1.96} \hlopt{*} \hlstd{SEb}
 \hlstd{Bhi}
 \end{alltt}
 \begin{verbatim}
@@ -3094,7 +3094,7 @@ We can easily calculate this in \texttt{R}. First, we calculate the upper limit 
 ## -1.102329
 \end{verbatim}
 \begin{alltt}
-\hlstd{Blow} \hlkwb{<-} \hlstd{ols1}\hlopt{$}\hlstd{coef[}\hlnum{2}\hlstd{]} \hlopt{+} \hlnum{1.96} \hlopt{*} \hlstd{SEb}
+\hlstd{Blow} \hlkwb{<-} \hlstd{ols1}\hlopt{\$}\hlstd{coef[}\hlnum{2}\hlstd{]} \hlopt{+} \hlnum{1.96} \hlopt{*} \hlstd{SEb}
 \hlstd{Blow}
 \end{alltt}
 \begin{verbatim}
@@ -3132,7 +3132,7 @@ Intuitively, this measure tells you, on average, whether a higher value of $X$ (
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{Sxy} \hlkwb{<-} \hlkwd{cov}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol, ds.omit}\hlopt{$}\hlstd{glbcc_risk)}
+\hlstd{Sxy} \hlkwb{<-} \hlkwd{cov}\hlstd{(ds.omit}\hlopt{\$}\hlstd{ideol, ds.omit}\hlopt{\$}\hlstd{glbcc_risk)}
 \hlstd{Sxy}
 \end{alltt}
 \begin{verbatim}
@@ -3154,14 +3154,14 @@ To calculate this in \texttt{R}, we first make an object for $S_{X}$ and $S_{Y}$
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{Sx} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol)}
+\hlstd{Sx} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.omit}\hlopt{\$}\hlstd{ideol)}
 \hlstd{Sx}
 \end{alltt}
 \begin{verbatim}
 ## [1] 1.7317
 \end{verbatim}
 \begin{alltt}
-\hlstd{Sy} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.omit}\hlopt{$}\hlstd{glbcc_risk)}
+\hlstd{Sy} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.omit}\hlopt{\$}\hlstd{glbcc_risk)}
 \hlstd{Sy}
 \end{alltt}
 \begin{verbatim}
@@ -3185,7 +3185,7 @@ To calculate this in \texttt{R}, we first make an object for $S_{X}$ and $S_{Y}$
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{rbyR} \hlkwb{<-} \hlkwd{cor}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol, ds.omit}\hlopt{$}\hlstd{glbcc_risk)}
+\hlstd{rbyR} \hlkwb{<-} \hlkwd{cor}\hlstd{(ds.omit}\hlopt{\$}\hlstd{ideol, ds.omit}\hlopt{\$}\hlstd{glbcc_risk)}
 \hlstd{rbyR}
 \end{alltt}
 \begin{verbatim}
@@ -3248,7 +3248,7 @@ To calculate $R^{2}$ ``by hand" in \texttt{R}, we must first determine the total
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{TSS} \hlkwb{<-} \hlkwd{sum}\hlstd{((ds.omit}\hlopt{$}\hlstd{glbcc_risk} \hlopt{-} \hlkwd{mean}\hlstd{(ds.omit}\hlopt{$}\hlstd{glbcc_risk))}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{TSS} \hlkwb{<-} \hlkwd{sum}\hlstd{((ds.omit}\hlopt{\$}\hlstd{glbcc_risk} \hlopt{-} \hlkwd{mean}\hlstd{(ds.omit}\hlopt{\$}\hlstd{glbcc_risk))}\hlopt{^}\hlnum{2}\hlstd{)}
 \hlstd{TSS}
 \end{alltt}
 \begin{verbatim}
@@ -3260,7 +3260,7 @@ Remember that $R^{2}$ is the ratio of the explained sum of squares to the total 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{RSS} \hlkwb{<-} \hlkwd{sum}\hlstd{(ols1}\hlopt{$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{RSS} \hlkwb{<-} \hlkwd{sum}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}
 \hlstd{RSS}
 \end{alltt}
 \begin{verbatim}
@@ -3453,7 +3453,7 @@ Our in-class lab example focuses on the relationship between political ideology 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{OLS_env} \hlkwb{<-} \hlkwd{lm}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk} \hlopt{~} \hlstd{ds}\hlopt{$}\hlstd{ideol)}
+\hlstd{OLS_env} \hlkwb{<-} \hlkwd{lm}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk} \hlopt{~} \hlstd{ds}\hlopt{\$}\hlstd{ideol)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3498,8 +3498,8 @@ One way to test for non-linearity is to fit the model to a polynomial functional
 \begin{alltt}
 \hlcom{# first we square the ideology variable and create a new}
 \hlcom{# variable to use in our model.}
-\hlstd{ds}\hlopt{$}\hlstd{ideology2} \hlkwb{<-} \hlstd{ds}\hlopt{$}\hlstd{ideol}\hlopt{^}\hlnum{2}
-\hlkwd{summary}\hlstd{(ds}\hlopt{$}\hlstd{ideology2)}
+\hlstd{ds}\hlopt{\$}\hlstd{ideology2} \hlkwb{<-} \hlstd{ds}\hlopt{\$}\hlstd{ideol}\hlopt{^}\hlnum{2}
+\hlkwd{summary}\hlstd{(ds}\hlopt{\$}\hlstd{ideology2)}
 \end{alltt}
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
@@ -3575,7 +3575,7 @@ Start by creating a histogram of the model residuals.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{hist}\hlstd{(OLS_env}\hlopt{$}\hlstd{residuals)}
+\hlkwd{hist}\hlstd{(OLS_env}\hlopt{\$}\hlstd{residuals)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3593,7 +3593,7 @@ The histogram in figure \ref{fig:histideology} indicates that the residuals are 
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(sm)}
-\hlkwd{sm.density}\hlstd{(OLS_env}\hlopt{$}\hlstd{residuals,} \hlkwc{model} \hlstd{=} \hlstr{"Normal"}\hlstd{)}
+\hlkwd{sm.density}\hlstd{(OLS_env}\hlopt{\$}\hlstd{residuals,} \hlkwc{model} \hlstd{=} \hlstr{"Normal"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3612,7 +3612,7 @@ Figure \ref{fig:densityideology} indicates the model residuals deviate slightly 
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(car)}
-\hlkwd{qqPlot}\hlstd{(OLS_env}\hlopt{$}\hlstd{residuals)}
+\hlkwd{qqPlot}\hlstd{(OLS_env}\hlopt{\$}\hlstd{residuals)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3633,7 +3633,7 @@ According to Figure \ref{fig:QQideology}, it appears as if the residuals are nor
 \begin{alltt}
 \hlcom{# a significant value p-value potentially indicates the data}
 \hlcom{# is not normally distributed.}
-\hlkwd{shapiro.test}\hlstd{(OLS_env}\hlopt{$}\hlstd{residuals)}
+\hlkwd{shapiro.test}\hlstd{(OLS_env}\hlopt{\$}\hlstd{residuals)}
 \end{alltt}
 \begin{verbatim}
 ## 
@@ -4703,7 +4703,7 @@ As an example, we will use age and ideology to predict perceived climate change 
 ## F-statistic: 14.41 on 1 and 2511 DF,  p-value: 0.0001504
 \end{verbatim}
 \begin{alltt}
-\hlstd{ols2.resids} \hlkwb{<-} \hlstd{ols2}\hlopt{$}\hlstd{residuals}
+\hlstd{ols2.resids} \hlkwb{<-} \hlstd{ols2}\hlopt{\$}\hlstd{residuals}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -4738,7 +4738,7 @@ Note that, when modeled alone, the estimated effect of age on glbccrsk is larger
 ## F-statistic: 20.58 on 1 and 2511 DF,  p-value: 0.000005981
 \end{verbatim}
 \begin{alltt}
-\hlstd{ols3.resids} \hlkwb{<-} \hlstd{ols3}\hlopt{$}\hlstd{residuals}
+\hlstd{ols3.resids} \hlkwb{<-} \hlstd{ols3}\hlopt{\$}\hlstd{residuals}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -4916,7 +4916,7 @@ We can use \texttt{R} to find the $RSS$ for ideology in our model. First we find
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{Se} \hlkwb{<-} \hlkwd{sqrt}\hlstd{((}\hlkwd{sum}\hlstd{(ols3}\hlopt{$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{))}\hlopt{/}\hlstd{(}\hlkwd{length}\hlstd{(ds.temp}\hlopt{$}\hlstd{ideol)} \hlopt{-} \hlnum{5} \hlopt{-}
+\hlstd{Se} \hlkwb{<-} \hlkwd{sqrt}\hlstd{((}\hlkwd{sum}\hlstd{(ols3}\hlopt{\$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{))}\hlopt{/}\hlstd{(}\hlkwd{length}\hlstd{(ds.temp}\hlopt{\$}\hlstd{ideol)} \hlopt{-} \hlnum{5} \hlopt{-}
     \hlnum{1}\hlstd{))}
 \hlstd{Se}
 \end{alltt}
@@ -4955,7 +4955,7 @@ Then we find the $RSS$, for ideology:
 ## F-statistic:  26.6 on 3 and 2268 DF,  p-value: < 0.00000000000000022
 \end{verbatim}
 \begin{alltt}
-\hlstd{RSSideol} \hlkwb{<-} \hlkwd{sum}\hlstd{(ols4}\hlopt{$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{RSSideol} \hlkwb{<-} \hlkwd{sum}\hlstd{(ols4}\hlopt{\$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}
 \hlstd{RSSideol}
 \end{alltt}
 \begin{verbatim}
@@ -4987,7 +4987,7 @@ This can be calculated using \texttt{R}.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{ols3}\hlopt{$}\hlstd{coef[}\hlnum{5}\hlstd{]}\hlopt{/}\hlstd{SEideol}
+\hlstd{ols3}\hlopt{\$}\hlstd{coef[}\hlnum{5}\hlstd{]}\hlopt{/}\hlstd{SEideol}
 \end{alltt}
 \begin{verbatim}
 ##     ideol 
@@ -5153,14 +5153,14 @@ We can use \texttt{R}, to calculate the $F$ statistic based on our previous exam
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{TSS} \hlkwb{<-} \hlkwd{sum}\hlstd{((ds.temp}\hlopt{$}\hlstd{glbcc_risk} \hlopt{-} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{glbcc_risk))}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{TSS} \hlkwb{<-} \hlkwd{sum}\hlstd{((ds.temp}\hlopt{\$}\hlstd{glbcc_risk} \hlopt{-} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{\$}\hlstd{glbcc_risk))}\hlopt{^}\hlnum{2}\hlstd{)}
 \hlstd{TSS}
 \end{alltt}
 \begin{verbatim}
 ## [1] 21059.86
 \end{verbatim}
 \begin{alltt}
-\hlstd{RSS.mod1} \hlkwb{<-} \hlkwd{sum}\hlstd{(ols1}\hlopt{$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{RSS.mod1} \hlkwb{<-} \hlkwd{sum}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}
 \hlstd{RSS.mod1}
 \end{alltt}
 \begin{verbatim}
@@ -5174,7 +5174,7 @@ We can use \texttt{R}, to calculate the $F$ statistic based on our previous exam
 ## [1] 540.2891
 \end{verbatim}
 \begin{alltt}
-\hlstd{RSS.mod2} \hlkwb{<-} \hlkwd{sum}\hlstd{(ols2}\hlopt{$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{RSS.mod2} \hlkwb{<-} \hlkwd{sum}\hlstd{(ols2}\hlopt{\$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}
 \hlstd{RSS.mod2}
 \end{alltt}
 \begin{verbatim}
@@ -5188,7 +5188,7 @@ We can use \texttt{R}, to calculate the $F$ statistic based on our previous exam
 ## [1] 7644.965
 \end{verbatim}
 \begin{alltt}
-\hlstd{F} \hlkwb{<-} \hlstd{((ESS.mod2} \hlopt{-} \hlstd{ESS.mod1)}\hlopt{/}\hlnum{1}\hlstd{)}\hlopt{/}\hlstd{(RSS.mod2}\hlopt{/}\hlstd{(}\hlkwd{length}\hlstd{(ds.temp}\hlopt{$}\hlstd{glbcc_risk)} \hlopt{-}
+\hlstd{F} \hlkwb{<-} \hlstd{((ESS.mod2} \hlopt{-} \hlstd{ESS.mod1)}\hlopt{/}\hlnum{1}\hlstd{)}\hlopt{/}\hlstd{(RSS.mod2}\hlopt{/}\hlstd{(}\hlkwd{length}\hlstd{(ds.temp}\hlopt{\$}\hlstd{glbcc_risk)} \hlopt{-}
     \hlnum{4} \hlopt{-} \hlnum{1}\hlstd{))}
 \hlstd{F}
 \end{alltt}
@@ -5487,9 +5487,9 @@ In addition, we can convert the original unstandardized coefficient for ideology
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{sdX} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.temp}\hlopt{$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlstd{sdY} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.temp}\hlopt{$}\hlstd{glbcc_risk,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlstd{ideology.prime} \hlkwb{<-} \hlstd{ols1}\hlopt{$}\hlstd{coef[}\hlnum{5}\hlstd{]} \hlopt{*} \hlstd{(sdX}\hlopt{/}\hlstd{sdY)}
+\hlstd{sdX} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.temp}\hlopt{\$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlstd{sdY} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.temp}\hlopt{\$}\hlstd{glbcc_risk,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlstd{ideology.prime} \hlkwb{<-} \hlstd{ols1}\hlopt{\$}\hlstd{coef[}\hlnum{5}\hlstd{]} \hlopt{*} \hlstd{(sdX}\hlopt{/}\hlstd{sdY)}
 \hlstd{ideology.prime}
 \end{alltt}
 \begin{verbatim}
@@ -5665,13 +5665,13 @@ Now let's look at the residuals from our example model. We can check the linear 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds.small}\hlopt{$}\hlstd{age),} \hlkwd{jitter}\hlstd{(}\hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{main} \hlstd{=} \hlstr{"Age"}\hlstd{)}
+\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds.small}\hlopt{\$}\hlstd{age),} \hlkwd{jitter}\hlstd{(}\hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{main} \hlstd{=} \hlstr{"Age"}\hlstd{)}
 \hlkwd{abline}\hlstd{(}\hlkwc{h} \hlstd{=} \hlnum{0}\hlstd{)}
-\hlkwd{lines}\hlstd{(}\hlkwd{lowess}\hlstd{(ds.small}\hlopt{$}\hlstd{age,} \hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{lty} \hlstd{=} \hlnum{2}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"red"}\hlstd{)}
-\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds.small}\hlopt{$}\hlstd{education),} \hlkwd{jitter}\hlstd{(}\hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{main} \hlstd{=} \hlstr{"Education"}\hlstd{)}
+\hlkwd{lines}\hlstd{(}\hlkwd{lowess}\hlstd{(ds.small}\hlopt{\$}\hlstd{age,} \hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{lty} \hlstd{=} \hlnum{2}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"red"}\hlstd{)}
+\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds.small}\hlopt{\$}\hlstd{education),} \hlkwd{jitter}\hlstd{(}\hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{main} \hlstd{=} \hlstr{"Education"}\hlstd{)}
 \hlkwd{abline}\hlstd{(}\hlkwc{h} \hlstd{=} \hlnum{0}\hlstd{)}
-\hlkwd{lines}\hlstd{(}\hlkwd{lowess}\hlstd{(ds.small}\hlopt{$}\hlstd{education,} \hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{lty} \hlstd{=} \hlnum{2}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"red"}\hlstd{)}
-\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds.small}\hlopt{$}\hlstd{income),} \hlkwd{jitter}\hlstd{(}\hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{main} \hlstd{=} \hlstr{"Income"}\hlstd{)}
+\hlkwd{lines}\hlstd{(}\hlkwd{lowess}\hlstd{(ds.small}\hlopt{\$}\hlstd{education,} \hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{lty} \hlstd{=} \hlnum{2}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"red"}\hlstd{)}
+\hlkwd{plot}\hlstd{(}\hlkwd{jitter}\hlstd{(ds.small}\hlopt{\$}\hlstd{income),} \hlkwd{jitter}\hlstd{(}\hlkwd{rstudent}\hlstd{(ols1)),} \hlkwc{main} \hlstd{=} \hlstr{"Income"}\hlstd{)}
 \hlkwd{abline}\hlstd{(}\hlkwc{h} \hlstd{=} \hlnum{0}\hlstd{)}
 \end{alltt}
 \end{kframe}
@@ -5686,10 +5686,10 @@ Now let's look at the residuals from our example model. We can check the linear 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{ds.small}\hlopt{$}\hlstd{age2} \hlkwb{<-} \hlstd{ds.small}\hlopt{$}\hlstd{age}\hlopt{^}\hlnum{2}
-\hlstd{ds.small}\hlopt{$}\hlstd{edu2} \hlkwb{<-} \hlstd{ds.small}\hlopt{$}\hlstd{education}\hlopt{^}\hlnum{2}
-\hlstd{ds.small}\hlopt{$}\hlstd{inc2} \hlkwb{<-} \hlstd{ds.small}\hlopt{$}\hlstd{income}\hlopt{^}\hlnum{2}
-\hlstd{ds.small}\hlopt{$}\hlstd{ideology2} \hlkwb{<-} \hlstd{ds.small}\hlopt{$}\hlstd{ideol}\hlopt{^}\hlnum{2}
+\hlstd{ds.small}\hlopt{\$}\hlstd{age2} \hlkwb{<-} \hlstd{ds.small}\hlopt{\$}\hlstd{age}\hlopt{^}\hlnum{2}
+\hlstd{ds.small}\hlopt{\$}\hlstd{edu2} \hlkwb{<-} \hlstd{ds.small}\hlopt{\$}\hlstd{education}\hlopt{^}\hlnum{2}
+\hlstd{ds.small}\hlopt{\$}\hlstd{inc2} \hlkwb{<-} \hlstd{ds.small}\hlopt{\$}\hlstd{income}\hlopt{^}\hlnum{2}
+\hlstd{ds.small}\hlopt{\$}\hlstd{ideology2} \hlkwb{<-} \hlstd{ds.small}\hlopt{\$}\hlstd{ideol}\hlopt{^}\hlnum{2}
 \hlstd{ols2} \hlkwb{<-} \hlkwd{lm}\hlstd{(glbcc_risk} \hlopt{~} \hlstd{age} \hlopt{+} \hlstd{age2} \hlopt{+} \hlstd{education} \hlopt{+} \hlstd{edu2} \hlopt{+} \hlstd{income} \hlopt{+}
     \hlstd{inc2} \hlopt{+} \hlstd{ideol} \hlopt{+} \hlstd{ideology2,} \hlkwc{data} \hlstd{= ds.small)}
 \hlkwd{summary}\hlstd{(ols2)}
@@ -5881,10 +5881,10 @@ Using the \texttt{hccm} function we can create a function in \texttt{R} that wil
 \hlstd{robust.se} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{model}\hlstd{) \{}
     \hlstd{s} \hlkwb{<-} \hlkwd{summary}\hlstd{(model)}
     \hlstd{wse} \hlkwb{<-} \hlkwd{sqrt}\hlstd{(}\hlkwd{diag}\hlstd{(}\hlkwd{hccm}\hlstd{(ols1)))}
-    \hlstd{t} \hlkwb{<-} \hlstd{model}\hlopt{$}\hlstd{coefficients}\hlopt{/}\hlstd{wse}
+    \hlstd{t} \hlkwb{<-} \hlstd{model}\hlopt{\$}\hlstd{coefficients}\hlopt{/}\hlstd{wse}
     \hlstd{p} \hlkwb{<-} \hlnum{2} \hlopt{*} \hlkwd{pnorm}\hlstd{(}\hlopt{-}\hlkwd{abs}\hlstd{(t))}
-    \hlstd{results} \hlkwb{<-} \hlkwd{cbind}\hlstd{(model}\hlopt{$}\hlstd{coefficients, wse, t, p)}
-    \hlkwd{dimnames}\hlstd{(results)} \hlkwb{<-} \hlkwd{dimnames}\hlstd{(s}\hlopt{$}\hlstd{coefficients)}
+    \hlstd{results} \hlkwb{<-} \hlkwd{cbind}\hlstd{(model}\hlopt{\$}\hlstd{coefficients, wse, t, p)}
+    \hlkwd{dimnames}\hlstd{(results)} \hlkwb{<-} \hlkwd{dimnames}\hlstd{(s}\hlopt{\$}\hlstd{coefficients)}
     \hlstd{results}
 \hlstd{\}}
 \end{alltt}
@@ -5931,7 +5931,7 @@ We can then compare our results with the original simple regression model result
 ## income       0.0000001922905 0.000002320899   0.08285175
 ## ideol       -1.2235648372311 0.060039031426 -20.37948994
 ##                                                                                                         Pr(>|t|)
-## (Intercept) 0.00000000000000000000000000000000000000000000000000000000000000000000000054921988962793404326183377
+## (Intercept) 0.00000000000000000000000000000000000000000000000000000000000000000000000054921988962793404323143119
 ## age         0.48881482326776815039437451559933833777904510498046875000000000000000000000000000000000000000000000
 ## education   0.78978312137982031870819810137618333101272583007812500000000000000000000000000000000000000000000000
 ## income      0.93396941638148500697269582815351895987987518310546875000000000000000000000000000000000000000000000
@@ -5983,7 +5983,7 @@ To examine normality of the residuals we first plot the residuals and then run w
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{hist}\hlstd{(ols1}\hlopt{$}\hlstd{residuals)}
+\hlkwd{hist}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -5992,7 +5992,7 @@ To examine normality of the residuals we first plot the residuals and then run w
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(sm)}
-\hlkwd{sm.density}\hlstd{(ols1}\hlopt{$}\hlstd{residuals,} \hlkwc{model} \hlstd{=} \hlstr{"Normal"}\hlstd{)}
+\hlkwd{sm.density}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals,} \hlkwc{model} \hlstd{=} \hlstr{"Normal"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -6000,7 +6000,7 @@ To examine normality of the residuals we first plot the residuals and then run w
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{boxplot}\hlstd{(ols1}\hlopt{$}\hlstd{residuals)}
+\hlkwd{boxplot}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -6008,8 +6008,8 @@ To examine normality of the residuals we first plot the residuals and then run w
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{qqnorm}\hlstd{(ols1}\hlopt{$}\hlstd{residuals,} \hlkwc{ylab} \hlstd{=} \hlstr{"Residuals"}\hlstd{)}
-\hlkwd{qqline}\hlstd{(ols1}\hlopt{$}\hlstd{residuals)}
+\hlkwd{qqnorm}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals,} \hlkwc{ylab} \hlstd{=} \hlstr{"Residuals"}\hlstd{)}
+\hlkwd{qqline}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -6050,7 +6050,7 @@ The Shapiro-Wilk tests the null hypothesis that the residuals are normally distr
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{shapiro.test}\hlstd{(ols1}\hlopt{$}\hlstd{residuals)}
+\hlkwd{shapiro.test}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals)}
 \end{alltt}
 \begin{verbatim}
 ## 
@@ -6087,7 +6087,7 @@ Using the regression example, we first plot the residuals to look for any possib
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{plot}\hlstd{(ols1}\hlopt{$}\hlstd{residuals,} \hlkwc{ylab} \hlstd{=} \hlstr{"Residuals"}\hlstd{)}
+\hlkwd{plot}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals,} \hlkwc{ylab} \hlstd{=} \hlstr{"Residuals"}\hlstd{)}
 \hlkwd{abline}\hlstd{(}\hlkwc{h} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{col} \hlstd{=} \hlstr{"red"}\hlstd{)}
 \hlkwd{dev.off}\hlstd{()}
 \end{alltt}
@@ -6110,8 +6110,8 @@ Next, we can sort the residuals and find the case with the largest absolute valu
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# Sort the residuals}
-\hlstd{output.1} \hlkwb{<-} \hlkwd{sort}\hlstd{(ols1}\hlopt{$}\hlstd{residuals)}  \hlcom{# smallest first}
-\hlstd{output.2} \hlkwb{<-} \hlkwd{sort}\hlstd{(ols1}\hlopt{$}\hlstd{residuals,} \hlkwc{decreasing} \hlstd{=} \hlnum{TRUE}\hlstd{)}  \hlcom{# largest first}
+\hlstd{output.1} \hlkwb{<-} \hlkwd{sort}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals)}  \hlcom{# smallest first}
+\hlstd{output.2} \hlkwb{<-} \hlkwd{sort}\hlstd{(ols1}\hlopt{\$}\hlstd{residuals,} \hlkwc{decreasing} \hlstd{=} \hlnum{TRUE}\hlstd{)}  \hlcom{# largest first}
 
 \hlcom{# The head function return the top results, the argument 1}
 \hlcom{# returns 1 variable only}
@@ -6239,7 +6239,7 @@ As can be seen, several cases seem to exceed the $0.089$ cut-off. Next we find t
 \hlstd{df2.ols1} \hlkwb{<-} \hlkwd{as.data.frame}\hlstd{(df.ols1)}
 
 \hlcom{# add an id variable}
-\hlstd{df2.ols1}\hlopt{$}\hlstd{id} \hlkwb{<-} \hlnum{1}\hlopt{:}\hlnum{450}  \hlcom{#  generate a new observation number}
+\hlstd{df2.ols1}\hlopt{\$}\hlstd{id} \hlkwb{<-} \hlnum{1}\hlopt{:}\hlnum{450}  \hlcom{#  generate a new observation number}
 
 \hlcom{# head function returns one value, based on ,1 syntax -}
 \hlcom{# head(data_set[with(data_set, order(+/-variable)), ], 1)}
@@ -6803,7 +6803,7 @@ model with ideology.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{pseudoR2} \hlkwb{<-} \hlnum{1} \hlopt{-} \hlstd{(logit2}\hlopt{$}\hlstd{deviance}\hlopt{/}\hlstd{logit2}\hlopt{$}\hlstd{null.deviance)}
+\hlstd{pseudoR2} \hlkwb{<-} \hlnum{1} \hlopt{-} \hlstd{(logit2}\hlopt{\$}\hlstd{deviance}\hlopt{/}\hlstd{logit2}\hlopt{\$}\hlstd{null.deviance)}
 \hlstd{pseudoR2}
 \end{alltt}
 \begin{verbatim}
@@ -6828,14 +6828,14 @@ AIC is defined as -2 times the residual deviance of the model plus two times the
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{aic.logit2} \hlkwb{<-} \hlstd{logit2}\hlopt{$}\hlstd{deviance} \hlopt{+} \hlnum{2} \hlopt{*} \hlnum{6}
+\hlstd{aic.logit2} \hlkwb{<-} \hlstd{logit2}\hlopt{\$}\hlstd{deviance} \hlopt{+} \hlnum{2} \hlopt{*} \hlnum{6}
 \hlstd{aic.logit2}
 \end{alltt}
 \begin{verbatim}
 ## [1] 2416.002
 \end{verbatim}
 \begin{alltt}
-\hlstd{logit2}\hlopt{$}\hlstd{aic}
+\hlstd{logit2}\hlopt{\$}\hlstd{aic}
 \end{alltt}
 \begin{verbatim}
 ## [1] 2416.002
@@ -6857,7 +6857,7 @@ Logits can be used to directly calculate odds by taking the antilog of any of th
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{exp}\hlstd{(logit2}\hlopt{$}\hlstd{coef[}\hlnum{6}\hlstd{])}
+\hlkwd{exp}\hlstd{(logit2}\hlopt{\$}\hlstd{coef[}\hlnum{6}\hlstd{])}
 \end{alltt}
 \begin{verbatim}
 ##     ideol 
@@ -6883,12 +6883,12 @@ This procedure can be demonstrated in a two steps. First, calculate $L$\ holding
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{L} \hlkwb{<-} \hlstd{logit2}\hlopt{$}\hlstd{coef[}\hlnum{1}\hlstd{]} \hlopt{+} \hlstd{logit2}\hlopt{$}\hlstd{coef[}\hlnum{2}\hlstd{]} \hlopt{*} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{age)} \hlopt{+} \hlstd{logit2}\hlopt{$}\hlstd{coef[}\hlnum{3}\hlstd{]} \hlopt{*}
-    \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{gender)} \hlopt{+} \hlstd{logit2}\hlopt{$}\hlstd{coef[}\hlnum{4}\hlstd{]} \hlopt{*} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{education)} \hlopt{+}
-    \hlstd{logit2}\hlopt{$}\hlstd{coef[}\hlnum{5}\hlstd{]} \hlopt{*} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{income)} \hlopt{+} \hlstd{logit2}\hlopt{$}\hlstd{coef[}\hlnum{6}\hlstd{]} \hlopt{*}
-    \hlstd{(ds.temp}\hlopt{$}\hlstd{ideol)}
+\hlstd{L} \hlkwb{<-} \hlstd{logit2}\hlopt{\$}\hlstd{coef[}\hlnum{1}\hlstd{]} \hlopt{+} \hlstd{logit2}\hlopt{\$}\hlstd{coef[}\hlnum{2}\hlstd{]} \hlopt{*} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{\$}\hlstd{age)} \hlopt{+} \hlstd{logit2}\hlopt{\$}\hlstd{coef[}\hlnum{3}\hlstd{]} \hlopt{*}
+    \hlkwd{mean}\hlstd{(ds.temp}\hlopt{\$}\hlstd{gender)} \hlopt{+} \hlstd{logit2}\hlopt{\$}\hlstd{coef[}\hlnum{4}\hlstd{]} \hlopt{*} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{\$}\hlstd{education)} \hlopt{+}
+    \hlstd{logit2}\hlopt{\$}\hlstd{coef[}\hlnum{5}\hlstd{]} \hlopt{*} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{\$}\hlstd{income)} \hlopt{+} \hlstd{logit2}\hlopt{\$}\hlstd{coef[}\hlnum{6}\hlstd{]} \hlopt{*}
+    \hlstd{(ds.temp}\hlopt{\$}\hlstd{ideol)}
 \hlstd{P} \hlkwb{<-} \hlnum{1}\hlopt{/}\hlstd{(}\hlnum{1} \hlopt{+} \hlkwd{exp}\hlstd{(}\hlopt{-}\hlstd{L))}
-\hlstd{C} \hlkwb{<-} \hlkwd{cbind}\hlstd{(ds.temp}\hlopt{$}\hlstd{ideol, L, P)}
+\hlstd{C} \hlkwb{<-} \hlkwd{cbind}\hlstd{(ds.temp}\hlopt{\$}\hlstd{ideol, L, P)}
 \hlstd{C[}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{, ]}
 \end{alltt}
 \begin{verbatim}
@@ -6912,8 +6912,8 @@ The output shows, for each case, the ideology measure for the respondent followe
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{data} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{age} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{age),} \hlkwc{gender} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{gender),}
-    \hlkwc{education} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{education),} \hlkwc{income} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{income),}
+\hlstd{data} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{age} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{\$}\hlstd{age),} \hlkwc{gender} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{\$}\hlstd{gender),}
+    \hlkwc{education} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{\$}\hlstd{education),} \hlkwc{income} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{\$}\hlstd{income),}
     \hlkwc{ideol} \hlstd{=} \hlnum{1}\hlopt{:}\hlnum{7}\hlstd{)}
 \hlstd{preds} \hlkwb{<-} \hlkwd{predict}\hlstd{(logit2,} \hlkwc{newdata} \hlstd{= data,} \hlkwc{se.fit} \hlstd{= T,} \hlkwc{type} \hlstd{=} \hlstr{"link"}\hlstd{)}
 \hlstd{lower} \hlkwb{<-} \hlkwd{plogis}\hlstd{(}\hlkwd{with}\hlstd{(preds, fit} \hlopt{-} \hlnum{2} \hlopt{*} \hlstd{se.fit))}
@@ -7016,8 +7016,7 @@ Once this has been done, it is a good idea to check your directory. One easy way
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{setwd}\hlstd{(}\hlstr{"C:/Users/Wesley/Dropbox/1_TBUR_Book/Edition3"}\hlstd{)}
-
+\hlkwd{setwd}\hlstd{(}\hlstr{"~/Documents/GitHub/qrm"}\hlstd{)}
 \hlstd{newdat} \hlkwb{<-} \hlkwd{read.csv}\hlstd{(}\hlstr{"w1_w13_longdata.csv"}\hlstd{)}
 \end{alltt}
 \end{kframe}
@@ -7040,7 +7039,7 @@ R is a very flexible tool for manipulating data into various subsets and forms. 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{newdat} \hlkwb{<-} \hlkwd{subset}\hlstd{(newdat, newdat}\hlopt{$}\hlstd{wave_id} \hlopt{==} \hlstr{"Wave 12 (Fall 2016)"}\hlstd{)}
+\hlstd{newdat} \hlkwb{<-} \hlkwd{subset}\hlstd{(newdat, newdat}\hlopt{\$}\hlstd{wave_id} \hlopt{==} \hlstr{"Wave 12 (Fall 2016)"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}

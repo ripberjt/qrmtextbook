@@ -2,7 +2,7 @@ getwd()
 
 #  Set working directory
 #  setwd("") # home
-setwd("C:/Users/Wesley/Dropbox/1_TBUR_Book/Edition3")
+setwd("~/Documents/GitHub/qrm")
 
 #  attach to the dataset - 
 ds <- read.csv("Class Data Set.csv")
@@ -11,16 +11,16 @@ ds <- read.csv("Class Data Set.csv")
 #  Required Packages to be installed
 #  install.packages(c("car", "knitr", "lattice", "psych", "sm", "scatterplot3d", "effects", "lmtest", "vcd")) 
 
-#  install.packages("car")
-#  install.packages("knitr")
-#  install.packages("lattice")
-#  install.packages("psych")
-#  install.packages("sm")
-#  install.packages("scatterplot3d")
-#  install.packages("effects")
-#  install.packages("lmtest")
-#  install.packages("vcd") # This one is new
-#  install.packages("formatR")
+ # install.packages("car")
+ # install.packages("knitr")
+ # install.packages("lattice")
+ # install.packages("psych")
+ # install.packages("sm")
+ # install.packages("scatterplot3d")
+ # install.packages("effects")
+ # install.packages("lmtest")
+ # install.packages("vcd") # This one is new
+ # install.packages("formatR")
 
 #  load these packages before you execute
 library(car)

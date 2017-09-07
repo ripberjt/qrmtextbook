@@ -67,8 +67,7 @@ For the purposes of the book, we will acquire our data by going \href{http://crc
 Once this has been done, it is a good idea to check your directory. One easy way to do this is the `list.files()` command which will list all files saved in the folder you have set as your working directory. If you have done this correctly, the data you downloaded should show up as a file. Once you have done this, uploading the data will be easy. Simply write one line of code:
 
 <<echo=TRUE,results="hide">>=
-setwd("C:/Users/Wesley/Dropbox/1_TBUR_Book/Edition3")
-
+setwd("~/Documents/GitHub/qrm")
 newdat<-read.csv("w1_w13_longdata.csv")
 @
 
