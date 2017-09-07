@@ -1,0 +1,183 @@
+\contentsline {part}{I\hspace {1em}Theory and Empirical Social Science}{2}{part.1}
+\contentsline {chapter}{\numberline {1}Theories and Social Science}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}The Scientific Method}{4}{section.1.1}
+\contentsline {section}{\numberline {1.2}Theory and Empirical Research}{5}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Coherent and Internally Consistent}{5}{subsection.1.2.1}
+\contentsline {subsubsection}{Concepts and Variables}{6}{section*.6}
+\contentsline {subsubsection}{Measurement}{6}{section*.7}
+\contentsline {subsubsection}{Assessing the Quality of a Measure}{7}{section*.8}
+\contentsline {subsubsection}{Measurement of Different Kinds of Concepts}{8}{section*.9}
+\contentsline {subsection}{\numberline {1.2.2}Theories and Causality}{9}{subsection.1.2.2}
+\contentsline {subsubsection}{The Basis of Causality in Theories}{9}{section*.10}
+\contentsline {subsection}{\numberline {1.2.3}Generation of Testable Hypothesis}{10}{subsection.1.2.3}
+\contentsline {section}{\numberline {1.3}Theory and Functions}{10}{section.1.3}
+\contentsline {subsubsection}{Examples of Functions in Social Science Theories}{12}{section*.13}
+\contentsline {section}{\numberline {1.4}Theory in Social Science}{13}{section.1.4}
+\contentsline {section}{\numberline {1.5}Outline of the Book}{14}{section.1.5}
+\contentsline {chapter}{\numberline {2}Research Design}{16}{chapter.2}
+\contentsline {section}{\numberline {2.1}Overview of the Research Process}{17}{section.2.1}
+\contentsline {section}{\numberline {2.2}Internal and External Validity}{17}{section.2.2}
+\contentsline {section}{\numberline {2.3}Major Classes of Designs}{18}{section.2.3}
+\contentsline {section}{\numberline {2.4}Threats to Validity}{20}{section.2.4}
+\contentsline {section}{\numberline {2.5}Some Common Designs}{22}{section.2.5}
+\contentsline {section}{\numberline {2.6}Plan Meets Reality}{24}{section.2.6}
+\contentsline {chapter}{\numberline {3}Exploring and Visualizing Data}{26}{chapter.3}
+\contentsline {section}{\numberline {3.1}Characterizing Data}{27}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Central Tendency}{30}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Level of Measurement and Central Tendency}{30}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Moments}{31}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}First Moment -- Expected Value}{31}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.5}The Second Moment -- Variance and Standard Deviation}{33}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.6}The Third Moment -- Skewness}{34}{subsection.3.1.6}
+\contentsline {subsection}{\numberline {3.1.7}The Fourth Moment -- Kurtosis}{34}{subsection.3.1.7}
+\contentsline {subsection}{\numberline {3.1.8}Order Statistics}{35}{subsection.3.1.8}
+\contentsline {subsubsection}{Median}{35}{section*.23}
+\contentsline {subsubsection}{Quartiles}{36}{section*.24}
+\contentsline {subsubsection}{Percentiles}{37}{section*.26}
+\contentsline {subsection}{\numberline {3.1.9}Summary}{39}{subsection.3.1.9}
+\contentsline {chapter}{\numberline {4}Probability}{41}{chapter.4}
+\contentsline {section}{\numberline {4.1}Finding Probabilities}{42}{section.4.1}
+\contentsline {section}{\numberline {4.2}Finding Probabilities with the Normal Curve}{44}{section.4.2}
+\contentsline {section}{\numberline {4.3}Summary}{47}{section.4.3}
+\contentsline {chapter}{\numberline {5}Inference}{49}{chapter.5}
+\contentsline {section}{\numberline {5.1}Inference: Populations and Samples}{49}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Populations and Samples}{50}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Sampling and Knowing}{50}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Sampling Strategies}{51}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Sampling Techniques}{51}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}So How is it That We Know?}{54}{subsection.5.1.5}
+\contentsline {section}{\numberline {5.2}The Normal Distribution}{55}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Standardizing a Normal Distribution and Z-scores}{58}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}The Central Limit Theorem}{59}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Populations, Samples and Symbols}{60}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Inferences to the Population from the Sample}{60}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Confidence Intervals}{61}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}The Logic of Hypothesis Testing}{63}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Some Miscellaneous Notes about Hypothesis Testing}{64}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Differences Between Groups}{65}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}$t$-tests}{67}{subsection.5.4.1}
+\contentsline {section}{\numberline {5.5}Summary}{69}{section.5.5}
+\contentsline {chapter}{\numberline {6}Association of Variables}{71}{chapter.6}
+\contentsline {section}{\numberline {6.1}Cross-Tabulation}{72}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Crosstabulation and Control}{78}{subsection.6.1.1}
+\contentsline {section}{\numberline {6.2}Covariance}{84}{section.6.2}
+\contentsline {section}{\numberline {6.3}Correlation}{85}{section.6.3}
+\contentsline {section}{\numberline {6.4}Scatterplots}{86}{section.6.4}
+\contentsline {part}{II\hspace {1em}Simple Regression}{90}{part.2}
+\contentsline {chapter}{\numberline {7}The Logic of Ordinary Least Squares Estimation}{91}{chapter.7}
+\contentsline {section}{\numberline {7.1}Theoretical Models}{91}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Deterministic Linear Model}{92}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Stochastic Linear Model}{92}{subsection.7.1.2}
+\contentsline {subsubsection}{Assumptions about the Error Term}{95}{section*.46}
+\contentsline {section}{\numberline {7.2}Estimating Linear Models}{95}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Residuals}{96}{subsection.7.2.1}
+\contentsline {section}{\numberline {7.3}An Example of Simple Regression}{98}{section.7.3}
+\contentsline {chapter}{\numberline {8}Linear Estimation and Minimizing Error}{100}{chapter.8}
+\contentsline {section}{\numberline {8.1}Minimizing Error using Derivatives}{100}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Rules of Derivation}{101}{subsection.8.1.1}
+\contentsline {subsubsection}{\textit {Rule 1: the Power Rule}}{101}{section*.49}
+\contentsline {subsubsection}{\textit {Rule 2: the Constant Rule}}{103}{section*.51}
+\contentsline {subsubsection}{\textit {Rule 3: a Constant Times a Function}}{103}{section*.52}
+\contentsline {subsubsection}{\textit {Rule 4: Differentiating a Sum}}{104}{section*.53}
+\contentsline {subsubsection}{\textit {Rule 5: the Product Rule}}{104}{section*.54}
+\contentsline {subsubsection}{\textit {Rule 6: the Quotient Rule}}{105}{section*.56}
+\contentsline {subsubsection}{\textit {Rule 7: the Chain Rule}}{106}{section*.57}
+\contentsline {subsection}{\numberline {8.1.2}Critical Points}{106}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Partial Derivation}{108}{subsection.8.1.3}
+\contentsline {section}{\numberline {8.2}Deriving OLS Estimators}{108}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}OLS Derivation of $A$}{108}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}OLS Derivation of $B$}{109}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Interpreting $B$ and $A$}{111}{subsection.8.2.3}
+\contentsline {section}{\numberline {8.3}Summary}{114}{section.8.3}
+\contentsline {chapter}{\numberline {9}Bi-Variate Hypothesis Testing and Model Fit}{115}{chapter.9}
+\contentsline {section}{\numberline {9.1}Hypothesis Tests for Regression Coefficients}{115}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}Residual Standard Error}{117}{subsection.9.1.1}
+\contentsline {section}{\numberline {9.2}Measuring Goodness of Fit}{120}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Sample Covariance and Correlations}{121}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}Coefficient of Determination: $R^{2}$}{122}{subsection.9.2.2}
+\contentsline {section}{\numberline {9.3}Summary}{126}{section.9.3}
+\contentsline {chapter}{\numberline {10}OLS Assumptions and Simple Regression Diagnostics}{128}{chapter.10}
+\contentsline {section}{\numberline {10.1}A Recap of Modeling Assumptions}{129}{section.10.1}
+\contentsline {section}{\numberline {10.2}When Things Go Bad with Residuals}{131}{section.10.2}
+\contentsline {subsection}{\numberline {10.2.1}``Outlier" Data}{131}{subsection.10.2.1}
+\contentsline {subsection}{\numberline {10.2.2}Non-Constant Variance}{132}{subsection.10.2.2}
+\contentsline {subsection}{\numberline {10.2.3}Non-Linearity in the Parameters}{134}{subsection.10.2.3}
+\contentsline {section}{\numberline {10.3}Application of Residual Diagnostics}{135}{section.10.3}
+\contentsline {subsection}{\numberline {10.3.1}Testing for Non-Linearity}{136}{subsection.10.3.1}
+\contentsline {subsection}{\numberline {10.3.2}Testing for Normality in Model Residuals}{138}{subsection.10.3.2}
+\contentsline {subsection}{\numberline {10.3.3}Testing for Non-Constant Variance in the Residuals}{142}{subsection.10.3.3}
+\contentsline {subsection}{\numberline {10.3.4}Examining Outlier Data}{143}{subsection.10.3.4}
+\contentsline {section}{\numberline {10.4}So Now What? Implications of Residual Analysis}{148}{section.10.4}
+\contentsline {section}{\numberline {10.5}Summary}{149}{section.10.5}
+\contentsline {part}{III\hspace {1em}Multiple Regression}{150}{part.3}
+\contentsline {chapter}{\numberline {11}Introduction to Multiple Regression}{151}{chapter.11}
+\contentsline {section}{\numberline {11.1}Matrix Algebra and Multiple Regression}{152}{section.11.1}
+\contentsline {section}{\numberline {11.2}The Basics of Matrix Algebra}{152}{section.11.2}
+\contentsline {subsection}{\numberline {11.2.1}Matrix Basics}{153}{subsection.11.2.1}
+\contentsline {subsection}{\numberline {11.2.2}Vectors}{153}{subsection.11.2.2}
+\contentsline {subsection}{\numberline {11.2.3}Matrix Operations}{153}{subsection.11.2.3}
+\contentsline {subsection}{\numberline {11.2.4}Transpose}{154}{subsection.11.2.4}
+\contentsline {subsection}{\numberline {11.2.5}Adding Matrices}{154}{subsection.11.2.5}
+\contentsline {subsection}{\numberline {11.2.6}Multiplication of Matrices}{155}{subsection.11.2.6}
+\contentsline {subsection}{\numberline {11.2.7}Identity Matrices}{156}{subsection.11.2.7}
+\contentsline {subsection}{\numberline {11.2.8}Matrix Inversion}{157}{subsection.11.2.8}
+\contentsline {subsubsection}{Finding the Inverse of a Matrix}{157}{section*.75}
+\contentsline {section}{\numberline {11.3}OLS Regression in Matrix Form}{158}{section.11.3}
+\contentsline {section}{\numberline {11.4}Summary}{164}{section.11.4}
+\contentsline {chapter}{\numberline {12}The Logic of Multiple Regression}{165}{chapter.12}
+\contentsline {section}{\numberline {12.1}Theoretical Specification}{166}{section.12.1}
+\contentsline {subsection}{\numberline {12.1.1}Assumptions of OLS Regression}{166}{subsection.12.1.1}
+\contentsline {subsubsection}{Linearity}{167}{section*.76}
+\contentsline {subsubsection}{Fixed $X$}{167}{section*.77}
+\contentsline {section}{\numberline {12.2}Partial Effects}{168}{section.12.2}
+\contentsline {section}{\numberline {12.3}Multiple Regression Example}{173}{section.12.3}
+\contentsline {subsection}{\numberline {12.3.1}Hypothesis Testing and $t$-tests}{176}{subsection.12.3.1}
+\contentsline {section}{\numberline {12.4}Summary}{178}{section.12.4}
+\contentsline {chapter}{\numberline {13}Multiple Regression and Model Building}{180}{chapter.13}
+\contentsline {section}{\numberline {13.1}Model Building}{181}{section.13.1}
+\contentsline {subsection}{\numberline {13.1.1}Theory and Hypotheses}{181}{subsection.13.1.1}
+\contentsline {subsection}{\numberline {13.1.2}Empirical Indicators}{181}{subsection.13.1.2}
+\contentsline {subsubsection}{Coefficient of Determination: $R^2$}{182}{section*.81}
+\contentsline {subsubsection}{$F$-test}{184}{section*.83}
+\contentsline {subsubsection}{Nested $F$-test}{185}{section*.84}
+\contentsline {subsection}{\numberline {13.1.3}Risks in Model Building}{186}{subsection.13.1.3}
+\contentsline {section}{\numberline {13.2}Evils of Stepwise Regression}{187}{section.13.2}
+\contentsline {section}{\numberline {13.3}Summary}{189}{section.13.3}
+\contentsline {chapter}{\numberline {14}Topics in Multiple Regression}{190}{chapter.14}
+\contentsline {section}{\numberline {14.1}Dummy Variables}{191}{section.14.1}
+\contentsline {section}{\numberline {14.2}Interaction Effects}{194}{section.14.2}
+\contentsline {section}{\numberline {14.3}Standardized Regression Coefficients}{197}{section.14.3}
+\contentsline {section}{\numberline {14.4}Summary}{199}{section.14.4}
+\contentsline {chapter}{\numberline {15}The Art of Regression Diagnostics}{200}{chapter.15}
+\contentsline {section}{\numberline {15.1}OLS Error Assumptions Revisited}{201}{section.15.1}
+\contentsline {section}{\numberline {15.2}OLS Diagnostic Techniques}{203}{section.15.2}
+\contentsline {subsection}{\numberline {15.2.1}Non-Linearity}{204}{subsection.15.2.1}
+\contentsline {subsection}{\numberline {15.2.2}Non-Constant Variance, or Heteroscedasticity}{208}{subsection.15.2.2}
+\contentsline {subsection}{\numberline {15.2.3}Independence of $E$}{213}{subsection.15.2.3}
+\contentsline {subsection}{\numberline {15.2.4}Normality of the Residuals}{214}{subsection.15.2.4}
+\contentsline {subsection}{\numberline {15.2.5}Outliers, Leverage, and Influence}{216}{subsection.15.2.5}
+\contentsline {subsubsection}{Outliers}{217}{section*.94}
+\contentsline {subsubsection}{DFBETAS}{219}{section*.96}
+\contentsline {subsection}{\numberline {15.2.6}Multicollinearity}{223}{subsection.15.2.6}
+\contentsline {section}{\numberline {15.3}Summary}{226}{section.15.3}
+\contentsline {part}{IV\hspace {1em}Generalized Linear Models}{227}{part.4}
+\contentsline {chapter}{\numberline {16}Logit Regression}{228}{chapter.16}
+\contentsline {section}{\numberline {16.1}Generalized Linear Models}{228}{section.16.1}
+\contentsline {section}{\numberline {16.2}Logit Estimation}{229}{section.16.2}
+\contentsline {subsection}{\numberline {16.2.1}Logit Hypothesis Tests}{233}{subsection.16.2.1}
+\contentsline {subsection}{\numberline {16.2.2}Goodness of Fit}{233}{subsection.16.2.2}
+\contentsline {subsubsection}{Log-Likelihood}{234}{section*.100}
+\contentsline {subsubsection}{Pseudo $R^2$}{237}{section*.101}
+\contentsline {subsubsection}{Akaike Information Criteria}{237}{section*.102}
+\contentsline {subsection}{\numberline {16.2.3}Interpreting Logits}{238}{subsection.16.2.3}
+\contentsline {subsubsection}{Calculate Odds}{238}{section*.103}
+\contentsline {subsubsection}{Predicted Probabilities}{239}{section*.104}
+\contentsline {section}{\numberline {16.3}Summary}{241}{section.16.3}
+\contentsline {part}{V\hspace {1em}Appendices}{242}{part.5}
+\contentsline {chapter}{\numberline {17}Appendix: Basic R}{243}{chapter.17}
+\contentsline {section}{\numberline {17.1}Introduction to R}{243}{section.17.1}
+\contentsline {section}{\numberline {17.2}Downloading R and RStudio}{244}{section.17.2}
+\contentsline {section}{\numberline {17.3}Introduction to Programming}{246}{section.17.3}
+\contentsline {section}{\numberline {17.4}Uploading/Reading Data}{248}{section.17.4}
+\contentsline {section}{\numberline {17.5}Data Manipulation in R}{250}{section.17.5}
+\contentsline {section}{\numberline {17.6}Saving/Writing Data}{251}{section.17.6}

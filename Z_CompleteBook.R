@@ -1,0 +1,48 @@
+getwd()
+
+#  Set working directory
+#  setwd("") # home
+setwd("C:/Users/Wesley/Dropbox/1_TBUR_Book/Edition3")
+
+#  attach to the dataset - 
+ds <- read.csv("Class Data Set.csv")
+#  tbur.data <- read.csv("tburNAomit_data.csv")
+
+#  Required Packages to be installed
+#  install.packages(c("car", "knitr", "lattice", "psych", "sm", "scatterplot3d", "effects", "lmtest", "vcd")) 
+
+#  install.packages("car")
+#  install.packages("knitr")
+#  install.packages("lattice")
+#  install.packages("psych")
+#  install.packages("sm")
+#  install.packages("scatterplot3d")
+#  install.packages("effects")
+#  install.packages("lmtest")
+#  install.packages("vcd") # This one is new
+#  install.packages("formatR")
+
+#  load these packages before you execute
+library(car)
+library(knitr)
+library(lattice)
+library(psych)
+library(sm)
+library(knitr)
+library(scatterplot3d)
+library(effects)
+library(lmtest)
+library(vcd)
+library(stats)
+library(formatR)
+
+# for complete book
+Sweave2knitr("stats_book_completeV3.Rnw")
+knit("stats_book_completeV3.Rnw")
+#knit("stats_book_completeV3.Rnw")
+#  knit("stats_book_completeV2.Rnw", encoding = 'UTF-8')
+
+#  Other Functions
+#update.packages()
+warnings()
+sessionInfo()
