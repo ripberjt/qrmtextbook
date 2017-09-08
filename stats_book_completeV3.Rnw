@@ -1,5 +1,3 @@
-%% this file is to compile the complete tbur book 
-
 %% LaTeX preamble 
 \documentclass[11pt,openany]{book}
 \usepackage[utf8]{inputenc} 
@@ -72,7 +70,7 @@
 \floatname{grbox}{Grey Box}
 
 \begin{document}
-%%\SweaveOpts{concordance=TRUE} %This changed with a new version of knitr/Sweave (2/28/2017)
+%%\SweaveOpts{concordance=TRUE}
 <<include=FALSE>>=
 library(knitr)
 opts_chunk$set(
@@ -103,14 +101,12 @@ Wesley Wehde}
 \newpage
 \chapter*{Copyright Page}
 
-This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/ }{Creative Commons Attribution 4.0 International License} (CC BY 4.0). 
+This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/ }{Creative Commons Attribution 4.0 International License} (CC BY 4.0). You can download this book for free at: https://shareok.org/handle/XXXXX/XXXXX.  
 
 \begin{figure}[h]
 \includegraphics[]{"CCicon".png}
 \label{fig:cc}
 \end{figure}
-
-Download this book for free at https://shareok.org/handle/XXXXX/XXXXX. 
 
 %% table of contents 
 
@@ -140,7 +136,7 @@ By intent, this book represents an open-ended group project that changes over ti
 
 In addition to instructors, the graduate assistants who co-instruct the methods courses are an essential part of the authorship team. The tradition started with Dr. Matthew Nowlin, who assisted in drafting the first edition in \LaTeX. Dr. Tyler Hughes and Aaron Fister were instrumental in implementing the changes for the second edition. Wesley Wehde, the current co-instructor, is responsible for much of the third edition. 
 
-This book, like politics and policy, constantly changes. Keep an eye out for new editions. You never know what you might find peering back at you.\\
+This book, like politics and policy, constantly changes. Keep an eye on our GitHub repository (https://github.com/ripberjt/qrmtextbook) for modifications and additions. You never know what you might find peering back at you.
 
 \noindent Hank Jenkins-Smith\\
 Joseph Ripberger\\
@@ -150,18 +146,11 @@ Tyler Hughes\\
 Aaron Fister\\
 Wesley Wehde\\
 
-
 \noindent September 2017
-
 
 \pagenumbering{arabic} 
 
 %% chapters
-
-
-
-
-
 
 \doublespace 
 \part{Theory and Empirical Social Science} 
@@ -223,21 +212,6 @@ Wesley Wehde\\
 
 <<appa, child="17_Appendix/17_Appendix.Rnw", eval=TRUE>>=
 @ 
-
-%<<>>=
-%tbur.data <- read.csv("tburNAomit_data.csv")
-%attach(tbur.data)
-
-%library("car")
-%library("knitr")
-%library("lattice")
-%library("psych")
-%library("sm")
-%library(knitr)
-%library(scatterplot3d)
-%library(effects)
-%library(lmtest)
-%@ 
 
 \end{document}
 
