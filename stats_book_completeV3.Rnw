@@ -70,8 +70,7 @@
 \floatname{grbox}{Grey Box}
 
 \begin{document}
-%%\SweaveOpts{concordance=TRUE}
-%%\SweaveOpts{concordance=TRUE}
+
 <<include=FALSE>>=
 library(knitr)
 opts_chunk$set(
@@ -79,7 +78,7 @@ concordance=TRUE
 )
 @
 
-\title{Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition\\ 
+\title{Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition\\
   \LARGE With Applications in \texttt{R}}
 
 \author{Hank C. Jenkins-Smith\\ 
