@@ -1,5 +1,3 @@
-%% this file is to compile the complete tbur book 
-
 %% LaTeX preamble 
 \documentclass[11pt,openany]{book}
 \usepackage[utf8]{inputenc} 
@@ -72,7 +70,8 @@
 \floatname{grbox}{Grey Box}
 
 \begin{document}
-%%\SweaveOpts{concordance=TRUE} %This changed with a new version of knitr/Sweave (2/28/2017)
+%%\SweaveOpts{concordance=TRUE}
+%%\SweaveOpts{concordance=TRUE}
 <<include=FALSE>>=
 library(knitr)
 opts_chunk$set(
@@ -81,7 +80,8 @@ concordance=TRUE
 @
 
 \title{Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition\\ 
-  \large With Applications in \texttt{R}}
+  \LARGE With Applications in \texttt{R}}
+
 \author{Hank C. Jenkins-Smith\\ 
 Joseph T. Ripberger\\
 Gary Copeland\\
@@ -103,14 +103,12 @@ Wesley Wehde}
 \newpage
 \chapter*{Copyright Page}
 
-This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/ }{Creative Commons Attribution 4.0 International License} (CC BY 4.0). 
+This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License} (CC BY 4.0). You can download this book for free at: \url{https://shareok.org/handle/XXXXX/XXXXX}.  
 
 \begin{figure}[h]
-\includegraphics[]{"CCicon".png}
+\centerline{\includegraphics[totalheight=1cm]{"CCicon".png}}
 \label{fig:cc}
 \end{figure}
-
-Download this book for free at https://shareok.org/handle/XXXXX/XXXXX. 
 
 %% table of contents 
 
@@ -127,20 +125,15 @@ opts_chunk$set(fig.width=4, fig.height=4, error=FALSE, message=FALSE,warning=FAL
               , tidy=TRUE, tidy.opts=list(keep.blank.line=TRUE, width.cutoff=60))
 @ 
 
-
-
-%% This was added for the second edition
-\newpage %this is not the proper way for the preface
+\newpage
 \chapter*{Preface and Acknowledgments to the 3rd Edition}
-%\addcontentsline{toc}{section}{Preface}
-%\thispagestyle{empty}
-The idea for this book grew over decades of teaching introductory and intermediate quantitative methods classes for graduate students in Political Science and Public Policy at the University of Oklahoma, Texas A\&M, and the University of New Mexico. Despite adopting (and then discarding) a wide range of textbooks, we were frustrated with inconsistent terminology, misaligned emphases, mismatched examples and data, and (especially) poor connections between the presentation of theory and the practice of data analysis. The cost of textbooks and the associated statistics packages for students seemed to us to be, frankly, outrageous. So, we decided to write our own book that students can download as a free PDF, and to couple it with R, an open-source (free) statistical program, and data from the Meso-Scale Integrated Socio-geographic Network (M-SISNet), a quarterly survey of approximately 1,500 households in Oklahoma that is conducted with support of the National Science Foundation (Grant No. IIA-1301789). Readers can learn about and download the data at http://crcm.ou.edu/epscordata/.
+The idea for this book grew over decades of teaching introductory and intermediate quantitative methods classes for graduate students in Political Science and Public Policy at the University of Oklahoma, Texas A\&M, and the University of New Mexico. Despite adopting (and then discarding) a wide range of textbooks, we were frustrated with inconsistent terminology, misaligned emphases, mismatched examples and data, and (especially) poor connections between the presentation of theory and the practice of data analysis. The cost of textbooks and the associated statistics packages for students seemed to us to be, frankly, outrageous. So, we decided to write our own book that students can download as a free PDF, and to couple it with \texttt{R}, an open-source (free) statistical program, and data from the Meso-Scale Integrated Socio-geographic Network (M-SISNet), a quarterly survey of approximately 1,500 households in Oklahoma that is conducted with support of the National Science Foundation (Grant No. IIA-1301789). Readers can learn about and download the data at \url{http://crcm.ou.edu/epscordata/}.
 
 By intent, this book represents an open-ended group project that changes over time as new ideas and new instructors become involved in teaching graduate methods in the University of Oklahoma Political Science Department. The first edition of the book grew from lecture notes and slides that Hank Jenkins-Smith used in his methods classes. The second edition was amended to encompass material from Gary Copeland’s introductory graduate methods classes. The third edition (this one!) was updated by Joseph Ripberger, who currently manages and uses the book in his introductory and intermediate quantitative methods courses for Ph.D. students in the University of Oklahoma Political Science Department.
 
 In addition to instructors, the graduate assistants who co-instruct the methods courses are an essential part of the authorship team. The tradition started with Dr. Matthew Nowlin, who assisted in drafting the first edition in \LaTeX. Dr. Tyler Hughes and Aaron Fister were instrumental in implementing the changes for the second edition. Wesley Wehde, the current co-instructor, is responsible for much of the third edition. 
 
-This book, like politics and policy, constantly changes. Keep an eye out for new editions. You never know what you might find peering back at you.\\
+This book, like politics and policy, constantly changes. Keep an eye on our \texttt{GitHub} repository (\url{https://github.com/ripberjt/qrmtextbook}) for modifications and additions. You never know what you might find peering back at you.\\
 
 \noindent Hank Jenkins-Smith\\
 Joseph Ripberger\\
@@ -150,18 +143,9 @@ Tyler Hughes\\
 Aaron Fister\\
 Wesley Wehde\\
 
-
-\noindent September 2017
-
-
 \pagenumbering{arabic} 
 
 %% chapters
-
-
-
-
-
 
 \doublespace 
 \part{Theory and Empirical Social Science} 
@@ -223,21 +207,6 @@ Wesley Wehde\\
 
 <<appa, child="17_Appendix/17_Appendix.Rnw", eval=TRUE>>=
 @ 
-
-%<<>>=
-%tbur.data <- read.csv("tburNAomit_data.csv")
-%attach(tbur.data)
-
-%library("car")
-%library("knitr")
-%library("lattice")
-%library("psych")
-%library("sm")
-%library(knitr)
-%library(scatterplot3d)
-%library(effects)
-%library(lmtest)
-%@ 
 
 \end{document}
 

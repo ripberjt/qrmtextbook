@@ -1,7 +1,7 @@
 getwd()
 
 # set working directory
-setwd("~/Documents/GitHub/qrmtextbook")
+#setwd()
 
 # data
 ds<-read.csv("Class Data Set.csv")
