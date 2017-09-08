@@ -1,29 +1,13 @@
 getwd()
 
-#  Set working directory
-#  setwd("") # home
+# set working directory
 setwd("~/Documents/GitHub/qrmtextbook")
 
-#  attach to the dataset - 
-ds <- read.csv("Class Data Set.csv")
+# data
+ds<-read.csv("Class Data Set.csv")
 newdat<-read.csv("w1_w13_longdata.csv")
-#  tbur.data <- read.csv("tburNAomit_data.csv")
 
-#  Required Packages to be installed
-#  install.packages(c("car", "knitr", "lattice", "psych", "sm", "scatterplot3d", "effects", "lmtest", "vcd")) 
-
- # install.packages("car")
- # install.packages("knitr")
- # install.packages("lattice")
- # install.packages("psych")
- # install.packages("sm")
- # install.packages("scatterplot3d")
- # install.packages("effects")
- # install.packages("lmtest")
- # install.packages("vcd") # This one is new
- # install.packages("formatR")
-
-#  load these packages before you execute
+# load packages
 library(car)
 library(knitr)
 library(lattice)
@@ -37,13 +21,6 @@ library(vcd)
 library(stats)
 library(formatR)
 
-# for complete book
+# compile and knit book
 Sweave2knitr("stats_book_completeV3.Rnw")
 knit("stats_book_completeV3.Rnw")
-#knit("stats_book_completeV3.Rnw")
-#  knit("stats_book_completeV2.Rnw", encoding = 'UTF-8')
-
-#  Other Functions
-#update.packages()
-warnings()
-sessionInfo()

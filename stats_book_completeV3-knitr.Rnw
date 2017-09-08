@@ -106,7 +106,7 @@ Wesley Wehde}
 This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/ }{Creative Commons Attribution 4.0 International License} (CC BY 4.0). 
 
 \begin{figure}[h]
-\includegraphics[]{Edition3/"CCicon".png}
+\includegraphics[]{"CCicon".png}
 \label{fig:cc}
 \end{figure}
 
