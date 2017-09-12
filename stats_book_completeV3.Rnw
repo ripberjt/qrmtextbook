@@ -102,7 +102,7 @@ Wesley Wehde}
 \newpage
 \chapter*{Copyright Page}
 
-This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License} (CC BY 4.0). You can download this book for free at: \url{https://shareok.org/handle/XXXXX/XXXXX}.  
+This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License} (CC BY 4.0). You can download this book for free at: \url{https://shareok.org/handle/11244/52244}.  
 
 \begin{figure}[h]
 \centerline{\includegraphics[totalheight=1cm]{"CCicon".png}}
