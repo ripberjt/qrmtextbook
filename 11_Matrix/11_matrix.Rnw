@@ -67,7 +67,7 @@ There are several "operations" that can be performed with and on matrices. Most 
 \subsection{Transpose}
 
 Transposing, or taking the ``prime" of a matrix, switches the rows and columns.\footnote{The use of ``prime" in matrix algebra should not be confused
-with the use of "prime" in the expression of a derivative, as in $X'$.} The matrix
+with the use of ``prime" in the expression of a derivative, as in $X'$.} The matrix
 \noindent
 
 
