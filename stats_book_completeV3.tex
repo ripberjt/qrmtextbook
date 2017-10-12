@@ -120,6 +120,7 @@
 \floatname{grbox}{Grey Box}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
+%\SweaveOpts{concordance=TRUE}
 
 
 
@@ -517,12 +518,12 @@ The dataset used for purposes of illustration in this version of this text is ta
 
 It is often useful to graph the variables in your data set to get a better idea of their distribution. In addition, we may want to compare the distribution of a variable to a theoretical distribution (typically a normal distribution). This can be accomplished in several ways, but we will show two here---a histogram and a density curve---and more will be discussed in later chapters. Here we examine the distribution of the variable measuring the perceived risk of climate change. 
 
-A histogram creates intervals of equal length, called bins, and displays the frequency of observations in each of the bins. To produce a histogram in R simply use the \texttt{hist} command in the base package. Next, we  plot the density of the observed data along with a normal curve.  This can be done with the \texttt{sm.density} command in the \texttt{sm} package. Note that the normal distribution overlay using the \texttt{sm.density} function for the \texttt{gccrsk} variable is based on the mean and standard deviation variable. The results are shown in Figure \ref{fig:rsk_2}. As you can see, the \texttt{gccrsk} varible is not quite normally distributed.  The histogram illustrates that the majority of observations are contained in the upper half of the variable's range.  Moreover, the density curve indicates the the distribution if negatively skewed, and the peak of the distribution is higher on the \texttt{gccrsk} scale than that of the theoretical normal distribution.
+A histogram creates intervals of equal length, called bins, and displays the frequency of observations in each of the bins. To produce a histogram in R simply use the \texttt{hist} command in the base package. Next, we  plot the density of the observed data along with a normal curve.  This can be done with the \texttt{sm.density} command in the \texttt{sm} package. Note that the normal distribution overlay using the \texttt{sm.density} function for the \texttt{gccrsk} variable is based on the mean and standard deviation variable. The results are shown in Figure \ref{fig:rsk_2}. As you can see, the \texttt{gccrsk} variable is not quite normally distributed.  The histogram illustrates that the majority of observations are contained in the upper half of the variable's range.  Moreover, the density curve indicates the the distribution if negatively skewed, and the peak of the distribution is higher on the \texttt{gccrsk} scale than that of the theoretical normal distribution.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{hist}\hlstd{(ds}\hlopt{\$}\hlstd{glbcc_risk)}
+\hlkwd{hist}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -5821,7 +5822,7 @@ appear to show heteroscedasticity. We can test for non-constant error using the 
 
 What are the implications? Our $t$-tests for the estimated partial regression  coefficients assumed constant variance. With the evidence of heteroscedasticity, we conclude that these tests are unreliable (the precision of our estimates will be greater in some ranges of $X$ than others). 
 
-They are several steps that can be considered when confronted by heteroscedasticity in the residuals. First, we can consider whether we need to re-specify the model, possibly because we have some omitted variables. If model re-specification does not correct the problem, we can use non-OLS regression techniques that include robust estimated  standard errors.  Robust standard errors are appropriate when error variance is unknown. Robust standard errors do not change the estimate of $B$, but adjust the estimated standard error of each coefficient, $SE(B)$, thus giving more accurate $p$ values. In this example, we draw on White's (1980)\footnote{H White,  1980.  "A Heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity." \underline{Econometrica} 48: 817-838.} method to calculate robust standard errors.  
+They are several steps that can be considered when confronted by heteroscedasticity in the residuals. First, we can consider whether we need to re-specify the model, possibly because we have some omitted variables. If model re-specification does not correct the problem, we can use non-OLS regression techniques that include robust estimated  standard errors.  Robust standard errors are appropriate when error variance is unknown. Robust standard errors do not change the estimate of $B$, but adjust the estimated standard error of each coefficient, $SE(B)$, thus giving more accurate $p$ values. In this example, we draw on White's (1980)\footnote{H White,  1980.  ``A Heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity." \underline{Econometrica} 48: 817-838.} method to calculate robust standard errors.  
 
 White uses a \textbf{heteroskedasticity consistent covariance matrix} (hccm) to calculate standard errors when the error term has non-constant variance. Under the OLS assumption of constant error variance, the covariance matrix of $b$ is:
 \begin{equation*}
@@ -6125,7 +6126,7 @@ Then, we can examine the $X$ and $Y$ values of those cases on key variables. Her
 \end{kframe}
 \end{knitrout}
 
-By examining the case of 298, we can see that this is outlier because the observed values of $Y$ are far from what would be expected, given the values of $X$. A wealthy older liberal would most likely rate climate change as riskier than a 2. In case 94, a strong conservaitice rates climate change risk at the lowest possible value.  This observation, while not consistent with the estimated relationship between ideology and environmental concern, is certainly not implausible.  But the unusual appearance of a case with a strong conservative leaning, and high risk of cliamte change results in a large residual.
+By examining the case of 298, we can see that this is outlier because the observed values of $Y$ are far from what would be expected, given the values of $X$. A wealthy older liberal would most likely rate climate change as riskier than a 2. In case 94, a strong conservaitive rates climate change risk at the lowest possible value.  This observation, while not consistent with the estimated relationship between ideology and environmental concern, is certainly not implausible.  But the unusual appearance of a case with a strong conservative leaning, and high risk of cliamte change results in a large residual.
 
 What we really want to know is: does any particular case substantially change the regression results? If a case  substantively change the results than it is said to have influence. Individual cases can be outliers, but still be influential.  Note that DFBETAS are \textbf{case statistics}, therefore a DFBETA value will be calculated for each variable for each case.   
 
@@ -6959,7 +6960,7 @@ Here you will click the Download R link at the top of the page. This should down
 
 At this point, you now have R downloaded on your device and can be pretty much ready to go. However, as stated previously, we are also going to show you how to download RStudio. You will find the site to download RStudio \href{https://www.rstudio.com/products/rstudio/download2/}{here}. It should look like this: 
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{17_Appendix/"RStudio Download Page".png}
 \caption{RStudio Download Page 
@@ -6986,7 +6987,7 @@ In R, there are  a plethora of data structures to structure our data types. We w
 
 R can handle a variety of different file types as data. The primary type that will be used for the book and accompanying course is a comma separated file or .csv file type. A CSV is a convenient file type that is portable across many operating platforms (Mac, Windows, etc) as well as statistical/data manipulation softwares. Other common file types are text (.txt) and Excel files (.xls or .xlsx). R also has its own file type called a R data file with the .RData extension. Other statistical softwares also have their own file types such as Stata's .dta file extension. R has built in functionality to deal with .csv and .txt as well as a few other file extensions. Uploading other data types requires special packages (haven, foreign, and readxl are popular for these purposes). These methods work for uploading files from the hard drives on our computers. You can also directly download data from the internet in R from a variety of sources and using a variety of packages. 
 
-For the purposes of the book, we will acquire our data by going \href{http://crcm.ou.edu/epscordata/}{here}. You will then put your e-mail where it says Request Data. You should then receive an e-mail with the data attached as a .csv file. First, you will want to download this data onto your computer. We recommend creating a folder specifically for the book and its data (and if you're in the class for your classwork). This file will be your working directory. For each script we run in class, you will have to set your workin directory. An easy way to do this in RStudio is to go to the Session tab. Scroll about halfway down to the option that says ``Set Working Directory" and then click ``Choose Directory..." This then opens up an explorer or search panel that allows you to choose the folder that you have saved the data in. This will then create a line of code in the console of RStudio that you then copy and paste into the Code editor to set the working directory for your data. You then run this code by hitting Ctrl+Enter on the highlighted line. 
+For the purposes of the book, we will acquire our data by going \href{http://crcm.ou.edu/epscordata/}{here}. You will then put your e-mail where it says Request Data. You should then receive an e-mail with the data attached as a .csv file. First, you will want to download this data onto your computer. We recommend creating a folder specifically for the book and its data (and if you're in the class for your classwork). This file will be your working directory. For each script we run in class, you will have to set your working directory. An easy way to do this in RStudio is to go to the Session tab. Scroll about halfway down to the option that says ``Set Working Directory" and then click ``Choose Directory..." This then opens up an explorer or search panel that allows you to choose the folder that you have saved the data in. This will then create a line of code in the console of RStudio that you then copy and paste into the Code editor to set the working directory for your data. You then run this code by hitting Ctrl+Enter on the highlighted line. 
 
 Once this has been done, it is a good idea to check your directory. One easy way to do this is the `list.files()` command which will list all files saved in the folder you have set as your working directory. If you have done this correctly, the data you downloaded should show up as a file. Once you have done this, uploading the data will be easy. Simply write one line of code:
 
@@ -7010,7 +7011,7 @@ This line of code loads our data saved as a .csv into R and saves it as an objec
 
 \section{Data Manipulation in R}
 
-R is a very flexible tool for manipulating data into various subsets and forms. There are many useful packages ad functions for doing this including the dplyr package, tidyr package, and more. R and its packages will allow users to transform their data from long to wide formats, remove NA values, recode variables, etc. In order to make the downloaded date more manageable for the book, we are going to do two things. First we want to restrict our data to one wave. The data we downloaded represent many waves of a quarterly survey that is sent to a panel of Oklahoma residents on weather, climate and policy preferences. This book will not venture into panel data analysis or time series analysis as it is an introductory text and therefore we want simply one cross section of data for our analysis. This can be done with one simple line of code:
+R is a very flexible tool for manipulating data into various subsets and forms. There are many useful packages and functions for doing this including the dplyr package, tidyr package, and more. R and its packages will allow users to transform their data from long to wide formats, remove NA values, recode variables, etc. In order to make the downloaded date more manageable for the book, we are going to do two things. First we want to restrict our data to one wave. The data we downloaded represent many waves of a quarterly survey that is sent to a panel of Oklahoma residents on weather, climate and policy preferences. This book will not venture into panel data analysis or time series analysis as it is an introductory text and therefore we want simply one cross section of data for our analysis. This can be done with one simple line of code:
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
