@@ -2,14 +2,16 @@
 
 \chapter{Exploring and Visualizing Data}
 
+
+
 You have your plan, you carry out your plan by getting out and collecting your data, and then you put your data into a file.  You are excited to test your hypothesis so you immediately run your multiple regression analysis and look at your output.  You can do that (and probably will even if we advise against it), but what you need to do before you can start to make sense of that output is to look carefully at your data.  You will want to know things like ``how much spread do I have in my data" and ``do I have any outliers".  (If you have limited spread, you may discover that it is hard to explain variation in something that is nearly a constant and if you have an outlier, your statistics may be focused on trying to explain that one case.) 
 
 In this chapter, we will identify the ways to characterize your data before you do serious analysis both to understand what you are doing statistically and to error-check.
 
 \section{Characterizing Data}
 %#<<echo=FALSE,results="hide">>=
-%#ds <- read.csv("C:/Users/Wesley/Dropbox/1_TBUR_Book/Edition3/Class Data %#Set.csv")
-%#@ 
+%#ds <- read.csv("Class Data Set.csv")
+%#@
 
 What does it mean to characterize your data? First, it means knowing how many observations are contained in your data, and the distribution of those observations over the range of your variable(s). What kinds of measures (interval, ordinal, nominal) do you have, and what are the ranges of valid measures for each variable? How many cases of missing (no data) or mis-coded (measures that fall outside the valid range) do you have? What do the coded values represent? While seemingly trivial, checking and evaluating your data for these attributes can save you major headaches later. For example, missing values for an observation often get a special code -- say, ``-99" -- to distinguish them  from valid observations. If you neglect to treat these values properly, R (or any other statistics program) will treat that value as if it were valid and thereby turn your results into a royal hairball. We know of cases in which even seasoned quantitative scholars have made the embarrassing mistake of failing to properly handle missing values in their analyses. In at least one case, a published paper had to be retracted for this reason. So don't skimp on the most basic forms of data characterization!
 
@@ -17,18 +19,23 @@ The dataset used for purposes of illustration in this version of this text is ta
 
 It is often useful to graph the variables in your data set to get a better idea of their distribution. In addition, we may want to compare the distribution of a variable to a theoretical distribution (typically a normal distribution). This can be accomplished in several ways, but we will show two here---a histogram and a density curve---and more will be discussed in later chapters. Here we examine the distribution of the variable measuring the perceived risk of climate change. 
 
-A histogram creates intervals of equal length, called bins, and displays the frequency of observations in each of the bins. To produce a histogram in R simply use the \texttt{hist} command in the base package. Next, we  plot the density of the observed data along with a normal curve.  This can be done with the \texttt{sm.density} command in the \texttt{sm} package. Note that the normal distribution overlay using the \texttt{sm.density} function for the \texttt{gccrsk} variable is based on the mean and standard deviation variable. The results are shown in Figure \ref{fig:rsk_2}. As you can see, the \texttt{gccrsk} variable is not quite normally distributed.  The histogram illustrates that the majority of observations are contained in the upper half of the variable's range.  Moreover, the density curve indicates the the distribution if negatively skewed, and the peak of the distribution is higher on the \texttt{gccrsk} scale than that of the theoretical normal distribution.
+A histogram creates intervals of equal length, called bins, and displays the frequency of observations in each of the bins. To produce a histogram in R simply use the \texttt{geom_histogram} command in the \texttt{ggplot2} package. Next, we  plot the density of the observed data along with a normal curve.  This can be done with the \texttt{geom_density} command in the \texttt{ggplot2} package. Note that the normal distribution overlay using the \texttt{stat_function} function for the \texttt{gccrsk} variable is based on the mean and standard deviation of the \textttt{age} variable. The results are shown in Figure \ref{fig:rsk_2}. As you can see, the \texttt{age} variable is not quite normally distributed.  The histogram illustrates that the majority of observations are contained in the upper half of the variable's range.  Moreover, the density curve indicates the the distribution if negatively skewed, and the peak of the distribution is higher on the \texttt{gccrsk} scale than that of the theoretical normal distribution.
+
 
 <<echo=2,results="hide">>=
 pdf("rskhist.pdf")
-hist(ds$glbcc_risk)
+library(ggplot2)
+ggplot(ds, aes(age)) +
+  geom_histogram() 
 dev.off()
 @ 
 
 <<echo=2:3,results="hide">>=
 pdf("rskden.pdf")
-library(sm)
-sm.density(ds$glbcc_risk, model="Normal")
+ggplot(ds, aes(age)) +
+  geom_density() +
+   stat_function(fun = dnorm, args = list(mean = mean(ds$age, na.rm = T), 
+                                            sd = sd(ds$age, na.rm = T)), color = "red") 
 dev.off()
 @ 
 
@@ -44,7 +51,7 @@ dev.off()
                 \includegraphics[width=\textwidth]{03_Data/rskden.pdf}%filename
                 \caption{Density Curve}
         \end{subfigure}
-                \caption{Distribution of Perceived Risks Posed by Climate Change 
+                \caption{Distribution of Age 
                 \label{fig:rsk_2}} 
                                         
 \end{figure}
@@ -77,11 +84,11 @@ Total & 2524 & 100 &  \\ \hline
 table(ds$ideol)
 
 #To view precentages
-prop.table(table(ds$ideol))
+library(dplyr)
+table(ds$ideol) %>% prop.table()
 
-#multiply the number by 100 and round to display 3 digits
-round(prop.table(table(ds$ideol)),3)*100
-
+#multiply the numbers by 100 
+table(ds$ideol) %>% prop.table() * 100 
 @
 
 Having obtained a sample, it is important to be able to characterize that sample.  In particular, it is important to understand the probability distributions associated with each variable in the sample. 
@@ -264,7 +271,8 @@ We can visually examine the order statistics of a variable with a boxplot. A box
 
 <<echo=2,results="hide">>=
 pdf("gccrskbox.pdf")
-boxplot(ds$glbcc_risk)
+ggplot(ds, aes("", glbcc_risk)) +
+  geom_boxplot()
 dev.off()
 @ 
 
@@ -272,7 +280,7 @@ dev.off()
 \includegraphics[width=4in]{03_Data/gccrskbox.pdf}%filname
 \caption{Box-plot of Climate Change Risk 
 \label{fig:boxrsk}}
-\end{figure}
+\end{figure} 
 
 \subsubsection{Percentiles}
 
@@ -288,8 +296,8 @@ Another way to compare a variable distribution to a theoretical distribution is 
 
 <<echo=2:3,results="hide">>=
 pdf("gccrskqq.pdf")
-qqnorm(ds$glbcc_risk)
-qqline(ds$glbcc_risk)
+ggplot(ds, aes(sample = glbcc_risk)) +
+  stat_qq()
 dev.off()
 @ 
 
