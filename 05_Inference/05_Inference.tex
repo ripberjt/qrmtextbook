@@ -1,10 +1,137 @@
-\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+\documentclass[11pt,openany]{book}
+\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\newcommand{\SweaveOpts}[1]{}  % do not interfere with LaTeX
+\newcommand{\SweaveInput}[1]{} % because they are not real TeX commands
+\newcommand{\Sexpr}[1]{}       % will only be parsed by R
+
+
+\usepackage[utf8]{inputenc} 
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage[grey]{quotchap}
+\usepackage{xcolor}
+\usepackage[left=1in, top=1in, right=1.5in, bottom=1in, headsep=.5in]
+{geometry}
+\usepackage{fancyhdr, blindtext}
+\usepackage{diagbox}
+\usepackage{hyperref} 
+\usepackage{placeins}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}
+\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by 
+
+
+\fancyhf{}
+\fancyhead[LE]{\slshape \rightmark} 
+\fancyhead[RE]{\thepage}
+\fancyhead[RO]{\slshape \leftmark} 
+\fancyhead[LO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\pagestyle{fancy}
+%% new command for greybox
+\long\def\greybox#1{%
+    \newbox\contentbox%
+    \newbox\bkgdbox%
+    \setbox\contentbox\hbox to \hsize{%
+        \vtop{
+            \kern\columnsep
+            \hbox to \hsize{%
+                \kern\columnsep%
+                \advance\hsize by -2\columnsep%
+                \setlength{\textwidth}{\hsize}%
+                \vbox{
+                    \parskip=\baselineskip
+                    \parindent=0bp
+                    #1
+                }%
+                \kern\columnsep%
+            }%
+            \kern\columnsep%
+        }%
+    }%
+    \setbox\bkgdbox\vbox{
+        \pdfliteral{0.85 0.85 0.85 rg}
+        \hrule width  \wd\contentbox %
+               height \ht\contentbox %
+               depth  \dp\contentbox
+        \pdfliteral{0 0 0 rg}
+    }%
+    \wd\bkgdbox=0bp%
+    \vbox{\hbox to \hsize{\box\bkgdbox\box\contentbox}}%
+    \vskip\baselineskip%
+}
+%% make greybox (grbox) a float
+\usepackage{float}
+\newfloat{grbox}{thp}{lop}[section]
+\floatname{grbox}{Grey Box}
+
+
+
+\begin{document}
+
 
 \chapter{Inference}
 
-<<echo=2:4, results="hide">>=
-ds <- read.csv("Class Data Set.csv")
-@
+
 
 This chapter considers the role of inference---learning about populations from samples---and the practical and theoretical importance of understanding the characteristics of your data before attempting to undertake statistical analysis. As we noted in the prior chapters, it is a vital first step in empirical analysis to ``roll in the data."
 
@@ -81,13 +208,15 @@ the parameters. The probability function of the normal distribution is expressed
 \end{description}
 Using the standard normal PDF, we can plot a normal distribution in
 \texttt{R}.  
-<<echo=2:4, results="hide">>=
-pdf("normal.pdf")
-x <- seq(-4,4,length=200)
-y <- 1/sqrt(2*pi)*exp(-x^2/2)
-plot(x,y, type="l", lwd=2)
-dev.off()
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{x} \hlkwb{<-} \hlkwd{seq}\hlstd{(}\hlopt{-}\hlnum{4}\hlstd{,}\hlnum{4}\hlstd{,}\hlkwc{length}\hlstd{=}\hlnum{200}\hlstd{)}
+\hlstd{y} \hlkwb{<-} \hlnum{1}\hlopt{/}\hlkwd{sqrt}\hlstd{(}\hlnum{2}\hlopt{*}\hlstd{pi)}\hlopt{*}\hlkwd{exp}\hlstd{(}\hlopt{-}\hlstd{x}\hlopt{^}\hlnum{2}\hlopt{/}\hlnum{2}\hlstd{)}
+\hlkwd{plot}\hlstd{(x,y,} \hlkwc{type}\hlstd{=}\hlstr{"l"}\hlstd{,} \hlkwc{lwd}\hlstd{=}\hlnum{2}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 \begin{figure}
   \centering
   \includegraphics[width=4in]{../05_Inference/normal.pdf}% picture filename
@@ -95,36 +224,9 @@ dev.off()
 \end{figure}
 \noindent Note that the the tails go to $\pm \infty$. In addition, the density of a distribution over the range of x is the key to hypothesis testing With a normal distribution, $\sim68\%$ of the observations will fall within $1$ standard deviation of the mean, $\sim 95\%$ will fall within 2 standard deviations, and $\sim 99.7\%$ within 3 standard deviations. This is illustrated in Figure \ref{fig:norm}. 
 
-<<echo=FALSE,results="hide">>=
-pdf("normal68.pdf")
-x <- seq(-4,4,length=200)
-y <- dnorm(x)
-plot(x,y,type="l",lwd=2)
-x <- seq(-1,1,length=100)
-y <- dnorm(x)
-polygon(c(-1,x,1),c(0,y,0),col="gray")
-dev.off()
-@ 
-<<echo=FALSE,results="hide">>=
-pdf("normal95.pdf")
-x <- seq(-4,4,length=200)
-y <- dnorm(x)
-plot(x,y,type="l",lwd=2)
-x <- seq(-2,2,length=200)
-y <- dnorm(x)
-polygon(c(-2,x,2),c(0,y,0),col="gray")
-dev.off()
-@ 
-<<echo=FALSE,results="hide">>=
-pdf("normal99.pdf")
-x <- seq(-4,4,length=200)
-y <- dnorm(x)
-plot(x,y,type="l",lwd=2)
-x <- seq(-3,3,length=200)
-y <- dnorm(x)
-polygon(c(-3,x,3),c(0,y,0),col="gray")
-dev.off()
-@ 
+
+
+
 
 \begin{figure}
         \centering
@@ -166,14 +268,31 @@ If the values for $\mu$ and $\sigma^{2}$ are known, which might be the case with
 
 Therefore, if we have a normal distribution with a $\mu$ of 70 and a $\sigma^{2}$ of 9, we can calculate a probability for $i=75$. First we
 calculate the $Z$-score, then we determine the probability of that score based on the normal distribution. 
-<<>>=
-z <- (75-70)/3
-z
-p <- pnorm(1.67)
-p
-p <- 1-p
-p
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{z} \hlkwb{<-} \hlstd{(}\hlnum{75}\hlopt{-}\hlnum{70}\hlstd{)}\hlopt{/}\hlnum{3}
+\hlstd{z}
+\end{alltt}
+\begin{verbatim}
+## [1] 1.666667
+\end{verbatim}
+\begin{alltt}
+\hlstd{p} \hlkwb{<-} \hlkwd{pnorm}\hlstd{(}\hlnum{1.67}\hlstd{)}
+\hlstd{p}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.9525403
+\end{verbatim}
+\begin{alltt}
+\hlstd{p} \hlkwb{<-} \hlnum{1}\hlopt{-}\hlstd{p}
+\hlstd{p}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.04745968
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \noindent As shown, a score of $75$ falls just outside two standard deviations ($>0.95$), and the probability of obtaining that score when $\mu = 70$ and $\sigma^{2} = 9$ is just under 5\%.  
 
@@ -189,19 +308,7 @@ As formula 4.4 indicates, standardizing is a simple process.  To move the mean f
 
 An important property of samples is associated with the \textbf{Central Limit Theorem} (CLT). Imagine for a moment that we have a very large (or even infinite)  population, from which we can draw as many samples as we'd like. According to the CLT, as the $n$-size (number of observations) within a sample drawn from that population increases, the more the distribution of the means taken from samples of that size will resemble a normal distribution. This is illustrated in Figure \ref{nnormal}. Also note that the population does not need to have a normal distribution for the CLT to apply. Finally, a distribution of means from a normal population will be approximately normal at any sample size.  
 
-<<echo=FALSE,results="hide">>=
-pdf("normaln.pdf")
-x=seq(-8,8,length=200) 
-y=dnorm(x,mean=0,sd=1)  
-plot(x,y,type="l",lwd=4,col="red") 
-y1=dnorm(x,mean=0,sd=1.3)
-lines(x,y1,type="l",lwd=4,col="blue") 
-y2=dnorm(x,mean=0,sd=2.5)
-lines(x,y2,type="l",lwd=4,col="green")
-legend("topright",c("n=300","n=100","n=20"), bty="n", lty=c(1,1,1),lwd=4,
-       col=c("red","blue","green"))
-dev.off()
-@ 
+
 
 \begin{figure}
   \centering
@@ -268,12 +375,27 @@ If our sample size is not large, instead of using z-scores to estimate confidenc
 
 To find the appropriate value for t, we need to decide what level of confidence we want (generally 95\%) and our \textbf{degrees of freedom} (df) which is $n - 1$.  We can find a confidence interval with R using the t.test function.  by default, t.test will test the hypothesis that the mean of our variable of interest (gccriks) is equal to zero.  It will also find the mean score and a confidence interval for the gccrisk variable:\\
 
-<<>>=
-t.test(ds$glbcc_risk)
-@
-<<echo=FALSE, results = "hide">>=
-rskttest<-t.test(ds$glbcc_risk)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{t.test}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	One Sample t-test
+## 
+## data:  ds$glbcc_risk
+## t = 97.495, df = 2535, p-value < 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  5.826388 6.065568
+## sample estimates:
+## mean of x 
+##  5.945978
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
 
 Moving from the bottom up on the output we see that our mean score is 5.95.  Next, we see that the 95\% confidence interval is between 5.83 and 6.07.  We are, therefore, 95\% confident that the population mean is somewhere between those two scores.  The first part of the output tests the null hypothesis that the mean value is equal to zero -- a topic we will cover in the next section.
 
@@ -305,26 +427,31 @@ Third, when testing hypotheses, we can use a \textbf{one-tailed test} or a \text
 In addition to covariance and correlation (discussed in the next chapter), we can also examine differences in some variable of interest between two or more groups.  For example, we may want to compare the mean of the perceived climate change risk variable for males and females. First, we can examine these variables visually. 
 
 As coded in our dataset, gender (gender) is a numeric variable with a 1 for male and 0 for female. However, we may want to make gend a categorical variable with labels for Female and Male, as opposed to  a numeric variable coded as 0's and 1's. To do this we make a new variable and use the \texttt{factor} command, which will tell \texttt{R} that the new variable is a categorical variable. Then we will tell \texttt{R} that this new variable has two levels or factors, Male and Female. Finally, we will label the factors of our new variable. We will name our new variable f.gend. 
-<<>>=
-ds$f.gend <- factor(ds$gender, levels = c(0, 1), labels = c("Female","Male"))
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ds}\hlopt{$}\hlstd{f.gend} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{gender,} \hlkwc{levels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Female"}\hlstd{,}\hlstr{"Male"}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 \noindent Then we can observe differences in the distributions of perceived risk for males and females by creating density curves, using the \texttt{geom_density} and \texttt{facet_wrap} functions in the \texttt{ggplot2} package. 
 %  change variable to age younq/old.
 
-<<echo=FALSE,results="hide", message=F, warning=F>>=
-library(tidyverse)
-@
 
 
-<<echo=2:3,results="hide", message=F, warning=F>>=
-pdf("gendden.pdf")
-ds %>%
-  drop_na(f.gend) %>%
-  ggplot(aes(glbcc_risk)) +
-  geom_density() +
-  facet_wrap(~ f.gend, scales = "fixed")
-dev.off()
-@ 
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ds} \hlopt{%>%}
+  \hlkwd{drop_na}\hlstd{(f.gend)} \hlopt{%>%}
+  \hlkwd{ggplot}\hlstd{(}\hlkwd{aes}\hlstd{(glbcc_risk))} \hlopt{+}
+  \hlkwd{geom_density}\hlstd{()} \hlopt{+}
+  \hlkwd{facet_wrap}\hlstd{(}\hlopt{~} \hlstd{f.gend,} \hlkwc{scales} \hlstd{=} \hlstr{"fixed"}\hlstd{)}
+\hlkwd{dev.off}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}[!htp]
 \includegraphics[width=4in, height=4in]{../05_Inference/gendden.pdf}%filename
@@ -332,13 +459,27 @@ dev.off()
 \end{figure}   
 
 Based on the density plots, it appears that some differences exist between males and females regarding perceived climate change risk. We can also use the \texttt{by} command to see the \texttt{gccrsk} mean of climate change risk for males and females.
-<<>>=
-by(ds$glbcc_risk, ds$f.gend, mean, na.rm=TRUE)
-@ 
-<<echo=FALSE, resuts = "hide">>=
-by1<-by(ds$glbcc_risk, ds$f.gend, mean, na.rm=TRUE)
-names(by1)
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{by}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk, ds}\hlopt{$}\hlstd{f.gend, mean,} \hlkwc{na.rm}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## ds$f.gend: Female
+## [1] 6.134259
+## -------------------------------------------------------- 
+## ds$f.gend: Male
+## [1] 5.670577
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] "Female" "Male"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 Again there appears to be a difference, with females perceiving greater risk on average (6.13) than males (5.67). However we want to know whether these differences are \textbf{statistically significant}. To test for the statistical significance of the difference between groups, we use a $t$-test. 
 
 \subsection{$t$-tests} 
@@ -366,39 +507,99 @@ change. To test $H_1$ we use the $t$-test which is calculated:
 
 % t-test by hand
 We can calculate this in \texttt{R}. First, we calculate the $n$ size for males and females. Then we calculate the SE for males and females. 
-<<>>=
-n.total <- length(ds$gender)
-nM <- sum(ds$gender, na.rm=TRUE)
-nF <- n.total-nM
-by(ds$glbcc_risk, ds$f.gend, sd, na.rm=TRUE)
-sdM <- 2.82
-seM <- 2.82/(sqrt(nM))
-seM
-sdF <- 2.35
-seF <- 2.35/(sqrt(nF))
-seF
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{n.total} \hlkwb{<-} \hlkwd{length}\hlstd{(ds}\hlopt{$}\hlstd{gender)}
+\hlstd{nM} \hlkwb{<-} \hlkwd{sum}\hlstd{(ds}\hlopt{$}\hlstd{gender,} \hlkwc{na.rm}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlstd{nF} \hlkwb{<-} \hlstd{n.total}\hlopt{-}\hlstd{nM}
+\hlkwd{by}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk, ds}\hlopt{$}\hlstd{f.gend, sd,} \hlkwc{na.rm}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## ds$f.gend: Female
+## [1] 2.981938
+## -------------------------------------------------------- 
+## ds$f.gend: Male
+## [1] 3.180171
+\end{verbatim}
+\begin{alltt}
+\hlstd{sdM} \hlkwb{<-} \hlnum{2.82}
+\hlstd{seM} \hlkwb{<-} \hlnum{2.82}\hlopt{/}\hlstd{(}\hlkwd{sqrt}\hlstd{(nM))}
+\hlstd{seM}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.08803907
+\end{verbatim}
+\begin{alltt}
+\hlstd{sdF} \hlkwb{<-} \hlnum{2.35}
+\hlstd{seF} \hlkwb{<-} \hlnum{2.35}\hlopt{/}\hlstd{(}\hlkwd{sqrt}\hlstd{(nF))}
+\hlstd{seF}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.06025641
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \noindent Next, we need to calculate the $SE_d$: 
 \begin{equation}
   SE_d = \sqrt{SE^2_M+SE^2_F}  
 \end{equation}
-<<>>=
-seD <- sqrt(seM^2+seF^2)
-seD
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{seD} \hlkwb{<-} \hlkwd{sqrt}\hlstd{(seM}\hlopt{^}\hlnum{2}\hlopt{+}\hlstd{seF}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{seD}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.1066851
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \noindent Finally, we can calculate our $t$-score, and use the \texttt{t.test} function to check. 
-<<>>=
-by(ds$glbcc_risk, ds$f.gend, mean, na.rm=TRUE)
-meanF <- 6.96 
-meanM <- 6.42
-t <- (meanF-meanM)/seD
-t
-t.test(ds$glbcc_risk~ds$gender)
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{by}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk, ds}\hlopt{$}\hlstd{f.gend, mean,} \hlkwc{na.rm}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## ds$f.gend: Female
+## [1] 6.134259
+## -------------------------------------------------------- 
+## ds$f.gend: Male
+## [1] 5.670577
+\end{verbatim}
+\begin{alltt}
+\hlstd{meanF} \hlkwb{<-} \hlnum{6.96}
+\hlstd{meanM} \hlkwb{<-} \hlnum{6.42}
+\hlstd{t} \hlkwb{<-} \hlstd{(meanF}\hlopt{-}\hlstd{meanM)}\hlopt{/}\hlstd{seD}
+\hlstd{t}
+\end{alltt}
+\begin{verbatim}
+## [1] 5.061625
+\end{verbatim}
+\begin{alltt}
+\hlkwd{t.test}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk}\hlopt{~}\hlstd{ds}\hlopt{$}\hlstd{gender)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  ds$glbcc_risk by ds$gender
+## t = 3.6927, df = 2097.5, p-value = 0.0002275
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.2174340 0.7099311
+## sample estimates:
+## mean in group 0 mean in group 1 
+##        6.134259        5.670577
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 The difference in the percieved risk between women and men, we have a $t$-value of 4.6. This result is greater than zero, as expected by $H_1$. In addition, as shown in the \texttt{t.test} output the \textbf{$p$-value}---the probability of obtaining our result if the population difference was $0$---is extremely low at .0002275} (that's the same as 2.275e-04). Therefore, we \textit{reject the null hypothesis} and concluded that there are differences (on average) in the ways that males and females perceive climate change risk.   
 
 \section{Summary}
 In this chapter we gained an understanding of inferential statistics, how to use them to place confidence intervals around an estimate, and got an overview of how to use them to test hypotheses. In the next chapter we turn, more formally, to testing hypotheses using crosstabs and by comparing means of different groups.  After that we continue to explore hypothesis testing and model building using regression analysis.
+\end{document}
