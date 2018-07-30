@@ -24,7 +24,7 @@ A histogram creates intervals of equal length, called bins, and displays the fre
 Note that the normal distribution overlay using the \texttt{stat_function} function for the \texttt{gccrsk} variable is based on the mean and standard deviation of the \textttt{age} variable. The results are shown in Figure \ref{fig:rsk_2}. As you can see, the \texttt{age} variable is not quite normally distributed.  The histogram illustrates that the majority of observations are contained in the upper half of the variable's range.  Moreover, the density curve indicates the the distribution if negatively skewed, and the peak of the distribution is higher on the \texttt{gccrsk} scale than that of the theoretical normal distribution.
 
 
-<<echo=2,results="hide", message=F, warning=F>>=
+<<echo=F,results="hide", message=F, warning=F>>=
 pdf("rskhist.pdf")
 library(ggplot2)
 ggplot(ds, aes(age)) +
