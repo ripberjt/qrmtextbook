@@ -1,10 +1,136 @@
-\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+\documentclass[11pt,openany]{book}
+\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\newcommand{\SweaveOpts}[1]{}  % do not interfere with LaTeX
+\newcommand{\SweaveInput}[1]{} % because they are not real TeX commands
+\newcommand{\Sexpr}[1]{}       % will only be parsed by R
 
 
-<<echo=FALSE,results="hide", message=F,warning=F>>=
-ds <- read.csv("Class Data Set.csv")
-library(tidyverse)
-@
+\usepackage[utf8]{inputenc} 
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage[grey]{quotchap}
+\usepackage{xcolor}
+\usepackage[left=1in, top=1in, right=1.5in, bottom=1in, headsep=.5in]
+{geometry}
+\usepackage{fancyhdr, blindtext}
+\usepackage{diagbox}
+\usepackage{hyperref} 
+\usepackage{placeins}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}
+\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by 
+
+
+\fancyhf{}
+\fancyhead[LE]{\slshape \rightmark} 
+\fancyhead[RE]{\thepage}
+\fancyhead[RO]{\slshape \leftmark} 
+\fancyhead[LO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\pagestyle{fancy}
+%% new command for greybox
+\long\def\greybox#1{%
+    \newbox\contentbox%
+    \newbox\bkgdbox%
+    \setbox\contentbox\hbox to \hsize{%
+        \vtop{
+            \kern\columnsep
+            \hbox to \hsize{%
+                \kern\columnsep%
+                \advance\hsize by -2\columnsep%
+                \setlength{\textwidth}{\hsize}%
+                \vbox{
+                    \parskip=\baselineskip
+                    \parindent=0bp
+                    #1
+                }%
+                \kern\columnsep%
+            }%
+            \kern\columnsep%
+        }%
+    }%
+    \setbox\bkgdbox\vbox{
+        \pdfliteral{0.85 0.85 0.85 rg}
+        \hrule width  \wd\contentbox %
+               height \ht\contentbox %
+               depth  \dp\contentbox
+        \pdfliteral{0 0 0 rg}
+    }%
+    \wd\bkgdbox=0bp%
+    \vbox{\hbox to \hsize{\box\bkgdbox\box\contentbox}}%
+    \vskip\baselineskip%
+}
+%% make greybox (grbox) a float
+\usepackage{float}
+\newfloat{grbox}{thp}{lop}[section]
+\floatname{grbox}{Grey Box}
+
+
+
+\begin{document}
+
+
+
+
 
 \chapter{Association of Variables}
 
@@ -100,48 +226,103 @@ Crosstabulations and their associated statistics can be calculated using R.  In 
 
 %  time permitting change the variable to age groups.
 
-<<message=F,warning=F>>=
-#  Factor the gender variable
-ds$f.gend <- factor(ds$gender, levels=c(0,1), labels = c("Women", "Men"))
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  Factor the gender variable}
+\hlstd{ds}\hlopt{$}\hlstd{f.gend} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{gender,} \hlkwc{levels}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{),} \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Women"}\hlstd{,} \hlstr{"Men"}\hlstd{))}
 
-#  recode glbccrisk to five categories
-library(car)
-ds$r.glbcc_risk <- recode(ds$glbcc_risk, "0:1=1; 2:3=2; 4:6=3; 7:8:=4;
-                          9:10=5; NA=NA")
-@
+\hlcom{#  recode glbccrisk to five categories}
+\hlkwd{library}\hlstd{(car)}
+\hlstd{ds}\hlopt{$}\hlstd{r.glbcc_risk} \hlkwb{<-} \hlkwd{recode}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk,} \hlstr{"0:1=1; 2:3=2; 4:6=3; 7:8:=4;
+                          9:10=5; NA=NA"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 Using the \texttt{table} function, we produce a frequency table reflecting the relationship between gender and the recoded glbccrisk variable.  
 
-<<>>=
-#  create the table
-table(ds$r.glbcc_risk, ds$f.gend)
-
-#  create the table as an R Object
-glbcc.table <- table(ds$r.glbcc_risk, ds$f.gend)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  create the table}
+\hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{r.glbcc_risk, ds}\hlopt{$}\hlstd{f.gend)}
+\end{alltt}
+\begin{verbatim}
+##    
+##     Women Men
+##   1   134 134
+##   2   175 155
+##   3   480 281
+##   4   330 208
+##   5   393 245
+\end{verbatim}
+\begin{alltt}
+\hlcom{#  create the table as an R Object}
+\hlstd{glbcc.table} \hlkwb{<-} \hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{r.glbcc_risk, ds}\hlopt{$}\hlstd{f.gend)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 That table is difficult to interpret because of the different numbers of men and women.  To make that table more interpretable, we convert it to percentages using the \texttt{prop.table} function.   Looking at that table, we can see that there are more men at the lower end of the perceived risk scale and more women at the upper end.
 
-<<>>=
-#  Multiply by 100
-prop.table(glbcc.table, 2) * 100
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  Multiply by 100}
+\hlkwd{prop.table}\hlstd{(glbcc.table,} \hlnum{2}\hlstd{)} \hlopt{*} \hlnum{100}
+\end{alltt}
+\begin{verbatim}
+##    
+##         Women       Men
+##   1  8.862434 13.098729
+##   2 11.574074 15.151515
+##   3 31.746032 27.468231
+##   4 21.825397 20.332356
+##   5 25.992063 23.949169
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
   
 The percentaged table suggests that there is a relationship between the two variables, but also illustrates the challenge of relying on percentage differences to determine the significance of that relationship.  So, to test our null hypothesis we calculate our chi square using the chisq.test function.  
 
-<<>>=
-#  Chi Square Test
-chisq.test(glbcc.table)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  Chi Square Test}
+\hlkwd{chisq.test}\hlstd{(glbcc.table)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Pearson's Chi-squared test
+## 
+## data:  glbcc.table
+## X-squared = 21.729, df = 4, p-value = 0.0002269
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 R reports our chi square to equal 21.73.  It also tells us that we have 4 degrees of freedom and a p value of .0002269.  Since that p value is substantially less than .05, we can reject our null hypothesis with great confidence.  There is, evidently, a relationship between gender and percieved risk of climate change.
 
 Finally, we want to know how strong the relationship is.  We use the \texttt{assocstats} function to get several measures of association.   Since the table is not a 2 X 2 table nor square, neither phi not the contingency coefficient is appropriate, but we can report Cramer's V.  Cramer's V is .093, indicating a relatively weak relationship between gender and the perceived global climate change risk variable.
 
-<<message=F,warning=F>>=
-library(vcd)
-assocstats(glbcc.table)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(vcd)}
+\hlkwd{assocstats}\hlstd{(glbcc.table)}
+\end{alltt}
+\begin{verbatim}
+##                     X^2 df   P(> X^2)
+## Likelihood Ratio 21.494  4 0.00025270
+## Pearson          21.729  4 0.00022695
+## 
+## Phi-Coefficient   : NA 
+## Contingency Coeff.: 0.092 
+## Cramer's V        : 0.093
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \subsection{Crosstabulation and Control}
 
@@ -207,72 +388,199 @@ A third outcome of controlling for a third variable might be some form of intera
 
 Using an example from the Climate and Weather survey, we might hypothesize that liberals are more likely to think that greenhouse gases are causing global warming.   We start by recoding ideology from 7 levels to 3, then constructing first a frequency table, then a percentage table of the relationship.
   
-<<>>=
-#  recode variables ideology to 3 categories
-library(car)
-ds$r.ideol<-recode(ds$ideol, "1:2=1; 3:5=2; 6:7=3; NA=NA")
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  recode variables ideology to 3 categories}
+\hlkwd{library}\hlstd{(car)}
+\hlstd{ds}\hlopt{$}\hlstd{r.ideol}\hlkwb{<-}\hlkwd{recode}\hlstd{(ds}\hlopt{$}\hlstd{ideol,} \hlstr{"1:2=1; 3:5=2; 6:7=3; NA=NA"}\hlstd{)}
 
-#  factor the variables to add labels.
-ds$f.ideol<- factor(ds$r.ideol, levels=c(1, 2, 3), labels=c("Liberal", 
-                        "Moderate", "Conservative"))
-ds$f.glbcc <- factor(ds$glbcc, levels=c(0, 1), 
-                          labels = c("GLBCC No", "GLBCC Yes"))
+\hlcom{#  factor the variables to add labels.}
+\hlstd{ds}\hlopt{$}\hlstd{f.ideol}\hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{r.ideol,} \hlkwc{levels}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{3}\hlstd{),} \hlkwc{labels}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Liberal"}\hlstd{,}
+                        \hlstr{"Moderate"}\hlstd{,} \hlstr{"Conservative"}\hlstd{))}
+\hlstd{ds}\hlopt{$}\hlstd{f.glbcc} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{glbcc,} \hlkwc{levels}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),}
+                          \hlkwc{labels} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"GLBCC No"}\hlstd{,} \hlstr{"GLBCC Yes"}\hlstd{))}
 
-#  3 Two variable table glbcc~ideology
-v2.glbcc.table <- table(ds$f.glbcc, ds$f.ideol)
-v2.glbcc.table
-@
+\hlcom{#  3 Two variable table glbcc~ideology}
+\hlstd{v2.glbcc.table} \hlkwb{<-} \hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{f.glbcc, ds}\hlopt{$}\hlstd{f.ideol)}
+\hlstd{v2.glbcc.table}
+\end{alltt}
+\begin{verbatim}
+##            
+##             Liberal Moderate Conservative
+##   GLBCC No       26      322          734
+##   GLBCC Yes     375      762          305
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
-<<>>=
-#  Percentages by Column
-prop.table(v2.glbcc.table, 2) * 100
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  Percentages by Column}
+\hlkwd{prop.table}\hlstd{(v2.glbcc.table,} \hlnum{2}\hlstd{)} \hlopt{*} \hlnum{100}
+\end{alltt}
+\begin{verbatim}
+##            
+##               Liberal  Moderate Conservative
+##   GLBCC No   6.483791 29.704797    70.644851
+##   GLBCC Yes 93.516209 70.295203    29.355149
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \noindent It appears that our hypothesis is supported as there is more than a 40\% difference between liberals and conservatives with moderates in between, but let's consider the chi square before reject our null hypothesis:
-<<>>=
-#  Chi-squared
-chisq.test(v2.glbcc.table, correct = FALSE)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  Chi-squared}
+\hlkwd{chisq.test}\hlstd{(v2.glbcc.table,} \hlkwc{correct} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Pearson's Chi-squared test
+## 
+## data:  v2.glbcc.table
+## X-squared = 620.76, df = 2, p-value < 2.2e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \noindent The chi square is very large and our p-value, very small. We can reject our null hypothesis with great confidence.  Next, we consider the strength of association, using Cramer's V (since either Phi nor the contingency coefficient is appropriate for a 3 X 2 table):
 
-<<>>=
-#  Cramer's V
-library(vcd)
-assocstats(v2.glbcc.table)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  Cramer's V}
+\hlkwd{library}\hlstd{(vcd)}
+\hlkwd{assocstats}\hlstd{(v2.glbcc.table)}
+\end{alltt}
+\begin{verbatim}
+##                     X^2 df P(> X^2)
+## Likelihood Ratio 678.24  2        0
+## Pearson          620.76  2        0
+## 
+## Phi-Coefficient   : NA 
+## Contingency Coeff.: 0.444 
+## Cramer's V        : 0.496
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \noindent The Cramer's V value of .496 indicates that we have a strong relationship between political ideology and beliefs about climate change.\\
 
 We might, though, want to look at gender as a control variable since we know gender is related both to perceptions on the climate and ideology.  First we need to generate a new table with the control variable gender added.  We start by factoring the gender variable.
 
-<<>>=
-#  factor the variables to add labels.
-ds$f.gend <- factor(ds$gend, levels=c(0, 1), labels=c("Women", "Men"))
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  factor the variables to add labels.}
+\hlstd{ds}\hlopt{$}\hlstd{f.gend} \hlkwb{<-} \hlkwd{factor}\hlstd{(ds}\hlopt{$}\hlstd{gend,} \hlkwc{levels}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{),} \hlkwc{labels}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Women"}\hlstd{,} \hlstr{"Men"}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \noindent Then we create the new table.  The R output is shown, in which the line ``\#\# ,  ,  = Women" indicates the results for women and ``\#\# ,  ,  = Men" displays the results for men.
 
-<<>>=
-#  3 Two variable table glbcc~ideology+gend
-v3.glbcc.table <- table(ds$f.glbcc, ds$f.ideol, ds$f.gend) 
-v3.glbcc.table
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  3 Two variable table glbcc~ideology+gend}
+\hlstd{v3.glbcc.table} \hlkwb{<-} \hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{f.glbcc, ds}\hlopt{$}\hlstd{f.ideol, ds}\hlopt{$}\hlstd{f.gend)}
+\hlstd{v3.glbcc.table}
+\end{alltt}
+\begin{verbatim}
+## , ,  = Women
+## 
+##            
+##             Liberal Moderate Conservative
+##   GLBCC No       18      206          375
+##   GLBCC Yes     239      470          196
+## 
+## , ,  = Men
+## 
+##            
+##             Liberal Moderate Conservative
+##   GLBCC No        8      116          358
+##   GLBCC Yes     136      292          109
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 
-<<>>=
-#  Percentages by Column for Women 
-prop.table(v3.glbcc.table[,,1], 2) * 100       
-chisq.test(v3.glbcc.table[,,1])
-assocstats(v3.glbcc.table[,,1])
-@         
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  Percentages by Column for Women }
+\hlkwd{prop.table}\hlstd{(v3.glbcc.table[,,}\hlnum{1}\hlstd{],} \hlnum{2}\hlstd{)} \hlopt{*} \hlnum{100}
+\end{alltt}
+\begin{verbatim}
+##            
+##               Liberal  Moderate Conservative
+##   GLBCC No   7.003891 30.473373    65.674256
+##   GLBCC Yes 92.996109 69.526627    34.325744
+\end{verbatim}
+\begin{alltt}
+\hlkwd{chisq.test}\hlstd{(v3.glbcc.table[,,}\hlnum{1}\hlstd{])}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Pearson's Chi-squared test
+## 
+## data:  v3.glbcc.table[, , 1]
+## X-squared = 299.39, df = 2, p-value < 2.2e-16
+\end{verbatim}
+\begin{alltt}
+\hlkwd{assocstats}\hlstd{(v3.glbcc.table[,,}\hlnum{1}\hlstd{])}
+\end{alltt}
+\begin{verbatim}
+##                     X^2 df P(> X^2)
+## Likelihood Ratio 326.13  2        0
+## Pearson          299.39  2        0
+## 
+## Phi-Coefficient   : NA 
+## Contingency Coeff.: 0.407 
+## Cramer's V        : 0.446
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
-<<>>=
-#  Percentages by Column for  Men 
-prop.table(v3.glbcc.table[,,2], 2) * 100    
-chisq.test(v3.glbcc.table[,,2])
-assocstats(v3.glbcc.table[,,2])
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  Percentages by Column for  Men }
+\hlkwd{prop.table}\hlstd{(v3.glbcc.table[,,}\hlnum{2}\hlstd{],} \hlnum{2}\hlstd{)} \hlopt{*} \hlnum{100}
+\end{alltt}
+\begin{verbatim}
+##            
+##               Liberal  Moderate Conservative
+##   GLBCC No   5.555556 28.431373    76.659529
+##   GLBCC Yes 94.444444 71.568627    23.340471
+\end{verbatim}
+\begin{alltt}
+\hlkwd{chisq.test}\hlstd{(v3.glbcc.table[,,}\hlnum{2}\hlstd{])}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Pearson's Chi-squared test
+## 
+## data:  v3.glbcc.table[, , 2]
+## X-squared = 320.43, df = 2, p-value < 2.2e-16
+\end{verbatim}
+\begin{alltt}
+\hlkwd{assocstats}\hlstd{(v3.glbcc.table[,,}\hlnum{2}\hlstd{])}
+\end{alltt}
+\begin{verbatim}
+##                     X^2 df P(> X^2)
+## Likelihood Ratio 353.24  2        0
+## Pearson          320.43  2        0
+## 
+## Phi-Coefficient   : NA 
+## Contingency Coeff.: 0.489 
+## Cramer's V        : 0.561
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 %see note               
 
 For both men and women, we still see more than a 40\% difference and the p value for both tables chi square is 2.2e-16 and both Cramer's V's are greater than .30.  It is clear that even when controlling for gender, there is a robust relationship between ideology and glbcc.  But, those tables also suggest that women are slightly more inclined to see greenhouse gases playing a role in climate change than are men.   We may have an instance of joint causation -- where both ideology and gender affect (``cause" is still too strong a word) views on the impact of greenhouse gases on climate change.
@@ -314,10 +622,21 @@ r = \frac{\sum (X-\bar{X})(Y-\bar{Y})/(n-1)}{s_{x}s_{y}}
 Like covariance, correlations can be positive, negative, and zero. The possible values of the correlation coefficient $r$, range
 from -1, perfect negative relationship to 1, perfect positive relationship. If $r=0$, that indicates no correlation.  Correlations can be calculated in \texttt{R}, using the \texttt{cor} function. 
 
-<<>>=
-ds %>% select(age, education, ideol, glbcc_risk) %>% na.omit() %>%
-  cor()
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ds} \hlopt{%>%} \hlkwd{select}\hlstd{(age, education, ideol, glbcc_risk)} \hlopt{%>%} \hlkwd{na.omit}\hlstd{()} \hlopt{%>%}
+  \hlkwd{cor}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+##                    age   education       ideol  glbcc_risk
+## age         1.00000000 -0.06149090  0.08991177 -0.07514098
+## education  -0.06149090  1.00000000 -0.13246843  0.09115774
+## ideol       0.08991177 -0.13246843  1.00000000 -0.59009431
+## glbcc_risk -0.07514098  0.09115774 -0.59009431  1.00000000
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 Note that each variable is perfectly (and positively) correlated with itself - naturally! Age is slightly and surprisingly negatively correlated with education (-0.06) and unsurprisingly positively political ideology (+0.09). What this means is that, in this dataset and on average, older people are slightly less educated and more conservative than younger people. Now notice the correlation coefficient for the relationship between ideology and perceived risk of climate change (glbccrisk). This correlation (-0.59) indicates that on average, the more conservative the individual is, the less risky climate change is perceived to be.
 
@@ -330,13 +649,15 @@ Note that each variable is perfectly (and positively) correlated with itself - n
 As noted earlier, it is often useful to try and see patterns between two variables. We examined the density plots of males and females with regard to climate change risk, then we tested these differences for statistical significance. However, we often want to know more than the mean difference between groups; we often want to know if differences exist for variables with several possible values. For example, here we examine the relationship between ideology and glbcc risk. One of the more efficient ways to do this is to produce a scatterplot, which will plot each case in a geometric space for both variables. To produce a scatterplot with \texttt{ggplot2}, we will use the \texttt{geom_jitter} command. This is because ideology and glbcc risk are discrete variables(i.e., whole numbers), so we need to ``jitter" the data. If your values are continuous, use \texttt{geom_point}.\footnote{That means a ``jit" (a very small value) is applied to each observed point on the plot, so
 you can see observations that are ``stacked" on the same coordinate. Ha! Just kidding; they're not called jits. We don't know what they're called. But they ought to be called jits.} The result is shown in Figure \ref{fig:scatjit}.  
 
-<<echo=2,results="hide", message=F, warning=F>>=
-pdf("scatjit.pdf")
-ds %>%
-  ggplot(aes(ideol, glbcc_risk)) +
-  geom_jitter(shape = 1)
-dev.off()
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ds} \hlopt{%>%}
+  \hlkwd{ggplot}\hlstd{(}\hlkwd{aes}\hlstd{(ideol, glbcc_risk))} \hlopt{+}
+  \hlkwd{geom_jitter}\hlstd{(}\hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}[!htp]
 \includegraphics[width=3.5in, height=3.5in]{../06_Association/scatjit.pdf}%filename
@@ -347,16 +668,19 @@ We can see that the density of values indicate that strong liberals---$1$'s on t
 
 % note there is discussion of missing data in the Applied Regression book by Fox - Page 65-67.
 
-<<echo=2:10, results="hide">>=
-pdf("scatjit2.pdf")
-ds %>%
-  drop_na(glbcc_risk, ideol) %>%
-  ggplot(aes(ideol, glbcc_risk)) +
-  geom_jitter(shape = 1) +
-  geom_smooth(method = "loess", color = "green") +
-  geom_smooth(method = "lm", color = "red")
-dev.off()
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ds} \hlopt{%>%}
+  \hlkwd{drop_na}\hlstd{(glbcc_risk, ideol)} \hlopt{%>%}
+  \hlkwd{ggplot}\hlstd{(}\hlkwd{aes}\hlstd{(ideol, glbcc_risk))} \hlopt{+}
+  \hlkwd{geom_jitter}\hlstd{(}\hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_smooth}\hlstd{(}\hlkwc{method} \hlstd{=} \hlstr{"loess"}\hlstd{,} \hlkwc{color} \hlstd{=} \hlstr{"green"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_smooth}\hlstd{(}\hlkwc{method} \hlstd{=} \hlstr{"lm"}\hlstd{,} \hlkwc{color} \hlstd{=} \hlstr{"red"}\hlstd{)}
+\hlkwd{dev.off}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}[!htp]
 \includegraphics[width=3.5in, height=3.5in]{../06_Association/scatjit2.pdf}%filename
@@ -415,3 +739,4 @@ df & 0.25 & 0.20 & 0.15 & 0.10 & 0.05 & 0.025 & 0.02 & 0.01 & 0.005 & 0.0025 & 0
 }
 \end{table}
 \FloatBarrier
+\end{document}
