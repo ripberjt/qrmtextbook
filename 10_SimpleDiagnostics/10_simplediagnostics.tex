@@ -1,10 +1,135 @@
-\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+\documentclass[11pt,openany]{book}
+\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
 
-<<echo=FALSE,results="hide", message=F,warning=F>>=
-ds <- read.csv("Class Data Set.csv")
-library(tidyverse)
-library(car)
-@
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\newcommand{\SweaveOpts}[1]{}  % do not interfere with LaTeX
+\newcommand{\SweaveInput}[1]{} % because they are not real TeX commands
+\newcommand{\Sexpr}[1]{}       % will only be parsed by R
+
+
+\usepackage[utf8]{inputenc} 
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage[grey]{quotchap}
+\usepackage{xcolor}
+\usepackage[left=1in, top=1in, right=1.5in, bottom=1in, headsep=.5in]
+{geometry}
+\usepackage{fancyhdr, blindtext}
+\usepackage{diagbox}
+\usepackage{hyperref} 
+\usepackage{placeins}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}
+\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by 
+
+
+\fancyhf{}
+\fancyhead[LE]{\slshape \rightmark} 
+\fancyhead[RE]{\thepage}
+\fancyhead[RO]{\slshape \leftmark} 
+\fancyhead[LO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\pagestyle{fancy}
+%% new command for greybox
+\long\def\greybox#1{%
+    \newbox\contentbox%
+    \newbox\bkgdbox%
+    \setbox\contentbox\hbox to \hsize{%
+        \vtop{
+            \kern\columnsep
+            \hbox to \hsize{%
+                \kern\columnsep%
+                \advance\hsize by -2\columnsep%
+                \setlength{\textwidth}{\hsize}%
+                \vbox{
+                    \parskip=\baselineskip
+                    \parindent=0bp
+                    #1
+                }%
+                \kern\columnsep%
+            }%
+            \kern\columnsep%
+        }%
+    }%
+    \setbox\bkgdbox\vbox{
+        \pdfliteral{0.85 0.85 0.85 rg}
+        \hrule width  \wd\contentbox %
+               height \ht\contentbox %
+               depth  \dp\contentbox
+        \pdfliteral{0 0 0 rg}
+    }%
+    \wd\bkgdbox=0bp%
+    \vbox{\hbox to \hsize{\box\bkgdbox\box\contentbox}}%
+    \vskip\baselineskip%
+}
+%% make greybox (grbox) a float
+\usepackage{float}
+\newfloat{grbox}{thp}{lop}[section]
+\floatname{grbox}{Grey Box}
+
+
+
+\begin{document}
+
+
+
 
 \chapter{OLS Assumptions and Simple Regression Diagnostics}
 
@@ -120,40 +245,114 @@ This far we have used rather simple illustrations of residual diagnostics and th
 
 Our in-class lab example focuses on the relationship between political ideology (``ideology" in our dataset) as a predictor of the perceived risks posed by climate change (``gccrsk"). The model is specified in \texttt{R} as follows:
 
-<<>>=
-OLS_env <- lm(ds$glbcc_risk ~ ds$ideol)
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{OLS_env} \hlkwb{<-} \hlkwd{lm}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk} \hlopt{~} \hlstd{ds}\hlopt{$}\hlstd{ideol)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \noindent Using the summary command in $R$, we can review the results.
-<<>>=
-summary(OLS_env)
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{summary}\hlstd{(OLS_env)}
+\end{alltt}
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = ds$glbcc_risk ~ ds$ideol)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -8.726 -1.633  0.274  1.459  6.506 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 10.81866    0.14189   76.25   <2e-16 ***
+## ds$ideol    -1.04635    0.02856  -36.63   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.479 on 2511 degrees of freedom
+##   (34 observations deleted due to missingness)
+## Multiple R-squared:  0.3483,	Adjusted R-squared:  0.348 
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 Note that, as was discussed in the prior chapter, the estimated value for $B$ is negative and highly statistically significant. This indicates that the more conservative the survey respondent, the lower the perceived risks attributed to climate change. Now we will use these model results and the associated residuals to evaluate the key assumptions of OLS, beginning with linearity. 
 
 \subsection{Testing for Non-Linearity}
 One way to test for non-linearity is to fit the model to a polynomial functional form. This sounds impressive, but is quite easy to do and understand (really!). All you need to do is include the square of the independent variable as a second predictor in the model.  A significant regression coefficient on the squared variable indicates problems with linearity. To do this, we first produce the squared variable.
 
-<<>>=
-#first we square the ideology variable and create a new variable to use in our model.
-ds$ideology2 <- ds$ideol^2
-summary(ds$ideology2)
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#first we square the ideology variable and create a new variable to use in our model.}
+\hlstd{ds}\hlopt{$}\hlstd{ideology2} \hlkwb{<-} \hlstd{ds}\hlopt{$}\hlstd{ideol}\hlopt{^}\hlnum{2}
+\hlkwd{summary}\hlstd{(ds}\hlopt{$}\hlstd{ideology2)}
+\end{alltt}
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##    1.00   16.00   25.00   24.65   36.00   49.00      23
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \noindent Next, we run the regression with the original independent variable and our new squared variable.  Finally, we check the regression output.
 
-<<>>=
-OLS_env2 <- lm(glbcc_risk ~ ideol + ideology2, data = ds)
-summary(OLS_env2)
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{OLS_env2} \hlkwb{<-} \hlkwd{lm}\hlstd{(glbcc_risk} \hlopt{~} \hlstd{ideol} \hlopt{+} \hlstd{ideology2,} \hlkwc{data} \hlstd{= ds)}
+\hlkwd{summary}\hlstd{(OLS_env2)}
+\end{alltt}
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = glbcc_risk ~ ideol + ideology2, data = ds)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -8.564 -1.808  0.192  1.448  6.863 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  9.58238    0.28397  33.745  < 2e-16 ***
+## ideol       -0.34444    0.14274  -2.413   0.0159 *  
+## ideology2   -0.08234    0.01641  -5.018 5.58e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.467 on 2510 degrees of freedom
+##   (34 observations deleted due to missingness)
+## Multiple R-squared:  0.3548,	Adjusted R-squared:  0.3543 
+## F-statistic: 690.1 on 2 and 2510 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 A significant coefficient on the squared ideology variable informs us that we probably have a non-linearity problem. The significant and negative coefficient for the square of ideology means that the curve steepens (perceived risks fall faster) as the scale shifts further up on the conservative side of the scale. We can supplement the polynomial regression test by producing a residual plot with a formal Tukey test. The residual plot (\texttt{car} package \texttt{residualPlots} function) displays the Pearson fitted values against the model's observed values. Ideally, the plots will produce flat red lines; curved lines represent non-linearity.  The output for the Tukey test is visible in the $R$ workspace.  The null hypothesis for the Tukey test is a linear relationship, so a significant p-value is indicative of non-linearity.  The tukey test is reported as part of the \texttt{residualPlots} function in the \texttt{car} package.
 
-<<echo=2:3>>=
-pdf("nonlinideology.pdf")
-#A significant p-value indicates non-linearity using the Tukey test
-residualPlots(OLS_env)
-dev.off() 
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#A significant p-value indicates non-linearity using the Tukey test}
+\hlkwd{residualPlots}\hlstd{(OLS_env)}
+\end{alltt}
+\begin{verbatim}
+##            Test stat Pr(>|Test stat|)    
+## ds$ideol     -5.0181        5.584e-07 ***
+## Tukey test   -5.0181        5.219e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## pdf 
+##   2
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}
   \centering
@@ -169,14 +368,16 @@ Testing for normality in the model residuals will involve using many of the tech
 
 Start by creating a histogram of the model residuals.
 
-<<echo=2,results="hide">>=
-pdf("histideology.pdf")
-OLS_env$residuals %>% # Pipe the residuals to a data frame
-  data.frame() %>% # Pipe the data frame to ggplot
-  ggplot(aes(OLS_env$residuals)) +
-  geom_histogram(bins = 16)
-dev.off() 
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{OLS_env}\hlopt{$}\hlstd{residuals} \hlopt{%>%} \hlcom{# Pipe the residuals to a data frame}
+  \hlkwd{data.frame}\hlstd{()} \hlopt{%>%} \hlcom{# Pipe the data frame to ggplot}
+  \hlkwd{ggplot}\hlstd{(}\hlkwd{aes}\hlstd{(OLS_env}\hlopt{$}\hlstd{residuals))} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{bins} \hlstd{=} \hlnum{16}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}
   \centering
@@ -187,17 +388,20 @@ dev.off()
 
 The histogram in figure \ref{fig:histideology} indicates that the residuals are approximately normally distributed, but there appears to be a negative skew.  Next, we can create a smoothed density of the model residuals compared to a theoretical normal distribution.
 
-<<echo=2:3,results="hide">>=
-pdf("densityideology.pdf")
-OLS_env$residuals %>% # Pipe the residuals to a data frame
-  data.frame() %>% # Pipe the data frame to ggplot
-  ggplot(aes(OLS_env$residuals)) +
-  geom_density(adjust = 2) +
-  stat_function(fun = dnorm, args = list(mean = mean(OLS_env$residuals),
-                                         sd = sd(OLS_env$residuals)),
-                color = "red")
-dev.off() 
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{OLS_env}\hlopt{$}\hlstd{residuals} \hlopt{%>%} \hlcom{# Pipe the residuals to a data frame}
+  \hlkwd{data.frame}\hlstd{()} \hlopt{%>%} \hlcom{# Pipe the data frame to ggplot}
+  \hlkwd{ggplot}\hlstd{(}\hlkwd{aes}\hlstd{(OLS_env}\hlopt{$}\hlstd{residuals))} \hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{adjust} \hlstd{=} \hlnum{2}\hlstd{)} \hlopt{+}
+  \hlkwd{stat_function}\hlstd{(}\hlkwc{fun} \hlstd{= dnorm,} \hlkwc{args} \hlstd{=} \hlkwd{list}\hlstd{(}\hlkwc{mean} \hlstd{=} \hlkwd{mean}\hlstd{(OLS_env}\hlopt{$}\hlstd{residuals),}
+                                         \hlkwc{sd} \hlstd{=} \hlkwd{sd}\hlstd{(OLS_env}\hlopt{$}\hlstd{residuals)),}
+                \hlkwc{color} \hlstd{=} \hlstr{"red"}\hlstd{)}
+\hlkwd{dev.off}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}
   \centering
@@ -209,15 +413,18 @@ dev.off()
 
 Figure \ref{fig:densityideology} indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution.  Our final ocular examination of the residuals will be a quartile plot (using the \texttt{stat_qq} function from the \texttt{ggplot2} package).
 
-<<echo=2:3,results="hide">>=
-pdf("QQideology.pdf")
-OLS_env$residuals %>% # Pipe the residuals to a data frame
-  data.frame() %>% # Pipe the data frame to ggplot
-  ggplot(aes(sample = OLS_env$residuals)) +
-  stat_qq() +
-  stat_qq_line()
-dev.off() 
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{OLS_env}\hlopt{$}\hlstd{residuals} \hlopt{%>%} \hlcom{# Pipe the residuals to a data frame}
+  \hlkwd{data.frame}\hlstd{()} \hlopt{%>%} \hlcom{# Pipe the data frame to ggplot}
+  \hlkwd{ggplot}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{sample} \hlstd{= OLS_env}\hlopt{$}\hlstd{residuals))} \hlopt{+}
+  \hlkwd{stat_qq}\hlstd{()} \hlopt{+}
+  \hlkwd{stat_qq_line}\hlstd{()}
+\hlkwd{dev.off}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 
 \begin{figure}
@@ -230,10 +437,21 @@ dev.off()
 
 According to Figure \ref{fig:QQideology}, it appears as if the residuals are normally distributed except for the tails of the distribution.   Taken together the graphical representations of the residuals suggest modest non-normality.  As a final step, we can conduct a formal Shapiro-Wilk test for normality.  The null hypothesis for a Shapiro-Wilk test is a normal distribution, so we do not want to see a significant p-value.
 
-<<>>=
-#a significant value p-value potentially indicates the data is not normally distributed.
-shapiro.test(OLS_env$residuals)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#a significant value p-value potentially indicates the data is not normally distributed.}
+\hlkwd{shapiro.test}\hlstd{(OLS_env}\hlopt{$}\hlstd{residuals)}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  OLS_env$residuals
+## W = 0.98901, p-value = 5.51e-13
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 The Shapiro-Wilk test confirms what we observed in the graphical displays of the model residuals -- the residuals are not normally distributed.   Recall that our dependent variable (gccrsk) appears to have a non-normal distribution. This could be the root of the non-normality found in  the model residuals. Given this information, steps must be taken to assure that the model residuals meet the required OLS assumptions. One possibility would be to transform the dependent variable (glbccrisk) in order to induce a normal distribution. Another might be to add a polynomial term to the independent variable (ideology) as was done above. In either case, you would need to recheck the residuals in order to see if the model revisions adequately dealt with the problem. We suggest that you do just that!
 
@@ -241,11 +459,13 @@ The Shapiro-Wilk test confirms what we observed in the graphical displays of the
 
 Testing for non-constant variance (heteroscedasticity) in a model is fairly straightforward. We can start by creating a spread-level plot  that fits the studentized residuals against the model's fitted values.  A line with a non-zero slope is indicative of heteroscedasticity. Figure \ref{fig:spreadlvlideology} displays the spread-level plot from the \texttt{car} package.
 
-<<echo=2,results="hide">>=
-pdf("spreadlvlideology.pdf")
-spreadLevelPlot(OLS_env)
-dev.off() 
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{spreadLevelPlot}\hlstd{(OLS_env)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}
   \centering
@@ -257,10 +477,19 @@ dev.off()
 
 The negative slope on the red line in Figure \ref{fig:spreadlvlideology} indicates the model may contain heteroscedasticity.  We can also perform  a formal test for non constant variance.  The null hypothesis is constant variance, so we do not want to see a significant p-value.
 
-<<>>=
-#a significant value indicates potential heteroscedasticity issues.
-ncvTest(OLS_env)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#a significant value indicates potential heteroscedasticity issues.}
+\hlkwd{ncvTest}\hlstd{(OLS_env)}
+\end{alltt}
+\begin{verbatim}
+## Non-constant Variance Score Test 
+## Variance formula: ~ fitted.values 
+## Chisquare = 68.107    Df = 1     p = 1.548597e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 The significant p-value on the non-constant variance test informs us that there is a problem with heteroscedasticity in the model.  This is yet another violation of the core assumptions of OLS regression, and it brings into doubt our hypothesis tests.
 
@@ -270,20 +499,32 @@ There are a number of ways to examine outlying observations in an OLS regression
 
 One of the first things we can do is perform a Bonferroni Outlier Test. The Bonferroni Outlier Tests uses a $t$ distribution to test whether the model's largest studentized residual value's outlier status is statistically different from the other observations in the model.  A significant p-value indicates an extreme outlier that warrants further examination.  We use the \texttt{outlierTest} function in the \texttt{car} package to perform a Bonferroni Outlier Test.
 
-<<>>=
-#a significant p-value indicates extreme case for review
-outlierTest(OLS_env)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#a significant p-value indicates extreme case for review}
+\hlkwd{outlierTest}\hlstd{(OLS_env)}
+\end{alltt}
+\begin{verbatim}
+## No Studentized residuals with Bonferonni p < 0.05
+## Largest |rstudent|:
+##      rstudent unadjusted p-value Bonferonni p
+## 589 -3.530306         0.00042255           NA
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 According to the R output, the Bonferroni p-value for the largest (absolute) residual is not statistically significant.  While this test is important for identifying a potentially significant outlying  observation, it is not a panacea for checking for patterns in outlying data.  Next we will examine the model's df.betas in order to see which observations exert the most influence on the model's regression coefficients. $Dfbetas$ are measures of how much the regression coefficient changes when observation $i$ is omitted.  Larger values indicate an observation that has considerable influence on the model.   
 
 A useful method for finding dfbeta obervations is to use the \texttt{dfbetaPlots} function in the \texttt{car} package.  We specify the option \texttt{id.n=2} to show the two largest df.betas.  See figure \ref{fig:dfbetaPlots}.
 
-<<echo=2,results="hide">>=
-pdf("dfbetaPlots.pdf")
-plotdb<-dfbetaPlots(OLS_env, id.n=3)
-dev.off() 
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plotdb}\hlkwb{<-}\hlkwd{dfbetaPlots}\hlstd{(OLS_env,} \hlkwc{id.n}\hlstd{=}\hlnum{3}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}
   \centering
@@ -293,22 +534,42 @@ dev.off()
 \end{figure}
 \FloatBarrier
 
-<<>>=
-#  Check the observations with high dfbetas.
-#  We see the values 589 and 615 returned.  
-#  We only want to see results from columns gccrsk and ideology in tbur.data.
-ds[c(589,615),c("glbcc_risk", "ideol")]
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  Check the observations with high dfbetas.}
+\hlcom{#  We see the values 589 and 615 returned.  }
+\hlcom{#  We only want to see results from columns gccrsk and ideology in tbur.data.}
+\hlstd{ds[}\hlkwd{c}\hlstd{(}\hlnum{589}\hlstd{,}\hlnum{615}\hlstd{),}\hlkwd{c}\hlstd{(}\hlstr{"glbcc_risk"}\hlstd{,} \hlstr{"ideol"}\hlstd{)]}
+\end{alltt}
+\begin{verbatim}
+##     glbcc_risk ideol
+## 589          0     2
+## 615          0     2
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 These observations are interesting because they identify a potential problem in our model specification.  Both observations are considered outliers because the respondents self-identified as ``liberal" (ideology = 1) and rated their perceived  risk of global climate change as 0.  These values deviate substantially from the norm for other strong liberals in the dataset.  Remember, as we saw earlier, our model has a problem with non-linearity -- these outlying observations seem to corroborate this finding.  Examination of outliers sheds some light on the issue.
 
 Finally, we can produce a plot that combines studentized residuals, ``hat values", and Cook's D distances (these are measures of the amount of influence observations have on the model) using circles as an indicator of influence -- the larger the circle, the greater the influence.  Figure \ref{fig:bubbleideology2} displays the combined influence plot.  In addition, the \texttt{influencePlot} function returns the values of greatest influence.
 
-<<echo=2>>=
-pdf("bubbleideology.pdf")
-influencePlot(OLS_env)
-dev.off() 
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{influencePlot}\hlstd{(OLS_env)}
+\end{alltt}
+\begin{verbatim}
+##         StudRes         Hat        CookD
+## 20   0.09192603 0.002172497 9.202846e-06
+## 30   0.09192603 0.002172497 9.202846e-06
+## 589 -3.53030574 0.001334528 8.289419e-03
+## 615 -3.53030574 0.001334528 8.289419e-03
+## pdf 
+##   2
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}
   \centering
@@ -320,10 +581,23 @@ dev.off()
 
 \noindent Figure \ref{fig:bubbleideology2} indicates that there are a number of cases that warrant further examination.  We are already familiar with 589 and 615  Let's add 20, 30, 90 and 1052.
 
-<<>>=
-#review the results
-ds[c(589,615,20,30,90,1052),c("glbcc_risk", "ideol")]
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#review the results}
+\hlstd{ds[}\hlkwd{c}\hlstd{(}\hlnum{589}\hlstd{,}\hlnum{615}\hlstd{,}\hlnum{20}\hlstd{,}\hlnum{30}\hlstd{,}\hlnum{90}\hlstd{,}\hlnum{1052}\hlstd{),}\hlkwd{c}\hlstd{(}\hlstr{"glbcc_risk"}\hlstd{,} \hlstr{"ideol"}\hlstd{)]}
+\end{alltt}
+\begin{verbatim}
+##      glbcc_risk ideol
+## 589           0     2
+## 615           0     2
+## 20           10     1
+## 30           10     1
+## 90           10     1
+## 1052          3     6
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 One important take-away from a visual examination of these observations is that there do not appear to be any completely mis-coded or invalid data affecting our model. In general, even the most influential observations do not appear to be implausible cases.  Observations 589 and 615 \footnote{Of note, observations 20, 30, and 90 and 1052 are returned as well.  There doesn't appear to be anything special about these four observations.  Part of this may be due to the bivariate relationship and how the \texttt{influcencePlot} function weights the data.  The results are included for your review.} present an interesting problem regarding  theoretical and model specification. These observations represent respondents who self-reported as  ``liberal" (ideology=2) and also rated the perceived risk of global climate change as 0 out of 10. These observations therefore deviate from the model's expected values (``strong liberal" respondents, on average, believed global climate change represents a high risk).  Earlier in our diagnostic testing we found a problem with non-linearity. Taken together, it looks like the non-linearity in our model is due to observations at the ideological extremes.  One way we can deal with this problem is to include a squared ideology variable (a polynomial) in the model, as illustrated earlier in this chapter. However, it is also important to note this non-linear relationship in the theoretical conceptualization of our model. Perhaps there is something special about people with extreme ideologies that needs to be taken into account when attempting to predict perceived risk of global climate change. This finding should also inform our examination of post-estimation predictions -- something that will be covered later in this text.
 
@@ -345,3 +619,4 @@ Evidence of non-linearity in the residuals presents a thorny problem. This is a 
 \section{Summary} 
 
 Now you are in a position to employ diagnostics -- both visual and statistical -- to evaluate the results of your statistical models. Note that, once you have made your model corrections, you will need to regenerate and re-evaluate your model residuals to determine whether the problem has been ameliorated. Think of diagnostics as an iterative process in which you use the model results to evaluate, diagnose, revise re-run, and re-evaluate your model. This is where the real learning happens, as you challenge your theory (as specified in your model) with observed data. So -- have at it!
+\end{document}
