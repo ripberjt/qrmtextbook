@@ -1,9 +1,135 @@
-\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+\documentclass[11pt,openany]{book}
+\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
 
-<<echo=FALSE,results="hide", message=F,warning=F>>=
-ds <- read.csv("Class Data Set.csv")
-library(tidyverse)
-@
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\newcommand{\SweaveOpts}[1]{}  % do not interfere with LaTeX
+\newcommand{\SweaveInput}[1]{} % because they are not real TeX commands
+\newcommand{\Sexpr}[1]{}       % will only be parsed by R
+
+
+\usepackage[utf8]{inputenc} 
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage[grey]{quotchap}
+\usepackage{xcolor}
+\usepackage[left=1in, top=1in, right=1.5in, bottom=1in, headsep=.5in]
+{geometry}
+\usepackage{fancyhdr, blindtext}
+\usepackage{diagbox}
+\usepackage{hyperref} 
+\usepackage{placeins}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}
+\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by 
+
+
+\fancyhf{}
+\fancyhead[LE]{\slshape \rightmark} 
+\fancyhead[RE]{\thepage}
+\fancyhead[RO]{\slshape \leftmark} 
+\fancyhead[LO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\pagestyle{fancy}
+%% new command for greybox
+\long\def\greybox#1{%
+    \newbox\contentbox%
+    \newbox\bkgdbox%
+    \setbox\contentbox\hbox to \hsize{%
+        \vtop{
+            \kern\columnsep
+            \hbox to \hsize{%
+                \kern\columnsep%
+                \advance\hsize by -2\columnsep%
+                \setlength{\textwidth}{\hsize}%
+                \vbox{
+                    \parskip=\baselineskip
+                    \parindent=0bp
+                    #1
+                }%
+                \kern\columnsep%
+            }%
+            \kern\columnsep%
+        }%
+    }%
+    \setbox\bkgdbox\vbox{
+        \pdfliteral{0.85 0.85 0.85 rg}
+        \hrule width  \wd\contentbox %
+               height \ht\contentbox %
+               depth  \dp\contentbox
+        \pdfliteral{0 0 0 rg}
+    }%
+    \wd\bkgdbox=0bp%
+    \vbox{\hbox to \hsize{\box\bkgdbox\box\contentbox}}%
+    \vskip\baselineskip%
+}
+%% make greybox (grbox) a float
+\usepackage{float}
+\newfloat{grbox}{thp}{lop}[section]
+\floatname{grbox}{Grey Box}
+
+
+
+\begin{document}
+
+
+
 
 \chapter{Bi-Variate Hypothesis Testing and Model Fit}
 
@@ -27,20 +153,47 @@ To test this hypothesis, we run the following code in \texttt{R}.
 
 Before we begin, for this chapter, we need to make a special data set that just contains the variables \texttt{glbccrisk} and \texttt{ideol} with missing values removed.
 
-<<echo=TRUE,eval=TRUE>>=
-#Filtering a data set with only variables glbcc_risk and ideol
-ds.omit <- filter(ds) %>%
-  select(glbcc_risk,ideol) %>%
-  na.omit()
-#Run the na.omit function to removed the value
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#Filtering a data set with only variables glbcc_risk and ideol}
+\hlstd{ds.omit} \hlkwb{<-} \hlkwd{filter}\hlstd{(ds)} \hlopt{%>%}
+  \hlkwd{select}\hlstd{(glbcc_risk,ideol)} \hlopt{%>%}
+  \hlkwd{na.omit}\hlstd{()}
+\hlcom{#Run the na.omit function to removed the value}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
-@  
 
-
-<<echo=TRUE,eval=TRUE>>=
-ols1 <- lm(glbcc_risk ~ ideol, data = ds.omit)
-summary(ols1)
-@  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ols1} \hlkwb{<-} \hlkwd{lm}\hlstd{(glbcc_risk} \hlopt{~} \hlstd{ideol,} \hlkwc{data} \hlstd{= ds.omit)}
+\hlkwd{summary}\hlstd{(ols1)}
+\end{alltt}
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = glbcc_risk ~ ideol, data = ds.omit)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -8.726 -1.633  0.274  1.459  6.506 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 10.81866    0.14189   76.25   <2e-16 ***
+## ideol       -1.04635    0.02856  -36.63   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.479 on 2511 degrees of freedom
+## Multiple R-squared:  0.3483,	Adjusted R-squared:  0.348 
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 To know whether to accept of reject the null hypothesis, we need to first understand the standard error associated with the model and our coefficients. We start, therefore, with  consideration of the residual standard error of the regression model. 
 
@@ -54,13 +207,20 @@ S_{E}=\sqrt{\frac{\Sigma E^{2}_{i}}{n-2}}
 \end{equation}
 
 To calculate this in \texttt{R}, based on the model we just ran,  we create an object called \texttt{Se} and use the \texttt{sqrt} and \texttt{sum} commands. 
-<<>>=
-Se <- sqrt(sum(ols1$residuals^2)/(length(ds.omit$glbcc_risk)-2))
-Se
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Se} \hlkwb{<-} \hlkwd{sqrt}\hlstd{(}\hlkwd{sum}\hlstd{(ols1}\hlopt{$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}\hlopt{/}\hlstd{(}\hlkwd{length}\hlstd{(ds.omit}\hlopt{$}\hlstd{glbcc_risk)}\hlopt{-}\hlnum{2}\hlstd{))}
+\hlstd{Se}
+\end{alltt}
+\begin{verbatim}
+## [1] 2.479022
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \noindent Note that this result matches the result provided by the \texttt{summary} function in \texttt{R}, as shown above.  
 
-For our model, the results indicate that: $Y_{i} =$ \Sexpr{ols1$coef[1]} \Sexpr{ols1$coef[2]}$X_{i} + E_{i}$.  Another sample of 2513 observations would almost certainly lead to different estimates for $A$ and $B$.  If we drew many such samples, we’d get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance.  To do that, we calculate the standard error of the slope and intercept coefficients, $SE(B)$ and $SE(A)$. These standard errors are our estimates of how much variation we would expect in the estimates of $B$ and $A$ across different samples. We use them to evaluate whether $B$ and $A$ are larger that would be expected to occur by chance, if the real values of $B$ and/or $A$ are zero (the null hypotheses).
+For our model, the results indicate that: $Y_{i} =$ 10.8186624 -1.0463463$X_{i} + E_{i}$.  Another sample of 2513 observations would almost certainly lead to different estimates for $A$ and $B$.  If we drew many such samples, we’d get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance.  To do that, we calculate the standard error of the slope and intercept coefficients, $SE(B)$ and $SE(A)$. These standard errors are our estimates of how much variation we would expect in the estimates of $B$ and $A$ across different samples. We use them to evaluate whether $B$ and $A$ are larger that would be expected to occur by chance, if the real values of $B$ and/or $A$ are zero (the null hypotheses).
 
 The standard error for $B$, $SE(B)$ is:
 \begin{equation}
@@ -79,30 +239,59 @@ Again, the $SE$ is the residual standard error, as shown in equation 9.1.
 
 We can calculate the $SE$ of $A$ and $B$ in \texttt{R} in a few steps. First, we create an object \texttt{TSSx} that is the total sum of squares for the $X$ variable. 
 
-<<>>=
-TSSx <- sum((ds.omit$ideol-mean(ds.omit$ideol, na.rm = TRUE))^2)
-TSSx
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{TSSx} \hlkwb{<-} \hlkwd{sum}\hlstd{((ds.omit}\hlopt{$}\hlstd{ideol}\hlopt{-}\hlkwd{mean}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{))}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{TSSx}
+\end{alltt}
+\begin{verbatim}
+## [1] 7532.946
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \noindent Then, we create an object called \texttt{SEa}.
-<<>>=
-SEa <- Se*sqrt((1/length(ds.omit$glbcc_risk))+(mean(ds.omit$ideol,na.rm=T)^2/TSSx))
-SEa
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{SEa} \hlkwb{<-} \hlstd{Se}\hlopt{*}\hlkwd{sqrt}\hlstd{((}\hlnum{1}\hlopt{/}\hlkwd{length}\hlstd{(ds.omit}\hlopt{$}\hlstd{glbcc_risk))}\hlopt{+}\hlstd{(}\hlkwd{mean}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol,}\hlkwc{na.rm}\hlstd{=T)}\hlopt{^}\hlnum{2}\hlopt{/}\hlstd{TSSx))}
+\hlstd{SEa}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.1418895
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \noindent Finally, we create  \texttt{SEb}.
-<<>>=
-SEb <- Se/(sqrt(TSSx))
-SEb
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{SEb} \hlkwb{<-} \hlstd{Se}\hlopt{/}\hlstd{(}\hlkwd{sqrt}\hlstd{(TSSx))}
+\hlstd{SEb}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.02856262
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 Using the standard errors, we can determine how likely it is that our estimate of $\beta$ differs from $0$; that is how many standard errors our estimate is away from $0$. To determine this we use the $t$ value. The $t$ score is derived by dividing the regression coefficient by its standard error. For our model, the $t$ value for $\beta$ is as follows: 
-<<>>=
-t <- ols1$coef[2]/SEb
-t
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{t} \hlkwb{<-} \hlstd{ols1}\hlopt{$}\hlstd{coef[}\hlnum{2}\hlstd{]}\hlopt{/}\hlstd{SEb}
+\hlstd{t}
+\end{alltt}
+\begin{verbatim}
+##     ideol 
+## -36.63342
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
-The $t$ value for our $B$ is \Sexpr{summary(ols1)$coef[2,"t value"]}, meaning that $B$ is \Sexpr{summary(ols1)$coef[2,"t value"]} standard errors away from zero. We can then ask: What is the probability, $p$ \textit{value}, of obtaining this result if $\beta=0$? According to the results shown earlier, $p=2e-16$. That is remarkably close to zero. This result indicates that we can reject the null hypothesis
+The $t$ value for our $B$ is -36.6334214, meaning that $B$ is -36.6334214 standard errors away from zero. We can then ask: What is the probability, $p$ \textit{value}, of obtaining this result if $\beta=0$? According to the results shown earlier, $p=2e-16$. That is remarkably close to zero. This result indicates that we can reject the null hypothesis
 that $\beta=0$. 
 
 In addition, we can calculate the confidence interval (CI) for our estimate of $B$.  This means that in 95 out of 100 repeated applications, the confidence interval will contain $\beta$. 
@@ -114,15 +303,36 @@ In the following example, we calculate a $95\%$ CI. The CI is calculated as foll
 \end{equation}
 
 We can easily calculate this in \texttt{R}. First, we calculate the upper limit then the lower limit and then we use the \texttt{confint} function to check.   
-<<>>=
-Bhi <- ols1$coef[2]-1.96*SEb
-Bhi
-Blow <- ols1$coef[2]+1.96*SEb
-Blow
-confint(ols1)
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Bhi} \hlkwb{<-} \hlstd{ols1}\hlopt{$}\hlstd{coef[}\hlnum{2}\hlstd{]}\hlopt{-}\hlnum{1.96}\hlopt{*}\hlstd{SEb}
+\hlstd{Bhi}
+\end{alltt}
+\begin{verbatim}
+##     ideol 
+## -1.102329
+\end{verbatim}
+\begin{alltt}
+\hlstd{Blow} \hlkwb{<-} \hlstd{ols1}\hlopt{$}\hlstd{coef[}\hlnum{2}\hlstd{]}\hlopt{+}\hlnum{1.96}\hlopt{*}\hlstd{SEb}
+\hlstd{Blow}
+\end{alltt}
+\begin{verbatim}
+##      ideol 
+## -0.9903636
+\end{verbatim}
+\begin{alltt}
+\hlkwd{confint}\hlstd{(ols1)}
+\end{alltt}
+\begin{verbatim}
+##                 2.5 %     97.5 %
+## (Intercept) 10.540430 11.0968947
+## ideol       -1.102355 -0.9903377
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
-As shown, the upper limit of our estimated $B$ is \Sexpr{Blow}, which is far below $0$, providing further support for rejecting $H_0$. 
+As shown, the upper limit of our estimated $B$ is -0.9903636, which is far below $0$, providing further support for rejecting $H_0$. 
 
 So, using our example data, we tested the working hypothesis that political ideology is negatively related to expressed risk of global warming to people and the environment. Using simple OLS regression, we find support for that working hypothesis, and can reject the null.
 
@@ -139,10 +349,17 @@ The sample covariance for a simple regression model is defined as:
 S_{XY} = \frac {\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{n-1}
 \end{equation}
 Intuitively, this measure tells you, on average, whether a higher value of $X$ (relative to its mean) is associated with a higher or lower value of $Y$. Is the association negative or positive? Covariance can be obtained quite simply in \texttt{R} by using the the \texttt{cov} function.
-<<>>=
-Sxy <- cov(ds.omit$ideol, ds.omit$glbcc_risk)
-Sxy
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Sxy} \hlkwb{<-} \hlkwd{cov}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol, ds.omit}\hlopt{$}\hlstd{glbcc_risk)}
+\hlstd{Sxy}
+\end{alltt}
+\begin{verbatim}
+## [1] -3.137767
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 The problem with covariance is that its magnitude will be entirely dependent on the scales used to measure $X$ and $Y$. That is, it is non-standard, and its meaning will vary depending on what it is that is being measured. In order to compare sample covariation across different samples and different measures, we use the sample \texttt{correlation}.
 
@@ -154,22 +371,48 @@ r=\frac{S_{XY}}{S_{X}S_{Y}}=\frac{\Sigma(X_{i}-\bar{X})(Y_{i}-\bar
 \end{equation}
 
 To calculate this in \texttt{R}, we first make an object for $S_{X}$ and $S_{Y}$ using the \texttt{sd} function. 
-<<>>=
-Sx <- sd(ds.omit$ideol)
-Sx
-Sy <- sd(ds.omit$glbcc_risk)
-Sy
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Sx} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol)}
+\hlstd{Sx}
+\end{alltt}
+\begin{verbatim}
+## [1] 1.7317
+\end{verbatim}
+\begin{alltt}
+\hlstd{Sy} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.omit}\hlopt{$}\hlstd{glbcc_risk)}
+\hlstd{Sy}
+\end{alltt}
+\begin{verbatim}
+## [1] 3.070227
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \noindent Then to find $r$:
-<<>>=
-r <- Sxy/(Sx*Sy)
-r
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{r} \hlkwb{<-} \hlstd{Sxy}\hlopt{/}\hlstd{(Sx}\hlopt{*}\hlstd{Sy)}
+\hlstd{r}
+\end{alltt}
+\begin{verbatim}
+## [1] -0.5901706
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \noindent To check this we can use the \texttt{cor} function in \texttt{R}. 
-<<>>=
-rbyR <- cor(ds.omit$ideol, ds.omit$glbcc_risk)
-rbyR
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{rbyR} \hlkwb{<-} \hlkwd{cor}\hlstd{(ds.omit}\hlopt{$}\hlstd{ideol, ds.omit}\hlopt{$}\hlstd{glbcc_risk)}
+\hlstd{rbyR}
+\end{alltt}
+\begin{verbatim}
+## [1] -0.5901706
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 So what does the correlation coefficient mean? The values range from +1 to -1, and a value of +1 means  there is a perfect positive relationship between $X$ and $Y$. Each increment of increase in $X$ is matched by a constant increase in $Y$ -- with all observations lining up neatly on a positive slope. A correlation  coefficient of -1, a perfect negative relationship, would indicate that each increment of increase in $X$ corresponds to a constant decrease in $Y$ -- or a negatively sloped line. A correlation coefficient of zero would describe \texttt{no relationship} between $X$ and $Y$.
 
@@ -222,25 +465,53 @@ The components of $R^{2}$ are illustrated in Figure \ref{fig:rsquared}. As shown
 \end{figure}
 
 To calculate $R^{2}$ ``by hand" in \texttt{R}, we must first determine the total sum of squares, which is the sum of the squared differences of the observed values of $Y$ from the mean of $Y$, $\Sigma(Y_{i}-\bar Y)^{2}$. Using \texttt{R}, we can create an object called \texttt{TSS}. 
-<<>>=
-TSS <- sum((ds.omit$glbcc_risk-mean(ds.omit$glbcc_risk))^2)
-TSS
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{TSS} \hlkwb{<-} \hlkwd{sum}\hlstd{((ds.omit}\hlopt{$}\hlstd{glbcc_risk}\hlopt{-}\hlkwd{mean}\hlstd{(ds.omit}\hlopt{$}\hlstd{glbcc_risk))}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{TSS}
+\end{alltt}
+\begin{verbatim}
+## [1] 23678.85
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 Remember that $R^{2}$ is the ratio of the explained sum of squares to the total sum of squares (\textit{ESS/TSS}). Therefore to calculate $R^{2}$ we need to create an object called \texttt{RSS}, the squared sum of our model residuals. 
-<<>>=
-RSS <- sum(ols1$residuals^2)
-RSS
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{RSS} \hlkwb{<-} \hlkwd{sum}\hlstd{(ols1}\hlopt{$}\hlstd{residuals}\hlopt{^}\hlnum{2}\hlstd{)}
+\hlstd{RSS}
+\end{alltt}
+\begin{verbatim}
+## [1] 15431.48
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 Next, we create and object called \texttt{ESS}, which is equal to TSS-RSS.
-<<>>=
-ESS <- TSS-RSS
-ESS
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ESS} \hlkwb{<-} \hlstd{TSS}\hlopt{-}\hlstd{RSS}
+\hlstd{ESS}
+\end{alltt}
+\begin{verbatim}
+## [1] 8247.376
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 Finally, we calculate the $R^{2}$. 
-<<>>=
-R2 <- ESS/TSS
-R2
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{R2} \hlkwb{<-} \hlstd{ESS}\hlopt{/}\hlstd{TSS}
+\hlstd{R2}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.3483013
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 Note--happily--that the $R^{2}$, calculated by ``by hand" in \texttt{R} matches the results provided by the \texttt{summary} command.
 
 The values for $R^{2}$ can range from zero to 1. In the simple regression case, a value of 1 indicates that the modeled coefficient ($B$) "accounts for" all of the variation in $Y$. Put differently, all of the squared deviations in $Y_{i}$ around the mean ($\hat{Y}$) are in ESS, with none in the residual (RSS).\footnote{Note that with a \textbf{bivariate model}, $R^{2}$ is equal to the square of the correlation coefficient.} A value of zero would indicate that all of the  deviations in $Y_{i}$ around the mean are in RSS -- all residual or ``error". Our example shows that the variation in political ideology (our $X$) accounts for roughly 34.8 percent of the variation in our measure of perceived risk of global warming ($Y$). 
@@ -249,12 +520,15 @@ The values for $R^{2}$ can range from zero to 1. In the simple regression case, 
 
 The \texttt{ggplot2} package provides a mechanism for viewing the effect of ideology on the dependent variable of perceived risk of global warming. Adding \texttt{geom_smooth} will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares.  Graphically (Figure \ref{fig:effectsplot}), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.
 
-<<echo=2:4,results="hide">>=
-pdf("effectsplot.pdf")
-ggplot(ds.omit, aes(ideol, glbcc_risk)) +
-  geom_smooth(method = lm)
-dev.off()
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ggplot}\hlstd{(ds.omit,} \hlkwd{aes}\hlstd{(ideol, glbcc_risk))} \hlopt{+}
+  \hlkwd{geom_smooth}\hlstd{(}\hlkwc{method} \hlstd{= lm)}
+\hlkwd{dev.off}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}[!htp]
 \includegraphics[width=3.5in, height=3.5in]{../09_InterpretSimple/effectsplot.pdf}%filename
@@ -264,11 +538,16 @@ dev.off()
 \noindent \textbf{Cleaning up the R Environment}
 
 If you recall, at the beginning of the chapter, we created several temporary data sets.  We should take the time to clear up our workspace for the next chapter.
-<<>>=
-#  we can clean up from the temporary data sets for this chapter.
-rm(ds.omit) #remove the omit data set
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#  we can clean up from the temporary data sets for this chapter.}
+\hlkwd{rm}\hlstd{(ds.omit)} \hlcom{#remove the omit data set}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \section{Summary} 
 
 This chapter has focused on two key aspects of simple regression models -- hypothesis testing and  measures of the goodness of model fit. With respect to the former, we focused on the residual standard error, and its role in determining the probability that our model estimates, $B$ and $A$, are just random departures from a population in which $\beta$ and $\alpha$ are zero. We showed, using \texttt{R}, how to calculate the residual standard errors for $A$ and $B$ and, using them, to calculate the t-statistics and associated probabilities for hypothesis testing. For model fit, we focused on model covariation and correlation, and finished up with a discussion of the coefficient of determination -- $R^{2}$. So now you are in a position to use simple regression, and to wage unremitting geek-war on those whose models are endowed with lesser $R^{2}s$.
+\end{document}
