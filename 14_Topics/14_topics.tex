@@ -1,9 +1,135 @@
-\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+\documentclass[11pt,openany]{book}
+\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
 
-<<echo=FALSE,results="hide", message=F,warning=F>>=
-ds <- read.csv("Class Data Set.csv")
-library(tidyverse)
-@
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\newcommand{\SweaveOpts}[1]{}  % do not interfere with LaTeX
+\newcommand{\SweaveInput}[1]{} % because they are not real TeX commands
+\newcommand{\Sexpr}[1]{}       % will only be parsed by R
+
+
+\usepackage[utf8]{inputenc} 
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage[grey]{quotchap}
+\usepackage{xcolor}
+\usepackage[left=1in, top=1in, right=1.5in, bottom=1in, headsep=.5in]
+{geometry}
+\usepackage{fancyhdr, blindtext}
+\usepackage{diagbox}
+\usepackage{hyperref} 
+\usepackage{placeins}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}
+\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by 
+
+
+\fancyhf{}
+\fancyhead[LE]{\slshape \rightmark} 
+\fancyhead[RE]{\thepage}
+\fancyhead[RO]{\slshape \leftmark} 
+\fancyhead[LO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\pagestyle{fancy}
+%% new command for greybox
+\long\def\greybox#1{%
+    \newbox\contentbox%
+    \newbox\bkgdbox%
+    \setbox\contentbox\hbox to \hsize{%
+        \vtop{
+            \kern\columnsep
+            \hbox to \hsize{%
+                \kern\columnsep%
+                \advance\hsize by -2\columnsep%
+                \setlength{\textwidth}{\hsize}%
+                \vbox{
+                    \parskip=\baselineskip
+                    \parindent=0bp
+                    #1
+                }%
+                \kern\columnsep%
+            }%
+            \kern\columnsep%
+        }%
+    }%
+    \setbox\bkgdbox\vbox{
+        \pdfliteral{0.85 0.85 0.85 rg}
+        \hrule width  \wd\contentbox %
+               height \ht\contentbox %
+               depth  \dp\contentbox
+        \pdfliteral{0 0 0 rg}
+    }%
+    \wd\bkgdbox=0bp%
+    \vbox{\hbox to \hsize{\box\bkgdbox\box\contentbox}}%
+    \vskip\baselineskip%
+}
+%% make greybox (grbox) a float
+\usepackage{float}
+\newfloat{grbox}{thp}{lop}[section]
+\floatname{grbox}{Grey Box}
+
+
+
+\begin{document}
+
+
+
 
 
 
@@ -52,16 +178,42 @@ For a case with multiple nominal categories (e.g., region) the procedure is as f
 the North would get a value of 1 in the North dummy, and zeros in all others. Similarly, East and West observations would receive a 1 in their respective dummy category and zeros elsewhere. The observations from the South region would be given values of zero in all three categories. The interpretation of the partial regression coefficients for each of the three dummies would then be the estimated difference in $Y$ between observations from the North, East and West and those from the South.
 
 Now let's walk through an example of an $R$ model with a dummy variable and the interpretation of that model. We will predict climate change risk using age, education, income, ideology, and ``gend", a dummy variable for gender for which 1 = male and 0 = female. 
-<<echo=FALSE>>=
-ds.temp <- filter(ds) %>% 
-  select("glbcc_risk","age","education","income","ideol","gender") %>% na.omit()
-@ 
 
-<<>>=
-ols1 <- lm(glbcc_risk ~ age + education + income + ideol + gender, data = ds.temp)
-summary(ols1)
-@ 
-First note that the inclusion of the dummy variables doe not change the manner in which you interpret the other (non-dummy) variables in the model; the estimated partial regression coefficients for age, education, income and ideology should all be interpreted as described in the prior chapter. Note that the estimated partial regression coefficient for ``gender" is negative and statistically significant, indicating that males are less likely to be concerned about the environment than are females. The estimate indicates that, all else being equal, the average difference between men and women on the climate change risk scale is \Sexpr{ols1$coef[6]}. 
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ols1} \hlkwb{<-} \hlkwd{lm}\hlstd{(glbcc_risk} \hlopt{~} \hlstd{age} \hlopt{+} \hlstd{education} \hlopt{+} \hlstd{income} \hlopt{+} \hlstd{ideol} \hlopt{+} \hlstd{gender,} \hlkwc{data} \hlstd{= ds.temp)}
+\hlkwd{summary}\hlstd{(ols1)}
+\end{alltt}
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = glbcc_risk ~ age + education + income + ideol + 
+##     gender, data = ds.temp)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -8.8976 -1.6553  0.1982  1.4814  6.7046 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  1.094e+01  3.092e-01  35.379  < 2e-16 ***
+## age         -4.062e-03  3.671e-03  -1.106  0.26865    
+## education    6.653e-02  2.997e-02   2.220  0.02653 *  
+## income      -2.372e-06  9.083e-07  -2.611  0.00908 ** 
+## ideol       -1.032e+00  2.998e-02 -34.426  < 2e-16 ***
+## gender      -2.221e-01  1.051e-01  -2.112  0.03475 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.431 on 2265 degrees of freedom
+## Multiple R-squared:  0.364,	Adjusted R-squared:  0.3626 
+## F-statistic: 259.3 on 5 and 2265 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+First note that the inclusion of the dummy variables doe not change the manner in which you interpret the other (non-dummy) variables in the model; the estimated partial regression coefficients for age, education, income and ideology should all be interpreted as described in the prior chapter. Note that the estimated partial regression coefficient for ``gender" is negative and statistically significant, indicating that males are less likely to be concerned about the environment than are females. The estimate indicates that, all else being equal, the average difference between men and women on the climate change risk scale is -0.2221178. 
 
 %% in future editions I want to add a table showing how to code different kinds of dummy variables
 
@@ -85,22 +237,42 @@ A ``slope dummy" is a special kind of interaction in which a dummy variable  is 
 
 We can test our hypothesized interaction in \texttt{R}, controlling for the effects of age
 and income. 
-<<>>=
-ols2 <- lm(glbcc_risk ~ age + income + education + gender * ideol, data = ds.temp)
-summary(ols2)
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ols2} \hlkwb{<-} \hlkwd{lm}\hlstd{(glbcc_risk} \hlopt{~} \hlstd{age} \hlopt{+} \hlstd{income} \hlopt{+} \hlstd{education} \hlopt{+} \hlstd{gender} \hlopt{*} \hlstd{ideol,} \hlkwc{data} \hlstd{= ds.temp)}
+\hlkwd{summary}\hlstd{(ols2)}
+\end{alltt}
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = glbcc_risk ~ age + income + education + gender * 
+##     ideol, data = ds.temp)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -8.718 -1.704  0.166  1.468  6.929 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   1.060e+01  3.297e-01  32.153  < 2e-16 ***
+## age          -4.137e-03  3.665e-03  -1.129  0.25919    
+## income       -2.322e-06  9.069e-07  -2.561  0.01051 *  
+## education     6.829e-02  2.992e-02   2.282  0.02258 *  
+## gender        5.972e-01  2.987e-01   1.999  0.04572 *  
+## ideol        -9.591e-01  3.894e-02 -24.628  < 2e-16 ***
+## gender:ideol -1.750e-01  5.974e-02  -2.929  0.00343 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.427 on 2264 degrees of freedom
+## Multiple R-squared:  0.3664,	Adjusted R-squared:  0.3647 
+## F-statistic: 218.2 on 6 and 2264 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 The results indicate a negative and significant interaction effect for gender and ideology. Consistent with our hypothesis, this means that the effect of ideology on climate change risk is more pronounced for males than females. Put differently, the slope of ideology is steeper for males than it is for females. This is shown in Figure \ref{fig:dummales}. 
-<<echo=FALSE,results="hide",message=F,warning=F>>=
-ds.temp$gend.factor <- factor(ds.temp$gender, levels=c(0,1),labels=c("Female","Male"))
-library(effects)
-pdf("dummales.pdf")
-ols3 <- lm(glbcc_risk~ age + income + education + ideol * gend.factor, data = ds.temp)
 
-
-
-plot(effect("ideol*gend.factor",ols3),ylim=0:10)
-dev.off()
-@ 
 
 \begin{figure}
   \centering
@@ -143,30 +315,65 @@ where $B_k$ is the unstandardized coefficient of $X_k$, $s_k$ is the s.d. of $X_
 \end{grbox}
 
 We can use the \texttt{scale} function in \texttt{R} to calculate a $Z$ score for each of our variables, and then re-run our model. 
-<<>>=
-stan.ds <- ds.temp %>%
-  select(glbcc_risk, age, education, income, ideol, gender) %>% 
-  scale %>%
-  data.frame()
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{stan.ds} \hlkwb{<-} \hlstd{ds.temp} \hlopt{%>%}
+  \hlkwd{select}\hlstd{(glbcc_risk, age, education, income, ideol, gender)} \hlopt{%>%}
+  \hlstd{scale} \hlopt{%>%}
+  \hlkwd{data.frame}\hlstd{()}
 
-ols3 <- lm(glbcc_risk ~ age + education + income + ideol + gender, data = stan.ds)
-summary(ols3)
-@ 
+\hlstd{ols3} \hlkwb{<-} \hlkwd{lm}\hlstd{(glbcc_risk} \hlopt{~} \hlstd{age} \hlopt{+} \hlstd{education} \hlopt{+} \hlstd{income} \hlopt{+} \hlstd{ideol} \hlopt{+} \hlstd{gender,} \hlkwc{data} \hlstd{= stan.ds)}
+\hlkwd{summary}\hlstd{(ols3)}
+\end{alltt}
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = glbcc_risk ~ age + education + income + ideol + 
+##     gender, data = stan.ds)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.92180 -0.54357  0.06509  0.48646  2.20164 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  1.685e-16  1.675e-02   0.000  1.00000    
+## age         -1.877e-02  1.696e-02  -1.106  0.26865    
+## education    3.957e-02  1.782e-02   2.220  0.02653 *  
+## income      -4.669e-02  1.788e-02  -2.611  0.00908 ** 
+## ideol       -5.883e-01  1.709e-02 -34.426  < 2e-16 ***
+## gender      -3.592e-02  1.700e-02  -2.112  0.03475 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7984 on 2265 degrees of freedom
+## Multiple R-squared:  0.364,	Adjusted R-squared:  0.3626 
+## F-statistic: 259.3 on 5 and 2265 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 In addition, we can convert the original unstandardized coefficient for ideology, to a standardized coefficient. 
-<<>>=
-sdX <- sd(ds.temp$ideol, na.rm=TRUE)
-sdY <- sd(ds.temp$glbcc_risk, na.rm=TRUE)
-ideology.prime <- ols1$coef[5]*(sdX/sdY)
-ideology.prime
-@ 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{sdX} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.temp}\hlopt{$}\hlstd{ideol,} \hlkwc{na.rm}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlstd{sdY} \hlkwb{<-} \hlkwd{sd}\hlstd{(ds.temp}\hlopt{$}\hlstd{glbcc_risk,} \hlkwc{na.rm}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlstd{ideology.prime} \hlkwb{<-} \hlstd{ols1}\hlopt{$}\hlstd{coef[}\hlnum{5}\hlstd{]}\hlopt{*}\hlstd{(sdX}\hlopt{/}\hlstd{sdY)}
+\hlstd{ideology.prime}
+\end{alltt}
+\begin{verbatim}
+##      ideol 
+## -0.5882792
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 Using either approach, standardized coefficients allow us to compare the magnitudes of the effects of each of the IVs on $Y$.
 
 \section{Summary}
 This chapter has focused on options in designing and using OLS models. We first covered the use of dummy variables to capture the effects of group differences on estimates of $Y$. We then explained how dummy variables, when interacted with scale variables, can provide estimates of the differences in how the scale variable affects $Y$ across the different subgroups represented by the dummy variable. Finally, we introduced the use of standardized regression coefficients as a means to compare the effects of different $Xs$ on $Y$ when the scales of the $Xs$ differ. Overall, these refinements in the use of OLS permit great flexibility in the application of regression models to estimation and hypothesis testing in policy analysis and social science research.
 
-<<echo=FALSE>>=
-rm(ds.temp)
-rm(stan.ds)
-@
+
+\end{document}
