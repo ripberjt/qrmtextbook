@@ -1,0 +1,456 @@
+\Sexpr{set_parent('../stats_book_completeV2.Rnw')}
+
+\chapter{Introduction to Multiple Regression}
+
+In the chapters in Part 3 of this book, we will introduce and develop multiple ordinary least squares regression -- that is, linear regression models using two or more independent (or explanatory) variables to predict a dependent variable. Most users simply refer to it as ``multiple regression".\footnote{It is useful to keep in mind the difference between ``multiple regression" and ``multivariate regression". The latter predicts 2 or more dependent variables using an independent variable.} This chapter will provide the background in matrix algebra that is necessary to understand both the logic of, and notation commonly used for, multiple regression. As we go, we will apply the matrix form of regression in examples using R to provide a basic understanding of how multiple regression works.  Chapter 12 will focus on the key assumptions about the concepts and data that are necessary for OLS regression to provide unbiased and efficient estimates of the relationships of interest, and it will address the key virtue of multiple regressions -- the application of ``statistical controls" in modeling relationships through the estimation of partial regression coefficients. Chapter 13 will turn to the process and set of choices involved in specifying and estimating multiple regression models, and to some of the automated approaches to model building you`d best avoid (and why). Chapter 13 turns to some more complex uses of multiple regression, such as the use and interpretation of ``dummy" (dichotomous) independent variables, and modeling interactions in the effects of the independent variables.  Chapter 14 concludes this part of the book with the application of diagnostic evaluations to regression model residuals, which will allow you to assess whether key modeling assumptions have been met and -- if not -- what the implications are for your model results. By the time you have mastered the chapters in this section, you will be well primed for understanding and using multiple regression analysis.
+
+\section{Matrix Algebra and Multiple Regression}
+
+Matrix algebra is widely used for the derivation of multiple regression because it permits a compact, intuitive depiction of regression analysis. For
+example, an estimated multiple regression model in scalar notion is expressed as: $Y = A + BX_1 + BX_2 + BX_3 + E$. Using matrix notation, 
+the same equation can be expressed in a more compact and (believe it or not!) intuitive form: $y = Xb + e$.
+ 
+In addition, matrix notation is flexible in that it can handle any number of independent variables. Operations performed on the model
+matrix $X$, are performed on all independent variables simultaneously. Lastly, you will see that matrix expression is widely used in statistical presentations of the results of OLS analysis. For all these reasons, then, we begin with the development of multiple regression in matrix form.
+
+\section{The Basics of Matrix Algebra}
+
+A matrix is a rectangular array of numbers with rows and columns. As noted, operations performed on matrices are performed on all elements of a matrix simultaneously.  In this section we provide the basic understanding of matrix algebra that is necessary to make sense of the expression of multiple regression in matrix form.
+
+\subsection{Matrix Basics}
+
+The individual numbers in a matrix are referred to as ``elements". The elements of a matrix can be  identified by their location in a row and column, denoted as $A_{r,c}$. In the following example, $m$ will refer to the matrix row and $n$ will refer to the column. 
+
+$A_{m,n} =
+ \begin{bmatrix}
+  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+ \end{bmatrix}$
+
+ \noindent 
+ Therefore, in the following matrix;
+ 
+$A = 
+\begin{bmatrix}
+  10 & 5 & 8 \\
+  -12 & 1 & 0
+\end{bmatrix}$
+
+\noindent 
+element $a_{2,3} = 0$ and $a_{1,2} = 5$.
+
+\subsection{Vectors}
+
+A vector is a matrix with single column or row. Here are some examples:  
+
+$A = 
+\begin{bmatrix}
+6 \\
+-1 \\
+8 \\
+11
+\end{bmatrix}$
+
+\noindent or 
+
+$A =
+\begin{bmatrix}
+  1 & 2 & 8 & 7 \\
+\end{bmatrix}$  
+  
+\subsection{Matrix Operations}
+
+There are several "operations" that can be performed with and on matrices. Most of the these can be computed with \texttt{R}, so we will use \texttt{R} examples as we go along. As always, you will understand the operations better if you work the problems in \texttt{R} as we go. There is no need to load a data set this time -- we will enter all the data we need in the examples.
+  
+\subsection{Transpose}
+
+Transposing, or taking the ``prime" of a matrix, switches the rows and columns.\footnote{The use of ``prime" in matrix algebra should not be confused
+with the use of ``prime" in the expression of a derivative, as in $X'$.} The matrix
+\noindent
+
+
+$A = 
+\begin{bmatrix}
+  10 & 5 & 8 \\
+  -12 & 1 & 0
+\end{bmatrix}$
+
+\noindent
+
+Once transposed is: 
+
+$A' =
+\begin{bmatrix}
+  10 & -12 \\
+  5 & 1 \\
+  8 & 0
+\end{bmatrix}$
+
+\noindent 
+Note that the operation ``hinges" on the element in the upper right-hand corner of $A$, $A_{1,1}$, so the first column of $A$ becomes the first row on $A'$. To transpose a matrix in \texttt{R}, create a matrix object then simply use the \texttt{t} command. 
+
+<<>>=
+A <- matrix(c(10,-12,5,1,8,0),2,3)
+A
+t(A)
+@ 
+
+
+\subsection{Adding Matrices}
+
+To add matrices together, they must have the same \textit{dimensions}, meaning that the matrices must have the same number of rows and columns. Then, you simply add each element to its counterpart by row and column. For example:  
+
+$A =
+\begin{bmatrix}
+4 & -3 \\
+2 & 0 
+\end{bmatrix}
++
+B =
+\begin{bmatrix}
+8 & 1 \\
+4 & -5
+\end{bmatrix}
+=
+A+B = 
+\begin{bmatrix}
+4+8 & -3+1 \\
+2+4 & 0+(-5)
+\end{bmatrix}
+=
+\begin{bmatrix}
+  12 & -2 \\
+  6 & -5
+\end{bmatrix}$
+
+
+\noindent 
+To add matrices together in \texttt{R}, simply create two matrix objects and add them together. 
+<<>>=
+A <- matrix(c(4,2,-3,0),2,2)
+A
+B <- matrix(c(8,4,1,-5),2,2)
+B
+A + B
+@
+
+\noindent 
+See -- how easy is that? No need to be afraid of a little matrix algebra!
+
+\subsection{Multiplication of Matrices}
+
+To multiply matrices they must be \textbf{conformable}, which means the number of \textit{columns} in the first matrix must 
+match the number of \textit{rows} in the second matrix. 
+\begin{equation*}
+A_{rXq} * B_{qXc} = C_{rXc}
+\end{equation*}
+Then, multiply column elements by the row elements, as shown here: 
+
+$A =
+\begin{bmatrix}
+  2 & 5 \\
+  1 & 0 \\
+  6 & -2
+\end{bmatrix}
+*
+B =
+\begin{bmatrix}
+4 & 2 & 1 \\
+5 & 7 & 2
+\end{bmatrix}
+=
+A X B =
+\begin{bmatrix}
+  (2 X 4)+(5 X 5) & (2 X 2)+(5 X 7) & (2 X 1)+(5 X 2) \\
+  (1 X 4)+(0 X 5) & (1 X 2)+(0 X 7) & (1 X 1)+(0 X 2) \\
+  (6 X 4)+(-2 X 5) & (6 X 2)+(-2 X 7) & (6 X 1)+(-2 X 2)
+\end{bmatrix}
+=
+\begin{bmatrix}
+  33 & 39 & 12 \\
+  4 & 2 & 1 \\
+  14 & -2 & 2
+\end{bmatrix}$
+
+\noindent 
+To multiply matrices in \texttt{R}, create two matrix objects and multiply them using the \texttt{\%*\%} command.
+<<>>=
+A <- matrix(c(2,1,6,5,0,-2),3,2)
+A
+B <- matrix(c(4,5,2,7,1,2),2,3)
+B
+A %*% B
+@
+
+
+\subsection{Identity Matrices}
+
+The identity matrix is a square matrix with 1's on the diagonal and 0's elsewhere. For a 4 x 4 matrix, it looks like this:
+
+$I = 
+\begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1
+\end{bmatrix}$
+
+It acts like a 1 in algebra; a matrix ($A$) times the identity matrix ($I$) is $A$. This can be demonstrated
+in \texttt{R}. 
+<<>>=
+A <- matrix(c(5,3,2,4),2,2)
+A
+I <- matrix(c(1,0,0,1),2,2)
+I
+A %*% I
+@ 
+
+\noindent 
+Note that, if you want to square a column matrix (that is, multiply it by itself), you can simply take the transpose of the column (thereby making it a row matrix) and multiply them. The square of column matrix $A$ is $A'A$.
+
+\subsection{Matrix Inversion}
+
+The matrix inversion operation is a bit like dividing any number by itself in algebra. An inverse of the $A$ matrix is denoted $A^{-1}$. Any matrix multiplied by its inverse is equal to the identity matrix: 
+\begin{equation*}
+  AA^{-1} = A^{-1}A = I 
+\end{equation*}
+For example, 
+
+$A = 
+\begin{bmatrix}
+  1 & -1 \\
+  -1 & -1 
+\end{bmatrix}
+\text{and } 
+A^{-1} = 
+\begin{bmatrix}
+  0.5 & -0.5 \\
+  -0.5 & 0.5 
+\end{bmatrix}
+\text{therefore }  
+A*A^{-1} = 
+\begin{bmatrix}
+  1 & 0 \\
+  0 & 1
+\end{bmatrix}$
+
+However, matrix inversion is only applicable to a square (i.e., number of rows equals number of columns) matrix; only a square matrix can have an inverse.
+
+\subsubsection{Finding the Inverse of a Matrix}
+
+To find the inverse of a matrix, the values that will produce the identity matrix, create a second matrix of variables and solve for $I$.
+
+$A = 
+\begin{bmatrix}
+  3 & 1 \\
+  2 & 4 
+\end{bmatrix}
+X
+\begin{bmatrix}
+a & b \\
+c & d 
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 3a+b & 3c+d \\
+ 2a+4b & 2c+4d
+\end{bmatrix}
+=
+\begin{bmatrix}
+  1 & 0 \\
+  0 & 1
+\end{bmatrix}$
+
+
+Set $3a+b=1$ and $2a+4b=0$ and solve for $a$ and $b$. In this case $a = \frac{2}{5}$ and $b = -\frac{1}{5}$. Likewise, set $3c+d=0$ and $2c+4d=1$; solving for $c$ and $d$ produces $c=-\frac{1}{10}$ and $d=\frac{3}{10}$. Therefore,
+% update to show how to solve 
+$A^{-1} = 
+\begin{bmatrix}
+  \frac{2}{5} & -\frac{1}{10} \\
+  -\frac{1}{5} & \frac{3}{10} 
+\end{bmatrix}$
+
+Finding the inverse matrix can also be done in \texttt{R} using the
+\texttt{solve} command. 
+<<>>=
+A <- matrix(c(3,2,1,4),2,2)
+A
+A.inverse <- solve(A)
+A.inverse
+A %*% A.inverse
+@ 
+
+OK -- now we have all the pieces we need to apply matrix algebra to multiple regression.
+
+\section{OLS Regression in Matrix Form}
+
+As was the case with simple regression, we want  to minimize the sum of the squared errors, $e$. In matrix notation, the OLS model is $y=Xb+e$, where $e = y-Xb$. The sum of the squared $e$ is:
+\begin{equation}
+  \label{eq:e2}
+\sum e^{2}_i = 
+\begin{bmatrix}
+  e_1 & e_2 & \cdots & e_n \\ 
+\end{bmatrix}
+\begin{bmatrix}
+  e_1 \\
+  e_2 \\
+  \vdots \\
+  e_n \\
+\end{bmatrix}
+=
+e'e
+\end{equation}
+
+Therefore, we want to find the $b$ that minimizes this function: 
+\begin{align*}
+e'e &= (y-Xb)'(y-Xb) \\
+&=y'y-b'X'y-y'Xb+b'X'Xb \\
+&=y'y-2b'X'y+b'X'Xb \\
+\end{align*}
+\noindent To do this we take the derivative of $e'e$
+w.r.t $b$ and set it equal to $0$.
+\begin{equation*}
+\frac{\partial e'e}{\partial b}=-2X'y+2X'Xb=0   
+\end{equation*}
+\noindent To solve this we subtract $2X'Xb$ from both sides:
+\begin{equation*}
+  -2X'Xb=-2X'y
+\end{equation*}
+\noindent Then to remove the $-2$'s, we multiply each side by
+$-1/2$. This leaves us with: 
+\begin{equation*}
+(X'X)b=X'y  
+\end{equation*}
+\noindent  To solve for $b$ we multiply both sides by the inverse of $X'X, (X'X)^{-1}$. Note that for matrices this is equivalent to dividing each side by $X'X$. Therefore:
+\begin{equation}
+  \label{eq:b}
+b = (X'X)^{-1}X'y  
+\end{equation}
+
+The $X'X$ matrix is square, and therefore invertible (i.e., the inverse exists). However, the $X'X$ matrix can be non-invertible (i.e., singular) if $n < k$---the number of $k$ independent variables exceeds the $n$-size---or if one or more of the independent variables is perfectly correlated with another independent variable. This is termed perfect \textbf{multicollinearity} and will be discussed in more detail in Chapter 14. Also note that the $X'X$ matrix contains the basis for all the necessary means, variances, and covariances among the $X$'s.     
+
+\begin{equation*}
+X'X =
+\begin{bmatrix}
+  n & \sum X_1 & \sum X_2 & \sum X_3 \\
+  \sum X_1 & \sum X^{2}_1 & \sum X_1X_2 & \sum X_1X_3 \\
+  \sum X_2 & \sum X_2X_1 & \sum X^{2}_2 & \sum X_2X_3 \\
+  \sum X_3 & \sum X_3X_1 & \sum X_3X_2 & \sum X^{2}_3 \\ 
+\end{bmatrix}
+\end{equation*}
+
+\begin{grbox}
+\greybox{\textbf{Regression in Matrix Form}
+  
+Assume a model using $n$ observations, $k$ parameters, and $k-1$, $X_{i}$ (independent) variables. 
+\
+\begin{align*}
+  y &= Xb+e \\
+  \hat{y} &= Xb \\
+  b &= (X'X)^{-1}X'y
+\end{align*}
+\begin{itemize}
+\item[] $y=n*1$ column vector of observations of the DV, $Y$
+\item[] $\hat{y}=n*1$ column vector of predicted $Y$ values 
+\item[] $X=n*k$ matrix of observations of the IVs; first column $1$s
+\item[] $b=k*1$ column vector of regression coefficients; first row is $A$
+\item[] $e=n*1$ column vector of $n$ residual values    
+\end{itemize}}
+\end{grbox}
+
+Using the following steps, we will use \texttt{R} to calculate $b$; a vector of regression coefficients, $\hat y$; a vector of predicted $y$ values,
+and $e$; a vector of residuals. 
+
+\noindent We want to fit the model $y = Xb+e$ to the following matrices: 
+
+\[
+y = \begin{bmatrix}
+6 \\
+11 \\
+4 \\
+3 \\
+5 \\
+9 \\
+10 
+\end{bmatrix}\quad
+X = \begin{bmatrix}
+1 & 4 & 5 & 4 \\
+1 & 7 & 2 & 3 \\
+1 & 2 & 6 & 4 \\
+1 & 1 & 9 & 6 \\
+1 & 3 & 4 & 5 \\
+1 & 7 & 3 & 4 \\
+1 & 8 & 2 & 5 
+\end{bmatrix}
+\]
+ 
+\noindent Create two objects, the $y$ matrix and the $X$ matrix. 
+<<>>=
+y <- matrix(c(6,11,4,3,5,9,10),7,1)
+y
+X <- matrix(c(1,1,1,1,1,1,1,4,7,2,1,3,7,8,5,2,6,9,4,3,2,4,3,4,6,5,4,5),7,4)
+X
+@ 
+
+\noindent \textbf{Calculate $b$:
+$b = (X'X)^{-1}X'y$.} 
+
+\noindent We can calculate this in \texttt{R} in just a few steps. First, we transpose $X$ to get $X'$. 
+<<>>=
+X.prime <- t(X)
+X.prime
+@ 
+
+\noindent Then we multiply $X$ by $X'$; ($X'X$).
+<<>>=
+X.prime.X <- X.prime %*% X
+X.prime.X
+@ 
+
+\noindent Next, we find the inverse of $X'X$; $X'X^{-1}$
+<<>>=
+X.prime.X.inv<-solve(X.prime.X)
+X.prime.X.inv
+@ 
+
+\noindent Then, we multiply $X'X^{-1}$ by $X'$. 
+<<>>=
+X.prime.X.inv.X.prime<-X.prime.X.inv %*% X.prime
+X.prime.X.inv.X.prime
+@ 
+
+\noindent Finally, to obtain the $b$ vector we multiply $X'X^{-1}X'$ by $y$. 
+<<>>=
+b<-X.prime.X.inv.X.prime %*% y
+b
+@ 
+
+\noindent We can use the \texttt{lm} function in \texttt{R} to check and see whether our ``by hand" matrix approach gets the same result as does the ``canned" multiple regression routine:  
+<<>>=
+lm(y~0+X)
+@ 
+
+\noindent \textbf{Calculate $\hat y$: $\hat y=Xb$.}
+
+\noindent To calculate the $\hat y$ vector in \texttt{R}, simply multiply
+\texttt{X} and \texttt{b}. 
+<<>>=
+y.hat <- X %*% b 
+y.hat
+@ 
+
+\noindent \textbf{Calculate $e$}. 
+
+\noindent To calculate $e$, the vector of residuals, simply subtract the vector $y$ from the vector $\hat y$. 
+<<>>=
+e<-y-y.hat
+e
+@ 
+
+\section{Summary}
+
+Whew! Now, using matrix algebra \underline{and} calculus, you have derived the squared-error minimizing formula for multiple regression. Not only that, you can use the matrix form, in \texttt{R}, to calculate the estimated slope and intercept coefficients, predict $Y$,  and even calculate the regression residuals. We're on our way to true Geekdome!
+
+Next stop: the key assumptions necessary for OLS to provide the best, unbiased, linear estimates (BLUE) and the basis for statistical controls using multiple independent variables in regression models.

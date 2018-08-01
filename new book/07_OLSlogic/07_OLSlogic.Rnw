@@ -1,0 +1,225 @@
+\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+
+
+
+\chapter{The Logic of Ordinary Least Squares Estimation}
+
+% discuss OLS Regression Models broadly  
+This chapter begins the discussion of ordinary least squares (OLS) regression. OLS is the ``workhorse'' of empirical social science and is a critical tool in hypothesis testing and theory building. This chapter builds on the the discussion in Chapter 6, by showing how OLS regression is used to estimate relationships between and among variables. 
+
+\section{Theoretical Models}
+
+Models, as discussed earlier, are an essential component in theory building. They simplify theoretical concepts, provide a precise way to evaluate relationships between variables, and serve as a vehicle for hypothesis testing. As discussed in Chapter 1, one of the central features of a theoretical model is the presumption of causality, and causality is based on three factors; time ordering (observational or theoretical), co-variation, and non-spuriousness. Of these three assumptions, co-variation is the one analyzed using OLS. The often repeated adage, ``correlation is not causation'' is key. Causation is driven by theory, but co-variation is the critical part of empirical hypothesis testing. 
+
+When describing relationships, it is important to distinguish between those that are \texttt{deterministic} versus \texttt{stochastic}. Deterministic relationships are ``fully determined" such that, knowing the values of the independent variable, you can perfectly explain (or predict) the value of the dependent variable. Philosophers of Old (like Kant) imagined the universe to be like a massive and complex clock which, once wound up and set ticking, would permit perfect prediction of the future if you had all the information on the starting conditions. There is no ``error" in the prediction. Stochastic relationships, on the other hand, include an irreducible random component, such that the independent variables permit only a partial prediction of the dependent variable. But that stochastic (or random) component of the variation in the dependent variable has a probability distribution that can be analyzed statistically. 
+
+\subsection{Deterministic Linear Model}
+
+The deterministic linear model serves as the basis for evaluating theoretical models. It is expressed as: 
+\begin{equation}
+Y_{i} = \alpha + \beta X_{i} 
+\end{equation}
+
+A deterministic model is \textbf{systematic} and contains no error, therefore \textit{$Y$ is perfectly predicted by $X$}. This is illustrated in Figure \ref{dols}. $\alpha$ and $\beta$ are the model parameters, and are constant terms. $\beta$ is the slope; the change in $Y$ over the change in $X$. $\alpha$ is the intercept; the value of $Y$ when $X$ is zero.  
+
+\begin{figure}
+  \centering
+  \includegraphics[width=4in]{07_OLSlogic/deterols.pdf}%filename
+  \caption{Deterministic Model \label{dols}}  
+\end{figure}
+
+Given that in social science we rarely work with deterministic models, nearly all models contain a stochastic, or random, component. 
+
+\subsection{Stochastic Linear Model} 
+
+The stochastic, or statistical, linear model contains a systematic component, $Y = \alpha+\beta$, and a stochastic component called the \textbf{error term}. The error term is the difference between the expected value of $Y_i$ and the observed value of $Y_i$; $Y_i-\mu$. This model is expressed as: 
+
+\begin{equation}
+  \label{eq:theolm}
+Y_{i} = \alpha + \beta X_{i} + \epsilon_i
+\end{equation}
+
+\noindent where $\epsilon_i$ is the error term. In the deterministic model, each value of $Y$ fits along the regression line, however in a stochastic model the expected value of $Y$ is conditioned by the values of $X$. This is illustrated in Figure \ref{sols}. 
+
+<<echo=FALSE,results="hide">>=
+pdf("stochastic.pdf")
+plot(c(0,5), c(0,6.5), type = "n", xlab="x", ylab="y")
+abline(h = 0, v = 0, col = "gray60")
+abline(a = 2.5, b = 0.5, lwd = 2)
+x <- 600:3000/600
+y <- dnorm(x, mean = 3, sd = 0.5)
+lines(y + 1.0, x)
+lines(y + 2.5, x + 0.75)
+lines(y + 4.0, x + 1.5)
+abline(v = c(1, 2.5, 4), lty = 2, col = "grey")
+segments(1, 3, 1 + dnorm(0,0,0.5),3, lty = 2, col = "gray")
+segments(2.5, 3.75, 2.5 + dnorm(0,0,0.5), 3.75, lty = 2, col = "gray")
+segments(4,4.5, 4 + dnorm(0,0,0.5),4.5, lty = 2, col = "gray")
+dev.off()
+@ 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=4in]{07_OLSlogic/stochastic.pdf}%filename
+  \caption{Stochastic Linear Model \label{sols}}
+\end{figure}
+
+Figure \ref{sols} shows the conditional population distributions of $Y$ for several values of $X, p(Y|X)$. The conditional means of $Y$ given $X$ are denoted $\mu$.  
+
+\begin{equation} 
+\mu_{i} \equiv E(Y_{i}) \equiv E(Y|X_{i})=\alpha+\beta X_{i} 
+\end{equation} 
+\noindent where 
+\begin{itemize}
+\item $\alpha = E(Y) \equiv \mu$ when $X=0$
+\item Each 1 unit increase in $X$ increases $E(Y)$ by $\beta$
+\end{itemize}
+
+However, in the stochastic linear model variation in $Y$ is caused by more than $X$, it is also caused by the error term $\epsilon$.   The error term is expressed as: 
+
+\begin{align*}
+\epsilon_i &= Y_{i}-E(Y_{i}) \\
+&= Y_{i}-(\alpha+\beta X_{i}) \\
+&= Y_{i}-\alpha-\beta X_{i}
+\end{align*}
+Therefore;
+\begin{align*}
+Y_{i} &= E(Y_{i})+\epsilon \\
+&= \alpha+\beta X_{i}+\epsilon_{i} 
+\end{align*}
+\noindent We make several important assumptions about the error term that are discussed in the next section. 
+
+\subsubsection{Assumptions about the Error Term} 
+
+There are three key assumptions about the error term; a) errors have identical distributions, b) errors are independent, c) errors are normally distributed.\footnote{Actually, we assume only that the \textbf{means} of the errors drawn from repeated samples of observations will be normally distributed -- but we will deal with that wrinkle later on.}
+
+\begin{grbox}
+\greybox{\textbf{Error Assumptions}
+  \begin{enumerate}  
+\item Errors have identical distributions
+  \begin{center}
+    $E(\epsilon^{2}_{i}) = \sigma^2_{\epsilon}$
+  \end{center}
+\item Errors are independent of $X$ and other $\epsilon_{i}$
+  \begin{center}
+    $E(\epsilon_{i}) \equiv E(\epsilon|x_{i}) = 0$ 
+    
+    and 
+    
+    $E(\epsilon_{i}) \neq E(\epsilon_{j})$ for $i \neq j$
+  \end{center}
+\item Errors are normally distributed
+  \begin{center}
+    $\epsilon_{i} \sim N(0,\sigma^2_{\epsilon})$
+  \end{center}
+\end{enumerate}}
+\end{grbox}
+
+Taken together these assumption mean that the error term has a normal, independent, and identical distribution (normal i.i.d.). However, we don't know if, in any particular case, these assumptions are met. Therefore we must estimate a linear model. 
+
+\section{Estimating Linear Models} 
+
+With stochastic models we don't know if the error assumptions are met, nor do we know the values of $\alpha$ and $\beta$ therefore we must estimate them.  The stochastic model as shown in Equation \ref{eq:lm} is estimated as: 
+\begin{equation}
+  \label{eq:lm}
+Y_{i} = A+BX_{i}+E_{i} 
+\end{equation}
+\noindent where $E_i$ is the \textbf{residual term}, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, $E$, into the regression equation.  Note that the predicted value of $Y$ is denoted $\hat{Y}$; $y$-hat. 
+
+\begin{align*}
+Y_{i} &= A+BX_{i}+E_{i} \\ 
+&= \hat{Y_{i}} + E_{i}  \\
+E_{i} &= Y_i-\hat{Y_{i}} \\
+&= Y_i-A-BX_i
+\end{align*}
+
+\subsection{Residuals}
+Residuals measure prediction errors, of how far observation $Y_{i}$ is from predicted $\hat{Y_{i}}$. This is shown in Figure \ref{resid}. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=4in]%
+    {07_OLSlogic/resids.pdf}% picture filename
+  \caption{Residuals: Statistical Forensics \label{resid}}
+\end{figure}
+
+%what's in E
+The residual term contains the accumulation (sum) of errors that can result from measurement issues, modeling problems, and irreducible randomness. Ideally, the residual term contains lots of small and independent influences that result in an overall random quality of the distribution of the errors. When that distribution is not random -- that is, when the distribution of error has some systematic quality -- the estimates of A and B may be biased. Thus, when we evaluate our models we will focus on the \texttt{shape} of the distribution of our errors. 
+
+\begin{grbox}
+\greybox{\textbf{What's in $E$?} 
+
+  \textit{Measurement Error}
+\begin{itemize}
+\item Imperfect operationalizations
+\item Imperfect measure application
+\end{itemize}
+
+\textit{Modeling Error}
+\begin{itemize}
+\item Modeling error/mis-specification
+\item Missing model explanation
+\item Incorrect assumptions about associations
+\item Incorrect assumptions about distributions
+\end{itemize}
+
+\textit{Stochastic "noise"}
+\begin{itemize}
+\item Unpredictable variability in the dependent variable
+
+\end{itemize}}
+\end{grbox}
+
+The goal of regression analysis is to minimize the error associated with the model estimates. As noted, the residual term is the estimated error, or overall ``miss" (e.g., $Y_{i}-\hat{Y_{i}}$). Specifically the goal is to minimize the sum of the squared errors, $\sum E^{2}$. Therefore, we need to find the values of $A$ and $B$ that minimize $\sum E^{2}$. 
+
+Note that for a fixed set of data \{A,B\}, each possible choice of values for $A$ and $B$ corresponds to a specific residual sum of squares, $\sum E^{2}$. This can be expressed by the following functional form:
+
+\begin{equation}
+ S(A,B)=\sum_{i=1}^{n} E^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-A-BX_{i})^{2}  
+\end{equation}
+
+Minimizing this function requires specifying estimators for $A$ and $B$ such that $S(A,B)=\sum E^{2}$ is at the lowest possible value. Finding this minimum value requires the use of calculus, which will be discussed in the next chapter. Before that we walk through a quick example of simple regression.  
+
+\section{An Example of Simple Regression} 
+
+The following example uses a measure of peoples' political ideology to predict their perceptions of the risks posed by global climate change. OLS regression can be done using the \texttt{lm} function in \texttt{R}. For this example, we are using the \texttt{tbur} data set. 
+
+<<>>=
+ols1 <- lm(ds$glbcc_risk~ds$ideol)
+summary(ols1)
+@ 
+
+The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for $A$ and $B$; the results of hypothesis tests; and overall measures of model ``fit" -- all of which we will discuss in detail in later chapters. But, for now, note that the estimated $B$ for ideology is negative, which indicates that as the value for ideology \textit{increases}---in our data this means more conservative---the perceived risk of climate change \textit{decreases}. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by \Sexpr{ols1$coef[2]}.
+
+We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure \ref{fig:resid}. Note that we will discuss residual diagnostics in detail in future chapters. 
+
+<<echo=c(2,5,6),results="hide">>=
+pdf("exresidhist.pdf")
+data.frame(ols1$residuals) %>%
+  ggplot(aes(ols1$residuals)) +
+  geom_histogram(bins = 16)
+dev.off()
+pdf("exresidden.pdf")
+data.frame(ols1$residuals) %>%
+  ggplot(aes(ols1$residuals)) +
+  geom_density(adjust = 1.5) 
+dev.off()
+@ 
+ 
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{07_OLSlogic/exresidhist.pdf}%filename
+                \caption{Histogram}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{07_OLSlogic/exresidden.pdf}%filename
+                \caption{Density}
+        \end{subfigure}
+        \caption{Residuals of Simple Regression Example \label{fig:resid}} 
+\end{figure}        
+\FloatBarrier
+
+For purposes of this Chapter, be sure that you can run the basic bivariate OLS regression model in \textit{R}. If you can -- congratulations! If not, try again. And again. And again...

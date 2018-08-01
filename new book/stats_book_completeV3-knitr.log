@@ -1,0 +1,4372 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.11)  1 AUG 2018 09:52
+entering extended mode
+**./stats_book_completeV3-knitr.tex
+(stats_book_completeV3-knitr.tex
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\book.cls"
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\bk11.clo"
+File: bk11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\framed\framed.sty"
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip43
+\fb@frw=\dimen105
+\fb@frh=\dimen106
+\FrameRule=\dimen107
+\FrameSep=\dimen108
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\alltt.sty"
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0100 (decimal 256)
+   defining Unicode char U+0101 (decimal 257)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+0108 (decimal 264)
+   defining Unicode char U+0109 (decimal 265)
+   defining Unicode char U+010A (decimal 266)
+   defining Unicode char U+010B (decimal 267)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0112 (decimal 274)
+   defining Unicode char U+0113 (decimal 275)
+   defining Unicode char U+0114 (decimal 276)
+   defining Unicode char U+0115 (decimal 277)
+   defining Unicode char U+0116 (decimal 278)
+   defining Unicode char U+0117 (decimal 279)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011C (decimal 284)
+   defining Unicode char U+011D (decimal 285)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0120 (decimal 288)
+   defining Unicode char U+0121 (decimal 289)
+   defining Unicode char U+0122 (decimal 290)
+   defining Unicode char U+0123 (decimal 291)
+   defining Unicode char U+0124 (decimal 292)
+   defining Unicode char U+0125 (decimal 293)
+   defining Unicode char U+0128 (decimal 296)
+   defining Unicode char U+0129 (decimal 297)
+   defining Unicode char U+012A (decimal 298)
+   defining Unicode char U+012B (decimal 299)
+   defining Unicode char U+012C (decimal 300)
+   defining Unicode char U+012D (decimal 301)
+   defining Unicode char U+012E (decimal 302)
+   defining Unicode char U+012F (decimal 303)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0134 (decimal 308)
+   defining Unicode char U+0135 (decimal 309)
+   defining Unicode char U+0136 (decimal 310)
+   defining Unicode char U+0137 (decimal 311)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013B (decimal 315)
+   defining Unicode char U+013C (decimal 316)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0145 (decimal 325)
+   defining Unicode char U+0146 (decimal 326)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+014C (decimal 332)
+   defining Unicode char U+014D (decimal 333)
+   defining Unicode char U+014E (decimal 334)
+   defining Unicode char U+014F (decimal 335)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0156 (decimal 342)
+   defining Unicode char U+0157 (decimal 343)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015C (decimal 348)
+   defining Unicode char U+015D (decimal 349)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+0168 (decimal 360)
+   defining Unicode char U+0169 (decimal 361)
+   defining Unicode char U+016A (decimal 362)
+   defining Unicode char U+016B (decimal 363)
+   defining Unicode char U+016C (decimal 364)
+   defining Unicode char U+016D (decimal 365)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0172 (decimal 370)
+   defining Unicode char U+0173 (decimal 371)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+01CD (decimal 461)
+   defining Unicode char U+01CE (decimal 462)
+   defining Unicode char U+01CF (decimal 463)
+   defining Unicode char U+01D0 (decimal 464)
+   defining Unicode char U+01D1 (decimal 465)
+   defining Unicode char U+01D2 (decimal 466)
+   defining Unicode char U+01D3 (decimal 467)
+   defining Unicode char U+01D4 (decimal 468)
+   defining Unicode char U+01E2 (decimal 482)
+   defining Unicode char U+01E3 (decimal 483)
+   defining Unicode char U+01E6 (decimal 486)
+   defining Unicode char U+01E7 (decimal 487)
+   defining Unicode char U+01E8 (decimal 488)
+   defining Unicode char U+01E9 (decimal 489)
+   defining Unicode char U+01EA (decimal 490)
+   defining Unicode char U+01EB (decimal 491)
+   defining Unicode char U+01F0 (decimal 496)
+   defining Unicode char U+01F4 (decimal 500)
+   defining Unicode char U+01F5 (decimal 501)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+0232 (decimal 562)
+   defining Unicode char U+0233 (decimal 563)
+   defining Unicode char U+1E02 (decimal 7682)
+   defining Unicode char U+1E03 (decimal 7683)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2010 (decimal 8208)
+   defining Unicode char U+2011 (decimal 8209)
+   defining Unicode char U+2012 (decimal 8210)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2015 (decimal 8213)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+1E20 (decimal 7712)
+   defining Unicode char U+1E21 (decimal 7713)
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+)
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks17
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen109
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen110
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count89
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count90
+\leftroot@=\count91
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count92
+\DOTSCASE@=\count93
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen111
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count94
+\c@MaxMatrixCols=\count95
+\dotsspace@=\muskip10
+\c@parentequation=\count96
+\dspbrk@lvl=\count97
+\tag@help=\toks19
+\row@=\count98
+\column@=\count99
+\maxfields@=\count100
+\andhelp@=\toks20
+\eqnshift@=\dimen112
+\alignsep@=\dimen113
+\tagshift@=\dimen114
+\tagwidth@=\dimen115
+\totwidth@=\dimen116
+\lineht@=\dimen117
+\@envbody=\toks21
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks23
+\thm@bodyfont=\toks24
+\thm@headfont=\toks25
+\thm@notefont=\toks26
+\thm@headpunct=\toks27
+\thm@preskip=\skip47
+\thm@postskip=\skip48
+\thm@headsep=\skip49
+\dth@everypar=\toks28
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\preprint\fullpage.sty"
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip50
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip51
+\bibsep=\skip52
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count101
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\rotating.sty"
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count102
+\rotFPtop=\skip53
+\rotFPbot=\skip54
+\rot@float@box=\box28
+\rot@mess@toks=\toks29
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen118
+\captionmargin@=\dimen119
+\captionwidth=\dimen120
+\caption@tempdima=\dimen121
+\caption@indent=\dimen122
+\caption@parindent=\dimen123
+\caption@hangindent=\dimen124
+)
+\c@ContinuedFloat=\count103
+Package caption Info: rotating package is loaded.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
+Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
+\c@subfigure=\count104
+\c@subtable=\count105
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip55
+\multirow@cntb=\count106
+\multirow@dima=\skip56
+\bigstrutjot=\dimen125
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen126
+\lightrulewidth=\dimen127
+\cmidrulewidth=\dimen128
+\belowrulesep=\dimen129
+\belowbottomsep=\dimen130
+\aboverulesep=\dimen131
+\abovetopsep=\dimen132
+\cmidrulesep=\dimen133
+\cmidrulekern=\dimen134
+\defaultaddspace=\dimen135
+\@cmidla=\count107
+\@cmidlb=\count108
+\@aboverulesep=\dimen136
+\@belowrulesep=\dimen137
+\@thisruleclass=\count109
+\@lastruleclass=\count110
+\@thisrulewidth=\dimen138
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\dcolumn.sty"
+Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen139
+\extrarowheight=\dimen140
+\NC@list=\toks30
+\extratabsurround=\skip57
+\backup@length=\skip58
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\quotchap\quotchap.sty"
+Package: quotchap 2012/10/20 v1.1 Decorative Chapter Headings with Quotes
+\@quotebox=\box29
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count111
+\Gm@cntv=\count112
+\c@Gm@tempcnt=\count113
+\Gm@bindingoffset=\dimen141
+\Gm@wd@mp=\dimen142
+\Gm@odd@mp=\dimen143
+\Gm@even@mp=\dimen144
+\Gm@layoutwidth=\dimen145
+\Gm@layoutheight=\dimen146
+\Gm@layouthoffset=\dimen147
+\Gm@layoutvoffset=\dimen148
+\Gm@dimlist=\toks31
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip59
+\f@nch@O@elh=\skip60
+\f@nch@O@erh=\skip61
+\f@nch@O@olh=\skip62
+\f@nch@O@orh=\skip63
+\f@nch@O@elf=\skip64
+\f@nch@O@erf=\skip65
+\f@nch@O@olf=\skip66
+\f@nch@O@orf=\skip67
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\blindtext\blindtext.sty"
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+\c@blindtext=\count114
+\c@Blindtext=\count115
+\c@blind@countparstart=\count116
+\blind@countxx=\count117
+\blindtext@numBlindtext=\count118
+\blind@countyy=\count119
+\c@blindlist=\count120
+\c@blindlistlevel=\count121
+\c@blindlist@level=\count122
+\blind@listitem=\count123
+\c@blind@listcount=\count124
+\c@blind@levelcount=\count125
+\blind@mathformula=\count126
+\blind@Mathformula=\count127
+\c@blind@randomcount=\count128
+\c@blind@randommax=\count129
+\c@blind@pangramcount=\count130
+\c@blind@pangrammax=\count131
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\diagbox\diagbox.sty"
+Package: diagbox 2016/12/28 v2.2 Making table heads with diagonal lines
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pict2e\pict2e.sty"
+Package: pict2e 2016/02/05 v0.3b Improved picture commands (HjG,RN,JT)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pict2e\pict2e.cfg"
+File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
+)
+Package pict2e Info: Driver file: pdftex.def on input line 119.
+Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 121.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pict2e\p2e-pdftex.def"
+File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks32
+\@arclen=\dimen149
+\@arcrad=\dimen150
+\@tempdimd=\dimen151
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp.sty"
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\defpattern.sty"
+Package: defpattern 1994/10/12
+\actioncount=\count132
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-basic.sty"
+Package: fp-basic 1996/05/13
+\FP@xs=\count133
+\FP@xia=\count134
+\FP@xib=\count135
+\FP@xfa=\count136
+\FP@xfb=\count137
+\FP@rega=\count138
+\FP@regb=\count139
+\FP@regs=\count140
+\FP@times=\count141
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-addons.sty"
+Package: fp-addons 1995/03/15
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-snap.sty"
+Package: fp-snap 1995/04/05
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-exp.sty"
+Package: fp-exp 1995/04/03
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-trigo.sty"
+Package: fp-trigo 1995/04/14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-pas.sty"
+Package: fp-pas 1994/08/29
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-random.sty"
+Package: fp-random 1995/02/23
+\FPseed=\count142
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-eqn.sty"
+Package: fp-eqn 1995/04/03
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-upn.sty"
+Package: fp-upn 1996/10/21
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-eval.sty"
+Package: fp-eval 1995/04/03
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count143
+\calc@Bcount=\count144
+\calc@Adimen=\dimen152
+\calc@Bdimen=\dimen153
+\calc@Askip=\skip68
+\calc@Bskip=\skip69
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count145
+\calc@Cskip=\skip70
+)
+\diagbox@boxa=\box30
+\diagbox@boxb=\box31
+\diagbox@boxm=\box32
+\diagbox@wd=\dimen154
+\diagbox@ht=\dimen155
+\diagbox@insepl=\dimen156
+\diagbox@insepr=\dimen157
+\diagbox@outsepl=\dimen158
+\diagbox@outsepr=\dimen159
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2017/03/14 v6.85a Hypertext links for LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen160
+\Hy@linkcounter=\count146
+\Hy@pagecounter=\count147
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count148
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4498.
+Package hyperref Info: Link nesting OFF on input line 4503.
+Package hyperref Info: Hyper index ON on input line 4506.
+Package hyperref Info: Plain pages OFF on input line 4513.
+Package hyperref Info: Backreferencing OFF on input line 4518.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4751.
+\c@Hy@tempcnt=\count149
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5104.
+\XeTeXLinkMargin=\dimen161
+\Fld@menulength=\count150
+\Field@Width=\dimen162
+\Fld@charsize=\dimen163
+Package hyperref Info: Hyper figures OFF on input line 6358.
+Package hyperref Info: Link nesting OFF on input line 6363.
+Package hyperref Info: Hyper index ON on input line 6366.
+Package hyperref Info: backreferencing OFF on input line 6373.
+Package hyperref Info: Link coloring OFF on input line 6378.
+Package hyperref Info: Link coloring with OCG OFF on input line 6383.
+Package hyperref Info: PDF/A mode OFF on input line 6388.
+LaTeX Info: Redefining \ref on input line 6428.
+LaTeX Info: Redefining \pageref on input line 6432.
+\Hy@abspage=\count151
+\c@Item=\count152
+\c@Hfootnote=\count153
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
+\Fld@listcount=\count154
+\c@bookmark@seq@number=\count155
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip71
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
+Package: placeins 2005/04/18  v 2.2
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count156
+\float@exts=\toks33
+\float@box=\box33
+\@float@everytoks=\toks34
+\@floatcapt=\box34
+)
+\@float@every@grbox=\toks35
+\c@grbox=\count157
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\upquote\upquote.sty"
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+(stats_book_completeV3-knitr.aux
+
+LaTeX Warning: Label `eq:predprob' multiply defined.
+
+)
+\openout1 = `stats_book_completeV3-knitr.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count158
+\scratchdimen=\dimen164
+\scratchbox=\box35
+\nofMPsegments=\count159
+\nofMParguments=\count160
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count161
+\MPscratchDim=\dimen165
+\MPnumerator=\count162
+\makeMPintoPDFobject=\count163
+\everyMPtoPDFconversion=\toks37
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(72.26999pt, 433.62001pt, 108.405pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=433.62001pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=36.13501pt
+* \topmargin=-36.135pt
+* \headheight=0.0pt
+* \headsep=36.135pt
+* \topskip=11.0pt
+* \footskip=27.46295pt
+* \marginparwidth=116.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\AtBeginShipoutBox=\box36
+Package hyperref Info: Link coloring OFF on input line 123.
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count164
+)
+LaTeX Info: Redefining \ref on input line 123.
+LaTeX Info: Redefining \pageref on input line 123.
+LaTeX Info: Redefining \nameref on input line 123.
+
+(stats_book_completeV3-knitr.out) (stats_book_completeV3-knitr.out)
+\@outlinefile=\write3
+\openout3 = `stats_book_completeV3-knitr.out'.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 144.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 144.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Try loading font information for T1+pbk on input line 152.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1pbk.fd"
+File: t1pbk.fd 2001/06/04 font definitions for T1/pbk.
+)
+LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <20.74> not available
+(Font)              Font shape `T1/pbk/db/n' tried instead on input line 152.
+LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <100> not available
+(Font)              Font shape `T1/pbk/db/n' tried instead on input line 152.
+
+
+Package xcolor Warning: Incompatible color definition on input line 152.
+
+
+LaTeX Warning: File `"CCicon".png' not found on input line 157.
+
+
+! Package pdftex.def Error: File `"CCicon".png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.157 ...egraphics[totalheight=1cm]{"CCicon".png}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[1
+
+]
+
+Package xcolor Warning: Incompatible color definition on input line 164.
+
+(stats_book_completeV3-knitr.toc [2
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[3]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[4])
+\tf@toc=\write4
+\openout4 = `stats_book_completeV3-knitr.toc'.
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[5]
+
+Package xcolor Warning: Incompatible color definition on input line 166.
+
+(stats_book_completeV3-knitr.lot)
+\tf@lot=\write5
+\openout5 = `stats_book_completeV3-knitr.lot'.
+
+ [6
+
+]
+
+Package xcolor Warning: Incompatible color definition on input line 174.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--190
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.196 \part
+           {Theory and Empirical Social Science} [1
+
+] [2
+
+]
+Chapter 1.
+
+Package xcolor Warning: Incompatible color definition on input line 201.
+
+[3
+
+]
+Underfull \vbox (badness 3930) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[4]
+\contentbox=\box37
+\bkgdbox=\box38
+
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 232.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 232.
+
+Overfull \hbox (20.0pt too wide) detected at line 232
+[]
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[5]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6]
+Underfull \vbox (badness 6961) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[7]
+Underfull \vbox (badness 2671) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[10] <01_Theory/fun1.pdf, id=909, 505.89pt x 505.89pt>
+File: 01_Theory/fun1.pdf Graphic file (type pdf)
+
+<use 01_Theory/fun1.pdf>
+Package pdftex.def Info: 01_Theory/fun1.pdf used on input line 301.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[11 <./01_Theory/fun1.pdf>] <01_Theory/fun2.pdf, id=923, 505.89pt x 505.89pt>
+File: 01_Theory/fun2.pdf Graphic file (type pdf)
+
+<use 01_Theory/fun2.pdf>
+Package pdftex.def Info: 01_Theory/fun2.pdf used on input line 314.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[12 <./01_Theory/fun2.pdf>]
+\contentbox=\box39
+\bkgdbox=\box40
+
+Overfull \hbox (20.0pt too wide) detected at line 355
+[]
+ []
+
+
+Underfull \vbox (badness 1184) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[13]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[14]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[15]
+Chapter 2.
+
+Package xcolor Warning: Incompatible color definition on input line 370.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[17]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[18]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[19]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[20]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 441--442
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[22
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[23]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[24]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[25]
+Chapter 3.
+
+Package xcolor Warning: Incompatible color definition on input line 507.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [26
+
+]
+
+Package xcolor Warning: Incompatible color definition on input line 529.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[27]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 531.
+
+
+Package xcolor Warning: Incompatible color definition on input line 538.
+
+<03_Data/rskhist.pdf, id=1010, 505.89pt x 505.89pt>
+File: 03_Data/rskhist.pdf Graphic file (type pdf)
+ <use 03_Data/rskhist.pdf>
+Package pdftex.def Info: 03_Data/rskhist.pdf used on input line 551.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+<03_Data/rskden.pdf, id=1011, 505.89pt x 505.89pt>
+File: 03_Data/rskden.pdf Graphic file (type pdf)
+ <use 03_Data/rskden.pdf>
+Package pdftex.def Info: 03_Data/rskden.pdf used on input line 556.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[28 <./03_Data/rskhist.pdf> <./03_Data/rskden.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 586.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[29]
+\contentbox=\box41
+\bkgdbox=\box42
+
+Overfull \hbox (20.0pt too wide) detected at line 633
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[30]
+\contentbox=\box43
+\bkgdbox=\box44
+
+Overfull \hbox (20.0pt too wide) detected at line 670
+[]
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[31]
+
+Package xcolor Warning: Incompatible color definition on input line 686.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[32]
+
+Package xcolor Warning: Incompatible color definition on input line 737.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[33] <03_Data/distroshapes.pdf, id=1069, 722.7pt x 542.025pt>
+File: 03_Data/distroshapes.pdf Graphic file (type pdf)
+
+<use 03_Data/distroshapes.pdf>
+Package pdftex.def Info: 03_Data/distroshapes.pdf used on input line 778.
+(pdftex.def)             Requested size: 289.07999pt x 216.80615pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[34]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[35 <./03_Data/distroshapes.pdf>]
+\contentbox=\box45
+\bkgdbox=\box46
+
+Overfull \hbox (20.0pt too wide) detected at line 809
+[]
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[36]
+
+Package xcolor Warning: Incompatible color definition on input line 834.
+
+<03_Data/gccrskbox.pdf, id=1141, 505.89pt x 505.89pt>
+File: 03_Data/gccrskbox.pdf Graphic file (type pdf)
+
+<use 03_Data/gccrskbox.pdf>
+Package pdftex.def Info: 03_Data/gccrskbox.pdf used on input line 842.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 860.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[37] <03_Data/gccrskqq.pdf, id=1152, 505.89pt x 505.89pt>
+File: 03_Data/gccrskqq.pdf Graphic file (type pdf)
+
+<use 03_Data/gccrskqq.pdf>
+Package pdftex.def Info: 03_Data/gccrskqq.pdf used on input line 869.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 879.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[38 <./03_Data/gccrskbox.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 908.
+
+
+Underfull \vbox (badness 3989) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[39 <./03_Data/gccrskqq.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[40]
+Chapter 4.
+
+Package xcolor Warning: Incompatible color definition on input line 933.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [41
+
+]
+Underfull \vbox (badness 1596) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[42]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[43]
+<04_Probability/Graphics/Normal_curve_probability.jpg, id=1193, 551.81157pt x 3
+38.76563pt>
+File: 04_Probability/Graphics/Normal_curve_probability.jpg Graphic file (type j
+pg)
+ <use 04_Probability/Graphics/Normal_curve_probability.jpg>
+Package pdftex.def Info: 04_Probability/Graphics/Normal_curve_probability.jpg u
+sed on input line 979.
+(pdftex.def)             Requested size: 433.62001pt x 266.2159pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[44 <./04_Probability/Graphics/Normal_curve_probability.jpg>]
+\contentbox=\box47
+\bkgdbox=\box48
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[45]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[46]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[47]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[48]
+Chapter 5.
+
+Package xcolor Warning: Incompatible color definition on input line 1072.
+
+[49
+
+]
+Underfull \vbox (badness 2781) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[50]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[51]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[52]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[53]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[54]
+Overfull \hbox (1.23807pt too wide) in paragraph at lines 1142--1144
+[]\OT1/cmr/m/n/10.95 The stan-dard nor-mal PDF has
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 1151.
+
+<05_Inference/normal.pdf, id=1255, 505.89pt x 505.89pt>
+File: 05_Inference/normal.pdf Graphic file (type pdf)
+
+<use 05_Inference/normal.pdf>
+Package pdftex.def Info: 05_Inference/normal.pdf used on input line 1161.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+<05_Inference/normal68.pdf, id=1257, 505.89pt x 505.89pt>
+File: 05_Inference/normal68.pdf Graphic file (type pdf)
+
+<use 05_Inference/normal68.pdf>
+Package pdftex.def Info: 05_Inference/normal68.pdf used on input line 1174.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+<05_Inference/normal95.pdf, id=1258, 505.89pt x 505.89pt>
+File: 05_Inference/normal95.pdf Graphic file (type pdf)
+
+<use 05_Inference/normal95.pdf>
+Package pdftex.def Info: 05_Inference/normal95.pdf used on input line 1179.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+<05_Inference/normal99.pdf, id=1259, 505.89pt x 505.89pt>
+File: 05_Inference/normal99.pdf Graphic file (type pdf)
+
+<use 05_Inference/normal99.pdf>
+Package pdftex.def Info: 05_Inference/normal99.pdf used on input line 1184.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[55]
+\contentbox=\box49
+\bkgdbox=\box50
+
+Overfull \hbox (20.0pt too wide) detected at line 1199
+[]
+ []
+
+
+Underfull \vbox (badness 2035) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[56 <./05_Inference/normal.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[57 <./05_Inference/normal68.pdf> <./05_Inference/normal95.pdf> <./05_Inference
+/normal99.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1211.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[58] <05_Inference/normaln.pdf, id=1302, 505.89pt x 505.89pt>
+File: 05_Inference/normaln.pdf Graphic file (type pdf)
+
+<use 05_Inference/normaln.pdf>
+Package pdftex.def Info: 05_Inference/normaln.pdf used on input line 1255.
+(pdftex.def)             Requested size: 260.17465pt x 260.1773pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[59 <./05_Inference/normaln.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[60]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[61]
+Underfull \hbox (badness 10000) in paragraph at lines 1315--1316
+
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 1318.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[62]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[63]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[64]
+
+Package xcolor Warning: Incompatible color definition on input line 1370.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1384.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[65] <05_Inference/gendden.pdf, id=1346, 505.89pt x 505.89pt>
+File: 05_Inference/gendden.pdf Graphic file (type pdf)
+
+<use 05_Inference/gendden.pdf>
+Package pdftex.def Info: 05_Inference/gendden.pdf used on input line 1393.
+(pdftex.def)             Requested size: 289.08589pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1399.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1413.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[66 <./05_Inference/gendden.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1421.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1421.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[67]
+
+Package xcolor Warning: Incompatible color definition on input line 1447.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1485.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1498.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[68]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[69]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[70]
+Chapter 6.
+
+Package xcolor Warning: Incompatible color definition on input line 1547.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [71
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[72]
+Underfull \hbox (badness 10000) in paragraph at lines 1580--1585
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 3250) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[73]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[74]
+Underfull \hbox (badness 10000) in paragraph at lines 1635--1636
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[75]
+
+Package xcolor Warning: Incompatible color definition on input line 1642.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1659.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1683.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[76]
+
+Package xcolor Warning: Incompatible color definition on input line 1703.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1723.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[77]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[78]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[79]
+
+Package xcolor Warning: Incompatible color definition on input line 1805.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1831.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[80]
+
+Package xcolor Warning: Incompatible color definition on input line 1847.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1865.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[81]
+Underfull \hbox (badness 10000) in paragraph at lines 1883--1884
+
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 1888.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1900.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1926.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[82]
+
+Package xcolor Warning: Incompatible color definition on input line 1963.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[83]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[84]
+
+Package xcolor Warning: Incompatible color definition on input line 2040.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[85]
+
+Package xcolor Warning: Incompatible color definition on input line 2067.
+
+<06_Association/scatjit.pdf, id=1463, 505.89pt x 505.89pt>
+File: 06_Association/scatjit.pdf Graphic file (type pdf)
+
+<use 06_Association/scatjit.pdf>
+Package pdftex.def Info: 06_Association/scatjit.pdf used on input line 2075.
+(pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[86 <./06_Association/scatjit.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 2084.
+
+
+Overfull \hbox (9.02895pt too wide) in paragraph at lines 2087--2087
+[]    []\OT1/cmtt/m/n/10.95 geom_jitter[][]([][]shape[] []=[] []1[][])[] []+[] 
+[]geom_smooth[][]([][]method[] []=[] []"loess"[][],[] []color[] []=[] []"green"
+[][])[] []+[][] 
+ []
+
+<06_Association/scatjit2.pdf, id=1474, 505.89pt x 505.89pt>
+File: 06_Association/scatjit2.pdf Graphic file (type pdf)
+
+<use 06_Association/scatjit2.pdf>
+Package pdftex.def Info: 06_Association/scatjit2.pdf used on input line 2095.
+(pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[87 <./06_Association/scatjit2.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[88] [89
+
+]
+Chapter 7.
+
+Package xcolor Warning: Incompatible color definition on input line 2158.
+
+[90
+
+] <07_OLSlogic/deterols.pdf, id=1502, 722.7pt x 542.025pt>
+File: 07_OLSlogic/deterols.pdf Graphic file (type pdf)
+
+<use 07_OLSlogic/deterols.pdf>
+Package pdftex.def Info: 07_OLSlogic/deterols.pdf used on input line 2180.
+(pdftex.def)             Requested size: 289.07999pt x 216.80615pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[91] <07_OLSlogic/stochastic.pdf, id=1510, 505.89pt x 505.89pt>
+File: 07_OLSlogic/stochastic.pdf Graphic file (type pdf)
+
+<use 07_OLSlogic/stochastic.pdf>
+Package pdftex.def Info: 07_OLSlogic/stochastic.pdf used on input line 2201.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[92 <./07_OLSlogic/deterols.pdf>]
+\contentbox=\box51
+\bkgdbox=\box52
+
+Overfull \hbox (20.0pt too wide) detected at line 2253
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[93 <./07_OLSlogic/stochastic.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[94] <07_OLSlogic/resids.pdf, id=1659, 722.7pt x 542.025pt>
+File: 07_OLSlogic/resids.pdf Graphic file (type pdf)
+
+<use 07_OLSlogic/resids.pdf>
+Package pdftex.def Info: 07_OLSlogic/resids.pdf used on input line 2280.
+(pdftex.def)             Requested size: 289.07999pt x 216.80615pt.
+\contentbox=\box53
+\bkgdbox=\box54
+
+Overfull \hbox (20.0pt too wide) detected at line 2308
+[]
+ []
+
+
+Underfull \vbox (badness 1931) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[95 <./07_OLSlogic/resids.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[96]
+
+Package xcolor Warning: Incompatible color definition on input line 2326.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[97]
+
+Package xcolor Warning: Incompatible color definition on input line 2360.
+
+<07_OLSlogic/exresidhist.pdf, id=1802, 505.89pt x 505.89pt>
+File: 07_OLSlogic/exresidhist.pdf Graphic file (type pdf)
+
+<use 07_OLSlogic/exresidhist.pdf>
+Package pdftex.def Info: 07_OLSlogic/exresidhist.pdf used on input line 2375.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+<07_OLSlogic/exresidden.pdf, id=1803, 505.89pt x 505.89pt>
+File: 07_OLSlogic/exresidden.pdf Graphic file (type pdf)
+
+<use 07_OLSlogic/exresidden.pdf>
+Package pdftex.def Info: 07_OLSlogic/exresidden.pdf used on input line 2380.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[98 <./07_OLSlogic/exresidhist.pdf> <./07_OLSlogic/exresidden.pdf>]
+Chapter 8.
+
+Package xcolor Warning: Incompatible color definition on input line 2392.
+
+[99
+
+]
+\contentbox=\box55
+\bkgdbox=\box56
+
+Overfull \hbox (20.0pt too wide) detected at line 2436
+[]
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 2457.
+
+<08_Derivatives/powerfun.pdf, id=1823, 505.89pt x 505.89pt>
+File: 08_Derivatives/powerfun.pdf Graphic file (type pdf)
+
+<use 08_Derivatives/powerfun.pdf>
+Package pdftex.def Info: 08_Derivatives/powerfun.pdf used on input line 2470.
+(pdftex.def)             Requested size: 260.17465pt x 260.1773pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[100]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[101]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[102 <./08_Derivatives/powerfun.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 2529.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[103]
+File: 08_Derivatives/powerfun.pdf Graphic file (type pdf)
+ <use 08_Derivatives/powerfun.pdf>
+Package pdftex.def Info: 08_Derivatives/powerfun.pdf used on input line 2544.
+(pdftex.def)             Requested size: 260.17465pt x 260.1773pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2552.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[104]
+\contentbox=\box57
+\bkgdbox=\box58
+
+Overfull \hbox (20.0pt too wide) detected at line 2608
+[]
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 2613.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[105] <08_Derivatives/crit.pdf, id=1875, 505.89pt x 505.89pt>
+File: 08_Derivatives/crit.pdf Graphic file (type pdf)
+
+<use 08_Derivatives/crit.pdf>
+Package pdftex.def Info: 08_Derivatives/crit.pdf used on input line 2626.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[106 <./08_Derivatives/crit.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2658.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2658.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[107]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2694.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2694.
+
+
+Underfull \vbox (badness 2119) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[108]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[109]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2744.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2744.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2744.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2744.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[110]
+
+Package xcolor Warning: Incompatible color definition on input line 2780.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2801.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2822.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2846.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[111]
+
+Package xcolor Warning: Incompatible color definition on input line 2863.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2877.
+
+<08_Derivatives/regex.pdf, id=1914, 505.89pt x 505.89pt>
+File: 08_Derivatives/regex.pdf Graphic file (type pdf)
+
+<use 08_Derivatives/regex.pdf>
+Package pdftex.def Info: 08_Derivatives/regex.pdf used on input line 2888.
+(pdftex.def)             Requested size: 260.17465pt x 260.1773pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[112 <./08_Derivatives/regex.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[113]
+Chapter 9.
+
+Package xcolor Warning: Incompatible color definition on input line 2904.
+
+[114
+
+]
+
+Package xcolor Warning: Incompatible color definition on input line 2927.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2939.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[115]
+
+Package xcolor Warning: Incompatible color definition on input line 2980.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[116]
+
+Package xcolor Warning: Incompatible color definition on input line 3013.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3026.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[117]
+
+Package xcolor Warning: Incompatible color definition on input line 3040.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3053.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3078.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[118]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[119]
+
+Package xcolor Warning: Incompatible color definition on input line 3124.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3146.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3165.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[120]
+
+Package xcolor Warning: Incompatible color definition on input line 3177.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3190.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 3190.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3190.
+
+\contentbox=\box59
+\bkgdbox=\box60
+
+Overfull \hbox (20.0pt too wide) detected at line 3226
+[]
+ []
+
+<09_InterpretSimple/rsquared.pdf, id=1970, 722.7pt x 542.025pt>
+File: 09_InterpretSimple/rsquared.pdf Graphic file (type pdf)
+
+<use 09_InterpretSimple/rsquared.pdf>
+Package pdftex.def Info: 09_InterpretSimple/rsquared.pdf used on input line 323
+4.
+(pdftex.def)             Requested size: 361.34999pt x 271.01183pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[121]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[122]
+
+Package xcolor Warning: Incompatible color definition on input line 3240.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3252.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3264.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[123 <./09_InterpretSimple/rsquared.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3276.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3295.
+
+<09_InterpretSimple/effectsplot.pdf, id=2085, 505.89pt x 505.89pt>
+File: 09_InterpretSimple/effectsplot.pdf Graphic file (type pdf)
+
+<use 09_InterpretSimple/effectsplot.pdf>
+Package pdftex.def Info: 09_InterpretSimple/effectsplot.pdf used on input line 
+3305.
+(pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3313.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[124]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[125 <./09_InterpretSimple/effectsplot.pdf>]
+Chapter 10.
+
+Package xcolor Warning: Incompatible color definition on input line 3330.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [126
+
+]
+\contentbox=\box61
+\bkgdbox=\box62
+
+Overfull \hbox (20.0pt too wide) detected at line 3357
+[]
+ []
+
+<10_SimpleDiagnostics/residdist.pdf, id=2112, 722.7pt x 542.025pt>
+File: 10_SimpleDiagnostics/residdist.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/residdist.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/residdist.pdf used on input line 
+3365.
+(pdftex.def)             Requested size: 289.07999pt x 216.80615pt.
+
+<10_SimpleDiagnostics/sneeze.pdf, id=2114, 722.7pt x 542.025pt>
+File: 10_SimpleDiagnostics/sneeze.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/sneeze.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/sneeze.pdf used on input line 337
+3.
+(pdftex.def)             Requested size: 289.07999pt x 216.80615pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[127]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[128 <./10_SimpleDiagnostics/residdist.pdf> <./10_SimpleDiagnostics/sneeze.pdf>
+] <10_SimpleDiagnostics/unusual_dat.pdf, id=2336, 722.7pt x 542.025pt>
+File: 10_SimpleDiagnostics/unusual_dat.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/unusual_dat.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/unusual_dat.pdf used on input lin
+e 3390.
+(pdftex.def)             Requested size: 289.07999pt x 216.80615pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[129] <10_SimpleDiagnostics/unusual_dat2.pdf, id=2347, 722.7pt x 542.025pt>
+File: 10_SimpleDiagnostics/unusual_dat2.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/unusual_dat2.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/unusual_dat2.pdf used on input li
+ne 3401.
+(pdftex.def)             Requested size: 289.07999pt x 216.80615pt.
+
+<10_SimpleDiagnostics/hetero.pdf, id=2350, 722.7pt x 542.025pt>
+File: 10_SimpleDiagnostics/hetero.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/hetero.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/hetero.pdf used on input line 341
+5.
+(pdftex.def)             Requested size: 289.07999pt x 216.80615pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[130 <./10_SimpleDiagnostics/unusual_dat.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[131 <./10_SimpleDiagnostics/unusual_dat2.pdf>]
+<10_SimpleDiagnostics/simplenonlin.pdf, id=2412, 722.7pt x 542.025pt>
+File: 10_SimpleDiagnostics/simplenonlin.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/simplenonlin.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/simplenonlin.pdf used on input li
+ne 3432.
+(pdftex.def)             Requested size: 289.07999pt x 216.80615pt.
+
+Underfull \vbox (badness 3735) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[132 <./10_SimpleDiagnostics/hetero.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3445.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3454.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[133 <./10_SimpleDiagnostics/simplenonlin.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3488.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3505.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[134]
+
+Package xcolor Warning: Incompatible color definition on input line 3537.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[135] <10_SimpleDiagnostics/nonlinideology.pdf, id=2482, 505.89pt x 505.89pt>
+File: 10_SimpleDiagnostics/nonlinideology.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/nonlinideology.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/nonlinideology.pdf used on input 
+line 3557.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[136 <./10_SimpleDiagnostics/nonlinideology.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3569.
+
+<10_SimpleDiagnostics/histideology.pdf, id=2494, 505.89pt x 505.89pt>
+File: 10_SimpleDiagnostics/histideology.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/histideology.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/histideology.pdf used on input li
+ne 3582.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3589.
+
+<10_SimpleDiagnostics/densityideology.pdf, id=2496, 505.89pt x 505.89pt>
+File: 10_SimpleDiagnostics/densityideology.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/densityideology.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/densityideology.pdf used on input
+ line 3606.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[137 <./10_SimpleDiagnostics/histideology.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3614.
+
+<10_SimpleDiagnostics/QQideology.pdf, id=2508, 505.89pt x 505.89pt>
+File: 10_SimpleDiagnostics/QQideology.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/QQideology.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/QQideology.pdf used on input line
+ 3629.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[138 <./10_SimpleDiagnostics/densityideology.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3637.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[139 <./10_SimpleDiagnostics/QQideology.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3660.
+
+<10_SimpleDiagnostics/spreadlvlideology.pdf, id=2532, 505.89pt x 505.89pt>
+File: 10_SimpleDiagnostics/spreadlvlideology.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/spreadlvlideology.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/spreadlvlideology.pdf used on inp
+ut line 3670.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[140 <./10_SimpleDiagnostics/spreadlvlideology.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3678.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3701.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[141]
+
+Package xcolor Warning: Incompatible color definition on input line 3720.
+
+<10_SimpleDiagnostics/dfbetaPlots.pdf, id=2550, 505.89pt x 505.89pt>
+File: 10_SimpleDiagnostics/dfbetaPlots.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/dfbetaPlots.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/dfbetaPlots.pdf used on input lin
+e 3730.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[142]
+
+Package xcolor Warning: Incompatible color definition on input line 3736.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[143 <./10_SimpleDiagnostics/dfbetaPlots.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3756.
+
+<10_SimpleDiagnostics/bubbleideology.pdf, id=2566, 505.89pt x 505.89pt>
+File: 10_SimpleDiagnostics/bubbleideology.pdf Graphic file (type pdf)
+
+<use 10_SimpleDiagnostics/bubbleideology.pdf>
+Package pdftex.def Info: 10_SimpleDiagnostics/bubbleideology.pdf used on input 
+line 3775.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3783.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[144 <./10_SimpleDiagnostics/bubbleideology.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[145]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[146]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[147] [148
+
+]
+Chapter 11.
+
+Package xcolor Warning: Incompatible color definition on input line 3826.
+
+
+Underfull \vbox (badness 1810) has occurred while \output is active []
+
+ [149
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[150]
+Underfull \vbox (badness 5077) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[151]
+
+Package xcolor Warning: Incompatible color definition on input line 3918.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3972.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[152]
+Overfull \hbox (74.65723pt too wide) in paragraph at lines 4014--4039
+[]$\OML/cmm/m/it/10.95 A \OT1/cmr/m/n/10.95 = [] \OMS/cmsy/m/n/10.95  \OML/cmm
+/m/it/10.95 B \OT1/cmr/m/n/10.95 = [] = \OML/cmm/m/it/10.95 AXB \OT1/cmr/m/n/10
+.95 = [] =
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 4043.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[153]
+
+Package xcolor Warning: Incompatible color definition on input line 4091.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[154]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[155]
+
+Package xcolor Warning: Incompatible color definition on input line 4189.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[156]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[157]
+\contentbox=\box63
+\bkgdbox=\box64
+
+Overfull \hbox (20.0pt too wide) detected at line 4294
+[]
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 4325.
+
+
+Underfull \vbox (badness 1616) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[158]
+
+Package xcolor Warning: Incompatible color definition on input line 4363.
+
+
+Package xcolor Warning: Incompatible color definition on input line 4380.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[159]
+
+Package xcolor Warning: Incompatible color definition on input line 4397.
+
+
+Package xcolor Warning: Incompatible color definition on input line 4414.
+
+
+Overfull \hbox (3.28026pt too wide) in paragraph at lines 4430--4430
+[]\OT1/cmtt/m/n/10.95 ##             [,1]        [,2]        [,3]       [,4]   
+    [,5]       [,6][] 
+ []
+
+
+Overfull \hbox (3.28026pt too wide) in paragraph at lines 4430--4430
+[]\OT1/cmtt/m/n/10.95 ## [1,]  0.43326271  0.98119703  1.50847458 -1.7677436  1
+.8561970 -0.6718750[] 
+ []
+
+
+Overfull \hbox (3.28026pt too wide) in paragraph at lines 4430--4430
+[]\OT1/cmtt/m/n/10.95 ## [2,]  0.01959746  0.03032309 -0.10169492  0.1113612 -0
+.2821769  0.1328125[] 
+ []
+
+
+Overfull \hbox (3.28026pt too wide) in paragraph at lines 4430--4430
+[]\OT1/cmtt/m/n/10.95 ## [3,]  0.07097458  0.02198093 -0.01694915  0.2073623 -0
+.3530191  0.1093750[] 
+ []
+
+
+Overfull \hbox (3.28026pt too wide) in paragraph at lines 4430--4430
+[]\OT1/cmtt/m/n/10.95 ## [4,] -0.15677966 -0.24258475 -0.18644068  0.1091102  0
+.2574153 -0.0625000[] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 4436.
+
+
+Package xcolor Warning: Incompatible color definition on input line 4453.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[160]
+
+Package xcolor Warning: Incompatible color definition on input line 4474.
+
+
+Package xcolor Warning: Incompatible color definition on input line 4496.
+
+
+Underfull \vbox (badness 3375) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[161]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[162]
+Chapter 12.
+
+Package xcolor Warning: Incompatible color definition on input line 4526.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [163
+
+]
+\contentbox=\box65
+\bkgdbox=\box66
+
+Overfull \hbox (20.0pt too wide) detected at line 4581
+[]
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[164]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[165] <12_LogicMult/spur.pdf, id=2679, 722.7pt x 542.025pt>
+File: 12_LogicMult/spur.pdf Graphic file (type pdf)
+
+<use 12_LogicMult/spur.pdf>
+Package pdftex.def Info: 12_LogicMult/spur.pdf used on input line 4605.
+(pdftex.def)             Requested size: 361.34999pt x 271.01183pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[166 <./12_LogicMult/spur.pdf>]
+<12_LogicMult/partef.pdf, id=2716, 722.7pt x 542.025pt>
+File: 12_LogicMult/partef.pdf Graphic file (type pdf)
+
+<use 12_LogicMult/partef.pdf>
+Package pdftex.def Info: 12_LogicMult/partef.pdf used on input line 4614.
+(pdftex.def)             Requested size: 361.34999pt x 271.01183pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[167 <./12_LogicMult/partef.pdf>]
+\contentbox=\box67
+\bkgdbox=\box68
+
+Overfull \hbox (20.0pt too wide) detected at line 4645
+[]
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 4652.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[168]
+
+Package xcolor Warning: Incompatible color definition on input line 4686.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[169]
+
+Package xcolor Warning: Incompatible color definition on input line 4721.
+
+
+Package xcolor Warning: Incompatible color definition on input line 4754.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[170]
+
+Package xcolor Warning: Incompatible color definition on input line 4789.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[171] <12_LogicMult/scatols.pdf, id=2775, 505.89pt x 505.89pt>
+File: 12_LogicMult/scatols.pdf Graphic file (type pdf)
+
+<use 12_LogicMult/scatols.pdf>
+Package pdftex.def Info: 12_LogicMult/scatols.pdf used on input line 4826.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 4834.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[172 <./12_LogicMult/scatols.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 4870.
+
+
+Overfull \hbox (14.77763pt too wide) in paragraph at lines 4898--4898
+[]\OT1/cmtt/m/n/10.95 ## lm(formula = glbcc_risk ~ age + education + income + i
+deol, data = ds.temp)[] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[173]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4902.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4902.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[174]
+
+Package xcolor Warning: Incompatible color definition on input line 4924.
+
+
+Package xcolor Warning: Incompatible color definition on input line 4937.
+
+
+Package xcolor Warning: Incompatible color definition on input line 4975.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[175]
+
+Package xcolor Warning: Incompatible color definition on input line 4995.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[176]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[177]
+Chapter 13.
+
+Package xcolor Warning: Incompatible color definition on input line 5022.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [178
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[179] <13_ModelFit/rsquared.pdf, id=2824, 722.7pt x 542.025pt>
+File: 13_ModelFit/rsquared.pdf Graphic file (type pdf)
+
+<use 13_ModelFit/rsquared.pdf>
+Package pdftex.def Info: 13_ModelFit/rsquared.pdf used on input line 5052.
+(pdftex.def)             Requested size: 361.34999pt x 271.01183pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[180 <./13_ModelFit/rsquared.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 5070.
+
+
+Overfull \hbox (14.77763pt too wide) in paragraph at lines 5126--5126
+[]\OT1/cmtt/m/n/10.95 ## lm(formula = glbcc_risk ~ age + education + income + i
+deol, data = ds.temp)[] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[181]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[182]
+
+Package xcolor Warning: Incompatible color definition on input line 5163.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[183]
+
+Package xcolor Warning: Incompatible color definition on input line 5211.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[184]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[185]
+Underfull \hbox (badness 10000) in paragraph at lines 5246--5246
+[][][]\OT1/cmr/m/n/9 The pro-gram was writ-ten, pro-duced and di-rected by Jon 
+Pal-fre-man, and it
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5246--5246
+\OT1/cmr/m/n/9 was first broad-cast on June 13, 1995. The full tran-script can 
+be found here:
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[186]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[187]
+Chapter 14.
+
+Package xcolor Warning: Incompatible color definition on input line 5268.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [188
+
+]
+\contentbox=\box69
+\bkgdbox=\box70
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[189] <14_Topics/dummy.pdf, id=2982, 722.7pt x 542.025pt>
+File: 14_Topics/dummy.pdf Graphic file (type pdf)
+
+<use 14_Topics/dummy.pdf>
+Package pdftex.def Info: 14_Topics/dummy.pdf used on input line 5305.
+(pdftex.def)             Requested size: 361.34999pt x 271.01183pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5316.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[190]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[191 <./14_Topics/dummy.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[192] <14_Topics/duminter.pdf, id=3016, 722.7pt x 542.025pt>
+File: 14_Topics/duminter.pdf Graphic file (type pdf)
+
+<use 14_Topics/duminter.pdf>
+Package pdftex.def Info: 14_Topics/duminter.pdf used on input line 5367.
+(pdftex.def)             Requested size: 361.34999pt x 271.01183pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5374.
+
+
+Overfull \hbox (3.28026pt too wide) in paragraph at lines 5405--5405
+[]\OT1/cmtt/m/n/10.95 ## (Intercept)  10.6004885194  0.3296900513  32.153 < 0.0
+000000000000002 ***[] 
+ []
+
+
+Overfull \hbox (3.28026pt too wide) in paragraph at lines 5405--5405
+[]\OT1/cmtt/m/n/10.95 ## ideol        -0.9591306050  0.0389448341 -24.628 < 0.0
+000000000000002 ***[] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[193 <./14_Topics/duminter.pdf>]
+<14_Topics/dummales.pdf, id=3041, 505.89pt x 505.89pt>
+File: 14_Topics/dummales.pdf Graphic file (type pdf)
+
+<use 14_Topics/dummales.pdf>
+Package pdftex.def Info: 14_Topics/dummales.pdf used on input line 5413.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[194 <./14_Topics/dummales.pdf>]
+\contentbox=\box71
+\bkgdbox=\box72
+
+Overfull \hbox (20.0pt too wide) detected at line 5448
+[]
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 5453.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[195]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[196]
+
+Package xcolor Warning: Incompatible color definition on input line 5499.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[197]
+Chapter 15.
+
+Package xcolor Warning: Incompatible color definition on input line 5525.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5530.
+
+[198
+
+]
+\contentbox=\box73
+\bkgdbox=\box74
+
+Overfull \hbox (20.0pt too wide) detected at line 5574
+[]
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[199]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[200]
+
+Package xcolor Warning: Incompatible color definition on input line 5618.
+
+
+Overfull \hbox (20.52632pt too wide) in paragraph at lines 5645--5645
+[]\OT1/cmtt/m/n/10.95 ## lm(formula = glbcc_risk ~ age + education + income + i
+deol, data = ds.small)[] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[201] <15_Diagnostics/convar2.pdf, id=3090, 505.89pt x 505.89pt>
+File: 15_Diagnostics/convar2.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/convar2.pdf>
+Package pdftex.def Info: 15_Diagnostics/convar2.pdf used on input line 5663.
+(pdftex.def)             Requested size: 195.12767pt x 195.12718pt.
+
+<15_Diagnostics/nonlin.pdf, id=3091, 505.89pt x 505.89pt>
+File: 15_Diagnostics/nonlin.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/nonlin.pdf>
+Package pdftex.def Info: 15_Diagnostics/nonlin.pdf used on input line 5668.
+(pdftex.def)             Requested size: 195.12767pt x 195.12718pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5677.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5687.
+
+
+Overfull \hbox (60.76714pt too wide) in paragraph at lines 5691--5691
+[]    []\OT1/cmtt/m/n/10.95 geom_point[][]([][]shape[] []=[] []1[][])[] []+[] [
+]geom_smooth[][]([][]method[] []= loess)[] []+[] []geom_hline[][]([][]yintercep
+t[] []=[] []0[][])[] []+[][] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[202] <15_Diagnostics/multlin.pdf, id=3097, 505.89pt x 505.89pt>
+File: 15_Diagnostics/multlin.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/multlin.pdf>
+Package pdftex.def Info: 15_Diagnostics/multlin.pdf used on input line 5699.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5705.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[203 <./15_Diagnostics/convar2.pdf> <./15_Diagnostics/nonlin.pdf>]
+Underfull \vbox (badness 1112) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[204 <./15_Diagnostics/multlin.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 5749.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[205]
+
+Package xcolor Warning: Incompatible color definition on input line 5781.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[206] <15_Diagnostics/convar.pdf, id=3142, 505.89pt x 505.89pt>
+File: 15_Diagnostics/convar.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/convar.pdf>
+Package pdftex.def Info: 15_Diagnostics/convar.pdf used on input line 5816.
+(pdftex.def)             Requested size: 195.12767pt x 195.12718pt.
+
+<15_Diagnostics/heterovar.pdf, id=3143, 505.89pt x 505.89pt>
+File: 15_Diagnostics/heterovar.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/heterovar.pdf>
+Package pdftex.def Info: 15_Diagnostics/heterovar.pdf used on input line 5821.
+(pdftex.def)             Requested size: 195.12767pt x 195.12718pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5830.
+
+<15_Diagnostics/multregres.pdf, id=3145, 505.89pt x 505.89pt>
+File: 15_Diagnostics/multregres.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/multregres.pdf>
+Package pdftex.def Info: 15_Diagnostics/multregres.pdf used on input line 5840.
+
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5848.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[207 <./15_Diagnostics/convar.pdf> <./15_Diagnostics/heterovar.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[208 <./15_Diagnostics/multregres.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 5882.
+
+
+Overfull \hbox (9.02895pt too wide) in paragraph at lines 5890--5890
+[]\OT1/cmtt/m/n/10.95 ##    (Intercept)            age      education         i
+ncome          ideol[] 
+ []
+
+
+Overfull \hbox (9.02895pt too wide) in paragraph at lines 5890--5890
+[]\OT1/cmtt/m/n/10.95 ## 0.668778725013 0.008030365625 0.069824489564 0.0000023
+20899 0.060039031426[] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 5896.
+
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 589
+9.
+(C:/PROGRA~1/R/R-34~1.1/share/texmf/tex/latex\omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5899.
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[209]
+
+Package xcolor Warning: Incompatible color definition on input line 5914.
+
+
+Overfull \hbox (20.52632pt too wide) in paragraph at lines 5940--5940
+[]\OT1/cmtt/m/n/10.95 ## lm(formula = glbcc_risk ~ age + education + income + i
+deol, data = ds.small)[] 
+ []
+
+
+Overfull \hbox (227.47908pt too wide) in paragraph at lines 5957--5957
+[]\OT1/cmtt/m/n/10.95 ##                                                       
+                                                  Pr(>|t|)[] 
+ []
+
+
+Overfull \hbox (227.47908pt too wide) in paragraph at lines 5957--5957
+[]\OT1/cmtt/m/n/10.95 ## (Intercept) 0.0000000000000000000000000000000000000000
+0000000000000000000000000000000054921988962793404326183377[] 
+ []
+
+
+Overfull \hbox (227.47908pt too wide) in paragraph at lines 5957--5957
+[]\OT1/cmtt/m/n/10.95 ## age         0.4888148232677681503943745155993383377790
+4510498046875000000000000000000000000000000000000000000000[] 
+ []
+
+
+Overfull \hbox (227.47908pt too wide) in paragraph at lines 5957--5957
+[]\OT1/cmtt/m/n/10.95 ## education   0.7897831213798203187081981013761833310127
+2583007812500000000000000000000000000000000000000000000000[] 
+ []
+
+
+Overfull \hbox (227.47908pt too wide) in paragraph at lines 5957--5957
+[]\OT1/cmtt/m/n/10.95 ## income      0.9339694163814850069726958281535189598798
+7518310546875000000000000000000000000000000000000000000000[] 
+ []
+
+
+Overfull \hbox (227.47908pt too wide) in paragraph at lines 5957--5957
+[]\OT1/cmtt/m/n/10.95 ## ideol       0.0000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000002542911[] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[210]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 5964.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 5964.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5978.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[211]
+
+Package xcolor Warning: Incompatible color definition on input line 6002.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6011.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6022.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[212]
+
+Package xcolor Warning: Incompatible color definition on input line 6030.
+
+<15_Diagnostics/multresidhist2.pdf, id=3192, 505.89pt x 505.89pt>
+File: 15_Diagnostics/multresidhist2.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/multresidhist2.pdf>
+Package pdftex.def Info: 15_Diagnostics/multresidhist2.pdf used on input line 6
+043.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+<15_Diagnostics/multresidden2.pdf, id=3193, 505.89pt x 505.89pt>
+File: 15_Diagnostics/multresidden2.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/multresidden2.pdf>
+Package pdftex.def Info: 15_Diagnostics/multresidden2.pdf used on input line 60
+48.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+<15_Diagnostics/multresidbox.pdf, id=3194, 505.89pt x 505.89pt>
+File: 15_Diagnostics/multresidbox.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/multresidbox.pdf>
+Package pdftex.def Info: 15_Diagnostics/multresidbox.pdf used on input line 605
+3.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+<15_Diagnostics/multresidqq.pdf, id=3195, 505.89pt x 505.89pt>
+File: 15_Diagnostics/multresidqq.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/multresidqq.pdf>
+Package pdftex.def Info: 15_Diagnostics/multresidqq.pdf used on input line 6058
+.
+(pdftex.def)             Requested size: 173.44534pt x 173.44382pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[213 <./15_Diagnostics/multresidhist2.pdf> <./15_Diagnostics/multresidden2.pdf>
+ <./15_Diagnostics/multresidbox.pdf> <./15_Diagnostics/multresidqq.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 6073.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[214]
+
+Package xcolor Warning: Incompatible color definition on input line 6110.
+
+<15_Diagnostics/multinresid.pdf, id=3233, 505.89pt x 505.89pt>
+File: 15_Diagnostics/multinresid.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/multinresid.pdf>
+Package pdftex.def Info: 15_Diagnostics/multinresid.pdf used on input line 6122
+.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6132.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[215]
+
+Package xcolor Warning: Incompatible color definition on input line 6159.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[216 <./15_Diagnostics/multinresid.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 6186.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[217]
+
+Package xcolor Warning: Incompatible color definition on input line 6200.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6218.
+
+
+Overfull \hbox (78.0132pt too wide) in paragraph at lines 6221--6221
+[]    []\OT1/cmtt/m/n/10.95 value))[] []+[] []geom_point[][]()[] []+[] []geom_h
+line[][]([][]yintercept[] []= df)[] []+[] []geom_hline[][]([][]yintercept[] []=
+[] []-[][]df)[] []+[][] 
+ []
+
+<15_Diagnostics/dfbetas.pdf, id=3257, 505.89pt x 505.89pt>
+File: 15_Diagnostics/dfbetas.pdf Graphic file (type pdf)
+
+<use 15_Diagnostics/dfbetas.pdf>
+Package pdftex.def Info: 15_Diagnostics/dfbetas.pdf used on input line 6230.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6236.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[218]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[219 <./15_Diagnostics/dfbetas.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[220]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[221]
+
+Package xcolor Warning: Incompatible color definition on input line 6395.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[222]
+
+Package xcolor Warning: Incompatible color definition on input line 6443.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[223]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[224] [225
+
+]
+Chapter 16.
+
+Package xcolor Warning: Incompatible color definition on input line 6477.
+
+
+Underfull \vbox (badness 3128) has occurred while \output is active []
+
+ [226
+
+]
+<16_Logit/families.jpg, id=3304, 596.98032pt x 280.79906pt>
+File: 16_Logit/families.jpg Graphic file (type jpg)
+
+<use 16_Logit/families.jpg>
+Package pdftex.def Info: 16_Logit/families.jpg used on input line 6494.
+(pdftex.def)             Requested size: 289.07999pt x 135.97314pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[227 <./16_Logit/families.jpg>]
+<16_Logit/logex.pdf, id=3312, 505.89pt x 505.89pt>
+File: 16_Logit/logex.pdf Graphic file (type pdf)
+ <use 16_Logit/logex.pdf>
+Package pdftex.def Info: 16_Logit/logex.pdf used on input line 6552.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+Underfull \vbox (badness 5954) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[228]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[229 <./16_Logit/logex.pdf>]
+\contentbox=\box75
+\bkgdbox=\box76
+
+Overfull \hbox (20.0pt too wide) detected at line 6594
+[]
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 6603.
+
+
+Overfull \hbox (26.27501pt too wide) in paragraph at lines 6636--6636
+[]\OT1/cmtt/m/n/10.95 ## glm(formula = glbcc ~ age + gender + education + incom
+e, family = binomial(),[] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[230]
+Underfull \vbox (badness 4846) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[231]
+
+Package xcolor Warning: Incompatible color definition on input line 6668.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[232]
+
+Package xcolor Warning: Incompatible color definition on input line 6703.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6720.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6733.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6754.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[233]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[234]
+
+Package xcolor Warning: Incompatible color definition on input line 6827.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[235]
+
+Package xcolor Warning: Incompatible color definition on input line 6852.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6881.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[236]
+
+Package xcolor Warning: Incompatible color definition on input line 6907.
+
+
+Overfull \hbox (14.77763pt too wide) in paragraph at lines 6909--6909
+[][]\OT1/cmtt/m/n/10.95 log.data[] []<-[] []data.frame[][]([][]age[] []=[] []me
+an[][](ds.temp[][]$[][]age),[] []gender[] []=[] []mean[][](ds.temp[][]$[][]gend
+er),[][] 
+ []
+
+
+Overfull \hbox (3.28026pt too wide) in paragraph at lines 6912--6912
+[][]\OT1/cmtt/m/n/10.95 log.data[][]$[][]predicted[] []<-[] []predict[][](logit
+2,[] []newdata[] []= log.data,[] []type[] []=[] []"response"[][])[][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 6931.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[237]
+Overfull \hbox (9.02895pt too wide) in paragraph at lines 6939--6939
+[][]\OT1/cmtt/m/n/10.95 ggplot[][](log.df,[] []aes[][](ideol, pred))[] []+[] []
+geom_point[][]()[] []+[] []geom_errorbar[][]([][]ymin[] []= lower,[][] 
+ []
+
+<16_Logit/logitplot.pdf, id=3376, 505.89pt x 505.89pt>
+File: 16_Logit/logitplot.pdf Graphic file (type pdf)
+
+<use 16_Logit/logitplot.pdf>
+Package pdftex.def Info: 16_Logit/logitplot.pdf used on input line 6947.
+(pdftex.def)             Requested size: 289.07999pt x 289.08589pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[238 <./16_Logit/logitplot.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[239] [240
+
+]
+Chapter 17.
+
+Package xcolor Warning: Incompatible color definition on input line 6967.
+
+[241
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[242] <17_Appendix/"Download Page".png, id=3406, 981.6675pt x 462.22687pt>
+File: 17_Appendix/"Download Page".png Graphic file (type png)
+
+<use 17_Appendix/"Download Page".png>
+Package pdftex.def Info: 17_Appendix/"Download Page".png used on input line 699
+2.
+(pdftex.def)             Requested size: 433.62001pt x 204.17038pt.
+
+<17_Appendix/"RStudio Download Page".png, id=3408, 1028.34187pt x 578.16pt>
+File: 17_Appendix/"RStudio Download Page".png Graphic file (type png)
+
+<use 17_Appendix/"RStudio Download Page".png>
+Package pdftex.def Info: 17_Appendix/"RStudio Download Page".png used on input 
+line 7003.
+(pdftex.def)             Requested size: 433.62001pt x 243.79596pt.
+
+Underfull \vbox (badness 1158) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[243 <./17_Appendix/Download Page.png>]
+<17_Appendix/"RStudio Download Page 2".png, id=3415, 1028.34187pt x 537.50812pt
+>
+File: 17_Appendix/"RStudio Download Page 2".png Graphic file (type png)
+ <use 17_Appendix/"RStudio Download Page 2".png>
+Package pdftex.def Info: 17_Appendix/"RStudio Download Page 2".png used on inpu
+t line 7010.
+(pdftex.def)             Requested size: 433.62001pt x 226.65405pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[244 <./17_Appendix/RStudio Download Page.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[245 <./17_Appendix/RStudio Download Page 2.png>]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[246]
+
+Package xcolor Warning: Incompatible color definition on input line 7033.
+
+
+Package xcolor Warning: Incompatible color definition on input line 7041.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[247]
+
+Package xcolor Warning: Incompatible color definition on input line 7055.
+
+
+Package xcolor Warning: Incompatible color definition on input line 7066.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[248]
+
+Package xcolor Warning: Incompatible color definition on input line 7080.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 7089.
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[249]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 7089.
+ (stats_book_completeV3-knitr.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 7089.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 7089.
+
+Package rerunfilecheck Info: File `stats_book_completeV3-knitr.out' has not cha
+nged.
+(rerunfilecheck)             Checksum: CAA376B4E9BB30270C1D86DD1F813D1F;11460.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 7089.
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 195 (\begingroup)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 11823 strings out of 493323
+ 170223 string characters out of 3139057
+ 314380 words of memory out of 3000000
+ 14395 multiletter control sequences out of 15000+200000
+ 20962 words of font info for 74 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 36i,16n,43p,2363b,786s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cmextra/cmex8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmitt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
+12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/urw/bookman/ubkd8a.pfb>
+Output written on stats_book_completeV3-knitr.pdf (256 pages, 3790021 bytes).
+PDF statistics:
+ 3680 PDF objects out of 4296 (max. 8388607)
+ 635 named destinations out of 1000 (max. 500000)
+ 1545 words of extra memory for PDF output out of 10000 (max. 10000000)
+
