@@ -99,4 +99,11 @@ Saving or writing data that we have manipulated is a useful tool. It allows us t
 #write.csv(newdat, "Class Data Set.csv")
 @
 
-This line of code allows us to save the dataset we created and saved in the object named ds as a new .csv file in our working directory called Class Data Set. Having successfully downloaded R and RStudio, learned some basic programming and data manipulation techniques, and saved the class data set to your working directory you are ready to use the rest of the book to its fullest potential.  
+This line of code allows us to save the dataset we created and saved in the object named ds as a new .csv file in our working directory called Class Data Set. Having successfully downloaded R and RStudio, learned some basic programming and data manipulation techniques, and saved the class data set to your working directory you are ready to use the rest of the book to its fullest potential. 
+
+\section{The Tidyverse}
+
+This edition of the book employs the tidyverse family of R functions for both statistical analysis and data visualization. The tidyverse is a collection of functions that provide an efficient, consistent, and intuitive method of both working with your data and visualizing it. Packages like dplyr are used as the primary method of data exploration and wrangling, and ggplot2 is used for visualization. More information can be found about the tidyverse at www.tidyverse.org. 
+
+
+
