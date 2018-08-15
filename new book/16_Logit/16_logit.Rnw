@@ -281,7 +281,7 @@ The most straightforward way to interpret logits is to Equation \ref{eq:predprob
 
 \noindent We can then evaluate the change in predicted probabilities that $Y$=1 across the range of values in $X_i$.
 
-This procedure can be demonstrated in a two steps. First, create a data frame holding all the variables except ideology at their mean. Second, use the \texttt{predict} function to calculate the predicted probabilities for each level of ideology. Indicate \texttt{type = "response"}. 
+This procedure can be demonstrated in a two steps. First, create a data frame holding all the variables except ideology at their mean. Second, use the \texttt{augment} function to calculate the predicted probabilities for each level of ideology. Indicate \texttt{type.predict = "response"}. 
 
 <<tidy=TRUE>>=
 log.data <- data.frame(age = mean(ds.temp$age),
@@ -289,7 +289,8 @@ log.data <- data.frame(age = mean(ds.temp$age),
                        education = mean(ds.temp$education),
                        income = mean(ds.temp$income),
                        ideol = 1:7)
-log.data$predicted <- predict(logit2, newdata = log.data, type = "response")
+log.data <- logit2 %>%
+  augment(newdata = log.data, type.predict = "response")
 log.data
 @ 
 
@@ -297,15 +298,13 @@ The output shows, for each case, the ideology measure for the respondent followe
 
 <<echo=2:10,results="hide",tidy=TRUE>>=
 pdf(file="logitplot.pdf")
-preds <- predict(logit2, newdata = log.data, se.fit = T, type = "link")
-lower <- plogis(with(preds, fit - 1.96 * se.fit))
-upper <- plogis(with(preds, fit + 1.96 * se.fit))
-pred <- log.data$predicted
-log.df <- data.frame(pred, lower, upper, ideol = 1:7)
+log.df <- log.data %>%
+  mutate(upper = .fitted + 1.96 * .se.fit,
+         lower = .fitted - 1.96 * .se.fit)
 
-ggplot(log.df, aes(ideol, pred)) +
+ggplot(log.df, aes(ideol, .fitted)) +
   geom_point() +
-  geom_errorbar(ymin = lower, ymax = upper, width = .2) 
+  geom_errorbar(aes(ymin = lower, ymax = upper, width = .2)) 
 dev.off()
 @ 
 \begin{figure}
