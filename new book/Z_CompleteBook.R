@@ -1,7 +1,7 @@
 getwd()
 
 # set working directory
-setwd("~/Methods Labs/qrmtextbook/new book")
+setwd("~/Documents/GitHub/qrmtextbook/new book")
 
 # data
 ds<-read.csv("Class Data Set.csv")
@@ -23,9 +23,8 @@ library(formatR)
 library(tidyverse)
 library(reshape2)
 library(lmtest)
+library(broom)
 
 # compile and knit book
 Sweave2knitr("stats_book_completeV3.Rnw")
 knit("stats_book_completeV3.Rnw")
-
-install.packages("formatR")

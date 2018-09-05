@@ -515,14 +515,21 @@ What does it mean to characterize your data? First, it means knowing how many ob
 
 The dataset used for purposes of illustration in this version of this text is taken from a survey of Oklahomans, conducted in 2016, by OU's Center for Risk and Crisis Management. The survey question wording and background will be provided in class. However, for purposes of this chapter, note that the measure of  \textbf{ideology} consists of a self-report of political ideology on a scale that ranges from 1 (strong liberal) to 7 (strong conservative); the measure of the \textbf{perceived risk of climate change} ranges from zero (no risk) to 10 (extreme risk). \textbf{Age} was measured in years. 
 
-It is often useful to graph the variables in your data set to get a better idea of their distribution. In addition, we may want to compare the distribution of a variable to a theoretical distribution (typically a normal distribution). This can be accomplished in several ways, but we will show two here---a histogram and a density curve---and more will be discussed in later chapters. Here we examine the distribution of the variable measuring the perceived risk of climate change. 
+It is often useful to graph the variables in your data set to get a better idea of their distribution. In addition, we may want to compare the distribution of a variable to a theoretical distribution (typically a normal distribution). This can be accomplished in several ways, but we will show two here---a histogram and a density curve---and more will be discussed in later chapters. Here we examine the distribution of the variable measuring the perceived risk of climate change. The red line on the density visualization presents the normal distribution given the mean and standard deviation of our variable.
+% Omitted: A histogram creates intervals of equal length, called bins, and displays the frequency of observations in each of the bins. To produce a histogram in R simply use the geom_histogram command in the \texttt{ggplot2} package. Next, we  plot the density of the observed data along with a normal curve.  This can be done with the \texttt{geom_density} command in the \texttt{ggplot2} package. 
 
-A histogram creates intervals of equal length, called bins, and displays the frequency of observations in each of the bins. To produce a histogram in R simply use the geom_histogram command in the \texttt{ggplot2} package. Next, we  plot the density of the observed data along with a normal curve.  This can be done with the \texttt{geom_density} command in the \texttt{ggplot2} package. 
-
-Note that the normal distribution overlay using the \texttt{stat_function} function for the \texttt{gccrsk} variable is based on the mean and standard deviation of the \textttt{age} variable. The results are shown in Figure \ref{fig:rsk_2}. As you can see, the \texttt{age} variable is not quite normally distributed.  The histogram illustrates that the majority of observations are contained in the upper half of the variable's range.  Moreover, the density curve indicates the the distribution if negatively skewed, and the peak of the distribution is higher on the \texttt{gccrsk} scale than that of the theoretical normal distribution.
-
+%Note that the normal distribution overlay using the \texttt{stat_function} function for the \texttt{gccrsk} variable is based on the mean and standard deviation of the \textttt{age} variable. The results are shown in Figure \ref{fig:rsk_2}. As you can see, the \texttt{age} variable is not quite normally distributed.  The histogram illustrates that the majority of observations are contained in the upper half of the variable's range.  Moreover, the density curve indicates the the distribution if negatively skewed, and the peak of the distribution is higher on the \texttt{gccrsk} scale than that of the theoretical normal distribution.
 
 
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ggplot}\hlstd{(ds,} \hlkwd{aes}\hlstd{(age))} \hlopt{+} \hlkwd{geom_histogram}\hlstd{()}
+\hlkwd{dev.off}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -535,22 +542,19 @@ Note that the normal distribution overlay using the \texttt{stat_function} funct
 \end{kframe}
 \end{knitrout}
 
+
 \begin{figure}
-        \centering
-        \begin{subfigure}[b]{0.4\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{03_Data/rskhist.pdf}%filename
-                \caption{Histogram}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.4\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{03_Data/rskden.pdf}%filename
-                \caption{Density Curve}
-        \end{subfigure}
-                \caption{Distribution of Age 
-                \label{fig:rsk_2}} 
-                                        
+  \centering
+  \includegraphics[width=.4\textwidth]{03_Data/rskhist.pdf}
+  \caption{Histogram}
 \end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=.4\textwidth]{03_Data/rskden.pdf}
+  \caption{Density Curve
+  \label{fig:rsk_2}}
+\end{figure}
+  
 
 You can also get an overview of your data using a table known as a frequency distribution. The frequency distribution summarizes how often each value of your variable occurs in the dataset.  If your variable has a limited number of values that it can take on, you can report all values, but if it has a large number of possible values (e.g., age of respondent), then you will want to create categories, or bins, to report those frequencies. In such cases, it is generally easier to make sense of the percentage distribution.  Table \ref{tab:ideology} is a frequency distribution for the ideology variable.  From that table we see, for example, that about one-third of all respondents are moderates. We see the numbers decrease as we move away from that category, but not uniformly.  There are a few more people on the conservative extreme than on the liberal side and that the number of people placing themselves in the penultimate categories on either end is greater than those towards the middle.  The histogram and density curve would, of course, show the same pattern.
 
@@ -821,9 +825,15 @@ The interquartile range (IQR) measures the spread of the ordered values. It is c
 \end{equation}
 The IQR contains the middle 50\% of the distribution. 
 
-We can visually examine the order statistics of a variable with a boxplot. A boxplot displays the range of the data, the first and third quartile, the median, and any outliers. To obtain a boxplot use the \texttt{geom_boxplot} command. It is shown in Figure \ref{fig:boxrsk}. 
+We can visually examine the order statistics of a variable with a boxplot. A boxplot displays the range of the data, the first and third quartile, the median, and any outliers. The following reterns a boxplot\ref{fig:boxrsk}. 
 
-
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ggplot}\hlstd{(ds,} \hlkwd{aes}\hlstd{(}\hlstr{""}\hlstd{, glbcc_risk))} \hlopt{+} \hlkwd{geom_boxplot}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}
 \includegraphics[width=4in]{03_Data/gccrskbox.pdf}%filname
@@ -1361,7 +1371,7 @@ As coded in our dataset, gender (gender) is a numeric variable with a 1 for male
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\noindent Then we can observe differences in the distributions of perceived risk for males and females by creating density curves, using the \texttt{geom_density} and \texttt{facet_wrap} functions in the \texttt{ggplot2} package. 
+\noindent Then we can observe differences in the distributions of perceived risk for males and females by creating density curves:
 %  change variable to age younq/old.
 
 
@@ -1372,7 +1382,6 @@ As coded in our dataset, gender (gender) is a numeric variable with a 1 for male
 \begin{alltt}
 \hlstd{ds} \hlopt{%>%} \hlkwd{drop_na}\hlstd{(f.gend)} \hlopt{%>%} \hlkwd{ggplot}\hlstd{(}\hlkwd{aes}\hlstd{(glbcc_risk))} \hlopt{+} \hlkwd{geom_density}\hlstd{()} \hlopt{+}
     \hlkwd{facet_wrap}\hlstd{(}\hlopt{~}\hlstd{f.gend,} \hlkwc{scales} \hlstd{=} \hlstr{"fixed"}\hlstd{)}
-\hlkwd{dev.off}\hlstd{()}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1635,7 +1644,7 @@ Crosstabulations and their associated statistics can be calculated using R.  In 
 
 \hlcom{# recode glbccrisk to five categories}
 \hlkwd{library}\hlstd{(car)}
-\hlstd{ds}\hlopt{$}\hlstd{r.glbcc_risk} \hlkwb{<-} \hlkwd{recode}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk,} \hlstr{"0:1=1; 2:3=2; 4:6=3; 7:8:=4;
+\hlstd{ds}\hlopt{$}\hlstd{r.glbcc_risk} \hlkwb{<-} \hlstd{car}\hlopt{::}\hlkwd{recode}\hlstd{(ds}\hlopt{$}\hlstd{glbcc_risk,} \hlstr{"0:1=1; 2:3=2; 4:6=3; 7:8:=4;
                           9:10=5; NA=NA"}\hlstd{)}
 \end{alltt}
 \end{kframe}
@@ -1650,12 +1659,13 @@ Using the \texttt{table} function, we produce a frequency table reflecting the r
 \hlkwd{table}\hlstd{(ds}\hlopt{$}\hlstd{r.glbcc_risk, ds}\hlopt{$}\hlstd{f.gend)}
 \end{alltt}
 \begin{verbatim}
-##                                                                        
-##                                                                         Women
-##   0:1=1; 2:3=2; 4:6=3; 7:8:=4;\n                          9:10=5; NA=NA    44
-##                                                                        
-##                                                                         Men
-##   0:1=1; 2:3=2; 4:6=3; 7:8:=4;\n                          9:10=5; NA=NA  59
+##    
+##     Women Men
+##   1   134 134
+##   2   175 155
+##   3   480 281
+##   4   330 208
+##   5   393 245
 \end{verbatim}
 \begin{alltt}
 \hlcom{# create the table as an R Object}
@@ -1673,12 +1683,13 @@ That table is difficult to interpret because of the different numbers of men and
 \hlkwd{prop.table}\hlstd{(glbcc.table,} \hlnum{2}\hlstd{)} \hlopt{*} \hlnum{100}
 \end{alltt}
 \begin{verbatim}
-##                                                                        
-##                                                                         Women
-##   0:1=1; 2:3=2; 4:6=3; 7:8:=4;\n                          9:10=5; NA=NA   100
-##                                                                        
-##                                                                         Men
-##   0:1=1; 2:3=2; 4:6=3; 7:8:=4;\n                          9:10=5; NA=NA 100
+##    
+##         Women       Men
+##   1  8.862434 13.098729
+##   2 11.574074 15.151515
+##   3 31.746032 27.468231
+##   4 21.825397 20.332356
+##   5 25.992063 23.949169
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -1693,10 +1704,10 @@ The percentaged table suggests that there is a relationship between the two vari
 \end{alltt}
 \begin{verbatim}
 ## 
-## 	Chi-squared test for given probabilities
+## 	Pearson's Chi-squared test
 ## 
 ## data:  glbcc.table
-## X-squared = 2.1845, df = 1, p-value = 0.1394
+## X-squared = 21.729, df = 4, p-value = 0.0002269
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -1712,13 +1723,13 @@ Finally, we want to know how strong the relationship is.  We use the \texttt{ass
 \hlkwd{assocstats}\hlstd{(glbcc.table)}
 \end{alltt}
 \begin{verbatim}
-##                  X^2 df P(> X^2)
-## Likelihood Ratio   0  0        1
-## Pearson            0  0        1
+##                     X^2 df   P(> X^2)
+## Likelihood Ratio 21.494  4 0.00025270
+## Pearson          21.729  4 0.00022695
 ## 
 ## Phi-Coefficient   : NA 
-## Contingency Coeff.: 0 
-## Cramer's V        : NaN
+## Contingency Coeff.: 0.092 
+## Cramer's V        : 0.093
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -2046,8 +2057,8 @@ Note that each variable is perfectly (and positively) correlated with itself - n
 
 \section{Scatterplots}
 
-As noted earlier, it is often useful to try and see patterns between two variables. We examined the density plots of males and females with regard to climate change risk, then we tested these differences for statistical significance. However, we often want to know more than the mean difference between groups; we often want to know if differences exist for variables with several possible values. For example, here we examine the relationship between ideology and glbcc risk. One of the more efficient ways to do this is to produce a scatterplot, which will plot each case in a geometric space for both variables. To produce a scatterplot with \texttt{ggplot2}, we will use the \texttt{geom_jitter} command. This is because ideology and glbcc risk are discrete variables(i.e., whole numbers), so we need to ``jitter" the data. If your values are continuous, use \texttt{geom_point}.\footnote{That means a ``jit" (a very small value) is applied to each observed point on the plot, so
-you can see observations that are ``stacked" on the same coordinate. Ha! Just kidding; they're not called jits. We don't know what they're called. But they ought to be called jits.} The result is shown in Figure \ref{fig:scatjit}.  
+As noted earlier, it is often useful to try and see patterns between two variables. We examined the density plots of males and females with regard to climate change risk, then we tested these differences for statistical significance. However, we often want to know more than the mean difference between groups; we often want to know if differences exist for variables with several possible values. For example, here we examine the relationship between ideology and glbcc risk. One of the more efficient ways to do this is to produce a scatterplot. %Use geom_jitter. This is because ideology and glbcc risk are discrete variables(i.e., whole numbers), so we need to ``jitter" the data. If your values are continuous, use \texttt{geom_point}.\footnote{That means a ``jit" (a very small value) is applied to each observed point on the plot, so
+%ou can see observations that are ``stacked" on the same coordinate. Ha! Just kidding; they're not called jits. We don't know what they're called. But they ought to be called jits.} The result is shown in Figure \ref{fig:scatjit}.  
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -2062,7 +2073,7 @@ you can see observations that are ``stacked" on the same coordinate. Ha! Just ki
 \caption{Scatterplot of Ideology and glbcc Risk \label{fig:scatjit}}
 \end{figure}   
 
-We can see that the density of values indicate that strong liberals---$1$'s on the ideology scale---tend to view climate change as quite risky, whereas strong conservatives---$7$'s on the ideology scale---tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a ``loess" line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We'll have more to say about the linear estimates when we turn to regression analysis in the next chapter. We can add to the previous visualization by including \texttt{geom_smooth} and indicating a "loess" line or an "lm" line. 
+We can see that the density of values indicate that strong liberals---$1$'s on the ideology scale---tend to view climate change as quite risky, whereas strong conservatives---$7$'s on the ideology scale---tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a ``loess" line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We'll have more to say about the linear estimates when we turn to regression analysis in the next chapter. %We can add to the previous visualization by including \texttt{geom_smooth} and indicating a "loess" line or an "lm" line. 
 
 % note there is discussion of missing data in the Applied Regression book by Fox - Page 65-67.
 
@@ -2243,18 +2254,18 @@ Taken together these assumption mean that the error term has a normal, independe
 
 \section{Estimating Linear Models} 
 
-With stochastic models we don't know if the error assumptions are met, nor do we know the values of $\alpha$ and $\beta$ therefore we must estimate them.  The stochastic model as shown in Equation \ref{eq:lm} is estimated as: 
+With stochastic models we don't know if the error assumptions are met, nor do we know the values of $\alpha$ and $\beta$ therefore we must estimate them, as denoted by a hat (e.g., $\hat{\alpha}$ is the estimate for $\alpha$). The stochastic model as shown in Equation \ref{eq:lm} is estimated as: 
 \begin{equation}
   \label{eq:lm}
-Y_{i} = A+BX_{i}+E_{i} 
+Y_{i} = \hat{\alpha} + \hat{\beta} X_{i}+ \epsilon_{i} 
 \end{equation}
-\noindent where $E_i$ is the \textbf{residual term}, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, $E$, into the regression equation.  Note that the predicted value of $Y$ is denoted $\hat{Y}$; $y$-hat. 
+\noindent where $\epsilon_i$ is the \textbf{residual term}, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, $\epsilon$, into the regression equation. Note that the predicted value of $Y$ is denoted $\hat{Y}$; $y$-hat. 
 
 \begin{align*}
-Y_{i} &= A+BX_{i}+E_{i} \\ 
-&= \hat{Y_{i}} + E_{i}  \\
-E_{i} &= Y_i-\hat{Y_{i}} \\
-&= Y_i-A-BX_i
+Y_{i} &= \hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i} \\ 
+&= \hat{Y_{i}} + \epsilon_{i}  \\
+\epsilon_{i} &= Y_i-\hat{Y_{i}} \\
+&= Y_i-\hat{\alpha}-\hat{\beta}X_i
 \end{align*}
 
 \subsection{Residuals}
@@ -2267,11 +2278,11 @@ Residuals measure prediction errors, of how far observation $Y_{i}$ is from pred
   \caption{Residuals: Statistical Forensics \label{resid}}
 \end{figure}
 
-%what's in E
-The residual term contains the accumulation (sum) of errors that can result from measurement issues, modeling problems, and irreducible randomness. Ideally, the residual term contains lots of small and independent influences that result in an overall random quality of the distribution of the errors. When that distribution is not random -- that is, when the distribution of error has some systematic quality -- the estimates of A and B may be biased. Thus, when we evaluate our models we will focus on the \texttt{shape} of the distribution of our errors. 
+%what's in \epislon
+The residual term contains the accumulation (sum) of errors that can result from measurement issues, modeling problems, and irreducible randomness. Ideally, the residual term contains lots of small and independent influences that result in an overall random quality of the distribution of the errors. When that distribution is not random -- that is, when the distribution of error has some systematic quality -- the estimates of $\hat{\alpha}$ and $\hat{\beta}$ may be biased. Thus, when we evaluate our models we will focus on the \texttt{shape} of the distribution of our errors. 
 
 \begin{grbox}
-\greybox{\textbf{What's in $E$?} 
+\greybox{\textbf{What's in $\epsilon$?} 
 
   \textit{Measurement Error}
 \begin{itemize}
@@ -2294,15 +2305,15 @@ The residual term contains the accumulation (sum) of errors that can result from
 \end{itemize}}
 \end{grbox}
 
-The goal of regression analysis is to minimize the error associated with the model estimates. As noted, the residual term is the estimated error, or overall ``miss" (e.g., $Y_{i}-\hat{Y_{i}}$). Specifically the goal is to minimize the sum of the squared errors, $\sum E^{2}$. Therefore, we need to find the values of $A$ and $B$ that minimize $\sum E^{2}$. 
+The goal of regression analysis is to minimize the error associated with the model estimates. As noted, the residual term is the estimated error, or overall ``miss" (e.g., $Y_{i}-\hat{Y_{i}}$). Specifically the goal is to minimize the sum of the squared errors, $\sum \epsilon^{2}$. Therefore, we need to find the values of $\hat{\alpha}$ and $\hat{\beta}$ that minimize $\sum \epsilon^{2}$. 
 
-Note that for a fixed set of data \{A,B\}, each possible choice of values for $A$ and $B$ corresponds to a specific residual sum of squares, $\sum E^{2}$. This can be expressed by the following functional form:
+Note that for a fixed set of data \{$\hat{\alpha}$,$\hat{\alpha}$\}, each possible choice of values for $\hat{\alpha}$ and $\hat{\beta}$ corresponds to a specific residual sum of squares, $\sum \epsilon^{2}$. This can be expressed by the following functional form:
 
 \begin{equation}
- S(A,B)=\sum_{i=1}^{n} E^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-A-BX_{i})^{2}  
+ S(\hat{\alpha},\hat{\beta})=\sum_{i=1}^{n} \epsilon^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{2}  
 \end{equation}
 
-Minimizing this function requires specifying estimators for $A$ and $B$ such that $S(A,B)=\sum E^{2}$ is at the lowest possible value. Finding this minimum value requires the use of calculus, which will be discussed in the next chapter. Before that we walk through a quick example of simple regression.  
+Minimizing this function requires specifying estimators for $\hat{\alpha}$ and $\hat{\beta}$ such that $S(\hat{\alpha},\hat{\beta})=\sum \epsilon^{2}$ is at the lowest possible value. Finding this minimum value requires the use of calculus, which will be discussed in the next chapter. Before that we walk through a quick example of simple regression.  
 
 \section{An Example of Simple Regression} 
 
@@ -2338,7 +2349,7 @@ The following example uses a measure of peoples' political ideology to predict t
 \end{kframe}
 \end{knitrout}
 
-The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for $A$ and $B$; the results of hypothesis tests; and overall measures of model ``fit" -- all of which we will discuss in detail in later chapters. But, for now, note that the estimated $B$ for ideology is negative, which indicates that as the value for ideology \textit{increases}---in our data this means more conservative---the perceived risk of climate change \textit{decreases}. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by -1.0463463.
+The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for $\hat{\alpha}$ and $\hat{\beta}$; the results of hypothesis tests; and overall measures of model ``fit" -- all of which we will discuss in detail in later chapters. But, for now, note that the estimated $B$ for ideology is negative, which indicates that as the value for ideology \textit{increases}---in our data this means more conservative---the perceived risk of climate change \textit{decreases}. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by -1.0463463.
 
 We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure \ref{fig:resid}. Note that we will discuss residual diagnostics in detail in future chapters. 
 
@@ -2377,11 +2388,11 @@ For purposes of this Chapter, be sure that you can run the basic bivariate OLS r
 
 \chapter{Linear Estimation and Minimizing Error} 
 
-As noted in the last chapter, the objective when estimating a linear model is to minimize the aggregate of the squared error. Specifically, when estimating a linear model, $Y=A+BX+E$, we seek to find the values of $A$ and $B$ that minimize the $\sum E^{2}$. To accomplish this, we use calculus. 
+As noted in the last chapter, the objective when estimating a linear model is to minimize the aggregate of the squared error. Specifically, when estimating a linear model, $Y=A+BX+E$, we seek to find the values of $\hat{\alpha}$ and $\hat{\beta}$ that minimize the $\sum \epsilon^{2}$. To accomplish this, we use calculus. 
 
 \section{Minimizing Error using Derivatives}
 
-In calculus, the \textit{derivative} is a measure the slope of any function of x, or $f(x)$, at each given value of $x$. For the function $f(x)$, the derivative is denoted as $f'(x)$ or, in spoken form, is referred to as \textit{``f prime x"}. Because the formula for $\sum E^{2}$ is known, and can be treated as a function, the derivative of that function permits the calculation of the change in the sum of the squared error over each possible value of $A$ and $B$. For that reason we need to find the derivative for $\sum E^{2}$ with respect to changes in $A$ and $B$. That, in turn, will permit us to ``derive" the values of $A$ and $B$ that result in the lowest possible $\sum E^{2}$.
+In calculus, the \textit{derivative} is a measure the slope of any function of x, or $f(x)$, at each given value of $x$. For the function $f(x)$, the derivative is denoted as $f'(x)$ or, pronounced as \textit{``f prime x"}. Because the formula for $\sum \epsilon^{2}$ is known, and can be treated as a function, the derivative of that function permits the calculation of the change in the sum of the squared error over each possible value of $\hat{\alpha}$ and $\hat{\beta}$. For that reason we need to find the derivative for $\sum \epsilon^{2}$ with respect to changes in $\hat{\alpha}$ and $\hat{\beta}$. That, in turn, will permit us to ``derive" the values of $\hat{\alpha}$ and $\hat{\beta}$ that result in the lowest possible $\sum \epsilon^{2}$.
 
 Look -- we understand that all this sounds complicated. But it's not all \textit{that} complicated. In this chapter we will walk through all the steps so you'll see that its really rather simple and, well, elegant. You will see that differential calculus (the kind of calculus that is concerned with rates of change) is built on a set of clearly defined rules for finding the derivative for any function $f(x)$. It's like solving a puzzle. The next section outlines these rules, so we can start solving puzzles. 
 
@@ -2576,7 +2587,7 @@ f'(x)&=5(7x^{2}-2x+13)^{4}*(7x^{2}-2x+13)' \\
 
 \subsection{Critical Points}
 
-Our goal is to use derivatives to find the values of $A$ and $B$ that minimize the sum of the squared error. To do this we need to find the \textit{minima} of a function. The minima is the smallest value that a function takes, whereas the maxima is the largest value. To find the minima and maxima, the \textit{critical points} are key. The critical point is where the derivative of the function is equal to $0$, $f'(x)=0$. Note, that this is equivalent to the slope being equal to $0$. 
+Our goal is to use derivatives to find the values of $\hat{\alpha}$ and $\hat{\beta}$ that minimize the sum of the squared error. To do this we need to find the \textit{minima} of a function. The minima is the smallest value that a function takes, whereas the maxima is the largest value. To find the minima and maxima, the \textit{critical points} are key. The critical point is where the derivative of the function is equal to $0$, $f'(x)=0$. Note, that this is equivalent to the slope being equal to $0$. 
 
 \begin{grbox}
 \greybox{{\textbf{Example: Finding the Critical Points}}
@@ -2618,7 +2629,7 @@ Once a critical point is identified, the next step is to determine whether that 
 
 \subsection{Partial Derivation}
 
-When an equation includes two variables, one can take a \textit{partial derivative} with respect to only one variable while the other variable is simply treated as a constant. This is particularly useful in our case, because the function $\sum E^{2}$ has two variables -- $A$ and $B$.
+When an equation includes two variables, one can take a \textit{partial derivative} with respect to only one variable while the other variable is simply treated as a constant. This is particularly useful in our case, because the function $\sum \epsilon^{2}$ has two variables -- $\hat{\alpha}$ and ${\hat{\beta}$.
 
 Let's take an example. For the function $y=f(x,z)=x^{3}+4xz-5z^{2}$, we first take the derivative of $x$ holding $z$ constant. 
 
@@ -2634,104 +2645,104 @@ Next we take the derivative of $z$ holding $x$ constant.
 
 \section{Deriving OLS Estimators}
 
-Now that we have developed some of the rules for differential calculus, we can see how OLS finds values of $A$ and $B$ that minimizes the sum of the squared error. In formal terms, let's define the set, $S(A,B)$ as a pair of regression estimators that jointly determine the residual sum of squares given that: $Y_{i}=\hat {Y}_{i}+E_{i}=A+BX_{i}+E_{i}$. This function can be expressed:
+Now that we have developed some of the rules for differential calculus, we can see how OLS finds values of $\hat{\alpha}$ and $\hat{\beta}$ that minimizes the sum of the squared error. In formal terms, let's define the set, $S(\hat{\alpha},\hat{\beta})$ as a pair of regression estimators that jointly determine the residual sum of squares given that: $Y_{i}=\hat {Y}_{i}+\epsilon_{i}=\hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i}$. This function can be expressed:
 
 \begin{equation*}
- S(A,B)=\sum_{i=1}^{n} E^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-A-BX_{i})^{2}  
+ S(\hat{\alpha},\hat{\beta})=\sum_{i=1}^{n} \epsilon^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-\hat{\alpha}-\hat{\beta} X_{i})^{2}  
 \end{equation*}
-First we will derive $A$. 
+First we will derive $\hat{\alpha}$. 
 
-\subsection{OLS Derivation of $A$}
+\subsection{OLS Derivation of $\hat{\alpha}$}
 
-Take the partial derivatives of $S(A,B)$ with-respect-to (w.r.t) $A$ in order to determine the formulation of $A$ that minimizes $S(A,B)$. Using the chain rule,
+Take the partial derivatives of $S(\hat{\alpha},\hat{\beta})$ with-respect-to (w.r.t) $\hat{\alpha}$ in order to determine the formulation of $\hat{\alpha}$ that minimizes $S(\hat{\alpha},\hat{\beta})$. Using the chain rule,
 
 \begin{align*}
-\frac{\partial S(A,B)}{\partial A} &= \sum
-2(Y_{i}-A-BX_{i})^{2-1}*(Y_{i}-A-BX_{i})' \\
-&= \sum 2(Y_{i}-A-BX_{i})^{1}*(-1) \\
-&= -2 \sum (Y_{i}-A-BX_{i}) \\ 
-&= -2 \sum Y_{i}+2nA+2B \sum X_{i} 
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\alpha}} &= \sum
+2(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{2-1}*(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})' \\
+&= \sum 2(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{1}*(-1) \\
+&= -2 \sum (Y_{i}-\hat{\alpha}-\hat{\beta}X_{i}) \\ 
+&= -2 \sum Y_{i}+2n\hat{\alpha}+2\hat{\beta} \sum X_{i} 
 \end{align*}
 
 \noindent Next set the derivative equal to $0$. 
 
 \begin{equation*}
-\frac{\partial S(A,B)}{\partial A} =  -2 \sum Y_{i}+2nA+2B \sum X_{i} = 0 
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\alpha}} =  -2 \sum Y_{i}+2n\hat{\alpha}+2\hat{\beta} \sum X_{i} = 0 
 \end{equation*}
 
-\noindent Then, shift non-$A$ terms to the other side of the equal sign:
+\noindent Then, shift non-$\hat{\alpha}$ terms to the other side of the equal sign:
 \begin{equation*}
-2nA = 2 \sum Y_{i}-2B \sum X_{i} 
+2n\hat{\alpha} = 2 \sum Y_{i}-2\hat{\beta} \sum X_{i} 
 \end{equation*}
 
 \noindent Finally, divide through by $2n$: 
 \begin{align*}
-\frac{2nA}{2n} &= \frac{2 \sum Y_{i}-2B \sum X_{i}}{2n} \\
-A &= \frac{\sum Y_{i}}{n}-B*\frac{\sum X_{i}}{n} \\
-&= \bar {Y}-B \bar{X} \\
+\frac{2n\hat{\alpha}}{2n} &= \frac{2 \sum Y_{i}-2\hat{\beta} \sum X_{i}}{2n} \\
+A &= \frac{\sum Y_{i}}{n}-\hat{\beta}*\frac{\sum X_{i}}{n} \\
+&= \bar {Y}-\hat{\beta} \bar{X} \\
 \end{align*}
 
 \begin{equation}
 \label{eq:A} 
-\therefore A = \bar {Y}-B \bar{X} 
+\therefore \hat{\alpha} = \bar {Y}-\hat{\beta} \bar{X} 
 \end{equation}
 
 
-\subsection{OLS Derivation of $B$}
+\subsection{OLS Derivation of $\hat{\beta}$}
 
-Having found $A$, the next step is to derive $B$. This time we will take the partial derivative w.r.t $B$. As you will see, the steps are just a little more involved for $B$ than they were for $A$.
+Having found $\hat{\alpha}$, the next step is to derive $\hat{\beta}$. This time we will take the partial derivative w.r.t $\hat{\beta}$. As you will see, the steps are just a little more involved for $\hat{\beta}$ than they were for $\hat{\alpha}$.
 
 \begin{align*}
-\frac{\partial S(A,B)}{\partial B} &= \sum
-2(Y_{i}-A-BX_{i})^{2-1}*(Y_{i}-A-BX_{i})' \\
-&= \sum 2(Y_{i}-A-BX_{i})^{1}*(-X_{i}) \\
-&= 2 \sum (-X_{i}Y_{i}+AX_{i}+BX^{2}_{i}) \\ 
-&= -2 \sum X_{i}Y_{i}+2A \sum X_{i} + 2B \sum X^{2}_{i}  
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\beta}} &= \sum
+2(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{2-1}*(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})' \\
+&= \sum 2(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{1}*(-X_{i}) \\
+&= 2 \sum (-X_{i}Y_{i}+\hat{\alpha}X_{i}+\hat{\beta}X^{2}_{i}) \\ 
+&= -2 \sum X_{i}Y_{i}+2\hat{\alpha} \sum X_{i} + 2\hat{\beta} \sum X^{2}_{i}  
 \end{align*}
 
-\noindent Since we know that $A = \bar {Y}-B \bar{X}$, we can substitute $\bar {Y}-B
-\bar{X}$ for $A$. 
+\noindent Since we know that $\hat{\alpha} = \bar {Y}-\hat{\beta} \bar{X}$, we can substitute $\bar {Y}-\hat{\beta}
+\bar{X}$ for $\hat{\alpha}$. 
 
 \begin{align*}
-\frac{\partial S(A,B)}{\partial B} &= -2 \sum X_{i}Y_{i}+2(\bar {Y}-B
-\bar{X})\sum X_{i} + 2B \sum X^{2}_{i} \\
-&= -2 \sum X_{i}Y_{i}+2 \bar{Y} \sum X_{i}-2B \bar{X} \sum X_{i} + 2B
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\beta}} &= -2 \sum X_{i}Y_{i}+2(\bar {Y}-\hat{\beta}
+\bar{X})\sum X_{i} + 2\hat{\beta} \sum X^{2}_{i} \\
+&= -2 \sum X_{i}Y_{i}+2 \bar{Y} \sum X_{i}-2\hat{\beta} \bar{X} \sum X_{i} + 2\hat{\beta}
 \sum X^{2}_{i} 
 \end{align*}
 
 \noindent Next, we can substitute $\frac{\sum Y_{i}}{n}$ for $\bar{Y}$ and $\frac{\sum X_{i}}{n}$ for $\bar{X}$ and set it equal to $0$. 
 
 \begin{equation*}
-\frac{\partial S(A,B)}{\partial B} = -2 \sum X_{i}Y_{i}+\frac{2\sum Y_{i}
-  \sum X_{i}}{n}-\frac{2B\sum X_{i} \sum X_{i}}{n}+ 2B
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\beta}} = -2 \sum X_{i}Y_{i}+\frac{2\sum Y_{i}
+  \sum X_{i}}{n}-\frac{2\hat{\beta}\sum X_{i} \sum X_{i}}{n}+ 2\hat{\beta}
 \sum X^{2}_{i} = 0
 \end{equation*}
 
-\noindent Then, multiply through by $\frac{n}{2}$ and put all the $B$ terms on the same side. 
+\noindent Then, multiply through by $\frac{n}{2}$ and put all the $\hat{\beta}$ terms on the same side. 
 
 \begin{align*}
-nB \sum X^{2}_{i}-B(\sum X_{i})^{2} &= n \sum X_{i}Y_{i}-\sum X_{i}
+n\hat{\beta} \sum X^{2}_{i}-\hat{\beta}(\sum X_{i})^{2} &= n \sum X_{i}Y_{i}-\sum X_{i}
 \sum Y_{i} \\
-B(n \sum X^{2}_{i}-(\sum X_{i})^{2}) &= n \sum X_{i}Y_{i}-\sum X_{i}
+\hat{\beta}(n \sum X^{2}_{i}-(\sum X_{i})^{2}) &= n \sum X_{i}Y_{i}-\sum X_{i}
 \sum Y_{i} \\
-\therefore B = \frac{n \sum X_{i}Y_{i}-\sum X_{i}
+\therefore \hat{\beta} = \frac{n \sum X_{i}Y_{i}-\sum X_{i}
 \sum Y_{i}}{n\sum X^{2}_{i}-(\sum X_{i})^{2}}
 \end{align*}
 
-\noindent The $B$ term can be rearranged such that: 
+\noindent The $\hat{\beta}$ term can be rearranged such that: 
 
 \begin{equation}
 \label{eq:B}  
-B=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}  
+\hat{\beta}=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}  
 \end{equation}
 
-Now remember what we are doing here: We used the partial derivatives for $\sum E^{2}$ with respect to $A$ and $B$ to find the values for $A$ and $B$ that will give us the smallest value for $\sum E^{2}$.  Put differently, the formulas for $B$ and $A$ allow the calculation of the error-minimizing slope (change in $Y$ given a one unit change in $X$) and intercept (value for $Y$ when $X$ is zero) for any data set representing a bivariate, linear relationship. No other formulas will give us a line, using the same data, that will result in as small a squared-error. Therefore, OLS is referred to as the Best Linear Unbiased Estimator (BLUE).  
+Now remember what we are doing here: We used the partial derivatives for $\sum \epsilon^{2}$ with respect to $\hat{\alpha}$ and $\hat{\beta}$ to find the values for $\hat{\alpha}$ and $\hat{\beta}$ that will give us the smallest value for $\sum \epsilon^{2}$.  Put differently, the formulas for $\hat{\beta}$ and $\hat{\alpha}$ allow the calculation of the error-minimizing slope (change in $Y$ given a one unit change in $X$) and intercept (value for $Y$ when $X$ is zero) for any data set representing a bivariate, linear relationship. No other formulas will give us a line, using the same data, that will result in as small a squared-error. Therefore, OLS is referred to as the Best Linear Unbiased Estimator (BLUE).  
 
-\subsection{Interpreting $B$ and $A$}
+\subsection{Interpreting $\hat{\beta}$ and $\hat{\alpha}$}
 
-In a regression equation $Y=A+BX$, where $A$ is shown in Equation \ref{eq:A} and $B$ is shown in Equation \ref{eq:B}. Equation \ref{eq:B} shows that for each 1-unit increase in $X$ you get $B$ units change in $Y$. Equation \ref{eq:A} shows that when $X$ is $0$, $Y$ is equal to $A$. Note that in a regression model with no independent variables, $A$ is simply the expected value (i.e., mean) of $Y$. 
+In a regression equation $Y=\hat{\alpha}+\hat{\beta}X$, where $\hat{\alpha}$ is shown in Equation \ref{eq:A} and $\hat{\beta}$ is shown in Equation \ref{eq:B}. Equation \ref{eq:B} shows that for each 1-unit increase in $X$ you get $\hat{\beta}$ units change in $Y$. Equation \ref{eq:A} shows that when $X$ is $0$, $Y$ is equal to $\hat{\alpha}$. Note that in a regression model with no independent variables, $\hat{\alpha}$ is simply the expected value (i.e., mean) of $Y$. 
 
-The intuition behind these formulas can be shown by using \texttt{R} to calculate ``by hand" the slope ($B$) and intercept ($A$) coefficients. A theoretical simple regression model is structured as
+The intuition behind these formulas can be shown by using \texttt{R} to calculate ``by hand" the slope ($\hat{\beta}$) and intercept ($\hat{\alpha}$) coefficients. A theoretical simple regression model is structured as
 follows:  
 
 \begin{equation*}
@@ -2746,18 +2757,18 @@ Y_{i} = \alpha + \beta X_{i} + \epsilon_{i}
 \item $\epsilon$ is the error term
 \end{itemize}
 
-\noindent The model is to be estimated is expressed as $Y=A+BX+E$. 
+\noindent The model is to be estimated is expressed as $Y=\hat{\beta}+\hat{\beta}X+/epsilon$. 
 
 \noindent As noted, the goal is to calculate the intercept coefficient: 
 
 \begin{equation*}
-A=\bar Y-B\bar X 
+\hat{\alpha}=\bar Y-\hat{\beta}\bar X 
 \end{equation*}
 
 \noindent and the slope
 coefficient: 
 \begin{equation*}
-B=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
+\hat{\beta}=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
 \end{equation*}
 
 Using \texttt{R}, this can be accomplished in a few steps. First create a vector of values for \textit{x} and \textit{y} (note that we just chose these values arbitrarily for purposes of this example). 
@@ -2823,9 +2834,9 @@ Using \texttt{R}, this can be accomplished in a few steps. First create a vector
 \end{kframe}
 \end{knitrout}
 
-\noindent Then, calculate $B$
+\noindent Then, calculate $\hat{\beta}$
 \begin{equation*}
-B=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
+\hat{\beta}=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
 \end{equation*}
 
 \begin{knitrout}
@@ -2840,9 +2851,9 @@ B=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
 \end{kframe}
 \end{knitrout}
 
-\noindent Finally, calculate $A$
+\noindent Finally, calculate $\hat{\alpha}$
 \begin{equation*}
-A=\bar Y-B\bar X 
+\hat{\alpha}=\bar Y-\hat{\beta}\bar X 
 \end{equation*}
 
 \begin{knitrout}
@@ -2879,7 +2890,7 @@ A=\bar Y-B\bar X
 See figure \ref{fig:regex}.
 
 \section{Summary}
-Whoa! Think of what you've accomplished here: You learned enough calculus to find a minima for an equation with two variables, then applied that to the equation for the $\sum E^{2}$. You derived the error minimizing values for $A$ and $B$. Then you used those formulae in $R$ to calculate ``by hand" the OLS regression for a small dataset. 
+Whoa! Think of what you've accomplished here: You learned enough calculus to find a minima for an equation with two variables, then applied that to the equation for the $\sum \epsilon^{2}$. You derived the error minimizing values for $\hat{\alpha}$ and $\hat{\beta}$. Then you used those formulae in $R$ to calculate ``by hand" the OLS regression for a small dataset. 
 
 Congratulate yourself -- you deserve it!
 
@@ -3275,7 +3286,7 @@ The values for $R^{2}$ can range from zero to 1. In the simple regression case, 
 
 \noindent  \textbf{Visualizing Bivariate Regression}
 
-The \texttt{ggplot2} package provides a mechanism for viewing the effect of ideology on the dependent variable of perceived risk of global warming. Adding \texttt{geom_smooth} will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares.  Graphically (Figure \ref{fig:effectsplot}), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.
+The \texttt{ggplot2} package provides a mechanism for viewing the effect of ideology on the dependent variable of perceived risk of global warming. % Adding \texttt{geom_smooth} will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares.  Graphically (Figure \ref{fig:effectsplot}), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -3287,8 +3298,9 @@ The \texttt{ggplot2} package provides a mechanism for viewing the effect of ideo
 \end{knitrout}
 
 \begin{figure}[!htp]
+  \centering
 \includegraphics[width=3.5in, height=3.5in]{09_InterpretSimple/effectsplot.pdf}%filename
-\caption{Effects Plot of Ideology \label{fig:effectsplot}}
+\caption{Bivariate Regression Plot\label{fig:effectsplot}}
 \end{figure} 
 
 \noindent \textbf{Cleaning up the R Environment}
@@ -3530,8 +3542,8 @@ A significant coefficient on the squared ideology variable informs us that we pr
 ## Tukey test   -5.0181     0.0000005219 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## RStudioGD 
-##         2
+## pdf 
+##   2
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -3593,7 +3605,7 @@ The histogram in figure \ref{fig:histideology} indicates that the residuals are 
 \end{figure}
 \FloatBarrier
 
-Figure \ref{fig:densityideology} indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution.  Our final ocular examination of the residuals will be a quartile plot (using the \texttt{stat_qq} function from the \texttt{ggplot2} package).
+Figure \ref{fig:densityideology} indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution.  Our final ocular examination of the residuals will be a quartile plot %(using the \texttt{stat_qq} function from the \texttt{ggplot2} package).
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -3603,7 +3615,6 @@ Figure \ref{fig:densityideology} indicates the model residuals deviate slightly 
   \hlkwd{ggplot}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{sample} \hlstd{= OLS_env}\hlopt{$}\hlstd{residuals))} \hlopt{+}
   \hlkwd{stat_qq}\hlstd{()} \hlopt{+}
   \hlkwd{stat_qq_line}\hlstd{()}
-\hlkwd{dev.off}\hlstd{()}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -3670,7 +3681,7 @@ The negative slope on the red line in Figure \ref{fig:spreadlvlideology} indicat
 \begin{verbatim}
 ## Non-constant Variance Score Test 
 ## Variance formula: ~ fitted.values 
-## Chisquare = 68.107    Df = 1     p = 0.0000000000000001548597
+## Chisquare = 68.107, Df = 1, p = < 0.000000000000000222
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -3749,8 +3760,8 @@ Finally, we can produce a plot that combines studentized residuals, ``hat values
 ## 30   0.09192603 0.002172497 0.000009202846
 ## 589 -3.53030574 0.001334528 0.008289418537
 ## 615 -3.53030574 0.001334528 0.008289418537
-## RStudioGD 
-##         2
+## pdf 
+##   2
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -5672,6 +5683,10 @@ Now let's look at the residuals from our example model. We can check the linear 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
+\hlstd{ds.small} \hlopt{%>%} \hlkwd{melt}\hlstd{(}\hlkwc{measure.vars} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"age"}\hlstd{,} \hlstr{"education"}\hlstd{,} \hlstr{"income"}\hlstd{,}
+    \hlstr{"ideol"}\hlstd{,} \hlstr{"fit.p"}\hlstd{))} \hlopt{%>%} \hlkwd{ggplot}\hlstd{(}\hlkwd{aes}\hlstd{(value, fit.r,} \hlkwc{group} \hlstd{= variable))} \hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+} \hlkwd{geom_smooth}\hlstd{(}\hlkwc{method} \hlstd{= loess)} \hlopt{+} \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)} \hlopt{+}
+    \hlkwd{facet_wrap}\hlstd{(}\hlopt{~}\hlstd{variable,} \hlkwc{scales} \hlstd{=} \hlstr{"free"}\hlstd{)}
 \hlkwd{dev.off}\hlstd{()}
 \end{alltt}
 \end{kframe}
@@ -5835,7 +5850,7 @@ appear to show heteroscedasticity. We can test for non-constant error using the 
 \begin{verbatim}
 ## Non-constant Variance Score Test 
 ## Variance formula: ~ fitted.values 
-## Chisquare = 12.70938    Df = 1     p = 0.0003638269
+## Chisquare = 12.70938, Df = 1, p = 0.00036383
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -5931,7 +5946,7 @@ We can then compare our results with the original simple regression model result
 ## income       0.0000001922905 0.000002320899   0.08285175
 ## ideol       -1.2235648372311 0.060039031426 -20.37948994
 ##                                                                                                         Pr(>|t|)
-## (Intercept) 0.00000000000000000000000000000000000000000000000000000000000000000000000054921988962793404326183377
+## (Intercept) 0.00000000000000000000000000000000000000000000000000000000000000000000000054921988962793404323143119
 ## age         0.48881482326776815039437451559933833777904510498046875000000000000000000000000000000000000000000000
 ## education   0.78978312137982031870819810137618333101272583007812500000000000000000000000000000000000000000000000
 ## income      0.93396941638148500697269582815351895987987518310546875000000000000000000000000000000000000000000000
@@ -6122,14 +6137,14 @@ Next, we can sort the residuals and find the case with the largest absolute valu
 \hlkwd{head}\hlstd{(output.1,} \hlnum{1}\hlstd{)}  \hlcom{# smallest residual absolute value}
 \end{alltt}
 \begin{verbatim}
-##       298 
+##       333 
 ## -7.161695
 \end{verbatim}
 \begin{alltt}
 \hlkwd{head}\hlstd{(output.2,} \hlnum{1}\hlstd{)}  \hlcom{# largest residual absolute value}
 \end{alltt}
 \begin{verbatim}
-##       94 
+##      104 
 ## 6.898077
 \end{verbatim}
 \end{kframe}
@@ -6144,11 +6159,9 @@ Then, we can examine the $X$ and $Y$ values of those cases on key variables. Her
     \hlstr{"glbcc_risk"}\hlstd{)]}  \hlcom{# [c(row numbers),c(column numbers)]}
 \end{alltt}
 \begin{verbatim}
-## # A tibble: 2 x 5
 ##     age education income ideol glbcc_risk
-##   <int>     <int>  <dbl> <int>      <int>
-## 1    69         6 100000     2          2
-## 2    55         7  94000     7         10
+## 333  69         6 100000     2          2
+## 104  55         7  94000     7         10
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -6189,8 +6202,8 @@ To calculate the DFBETAS we use the \texttt{dfbetas} function. Then we examine t
 ## 1 -0.004396485  0.005554545  0.01043817 -0.01548697 -0.005616679
 ## 2  0.046302381 -0.007569305 -0.02671961 -0.01401653 -0.042323468
 ## 3 -0.002896270  0.018301623 -0.01946054  0.02534233 -0.023111519
-## 4 -0.072106074  0.060263914  0.02966501  0.01243482  0.015464937
-## 5 -0.057608817 -0.005345142 -0.04948456  0.06456577  0.134103149
+## 5 -0.072106074  0.060263914  0.02966501  0.01243482  0.015464937
+## 7 -0.057608817 -0.005345142 -0.04948456  0.06456577  0.134103149
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -6249,14 +6262,14 @@ As can be seen, several cases seem to exceed the $0.089$ cut-off. Next we find t
 \end{alltt}
 \begin{verbatim}
 ##      (Intercept)        age   education      income     ideol  id
-## 298 -0.001083869 -0.1276632 -0.04252348 -0.07591519 0.2438799 298
+## 333 -0.001083869 -0.1276632 -0.04252348 -0.07591519 0.2438799 298
 \end{verbatim}
 \begin{alltt}
 \hlkwd{head}\hlstd{(df2.ols1[}\hlkwd{with}\hlstd{(df2.ols1,} \hlkwd{order}\hlstd{(}\hlopt{+}\hlstd{ideol)), ],} \hlnum{1}\hlstd{)}  \hlcom{# order increasing}
 \end{alltt}
 \begin{verbatim}
 ##     (Intercept)       age   education     income       ideol  id
-## 131  -0.0477082 0.1279219 -0.03641922 0.04291471 -0.09833372 131
+## 148  -0.0477082 0.1279219 -0.03641922 0.04291471 -0.09833372 131
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Income}
@@ -6264,14 +6277,14 @@ As can be seen, several cases seem to exceed the $0.089$ cut-off. Next we find t
 \end{alltt}
 \begin{verbatim}
 ##     (Intercept)         age    education    income       ideol  id
-## 445 -0.05137992 -0.01514244 -0.009938873 0.4112137 -0.03873292 445
+## 494 -0.05137992 -0.01514244 -0.009938873 0.4112137 -0.03873292 445
 \end{verbatim}
 \begin{alltt}
 \hlkwd{head}\hlstd{(df2.ols1[}\hlkwd{with}\hlstd{(df2.ols1,} \hlkwd{order}\hlstd{(}\hlopt{+}\hlstd{income)), ],} \hlnum{1}\hlstd{)}  \hlcom{# order increasing}
 \end{alltt}
 \begin{verbatim}
 ##     (Intercept)         age  education     income      ideol  id
-## 254  0.06766781 -0.06611698 0.08166577 -0.4001515 0.04501527 254
+## 284  0.06766781 -0.06611698 0.08166577 -0.4001515 0.04501527 254
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Age}
@@ -6279,14 +6292,14 @@ As can be seen, several cases seem to exceed the $0.089$ cut-off. Next we find t
 \end{alltt}
 \begin{verbatim}
 ##    (Intercept)       age  education      income     ideol id
-## 78  -0.2146905 0.1786665 0.04131316 -0.01755352 0.1390403 78
+## 87  -0.2146905 0.1786665 0.04131316 -0.01755352 0.1390403 78
 \end{verbatim}
 \begin{alltt}
 \hlkwd{head}\hlstd{(df2.ols1[}\hlkwd{with}\hlstd{(df2.ols1,} \hlkwd{order}\hlstd{(}\hlopt{+}\hlstd{age)), ],} \hlnum{1}\hlstd{)}  \hlcom{# order increasing}
 \end{alltt}
 \begin{verbatim}
 ##     (Intercept)        age  education     income     ideol  id
-## 420    0.183455 -0.2193257 -0.1906404 0.02477437 0.1832784 420
+## 467    0.183455 -0.2193257 -0.1906404 0.02477437 0.1832784 420
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Education - we find the amount - ID 308 for edu}
@@ -6294,14 +6307,14 @@ As can be seen, several cases seem to exceed the $0.089$ cut-off. Next we find t
 \end{alltt}
 \begin{verbatim}
 ##     (Intercept)        age education      income      ideol  id
-## 308  -0.1751724 0.06071469 0.1813973 -0.05557382 0.09717012 308
+## 343  -0.1751724 0.06071469 0.1813973 -0.05557382 0.09717012 308
 \end{verbatim}
 \begin{alltt}
 \hlkwd{head}\hlstd{(df2.ols1[}\hlkwd{with}\hlstd{(df2.ols1,} \hlkwd{order}\hlstd{(}\hlopt{+}\hlstd{education)), ],} \hlnum{1}\hlstd{)}  \hlcom{# order increasing}
 \end{alltt}
 \begin{verbatim}
-##    (Intercept)       age  education      income        ideol id
-## 95  0.05091437 0.1062966 -0.2033285 -0.02741242 -0.005880984 95
+##     (Intercept)       age  education      income        ideol id
+## 105  0.05091437 0.1062966 -0.2033285 -0.02741242 -0.005880984 95
 \end{verbatim}
 \begin{alltt}
 \hlcom{# View the output}
@@ -6322,10 +6335,8 @@ As can be seen, several cases seem to exceed the $0.089$ cut-off. Next we find t
 \hlstd{ds.small[}\hlkwd{c}\hlstd{(}\hlnum{308}\hlstd{),} \hlkwd{c}\hlstd{(}\hlstr{"age"}\hlstd{,} \hlstr{"education"}\hlstd{,} \hlstr{"income"}\hlstd{,} \hlstr{"ideol"}\hlstd{,} \hlstr{"glbcc_risk"}\hlstd{)]}
 \end{alltt}
 \begin{verbatim}
-## # A tibble: 1 x 5
 ##     age education income ideol glbcc_risk
-##   <int>     <int>  <dbl> <int>      <int>
-## 1    51         2  81000     3          4
+## 343  51         2  81000     3          4
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -6883,7 +6894,7 @@ The most straightforward way to interpret logits is to Equation \ref{eq:predprob
 
 \noindent We can then evaluate the change in predicted probabilities that $Y$=1 across the range of values in $X_i$.
 
-This procedure can be demonstrated in a two steps. First, create a data frame holding all the variables except ideology at their mean. Second, use the \texttt{predict} function to calculate the predicted probabilities for each level of ideology. Indicate \texttt{type = "response"}. 
+This procedure can be demonstrated in a two steps. First, create a data frame holding all the variables except ideology at their mean. Second, use the \texttt{augment} function to calculate the predicted probabilities for each level of ideology. Indicate \texttt{type.predict = "response"}. 
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -6891,18 +6902,20 @@ This procedure can be demonstrated in a two steps. First, create a data frame ho
 \hlstd{log.data} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{age} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{age),} \hlkwc{gender} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{gender),}
     \hlkwc{education} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{education),} \hlkwc{income} \hlstd{=} \hlkwd{mean}\hlstd{(ds.temp}\hlopt{$}\hlstd{income),}
     \hlkwc{ideol} \hlstd{=} \hlnum{1}\hlopt{:}\hlnum{7}\hlstd{)}
-\hlstd{log.data}\hlopt{$}\hlstd{predicted} \hlkwb{<-} \hlkwd{predict}\hlstd{(logit2,} \hlkwc{newdata} \hlstd{= log.data,} \hlkwc{type} \hlstd{=} \hlstr{"response"}\hlstd{)}
+\hlstd{log.data} \hlkwb{<-} \hlstd{logit2} \hlopt{%>%} \hlkwd{augment}\hlstd{(}\hlkwc{newdata} \hlstd{= log.data,} \hlkwc{type.predict} \hlstd{=} \hlstr{"response"}\hlstd{)}
 \hlstd{log.data}
 \end{alltt}
 \begin{verbatim}
-##        age    gender education   income ideol predicted
-## 1 60.10517 0.4119194  5.093777 70627.24     1 0.9665366
-## 2 60.10517 0.4119194  5.093777 70627.24     2 0.9291203
-## 3 60.10517 0.4119194  5.093777 70627.24     3 0.8560967
-## 4 60.10517 0.4119194  5.093777 70627.24     4 0.7297255
-## 5 60.10517 0.4119194  5.093777 70627.24     5 0.5506305
-## 6 60.10517 0.4119194  5.093777 70627.24     6 0.3573709
-## 7 60.10517 0.4119194  5.093777 70627.24     7 0.2015226
+## # A tibble: 7 x 7
+##     age gender education income ideol .fitted .se.fit
+## * <dbl>  <dbl>     <dbl>  <dbl> <int>   <dbl>   <dbl>
+## 1  60.1  0.412      5.09 70627.     1   0.967 0.00523
+## 2  60.1  0.412      5.09 70627.     2   0.929 0.00833
+## 3  60.1  0.412      5.09 70627.     3   0.856 0.0115 
+## 4  60.1  0.412      5.09 70627.     4   0.730 0.0127 
+## 5  60.1  0.412      5.09 70627.     5   0.551 0.0124 
+## 6  60.1  0.412      5.09 70627.     6   0.357 0.0139 
+## 7  60.1  0.412      5.09 70627.     7   0.202 0.0141
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -6912,14 +6925,11 @@ The output shows, for each case, the ideology measure for the respondent followe
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{preds} \hlkwb{<-} \hlkwd{predict}\hlstd{(logit2,} \hlkwc{newdata} \hlstd{= log.data,} \hlkwc{se.fit} \hlstd{= T,} \hlkwc{type} \hlstd{=} \hlstr{"link"}\hlstd{)}
-\hlstd{lower} \hlkwb{<-} \hlkwd{plogis}\hlstd{(}\hlkwd{with}\hlstd{(preds, fit} \hlopt{-} \hlnum{1.96} \hlopt{*} \hlstd{se.fit))}
-\hlstd{upper} \hlkwb{<-} \hlkwd{plogis}\hlstd{(}\hlkwd{with}\hlstd{(preds, fit} \hlopt{+} \hlnum{1.96} \hlopt{*} \hlstd{se.fit))}
-\hlstd{pred} \hlkwb{<-} \hlstd{log.data}\hlopt{$}\hlstd{predicted}
-\hlstd{log.df} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(pred, lower, upper,} \hlkwc{ideol} \hlstd{=} \hlnum{1}\hlopt{:}\hlnum{7}\hlstd{)}
+\hlstd{log.df} \hlkwb{<-} \hlstd{log.data} \hlopt{%>%} \hlkwd{mutate}\hlstd{(}\hlkwc{upper} \hlstd{= .fitted} \hlopt{+} \hlnum{1.96} \hlopt{*} \hlstd{.se.fit,}
+    \hlkwc{lower} \hlstd{= .fitted} \hlopt{-} \hlnum{1.96} \hlopt{*} \hlstd{.se.fit)}
 
-\hlkwd{ggplot}\hlstd{(log.df,} \hlkwd{aes}\hlstd{(ideol, pred))} \hlopt{+} \hlkwd{geom_point}\hlstd{()} \hlopt{+} \hlkwd{geom_errorbar}\hlstd{(}\hlkwc{ymin} \hlstd{= lower,}
-    \hlkwc{ymax} \hlstd{= upper,} \hlkwc{width} \hlstd{=} \hlnum{0.2}\hlstd{)}
+\hlkwd{ggplot}\hlstd{(log.df,} \hlkwd{aes}\hlstd{(ideol, .fitted))} \hlopt{+} \hlkwd{geom_point}\hlstd{()} \hlopt{+} \hlkwd{geom_errorbar}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymin} \hlstd{= lower,}
+    \hlkwc{ymax} \hlstd{= upper,} \hlkwc{width} \hlstd{=} \hlnum{0.2}\hlstd{))}
 \hlkwd{dev.off}\hlstd{()}
 \end{alltt}
 \end{kframe}
@@ -7066,7 +7076,14 @@ Saving or writing data that we have manipulated is a useful tool. It allows us t
 \end{kframe}
 \end{knitrout}
 
-This line of code allows us to save the dataset we created and saved in the object named ds as a new .csv file in our working directory called Class Data Set. Having successfully downloaded R and RStudio, learned some basic programming and data manipulation techniques, and saved the class data set to your working directory you are ready to use the rest of the book to its fullest potential.  
+This line of code allows us to save the dataset we created and saved in the object named ds as a new .csv file in our working directory called Class Data Set. Having successfully downloaded R and RStudio, learned some basic programming and data manipulation techniques, and saved the class data set to your working directory you are ready to use the rest of the book to its fullest potential. 
+
+\section{The Tidyverse}
+
+This edition of the book employs the tidyverse family of R functions for both statistical analysis and data visualization. The tidyverse is a collection of functions that provide an efficient, consistent, and intuitive method of both working with your data and visualizing it. Packages like dplyr are used as the primary method of data exploration and wrangling, and ggplot2 is used for visualization. More information can be found about the tidyverse at www.tidyverse.org. 
+
+
+
 
 \end{document}
 

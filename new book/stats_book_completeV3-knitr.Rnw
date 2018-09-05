@@ -65,7 +65,6 @@
     \vskip\baselineskip%
 }
 %% make greybox (grbox) a float
-
 \usepackage{float}
 \newfloat{grbox}{thp}{lop}[section]
 \floatname{grbox}{Grey Box}
@@ -155,7 +154,7 @@ Wesley Wehde\\
 
 %% chapters
 
-\doublespace
+\doublespace 
 \part{Theory and Empirical Social Science} 
 
 <<chap1, child="01_Theory/01_theory.Rnw">>=
