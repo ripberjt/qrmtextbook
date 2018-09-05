@@ -2,11 +2,11 @@
 
 \chapter{Linear Estimation and Minimizing Error} 
 
-As noted in the last chapter, the objective when estimating a linear model is to minimize the aggregate of the squared error. Specifically, when estimating a linear model, $Y=A+BX+E$, we seek to find the values of $A$ and $B$ that minimize the $\sum E^{2}$. To accomplish this, we use calculus. 
+As noted in the last chapter, the objective when estimating a linear model is to minimize the aggregate of the squared error. Specifically, when estimating a linear model, $Y=A+BX+E$, we seek to find the values of $\hat{\alpha}$ and $\hat{\beta}$ that minimize the $\sum \epsilon^{2}$. To accomplish this, we use calculus. 
 
 \section{Minimizing Error using Derivatives}
 
-In calculus, the \textit{derivative} is a measure the slope of any function of x, or $f(x)$, at each given value of $x$. For the function $f(x)$, the derivative is denoted as $f'(x)$ or, in spoken form, is referred to as \textit{``f prime x"}. Because the formula for $\sum E^{2}$ is known, and can be treated as a function, the derivative of that function permits the calculation of the change in the sum of the squared error over each possible value of $A$ and $B$. For that reason we need to find the derivative for $\sum E^{2}$ with respect to changes in $A$ and $B$. That, in turn, will permit us to ``derive" the values of $A$ and $B$ that result in the lowest possible $\sum E^{2}$.
+In calculus, the \textit{derivative} is a measure the slope of any function of x, or $f(x)$, at each given value of $x$. For the function $f(x)$, the derivative is denoted as $f'(x)$ or, pronounced as \textit{``f prime x"}. Because the formula for $\sum \epsilon^{2}$ is known, and can be treated as a function, the derivative of that function permits the calculation of the change in the sum of the squared error over each possible value of $\hat{\alpha}$ and $\hat{\beta}$. For that reason we need to find the derivative for $\sum \epsilon^{2}$ with respect to changes in $\hat{\alpha}$ and $\hat{\beta}$. That, in turn, will permit us to ``derive" the values of $\hat{\alpha}$ and $\hat{\beta}$ that result in the lowest possible $\sum \epsilon^{2}$.
 
 Look -- we understand that all this sounds complicated. But it's not all \textit{that} complicated. In this chapter we will walk through all the steps so you'll see that its really rather simple and, well, elegant. You will see that differential calculus (the kind of calculus that is concerned with rates of change) is built on a set of clearly defined rules for finding the derivative for any function $f(x)$. It's like solving a puzzle. The next section outlines these rules, so we can start solving puzzles. 
 
@@ -191,7 +191,7 @@ f'(x)&=5(7x^{2}-2x+13)^{4}*(7x^{2}-2x+13)' \\
 
 \subsection{Critical Points}
 
-Our goal is to use derivatives to find the values of $A$ and $B$ that minimize the sum of the squared error. To do this we need to find the \textit{minima} of a function. The minima is the smallest value that a function takes, whereas the maxima is the largest value. To find the minima and maxima, the \textit{critical points} are key. The critical point is where the derivative of the function is equal to $0$, $f'(x)=0$. Note, that this is equivalent to the slope being equal to $0$. 
+Our goal is to use derivatives to find the values of $\hat{\alpha}$ and $\hat{\beta}$ that minimize the sum of the squared error. To do this we need to find the \textit{minima} of a function. The minima is the smallest value that a function takes, whereas the maxima is the largest value. To find the minima and maxima, the \textit{critical points} are key. The critical point is where the derivative of the function is equal to $0$, $f'(x)=0$. Note, that this is equivalent to the slope being equal to $0$. 
 
 \begin{grbox}
 \greybox{{\textbf{Example: Finding the Critical Points}}
@@ -232,7 +232,7 @@ dev.off()
 
 \subsection{Partial Derivation}
 
-When an equation includes two variables, one can take a \textit{partial derivative} with respect to only one variable while the other variable is simply treated as a constant. This is particularly useful in our case, because the function $\sum E^{2}$ has two variables -- $A$ and $B$.
+When an equation includes two variables, one can take a \textit{partial derivative} with respect to only one variable while the other variable is simply treated as a constant. This is particularly useful in our case, because the function $\sum \epsilon^{2}$ has two variables -- $\hat{\alpha}$ and ${\hat{\beta}$.
 
 Let's take an example. For the function $y=f(x,z)=x^{3}+4xz-5z^{2}$, we first take the derivative of $x$ holding $z$ constant. 
 
@@ -248,104 +248,104 @@ Next we take the derivative of $z$ holding $x$ constant.
 
 \section{Deriving OLS Estimators}
 
-Now that we have developed some of the rules for differential calculus, we can see how OLS finds values of $A$ and $B$ that minimizes the sum of the squared error. In formal terms, let's define the set, $S(A,B)$ as a pair of regression estimators that jointly determine the residual sum of squares given that: $Y_{i}=\hat {Y}_{i}+E_{i}=A+BX_{i}+E_{i}$. This function can be expressed:
+Now that we have developed some of the rules for differential calculus, we can see how OLS finds values of $\hat{\alpha}$ and $\hat{\beta}$ that minimizes the sum of the squared error. In formal terms, let's define the set, $S(\hat{\alpha},\hat{\beta})$ as a pair of regression estimators that jointly determine the residual sum of squares given that: $Y_{i}=\hat {Y}_{i}+\epsilon_{i}=\hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i}$. This function can be expressed:
 
 \begin{equation*}
- S(A,B)=\sum_{i=1}^{n} E^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-A-BX_{i})^{2}  
+ S(\hat{\alpha},\hat{\beta})=\sum_{i=1}^{n} \epsilon^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-\hat{\alpha}-\hat{\beta} X_{i})^{2}  
 \end{equation*}
-First we will derive $A$. 
+First we will derive $\hat{\alpha}$. 
 
-\subsection{OLS Derivation of $A$}
+\subsection{OLS Derivation of $\hat{\alpha}$}
 
-Take the partial derivatives of $S(A,B)$ with-respect-to (w.r.t) $A$ in order to determine the formulation of $A$ that minimizes $S(A,B)$. Using the chain rule,
+Take the partial derivatives of $S(\hat{\alpha},\hat{\beta})$ with-respect-to (w.r.t) $\hat{\alpha}$ in order to determine the formulation of $\hat{\alpha}$ that minimizes $S(\hat{\alpha},\hat{\beta})$. Using the chain rule,
 
 \begin{align*}
-\frac{\partial S(A,B)}{\partial A} &= \sum
-2(Y_{i}-A-BX_{i})^{2-1}*(Y_{i}-A-BX_{i})' \\
-&= \sum 2(Y_{i}-A-BX_{i})^{1}*(-1) \\
-&= -2 \sum (Y_{i}-A-BX_{i}) \\ 
-&= -2 \sum Y_{i}+2nA+2B \sum X_{i} 
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\alpha}} &= \sum
+2(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{2-1}*(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})' \\
+&= \sum 2(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{1}*(-1) \\
+&= -2 \sum (Y_{i}-\hat{\alpha}-\hat{\beta}X_{i}) \\ 
+&= -2 \sum Y_{i}+2n\hat{\alpha}+2\hat{\beta} \sum X_{i} 
 \end{align*}
 
 \noindent Next set the derivative equal to $0$. 
 
 \begin{equation*}
-\frac{\partial S(A,B)}{\partial A} =  -2 \sum Y_{i}+2nA+2B \sum X_{i} = 0 
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\alpha}} =  -2 \sum Y_{i}+2n\hat{\alpha}+2\hat{\beta} \sum X_{i} = 0 
 \end{equation*}
 
-\noindent Then, shift non-$A$ terms to the other side of the equal sign:
+\noindent Then, shift non-$\hat{\alpha}$ terms to the other side of the equal sign:
 \begin{equation*}
-2nA = 2 \sum Y_{i}-2B \sum X_{i} 
+2n\hat{\alpha} = 2 \sum Y_{i}-2\hat{\beta} \sum X_{i} 
 \end{equation*}
 
 \noindent Finally, divide through by $2n$: 
 \begin{align*}
-\frac{2nA}{2n} &= \frac{2 \sum Y_{i}-2B \sum X_{i}}{2n} \\
-A &= \frac{\sum Y_{i}}{n}-B*\frac{\sum X_{i}}{n} \\
-&= \bar {Y}-B \bar{X} \\
+\frac{2n\hat{\alpha}}{2n} &= \frac{2 \sum Y_{i}-2\hat{\beta} \sum X_{i}}{2n} \\
+A &= \frac{\sum Y_{i}}{n}-\hat{\beta}*\frac{\sum X_{i}}{n} \\
+&= \bar {Y}-\hat{\beta} \bar{X} \\
 \end{align*}
 
 \begin{equation}
 \label{eq:A} 
-\therefore A = \bar {Y}-B \bar{X} 
+\therefore \hat{\alpha} = \bar {Y}-\hat{\beta} \bar{X} 
 \end{equation}
 
 
-\subsection{OLS Derivation of $B$}
+\subsection{OLS Derivation of $\hat{\beta}$}
 
-Having found $A$, the next step is to derive $B$. This time we will take the partial derivative w.r.t $B$. As you will see, the steps are just a little more involved for $B$ than they were for $A$.
+Having found $\hat{\alpha}$, the next step is to derive $\hat{\beta}$. This time we will take the partial derivative w.r.t $\hat{\beta}$. As you will see, the steps are just a little more involved for $\hat{\beta}$ than they were for $\hat{\alpha}$.
 
 \begin{align*}
-\frac{\partial S(A,B)}{\partial B} &= \sum
-2(Y_{i}-A-BX_{i})^{2-1}*(Y_{i}-A-BX_{i})' \\
-&= \sum 2(Y_{i}-A-BX_{i})^{1}*(-X_{i}) \\
-&= 2 \sum (-X_{i}Y_{i}+AX_{i}+BX^{2}_{i}) \\ 
-&= -2 \sum X_{i}Y_{i}+2A \sum X_{i} + 2B \sum X^{2}_{i}  
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\beta}} &= \sum
+2(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{2-1}*(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})' \\
+&= \sum 2(Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{1}*(-X_{i}) \\
+&= 2 \sum (-X_{i}Y_{i}+\hat{\alpha}X_{i}+\hat{\beta}X^{2}_{i}) \\ 
+&= -2 \sum X_{i}Y_{i}+2\hat{\alpha} \sum X_{i} + 2\hat{\beta} \sum X^{2}_{i}  
 \end{align*}
 
-\noindent Since we know that $A = \bar {Y}-B \bar{X}$, we can substitute $\bar {Y}-B
-\bar{X}$ for $A$. 
+\noindent Since we know that $\hat{\alpha} = \bar {Y}-\hat{\beta} \bar{X}$, we can substitute $\bar {Y}-\hat{\beta}
+\bar{X}$ for $\hat{\alpha}$. 
 
 \begin{align*}
-\frac{\partial S(A,B)}{\partial B} &= -2 \sum X_{i}Y_{i}+2(\bar {Y}-B
-\bar{X})\sum X_{i} + 2B \sum X^{2}_{i} \\
-&= -2 \sum X_{i}Y_{i}+2 \bar{Y} \sum X_{i}-2B \bar{X} \sum X_{i} + 2B
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\beta}} &= -2 \sum X_{i}Y_{i}+2(\bar {Y}-\hat{\beta}
+\bar{X})\sum X_{i} + 2\hat{\beta} \sum X^{2}_{i} \\
+&= -2 \sum X_{i}Y_{i}+2 \bar{Y} \sum X_{i}-2\hat{\beta} \bar{X} \sum X_{i} + 2\hat{\beta}
 \sum X^{2}_{i} 
 \end{align*}
 
 \noindent Next, we can substitute $\frac{\sum Y_{i}}{n}$ for $\bar{Y}$ and $\frac{\sum X_{i}}{n}$ for $\bar{X}$ and set it equal to $0$. 
 
 \begin{equation*}
-\frac{\partial S(A,B)}{\partial B} = -2 \sum X_{i}Y_{i}+\frac{2\sum Y_{i}
-  \sum X_{i}}{n}-\frac{2B\sum X_{i} \sum X_{i}}{n}+ 2B
+\frac{\partial S(\hat{\alpha},\hat{\beta})}{\partial \hat{\beta}} = -2 \sum X_{i}Y_{i}+\frac{2\sum Y_{i}
+  \sum X_{i}}{n}-\frac{2\hat{\beta}\sum X_{i} \sum X_{i}}{n}+ 2\hat{\beta}
 \sum X^{2}_{i} = 0
 \end{equation*}
 
-\noindent Then, multiply through by $\frac{n}{2}$ and put all the $B$ terms on the same side. 
+\noindent Then, multiply through by $\frac{n}{2}$ and put all the $\hat{\beta}$ terms on the same side. 
 
 \begin{align*}
-nB \sum X^{2}_{i}-B(\sum X_{i})^{2} &= n \sum X_{i}Y_{i}-\sum X_{i}
+n\hat{\beta} \sum X^{2}_{i}-\hat{\beta}(\sum X_{i})^{2} &= n \sum X_{i}Y_{i}-\sum X_{i}
 \sum Y_{i} \\
-B(n \sum X^{2}_{i}-(\sum X_{i})^{2}) &= n \sum X_{i}Y_{i}-\sum X_{i}
+\hat{\beta}(n \sum X^{2}_{i}-(\sum X_{i})^{2}) &= n \sum X_{i}Y_{i}-\sum X_{i}
 \sum Y_{i} \\
-\therefore B = \frac{n \sum X_{i}Y_{i}-\sum X_{i}
+\therefore \hat{\beta} = \frac{n \sum X_{i}Y_{i}-\sum X_{i}
 \sum Y_{i}}{n\sum X^{2}_{i}-(\sum X_{i})^{2}}
 \end{align*}
 
-\noindent The $B$ term can be rearranged such that: 
+\noindent The $\hat{\beta}$ term can be rearranged such that: 
 
 \begin{equation}
 \label{eq:B}  
-B=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}  
+\hat{\beta}=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}  
 \end{equation}
 
-Now remember what we are doing here: We used the partial derivatives for $\sum E^{2}$ with respect to $A$ and $B$ to find the values for $A$ and $B$ that will give us the smallest value for $\sum E^{2}$.  Put differently, the formulas for $B$ and $A$ allow the calculation of the error-minimizing slope (change in $Y$ given a one unit change in $X$) and intercept (value for $Y$ when $X$ is zero) for any data set representing a bivariate, linear relationship. No other formulas will give us a line, using the same data, that will result in as small a squared-error. Therefore, OLS is referred to as the Best Linear Unbiased Estimator (BLUE).  
+Now remember what we are doing here: We used the partial derivatives for $\sum \epsilon^{2}$ with respect to $\hat{\alpha}$ and $\hat{\beta}$ to find the values for $\hat{\alpha}$ and $\hat{\beta}$ that will give us the smallest value for $\sum \epsilon^{2}$.  Put differently, the formulas for $\hat{\beta}$ and $\hat{\alpha}$ allow the calculation of the error-minimizing slope (change in $Y$ given a one unit change in $X$) and intercept (value for $Y$ when $X$ is zero) for any data set representing a bivariate, linear relationship. No other formulas will give us a line, using the same data, that will result in as small a squared-error. Therefore, OLS is referred to as the Best Linear Unbiased Estimator (BLUE).  
 
-\subsection{Interpreting $B$ and $A$}
+\subsection{Interpreting $\hat{\beta}$ and $\hat{\alpha}$}
 
-In a regression equation $Y=A+BX$, where $A$ is shown in Equation \ref{eq:A} and $B$ is shown in Equation \ref{eq:B}. Equation \ref{eq:B} shows that for each 1-unit increase in $X$ you get $B$ units change in $Y$. Equation \ref{eq:A} shows that when $X$ is $0$, $Y$ is equal to $A$. Note that in a regression model with no independent variables, $A$ is simply the expected value (i.e., mean) of $Y$. 
+In a regression equation $Y=\hat{\alpha}+\hat{\beta}X$, where $\hat{\alpha}$ is shown in Equation \ref{eq:A} and $\hat{\beta}$ is shown in Equation \ref{eq:B}. Equation \ref{eq:B} shows that for each 1-unit increase in $X$ you get $\hat{\beta}$ units change in $Y$. Equation \ref{eq:A} shows that when $X$ is $0$, $Y$ is equal to $\hat{\alpha}$. Note that in a regression model with no independent variables, $\hat{\alpha}$ is simply the expected value (i.e., mean) of $Y$. 
 
-The intuition behind these formulas can be shown by using \texttt{R} to calculate ``by hand" the slope ($B$) and intercept ($A$) coefficients. A theoretical simple regression model is structured as
+The intuition behind these formulas can be shown by using \texttt{R} to calculate ``by hand" the slope ($\hat{\beta}$) and intercept ($\hat{\alpha}$) coefficients. A theoretical simple regression model is structured as
 follows:  
 
 \begin{equation*}
@@ -360,18 +360,18 @@ Y_{i} = \alpha + \beta X_{i} + \epsilon_{i}
 \item $\epsilon$ is the error term
 \end{itemize}
 
-\noindent The model is to be estimated is expressed as $Y=A+BX+E$. 
+\noindent The model is to be estimated is expressed as $Y=\hat{\beta}+\hat{\beta}X+/epsilon$. 
 
 \noindent As noted, the goal is to calculate the intercept coefficient: 
 
 \begin{equation*}
-A=\bar Y-B\bar X 
+\hat{\alpha}=\bar Y-\hat{\beta}\bar X 
 \end{equation*}
 
 \noindent and the slope
 coefficient: 
 \begin{equation*}
-B=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
+\hat{\beta}=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
 \end{equation*}
 
 Using \texttt{R}, this can be accomplished in a few steps. First create a vector of values for \textit{x} and \textit{y} (note that we just chose these values arbitrarily for purposes of this example). 
@@ -401,9 +401,9 @@ y.m.ybar <- y-ybar
 y.m.ybar
 @ 
 
-\noindent Then, calculate $B$
+\noindent Then, calculate $\hat{\beta}$
 \begin{equation*}
-B=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
+\hat{\beta}=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
 \end{equation*}
 
 <<>>=
@@ -411,9 +411,9 @@ B <- sum((x.m.xbar)*(y.m.ybar))/sum((x.m.xbar)^2)
 B
 @ 
 
-\noindent Finally, calculate $A$
+\noindent Finally, calculate $\hat{\alpha}$
 \begin{equation*}
-A=\bar Y-B\bar X 
+\hat{\alpha}=\bar Y-\hat{\beta}\bar X 
 \end{equation*}
 
 <<>>=
@@ -441,6 +441,6 @@ dev.off()
 See figure \ref{fig:regex}.
 
 \section{Summary}
-Whoa! Think of what you've accomplished here: You learned enough calculus to find a minima for an equation with two variables, then applied that to the equation for the $\sum E^{2}$. You derived the error minimizing values for $A$ and $B$. Then you used those formulae in $R$ to calculate ``by hand" the OLS regression for a small dataset. 
+Whoa! Think of what you've accomplished here: You learned enough calculus to find a minima for an equation with two variables, then applied that to the equation for the $\sum \epsilon^{2}$. You derived the error minimizing values for $\hat{\alpha}$ and $\hat{\beta}$. Then you used those formulae in $R$ to calculate ``by hand" the OLS regression for a small dataset. 
 
 Congratulate yourself -- you deserve it!

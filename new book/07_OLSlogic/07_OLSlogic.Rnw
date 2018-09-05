@@ -119,18 +119,18 @@ Taken together these assumption mean that the error term has a normal, independe
 
 \section{Estimating Linear Models} 
 
-With stochastic models we don't know if the error assumptions are met, nor do we know the values of $\alpha$ and $\beta$ therefore we must estimate them.  The stochastic model as shown in Equation \ref{eq:lm} is estimated as: 
+With stochastic models we don't know if the error assumptions are met, nor do we know the values of $\alpha$ and $\beta$ therefore we must estimate them, as denoted by a hat (e.g., $\hat{\alpha}$ is the estimate for $\alpha$). The stochastic model as shown in Equation \ref{eq:lm} is estimated as: 
 \begin{equation}
   \label{eq:lm}
-Y_{i} = A+BX_{i}+E_{i} 
+Y_{i} = \hat{\alpha} + \hat{\beta} X_{i}+ \epsilon_{i} 
 \end{equation}
-\noindent where $E_i$ is the \textbf{residual term}, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, $E$, into the regression equation.  Note that the predicted value of $Y$ is denoted $\hat{Y}$; $y$-hat. 
+\noindent where $\epsilon_i$ is the \textbf{residual term}, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, $\epsilon$, into the regression equation. Note that the predicted value of $Y$ is denoted $\hat{Y}$; $y$-hat. 
 
 \begin{align*}
-Y_{i} &= A+BX_{i}+E_{i} \\ 
-&= \hat{Y_{i}} + E_{i}  \\
-E_{i} &= Y_i-\hat{Y_{i}} \\
-&= Y_i-A-BX_i
+Y_{i} &= \hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i} \\ 
+&= \hat{Y_{i}} + \epsilon_{i}  \\
+\epsilon_{i} &= Y_i-\hat{Y_{i}} \\
+&= Y_i-\hat{\alpha}-\hat{\beta}X_i
 \end{align*}
 
 \subsection{Residuals}
@@ -143,11 +143,11 @@ Residuals measure prediction errors, of how far observation $Y_{i}$ is from pred
   \caption{Residuals: Statistical Forensics \label{resid}}
 \end{figure}
 
-%what's in E
-The residual term contains the accumulation (sum) of errors that can result from measurement issues, modeling problems, and irreducible randomness. Ideally, the residual term contains lots of small and independent influences that result in an overall random quality of the distribution of the errors. When that distribution is not random -- that is, when the distribution of error has some systematic quality -- the estimates of A and B may be biased. Thus, when we evaluate our models we will focus on the \texttt{shape} of the distribution of our errors. 
+%what's in \epislon
+The residual term contains the accumulation (sum) of errors that can result from measurement issues, modeling problems, and irreducible randomness. Ideally, the residual term contains lots of small and independent influences that result in an overall random quality of the distribution of the errors. When that distribution is not random -- that is, when the distribution of error has some systematic quality -- the estimates of $\hat{\alpha}$ and $\hat{\beta}$ may be biased. Thus, when we evaluate our models we will focus on the \texttt{shape} of the distribution of our errors. 
 
 \begin{grbox}
-\greybox{\textbf{What's in $E$?} 
+\greybox{\textbf{What's in $\epsilon$?} 
 
   \textit{Measurement Error}
 \begin{itemize}
@@ -170,15 +170,15 @@ The residual term contains the accumulation (sum) of errors that can result from
 \end{itemize}}
 \end{grbox}
 
-The goal of regression analysis is to minimize the error associated with the model estimates. As noted, the residual term is the estimated error, or overall ``miss" (e.g., $Y_{i}-\hat{Y_{i}}$). Specifically the goal is to minimize the sum of the squared errors, $\sum E^{2}$. Therefore, we need to find the values of $A$ and $B$ that minimize $\sum E^{2}$. 
+The goal of regression analysis is to minimize the error associated with the model estimates. As noted, the residual term is the estimated error, or overall ``miss" (e.g., $Y_{i}-\hat{Y_{i}}$). Specifically the goal is to minimize the sum of the squared errors, $\sum \epsilon^{2}$. Therefore, we need to find the values of $\hat{\alpha}$ and $\hat{\beta}$ that minimize $\sum \epsilon^{2}$. 
 
-Note that for a fixed set of data \{A,B\}, each possible choice of values for $A$ and $B$ corresponds to a specific residual sum of squares, $\sum E^{2}$. This can be expressed by the following functional form:
+Note that for a fixed set of data \{$\hat{\alpha}$,$\hat{\alpha}$\}, each possible choice of values for $\hat{\alpha}$ and $\hat{\beta}$ corresponds to a specific residual sum of squares, $\sum \epsilon^{2}$. This can be expressed by the following functional form:
 
 \begin{equation}
- S(A,B)=\sum_{i=1}^{n} E^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-A-BX_{i})^{2}  
+ S(\hat{\alpha},\hat{\beta})=\sum_{i=1}^{n} \epsilon^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{2}  
 \end{equation}
 
-Minimizing this function requires specifying estimators for $A$ and $B$ such that $S(A,B)=\sum E^{2}$ is at the lowest possible value. Finding this minimum value requires the use of calculus, which will be discussed in the next chapter. Before that we walk through a quick example of simple regression.  
+Minimizing this function requires specifying estimators for $\hat{\alpha}$ and $\hat{\beta}$ such that $S(\hat{\alpha},\hat{\beta})=\sum \epsilon^{2}$ is at the lowest possible value. Finding this minimum value requires the use of calculus, which will be discussed in the next chapter. Before that we walk through a quick example of simple regression.  
 
 \section{An Example of Simple Regression} 
 
@@ -189,7 +189,7 @@ ols1 <- lm(ds$glbcc_risk~ds$ideol)
 summary(ols1)
 @ 
 
-The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for $A$ and $B$; the results of hypothesis tests; and overall measures of model ``fit" -- all of which we will discuss in detail in later chapters. But, for now, note that the estimated $B$ for ideology is negative, which indicates that as the value for ideology \textit{increases}---in our data this means more conservative---the perceived risk of climate change \textit{decreases}. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by \Sexpr{ols1$coef[2]}.
+The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for $\hat{\alpha}$ and $\hat{\beta}$; the results of hypothesis tests; and overall measures of model ``fit" -- all of which we will discuss in detail in later chapters. But, for now, note that the estimated $B$ for ideology is negative, which indicates that as the value for ideology \textit{increases}---in our data this means more conservative---the perceived risk of climate change \textit{decreases}. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by \Sexpr{ols1$coef[2]}.
 
 We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure \ref{fig:resid}. Note that we will discuss residual diagnostics in detail in future chapters. 
 
