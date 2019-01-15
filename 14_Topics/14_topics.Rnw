@@ -1,4 +1,11 @@
-\Sexpr{set_parent('../stats_book_completeV2.Rnw')}
+\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+
+<<echo=FALSE,results="hide", message=F,warning=F>>=
+ds <- read.csv("Class Data Set.csv")
+library(tidyverse)
+@
+
+
 
 \chapter{Topics in Multiple Regression}
 
@@ -37,7 +44,7 @@ The value of the dummy coefficient represents the estimated difference in $Y$ be
 
 \begin{figure}
   \centering
-  \includegraphics[width=5in]{14_Topics/dummy.pdf}%filename
+  \includegraphics[width=5in]{../14_Topics/dummy.pdf}%filename
   \caption{Dummy Intercept Variables \label{fig:dum}}
 \end{figure}
 
@@ -46,11 +53,12 @@ the North would get a value of 1 in the North dummy, and zeros in all others. Si
 
 Now let's walk through an example of an $R$ model with a dummy variable and the interpretation of that model. We will predict climate change risk using age, education, income, ideology, and ``gend", a dummy variable for gender for which 1 = male and 0 = female. 
 <<echo=FALSE>>=
-ds.temp<-na.omit(subset(ds, select=c("glbcc_risk","age","education","income","ideol","gender")))
+ds.temp <- filter(ds) %>% 
+  select("glbcc_risk","age","education","income","ideol","gender") %>% na.omit()
 @ 
 
 <<>>=
-ols1 <- lm(glbcc_risk ~ age+education+income+ideol+gender, data = ds.temp)
+ols1 <- lm(glbcc_risk ~ age + education + income + ideol + gender, data = ds.temp)
 summary(ols1)
 @ 
 First note that the inclusion of the dummy variables doe not change the manner in which you interpret the other (non-dummy) variables in the model; the estimated partial regression coefficients for age, education, income and ideology should all be interpreted as described in the prior chapter. Note that the estimated partial regression coefficient for ``gender" is negative and statistically significant, indicating that males are less likely to be concerned about the environment than are females. The estimate indicates that, all else being equal, the average difference between men and women on the climate change risk scale is \Sexpr{ols1$coef[6]}. 
@@ -71,29 +79,32 @@ A ``slope dummy" is a special kind of interaction in which a dummy variable  is 
 
 \begin{figure}
   \centering
-  \includegraphics[width=5in]{14_Topics/duminter.pdf}
+  \includegraphics[width=5in]{../14_Topics/duminter.pdf}
   \caption {Illustration of Slope Interaction \label{fig:dumin}}
 \end{figure}
 
 We can test our hypothesized interaction in \texttt{R}, controlling for the effects of age
 and income. 
 <<>>=
-ols2 <- lm(glbcc_risk ~ age+income+education+gender*ideol, data = ds.temp)
+ols2 <- lm(glbcc_risk ~ age + income + education + gender * ideol, data = ds.temp)
 summary(ols2)
 @ 
 The results indicate a negative and significant interaction effect for gender and ideology. Consistent with our hypothesis, this means that the effect of ideology on climate change risk is more pronounced for males than females. Put differently, the slope of ideology is steeper for males than it is for females. This is shown in Figure \ref{fig:dummales}. 
-<<echo=FALSE,results="hide">>=
+<<echo=FALSE,results="hide",message=F,warning=F>>=
 ds.temp$gend.factor <- factor(ds.temp$gender, levels=c(0,1),labels=c("Female","Male"))
 library(effects)
 pdf("dummales.pdf")
-ols3 <- lm(glbcc_risk~ age+income+education+ideol*gend.factor, data = ds.temp)
+ols3 <- lm(glbcc_risk~ age + income + education + ideol * gend.factor, data = ds.temp)
+
+
+
 plot(effect("ideol*gend.factor",ols3),ylim=0:10)
 dev.off()
 @ 
 
 \begin{figure}
   \centering
-  \includegraphics[width=4in]{14_Topics/dummales.pdf}%filename
+  \includegraphics[width=4in]{../14_Topics/dummales.pdf}%filename
   \caption {Interaction of Ideology and Gender \label{fig:dummales}}
 \end{figure}
 
@@ -133,8 +144,12 @@ where $B_k$ is the unstandardized coefficient of $X_k$, $s_k$ is the s.d. of $X_
 
 We can use the \texttt{scale} function in \texttt{R} to calculate a $Z$ score for each of our variables, and then re-run our model. 
 <<>>=
-stan.ds<-data.frame(scale(ds.temp[,c("glbcc_risk","age","education","income","ideol","gender")]))
-ols3 <- lm(glbcc_risk ~ age+education+income+ideol+gender, data=stan.ds)
+stan.ds <- ds.temp %>%
+  select(glbcc_risk, age, education, income, ideol, gender) %>% 
+  scale %>%
+  data.frame()
+
+ols3 <- lm(glbcc_risk ~ age + education + income + ideol + gender, data = stan.ds)
 summary(ols3)
 @ 
 

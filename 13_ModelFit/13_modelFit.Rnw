@@ -1,4 +1,10 @@
-\Sexpr{set_parent('../stats_book_completeV2.Rnw')}
+\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+
+<<echo=FALSE,results="hide", message=F,warning=F>>=
+ds <- read.csv("Class Data Set.csv")
+library(tidyverse)
+@
+
 
 \chapter{Multiple Regression and Model Building} 
 
@@ -30,7 +36,7 @@ When building a model, it is best to start with a few IV's and then begin adding
 $R^2$ was previously discussed within the context of simple regression. The extension to multiple regression is straightforward, except that multiple regression leads us to place greater weight on the use of the \textbf{adjusted $R^2$}. Recall that the adjusted $R^2$ corrects for the inclusion of multiple independent variables; $R^{2}$ is the ratio of the explained sum of squares to the total sum of squares (\textit{ESS/TSS}). The components of $R^{2}$ for an observation are illustrated in Figure \ref{fig:rsq}. As before, for each observation $Y_{i}$, variation around the mean can be decomposed into that which is ``explained" by the regression model and that which is not.  
 \begin{figure}
   \centering
-  \includegraphics[width=5in]{13_ModelFit/rsquared.pdf}
+  \includegraphics[width=5in]{../13_ModelFit/rsquared.pdf}
   \caption[$R^{2}$]{ \label{fig:rsq}}
 \end{figure}
 
@@ -48,10 +54,13 @@ The $R^2$ of two models can be compared, as illustrated by the following example
 
 
 <<>>=
-ds.temp<-na.omit(subset(ds, select=c("glbcc_risk","age","education","income","ideol")))
-ols1 <- lm(glbcc_risk ~ age+education+income, data=ds.temp)
+ds.temp <- filter(ds) %>% 
+  select(glbcc_risk, age, education, income, ideol) %>%
+  na.omit()
+
+ols1 <- lm(glbcc_risk ~ age + education + income, data = ds.temp)
 summary(ols1)
-ols2 <- lm(glbcc_risk ~ age+education+income+ideol, data = ds.temp)
+ols2 <- lm(glbcc_risk ~ age + education + income + ideol, data = ds.temp)
 summary(ols2)
 @ 
 As can be seen by comparing the model results, the more complex model that includes political ideology has a higher $R^2$ than does the simpler model. This indicates that the more complex model explains a greater fraction of the variance in perceived risks of climate change. However, we don't know if this improvement is statistically significant. In order to determine whether the more complex model adds significantly to the explanation of perceive risks, we can utilize the $F$-test.  

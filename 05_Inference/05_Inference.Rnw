@@ -2,6 +2,10 @@
 
 \chapter{Inference}
 
+<<echo=2:4, results="hide">>=
+ds <- read.csv("Class Data Set.csv")
+@
+
 This chapter considers the role of inference---learning about populations from samples---and the practical and theoretical importance of understanding the characteristics of your data before attempting to undertake statistical analysis. As we noted in the prior chapters, it is a vital first step in empirical analysis to ``roll in the data."
 
 \section{Inference: Populations and Samples}
@@ -86,7 +90,7 @@ dev.off()
 @ 
 \begin{figure}
   \centering
-  \includegraphics[width=4in]{05_Inference/normal.pdf}% picture filename
+  \includegraphics[width=4in]{../05_Inference/normal.pdf}% picture filename
   \caption[Normal Distribution]{The Normal Distribution  \label{normal}}
 \end{figure}
 \noindent Note that the the tails go to $\pm \infty$. In addition, the density of a distribution over the range of x is the key to hypothesis testing With a normal distribution, $\sim68\%$ of the observations will fall within $1$ standard deviation of the mean, $\sim 95\%$ will fall within 2 standard deviations, and $\sim 99.7\%$ within 3 standard deviations. This is illustrated in Figure \ref{fig:norm}. 
@@ -126,17 +130,17 @@ dev.off()
         \centering
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{05_Inference/normal68.pdf}
+                \includegraphics[width=\textwidth]{../05_Inference/normal68.pdf}
                 \caption{$\sim 68\%$: 1 s.d. \label{fig:norm68}}
         \end{subfigure}
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{05_Inference/normal95.pdf}
+                \includegraphics[width=\textwidth]{../05_Inference/normal95.pdf}
                 \caption{$\sim 95\%$: 2 s.d.  \label{fig:norm95}}
         \end{subfigure}
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{05_Inference/normal99.pdf}
+                \includegraphics[width=\textwidth]{../05_Inference/normal99.pdf}
                 \caption{$\sim 99.7\%$: 3 s.d. \label{fig:norm99}}
         \end{subfigure}
         \caption{Normal Distribution and Standard Deviations \label{fig:norm}}
@@ -202,7 +206,7 @@ dev.off()
 \begin{figure}
   \centering
   \includegraphics[width=0.6\textwidth]%
-    {05_Inference/normaln.pdf}% picture filename
+    {../05_Inference/normaln.pdf}% picture filename
   \caption{Normal Distribution and $n$-size  \label{nnormal}}
 \end{figure}
  
@@ -302,19 +306,28 @@ In addition to covariance and correlation (discussed in the next chapter), we ca
 
 As coded in our dataset, gender (gender) is a numeric variable with a 1 for male and 0 for female. However, we may want to make gend a categorical variable with labels for Female and Male, as opposed to  a numeric variable coded as 0's and 1's. To do this we make a new variable and use the \texttt{factor} command, which will tell \texttt{R} that the new variable is a categorical variable. Then we will tell \texttt{R} that this new variable has two levels or factors, Male and Female. Finally, we will label the factors of our new variable. We will name our new variable f.gend. 
 <<>>=
-ds$f.gend <- factor(ds$gender, levels=c(0,1), labels=c("Female","Male"))
+ds$f.gend <- factor(ds$gender, levels = c(0, 1), labels = c("Female","Male"))
 @ 
-\noindent Then we can observe differences in the distributions of perceived risk for males and females by creating density curves, using the \texttt{densityplot} function in the \texttt{lattice} package. 
+\noindent Then we can observe differences in the distributions of perceived risk for males and females by creating density curves, using the \texttt{geom_density} and \texttt{facet_wrap} functions in the \texttt{ggplot2} package. 
 %  change variable to age younq/old.
-<<echo=2:3,results="hide">>=
+
+<<echo=FALSE,results="hide", message=F, warning=F>>=
+library(tidyverse)
+@
+
+
+<<echo=2:3,results="hide", message=F, warning=F>>=
 pdf("gendden.pdf")
-library(lattice)
-densityplot(~ds$glbcc_risk|ds$f.gend)
+ds %>%
+  drop_na(f.gend) %>%
+  ggplot(aes(glbcc_risk)) +
+  geom_density() +
+  facet_wrap(~ f.gend, scales = "fixed")
 dev.off()
 @ 
 
 \begin{figure}[!htp]
-\includegraphics[width=4in, height=4in]{06_Association/gendden.pdf}%filename
+\includegraphics[width=4in, height=4in]{../05_Inference/gendden.pdf}%filename
 \caption{Density Plots of Climate Change Risk by Gender}
 \end{figure}   
 

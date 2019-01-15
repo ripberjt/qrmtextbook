@@ -1,4 +1,10 @@
-\Sexpr{set_parent('../stats_book_completeV2.Rnw')}
+\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+
+
+<<echo=FALSE,results="hide", message=F,warning=F>>=
+ds <- read.csv("Class Data Set.csv")
+library(tidyverse)
+@
 
 
 \chapter{Logit Regression} 
@@ -18,7 +24,7 @@ However, GLMs also contain a ``link function" that relates the response variable
 
 \begin{figure}
         \centering
-        \includegraphics[width=4in]{16_Logit/families.jpg}%filename
+        \includegraphics[width=4in]{../16_Logit/families.jpg}%filename
         \caption{Exponential ``families" of GLM Models}
 \end{figure} 
  
@@ -84,7 +90,7 @@ dev.off()
 @ 
 \begin{figure}
         \centering
-        \includegraphics[width=4in]{16_Logit/logex.pdf}%filename
+        \includegraphics[width=4in]{../16_Logit/logex.pdf}%filename
         \caption{Predicted Probability as a Logit Function of $X$ \label{fig:logex}}
 \end{figure}   
 
@@ -132,10 +138,14 @@ For the most part, the key assumptions required for logit models are analogous t
  
 The following example uses demographic information to predict beliefs about anthropogenic climate change. 
 <<echo=FALSE>>=
-ds.temp<-na.omit(subset(ds, select=c("glbcc","age","education","income","ideol","gender")))
+ds.temp <- ds %>%
+  select(glbcc, age, education, income, ideol, gender) %>%
+  na.omit()
 @ 
+
+
 <<>>=
-logit1 <- glm(glbcc ~ age+gender+education+income, data = ds.temp, family=binomial())
+logit1 <- glm(glbcc ~ age + gender + education + income, data = ds.temp, family = binomial())
 summary(logit1)
 @ 
 \noindent As we can see age and gender are both negative and statistically significant predictors of climate change opinion. Below we discuss logit hypothesis tests, goodness of fit, and how to interpret the logit coefficients.  
@@ -167,7 +177,7 @@ is statistically significant. $G^2$ is expressed as:
 the intercept:
 
 <<>>=
-logit0 <- glm(glbcc ~ 1, data=ds.temp) 
+logit0 <- glm(glbcc ~ 1, data = ds.temp) 
 summary(logit0)
 @
 
@@ -193,16 +203,17 @@ Finally, we calculate the  $G$ statistic and perform the chi-square test for sta
 <<>>=
 G <- 2*(-1523 - (-1631))
 G
-pchisq(G, df=3, lower.tail=FALSE)
+pchisq(G, df = 3, lower.tail = FALSE)
 @ 
 
 \noindent We can see by the very low p-value that the demographic model offers a significant improvement in fit. 
 
 The same approach can be used to compare nested models, similar to nested $F$-tests in OLS. For example, we can include ideology in the model and use the \texttt{anova} function to see if the ideology variable improves model fit. Note that we specify the $\chi^2$ test. 
 <<tidy=TRUE>>=
-logit2 <- glm(glbcc ~ age+gender+education+income+ideol, family=binomial(), data=ds.temp)
+logit2 <- glm(glbcc ~ age + gender + education + income + ideol,
+              family = binomial(), data = ds.temp)
 summary(logit2)
-anova(logit1,logit2,test="Chisq")
+anova(logit1, logit2, test = "Chisq")
 @ 
 \noindent As we can see, adding ideology significantly improves the model. 
 
@@ -226,7 +237,7 @@ Deviance is analogous to the residual sum of squares for a linear model. It is e
 \noindent This can be calculated in \texttt{R} using the full
 model with ideology. 
 <<>>=
-pseudoR2 <- 1-(logit2$deviance/logit2$null.deviance)
+pseudoR2 <- 1 - (logit2$deviance/logit2$null.deviance)
 pseudoR2
 @ 
 \noindent The pseudo $R^2$ of the model is \Sexpr{pseudoR2}. Note that the \Sexpr{pseudoR2} is only an approximation of explained variance, and should be used in combination with other measures of fit such as AIC.
@@ -259,9 +270,9 @@ Logits can be used to directly calculate odds by taking the antilog of any of th
 \begin{equation*}
   \textit{anti}\text{log} = e^B 
 \end{equation*}
-\noindent For example, using ideology:
+\noindent For example, the following retuns odds for all the IVs.
 <<>>=
-exp(logit2$coef[6])
+logit2 %>% coef() %>% exp()
 @ 
 \noindent Therefore, for each 1-unit increase in the ideology scale (i.e., becoming more conservative) the odds of believing that climate change is human caused decrease by \Sexpr{exp(logit2$coef[6])}. 
 
@@ -276,36 +287,36 @@ The most straightforward way to interpret logits is to Equation \ref{eq:predprob
 
 \noindent We can then evaluate the change in predicted probabilities that $Y$=1 across the range of values in $X_i$.
 
-This procedure can be demonstrated in a two steps. First, calculate $L$\ holding all the variables except ideology at their mean. Second, calculate the predicted probabilities for each level of ideology. The first ten rows of the data are then shown.  
+This procedure can be demonstrated in a two steps. First, create a data frame holding all the variables except ideology at their mean. Second, use the \texttt{predict} function to calculate the predicted probabilities for each level of ideology. Indicate \texttt{type = "response"}. 
 
 <<tidy=TRUE>>=
-L <- logit2$coef[1]+logit2$coef[2]*mean(ds.temp$age)+logit2$coef[3]*mean(ds.temp$gender)+
-  logit2$coef[4]*mean(ds.temp$education)+logit2$coef[5]*mean(ds.temp$income)+
-  logit2$coef[6]*(ds.temp$ideol)
-P <- 1/(1+exp(-L))
-C <- cbind(ds.temp$ideol,L,P)
-C[1:10,]
+log.data <- data.frame(age = mean(ds.temp$age),
+                       gender = mean(ds.temp$gender),
+                       education = mean(ds.temp$education),
+                       income = mean(ds.temp$income),
+                       ideol = 1:7)
+log.data$predicted <- predict(logit2, newdata = log.data, type = "response")
+log.data
 @ 
 
-The output shows, for each case, the ideology measure for the respondent followed by the values for the logit ($L$) and the estimated probability ($p$) that the individual believes man-made greenhouse gasses are causing climate change.  We can also graph the results, with $95\%$ confidence intervals. This is shown in Figure \ref{fig:logitplot}.
+The output shows, for each case, the ideology measure for the respondent followed by the estimated probability ($p$) that the individual believes man-made greenhouse gasses are causing climate change.  We can also graph the results, with $95\%$ confidence intervals. This is shown in Figure \ref{fig:logitplot}.
 
-<<echo=2:8,results="hide",tidy=TRUE>>=
+<<echo=2:10,results="hide",tidy=TRUE>>=
 pdf(file="logitplot.pdf")
-data <- data.frame(age=mean(ds.temp$age), gender=mean(ds.temp$gender), education=mean(ds.temp$education),
-                   income=mean(ds.temp$income), ideol=1:7)
-preds <- predict(logit2, newdata=data, se.fit=T, type="link")
-lower <- plogis(with(preds, fit -2*se.fit))
-upper <- plogis(with(preds, fit +2*se.fit))
-plot(plogis(preds[["fit"]]) ~ data[["ideol"]], type="l",
-     xlab="Ideology", ylab="GHG cause GCC", ylim=c(min(lower),
-                                                   max(upper)))
-lines(data[["ideol"]], lower, lty=2)
-lines(data[["ideol"]], upper, lty=2)
+preds <- predict(logit2, newdata = log.data, se.fit = T, type = "link")
+lower <- plogis(with(preds, fit - 1.96 * se.fit))
+upper <- plogis(with(preds, fit + 1.96 * se.fit))
+pred <- log.data$predicted
+log.df <- data.frame(pred, lower, upper, ideol = 1:7)
+
+ggplot(log.df, aes(ideol, pred)) +
+  geom_point() +
+  geom_errorbar(ymin = lower, ymax = upper, width = .2) 
 dev.off()
 @ 
 \begin{figure}
         \centering
-        \includegraphics[width=4in]{16_Logit/logitplot.pdf}%filename
+        \includegraphics[width=4in]{../16_Logit/logitplot.pdf}%filename
         \caption{Predicted Probability of believing that Greenhouse
           Gases cause Climate Change by Ideology \label{fig:logitplot}}
 \end{figure}   

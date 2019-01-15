@@ -1,4 +1,10 @@
-\Sexpr{set_parent('../stats_book_completeV2.Rnw')}
+\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+
+<<echo=FALSE,results="hide", message=F,warning=F>>=
+ds <- read.csv("Class Data Set.csv")
+library(tidyverse)
+library(car)
+@
 
 \chapter{OLS Assumptions and Simple Regression Diagnostics}
 
@@ -35,7 +41,7 @@ Taken together these assumption mean that the error term has a normal, independe
 
 \begin{figure}
   \centering
-  \includegraphics[width=4in]{10_SimpleDiagnostics/residdist.pdf}%filename
+  \includegraphics[width=4in]{../10_SimpleDiagnostics/residdist.pdf}%filename
   \caption{Assumed Distributions of OLS Residuals \label{fig:residdist}}
 \end{figure}
 
@@ -43,7 +49,7 @@ How can we determine whether our residuals approximate the expected pattern? The
 
 \begin{figure}
   \centering
-  \includegraphics[width=4in]{10_SimpleDiagnostics/sneeze.pdf}%filename
+  \includegraphics[width=4in]{../10_SimpleDiagnostics/sneeze.pdf}%filename
   \caption{Ideal Pattern of Residuals from a Simple OLS Model \label{fig:sneeze}}
 \end{figure}
 
@@ -60,7 +66,7 @@ Sometimes our data include unusual cases that behave differently from most of ou
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/unusual_dat.pdf}% picture filename
+    {../10_SimpleDiagnostics/unusual_dat.pdf}% picture filename
   \caption{Unusual Data Patterns in Residuals \label{fig:unusual_dat}}
 \end{figure}
 
@@ -71,7 +77,7 @@ If they are not mis-codes, perhaps these outlier observations manifest a differe
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/unusual_dat2.pdf}% picture filename
+    {../10_SimpleDiagnostics/unusual_dat2.pdf}% picture filename
   \caption{Implications of Unusual Data Patterns in Residuals \label{fig:unusual_dat2}}
 \end{figure}
 
@@ -85,7 +91,7 @@ A second thing to look for in visual diagnostics of residuals is non-constant va
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/hetero.pdf}% picture filename
+    {../10_SimpleDiagnostics/hetero.pdf}% picture filename
   \caption{Non-Constant Variance in the Residuals \label{fig:hetero10}}
 \end{figure}
 
@@ -102,7 +108,7 @@ If the real relationship between $X$ and $Y$ is not linear, however, the predict
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/simplenonlin.pdf}% picture filename
+    {../10_SimpleDiagnostics/simplenonlin.pdf}% picture filename
   \caption{Non-Linearity in the Residuals \label{fig:simplenonlin}}
 \end{figure}
 
@@ -152,7 +158,7 @@ dev.off()
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/nonlinideology.pdf}% picture filename
+    {../10_SimpleDiagnostics/nonlinideology.pdf}% picture filename
   \caption{Residual Plots Examining Model Linearity \label{fig:nonlinideology}}
 \end{figure}
 
@@ -165,14 +171,17 @@ Start by creating a histogram of the model residuals.
 
 <<echo=2,results="hide">>=
 pdf("histideology.pdf")
-hist(OLS_env$residuals)
+OLS_env$residuals %>% # Pipe the residuals to a data frame
+  data.frame() %>% # Pipe the data frame to ggplot
+  ggplot(aes(OLS_env$residuals)) +
+  geom_histogram(bins = 16)
 dev.off() 
 @
 
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/histideology.pdf}% picture filename
+    {../10_SimpleDiagnostics/histideology.pdf}% picture filename
   \caption{Histogram of Model Residuals \label{fig:histideology}}
 \end{figure}
 
@@ -180,25 +189,33 @@ The histogram in figure \ref{fig:histideology} indicates that the residuals are 
 
 <<echo=2:3,results="hide">>=
 pdf("densityideology.pdf")
-library(sm)
-sm.density(OLS_env$residuals, model = "Normal")
+OLS_env$residuals %>% # Pipe the residuals to a data frame
+  data.frame() %>% # Pipe the data frame to ggplot
+  ggplot(aes(OLS_env$residuals)) +
+  geom_density(adjust = 2) +
+  stat_function(fun = dnorm, args = list(mean = mean(OLS_env$residuals),
+                                         sd = sd(OLS_env$residuals)),
+                color = "red")
 dev.off() 
 @
 
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/densityideology.pdf}% picture filename
+    {../10_SimpleDiagnostics/densityideology.pdf}% picture filename
   \caption{Smoothed Density Plot of Model Residuals \label{fig:densityideology}}
 \end{figure}
 \FloatBarrier
 
-Figure \ref{fig:densityideology} indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution.  Our final ocular examination of the residuals will be a quartile plot (using the \texttt{qqPlot} function from the \texttt{car} package).
+Figure \ref{fig:densityideology} indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution.  Our final ocular examination of the residuals will be a quartile plot (using the \texttt{stat_qq} function from the \texttt{ggplot2} package).
 
 <<echo=2:3,results="hide">>=
 pdf("QQideology.pdf")
-library(car)
-qqPlot(OLS_env$residuals)
+OLS_env$residuals %>% # Pipe the residuals to a data frame
+  data.frame() %>% # Pipe the data frame to ggplot
+  ggplot(aes(sample = OLS_env$residuals)) +
+  stat_qq() +
+  stat_qq_line()
 dev.off() 
 @
 
@@ -206,7 +223,7 @@ dev.off()
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/QQideology.pdf}% picture filename
+    {../10_SimpleDiagnostics/QQideology.pdf}% picture filename
   \caption{Quartile Plot of Model Residuals \label{fig:QQideology}}
 \end{figure}
 \FloatBarrier
@@ -233,7 +250,7 @@ dev.off()
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/spreadlvlideology.pdf}% picture filename
+    {../10_SimpleDiagnostics/spreadlvlideology.pdf}% picture filename
   \caption{Spread-Level Plot of Model Residuals \label{fig:spreadlvlideology}}
 \end{figure}
 \FloatBarrier
@@ -271,7 +288,7 @@ dev.off()
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/dfbetaPlots.pdf}% picture filename
+    {../10_SimpleDiagnostics/dfbetaPlots.pdf}% picture filename
   \caption{Plot of Model dfbetas Values using \texttt{dfbetaPlots} function \label{fig:dfbetaPlots}}
 \end{figure}
 \FloatBarrier
@@ -289,14 +306,14 @@ Finally, we can produce a plot that combines studentized residuals, ``hat values
 
 <<echo=2>>=
 pdf("bubbleideology.pdf")
-influencePlot(OLS_env,id.n=3)
+influencePlot(OLS_env)
 dev.off() 
 @
 
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {10_SimpleDiagnostics/bubbleideology.pdf}% picture filename
+    {../10_SimpleDiagnostics/bubbleideology.pdf}% picture filename
   \caption{Influence Bubble Plot \label{fig:bubbleideology2}}
 \end{figure}
 \FloatBarrier

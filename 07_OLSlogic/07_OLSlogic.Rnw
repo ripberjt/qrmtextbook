@@ -1,4 +1,10 @@
-\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+\Sexpr{set_parent('C:/Users/cryscott/Documents/Methods Labs/book edits/stats_book_completeV3.Rnw')}
+
+<<echo=FALSE,results="hide", message=F,warning=F>>=
+ds <- read.csv("Class Data Set.csv")
+library(tidyverse)
+@
+
 
 \chapter{The Logic of Ordinary Least Squares Estimation}
 
@@ -22,7 +28,7 @@ A deterministic model is \textbf{systematic} and contains no error, therefore \t
 
 \begin{figure}
   \centering
-  \includegraphics[width=4in]{07_OLSlogic/deterols.pdf}%filename
+  \includegraphics[width=4in]{../07_OLSlogic/deterols.pdf}%filename
   \caption{Deterministic Model \label{dols}}  
 \end{figure}
 
@@ -58,7 +64,7 @@ dev.off()
 
 \begin{figure}
   \centering
-  \includegraphics[width=4in]{07_OLSlogic/stochastic.pdf}%filename
+  \includegraphics[width=4in]{../07_OLSlogic/stochastic.pdf}%filename
   \caption{Stochastic Linear Model \label{sols}}
 \end{figure}
 
@@ -137,7 +143,7 @@ Residuals measure prediction errors, of how far observation $Y_{i}$ is from pred
 \begin{figure}
   \centering
   \includegraphics[width=4in]%
-    {07_OLSlogic/resids.pdf}% picture filename
+    {../07_OLSlogic/resids.pdf}% picture filename
   \caption{Residuals: Statistical Forensics \label{resid}}
 \end{figure}
 
@@ -193,11 +199,14 @@ We can also examine the distribution of the residuals, using a histogram and a d
 
 <<echo=c(2,5,6),results="hide">>=
 pdf("exresidhist.pdf")
-hist(ols1$residual)
+data.frame(ols1$residuals) %>%
+  ggplot(aes(ols1$residuals)) +
+  geom_histogram(bins = 16)
 dev.off()
 pdf("exresidden.pdf")
-library(sm)
-sm.density(ols1$residual, model="Normal")
+data.frame(ols1$residuals) %>%
+  ggplot(aes(ols1$residuals)) +
+  geom_density(adjust = 1.5) 
 dev.off()
 @ 
  
@@ -205,12 +214,12 @@ dev.off()
         \centering
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{07_OLSlogic/exresidhist.pdf}%filename
+                \includegraphics[width=\textwidth]{../07_OLSlogic/exresidhist.pdf}%filename
                 \caption{Histogram}
         \end{subfigure}
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{07_OLSlogic/exresidden.pdf}%filename
+                \includegraphics[width=\textwidth]{../07_OLSlogic/exresidden.pdf}%filename
                 \caption{Density}
         \end{subfigure}
         \caption{Residuals of Simple Regression Example \label{fig:resid}} 

@@ -1,5 +1,11 @@
 \Sexpr{set_parent('../stats_book_completeV3.Rnw')}
 
+
+<<echo=FALSE,results="hide", message=F,warning=F>>=
+ds <- read.csv("Class Data Set.csv")
+library(tidyverse)
+@
+
 \chapter{Association of Variables}
 
 The last chapter focused on the characterization of distributions of a single variable. We now turn to the associations between two or more variables. This chapter explores ways to measure and visualize associations between variables.   We start with ways to analyze the relations between nominal and ordinal level variables, using \textbf{cross-tabulation} in \textit{R}. Then, for interval level variables, we examine the use of the measures of the \textbf{covariance} and  \textbf{correlation} between pairs of variables. Next we examine hypothesis testing between two groups, where the focus in on how the groups differ, on average, with respect to an interval level variable. Finally, we discuss scatterplots as a way to visually explore differences between pairs of variables. 
@@ -94,13 +100,14 @@ Crosstabulations and their associated statistics can be calculated using R.  In 
 
 %  time permitting change the variable to age groups.
 
-<<>>=
+<<message=F,warning=F>>=
 #  Factor the gender variable
 ds$f.gend <- factor(ds$gender, levels=c(0,1), labels = c("Women", "Men"))
 
 #  recode glbccrisk to five categories
 library(car)
-ds$r.glbcc_risk<-recode(ds$glbcc_risk, "0:1=1; 2:3=2; 4:6=3; 7:8:=4; 9:10=5; NA=NA")
+ds$r.glbcc_risk <- recode(ds$glbcc_risk, "0:1=1; 2:3=2; 4:6=3; 7:8:=4;
+                          9:10=5; NA=NA")
 @
 
 Using the \texttt{table} function, we produce a frequency table reflecting the relationship between gender and the recoded glbccrisk variable.  
@@ -116,8 +123,8 @@ glbcc.table <- table(ds$r.glbcc_risk, ds$f.gend)
 That table is difficult to interpret because of the different numbers of men and women.  To make that table more interpretable, we convert it to percentages using the \texttt{prop.table} function.   Looking at that table, we can see that there are more men at the lower end of the perceived risk scale and more women at the upper end.
 
 <<>>=
-#  round to one digit and multiply by 100
-round(prop.table(glbcc.table, 2)*100, 1)
+#  Multiply by 100
+prop.table(glbcc.table, 2) * 100
 @
   
 The percentaged table suggests that there is a relationship between the two variables, but also illustrates the challenge of relying on percentage differences to determine the significance of that relationship.  So, to test our null hypothesis we calculate our chi square using the chisq.test function.  
@@ -131,7 +138,7 @@ R reports our chi square to equal 21.73.  It also tells us that we have 4 degree
 
 Finally, we want to know how strong the relationship is.  We use the \texttt{assocstats} function to get several measures of association.   Since the table is not a 2 X 2 table nor square, neither phi not the contingency coefficient is appropriate, but we can report Cramer's V.  Cramer's V is .093, indicating a relatively weak relationship between gender and the perceived global climate change risk variable.
 
-<<>>=
+<<message=F,warning=F>>=
 library(vcd)
 assocstats(glbcc.table)
 @
@@ -206,9 +213,9 @@ library(car)
 ds$r.ideol<-recode(ds$ideol, "1:2=1; 3:5=2; 6:7=3; NA=NA")
 
 #  factor the variables to add labels.
-ds$f.ideol<- factor(ds$r.ideol, levels=c(1,2,3), labels=c("Liberal", 
+ds$f.ideol<- factor(ds$r.ideol, levels=c(1, 2, 3), labels=c("Liberal", 
                         "Moderate", "Conservative"))
-ds$f.glbcc <- factor(ds$glbcc, levels=c(0,1), 
+ds$f.glbcc <- factor(ds$glbcc, levels=c(0, 1), 
                           labels = c("GLBCC No", "GLBCC Yes"))
 
 #  3 Two variable table glbcc~ideology
@@ -218,13 +225,13 @@ v2.glbcc.table
 
 <<>>=
 #  Percentages by Column
-round(prop.table(v2.glbcc.table, 2)*100,1)
+prop.table(v2.glbcc.table, 2) * 100
 @
 
 \noindent It appears that our hypothesis is supported as there is more than a 40\% difference between liberals and conservatives with moderates in between, but let's consider the chi square before reject our null hypothesis:
 <<>>=
 #  Chi-squared
-chisq.test(v2.glbcc.table, correct=FALSE)
+chisq.test(v2.glbcc.table, correct = FALSE)
 @
 
 \noindent The chi square is very large and our p-value, very small. We can reject our null hypothesis with great confidence.  Next, we consider the strength of association, using Cramer's V (since either Phi nor the contingency coefficient is appropriate for a 3 X 2 table):
@@ -241,7 +248,7 @@ We might, though, want to look at gender as a control variable since we know gen
 
 <<>>=
 #  factor the variables to add labels.
-ds$f.gend <- factor(ds$gend, levels=c(0,1), labels=c("Women", "Men"))
+ds$f.gend <- factor(ds$gend, levels=c(0, 1), labels=c("Women", "Men"))
 @
 
 \noindent Then we create the new table.  The R output is shown, in which the line ``\#\# ,  ,  = Women" indicates the results for women and ``\#\# ,  ,  = Men" displays the results for men.
@@ -255,14 +262,14 @@ v3.glbcc.table
 
 <<>>=
 #  Percentages by Column for Women 
-round(prop.table(v3.glbcc.table[,,1], 2)*100,1)       
+prop.table(v3.glbcc.table[,,1], 2) * 100       
 chisq.test(v3.glbcc.table[,,1])
 assocstats(v3.glbcc.table[,,1])
 @         
 
 <<>>=
 #  Percentages by Column for  Men 
-round(prop.table(v3.glbcc.table[,,2], 2)*100,1)    
+prop.table(v3.glbcc.table[,,2], 2) * 100    
 chisq.test(v3.glbcc.table[,,2])
 assocstats(v3.glbcc.table[,,2])
 @
@@ -308,7 +315,8 @@ Like covariance, correlations can be positive, negative, and zero. The possible 
 from -1, perfect negative relationship to 1, perfect positive relationship. If $r=0$, that indicates no correlation.  Correlations can be calculated in \texttt{R}, using the \texttt{cor} function. 
 
 <<>>=
-cor(ds[c("age","education","ideol","glbcc_risk")], use="complete.obs")
+ds %>% select(age, education, ideol, glbcc_risk) %>% na.omit() %>%
+  cor()
 @ 
 
 Note that each variable is perfectly (and positively) correlated with itself - naturally! Age is slightly and surprisingly negatively correlated with education (-0.06) and unsurprisingly positively political ideology (+0.09). What this means is that, in this dataset and on average, older people are slightly less educated and more conservative than younger people. Now notice the correlation coefficient for the relationship between ideology and perceived risk of climate change (glbccrisk). This correlation (-0.59) indicates that on average, the more conservative the individual is, the less risky climate change is perceived to be.
@@ -319,39 +327,39 @@ Note that each variable is perfectly (and positively) correlated with itself - n
 
 \section{Scatterplots}
 
-As noted earlier, it is often useful to try and see patterns between two variables. We examined the density plots of males and females with regard to climate change risk, then we tested these differences for statistical significance. However, we often want to know more than the mean difference between groups; we often want to know if differences exist for variables with several possible values. For example, here we examine the relationship between ideology and glbcc risk. One of the more efficient ways to do this is to produce a scatterplot, which will plot each case in a geometric space for both variables. To produce a scatterplot we will use the \texttt{plot} command. Note, that since ideology and glbcc risk are discrete variables(i.e., whole numbers) we need to ``jitter" the data.\footnote{That means a ``jit" (a very small value) is applied to each observed point on the plot, so
+As noted earlier, it is often useful to try and see patterns between two variables. We examined the density plots of males and females with regard to climate change risk, then we tested these differences for statistical significance. However, we often want to know more than the mean difference between groups; we often want to know if differences exist for variables with several possible values. For example, here we examine the relationship between ideology and glbcc risk. One of the more efficient ways to do this is to produce a scatterplot, which will plot each case in a geometric space for both variables. To produce a scatterplot with \texttt{ggplot2}, we will use the \texttt{geom_jitter} command. This is because ideology and glbcc risk are discrete variables(i.e., whole numbers), so we need to ``jitter" the data. If your values are continuous, use \texttt{geom_point}.\footnote{That means a ``jit" (a very small value) is applied to each observed point on the plot, so
 you can see observations that are ``stacked" on the same coordinate. Ha! Just kidding; they're not called jits. We don't know what they're called. But they ought to be called jits.} The result is shown in Figure \ref{fig:scatjit}.  
 
-<<echo=2,results="hide">>=
+<<echo=2,results="hide", message=F, warning=F>>=
 pdf("scatjit.pdf")
-plot(jitter(ds$glbcc_risk) ~ jitter(ds$ideol), col="gray")
+ds %>%
+  ggplot(aes(ideol, glbcc_risk)) +
+  geom_jitter(shape = 1)
 dev.off()
 @ 
 
 \begin{figure}[!htp]
-\includegraphics[width=3.5in, height=3.5in]{06_Association/scatjit.pdf}%filename
+\includegraphics[width=3.5in, height=3.5in]{../06_Association/scatjit.pdf}%filename
 \caption{Scatterplot of Ideology and glbcc Risk \label{fig:scatjit}}
 \end{figure}   
 
-We can see that the density of values indicate that strong liberals---$1$'s on the ideology scale---tend to view climate change as quite risky, whereas strong conservatives---$7$'s on the ideology scale---tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a ``lowess" line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We'll have more to say about the linear estimates when we turn to regression analysis in the next chapter.
+We can see that the density of values indicate that strong liberals---$1$'s on the ideology scale---tend to view climate change as quite risky, whereas strong conservatives---$7$'s on the ideology scale---tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a ``loess" line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We'll have more to say about the linear estimates when we turn to regression analysis in the next chapter. We can add to the previous visualization by including \texttt{geom_smooth} and indicating a "loess" line or an "lm" line. 
 
-In this example the lowess function is sensative to missing data.  We will remove the missing data using the \texttt{na.omit} function.  The steps used in the example are: 1) to create the temporary dataset--ds.missing, 2) complete the exercise, and 3) remove the ds.missing from the environment.
 % note there is discussion of missing data in the Applied Regression book by Fox - Page 65-67.
 
 <<echo=2:10, results="hide">>=
 pdf("scatjit2.pdf")
-ds.missing<-subset(ds,select=c("glbcc_risk", "ideol"))
-ds.missing <- na.omit(ds.missing) # Generate new dataset with missing values removed
-
-plot(jitter(ds.missing$glbcc_risk) ~ jitter(ds.missing$ideol), col="gray")
-abline(lm(ds.missing$glbcc_risk~ds.missing$ideol))
-lines(lowess(ds.missing$ideol,ds.missing$glbcc_risk), lty=2, col="red")
-rm(ds.missing) # remove the missing data from the environment
+ds %>%
+  drop_na(glbcc_risk, ideol) %>%
+  ggplot(aes(ideol, glbcc_risk)) +
+  geom_jitter(shape = 1) +
+  geom_smooth(method = "loess", color = "green") +
+  geom_smooth(method = "lm", color = "red")
 dev.off()
 @ 
 
 \begin{figure}[!htp]
-\includegraphics[width=3.5in, height=3.5in]{06_Association/scatjit2.pdf}%filename
+\includegraphics[width=3.5in, height=3.5in]{../06_Association/scatjit2.pdf}%filename
 \caption{Scatterplot of Ideology and GLBCC Risk with Regression Line and Lowess Line}
 \end{figure}   
 

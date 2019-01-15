@@ -1,4 +1,13 @@
-\Sexpr{set_parent('../stats_book_completeV2.Rnw')}
+\Sexpr{set_parent('../stats_book_completeV3.Rnw')}
+
+
+<<echo=FALSE,results="hide", message=F,warning=F>>=
+ds <- read.csv("Class Data Set.csv")
+library(tidyverse)
+library(reshape2)
+library(car)
+@
+
 
 \chapter{The Art of Regression Diagnostics} 
 
@@ -6,9 +15,10 @@ The previous chapters have focused on the mathematical bases of multiple OLS reg
 
 <<results='hide'>>=
 #  create a new data frame with the first 500 observations
-ds500 <- ds[1:500,c("glbcc_risk", "age", "education", "income", "ideol")]
-ds.small <- na.omit(ds500)
-rownames(ds.small) <- seq(length=nrow(ds.small))
+ds.small <- filter(ds) %>%
+  select("glbcc_risk", "age", "education", "income", "ideol") %>%
+  slice(1:500) %>% 
+  na.omit()
 
 #  For reference and experimentation here is code 
 #  to randomly draw 500 observations from the subset.
@@ -90,7 +100,7 @@ In this section, we examine the residuals from a multiple regression model for p
 Our multiple regression model predicts survey respondents' levels of risk perceived of climate change ($Y$) using political ideology, age, household income,  and educational achievement as independent variables ($X$s). The results of the regression model as follows:
 
 <<>>=
-ols1 <-  lm(glbcc_risk ~ age+education+income+ideol, data=ds.small)
+ols1 <-  lm(glbcc_risk ~ age + education + income + ideol, data = ds.small)
 summary(ols1)
 @ 
 
@@ -123,12 +133,12 @@ dev.off()
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{15_Diagnostics/convar.pdf}%filename
+                \includegraphics[width=\textwidth]{../15_Diagnostics/convar2.pdf}%filename
                 \caption{Linear \label{fig:convar2}}
         \end{subfigure}
         \begin{subfigure}[b]{0.45\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{15_Diagnostics/nonlin.pdf}
+                \includegraphics[width=\textwidth]{../15_Diagnostics/nonlin.pdf}
                 \caption{Non-Linear \label{fig:nonlin}}
         \end{subfigure}
         \caption{Made Up Residual Examples}
@@ -138,27 +148,20 @@ Now let's look at the residuals from our example model. We can check the linear 
 
 <<echo=3:10,results="hide">>=
 pdf("multlin.pdf")
-par(mfrow=c(2,3))
-plot(jitter(ds.small$age), jitter(rstudent(ols1)), main="Age")
-abline(h=0)
-lines(lowess(ds.small$age,rstudent(ols1)), lty=2, col="red")
-plot(jitter(ds.small$education), jitter(rstudent(ols1)), main="Education")
-abline(h=0)
-lines(lowess(ds.small$education,rstudent(ols1)), lty=2, col="red")
-plot(jitter(ds.small$income), jitter(rstudent(ols1)), main="Income")
-abline(h=0)
-lines(lowess(ds.small$income,rstudent(ols1)), lty=2, col="red")
-plot(jitter(ds.small$ideol), jitter(rstudent(ols1)), main="Ideology")
-abline(h=0)
-lines(lowess(ds.small$ideol,rstudent(ols1)), lty=2, col="red")
-plot(jitter(ols1$fitted), jitter(rstudent(ols1)), main="Fitted")
-abline(h=0)
-lines(lowess(ols1$fitted,rstudent(ols1)), lty=2, col="red")
+ds.small$fit.r <- ols1$residuals
+ds.small$fit.p <- ols1$fitted.values
+ds.small %>%
+  melt(measure.vars = c("age", "education", "income", "ideol", "fit.p")) %>%
+  ggplot(aes(value, fit.r, group = variable)) +
+  geom_point(shape = 1) +
+  geom_smooth(method = loess) +
+  geom_hline(yintercept = 0) +
+  facet_wrap(~ variable, scales = "free")
 dev.off()
 @ 
 \begin{figure}
         \centering
-        \includegraphics[width=4in]{15_Diagnostics/multlin.pdf}%filename
+        \includegraphics[width=4in]{../15_Diagnostics/multlin.pdf}%filename
         \caption{Checking for Non-Linearity \label{fig:multlin}}
 \end{figure}        
 
@@ -190,7 +193,7 @@ A final way to check for non-linearity is Ramsey's Regression Error Specificatio
 
 \noindent where $R^2_0$ is the $R^2$ of the linear model, $R^2_1$ is the $R^2$ of the polynomial model(s), $q$ is the number of new regressors, and $k_1$ is the number of IVs in the polynomial model(s). The null hypothesis is that the functional relationship between the $X$'s and $Y$ is linear, therefore the coefficients of the second and third powers to the IVs are zero.  If there is a low $p$-value (i.e., if we can reject the null hypothesis), non-linear relationships are suspected.  This test can be run using the \texttt{resettest} function from the \texttt{lmtest} package. Here we are setting the IVs to the second and third powers and we are examining the regressor variables.\footnote{See the \texttt{lmtest} package documentation for more options and information.}   
   
-<<>>=
+<<message=F,warning=F>>=
 library(lmtest)
 resettest(ols1,power=2:3,type="regressor")
 @ 
@@ -228,12 +231,12 @@ dev.off()
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{15_Diagnostics/convar.pdf}%filename
+                \includegraphics[width=\textwidth]{../15_Diagnostics/convar.pdf}%filename
                 \caption{Constant Variance \label{fig:convar15}}
         \end{subfigure}
         \begin{subfigure}[b]{0.45\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{15_Diagnostics/heterovar.pdf}%filename
+                \includegraphics[width=\textwidth]{../15_Diagnostics/heterovar.pdf}%filename
                 \caption{Heteroscedasticity \label{fig:hetero15}}
         \end{subfigure}
         \caption{Made Up Residual Examples}
@@ -243,16 +246,19 @@ The first step in determining whether we have constant variance is to plot the t
 
 <<echo=2:3,results="hide",tidy=TRUE>>=
 pdf("multregres.pdf")
-plot(jitter(fitted(ols1)), jitter(residuals(ols1)), 
-     xlab="Fitted", 
-     ylab="Residuals")
-abline(h=0, col="red")
+ds.small$fit.r <- ols1$residuals
+ds.small$fit.p <- ols1$fitted.values
+ggplot(ds.small, aes(fit.p, fit.r)) +
+  geom_jitter(shape = 1) +
+  geom_hline(yintercept = 0, color = "red") +
+  ylab("Residuals") +
+  xlab("Fitted")
 dev.off()
 @ 
 
 \begin{figure}
         \centering
-        \includegraphics[width=4in]{15_Diagnostics/multregres.pdf}%filename
+        \includegraphics[width=4in]{../15_Diagnostics/multregres.pdf}%filename
         \caption{Multiple Regression Residuals and Fitted Values \label{fig:multregres}}
 \end{figure}
 
@@ -260,6 +266,7 @@ dev.off()
 appear to show heteroscedasticity. We can test for non-constant error using the Breusch-Pagan (aka Cook-Weisberg) test. This tests the null hypothesis that the error variance is constant, therefore a small p value would indicate that we have heteroscedasticity. In R we can use the ncvTest function from the car package.
 
 <<>>=
+library(car)
 ncvTest(ols1)
 @ 
 \noindent The non-constant variance test provides confirmation that the residuals from our model are heteroscedastistic.
@@ -283,13 +290,13 @@ is estimated by $e^2_i$. Therefore the hccm estimator is expressed as:
 \end{equation*}
 
 We can use the \texttt{hccm} function from the \texttt{car} package to calculate the robust standard errors for our regression model, predicting perceived environmental risk ($Y$) with political ideology, age, education and income as the $X$ variables. 
-<<>>=
+<<message=F,warning=F>>=
 library(car)
-sqrt(diag(hccm(ols1)))
+hccm(ols1) %>% diag() %>% sqrt()
 @ 
 
 Using the \texttt{hccm} function we can create a function in \texttt{R} that will calculate the robust standard errors and the subsequent $t$-values and $p$-values. 
-<<>>=
+<<message=F,warning=F>>=
 library(car)
 robust.se <- function(model) {
   s <- summary(model)
@@ -324,7 +331,7 @@ The $d$ statistics ranges from $0$ to $4$; $0 \leq d \leq 4$. A  $0$ indicates p
 
 We can use the \texttt{dwtest} function in the \texttt{lmtest} package to test the null hypothesis that autocorrelation is $0$, meaning that we don't have autocorrelation. 
 
-<<>>=
+<<message=F,warning=F>>=
 library(lmtest)
 dwtest(ols1)
 @ 
@@ -338,27 +345,33 @@ To examine normality of the residuals we first plot the residuals and then run w
 
 <<echo=2,results="hide">>=
 pdf("multresidhist.pdf")
-hist(ols1$residuals)
+ggplot(ds.small, aes(fit.r)) +
+  geom_histogram(bins = 10, color = "black", fill = "white")
 dev.off()
 @ 
 
 <<echo=2:3,results="hide">>=
 pdf("multresidden.pdf")
-library(sm)
-sm.density(ols1$residuals, model="Normal")
+ggplot(ds.small, aes(fit.r)) +
+  geom_density() +
+  stat_function(fun = dnorm, args = list(mean = mean(ds.small$fit.r),
+                                         sd = sd(ds.small$fit.r)),
+                color = "dodgerblue", size = 2, alpha = .5)
 dev.off()
 @ 
  
 <<echo=2,results="hide">>=
 pdf("multresidbox.pdf")
-boxplot(ols1$residuals)
+ggplot(ds.small, aes("", fit.r)) +
+  geom_boxplot()
 dev.off()
 @ 
 
 <<echo=2:3,results="hide">>=
 pdf("multresidqq.pdf")
-qqnorm(ols1$residuals, ylab="Residuals")
-qqline(ols1$residuals)
+ggplot(ds.small, aes(sample = fit.r)) +
+  stat_qq(shape = 1) +
+  stat_qq_line(size = 1.5, alpha = .5)
 dev.off()
 @ 
 
@@ -366,22 +379,22 @@ dev.off()
         \centering
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{15_Diagnostics/multresidhist.pdf} %filename
+                \includegraphics[width=\textwidth]{../15_Diagnostics/multresidhist.pdf} %filename
                 \caption{Histogram \label{fig:multresidhist}}
         \end{subfigure}
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{15_Diagnostics/multresidden.pdf} %filename
+                \includegraphics[width=\textwidth]{../15_Diagnostics/multresidden.pdf} %filename
                 \caption{Density \label{fig:multresidden}}
         \end{subfigure}
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{15_Diagnostics/multresidbox.pdf} %filename
+                \includegraphics[width=\textwidth]{../15_Diagnostics/multresidbox.pdf} %filename
                 \caption{Boxplot \label{fig:multresidbox}}
         \end{subfigure}
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{15_Diagnostics/multresidqq.pdf} %filename
+                \includegraphics[width=\textwidth]{../15_Diagnostics/multresidqq.pdf} %filename
                 \caption{QQ Plot \label{fig:multresidqq}}
         \end{subfigure}
         \caption{Multiple Regression Residuals}
@@ -423,15 +436,16 @@ Using the regression example, we first plot the residuals to look for any possib
 % residual plot 
 <<echo=2:4,results="hide">>=
 pdf("multinresid.pdf")
-plot(ols1$residuals, ylab="Residuals")
-abline(h=0, col="red")
+ggplot(ds.small, aes(row.names(ds.small), fit.r)) +
+  geom_point(shape = 1) +
+  geom_hline(yintercept = 0, color = "red")
 dev.off()
 @ 
 
 \begin{figure}
         \centering
-       %\includegraphics[width=4in]{15_Diagnostics/siminresid.pdf}%this was not dynamic
-          \includegraphics[width=4in]{15_Diagnostics/multinresid.pdf}%filename
+       %\includegraphics[width=4in]{../15_Diagnostics/siminresid.pdf}%this was not dynamic
+          \includegraphics[width=4in]{../15_Diagnostics/multinresid.pdf}%filename
         \caption{Index Plot of Residuals: Multiple Regression \label{fig:siminresid}}
 \end{figure}        
 
@@ -482,21 +496,18 @@ We can then plot the DFBETAS for each of the IVs in our  regression models, and 
 
 <<echo=2:11,results="hide">>=
 pdf("dfbetas.pdf")
-par(mfrow=c(2,2))
-plot(df.ols1[,2],ylab="dfbeta(Age)")
-abline(h=c(2/sqrt(500),-2/sqrt(500)),lty=2,col="red")
-plot(df.ols1[,3],ylab="dfbeta(Education)")
-abline(h=c(2/sqrt(500),-2/sqrt(500)),lty=2,col="red")
-plot(df.ols1[,4],ylab="dfbeta(Income)")
-abline(h=c(2/sqrt(500),-2/sqrt(500)),lty=2,col="red")
-plot(df.ols1[,5],ylab="dfbeta(Ideology)")
-abline(h=c(2/sqrt(500),-2/sqrt(500)),lty=2,col="red")
+melt(dfb.ols1, varnames = c("index", "variable")) %>%
+  ggplot(aes(index, value)) +
+  geom_point() +
+  geom_hline(yintercept = df) +
+  geom_hline(yintercept = -df) +
+  facet_wrap(~ variable, scales = "free")
 dev.off()
 @ 
 
 \begin{figure}
         \centering
-        \includegraphics[width=4in]{15_Diagnostics/dfbetas.pdf}%filename
+        \includegraphics[width=4in]{../15_Diagnostics/dfbetas.pdf}%filename
         \caption{Index Plot of DFBETAS: Multiple  Regression \label{fig:dfbetas}}
 \end{figure}        
 
@@ -584,7 +595,11 @@ We rarely find perfect multicollinearity in practice, but high multicollinearity
 
 You should always check the correlations between the IVs during the model building process. This is a way to quickly identify possible multicollinearity issues.
 <<>>=
-cor(data.frame(na.omit(subset(ds, select=c("age","education","income","ideol")))))
+ds %>%
+  select(age, education, income, ideol) %>%
+  na.omit() %>%
+  data.frame() %>%
+  cor()
 @ 
 \noindent There do not appear to be any variables that are so highly correlated that it would result in problems with multicolinearity. 
 
@@ -620,6 +635,7 @@ Another, and related, way to measure multicollinearity is tolerance. The toleran
 
 Both VIF and tolerance can be calculated in \texttt{R}. 
 <<>>=
+library(car)
 vif(ols1)
 1/vif(ols1)
 @ 

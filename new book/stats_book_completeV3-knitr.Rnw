@@ -1,0 +1,219 @@
+%% LaTeX preamble 
+\documentclass[11pt,openany]{book}
+\usepackage[utf8]{inputenc} 
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage[grey]{quotchap}
+\usepackage{xcolor}
+\usepackage[left=1in, top=1in, right=1.5in, bottom=1in, headsep=.5in]
+{geometry}
+\usepackage{fancyhdr, blindtext}
+\usepackage{diagbox}
+\usepackage{hyperref} 
+\usepackage{placeins}
+\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
+\newcommand*{\mybox}[2]{\colorbox{#1!30}{\parbox{.98\linewidth}{#2}}}
+\newcommand*{\befehl}[1]{\texttt{\textbackslash #1}} % Added by 
+
+
+\fancyhf{}
+\fancyhead[LE]{\slshape \rightmark} 
+\fancyhead[RE]{\thepage}
+\fancyhead[RO]{\slshape \leftmark} 
+\fancyhead[LO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\pagestyle{fancy}
+%% new command for greybox
+\long\def\greybox#1{%
+    \newbox\contentbox%
+    \newbox\bkgdbox%
+    \setbox\contentbox\hbox to \hsize{%
+        \vtop{
+            \kern\columnsep
+            \hbox to \hsize{%
+                \kern\columnsep%
+                \advance\hsize by -2\columnsep%
+                \setlength{\textwidth}{\hsize}%
+                \vbox{
+                    \parskip=\baselineskip
+                    \parindent=0bp
+                    #1
+                }%
+                \kern\columnsep%
+            }%
+            \kern\columnsep%
+        }%
+    }%
+    \setbox\bkgdbox\vbox{
+        \pdfliteral{0.85 0.85 0.85 rg}
+        \hrule width  \wd\contentbox %
+               height \ht\contentbox %
+               depth  \dp\contentbox
+        \pdfliteral{0 0 0 rg}
+    }%
+    \wd\bkgdbox=0bp%
+    \vbox{\hbox to \hsize{\box\bkgdbox\box\contentbox}}%
+    \vskip\baselineskip%
+}
+%% make greybox (grbox) a float
+\usepackage{float}
+\newfloat{grbox}{thp}{lop}[section]
+\floatname{grbox}{Grey Box}
+
+\begin{document}
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+concordance=TRUE
+)
+@
+
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+concordance=TRUE
+)
+@
+
+\title{Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition\\
+  \LARGE With Applications in \texttt{R}}
+
+\author{Hank C. Jenkins-Smith\\ 
+Joseph T. Ripberger\\
+Gary Copeland\\
+Matthew C. Nowlin\\
+Tyler Hughes\\
+Aaron L. Fister\\
+Wesley Wehde}
+
+\date{\today}
+
+\maketitle
+
+\pagenumbering{roman} 
+
+%% copyright page 
+
+%% preface 
+%%Added for third edition
+\newpage
+\chapter*{Copyright Page}
+
+This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License} (CC BY 4.0). You can download this book for free at: \url{https://shareok.org/handle/11244/52244}.  
+
+\begin{figure}[h]
+\centerline{\includegraphics[totalheight=1cm]{"CCicon".png}}
+\label{fig:cc}
+\end{figure}
+
+%% table of contents 
+
+{\singlespacing
+  \tableofcontents
+  
+  \listoftables
+ % \listoffigures
+  }
+
+% this sets the global options for knitR  
+<<echo=FALSE>>=
+opts_chunk$set(fig.width=4, fig.height=4, error=FALSE, message=FALSE,warning=FALSE
+              , tidy=TRUE, tidy.opts=list(keep.blank.line=TRUE, width.cutoff=60))
+@ 
+
+\newpage
+\chapter*{Preface and Acknowledgments to the 3rd Edition}
+The idea for this book grew over decades of teaching introductory and intermediate quantitative methods classes for graduate students in Political Science and Public Policy at the University of Oklahoma, Texas A\&M, and the University of New Mexico. Despite adopting (and then discarding) a wide range of textbooks, we were frustrated with inconsistent terminology, misaligned emphases, mismatched examples and data, and (especially) poor connections between the presentation of theory and the practice of data analysis. The cost of textbooks and the associated statistics packages for students seemed to us to be, frankly, outrageous. So, we decided to write our own book that students can download as a free PDF, and to couple it with \texttt{R}, an open-source (free) statistical program, and data from the Meso-Scale Integrated Socio-geographic Network (M-SISNet), a quarterly survey of approximately 1,500 households in Oklahoma that is conducted with support of the National Science Foundation (Grant No. IIA-1301789). Readers can learn about and download the data at \url{http://crcm.ou.edu/epscordata/}.
+
+By intent, this book represents an open-ended group project that changes over time as new ideas and new instructors become involved in teaching graduate methods in the University of Oklahoma Political Science Department. The first edition of the book grew from lecture notes and slides that Hank Jenkins-Smith used in his methods classes. The second edition was amended to encompass material from Gary Copeland’s introductory graduate methods classes. The third edition (this one!) was updated by Joseph Ripberger, who currently manages and uses the book in his introductory and intermediate quantitative methods courses for Ph.D. students in the University of Oklahoma Political Science Department.
+
+In addition to instructors, the graduate assistants who co-instruct the methods courses are an essential part of the authorship team. The tradition started with Dr. Matthew Nowlin, who assisted in drafting the first edition in \LaTeX. Dr. Tyler Hughes and Aaron Fister were instrumental in implementing the changes for the second edition. Wesley Wehde, the current co-instructor, is responsible for much of the third edition. 
+
+This book, like politics and policy, constantly changes. Keep an eye on our \texttt{GitHub} repository (\url{https://github.com/ripberjt/qrmtextbook}) for modifications and additions. You never know what you might find peering back at you.\\
+
+\noindent Hank Jenkins-Smith\\
+Joseph Ripberger\\
+Gary Copeland\\
+Matthew Nowlin\\
+Tyler Hughes\\
+Aaron Fister\\
+Wesley Wehde\\
+
+\pagenumbering{arabic} 
+
+%% chapters
+
+\doublespace 
+\part{Theory and Empirical Social Science} 
+
+<<chap1, child="01_Theory/01_theory.Rnw">>=
+@ 
+
+<<chap2, child="02_ResearchDesign/02_ResearchDesign.Rnw">>=
+@ 
+
+<<chap3, child="03_Data/03_Data.Rnw">>=
+@ 
+
+<<chap4, child="04_Probability/04_Probability.Rnw">>=
+@ 
+
+<<chap5, child="05_Inference/05_Inference.Rnw">>=
+@ 
+
+<<chap6, child="06_Association/06_association.Rnw">>=
+@ 
+
+\part{Simple Regression} 
+<<chap7, child="07_OLSlogic/07_OLSlogic.Rnw">>=
+@ 
+
+<<chap8, child="08_Derivatives/08_derivatives.Rnw">>=
+@ 
+
+<<chap9, child="09_InterpretSimple/09_interpretSimple.Rnw">>=
+@ 
+
+<<chap10, child="10_SimpleDiagnostics/10_simplediagnostics.Rnw">>=
+@
+
+\part{Multiple Regression} 
+
+<<chap11, child="11_Matrix/11_matrix.Rnw">>=
+@
+
+<<chap12, child="12_LogicMult/12_logicMult.Rnw">>=
+@ 
+
+<<chap13, child="13_ModelFit/13_modelFit.Rnw">>=
+@ 
+
+<<chap14, child="14_Topics/14_topics.Rnw">>=
+@ 
+
+<<chap15, child="15_Diagnostics/15_diagnostics.Rnw">>=
+@ 
+
+\part{Generalized Linear Models}
+
+<<chap16, child="16_Logit/16_logit.Rnw", eval=TRUE>>=
+@ 
+
+\part{Appendices}
+
+<<appa, child="17_Appendix/17_Appendix.Rnw", eval=TRUE>>=
+@ 
+
+\end{document}
+

@@ -1,0 +1,49 @@
+Dfbetas are calculated using the following command:
+
+<<>>=
+#here we create a new df.data data frame.
+df.data <- dfbetas(OLS_env)
+#Note: the dfbetas function maps all the residuals to a new data set with row labels.  The row labels do not match the original observations rows in tbur.data.  We need to take extra steps to convert the row names identified in the new df.data data set to the original tbur.data set.
+@
+
+We can now plot the dfbetas for examination. The ``identify" command in R allows for the identification of specific observations within our plot. Simply run the command to produce the plotted dfbetas followed by the ``identify" command.  Now you can select specific observations by left-clicking particular points in your R plot. This will show you the row number for that case, enablig you to examine that case.  You will need to press the ``escape" key when you are done interacting with the plot.
+
+<<echo=2:12,results="hide">>=
+pdf("dfbetaPlotsv1.pdf")
+plot(df.data[,2])
+#  The identify command is an interactive command with a graphic.
+#  First you need to find the number of observations in the new df.data.
+#  You find the observation count using the str() function.
+str(df.data)
+# In this example we see 1:2008. 
+# We then specify the range (1:2008) in the identify function.
+# "2" refers to the number of points on which we can click. 
+# We click with our mouse in the graphic.
+#  when you have picked the two points, press "esc" on your keyboard
+identify(1:2008,df.data[,2])
+dev.off()
+@
+
+The graphic (\ref{fig:dfbetaideology}) what we see, once we pick the two points with the mouse that have the largest df.beta values.  The two points (937 and 1381) are displayed.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=4in]%
+    {10_SimpleDiagnostics/dfbetaplot2.pdf}% picture filename
+  \caption{Plot of Model dfbetas Values \label{fig:dfbetaideology}}
+\end{figure}
+\FloatBarrier
+
+These observations have relatively large influence on the regression coefficient.  We should take a closer look at these observations. We need to map these points back to our original dataset (tbur.data).
+
+We can examine the observations that produced the df.betas by identifying their row numbers in the data set.
+
+<<>>=
+#  Check the observations with high dfbetas, look for the row numbers to identify the numbers to identify the cases in the tbur.data data set.
+df.data[c(937,1381),]
+#  We see the values 940 and 1386 returned.  
+#  we only want to see results from columns gccrsk and ideology in tbur.data.
+tbur.data[c(940,1386),c("gccrsk", "ideology")]
+@
+
+\noindent We will discuss the results in a moment.

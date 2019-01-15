@@ -1,5 +1,10 @@
 \Sexpr{set_parent('../stats_book_completeV3.Rnw')}
 
+<<echo=FALSE,results="hide", message=F,warning=F>>=
+ds <- read.csv("Class Data Set.csv")
+library(tidyverse)
+@
+
 \chapter{Bi-Variate Hypothesis Testing and Model Fit}
 
 The previous chapters discussed the logic of OLS regression and how to derive OLS estimators. Now that simple regression is no longer a mystery, we will shift the focus to bi-variate hypothesis testing and model fit. Note that the examples in this chapter use the \texttt{tbur} data set.  We recommend that you try the analyses in the chapter as you read.
@@ -23,15 +28,17 @@ To test this hypothesis, we run the following code in \texttt{R}.
 Before we begin, for this chapter, we need to make a special data set that just contains the variables \texttt{glbccrisk} and \texttt{ideol} with missing values removed.
 
 <<echo=TRUE,eval=TRUE>>=
-#Subsetting a data set with only variables glbcc_risk and ideol
-ds.temp <- subset(ds, select=c(glbcc_risk,ideol))
-#run the na.omit function to removed the value
-ds.omit<-na.omit(ds.temp)
+#Filtering a data set with only variables glbcc_risk and ideol
+ds.omit <- filter(ds) %>%
+  select(glbcc_risk,ideol) %>%
+  na.omit()
+#Run the na.omit function to removed the value
+
 @  
 
 
 <<echo=TRUE,eval=TRUE>>=
-ols1 <- lm(glbcc_risk~ideol, data = ds)
+ols1 <- lm(glbcc_risk ~ ideol, data = ds.omit)
 summary(ols1)
 @  
 
@@ -210,7 +217,7 @@ The components of $R^{2}$ are illustrated in Figure \ref{fig:rsquared}. As shown
 
 \begin{figure}
   \centering
-  \includegraphics[width=5in]{09_InterpretSimple/rsquared.pdf}%filename
+  \includegraphics[width=5in]{../09_InterpretSimple/rsquared.pdf}%filename
   \caption{The Components of $R^{2}$ \label{fig:rsquared}}
 \end{figure}
 
@@ -238,20 +245,19 @@ Note--happily--that the $R^{2}$, calculated by ``by hand" in \texttt{R} matches 
 
 The values for $R^{2}$ can range from zero to 1. In the simple regression case, a value of 1 indicates that the modeled coefficient ($B$) "accounts for" all of the variation in $Y$. Put differently, all of the squared deviations in $Y_{i}$ around the mean ($\hat{Y}$) are in ESS, with none in the residual (RSS).\footnote{Note that with a \textbf{bivariate model}, $R^{2}$ is equal to the square of the correlation coefficient.} A value of zero would indicate that all of the  deviations in $Y_{i}$ around the mean are in RSS -- all residual or ``error". Our example shows that the variation in political ideology (our $X$) accounts for roughly 34.8 percent of the variation in our measure of perceived risk of global warming ($Y$). 
 
-\noindent  \textbf{Effects Plot}
+\noindent  \textbf{Visualizing Bivariate Regression}
 
-The \texttt{effects} package provides a mechanism for viewing the effect of ideology on the dependent variable of perceived risk of global warming.  Graphically (Figure \ref{fig:effectsplot}), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.
+The \texttt{ggplot2} package provides a mechanism for viewing the effect of ideology on the dependent variable of perceived risk of global warming. Adding \texttt{geom_smooth} will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares.  Graphically (Figure \ref{fig:effectsplot}), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.
 
 <<echo=2:4,results="hide">>=
 pdf("effectsplot.pdf")
-## Effect plot
-library(effects)
-plot(effect("ideol",ols1))
+ggplot(ds.omit, aes(ideol, glbcc_risk)) +
+  geom_smooth(method = lm)
 dev.off()
 @ 
 
 \begin{figure}[!htp]
-\includegraphics[width=3.5in, height=3.5in]{09_InterpretSimple/effectsplot.pdf}%filename
+\includegraphics[width=3.5in, height=3.5in]{../09_InterpretSimple/effectsplot.pdf}%filename
 \caption{Effects Plot of Ideology \label{fig:effectsplot}}
 \end{figure} 
 
@@ -261,7 +267,6 @@ If you recall, at the beginning of the chapter, we created several temporary dat
 <<>>=
 #  we can clean up from the temporary data sets for this chapter.
 rm(ds.omit) #remove the omit data set
-rm(ds.temp) #remove the temp data set
 @
 
 \section{Summary} 
