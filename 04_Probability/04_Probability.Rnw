@@ -2,11 +2,11 @@
 
 \chapter{Probability}
 
-\textbf{Probability} tells us how likely something is to occur.  Probability concepts are also central to inferential statistics - something we will turn to shortly. Probabilities range from 0 (when there is no chance of the event occurring) to 1.0 (when the event will occur with certainty).  If you have a probability outside the 0 - 1.0 range, you have made an error!  Colloquially we often interchange probabilities and percentages, but probabilities refer to single events while percentages refer to the portion of repeated events that we get the outcome we are interested in.  As of this writing, Victor Martinez is hitting .329 which means each time he comes to bat he has a .329 probability of getting a hit or, 32.9\% of the times that he bats he gets a hit.  We symbolize probabilities as the P(A), where A is that Victor Martinez gets a hit.   Of course the probability that the event will not occur is 1 - P(A).
+\textbf{Probability} tells us how likely something is to occur.  Probability concepts are also central to inferential statistics - something we will turn to shortly. Probabilities range from 0 (when there is no chance of the event occurring) to 1.0 (when the event will occur with certainty).  If you have a probability outside the 0 - 1.0 range, you have made an error!  Colloquially we often interchange probabilities and percentages, but probabilities refer to single events while percentages refer to the portion of repeated events that result in the outcome we are interested in.  As of this writing, Victor Martinez is hitting .329, which means each time he comes to bat he has a .329 probability of getting a hit or, 32.9\% of the times that he bats he gets a hit.  We symbolize probabilities as the P(A), where A is that Victor Martinez gets a hit.   Of course the probability that the event will not occur is 1 - P(A).
 
 \section{Finding Probabilities}
 
-There are two basic ways to find \textbf{simple probabilities}.  One way to find a probability is \textit{a priori}, or using logic without any real world evidence or experience.  If we know a die is not loaded, we know the probability of rolling a two is 1 out of 6 or .167.  Probabilities are easy to find if every possible outcome has the same probability of occurring.  If that is the case, the probability is number of ways your outcome can be achieved over all possible outcomes.  
+There are two basic ways to find \textbf{simple probabilities}.  One way to find a probability is \textit{a priori}, or using logic without any real world evidence or experience.  If we know a die is not loaded, we know the probability of rolling a two is 1 out of 6 or .167.  Probabilities are easy to find if every possible outcome has the same chance of occurring.  If that is the case, the probability is the number of ways your outcome can be achieved divided by all possible outcomes.  
 
 The second method to determine a probability is called \textit{posterior}, which uses the experience and evidence that has accumulated over time to determine the likelihood of an event.  If we do not know that the probability of getting a head is the same as the probability of getting a tail when we flip a coin (and, therefore, we cannot use an a priori methodology), we can flip the coin repeatedly.  After flipping the coin, say, 6000 times, if we get 3000 heads you can conclude the probability of getting a head is .5, i.e., 3000 divided by 6000.
   
@@ -29,7 +29,7 @@ If events are independent the calculation is even easier.  Events are independen
   P(A \cap B) = P(A) * P(B)
 \end{equation}
 
-The final type of probability is the union of two probabilities.  The \textbf{union of two probabilities} is the probability that either one event will occur or the other will occur -- either, or, it does not matter which one.  You might go into a statistics class with some dread and you might say a little prayer to yourself: ``Please let me either like this class or get an A.  I do not care which one, but please give me at least one of them."  The formula and symbols for that kind of probability is:
+The final type of probability is the union of two probabilities.  The \textbf{union of two probabilities} is the probability that either one event will occur or the other will occur -- either, or, it does not matter which one.  You might go into a statistics class with some dread and you might say a little prayer to yourself: ``Please let me either like this class or get an A.  I do not care which one, but please give me at least one of them."  The formula and symbols for this kind of probability is:
 
 \begin{equation}
   \label{eq_label3}
@@ -41,7 +41,7 @@ It is easy to understand why we just add the $P(A)$ and the $P(B)$ but it may be
 If, though, the events are mutually exclusive, we do not need to subtract the overlap.  Mutually exclusive events are events that cannot occur at the same time, so there is no overlap.  Suppose you are from Chicago and will be happy if either the Cubs or the White Sox win the World Series.  Those events are mutually exclusive since only one team can win the World Series so to find the union of those probabilities we simple have to add the probability of the Cubs winning to the probability of the White Sox winning.
 
 \section{Finding Probabilities with the Normal Curve}
-If we want to find the probability of a score falling in a certain range, e.g., between 3 and 7, or more than 12, we can use the normal to determine that probability.  Our ability to make that determination is based on some known characteristics on the normal curve.  We know that for all normal curves 68.26\% of all scores fall within one standard deviation of the mean, that 95.44\% fall within two standard deviations, and that 99.72\% fall within three standard deviations.  (The normal distribution is dealt with more formally in the next chapter.) So, we know that something that is three or more standard deviations above the mean is pretty rare.  Figure \ref{fig_normalcurve} illustrates the probabilities associated with the normal curve.
+If we want to find the probability of a score falling within a certain range, e.g., between 3 and 7, or more than 12, we can use the normal to determine that probability.  Our ability to make that determination is based on some known characteristics of the normal curve.  We know that for all normal curves, 68.26\% of all scores fall within one standard deviation of the mean, that 95.44\% fall within two standard deviations, and that 99.72\% fall within three standard deviations.  (The normal distribution is dealt with more formally in the next chapter.) So, we know that something three or more standard deviations above the mean is pretty rare.  Figure \ref{fig_normalcurve} illustrates the probabilities associated with the normal curve.
 
 \begin{figure}
   \centering
@@ -52,9 +52,9 @@ If we want to find the probability of a score falling in a certain range, e.g., 
 
 According to Figure \ref{fig_normalcurve}, there is a .3413 probability of an observation falling between the mean and one standard deviation above the mean and, therefore, a .6826 probability of a score falling within $(+/-)$ one standard deviation of the mean.   There is also a .8413 probability of a score being one standard deviation above the mean or less (.5 probability of a score falling below the mean and a .3413 probability of a score falling between the mean and one standard deviation above it).   (Using the language we learned in Chapter 3, another way to articulate that finding is to say that a score one standard deviation above the mean is at the 84th percentile.)  There is also a .1587 probability of a score being a standard deviation above the mean or higher $(1.0 - .8413)$. 
 
-Intelligence tests have a mean of 100 and a standard deviation of 15.  Someone with an IQ of 130, then, is two standard deviations above the mean, meaning they score higher than 97.72\% of the population.  Suppose, though, your IQ is 140.  Using Figure \ref{fig_normalcurve} would enable us only to approximate how high that score is.  To find out more precisely, we have to find out how many standard deviations above the mean 140 is and then go to a more precise normal curve table.
+Intelligence tests have a mean of 100 and a standard deviation of 15.  Someone with an IQ of 130, then, is two standard deviations above the mean, meaning they score higher than 97.72\% of the population.  Suppose, though, your IQ is 140.  Using Figure \ref{fig_normalcurve} would enable us only to approximate how high that score is.  To find out more specifically, we have to find out how many standard deviations above the mean 140 is and then use a more precise normal curve table.
 
-To find out how many standard deviations from the mean an observation is, we calculated a standardized, or \textbf{Z-score}.  The formula to convert a raw score to a Z-score is:
+To find out how many standard deviations from the mean an observation is, we calculate a standardized score, or a \textbf{Z-score}.  The formula to convert a raw score to a Z-score is:
 
 \begin{equation}
   \label{eq_label4}
@@ -63,7 +63,7 @@ Z = \frac{x-\mu}{\sigma}
 
 In this case, the $Z$-score is $140-100/15$ or $2.67$.  Looking at the formula, you can see that a Z-score of zero puts that score at the mean; a $Z$-score of one is one standard deviation above the mean; and a $Z$-score of $2.67$ is $2.67$ standard deviations above the mean.
 
-The next step is to go to a normal curve table to interpret that Z-score.  Table \ref{tab_Normal_Curve} at the end of the chapter contains such a table.  To use the table you combine rows and columns to find the score of 2.67.  Where they cross we see the value .4962.  That value means there is a .4962 probability of scoring between the mean and a $Z$-score of 2.67.  Since there is a .5 probability of scoring below the mean adding the two values together gives a .9962 probability of finding an IQ of 140 or lower or a .0038 probability of someone having an IQ of 140 or better.
+The next step is to go to a normal curve table to interpret that Z-score.  Table \ref{tab_Normal_Curve} at the end of the chapter contains such a table.  To use the table, you locate the rows and columns corresponding to the score of 2.67.  Where they cross we see the value .4962.  That value means there is a .4962 probability of scoring between the mean and a $Z$-score of 2.67.  Since there is a .5 probability of scoring below the mean adding the two values together gives a .9962 probability of finding an IQ of 140 or lower or a .0038 probability of someone having an IQ of 140 or better.
 
 \begin{grbox}
   \greybox{\textbf{Bernoulli Probabilities}\\
@@ -86,7 +86,7 @@ The Bernoulli process can be used only when both $n * p$ and $n * q$ are greater
 \end{grbox}
 
 \section{Summary}
-Probabilities are simple statistics but are important when we want to know the likelihood of some event occurring.  There are frequent real world instances where we find that information valuable.  We will see, starting in the next chapter, that probabilities are also central to the concept of inference.
+Probabilities are simple statistics but are important when we want to know the likelihood of some event occurring.  There are frequent real world instances where we find that information valuable.  Starting in the next chapter, we will see that probabilities are also central to the concept of inference.
 
 \newpage
 \textbf{Appendix 4.1 The Normal Curve Table}
