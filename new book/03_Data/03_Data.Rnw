@@ -315,7 +315,7 @@ The qq plot provides an easy way to observe departures of a distribution from no
 <<>>=
 summary(ds$ideol, na.rm=TRUE)
 summary(ds$age, na.rm=TRUE)
-summary(ds$gcclb_risk, na.rm=TRUE)
+summary(ds$glbcc_risk, na.rm=TRUE)
 @ 
  
 We can also use the \texttt{describe} function in the \texttt{psych} package to obtain more descriptive statistics, including skewness and
