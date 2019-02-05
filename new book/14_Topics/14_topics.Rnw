@@ -4,11 +4,11 @@
 \chapter{Topics in Multiple Regression}
 
 
-Thus far we have developed the basis for multiple OLS reression using matrix algebra, delved into the meaning of the estimated partial regression coefficient, and revisited the basis for hypothesis testing in OLS. In this chapter we turn to one of the key strengths of OLS: the robust flexibility of OLS for model specification. First we will discuss how to include binary variables (referred to as ``dummy variables") as IVs in an OLS model. Next ww will show you how to build on dummy variables to model their interactions with other variables in your model. Finally, we will address an alternative way to express the partial regression coefficients -- using standardized coefficients -- that permit you to compare the magnitudes of the estimated effects of your IVs even when they are measured on different scales. As has been our custom, the examples in this chapter are based on variable from the \texttt{tbur} data set.  
+Thus far we have developed the basis for multiple OLS reression using matrix algebra, delved into the meaning of the estimated partial regression coefficient, and revisited the basis for hypothesis testing in OLS. In this chapter we turn to one of the key strengths of OLS: the robust flexibility of OLS for model specification. First we will discuss how to include binary variables (referred to as ``dummy variables") as IVs in an OLS model. Next we will show you how to build on dummy variables to model their interactions with other variables in your model. Finally, we will address an alternative way to express the partial regression coefficients -- using standardized coefficients -- that permit you to compare the magnitudes of the estimated effects of your IVs even when they are measured on different scales. As has been our custom, the examples in this chapter are based on variables from the class data set.  
 
 \section{Dummy Variables} 
 
-Thus far, we have considered OLS models that include variables measured on interval level scales (or, in a pinch and with caution, ordinal scales). That is fine when we have variables for which we can develop valid and reliable interval (or ordinal) measures. But in the policy and social sciences we often want to include in our analysis concepts that do not readily admit to interval measure -- including many cases in which a variable has an ``on - off", or ``present - absent" quality. In other cases we want to include a concept that is essentially nominal in nature, such that an observation can be categorized as a subset but not measured on a ``high-low" or ``more-less" type of scale. In these instances we can utilize what is generally known as a dummy variable, but are also referred to as indicator variables, Boolean variables, or categorical variables.
+Thus far, we have considered OLS models that include variables measured on interval level scales (or, in a pinch and with caution, ordinal scales). That is fine when we have variables for which we can develop valid and reliable interval (or ordinal) measures. But in the policy and social science worlds, we often want to include in our analysis concepts that do not readily admit to interval measure -- including many cases in which a variable has an ``on - off", or ``present - absent" quality. In other cases we want to include a concept that is essentially nominal in nature, such that an observation can be categorized as a subset but not measured on a ``high-low" or ``more-less" type of scale. In these instances we can utilize what is generally known as a dummy variable, but are also referred to as indicator variables, Boolean variables, or categorical variables.
 
 \begin{grbox}
 \greybox{\textbf{What the Heck are ``Dummy Variables"?}}
@@ -23,7 +23,7 @@ Thus far, we have considered OLS models that include variables measured on inter
 
 Dummy variables allow for tests of the differences in overall value of the $Y$ for different nominal groups in the data. They are akin to a difference of means test for the groups identified by the dummy variable. Dummy variables allow for comparisons between an included (the 1s) and an omitted (the 0s) group. Therefore, it is important to be clear about which group is omitted and serving as the ``comparison category." 
 
-It is often the case that there are more than two groups, represented by a set of nominal categories. In that case, the variable will consist of two or more dummy variables, with 0/1 codes for each category except the referent group (which is omitted). Several examples of categorical variables that can be represented on multiple regression with dummy variables include:
+It is often the case that there are more than two groups represented by a set of nominal categories. In that case, the variable will consist of two or more dummy variables, with 0/1 codes for each category except the referent group (which is omitted). Several examples of categorical variables that can be represented in multiple regression with dummy variables include:
 
 \begin{itemize}
 \item Experimental treatment and control groups (treatment=1, control=0)
@@ -61,7 +61,7 @@ First note that the inclusion of the dummy variables doe not change the manner i
 
 \section{Interaction Effects}
 
-Dummy variables can also be used to estimate the ways in which the effect of a variable differs across subsets of cases. These kinds of effects are generally called ``interactions".  When an interaction occurs, the effect of one $X$ is dependent on the value of another. Typically, an OLS model is additive, where the $B$'s are added together to predict $Y$; 
+Dummy variables can also be used to estimate the ways in which the effect of a variable differs across subsets of cases. These kinds of effects are generally called ``interactions."  When an interaction occurs, the effect of one $X$ is dependent on the value of another. Typically, an OLS model is additive, where the $B$'s are added together to predict $Y$; 
 
   $Y_i = A + BX_1 + BX_2 + BX_3 + BX_4 + E_i$. 
   
@@ -114,7 +114,7 @@ One way to standardized variables is to create a $Z$-score based on each variabl
 \begin{equation}
   Z_i = \frac{X_i-\bar{X}}{s_x} 
 \end{equation}
-\noindent where $s_x$ is the s.d. of $X$. Standardizing the variables by creating $Z$-scores re-scales them so that each variables has a mean of $0$ and a s.d. of $1$. Therefore, all variables have same mean and s.d. It is important to realize (and it is somewhat counter-intuitive) that the standardized variables retain all of the variation that was in the original measure.
+\noindent where $s_x$ is the s.d. of $X$. Standardizing the variables by creating $Z$-scores re-scales them so that each variables has a mean of $0$ and a s.d. of $1$. Therefore, all variables have the same mean and s.d. It is important to realize (and it is somewhat counter-intuitive) that the standardized variables retain all of the variation that was in the original measure.
 
 A second way to standardize variables converts the unstandardized $B$, into a standardized $B'$. 
 \begin{equation}
@@ -127,7 +127,7 @@ where $B_k$ is the unstandardized coefficient of $X_k$, $s_k$ is the s.d. of $X_
 
 \begin{itemize}  
 \item The standard deviation change in $Y$ for a one-standard deviation change in $X$ 
-\item All $X$’s on a equal footing, so can compare the strength of the effects of the $X$’s 
+\item All $X$’s on an equal footing, so one can compare the strength of the effects of the $X$’s 
 \end{itemize}  
 
 \textbf{Cannot be used for comparisons across samples}
