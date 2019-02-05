@@ -2,7 +2,7 @@
 
 \chapter{Introduction to Multiple Regression}
 
-In the chapters in Part 3 of this book, we will introduce and develop multiple ordinary least squares regression -- that is, linear regression models using two or more independent (or explanatory) variables to predict a dependent variable. Most users simply refer to it as ``multiple regression".\footnote{It is useful to keep in mind the difference between ``multiple regression" and ``multivariate regression". The latter predicts 2 or more dependent variables using an independent variable.} This chapter will provide the background in matrix algebra that is necessary to understand both the logic of, and notation commonly used for, multiple regression. As we go, we will apply the matrix form of regression in examples using R to provide a basic understanding of how multiple regression works.  Chapter 12 will focus on the key assumptions about the concepts and data that are necessary for OLS regression to provide unbiased and efficient estimates of the relationships of interest, and it will address the key virtue of multiple regressions -- the application of ``statistical controls" in modeling relationships through the estimation of partial regression coefficients. Chapter 13 will turn to the process and set of choices involved in specifying and estimating multiple regression models, and to some of the automated approaches to model building you`d best avoid (and why). Chapter 13 turns to some more complex uses of multiple regression, such as the use and interpretation of ``dummy" (dichotomous) independent variables, and modeling interactions in the effects of the independent variables.  Chapter 14 concludes this part of the book with the application of diagnostic evaluations to regression model residuals, which will allow you to assess whether key modeling assumptions have been met and -- if not -- what the implications are for your model results. By the time you have mastered the chapters in this section, you will be well primed for understanding and using multiple regression analysis.
+In the chapters in Part 3 of this book, we will introduce and develop multiple ordinary least squares regression -- that is, linear regression models using two or more independent (or explanatory) variables to predict a dependent variable. Most users simply refer to it as ``multiple regression".\footnote{It is useful to keep in mind the difference between ``multiple regression" and ``multivariate regression". The latter predicts 2 or more dependent variables using an independent variable.} This chapter will provide the background in matrix algebra that is necessary to understand both the logic of, and notation commonly used for, multiple regression. As we go, we will apply the matrix form of regression to examples using R in order to provide a basic understanding of how multiple regression works.  Chapter 12 will focus on the key assumptions about the concepts and data that are necessary for OLS regression to provide unbiased and efficient estimates of the relationships of interest, and it will address the key virtue of multiple regressions -- the application of ``statistical controls" in modeling relationships through the estimation of partial regression coefficients. Chapter 13 will turn to the process and set of choices involved in specifying and estimating multiple regression models, and to some of the automated approaches to model building it is best to avoid (and why). Chapter 14 turns to some more complex uses of multiple regression, such as the use and interpretation of ``dummy" (dichotomous) independent variables, and modeling interactions in the effects of the independent variables.  Chapter 15 concludes this section of the book with the application of diagnostic evaluations to regression model residuals, which will allow you to assess whether key modeling assumptions have been met and -- if not -- what the implications are for your model results. By the time you have mastered the chapters in this section, you will be well primed for both understanding and using multiple regression analysis.
 
 \section{Matrix Algebra and Multiple Regression}
 
@@ -10,8 +10,8 @@ Matrix algebra is widely used for the derivation of multiple regression because 
 example, an estimated multiple regression model in scalar notion is expressed as: $Y = A + BX_1 + BX_2 + BX_3 + E$. Using matrix notation, 
 the same equation can be expressed in a more compact and (believe it or not!) intuitive form: $y = Xb + e$.
  
-In addition, matrix notation is flexible in that it can handle any number of independent variables. Operations performed on the model
-matrix $X$, are performed on all independent variables simultaneously. Lastly, you will see that matrix expression is widely used in statistical presentations of the results of OLS analysis. For all these reasons, then, we begin with the development of multiple regression in matrix form.
+In addition, matrix notation is flexible in that it can handle any number of independent variables; operations performed on the model
+matrix $X$ are performed on all independent variables simultaneously. Lastly, you will see that matrix expression is widely used in statistical presentations of the results of OLS analysis. For all these reasons, then, we begin with the development of multiple regression in matrix form.
 
 \section{The Basics of Matrix Algebra}
 
@@ -62,7 +62,7 @@ $A =
   
 \subsection{Matrix Operations}
 
-There are several "operations" that can be performed with and on matrices. Most of the these can be computed with \texttt{R}, so we will use \texttt{R} examples as we go along. As always, you will understand the operations better if you work the problems in \texttt{R} as we go. There is no need to load a data set this time -- we will enter all the data we need in the examples.
+There are several "operations" that can be performed with and on matrices. Most of these can be computed with \texttt{R}, so we will use \texttt{R} examples as we go along. As always, you will understand the operations better if you work the problems in \texttt{R} as we go. There is no need to load a data set this time -- we will enter all the data we need in the examples.
   
 \subsection{Transpose}
 
@@ -329,7 +329,7 @@ $-1/2$. This leaves us with:
 b = (X'X)^{-1}X'y  
 \end{equation}
 
-The $X'X$ matrix is square, and therefore invertible (i.e., the inverse exists). However, the $X'X$ matrix can be non-invertible (i.e., singular) if $n < k$---the number of $k$ independent variables exceeds the $n$-size---or if one or more of the independent variables is perfectly correlated with another independent variable. This is termed perfect \textbf{multicollinearity} and will be discussed in more detail in Chapter 14. Also note that the $X'X$ matrix contains the basis for all the necessary means, variances, and covariances among the $X$'s.     
+The $X'X$ matrix is square, and therefore invertible (i.e., the inverse exists). However, the $X'X$ matrix can be non-invertible (i.e., singular) if $n < k$---the number of $k$ independent variables exceeds the $n$-size---or if one or more of the independent variables is perfectly correlated with another independent variable. This is termed perfect \textbf{multicollinearity} and will be discussed in more detail in Chapter 12. Also note that the $X'X$ matrix contains the basis for all the necessary means, variances, and covariances among the $X$'s.     
 
 \begin{equation*}
 X'X =
@@ -360,8 +360,8 @@ Assume a model using $n$ observations, $k$ parameters, and $k-1$, $X_{i}$ (indep
 \end{itemize}}
 \end{grbox}
 
-Using the following steps, we will use \texttt{R} to calculate $b$; a vector of regression coefficients, $\hat y$; a vector of predicted $y$ values,
-and $e$; a vector of residuals. 
+Using the following steps, we will use \texttt{R} to calculate $b$, a vector of regression coefficients; $\hat y$, a vector of predicted $y$ values;
+and $e$, a vector of residuals. 
 
 \noindent We want to fit the model $y = Xb+e$ to the following matrices: 
 
