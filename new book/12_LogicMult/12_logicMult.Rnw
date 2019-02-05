@@ -5,7 +5,7 @@
 
 \chapter{The Logic of Multiple Regression} 
 
-The logic of multiple regression can be readily extended from our earlier discussion of simple regression. As with simple regression, multiple regression finds the regression line (or regression ``plane" with multiple independent variables) that minimizes the sum of the squared errors. This chapter discusses the theoretical specification of the multiple regression model, the key assumptions necessary for the model to provide the best linear unbiased estimates (BLUE) of the effects of the $Xs$ on $Y$, the meaning of the partial regression coefficients, and hypothesis testing. Note that the examples in this chapter use the \texttt{tbur} data set. 
+The logic of multiple regression can be readily extended from our earlier discussion of simple regression. As with simple regression, multiple regression finds the regression line (or regression ``plane" with multiple independent variables) that minimizes the sum of the squared errors. This chapter discusses the theoretical specification of the multiple regression model, the key assumptions necessary for the model to provide the best linear unbiased estimates (BLUE) of the effects of the $Xs$ on $Y$, the meaning of the partial regression coefficients, and hypothesis testing. Note that the examples in this chapter continue to use the class data set. 
 
 \section{Theoretical Specification}
 
@@ -65,7 +65,7 @@ assumptions include linearity, fixed $X$'s, and errors that are normally distrib
 \subsubsection{Linearity} 
 
 When OLS is used, it is assumed that a linear functional form is the correct specification for the model being estimated. Note that linearity is assumed in the \textit{parameters} (that is, for the $Bs$), therefore the expected value of the dependent variable is a linear function of the
-parameters, not necessarily of the variables themselves.  So, as we will discuss in the next chapter, it is possible to transform the variables 
+parameters, not necessarily of the variables themselves.  So, as we will discuss in later chapters, it is possible to transform the variables 
 (the $Xs$) to introduce non-linearity into the model while retaining linear estimated coefficients. For example, a model with a squared $X$ term can be estimated with OLS:
 \begin{equation*}
   Y = A + BX^{2}_i + E
@@ -143,7 +143,7 @@ summary(ols2)
 ols2.resids <- ols2$residuals 
 @ 
 
-Note that, when modeled alone, the estimated effect of age on glbccrsk is larger (-0.0164) than it was in the multiple regression with ideology (-0.00487). This is because age is correlated with ideology, and -- because ideology is also related to glbccrsk -- when we don't ``control for" ideology the age variable carries some of the influence of ideology.
+Note that, when modeled alone, the estimated effect of age on glbccrsk is larger (-0.0164) than it was in the multiple regression with ideology (-0.00487). This is because age is correlated with ideology, and -- because ideology is also related to glbccrsk -- when we don't ``control for" ideology, the age variable carries some of the influence of ideology.
 
 \noindent Next, we regress ideology on age and create an object of the residuals. 
 <<>>=
@@ -178,9 +178,9 @@ ols1 <- lm(glbcc_risk ~ age+ideol, data=ds.temp)
 summary(ols1)
 @ 
 
-The results show that the relationship between age and perceived risk (glbccrsk) is negative and insignificant. The relationship between ideology and perceived risk is also negative and significant. The coefficients of the $X$'s are interpreted in the same way as with simple regression, except that we are now controlling for the effect of the other $X$'s by removing their influence on the estimated coefficient. Therefore, we say that as ideology increases one unit, perceptions of the risk of climate change (glbccrsk) decrease by \Sexpr{ols1$coef[3]}, controlling for the effect of age.  
+The results show that the relationship between age and perceived risk (glbccrsk) is negative and insignificant. The relationship between ideology and perceived risk is negative and significant. The coefficients of the $X$'s are interpreted in the same way as with simple regression, except that we are now controlling for the effect of the other $X$'s by removing their influence on the estimated coefficient. Therefore, we say that as ideology increases one unit, perceptions of the risk of climate change (glbccrsk) decrease by \Sexpr{ols1$coef[3]}, controlling for the effect of age.  
 
-As was the case with simple regression, multiple regression finds the intercept and slopes that minimize the sum of the squared residuals. With only one IV the relationship can be represented in a two-dimensional plane (a graph) as a line, but each IV adds another dimension. Two IVs create a regression plane within a cube, as shown in Figure \ref{fig:scatols}. The Figure shows a scatterplot of GCC risk, age, and ideology coupled with the regression plane. Note that this is a sample of 200 observations from the larger data set. Were we to add more IVs, we would generate a hypercube... and we haven't found a clever way to draw that yet.
+As was the case with simple regression, multiple regression finds the intercept and slopes that minimize the sum of the squared residuals. With only one IV the relationship can be represented in a two-dimensional plane (a graph) as a line, but each IV adds another dimension. Two IVs create a regression plane within a cube, as shown in Figure \ref{fig:scatols}. The Figure shows a scatterplot of perceived climate change risk, age, and ideology coupled with the regression plane. Note that this is a sample of 200 observations from the larger data set. Were we to add more IVs, we would generate a hypercube... and we haven't found a clever way to draw that yet.
 
 <<echo=FALSE,results="hide",message=F,warning=F>>=
 ds200 <- ds.temp[sample(1:nrow(ds.temp), 200, replace=FALSE),]
@@ -213,7 +213,7 @@ ols2 <- lm(glbcc_risk ~ age + education + ideol, data = ds.temp)
 summary(ols2)
 @ 
 
-We see that as a respondent's education increases one unit on the education scale, perceived risk appears to increase by \Sexpr{ols2$coef[3]}, keeping age and ideology constant. However, this result is not significant. In the final example income is added to the model. Note that the size and  significance of education actually increases once income is included, indicating that education only has  bearing on the perceived risks of climate change once the independent effect of income is considered.
+We see that as a respondent's education increases one unit on the education scale, perceived risk appears to increase by \Sexpr{ols2$coef[3]}, keeping age and ideology constant. However, this result is not significant. In the final example, income is added to the model. Note that the size and  significance of education actually increases once income is included, indicating that education only has  bearing on the perceived risks of climate change once the independent effect of income is considered.
 
 <<>>=
 options(scipen = 999)#to turn off scientific notation
@@ -278,7 +278,7 @@ The use of multiple regression, when compared to simple bivariate regression, al
 In essence, we ``clean" the estimated relationship between any $X$ and $Y$ of the influence of all  other $Xs$ in the model. Hypothesis testing in multiple regression requires that we identify the independent variation in each $X$, but otherwise the estimated standard error for each $B$ is analogous to that for simple regression.
 
 So, maybe it's a little more complicated. But look at what we can observe! Our estimates from the examples in this chapter show that age, income and education are all related to political ideology, but even when we control for their effects, ideology retains a potent influence on the perceived
-risks of climate change. Politics matters.
+risks of climate change. Politics matter.
 
 <<echo=FALSE>>=
 rm(ds.temp)
