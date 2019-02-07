@@ -5,11 +5,11 @@
 \chapter{The Logic of Ordinary Least Squares Estimation}
 
 % discuss OLS Regression Models broadly  
-This chapter begins the discussion of ordinary least squares (OLS) regression. OLS is the ``workhorse'' of empirical social science and is a critical tool in hypothesis testing and theory building. This chapter builds on the the discussion in Chapter 6, by showing how OLS regression is used to estimate relationships between and among variables. 
+This chapter begins the discussion of ordinary least squares (OLS) regression. OLS is the ``workhorse'' of empirical social science and is a critical tool in hypothesis testing and theory building. This chapter builds on the discussion in Chapter 6 by showing how OLS regression is used to estimate relationships between and among variables. 
 
 \section{Theoretical Models}
 
-Models, as discussed earlier, are an essential component in theory building. They simplify theoretical concepts, provide a precise way to evaluate relationships between variables, and serve as a vehicle for hypothesis testing. As discussed in Chapter 1, one of the central features of a theoretical model is the presumption of causality, and causality is based on three factors; time ordering (observational or theoretical), co-variation, and non-spuriousness. Of these three assumptions, co-variation is the one analyzed using OLS. The often repeated adage, ``correlation is not causation'' is key. Causation is driven by theory, but co-variation is the critical part of empirical hypothesis testing. 
+Models, as discussed earlier, are an essential component in theory building. They simplify theoretical concepts, provide a precise way to evaluate relationships between variables, and serve as a vehicle for hypothesis testing. As discussed in Chapter 1, one of the central features of a theoretical model is the presumption of causality, and causality is based on three factors: time ordering (observational or theoretical), co-variation, and non-spuriousness. Of these three assumptions, co-variation is the one analyzed using OLS. The often repeated adage, ``correlation is not causation'' is key. Causation is driven by theory, but co-variation is the critical part of empirical hypothesis testing. 
 
 When describing relationships, it is important to distinguish between those that are \texttt{deterministic} versus \texttt{stochastic}. Deterministic relationships are ``fully determined" such that, knowing the values of the independent variable, you can perfectly explain (or predict) the value of the dependent variable. Philosophers of Old (like Kant) imagined the universe to be like a massive and complex clock which, once wound up and set ticking, would permit perfect prediction of the future if you had all the information on the starting conditions. There is no ``error" in the prediction. Stochastic relationships, on the other hand, include an irreducible random component, such that the independent variables permit only a partial prediction of the dependent variable. But that stochastic (or random) component of the variation in the dependent variable has a probability distribution that can be analyzed statistically. 
 
@@ -91,7 +91,7 @@ Y_{i} &= E(Y_{i})+\epsilon \\
 
 \subsubsection{Assumptions about the Error Term} 
 
-There are three key assumptions about the error term; a) errors have identical distributions, b) errors are independent, c) errors are normally distributed.\footnote{Actually, we assume only that the \textbf{means} of the errors drawn from repeated samples of observations will be normally distributed -- but we will deal with that wrinkle later on.}
+There are three key assumptions about the error term; a) errors have identical distributions, b) errors are independent, and c) errors are normally distributed.\footnote{Actually, we assume only that the \textbf{means} of the errors drawn from repeated samples of observations will be normally distributed -- but we will deal with that wrinkle later on.}
 
 \begin{grbox}
 \greybox{\textbf{Error Assumptions}
@@ -119,12 +119,12 @@ Taken together these assumption mean that the error term has a normal, independe
 
 \section{Estimating Linear Models} 
 
-With stochastic models we don't know if the error assumptions are met, nor do we know the values of $\alpha$ and $\beta$ therefore we must estimate them, as denoted by a hat (e.g., $\hat{\alpha}$ is the estimate for $\alpha$). The stochastic model as shown in Equation \ref{eq:lm} is estimated as: 
+With stochastic models we don't know if the error assumptions are met, nor do we know the values of $\alpha$ and $\beta$; therefore we must estimate them, as denoted by a hat (e.g., $\hat{\alpha}$ is the estimate for $\alpha$). The stochastic model as shown in Equation \ref{eq:lm} is estimated as: 
 \begin{equation}
   \label{eq:lm}
 Y_{i} = \hat{\alpha} + \hat{\beta} X_{i}+ \epsilon_{i} 
 \end{equation}
-\noindent where $\epsilon_i$ is the \textbf{residual term}, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, $\epsilon$, into the regression equation. Note that the predicted value of $Y$ is denoted $\hat{Y}$; $y$-hat. 
+\noindent where $\epsilon_i$ is the \textbf{residual term}, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, $\epsilon$, into the regression equation. Note that the predicted value of $Y$ is denoted $\hat{Y}$ ($y$-hat). 
 
 \begin{align*}
 Y_{i} &= \hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i} \\ 
@@ -134,7 +134,7 @@ Y_{i} &= \hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i} \\
 \end{align*}
 
 \subsection{Residuals}
-Residuals measure prediction errors, of how far observation $Y_{i}$ is from predicted $\hat{Y_{i}}$. This is shown in Figure \ref{resid}. 
+Residuals measure prediction errors of how far observation $Y_{i}$ is from predicted $\hat{Y_{i}}$. This is shown in Figure \ref{resid}. 
 
 \begin{figure}
   \centering
@@ -144,7 +144,7 @@ Residuals measure prediction errors, of how far observation $Y_{i}$ is from pred
 \end{figure}
 
 %what's in \epislon
-The residual term contains the accumulation (sum) of errors that can result from measurement issues, modeling problems, and irreducible randomness. Ideally, the residual term contains lots of small and independent influences that result in an overall random quality of the distribution of the errors. When that distribution is not random -- that is, when the distribution of error has some systematic quality -- the estimates of $\hat{\alpha}$ and $\hat{\beta}$ may be biased. Thus, when we evaluate our models we will focus on the \texttt{shape} of the distribution of our errors. 
+The residual term contains the accumulation (sum) of errors that can result from measurement issues, modeling problems, and irreducible randomness. Ideally, the residual term contains lots of small and independent influences that result in an overall random quality of the distribution of the errors. When that distribution is not random -- that is, when the distribution of error has some systematic quality -- the estimates of $\hat{\alpha}$ and $\hat{\beta}$ may be biased. Thus, when we evaluate our models we will focus on the shape of the distribution of our errors. 
 
 \begin{grbox}
 \greybox{\textbf{What's in $\epsilon$?} 
@@ -182,14 +182,14 @@ Minimizing this function requires specifying estimators for $\hat{\alpha}$ and $
 
 \section{An Example of Simple Regression} 
 
-The following example uses a measure of peoples' political ideology to predict their perceptions of the risks posed by global climate change. OLS regression can be done using the \texttt{lm} function in \texttt{R}. For this example, we are using the \texttt{tbur} data set. 
+The following example uses a measure of peoples' political ideology to predict their perceptions of the risks posed by global climate change. OLS regression can be done using the \texttt{lm} function in \texttt{R}. For this example, we are again using the class data set. 
 
 <<>>=
 ols1 <- lm(ds$glbcc_risk~ds$ideol)
 summary(ols1)
 @ 
 
-The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for $\hat{\alpha}$ and $\hat{\beta}$; the results of hypothesis tests; and overall measures of model ``fit" -- all of which we will discuss in detail in later chapters. But, for now, note that the estimated $B$ for ideology is negative, which indicates that as the value for ideology \textit{increases}---in our data this means more conservative---the perceived risk of climate change \textit{decreases}. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by \Sexpr{ols1$coef[2]}.
+The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for $\hat{\alpha}$ and $\hat{\beta}$; the results of hypothesis tests; and overall measures of model ``fit" -- all of which we will discuss in detail in later chapters. For now, note that the estimated $B$ for ideology is negative, which indicates that as the value for ideology \textit{increases}---in our data this means more conservative---the perceived risk of climate change \textit{decreases}. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by \Sexpr{ols1$coef[2]}.
 
 We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure \ref{fig:resid}. Note that we will discuss residual diagnostics in detail in future chapters. 
 
