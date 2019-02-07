@@ -4,7 +4,7 @@
 \chapter{Logit Regression} 
 
 
-Logit regression is a part of a larger class of generalized linear models (GLM).   In this chapter we first briefly discuss GLMs, and then move on into a more in-depth discussion of logistic regression. Once again, the examples in this chapter use the \texttt{tbur} data set. 
+Logit regression is a part of a larger class of generalized linear models (GLM).   In this chapter we first briefly discuss GLMs, and then move on into a more in-depth discussion of logistic regression.
 
 \section{Generalized Linear Models} 
 
@@ -38,7 +38,7 @@ function expresses the probability of obtaining the observed data as a
 function of the model parameters. Estimates of $A$ and $B$ are based
 on maximizing a likelihood function of the observed $Y$ values.  
 In logit estimation we seek $P(Y=1)$, the probability that $Y=1$. The
-odds that $Y=1$ is expressed as:
+odds that $Y=1$ are expressed as:
 
 \begin{equation*}
   O(Y=1)=\frac{P(Y=1)}{1-P(Y=1)}
@@ -59,7 +59,7 @@ $P=1$. $L$ is the estimated systematic linear component:
 \end{equation*}
 
 \noindent By reversing the logit we can obtain the predicted
-probability that $Y=1$ for each of the $i$ observations. 
+probability that $Y=1$ for each of the $i$ observations: 
 
 \begin{equation}
   \label{eq:predprob}
@@ -96,7 +96,7 @@ In more formal terms, each observation, $i$,  contributes to the likelihood func
 \begin{equation*}
   \ell = \prod P^{Y_{i}}_i(1-P_i)^{1-Y_i}
 \end{equation*}
-\noindent The likelihood function is the largest for the model that best predicts $Y=1$ or $Y=0$, therefore when the predicted value of $Y$ is correct and close to $1$ or $0$, the likelihood function is maximized. 
+\noindent The likelihood function is the largest for the model that best predicts $Y=1$ or $Y=0$; therefore when the predicted value of $Y$ is correct and close to $1$ or $0$, the likelihood function is maximized. 
 
 To estimate the model parameters, we seek to maximize the log of the likelihood function. We use the log because it converts the multiplication into addition, and is therefore easier to calculate. The log likelihood is:
 \begin{equation*}
@@ -142,12 +142,11 @@ ds.temp <- ds %>%
 logit1 <- glm(glbcc ~ age + gender + education + income, data = ds.temp, family = binomial())
 summary(logit1)
 @ 
-\noindent As we can see age and gender are both negative and statistically significant predictors of climate change opinion. Below we discuss logit hypothesis tests, goodness of fit, and how to interpret the logit coefficients.  
+\noindent As we can see, age and gender are both negative and statistically significant predictors of climate change opinion. Below we discuss logit hypothesis tests, goodness of fit, and how to interpret the logit coefficients.  
 
 \subsection{Logit Hypothesis Tests} 
 
-In some ways, hypothesis testing with logit is quite similar to that using OLS. The same use of  $p$-values is employed, however they differ in
-how they are derived. The logit analysis makes use of the Wald $z$-statistic, which is similar to the $t$-stat in OLS. The Wald $z$ score compares the estimated coefficient to the asymptotic standard error, (aka the normal distribution). The $p$-value is derived from the asymptotic standard-normal distribution. Each estimated coefficient has a Wald $z$-score and a $p$-value that shows the probability that the null hypothesis is correct, given the data. 
+In some ways, hypothesis testing with logit is quite similar to that using OLS. The same use of  $p$-values is employed; however, they differ in how they are derived. The logit analysis makes use of the Wald $z$-statistic, which is similar to the $t$-stat in OLS. The Wald $z$ score compares the estimated coefficient to the asymptotic standard error, (aka the normal distribution). The $p$-value is derived from the asymptotic standard-normal distribution. Each estimated coefficient has a Wald $z$-score and a $p$-value that shows the probability that the null hypothesis is correct, given the data. 
 \begin{equation}
   \label{eq:wald}
   z = \frac{B_j}{SE(B_j)} 
@@ -159,7 +158,7 @@ Given that logit regression is estimated using MLE, the goodness-of-fit statisti
 measures of fit: log-likelihood, the pseudo $R^2$, and the Akaike information criteria (AIC). 
 
 \subsubsection{Log-Likelihood}
-To test for the overall null hypothesis that all $B$’s are equal to zero, similar to an overall $F$-test in OLS, we can compare the log-likelihood of the demographic model with 4 IVs to the initial ``null model" which includes only the intercept term. In general, a smaller log-likelihood indicates a better fit. Using the deviance statistic $G^2$ (aka the likelihood-ratio test statistic), we can determine whether the difference
+To test for the overall null hypothesis that all $B$’s are equal to zero (similar to an overall $F$-test in OLS), we can compare the log-likelihood of the demographic model with 4 IVs to the initial ``null model," which includes only the intercept term. In general, a smaller log-likelihood indicates a better fit. Using the deviance statistic $G^2$ (aka the likelihood-ratio test statistic), we can determine whether the difference
 is statistically significant. $G^2$ is expressed as: 
 
  \begin{equation}
@@ -234,19 +233,19 @@ model with ideology.
 pseudoR2 <- 1 - (logit2$deviance/logit2$null.deviance)
 pseudoR2
 @ 
-\noindent The pseudo $R^2$ of the model is \Sexpr{pseudoR2}. Note that the \Sexpr{pseudoR2} is only an approximation of explained variance, and should be used in combination with other measures of fit such as AIC.
+\noindent The pseudo $R^2$ of the model is \Sexpr{pseudoR2}. Note that the psuedo $R^2$ is only an approximation of explained variance, and should be used in combination with other measures of fit such as AIC.
 
 \subsubsection{Akaike Information Criteria}
 Another way to examine goodness-of-fit is the Akaike information criteria (AIC). Like the adjusted $R^2$ for OLS, the AIC takes into account the parsimony of the model by penalizing for the number of parameters. But AIC is useful only in a comparative manner -- either with the null model or an alternative model. It does not purport to describe the percent of variance in $Y$ accounted for, as does the pseudo $R^2$.
 
-AIC is defined as -2 times the residual deviance of the model plus two times the number of parameters; $k$ IVs plus the intercept:
+AIC is defined as -2 times the residual deviance of the model plus two times the number of parameters, or $k$ IVs plus the intercept:
 
 \begin{equation}
   \label{eq:aic}
   \text{AIC} = -2(\text{log}_e L) + 2(k+1) 
 \end{equation}
 
-\noindent Note that smaller values are indicative of a better fit. The AIC is most useful when comparing the fit of alternative (not necessarily nested) models. In $R$, AIC is given as part of the \texttt{summary} output for a \texttt{glm} object, but we can also calculate it and verify. 
+\noindent Note that smaller values are indicative of a better fit. The AIC is most useful when comparing the fit of alternative (not necessarily nested) models. In \texttt{R}, AIC is given as part of the \texttt{summary} output for a \texttt{glm} object, but we can also calculate it and verify. 
 
 <<>>=
 aic.logit2 <- logit2$deviance + 2*6
@@ -256,7 +255,7 @@ logit2$aic
 
 \subsection{Interpreting Logits} 
 
-The logits, $L$, are logged odds, and therefore the coefficients that are produced must be interpreted as logged odds. This means that for each unit change in ideology the predicted logged odds of believing climate change has an anthropogenic cause decrease by \Sexpr{logit2$coef[6]}. This interpretation, through mathematically straightforward, is not terribly informative. Below we discuss two ways to make the interpretation of logit analysis more intuitive.   
+The logits, $L$, are logged odds, and therefore the coefficients that are produced must be interpreted as logged odds. This means that for each unit change in ideology, the predicted logged odds of believing climate change has an anthropogenic cause decrease by \Sexpr{logit2$coef[6]}. This interpretation, though mathematically straightforward, is not terribly informative. Below we discuss two ways to make the interpretation of logit analysis more intuitive.   
 
 \subsubsection{Calculate Odds}
  
@@ -268,11 +267,11 @@ Logits can be used to directly calculate odds by taking the antilog of any of th
 <<>>=
 logit2 %>% coef() %>% exp()
 @ 
-\noindent Therefore, for each 1-unit increase in the ideology scale (i.e., becoming more conservative) the odds of believing that climate change is human caused decrease by \Sexpr{exp(logit2$coef[6])}. 
+\noindent Therefore, for each 1-unit increase in the ideology scale (i.e., becoming more conservative), the odds of believing that climate change is human caused decrease by \Sexpr{exp(logit2$coef[6])}. 
 
 \subsubsection{Predicted Probabilities}
 
-The most straightforward way to interpret logits is to Equation \ref{eq:predprob}. To calculate the effect of a particular independent variable, $X_i$, on the probability of $Y = 1$, set all $X_j$'s at their means, then calculate:
+The most straightforward way to interpret logits is to transform them into predicted probabilities. To calculate the effect of a particular independent variable, $X_i$, on the probability of $Y = 1$, set all $X_j$'s at their means, then calculate:
 
 \begin{equation*}
 \label{eq:predprob}
@@ -281,7 +280,7 @@ The most straightforward way to interpret logits is to Equation \ref{eq:predprob
 
 \noindent We can then evaluate the change in predicted probabilities that $Y$=1 across the range of values in $X_i$.
 
-This procedure can be demonstrated in a two steps. First, create a data frame holding all the variables except ideology at their mean. Second, use the \texttt{augment} function to calculate the predicted probabilities for each level of ideology. Indicate \texttt{type.predict = "response"}. 
+This procedure can be demonstrated in two steps. First, create a data frame holding all the variables except ideology at their mean. Second, use the \texttt{augment} function to calculate the predicted probabilities for each level of ideology. Indicate \texttt{type.predict = "response"}. 
 
 <<tidy=TRUE>>=
 log.data <- data.frame(age = mean(ds.temp$age),
@@ -294,7 +293,7 @@ log.data <- logit2 %>%
 log.data
 @ 
 
-The output shows, for each case, the ideology measure for the respondent followed by the estimated probability ($p$) that the individual believes man-made greenhouse gasses are causing climate change.  We can also graph the results, with $95\%$ confidence intervals. This is shown in Figure \ref{fig:logitplot}.
+The output shows, for each case, the ideology measure for the respondent followed by the estimated probability ($p$) that the individual believes man-made greenhouse gasses are causing climate change.  We can also graph the results with $95\%$ confidence intervals. This is shown in Figure \ref{fig:logitplot}.
 
 <<echo=2:10,results="hide",tidy=TRUE>>=
 pdf(file="logitplot.pdf")
@@ -318,8 +317,8 @@ dev.off()
 
 \section{Summary}
 
-As an analysis and research tool, logit modeling expands your capabilities beyond those that can reasonably be estimated with OLS. Now you can accommodate  models with binary dependent variables. Logit models are a family of generalized linear models that are useful for predicting the odds or probabilities, of outcomes for binary dependent variables. This chapter has described the manner in which logits are calculated, how model fit can be  characterized, and several methods for making the logit results readily interpretable.
+As an analysis and research tool, logit modeling expands your capabilities beyond those that can reasonably be estimated with OLS. Now you can accommodate  models with binary dependent variables. Logit models are a family of generalized linear models that are useful for predicting the odds or probabilities of outcomes for binary dependent variables. This chapter has described the manner in which logits are calculated, how model fit can be  characterized, and several methods for making the logit results readily interpretable.
 
-Perhaps one of the greatest difficulties in applications of logit models is the clear communication of the meaning of the results. The estimated coefficients show the change in the log of the odds for a one unit increase in the $X$ variable -- not the usual way to describe effects. But, as described in this chapter, these estimated coefficients can be readily transformed into changes in the odds, or the logit itself can be ``reversed" to provide estimated probabilities.  Of particular utility are logit graphics, showing the estimated shift in $Y$ from values of zero to one; the estimated probabilities of $Y$=1 for cases with specified combinations of values in the $X$ variables; and estimates of the ranges of probabilities for $Y$=1 across the ranges of values in any $X$. 
+Perhaps one of the greatest difficulties in applications of logit models is the clear communication of the meaning of the results. The estimated coefficients show the change in the log of the odds for a one unit increase in the $X$ variable -- not the usual way to describe effects. However, as described in this chapter, these estimated coefficients can be readily transformed into changes in the odds, or the logit itself can be ``reversed" to provide estimated probabilities.  Of particular utility are logit graphics, showing the estimated shift in $Y$ from values of zero to one; the estimated probabilities of $Y$=1 for cases with specified combinations of values in the $X$ variables; and estimates of the ranges of probabilities for $Y$=1 across the ranges of values in any $X$. 
 
 In sum, the use of logit models will expand your ability to test hypotheses to include a range of outcomes that are binary in nature. Given that a great deal of the phenomena of interest in the policy and social sciences are of this kind, you will find this capability to be an important part of your research toolkit. 
