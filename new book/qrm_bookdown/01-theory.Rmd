@@ -128,7 +128,8 @@ Try your hand at this with theories that are familiar to you. First, identify th
 Theories play several crucial roles in the development of scientific knowledge. Some of these include providing patterns for data interpretation, linking the results of related studies together, providing frameworks for the study of concepts, and allowing the interpretation of more general meanings from any single set of findings. Hoover and Todd (2004) provide a very useful discussion of the role of theories in ``scientific thinking" -- find it and read it!
 
 >__The Role of Theory in Social Science__
-\small{Adapted from _The Elements of Social Scientific Thinking_ by Kenneth Hoover and Todd Donovan (2004, 37)}
+>
+> Adapted from _The Elements of Social Scientific Thinking_ by Kenneth Hoover and Todd Donovan (2004, 37)
 >
 > - Theory provides patterns for the interpretation of data
 > - Theory links one study with another 
