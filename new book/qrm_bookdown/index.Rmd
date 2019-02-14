@@ -1,0 +1,12 @@
+--- 
+title: "Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition With Applications in R"
+site: bookdown::bookdown_site
+output: bookdown::html_book
+book_filename: "qrmbook"
+always_allow_html: yes
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+---
+# Preface
