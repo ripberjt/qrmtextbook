@@ -22,9 +22,7 @@ When building a model, it is best to start with a few IV's and then begin adding
 
 #### Coefficient of Determination: $R^2$ {-}
 
-$R^2$ was previously discussed within the context of simple regression. The extension to multiple regression is straightforward, except that multiple regression leads us to place greater weight on the use of the __adjusted $R^2$__. Recall that the adjusted $R^2$ corrects for the inclusion of multiple independent variables; $R^{2}$ is the ratio of the explained sum of squares to the total sum of squares (_ESS/TSS_). The components of $R^{2}$ for an observation are illustrated in Figure \@ref{fig:rsq}. As before, for each observation $Y_{i}$, variation around the mean can be decomposed into that which is "explained" by the regression model and that which is not.  
-
-%%%   ADD FIGURE FROM JOE HERE
+$R^2$ was previously discussed within the context of simple regression. The extension to multiple regression is straightforward, except that multiple regression leads us to place greater weight on the use of the __adjusted $R^2$__. Recall that the adjusted $R^2$ corrects for the inclusion of multiple independent variables; $R^{2}$ is the ratio of the explained sum of squares to the total sum of squares (_ESS/TSS_). 
 
 $R^2$ is expressed as: 
 
