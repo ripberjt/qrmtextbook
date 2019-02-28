@@ -26,70 +26,45 @@ A specific type of observational design, the __natural experiment__, requires me
 
 ## Threats to Validity
 
-To understand the pros and cons of various designs and to be able to better judge specific designs, we identify specific __threats to internal and external validity__. Before we do so, it is important to note that a (perhaps ``the") primary challenge to establishing internal validity in the social sciences is the fact that most of the phenomena we care about have multiple causes and are often a result of some complex set of interactions. For examples, $X$ may be only a partial cause of $Y$, or $X$ may cause $Y$, but only when $Z$ is present. Multiple causation and interactive affects make it very difficult to demonstrate causality, both internally and externally. Turning now to more specific threats, Table \ref{tab:tbl1} identifies common threats to internal validity and Table \ref{tab:tbl2} identifies common threats to external validity.
+To understand the pros and cons of various designs and to be able to better judge specific designs, we identify specific __threats to internal and external validity__. Before we do so, it is important to note that a (perhaps ``the") primary challenge to establishing internal validity in the social sciences is the fact that most of the phenomena we care about have multiple causes and are often a result of some complex set of interactions. For examples, $X$ may be only a partial cause of $Y$, or $X$ may cause $Y$, but only when $Z$ is present. Multiple causation and interactive affects make it very difficult to demonstrate causality, both internally and externally. Turning now to more specific threats, Table \@ref(fig:tbl1) identifies common threats to internal validity and Table \@ref(fig:tbl2) identifies common threats to external validity.
 
 ```{r tbl1, echo=FALSE, fig.cap="Common Threats to Internal Validity"}
-library(knitr)
-library(tidyverse)
-library(kableExtra)
-tbl1 <- data.frame(
-  Threat = c("History", "Maturation", "Selction Bias", 
-             "Experimental Mortality", "Testing",
-             "Instrumentation", "Statistical Regression"),
-  Explanation = c("Any event that occurs while the experiment is in progress might be an alternative explanation; using a control group mitigates this concern", 
-"Normal changes over time (e.g. fatigue or aging) might affect the dependent variable; using a control group mitigates this concern", 
-"If randomization is not used to assign participants, the groups may not be equivalent", 
-"If groups lose participants (for example, due to dropping out of the experiment) they may not be equivalent", 
-"A pre-test may confound the influence of the experimental treatment; using a control group mitigates this concern", "Changes or differences in the process of measurement might alternatively account for differences", 
-"The natural tendency for extreme scores to regress or move towards teh mean")
-)
-
-kableExtra::kable(tbl1,
-                  caption = "Common Threats to Internal Validity") %>%
-  kable_styling(full_width = F) %>%
-  column_spec(1, bold = T, border_right = T) %>%
-  column_spec(2, width = "30em", border_right = T)
+knitr::include_graphics("tbl1.png")
 ```
 
 ```{r tbl2, echo=FALSE, fig.cap="Common Threats to External Validity"}
-tbl2 <- data.frame(
-  Threat = c("Testing", "Interaction with Testing", 
-             "Sample Representation", 
-              "Interaction of Selection Bias and Experimental   Treatment", "Experimental Setting"),
-  Explanation = c("Pre-testing or multiple measures may influence subsequent measurement",
-                  "A pre-test may sensitize subjects to the effects of the experimental treatment",
-                  "An unrepresentative sample will limit the ability to draw inferences about the population",
-                  "A bias in selection may produce subjects that are more or less sensitive to the experimental treatment",
-                  "The finding may not be transferable to a natural setting; knowledge of participation may produce a Hawthrone effect")
-)
-
-kable(tbl2, caption = "Common Threats to External Validity") %>%
-  kable_styling(full_width = F) %>%
-  column_spec(1, bold = T, border_right = T) %>%
-  column_spec(2, width = "30em", border_right = T)
+knitr::include_graphics("tbl2.png")
 ```
 
 ## Some Common Designs
 
-In this section we look at some common research designs, the notation used to symbolize them, and then consider the internal and external validity of the designs. We start with the most basic experimental design, the post-test only design Table \ref{tab:tbl3}. In this design subjects are randomly assigned to one of two groups with one group receiving the experimental treatment.^[The symbol R means there is random assignment to the group. X symbolizes exposure to the experimental treatment. O is an observation or measurement.] There are advantages to this design in that it is relatively inexpensive and eliminates the threats associated with pre-testing. If randomization worked the (unobserved) pre-test measures would be the same so any differences in the observations would be due to the experimental treatment. The problem is that randomization could fail us, especially if the sample size is small.
+In this section we look at some common research designs, the notation used to symbolize them, and then consider the internal and external validity of the designs. We start with the most basic experimental design, the post-test only design Figure \@ref(fig:post). In this design subjects are randomly assigned to one of two groups with one group receiving the experimental treatment.^[The symbol R means there is random assignment to the group. X symbolizes exposure to the experimental treatment. O is an observation or measurement.] There are advantages to this design in that it is relatively inexpensive and eliminates the threats associated with pre-testing. If randomization worked the (unobserved) pre-test measures would be the same so any differences in the observations would be due to the experimental treatment. The problem is that randomization could fail us, especially if the sample size is small.
 
-%TABLE 3 HERE
+```{r post, echo=FALSE, fig.cap-"Post-test Only (with a Control Group) Experimental Design"}
+knitr::include_graphics("post-only.png")
+```
 
-Many experimental groups are small and many researchers are not comfortable relying on randomization without empirical verification that the groups are the same, so another common design is the Pre-test, Post-test Design (Table \ref{tab:Experiment2}). By conducting a pre-test, we can be sure that the groups are identical when the experiment begins. The disadvantages are that adding groups drives the cost up (and/or decreases the size of the groups) and that the various threats due to testing start to be a concern. Consider the example used above concerning a news story and views on climate change. If subjects were given a pre-test on their views on climate change and then exposed to the news story, they might become more attentive to the story. If a change occurs, we can say it was due to the story (internal validity), but we have to wonder whether we can generalize to people who had not been sensitized in advance.
+Many experimental groups are small and many researchers are not comfortable relying on randomization without empirical verification that the groups are the same, so another common design is the Pre-test, Post-test Design (Figure \@ref(fig:prepost)). By conducting a pre-test, we can be sure that the groups are identical when the experiment begins. The disadvantages are that adding groups drives the cost up (and/or decreases the size of the groups) and that the various threats due to testing start to be a concern. Consider the example used above concerning a news story and views on climate change. If subjects were given a pre-test on their views on climate change and then exposed to the news story, they might become more attentive to the story. If a change occurs, we can say it was due to the story (internal validity), but we have to wonder whether we can generalize to people who had not been sensitized in advance.
 
-% TABLE 4 HERE
+```{r prepost, echo=FALSE, fig.cap="Pre-test, Post-Test (with a Control Group) Experimental Design"}
+knitr::include_graphics("pre-post.png")
+```
 
-A final experimental design deals with all the drawbacks of the previous two by combining them into what is called the Solomon Four Group Design (Table \ref{tab:Experiment3}). Intuitively it is clear that the concerns of the previous two designs are dealt with in this design, but the actual analysis is complicated. Moreover, this design is expensive so while it may represent an ideal, most researchers find it necessary to compromise.
+A final experimental design deals with all the drawbacks of the previous two by combining them into what is called the Solomon Four Group Design (Figure \@ref(fig:solomon)). Intuitively it is clear that the concerns of the previous two designs are dealt with in this design, but the actual analysis is complicated. Moreover, this design is expensive so while it may represent an ideal, most researchers find it necessary to compromise.
 
-%TABLE 5 HERE
+```{r solomon, echo=FALSE, fig.cap="Solomon Four Group Experimental Design"}
+knitr::include_graphics("solomon.png")
+```
 
 Even the Solomon Four Group design does not solve all of our validity problems. It still likely suffers from the artificiality of the experimental setting. Researchers generally try a variety of tactics to minimize the artificiality of the setting through a variety of efforts such as watching the aforementioned news clip in a living room-like setting rather than on a computer monitor in a cubicle or doing jury research in the courthouse rather than the basement of a university building.
 
 Observational designs lack random assignment, so all of the above designs can be considered observational designs when assignment to groups is not random. You might, for example, want to consider the affects of a new teaching style on student test scores. One classroom might get the intervention (the new teaching style) and another not be exposed to it (the old teaching style). Since students are not randomly assigned to classrooms it is not experimental and the threats that result from selection bias become a concern (along with all the same concerns we have in the experimental setting). What we gain, of course, is the elimination or minimization of the concern about the experimental setting.
 
-A final design that is commonly used is the repeated measures or longitudinal research design where repeated observations are made over time and at some point there is an intervention (experimental treatment) and then subsequent observations are made (Table \ref{tab:Experiment4}).  Selection bias and testing threats are obvious concerns with this design. But there are also concerns about history, maturation, and mortality. Anything that occurs between $O_n$ and $O_{n+1}$ becomes an alternative explanation for any changes we find. This design may also have a control group, which would give clues regarding the threat of history. Because of the extended time involved in this type of design, the researcher has to concerned about experimental mortality and maturation. 
+A final design that is commonly used is the repeated measures or longitudinal research design where repeated observations are made over time and at some point there is an intervention (experimental treatment) and then subsequent observations are made (Figure \@ref(fig:repmeas)).  Selection bias and testing threats are obvious concerns with this design. But there are also concerns about history, maturation, and mortality. Anything that occurs between $O_n$ and $O_{n+1}$ becomes an alternative explanation for any changes we find. This design may also have a control group, which would give clues regarding the threat of history. Because of the extended time involved in this type of design, the researcher has to concerned about experimental mortality and maturation. 
 
-%TABLE 6 HERE
+```{r repmeas, echo=FALSE, fig.cap="Repeated Measures Experimental Design"}
+knitr::include_graphics("repeated-meas.png")
+```
 
 This brief discussion illustrates major research designs and the challenges to maximizing internal and external validity.  With these experimental designs we worry about external validity, but since we have said we seek the ability to make causal statements, it seems that a preference might be given to research via experimental designs. Certainly we see more and more experimental designs in political science with important contributions. But, before we dismiss observational designs, we should note that in later chapters, we will provide an approach to providing statistical controls which, in part, substitutes for the control we get with experimental designs. 
 
