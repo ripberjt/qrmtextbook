@@ -40,7 +40,6 @@ Increasingly, various kinds of non-probability samples are employed in social sc
   
 Sampling techniques can be relatively straightforward, but as one moves away from simple random sampling, the sampling process either becomes more complex or limits our ability to draw inferences about a population.  Researchers use all of these techniques for good purposes and the best technique will depend on a variety of factors, such as budget, expertise, need for precision, and what research question is being addressed. For the remainder of this text, though, when we talk about drawing inferences, the data will based upon an appropriately drawn probability sample.
 
-%%%This is from the first edition for reference.
 ### So How is it That We Know? 
 
 So why is it that the characteristics of samples can tell us a lot about the characteristics of populations? If samples are properly drawn, the observations taken will provide a range of values on the measures of interest that reflect those of the larger population. The connection is that we expect the phenomenon we are measuring will have a __distribution__ within the population, and a sample of observations drawn from the population will provide useful information about that distribution. The theoretical connection comes from probability theory, which concerns the analysis of random phenomena. For present purposes, if we randomly draw a sample of observations on a measure for an individual (say, discrete acts of kindness), we can use probability theory to make inferences about the characteristics of the overall population of the phenomenon in question. More specifically, probability theory allows us to make inference about the shape of that distribution -- how frequent are acts of kindness committed, or what proportion of acts evidence kindness?
@@ -79,7 +78,7 @@ y <- 1/sqrt(2*pi)*exp(-x^2/2)
 plot(x,y, type="l", lwd=2)
 ```
 
-Note that the the tails go to $\pm \infty$. In addition, the density of a distribution over the range of x is the key to hypothesis testing With a normal distribution, $\sim68\%$ of the observations will fall within $1$ standard deviation of the mean, $\sim 95\%$ will fall within 2 standard deviations, and $\sim 99.7\%$ within 3 standard deviations. This is illustrated in Figure \ref{fig:normal}. 
+Note that the the tails go to $\pm \infty$. In addition, the density of a distribution over the range of x is the key to hypothesis testing With a normal distribution, $\sim68\%$ of the observations will fall within $1$ standard deviation of the mean, $\sim 95\%$ will fall within 2 standard deviations, and $\sim 99.7\%$ within 3 standard deviations. This is illustrated in Figure \@ref(fig:normal). 
 
 ```{r normal168, echo=FALSE, results = "hide"}
 x <- seq(-4,4,length=200)
@@ -108,9 +107,9 @@ y <- dnorm(x)
 polygon(c(-3,x,3),c(0,y,0),col="gray") 
 ``` 
 
-%FIGURE NEEDED HERE
+%%%%%%%FIGURE NEEDED HERE
 
-The normal distribution is characterized by several important properties. The distribution of observations is symmetrical around the mean $\mu$; the frequency of observations is highest (the mode) at $\mu$, with more extreme values occurring with lower frequency (this can be seen in Figure \ref{fig:normal}); and only the mean and variance are needed to characterize data and test simple hypotheses. 
+The normal distribution is characterized by several important properties. The distribution of observations is symmetrical around the mean $\mu$; the frequency of observations is highest (the mode) at $\mu$, with more extreme values occurring with lower frequency (this can be seen in Figure \@ref(fig:normal)); and only the mean and variance are needed to characterize data and test simple hypotheses. 
 
 #### The Properties of the Normal Distribution {-}
 - It is symmetrical around its mean and median, $\mu$
@@ -145,11 +144,9 @@ A distribution can be plotted using the raw scores found in the original data.  
 
 As formula 5.4 indicated, standardizing is a simple process.  To move the mean from its original value to a mean of zero, all you have to do is subtract the mean from each score.  To standardize the standard deviation to one all that is necessary is to divide each score the standard deviation.
 
-% note the above should be changed to a label. - the label is eq_label4
-
 ### The Central Limit Theorem
 
-An important property of samples is associated with the __Central Limit Theorem__ (CLT). Imagine for a moment that we have a very large (or even infinite)  population, from which we can draw as many samples as we'd like. According to the CLT, as the $n$-size (number of observations) within a sample drawn from that population increases, the more the distribution of the means taken from samples of that size will resemble a normal distribution. This is illustrated in Figure \ref{nnorm}. Also note that the population does not need to have a normal distribution for the CLT to apply. Finally, a distribution of means from a normal population will be approximately normal at any sample size.  
+An important property of samples is associated with the __Central Limit Theorem__ (CLT). Imagine for a moment that we have a very large (or even infinite)  population, from which we can draw as many samples as we'd like. According to the CLT, as the $n$-size (number of observations) within a sample drawn from that population increases, the more the distribution of the means taken from samples of that size will resemble a normal distribution. This is illustrated in Figure \@ref(fig:nnorm). Also note that the population does not need to have a normal distribution for the CLT to apply. Finally, a distribution of means from a normal population will be approximately normal at any sample size.  
 
 ```{r nnorm, echo=FALSE, fig.cap="Normal Distribution and $n$-size"}
 x=seq(-8,8,length=200) 
@@ -165,40 +162,25 @@ legend("topright",c("n=300","n=100","n=20"), bty="n", lty=c(1,1,1),lwd=4,
 
 ### Populations, Samples and Symbols 
 
-It is important to note that, by convention, the symbols used for representing population parameters and sample statistics have different notation. These differences are shown in Table \ref{tab_note}. In short, population parameters are typically identified by using Greek letters and sample statistics are noted by English letters. Unless otherwise noted, the notation used in the remainder of this chapter will be in terms of samples rather than populations.    
+It is important to note that, by convention, the symbols used for representing population parameters and sample statistics have different notation. These differences are shown in Table \@ref(fig:tab-note). In short, population parameters are typically identified by using Greek letters and sample statistics are noted by English letters. Unless otherwise noted, the notation used in the remainder of this chapter will be in terms of samples rather than populations.    
  
-\begin{table}[!htp]
-\centering
-\caption{Sample and Population Notation \label{tab_note}}
-\begin{tabular}{l | c | c }
-\hline\noalign{\smallskip}
-Concept & Sample Statistic & Population Parameter \\
-\hline\noalign{\smallskip}
-Mean & $\displaystyle \bar{X}=\frac{\sum X_{i}}{n}$ &
-$\displaystyle \mu_{X}=E(X)$ \\
-\hline\noalign{\smallskip}
-Variance & $\displaystyle s^{2}_{x}=\frac{\sum (X-\bar{X})^{2}}{(n-1)}$ &
-$\displaystyle\sigma^{2}_{x}=Var(X)$ \\ 
-\hline\noalign{\smallskip}
-Standard Deviation & $\displaystyle s_{x}=\sqrt{\frac{\sum
-    (X-\bar{X})^{2}}{(n-1)}}$ & $\displaystyle\sigma_{x}=\sqrt{Var(X)}$ \\
-\hline
-\end{tabular}
-\end{table} 
+```{r tab-note, echo=FALSE, fig.cap="Sample and Population Notation"}
+knitr::include_graphics("tab-note.png")
+```
 
 ## Inferences to the Population from the Sample
 
-Another key implication of the Central Limit Theorem that is illustrated in Figure \ref{nnorm} is that the mean of repeated sample means is the same, regardless of sample size, and that the mean of sample means is the population mean (assuming a large enough number of samples).   Those conclusions lead to the important point that the sample mean is the best estimate of the population mean, i.e., the sample mean is an __unbiased estimate__ of the population mean.  Figure \ref{nnorm} also illustrates as the sample size increases, the efficiency of the estimate increases.  As the sample size increases, the mean of any particular sample is more likely to approximate the population mean.
+Another key implication of the Central Limit Theorem that is illustrated in Figure \@ref(fig:nnorm)is that the mean of repeated sample means is the same, regardless of sample size, and that the mean of sample means is the population mean (assuming a large enough number of samples).   Those conclusions lead to the important point that the sample mean is the best estimate of the population mean, i.e., the sample mean is an __unbiased estimate__ of the population mean.  Figure \@ref(fig:nnorm) also illustrates as the sample size increases, the efficiency of the estimate increases.  As the sample size increases, the mean of any particular sample is more likely to approximate the population mean.
 
 When we begin our research we should have some population in mind - the set of items that we want to draw conclusions about.  We might want to know about all adult Americans or about human beings (past, present, and future) or about a specific meteorological condition.   There is only one way to know with certainty about that population and that is to examine all cases that fit the definition of our population.  Most of the time, though, we cannot do that  -- in the case of adult Americans it would be very time-consuming, expensive, and logistically quite challenging, and in the other two cases it simply would be impossible.  Our research, then, often forces us to rely on samples.  
   
-Because we rely on samples, inferential statistics are probability based.  As Figure \ref{nnorm} illustrates, our sample could perfectly reflect our population; it could be (and is likely to be) at least a reasonable approximation of the population; or the sample could deviate substantially from the population.  Two critical points are being made here:  the best estimates we have of our population parameters are our sample statistics, and we never know with certainty how good that estimate is.  We make decisions (statistical and real world) based on probabilities.
+Because we rely on samples, inferential statistics are probability based.  As Figure \@ref(fig:nnorm) illustrates, our sample could perfectly reflect our population; it could be (and is likely to be) at least a reasonable approximation of the population; or the sample could deviate substantially from the population.  Two critical points are being made here:  the best estimates we have of our population parameters are our sample statistics, and we never know with certainty how good that estimate is.  We make decisions (statistical and real world) based on probabilities.
 	
 ### Confidence Intervals
 
 Because we are dealing with probabilities, if we are estimating a population parameter using a sample statistic, we will want to know how much confidence to place in that estimate.  If we want to know a population mean, but only have a sample, the best estimate of that population mean is the sample mean.  To know how much confidence to have in a sample mean, we put a ``confidence interval" around it.  A confidence interval will report both a range for the estimate and the probability the population value falls in that range.  We say, for example, that we are 95\% confident that the true value is between A and B.
 
-To find that confidence interval, we rely on the __standard error of the estimate__. Figure \ref{nnorm} plots the distribution of sample statistics drawn from repeated samples.   As the sample size increases, the estimates cluster closer to the true population value, i.e., the standard deviation is smaller.  We could use the standard deviation from repeated samples to determine the confidence we can have in any particular sample, but in reality we are no more likely to draw repeated samples than we are to study the entire population.  The standard error, though, provides an estimate of the standard deviation we would have if we did drawn a number of samples.  The standard error is based on the sample size and the distribution of observations in our data:
+To find that confidence interval, we rely on the __standard error of the estimate__. Figure \@ref(fig:nnorm) plots the distribution of sample statistics drawn from repeated samples.   As the sample size increases, the estimates cluster closer to the true population value, i.e., the standard deviation is smaller.  We could use the standard deviation from repeated samples to determine the confidence we can have in any particular sample, but in reality we are no more likely to draw repeated samples than we are to study the entire population.  The standard error, though, provides an estimate of the standard deviation we would have if we did drawn a number of samples.  The standard error is based on the sample size and the distribution of observations in our data:
 
 \begin{equation}
   SE = \frac{s}{\sqrt{n}}
