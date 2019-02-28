@@ -52,28 +52,11 @@ There is an additional set of assumptions needed for "correct" model specificati
 
 Note that if we omit an $X$ that is related to $Y$ and other $X$s in the model, we will bias the estimate of the included $X$s.  Also consider the problem of including $X$s that are related to other $X$s in the model, but not related  to $Y$. This scenario would reduce the independent variance in $X$ used to predict $Y$.
 
-Table \ref{tab:ass} summarizes the various classes of assumption failures and their implications. 
+Table \@ref(fig:olsassum) summarizes the various classes of assumption failures and their implications. 
 
-\begin{center}
-\begin{table}[h]
-\caption{Summary of OLS Assumption Failures and their Implications}
-\label{tab:ass}
-\begin{tabular}{lcccc}
-\hline
-Problem               & Biased $B$ & Biased $SE$ & Invalid $t$/$F$ & Hi Var \\
-\hline
-Non-linear            & Yes        & Yes         & Yes             & ---    \\
-Heteroscedasticity    & No         & Yes         & Yes             & Yes    \\
-Autocorrealtion       & No         & Yes         & Yes             & Yes    \\
-Non-normal error      & No         & No          & Yes             & Yes    \\
-Multicollinearity     & No         & No          & No              & Yes    \\
-Omit relevant $X$     & Yes        & Yes         & Yes             & ---    \\
-Irrelevant $X$        & No         & No          & No              & Yes    \\
-$X$ measurement Error & Yes        & Yes         & Yes             & ---   \\
-\hline
-\end{tabular}
-\end{table}
-\end{center}
+```{r olsassum, echo=FALSE, fig.cap="Summary of OLS Assumption Failures and their Implications"}
+knitr::include_graphics("olsassum.png")
+```
 
 When considering the assumptions, our data permit empirical tests for some assumptions, but not all. Specifically, we can check for linearity, normality of the residuals, homoscedasticity, data "outliers" and multicollinearity. However, we can't check for correlation between error and $X$'s, whether the mean error equals zero, and whether all the relevant $X$'s  are included. 
 
@@ -92,7 +75,7 @@ On the basis of the $R$ output, the model appears to be quite reasonable, with a
 
 ### Non-Linearity
 
-One of the most critical assumptions of OLS is that the relationships between variables are linear in their functional form. We start with a stylized example (a fancy way of saying we made it up!) of what a linear and nonlinear pattern of residuals would look like. Figure \@ref{fig:convar2} shows an illustration of how the residuals would look with a clearly linear relationship, and Figure \@ref{fig:nonlin} illustrates how the the residuals would look with a clearly non-linear relationship.  
+One of the most critical assumptions of OLS is that the relationships between variables are linear in their functional form. We start with a stylized example (a fancy way of saying we made it up!) of what a linear and nonlinear pattern of residuals would look like. Figure \@ref(fig:convar2) shows an illustration of how the residuals would look with a clearly linear relationship, and Figure \@ref(fig:nonlin) illustrates how the the residuals would look with a clearly non-linear relationship.  
 
 ```{r convar2, echo=FALSE, fig.cap="Linear"}
 x <- 1:50
@@ -127,7 +110,7 @@ ds.small %>%
   facet_wrap(~ variable, scales = "free")
 ```
         
-As we can see in Figure \@ref{fig:multlin}, the plots of residuals by both income and ideology seem to indicate non-linear relationships. We can check this ``ocular impression" by squaring each term and using the \texttt{anova} function to compare model fit.
+As we can see in Figure \@ref(fig:multlin), the plots of residuals by both income and ideology seem to indicate non-linear relationships. We can check this "ocular impression" by squaring each term and using the `anova` function to compare model fit.
 
 ```{r 15ols2, echo=TRUE}
 ds.small$age2 <- ds.small$age^2
@@ -138,7 +121,7 @@ ols2 <- lm(glbcc_risk ~ age+age2+education+edu2+income+inc2+ideol+ideology2, dat
 summary(ols2)
 ``` 
 
-The model output indicates that ideology may have a non-linear relationships with risk perceptions of climate change.     For ideology, only the squared term is significant, indicating that levels of perceived risk of climate change decline at an increasing rate for those on the most conservative end of the scale.  Again, this is consistent with the visual inspection of the relationship between ideology and the residuals in Figure \@ref{fig:multlin}.   The question remains whether the introduction of these non-linear (polynomial) terms improves overall model fit.  We can check that with an analysis of variance across the simple model (without polynomial terms) and the models with the squared terms.
+The model output indicates that ideology may have a non-linear relationships with risk perceptions of climate change.     For ideology, only the squared term is significant, indicating that levels of perceived risk of climate change decline at an increasing rate for those on the most conservative end of the scale.  Again, this is consistent with the visual inspection of the relationship between ideology and the residuals in Figure \@ref(fig:multlin).   The question remains whether the introduction of these non-linear (polynomial) terms improves overall model fit.  We can check that with an analysis of variance across the simple model (without polynomial terms) and the models with the squared terms.
 
 ```{r 15anova, echo=TRUE}
 anova(ols1,ols2)
@@ -177,9 +160,9 @@ plot(x,y)
 abline(h=0)
 ```
 
-As we can see in Figure \@ref{fig:convar15}, the residuals are spread evenly and in a seemingly random fashion, much like the ``sneeze plot" discussed in Chapter 10.  This is the ideal pattern, indicating that the residuals do not vary systematically over the range of the predicted value for $X$. The residuals are homoscedastistic, and thus provide the appropriate basis for the $F$ and $t$ tests needed for evaluating your hypotheses.
+As we can see in Figure \@ref(fig:convar15), the residuals are spread evenly and in a seemingly random fashion, much like the ``sneeze plot" discussed in Chapter 10.  This is the ideal pattern, indicating that the residuals do not vary systematically over the range of the predicted value for $X$. The residuals are homoscedastistic, and thus provide the appropriate basis for the $F$ and $t$ tests needed for evaluating your hypotheses.
 
-We can also present a clearly heteroscedastistic residual term. In this case the residuals do vary systematically over the range of $X$, indicating that the precision of the estimates of $Y$ will vary considerably over the range of predicted values. Note the distinctive fan shape in Figure \@ref{fig:hetero15}, indicating that predictions of $Y$ lose precision as the value of $X$ increases. 
+We can also present a clearly heteroscedastistic residual term. In this case the residuals do vary systematically over the range of $X$, indicating that the precision of the estimates of $Y$ will vary considerably over the range of predicted values. Note the distinctive fan shape in Figure \@ref(fig:hetero15), indicating that predictions of $Y$ lose precision as the value of $X$ increases. 
 
 ```{r hetero15, echo=FALSE, fig.cap="Heteroskedasticity"}
 y <- x*rnorm(50)
@@ -201,7 +184,7 @@ ggplot(ds.small, aes(fit.p, fit.r)) +
 ```
 
 
-Based on the pattern evident in Figure \@ref{fig:multregres}, the residuals
+Based on the pattern evident in Figure \@ref(fig:multregres), the residuals
 appear to show heteroscedasticity. We can test for non-constant error using the Breusch-Pagan (aka Cook-Weisberg) test. This tests the null hypothesis that the error variance is constant, therefore a small p value would indicate that we have heteroscedasticity. In R we can use the ncvTest function from the car package.
 
 ```{r ncvtest, echo=TRUE}
@@ -415,7 +398,7 @@ df.ols1 <- dfbetas(ols1)
 df.ols1[1:5,]
 ```
 
-We can then plot the DFBETAS for each of the IVs in our  regression models, and create lines for $\pm 0.089$.  Figure \@ref{fig:dfbetas} shows the DFBETAS for each variable in the multiple regression model.   
+We can then plot the DFBETAS for each of the IVs in our  regression models, and create lines for $\pm 0.089$.  Figure \@ref(fig:dfbetas) shows the DFBETAS for each variable in the multiple regression model.   
 
 ```{r dfbetas, echo=TRUE, fig.cap="Index Plot of DFBETAS: Multiple Regression"}
 melt(df.ols1, varnames = c("index", "variable")) %>%
@@ -556,4 +539,4 @@ If multicollinearity is suspected, what can you do? One option is to drop one of
 Yet another strategy involves reconsidering why your data are so highly  correlated. It may be that your measures are in fact different "indicators" of the same underlying theoretical concept. This can happen, for example, when you measure sets of attitudes that are all influenced by a more general attitude or belief system. In such a case, data scaling is a promising option. This can be accomplished by building an additive scale, or using various scaling options in $R$. Another approach would be to use techniques such as factor analysis to tease out the underlying (or ``latent") variables represented by your indicator variables. Indeed, the combination of factor analysis and regression modeling is an important and widely used approach, referred to as structural equation modeling (SEM).  But that is a topic for another book and another course.
 
 ## Summary
-In this chapter we have described how you can approach the diagnostic stage for OLS multiple regression analysis. We described the key threats to the necessary assumptions of OLS, and listed them and their effects in Table \@ref{tab:ass}. But we also noted that diagnostics are more of an art than a simple recipe. In this business you will learn as you go, both in the analysis of a particular model (or set of models) and in the development of  your own approach and procedures. We wish you well, Grasshopper!
+In this chapter we have described how you can approach the diagnostic stage for OLS multiple regression analysis. We described the key threats to the necessary assumptions of OLS, and listed them and their effects in Table \@ref(fig:olsassum). But we also noted that diagnostics are more of an art than a simple recipe. In this business you will learn as you go, both in the analysis of a particular model (or set of models) and in the development of  your own approach and procedures. We wish you well, Grasshopper!
