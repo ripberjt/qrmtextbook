@@ -24,13 +24,13 @@ Recall from Chapter 4 that we identified three key assumptions about the error t
 >    $\epsilon_{i} \sim N(0,\sigma^2_{\epsilon})$
 >include
 
-Taken together these assumption mean that the error term has a normal, independent, and identical distribution (normal i.i.d.). Figure \@ref{fig:residdist} shows what these assumptions would imply for the distribution of residuals around the predicted values of $Y$ given $X$.
+Taken together these assumption mean that the error term has a normal, independent, and identical distribution (normal i.i.d.). Figure \@ref(fig:residdist) shows what these assumptions would imply for the distribution of residuals around the predicted values of $Y$ given $X$.
 
 ```{r residdist, echo=FALSE, fig.cap="Assumed Distributions of OLS Residuals"}
 knitr::include_graphics("residdist.pdf")
 ```
 
-How can we determine whether our residuals approximate the expected pattern? The most straight-forward approach is to visually examine the distribution of the residuals over the range of the predicted values for $Y$. If all is well, there should be no obvious pattern to the residuals -- they should appear as a "sneeze plot" (i.e.,  it looks like you sneezed on the plot. How gross!) as shown in Figure \@ref{fig:sneeze}.
+How can we determine whether our residuals approximate the expected pattern? The most straight-forward approach is to visually examine the distribution of the residuals over the range of the predicted values for $Y$. If all is well, there should be no obvious pattern to the residuals -- they should appear as a "sneeze plot" (i.e.,  it looks like you sneezed on the plot. How gross!) as shown in Figure \@ref(fig:sneeze).
 
 ```{r sneeze, echo=FALSE, fig.cap="Ideal Pattern of Residuals from a Simple OLS Model"}
 knitr::include_graphics("sneeze.pdf")
@@ -45,13 +45,13 @@ Residual analysis is the process of looking for __signature patterns__ in the re
 
 ### "Outlier" Data
 
-Sometimes our data include unusual cases that behave differently from most of our observations. This may happen for a number of reasons. The most typical is that the data have been mis-coded, with some subgroup of the data having numerical values that lead to large residuals. Cases like this can also arise when a subgroup of the cases differ from the others in how $X$ influences $Y$, and that difference has not been captured in the model. This is a problem referred to as the omission of important independent variables.^[Political scientists who study US electoral politics have had to account for unusual observations in the Southern states. Failure in the model to account for these differences would lead to prediction error and ugly patterns in the residuals. Sadly, Professor Gaddie notes that scholars have not been sufficiently careful -- or perhaps well-trained? -- to do this right. Professor Gaddie notes:  "... instead of working to achieve better model specification through the application of theory and careful thought, in the 1960s and 1970s electoral scholars instead just threw out the South and all senate races, creating the perception that the United States had 39 states and a unicameral legislature."] Figure \@ref{fig:unusual_dat} shows a stylized example, with a cluster of residuals falling at considerable distance from the rest. 
+Sometimes our data include unusual cases that behave differently from most of our observations. This may happen for a number of reasons. The most typical is that the data have been mis-coded, with some subgroup of the data having numerical values that lead to large residuals. Cases like this can also arise when a subgroup of the cases differ from the others in how $X$ influences $Y$, and that difference has not been captured in the model. This is a problem referred to as the omission of important independent variables.^[Political scientists who study US electoral politics have had to account for unusual observations in the Southern states. Failure in the model to account for these differences would lead to prediction error and ugly patterns in the residuals. Sadly, Professor Gaddie notes that scholars have not been sufficiently careful -- or perhaps well-trained? -- to do this right. Professor Gaddie notes:  "... instead of working to achieve better model specification through the application of theory and careful thought, in the 1960s and 1970s electoral scholars instead just threw out the South and all senate races, creating the perception that the United States had 39 states and a unicameral legislature."] Figure \@ref(fig:unusual_dat) shows a stylized example, with a cluster of residuals falling at considerable distance from the rest. 
 
 ```{r unusual_dat, echo=FALSE, fig.cap="Unusual Data Patterns in Residuals"}
 knitr::include_graphics("unusual_dat.pdf")
 ```
 
-This is a case of influential outliers. The effect of such outliers can be significant, as the OLS estimates of $A$ and $B$ seek to minimize overall squared error. In the case of Figure \@ref{fig:unusual_dat}, the effect would be to shift the estimate of $B$ to accommodate the unusual observations, as illustrated in Figure \@ref{fig:unusual_dat2}. One possible response would be to omit the unusual observations, as shown in Figure \@ref{fig:unusual_dat2}. Another would be to consider, theoretically and empirically, why these observations are unusual. Are they, perhaps, miscoded? Or are they codes representing missing values (e.g., "-99")?
+This is a case of influential outliers. The effect of such outliers can be significant, as the OLS estimates of $A$ and $B$ seek to minimize overall squared error. In the case of Figure \@ref(fig:unusual_dat), the effect would be to shift the estimate of $B$ to accommodate the unusual observations, as illustrated in Figure \@ref(fig:unusual_dat2). One possible response would be to omit the unusual observations, as shown in Figure \@ref(fig:unusual_dat2). Another would be to consider, theoretically and empirically, why these observations are unusual. Are they, perhaps, miscoded? Or are they codes representing missing values (e.g., "-99")?
 
 If they are not mis-codes, perhaps these outlier observations manifest a different kind of relationship between $X$ and $Y$, which might in turn require a revised theory and model. We will address some modeling options to address this possibility when we explore multiple regression, in Part III of this book.
 
@@ -59,19 +59,19 @@ If they are not mis-codes, perhaps these outlier observations manifest a differe
 knitr::include_graphics("unusual_dat2.pdf")
 ```
 
-In sum, outlier analysis looks at residuals for patterns in which some observations deviate widely from others. If that deviation is influential, changing estimates of $A$ and $B$ as shown in Figure \@ref{fig:unusual_dat2}, then you must examine the observations to determine whether they are mis-coded. If not, you can evaluate whether the cases are theoretically distinct, such that the influence of $X$ on $Y$ is likely to be different than for other cases. If you conclude that this is so, you will need to respecify your model to account for these differences. We will discuss some options for doing that later in this chapter, and again in our discussion of multiple regression.
+In sum, outlier analysis looks at residuals for patterns in which some observations deviate widely from others. If that deviation is influential, changing estimates of $A$ and $B$ as shown in Figure \@ref(fig:unusual_dat2), then you must examine the observations to determine whether they are mis-coded. If not, you can evaluate whether the cases are theoretically distinct, such that the influence of $X$ on $Y$ is likely to be different than for other cases. If you conclude that this is so, you will need to respecify your model to account for these differences. We will discuss some options for doing that later in this chapter, and again in our discussion of multiple regression.
 
 ### Non-Constant Variance
 
 A second thing to look for in visual diagnostics of residuals is non-constant variance, or
-__heteroscedasticity__. In this case, the variation in the residuals over the range of predicted values for $Y$ should be roughly even. A problem occurs when that variation changes substantially as the predicted value of $Y$ changes, as is illustrated in Figure \@ref{fig:hetero10}.
+__heteroscedasticity__. In this case, the variation in the residuals over the range of predicted values for $Y$ should be roughly even. A problem occurs when that variation changes substantially as the predicted value of $Y$ changes, as is illustrated in Figure \@ref(fig:hetero10).
 
 ```{r hetero10, echo=FALSE, fig.cap="Non-Constant Variance in the Residuals"}
 knitr::include_graphics("hetero.pdf")
 ```
 
 
-As Figure \@ref{fig:hetero10} shows, the width of the spread of the residuals grows as the predicted value of $Y$ increases, making a fan-shaped pattern. Equally concerning would be a case of a "reverse fan", or a pattern with a bulge in the middle and very "tight" distributions of residuals at either extreme. These would all be cases in which the assumption of constant-variance in the residuals (or "homoscedasticity") fails, and are referred to as instances of heteroscedasticity.
+As Figure \@ref(fig:hetero10) shows, the width of the spread of the residuals grows as the predicted value of $Y$ increases, making a fan-shaped pattern. Equally concerning would be a case of a "reverse fan", or a pattern with a bulge in the middle and very "tight" distributions of residuals at either extreme. These would all be cases in which the assumption of constant-variance in the residuals (or "homoscedasticity") fails, and are referred to as instances of heteroscedasticity.
 
 What are the implications of heteroscedasticity? Our hypothesis tests for the estimated coefficients ($A$ and $B$) are based on the assumption that the standard errors of the estimates (see the prior chapter) are normally distributed. If inspection of your residuals provides evidence to question that assumption, then the interpretation of the t-values and p-values may be problematic. Intuitively, in such a case the precision of our estimates of $A$ and $B$ are not constant -- but rather will depend on the predicted value of $Y$. So you might be estimating $B$ relatively precisely in some ranges of $Y$, and less precisely in others. That means you cannot depend on the estimated t and p-values to test your hypotheses.
 
@@ -79,14 +79,14 @@ What are the implications of heteroscedasticity? Our hypothesis tests for the es
 
 One of the primary assumptions of simple OLS regression is that the estimated slope parameter (the $B$) will be constant, and therefore the model will be linear. Put differently, the effect of any change in $X$ on $Y$  should be constant over the range of $Y$. Thus, if our assumption is correct, the pattern of the residuals should be roughly symmetric, above and below zero, over the range of predicted values.
 
-If the real relationship between $X$ and $Y$ is not linear, however, the predicted (linear) values for $Y$ will systematically depart from the (curved) relationship that is represented in the data. Figure \@ref{fig:simplenonlin} shows the kind of pattern we would expect in our residuals if the observed relationship between $X$ and $Y$ is a strong curve, when we attempt to model it as if it were linear.
+If the real relationship between $X$ and $Y$ is not linear, however, the predicted (linear) values for $Y$ will systematically depart from the (curved) relationship that is represented in the data. Figure \@ref(fig:simplenonlin) shows the kind of pattern we would expect in our residuals if the observed relationship between $X$ and $Y$ is a strong curve, when we attempt to model it as if it were linear.
 
 ```{r simplenonlin, echo=FALSE, fig.cap="Non-Linearity in the Residuals"}
 knitr::include_graphics("simplenonlin.pdf")
 ```
 
 
-What are the implications of non-linearity? First, because the slope is non-constant, the estimate of $B$ will be biased. In the illustration shown in Figure \@ref{fig:simplenonlin}, $B$ would underestimate the value of $Y$ in both the low and high ranges of the predicted value of $Y$, and overestimate it in the mid-range. In addition, the standard errors of the residuals will be large, due to systematic over- and under-estimation of $Y$, making the model very inefficient (or imprecise). 
+What are the implications of non-linearity? First, because the slope is non-constant, the estimate of $B$ will be biased. In the illustration shown in Figure \@ref(fig:simplenonlin), $B$ would underestimate the value of $Y$ in both the low and high ranges of the predicted value of $Y$, and overestimate it in the mid-range. In addition, the standard errors of the residuals will be large, due to systematic over- and under-estimation of $Y$, making the model very inefficient (or imprecise). 
 
 ## Application of Residual Diagnostics
 
@@ -130,7 +130,7 @@ library(car)
 residualPlots(OLS_env)
 ```
 
-The curved red lines in Figure \@ref{fig:nonlinideology} in the residual plots and significant Tukey test indicate a non-linear relationship in the model.  This is a serious violation of a core assumption of OLS regression, which means that the estimate of $B$ is likely to be biased. Our findings suggest that the relationship between ideology and perceived risks of climate change is approximately linear from "strong liberals" to those who are "leaning Republican". But perceived risks seem to drop off more rapidly as the scale rises toward "strong Republican."
+The curved red lines in Figure \@ref(fig:nonlinideology) in the residual plots and significant Tukey test indicate a non-linear relationship in the model.  This is a serious violation of a core assumption of OLS regression, which means that the estimate of $B$ is likely to be biased. Our findings suggest that the relationship between ideology and perceived risks of climate change is approximately linear from "strong liberals" to those who are "leaning Republican". But perceived risks seem to drop off more rapidly as the scale rises toward "strong Republican."
 
 ### Testing for Normality in Model Residuals
 Testing for normality in the model residuals will involve using many of the techniques demonstrated in previous chapters.  The first step is to  graphically display the residuals in order to see how closely the model residuals resemble a normal distribution.  A formal test for normality is also included in the demonstration.
@@ -144,7 +144,7 @@ OLS_env$residuals %>% # Pipe the residuals to a data frame
   geom_histogram(bins = 16)
 ```
 
-The histogram in figure \@ref{fig:histideology} indicates that the residuals are approximately normally distributed, but there appears to be a negative skew.  Next, we can create a smoothed density of the model residuals compared to a theoretical normal distribution.
+The histogram in figure \@ref(fig:histideology) indicates that the residuals are approximately normally distributed, but there appears to be a negative skew.  Next, we can create a smoothed density of the model residuals compared to a theoretical normal distribution.
 
 ```{r densityideology, echo=TRUE, fig.cap="Smoothed Density Plot of Model Residuals"}
 OLS_env$residuals %>% # Pipe the residuals to a data frame
@@ -156,7 +156,7 @@ OLS_env$residuals %>% # Pipe the residuals to a data frame
                 color = "red")
 ```
 
-Figure \@ref{fig:densityideology} indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution.  Our final ocular examination of the residuals will be a quartile plot %(using the `stat_qq` function from the `ggplot2` package).
+Figure \@ref(fig:densityideology) indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution.  Our final ocular examination of the residuals will be a quartile plot %(using the `stat_qq` function from the `ggplot2` package).
 
 ```{r QQideology, echo=TRUE, fig.cap="Quartile Plot of Model Residuals"}
 OLS_env$residuals %>% # Pipe the residuals to a data frame
@@ -166,7 +166,7 @@ OLS_env$residuals %>% # Pipe the residuals to a data frame
   stat_qq_line()
 ```
 
-According to Figure \@ref{fig:QQideology}, it appears as if the residuals are normally distributed except for the tails of the distribution.   Taken together the graphical representations of the residuals suggest modest non-normality.  As a final step, we can conduct a formal Shapiro-Wilk test for normality.  The null hypothesis for a Shapiro-Wilk test is a normal distribution, so we do not want to see a significant p-value.
+According to Figure \@ref(fig:QQideology), it appears as if the residuals are normally distributed except for the tails of the distribution.   Taken together the graphical representations of the residuals suggest modest non-normality.  As a final step, we can conduct a formal Shapiro-Wilk test for normality.  The null hypothesis for a Shapiro-Wilk test is a normal distribution, so we do not want to see a significant p-value.
 
 ```{r shapiro, echo=TRUE}
 #a significant value p-value potentially indicates the data is not normally distributed.
@@ -177,14 +177,14 @@ The Shapiro-Wilk test confirms what we observed in the graphical displays of the
 
 ### Testing for Non-Constant Variance in the Residuals
 
-Testing for non-constant variance (heteroscedasticity) in a model is fairly straightforward. We can start by creating a spread-level plot  that fits the studentized residuals against the model's fitted values.  A line with a non-zero slope is indicative of heteroscedasticity. Figure \@ref{fig:spreadlvlideology} displays the spread-level plot from the `car` package.
+Testing for non-constant variance (heteroscedasticity) in a model is fairly straightforward. We can start by creating a spread-level plot  that fits the studentized residuals against the model's fitted values.  A line with a non-zero slope is indicative of heteroscedasticity. Figure \@ref(fig:spreadlvlideology) displays the spread-level plot from the `car` package.
 
 ```{r spreadlvlideology, echo=TRUE, fig.cap="Spread-Level Plot of Model Residuals"}
 spreadLevelPlot(OLS_env)
 dev.off() 
 ```
 
-The negative slope on the red line in Figure \@ref{fig:spreadlvlideology} indicates the model may contain heteroscedasticity.  We can also perform  a formal test for non constant variance.  The null hypothesis is constant variance, so we do not want to see a significant p-value.
+The negative slope on the red line in Figure \@ref(fig:spreadlvlideology) indicates the model may contain heteroscedasticity.  We can also perform  a formal test for non constant variance.  The null hypothesis is constant variance, so we do not want to see a significant p-value.
 
 ```{r ncvtest, echo=TRUE}
 #a significant value indicates potential heteroscedasticity issues.
@@ -206,7 +206,7 @@ outlierTest(OLS_env)
 
 According to the R output, the Bonferroni p-value for the largest (absolute) residual is not statistically significant.  While this test is important for identifying a potentially significant outlying  observation, it is not a panacea for checking for patterns in outlying data.  Next we will examine the model's df.betas in order to see which observations exert the most influence on the model's regression coefficients. $Dfbetas$ are measures of how much the regression coefficient changes when observation $i$ is omitted.  Larger values indicate an observation that has considerable influence on the model.   
 
-A useful method for finding dfbeta obervations is to use the `dfbetaPlots` function in the `car` package.  We specify the option `id.n=2` to show the two largest df.betas.  See figure \@ref{fig:dfbetaPlots}.
+A useful method for finding dfbeta obervations is to use the `dfbetaPlots` function in the `car` package.  We specify the option `id.n=2` to show the two largest df.betas.  See figure \@ref(fig:dfbetaPlots).
 
 ```{r dfbetaPlots, echo=TRUE, fig.cap="Plot of Model dfbetas Values using 'dfbetaPlots' function"}
 plotdb<-dfbetaPlots(OLS_env, id.n=3)
@@ -221,14 +221,14 @@ ds[c(589,615),c("glbcc_risk", "ideol")]
 
 These observations are interesting because they identify a potential problem in our model specification.  Both observations are considered outliers because the respondents self-identified as "liberal" (ideology = 1) and rated their perceived  risk of global climate change as 0.  These values deviate substantially from the norm for other strong liberals in the dataset.  Remember, as we saw earlier, our model has a problem with non-linearity -- these outlying observations seem to corroborate this finding.  Examination of outliers sheds some light on the issue.
 
-Finally, we can produce a plot that combines studentized residuals, "hat values", and Cook's D distances (these are measures of the amount of influence observations have on the model) using circles as an indicator of influence -- the larger the circle, the greater the influence.  Figure \@ref{fig:bubbleideology2} displays the combined influence plot.  In addition, the `influencePlot` function returns the values of greatest influence.
+Finally, we can produce a plot that combines studentized residuals, "hat values", and Cook's D distances (these are measures of the amount of influence observations have on the model) using circles as an indicator of influence -- the larger the circle, the greater the influence.  Figure \@ref(fig:bubbleideology2) displays the combined influence plot.  In addition, the `influencePlot` function returns the values of greatest influence.
 
 ```{r bubbleideology2, echo=TRUE, fig.cap="Influence Bubble Plot"}
 influencePlot(OLS_env)
 ```
 
 
-Figure \@ref{fig:bubbleideology2} indicates that there are a number of cases that warrant further examination.  We are already familiar with 589 and 615  Let's add 20, 30, 90 and 1052.
+Figure \@ref(fig:bubbleideology2) indicates that there are a number of cases that warrant further examination.  We are already familiar with 589 and 615  Let's add 20, 30, 90 and 1052.
 
 ```{r revres, echo=TRUE}
 #review the results
