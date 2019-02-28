@@ -25,7 +25,7 @@ It is often the case that there are more than two groups represented by a set of
 - Type of education (dummy for each type with omitted reference type)
 - Religious affiliation (dummy for each religious denomination with omitted reference)
 
-The value of the dummy coefficient represents the estimated difference in $Y$ between the dummy group and the reference group. Because the estimated difference is the average over all of the $Y$ observations, the dummy is best understood as a change in the value of the intercept ($A$) for the ``dummied" group. This is illustrated in Figure \@ref{fig:dum}. In this illustration, the value of $Y$  is a function of $X_1$ (a continuous variable) and $X_2$ (a dummy variable). When $X_2$ is equal to 0 (the referent case) the top regression line applies. When $X_2 = 1$, the value of $Y$ is reduced to the bottom line. In short, $X_2$ has a negative estimated partial regression coefficient represented by the difference in height between the two regression lines.
+The value of the dummy coefficient represents the estimated difference in $Y$ between the dummy group and the reference group. Because the estimated difference is the average over all of the $Y$ observations, the dummy is best understood as a change in the value of the intercept ($A$) for the ``dummied" group. This is illustrated in Figure \@ref(fig:dum). In this illustration, the value of $Y$  is a function of $X_1$ (a continuous variable) and $X_2$ (a dummy variable). When $X_2$ is equal to 0 (the referent case) the top regression line applies. When $X_2 = 1$, the value of $Y$ is reduced to the bottom line. In short, $X_2$ has a negative estimated partial regression coefficient represented by the difference in height between the two regression lines.
 
 ```{r dum, echo=FALSE, fig.cap="Dummy Intercept Variables"}
 knitr::include_graphics("dummy.pdf")
@@ -57,7 +57,7 @@ However, an interaction model has a multiplicative effect where two of the IVs a
 
   $Y_i = A + BX_1 + BX_2 + BX_3 * BX_4 + E_i$. 
 
-A ``slope dummy" is a special kind of interaction in which a dummy variable  is interacted with (multiplied by) a scale (ordinal or higher) variable. Suppose, for example, that you hypothesized that the effects of political of ideology on perceived risks of climate change were different for men and women. Perhaps men are more likely than women to consistently integrate ideology into climate change risk perceptions. In such a case, a dummy variable (0=women, 1=men) could be interacted with ideology (1=strong liberal, 7=strong conservative) to predict levels of perceived risk of climate change (0=no risk, 10=extreme risk).  If your hypothesized interaction was correct, you would observe the kind of pattern as shown in Figure \@ref{fig:dumin}. 
+A ``slope dummy" is a special kind of interaction in which a dummy variable  is interacted with (multiplied by) a scale (ordinal or higher) variable. Suppose, for example, that you hypothesized that the effects of political of ideology on perceived risks of climate change were different for men and women. Perhaps men are more likely than women to consistently integrate ideology into climate change risk perceptions. In such a case, a dummy variable (0=women, 1=men) could be interacted with ideology (1=strong liberal, 7=strong conservative) to predict levels of perceived risk of climate change (0=no risk, 10=extreme risk).  If your hypothesized interaction was correct, you would observe the kind of pattern as shown in Figure \@ref(fig:dumin). 
 
 ```{r dumin, echo=FALSE, fig.cap="Illustration of Slope Interaction"}
 knitr::include_graphics("duminter.pdf")
@@ -71,7 +71,7 @@ ols2 <- lm(glbcc_risk ~ age + income + education + gender * ideol, data = ds.tem
 summary(ols2)
 ```
 
-The results indicate a negative and significant interaction effect for gender and ideology. Consistent with our hypothesis, this means that the effect of ideology on climate change risk is more pronounced for males than females. Put differently, the slope of ideology is steeper for males than it is for females. This is shown in Figure \@ref{fig:dummales}. 
+The results indicate a negative and significant interaction effect for gender and ideology. Consistent with our hypothesis, this means that the effect of ideology on climate change risk is more pronounced for males than females. Put differently, the slope of ideology is steeper for males than it is for females. This is shown in Figure \@ref(fig:dummales). 
 
 ```{r dummales, echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Interaction of Ideology and Gender"}
 ds.temp$gend.factor <- factor(ds.temp$gender, levels=c(0,1),labels=c("Female","Male"))
@@ -90,6 +90,7 @@ One way to standardized variables is to create a $Z$-score based on each variabl
 
 \begin{equation}
   Z_i = \frac{X_i-\bar{X}}{s_x} 
+  (\#eq:14-1)
 \end{equation}
 
 where $s_x$ is the s.d. of $X$. Standardizing the variables by creating $Z$-scores re-scales them so that each variables has a mean of $0$ and a s.d. of $1$. Therefore, all variables have the same mean and s.d. It is important to realize (and it is somewhat counter-intuitive) that the standardized variables retain all of the variation that was in the original measure.
@@ -98,6 +99,7 @@ A second way to standardize variables converts the unstandardized $B$, into a st
 
 \begin{equation}
   B'_k = B_k\frac{s_k}{s_Y}  
+  (\#eq:14-2)
 \end{equation}
 
 where $B_k$ is the unstandardized coefficient of $X_k$, $s_k$ is the s.d. of $X_k$, and $s_y$ is the s.d. of $Y$. Standardized regression coefficients, also known as beta weights or "betas", are those we would get if we regress a standardized $Y$ onto standardized $X$'s. 
