@@ -28,12 +28,14 @@ $R^2$ is expressed as:
 
 \begin{equation}
  R^{2} = 1-\frac{RSS}{TSS}  
+ (\#eq:13-1)
 \end{equation}
 
 However, this formulation of $R^2$ is insensitive to the complexity of the model and the degrees of freedom provided by your data. This means that an increase in the number of $k$ independent variables, can increase the $R^2$. Adjusted $R^2$ penalizes the $R^2$ by correcting for the degrees of freedom. It is defined as: 
 
 \begin{equation}
  \text{adjusted} R^2 = 1-\frac{\frac{RSS}{n-k-1}}{\frac{TSS}{n-k-1}}
+ (\#eq:13-2)
 \end{equation}
 
 The $R^2$ of two models can be compared, as illustrated by the following example. The first (simpler) model consists of basic demographics (age, education, and income) as predictors of climate change risk. The second (more complex) model adds the variable measuring political ideology to the explanation.
@@ -65,6 +67,7 @@ The formula for the $F$-test is:
 
 \begin{equation}
   F = \frac{\frac{ESS}{k}}{\frac{RSS}{n-k-1}}
+  (\#eq:13-3)
 \end{equation}
 
 where $k$ is the number of parameters and $n-k-1$ are the degrees of freedom. Therefore, $F$ is a ratio of the explained variance to the residual variance, correcting for the number of observations and parameters. The $F$-value is compared to the $F$-distribution, just like a $t$-distribution, to obtain a $p$-value. Note that the `R` output includes the $F$ statistic and $p$ value. 
@@ -75,6 +78,7 @@ For model building we turn to the nested $F$-test, which tests whether a more co
 
 \begin{equation}
   F = \frac{\frac{ESS_1-ESS_0}{q}}{\frac{RSS_1}{n-k-1}}
+  (\#eq:13-4)
 \end{equation}
 
 where $q$ is the difference in the number of IVs between the simpler and the more complex models.  The complex model has $k$ IVs (and estimates $k$ parameters), and the simpler model has $k-q$ IVs (and estimates only $k-q$ parameters). $ESS_1$ is the explained sum of squares for the complex model. $RSS_1$ is the residual sum of squares for the complex model. $ESS_0$ is the explained sum of squares for the simpler model. So the nested-F represents the ratio of the additional explanation per added IV, over the residual sum of squares divided by the model degrees of freedom.
