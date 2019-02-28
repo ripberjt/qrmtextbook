@@ -14,9 +14,10 @@ The deterministic linear model serves as the basis for evaluating theoretical mo
 
 \begin{equation}
 Y_{i} = \alpha + \beta X_{i} 
+(\#eq:07-1)
 \end{equation}
 
-A deterministic model is __systematic__ and contains no error, therefore _$Y$ is perfectly predicted by $X$_. This is illustrated in Figure \ref{dols}. $\alpha$ and $\beta$ are the model parameters, and are constant terms. $\beta$ is the slope; the change in $Y$ over the change in $X$. $\alpha$ is the intercept; the value of $Y$ when $X$ is zero.  
+A deterministic model is __systematic__ and contains no error, therefore _$Y$ is perfectly predicted by $X$_. This is illustrated in Figure \ref(fig:dols). $\alpha$ and $\beta$ are the model parameters, and are constant terms. $\beta$ is the slope; the change in $Y$ over the change in $X$. $\alpha$ is the intercept; the value of $Y$ when $X$ is zero.  
 
 ```{r dols, echo=FALSE, fig.cap="Deterministic Model"}
 knitr::include_graphics("deterols.pdf")
@@ -30,9 +31,10 @@ The stochastic, or statistical, linear model contains a systematic component, $Y
 
 \begin{equation}
 Y_{i} = \alpha + \beta X_{i} + \epsilon_i
+(\#eq:07-2)
 \end{equation}
 
-where $\epsilon_i$ is the error term. In the deterministic model, each value of $Y$ fits along the regression line, however in a stochastic model the expected value of $Y$ is conditioned by the values of $X$. This is illustrated in Figure \ref{sols}. 
+where $\epsilon_i$ is the error term. In the deterministic model, each value of $Y$ fits along the regression line, however in a stochastic model the expected value of $Y$ is conditioned by the values of $X$. This is illustrated in Figure \@ref(fig:sols). 
 
 ```{r sols, echo=FALSE, fig.cap="Stochastic Linear Model"}
 plot(c(0,5), c(0,6.5), type = "n", xlab="x", ylab="y")
@@ -49,10 +51,11 @@ segments(2.5, 3.75, 2.5 + dnorm(0,0,0.5), 3.75, lty = 2, col = "gray")
 segments(4,4.5, 4 + dnorm(0,0,0.5),4.5, lty = 2, col = "gray")
 ```
 
-Figure \@ref{sols} shows the conditional population distributions of $Y$ for several values of $X, p(Y|X)$. The conditional means of $Y$ given $X$ are denoted $\mu$.  
+Figure \@ref(fig:sols) shows the conditional population distributions of $Y$ for several values of $X, p(Y|X)$. The conditional means of $Y$ given $X$ are denoted $\mu$.  
 
 \begin{equation} 
 \mu_{i} \equiv E(Y_{i}) \equiv E(Y|X_{i})=\alpha+\beta X_{i} 
+(\#eq:07-3)
 \end{equation} 
 
 where 
@@ -99,14 +102,14 @@ Taken together these assumption mean that the error term has a normal, independe
 
 ## Estimating Linear Models 
 
-With stochastic models we don't know if the error assumptions are met, nor do we know the values of $\alpha$ and $\beta$; therefore we must estimate them, as denoted by a hat (e.g., $\hat{\alpha}$ is the estimate for $\alpha$). The stochastic model as shown in Equation \@ref{eq:lm} is estimated as: 
+With stochastic models we don't know if the error assumptions are met, nor do we know the values of $\alpha$ and $\beta$; therefore we must estimate them, as denoted by a hat (e.g., $\hat{\alpha}$ is the estimate for $\alpha$). The stochastic model as shown in Equation \@ref(eq:07-4) is estimated as: 
 
 \begin{equation}
 Y_{i} = \hat{\alpha} + \hat{\beta} X_{i}+ \epsilon_{i} 
-(\#eq:lm)
+(\#eq:07-4)
 \end{equation}
 
-where $\epsilon_i$ is the \textbf{residual term}, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, $\epsilon$, into the regression equation. Note that the predicted value of $Y$ is denoted $\hat{Y}$ ($y$-hat). 
+where $\epsilon_i$ is the __residual term__, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, $\epsilon$, into the regression equation. Note that the predicted value of $Y$ is denoted $\hat{Y}$ ($y$-hat). 
 
 \begin{align*}
 Y_{i} &= \hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i} \\ 
@@ -116,7 +119,7 @@ Y_{i} &= \hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i} \\
 \end{align*}
 
 ### Residuals
-Residuals measure prediction errors of how far observation $Y_{i}$ is from predicted $\hat{Y_{i}}$. This is shown in Figure \@ref{resid}. 
+Residuals measure prediction errors of how far observation $Y_{i}$ is from predicted $\hat{Y_{i}}$. This is shown in Figure \@ref(fig:resid). 
 
 ```{r resid, echo=FALSE, fig.cap="Residuals: Statistical Forensics"}
 library(tidyverse)
@@ -170,6 +173,7 @@ Note that for a fixed set of data \{$\hat{\alpha}$,$\hat{\alpha}$\}, each possib
 
 \begin{equation}
  S(\hat{\alpha},\hat{\beta})=\sum_{i=1}^{n} \epsilon^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{2}  
+ (\#eq:07-5)
 \end{equation}
 
 Minimizing this function requires specifying estimators for $\hat{\alpha}$ and $\hat{\beta}$ such that $S(\hat{\alpha},\hat{\beta})=\sum \epsilon^{2}$ is at the lowest possible value. Finding this minimum value requires the use of calculus, which will be discussed in the next chapter. Before that we walk through a quick example of simple regression.  
@@ -185,7 +189,7 @@ summary(ols1)
 
 The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for $\hat{\alpha}$ and $\hat{\beta}$; the results of hypothesis tests; and overall measures of model ``fit" -- all of which we will discuss in detail in later chapters. For now, note that the estimated $B$ for ideology is negative, which indicates that as the value for ideology _increases_---in our data this means more conservative---the perceived risk of climate change _decreases_. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by \Sexpr{ols1$coef[2]}.
 
-We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure \@ref{fig:residhist} and Figure \@ref{fig:residdens}. Note that we will discuss residual diagnostics in detail in future chapters. 
+We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure \@ref(fig:residhist) and Figure \@ref(fig:residdens). Note that we will discuss residual diagnostics in detail in future chapters. 
 
 ```{r residhist, echo=TRUE, fig.cap="Residuals of Simple Regression: Histogram"}
 data.frame(ols1$residuals) %>%
