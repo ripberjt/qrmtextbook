@@ -216,13 +216,43 @@ It is the difference between the TSS and the RSS.
   \end{align*}   
 
 
-The components of $R^{2}$ are illustrated in Figure \ref{fig:rsquared}. As shown, for each observation $Y_{i}$, variation around the mean can be decomposed into that which is "explained" by the regression and that which is not. In Figure \ref{fig:rsquared}, the deviation between the mean of $Y$ and the predicted value of $Y$, $\hat{Y}$, is the proportion of the variation of  $Y_{i}$ that can be explained (or predicted) by the regression. That is shown as a blue line. The deviation of the observed value of $Y_{i}$ from the predicted value $\hat{Y}$ (aka the residual, as discussed in the previous chapter) is the unexplained deviation, shown in red. Together, the explained and unexplained variation make up the total variation of  $Y_{i}$ around the mean $\hat{Y}$.
+The components of $R^{2}$ are illustrated in Figure \@ref{fig:rsquared}. As shown, for each observation $Y_{i}$, variation around the mean can be decomposed into that which is "explained" by the regression and that which is not. In Figure \@ref{fig:rsquared}, the deviation between the mean of $Y$ and the predicted value of $Y$, $\hat{Y}$, is the proportion of the variation of  $Y_{i}$ that can be explained (or predicted) by the regression. That is shown as a blue line. The deviation of the observed value of $Y_{i}$ from the predicted value $\hat{Y}$ (aka the residual, as discussed in the previous chapter) is the unexplained deviation, shown in red. Together, the explained and unexplained variation make up the total variation of  $Y_{i}$ around the mean $\hat{Y}$.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=5in]{09_InterpretSimple/rsquared.pdf}%filename
-  \caption{The Components of $R^{2}$ \label{fig:rsquared}}
-\end{figure}
+```{r rsquared, echo=FALSE, fig.cap="The Components of $R^{2}$"}
+library(tidyverse)
+library(broom)
+
+set.seed(5)
+y <-rnorm(5)
+x <-1:5
+mod <- lm(y ~ x)
+
+yl <- c("y[1]", "y[2]", "y[3]", "y[4]", "y[5]")
+yhl <- c("hat(y)[1]", "hat(y)[2]", "hat(y)[3]", "hat(y)[4]", "hat(y)[5]")
+sl <- c("hat(epsilon)[1]", "hat(epsilon)[2]", "hat(epsilon)[3]", "hat(epsilon)[4]", "hat(epsilon)[5]")
+df <- augment(mod)
+
+ggplot(df) + 
+  geom_segment(aes(x = x[1], y = mean(y), xend = x[5], yend = mean(y)), linetype = "dashed", color = "black") +
+  geom_line(aes(x = x, y = .fitted)) +
+  geom_segment(aes(x = x[5], y = -1, xend = x[5], yend = y[5]), linetype = "dashed", color = "black") +
+  geom_segment(aes(x = x[1], y = .fitted[5], xend = x[5], yend = .fitted[5]), linetype = "dashed", color = "black") +
+  geom_segment(aes(x = x[1], y = y[5], xend = x[5], yend = y[5]), linetype = "dashed", color = "black") +
+  geom_segment(aes(x = 3, y = y[5], xend = 3, yend = .fitted[5]), color = "red", arrow = arrow(ends = "both", length = unit(0.1, "inches"))) +
+  geom_segment(aes(x = 3, y = mean(y), xend = 3, yend = .fitted[5]), color = "blue", arrow = arrow(ends = "both", length = unit(0.1, "inches"))) +
+  geom_segment(aes(x = 2, y = mean(y), xend = 2, yend = y[5]), color = "black", arrow = arrow(ends = "both", length = unit(0.1, "inches"))) +
+  geom_point(aes(x = x[5], y = y[5]), size = 5, color = "red") +
+  geom_point(aes(x = x[5], y = .fitted[5]), size = 5, color = "black") +
+  annotate("text", x = 1.4, y = 1, label = "Total\nVariation (TSS)", fontface = 2) +
+  annotate("text", x = 4, y = 0.5, label = "Explained\nVariation (ESS)", color = "blue", fontface = 2) +
+  annotate("text", x = 4, y = 1.25, label = "Unexplained\nVariation (RSS)", color = "red", fontface = 2) +
+  geom_text(aes(x = x[5], y = y[5]), label = "y[i]", color = "white", size = 2, parse = TRUE) +
+  geom_text(aes(x = x[5], y = .fitted[5]), label = "hat(y)[i]", color = "white", size = 2, parse = TRUE) +
+  geom_text(aes(x = x[1], y = mean(y) + 0.05), label = "bar(y)", color = "black", size = 3, parse = TRUE) +
+  lims(y = c(-1, 2), x = c(1, 5)) + 
+  labs(x = "x", y = "y") +
+  theme(axis.text = element_blank())
+```
 
 To calculate $R^{2}$ "by hand" in `R`, we must first determine the total sum of squares, which is the sum of the squared differences of the observed values of $Y$ from the mean of $Y$, $\Sigma(Y_{i}-\bar Y)^{2}$. Using `R`, we can create an object called `TSS`.
 
