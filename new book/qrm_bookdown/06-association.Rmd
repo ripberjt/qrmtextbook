@@ -20,6 +20,7 @@ The formula for the chi square takes the expected frequency for each of the cell
 
 \begin{equation}
 \chi^2  = \sum \frac{(O-E)^2}{E}
+(\#eq:06-1)
   \end{equation}
 
 where:
@@ -193,7 +194,8 @@ Crosstabs, chi square, and measures of association are used with nominal and ord
 Covariance is a simple measure of the way two variables move together, or ``co-vary".  The covariance of two variables, $X$ and $Y$, can be expressed in population notation as: 
 
 \begin{equation}
-cov(X,Y) = E[(X-\mu_{x})(Y-\mu_{y})]  
+cov(X,Y) = E[(X-\mu_{x})(Y-\mu_{y})]
+(\#eq:06-2)
 \end{equation}
 
 Therefore, the covariance between $X$ and $Y$ is simply the product of
@@ -204,6 +206,7 @@ The sample covariance is expressed as:
 
 \begin{equation}
 cov(X,Y) = \frac{\sum (X-\bar{X})(Y-\bar{Y})}{(n-1)}   
+(\#eq:06-3)
 \end{equation}
    
 Covariance can be positive, negative, or zero. If the covariance is positive _both variables move in the same direction_,
@@ -216,13 +219,14 @@ $Y$.
 Correlation is closely related to covariance. In essence, correlation standardizes covariance so it can be compared across variables. Correlation is represented by a correlation coefficient, $\rho$, and is calculated by dividing the covariance of the two variables by the product of their standard deviations. For populations it is expressed as:
 
 \begin{equation}
-\rho = \frac{cov(X,Y)}{\sigma_{x} \sigma_{y}}  
+\rho = \frac{cov(X,Y)}{\sigma_{x} \sigma_{y}}  (\#eq:06-4)
 \end{equation}
 
 For samples it is expressed as: 
 
 \begin{equation}
-r = \frac{\sum (X-\bar{X})(Y-\bar{Y})/(n-1)}{s_{x}s_{y}}  
+r = \frac{\sum (X-\bar{X})(Y-\bar{Y})/(n-1)}{s_{x}s_{y}} 
+(\#eq:06-5)
 \end{equation}
 
 Like covariance, correlations can be positive, negative, and zero. The possible values of the correlation coefficient $r$, range
@@ -246,8 +250,6 @@ ds %>%
 ```  
 
 We can see that the density of values indicate that strong liberals---$1$'s on the ideology scale---tend to view climate change as quite risky, whereas strong conservatives---$7$'s on the ideology scale---tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a "loess" line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We'll have more to say about the linear estimates when we turn to regression analysis in the next chapter. %We can add to the previous visualization by including `geom_smooth` and indicating a "loess" line or an "lm" line. 
-
-% note there is discussion of missing data in the Applied Regression book by Fox - Page 65-67.
 
 ```{r scatjit2, echo=TRUE, fig.cap="Scatterplot of Ideology and GLBCC Risk with Regression Line and Lowess Line"}
 ds %>%
