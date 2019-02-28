@@ -298,6 +298,7 @@ As was the case with simple regression, we want  to minimize the sum of the squa
 \end{bmatrix}
 =
 e'e
+(\#eq:11-1)
 \end{equation}
 
 Therefore, we want to find the $b$ that minimizes this function: 
@@ -331,6 +332,7 @@ To solve for $b$ we multiply both sides by the inverse of $X'X, (X'X)^{-1}$. Not
 \begin{equation}
   \label{eq:b}
 b = (X'X)^{-1}X'y  
+(\#eq:11-2)
 \end{equation}
 
 The $X'X$ matrix is square, and therefore invertible (i.e., the inverse exists). However, the $X'X$ matrix can be non-invertible (i.e., singular) if $n < k$---the number of $k$ independent variables exceeds the $n$-size---or if one or more of the independent variables is perfectly correlated with another independent variable. This is termed perfect __multicollinearity__ and will be discussed in more detail in Chapter 14. Also note that the $X'X$ matrix contains the basis for all the necessary means, variances, and covariances among the $X$'s.     
