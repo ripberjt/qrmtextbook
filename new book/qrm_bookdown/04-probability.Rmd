@@ -36,15 +36,15 @@ It is easy to understand why we just add the $P(A)$ and the $P(B)$ but it may be
 If, though, the events are mutually exclusive, we do not need to subtract the overlap.  Mutually exclusive events are events that cannot occur at the same time, so there is no overlap.  Suppose you are from Chicago and will be happy if either the Cubs or the White Sox win the World Series.  Those events are mutually exclusive since only one team can win the World Series so to find the union of those probabilities we simple have to add the probability of the Cubs winning to the probability of the White Sox winning.
 
 ## Finding Probabilities with the Normal Curve
-If we want to find the probability of a score falling in a certain range, e.g., between 3 and 7, or more than 12, we can use the normal to determine that probability.  Our ability to make that determination is based on some known characteristics on the normal curve.  We know that for all normal curves 68.26\% of all scores fall within one standard deviation of the mean, that 95.44\% fall within two standard deviations, and that 99.72\% fall within three standard deviations.  (The normal distribution is dealt with more formally in the next chapter.) So, we know that something that is three or more standard deviations above the mean is pretty rare.  Figure \ref{fig:normcurve} illustrates the probabilities associated with the normal curve.^[Source availavle [here.](http://whatilearned.wikia.com/wiki/File:Normal_curve_probability.jpg)]
+If we want to find the probability of a score falling in a certain range, e.g., between 3 and 7, or more than 12, we can use the normal to determine that probability.  Our ability to make that determination is based on some known characteristics on the normal curve.  We know that for all normal curves 68.26\% of all scores fall within one standard deviation of the mean, that 95.44\% fall within two standard deviations, and that 99.72\% fall within three standard deviations.  (The normal distribution is dealt with more formally in the next chapter.) So, we know that something that is three or more standard deviations above the mean is pretty rare.  Figure \@ref(fig:normcurve) illustrates the probabilities associated with the normal curve.^[Source availavle [here.](http://whatilearned.wikia.com/wiki/File:Normal_curve_probability.jpg)]
 
 ```{r normcurve, echo=FALSE, fig.cap="Area under the Normal Curve"}
 knitr::include_graphics("normal_curve_probability.jpg")
 ```
 
-According to Figure \ref{fig:normcurve}, there is a .3413 probability of an observation falling between the mean and one standard deviation above the mean and, therefore, a .6826 probability of a score falling within $(+/-)$ one standard deviation of the mean.   There is also a .8413 probability of a score being one standard deviation above the mean or less (.5 probability of a score falling below the mean and a .3413 probability of a score falling between the mean and one standard deviation above it).   (Using the language we learned in Chapter 3, another way to articulate that finding is to say that a score one standard deviation above the mean is at the 84th percentile.)  There is also a .1587 probability of a score being a standard deviation above the mean or higher $(1.0 - .8413)$. 
+According to Figure \@ref(fig:normcurve), there is a .3413 probability of an observation falling between the mean and one standard deviation above the mean and, therefore, a .6826 probability of a score falling within $(+/-)$ one standard deviation of the mean.   There is also a .8413 probability of a score being one standard deviation above the mean or less (.5 probability of a score falling below the mean and a .3413 probability of a score falling between the mean and one standard deviation above it).   (Using the language we learned in Chapter 3, another way to articulate that finding is to say that a score one standard deviation above the mean is at the 84th percentile.)  There is also a .1587 probability of a score being a standard deviation above the mean or higher $(1.0 - .8413)$. 
 
-Intelligence tests have a mean of 100 and a standard deviation of 15.  Someone with an IQ of 130, then, is two standard deviations above the mean, meaning they score higher than 97.72\% of the population.  Suppose, though, your IQ is 140.  Using Figure \ref{fig:normcurve} would enable us only to approximate how high that score is.  To find out more precisely, we have to find out how many standard deviations above the mean 140 is and then go to a more precise normal curve table.
+Intelligence tests have a mean of 100 and a standard deviation of 15.  Someone with an IQ of 130, then, is two standard deviations above the mean, meaning they score higher than 97.72\% of the population.  Suppose, though, your IQ is 140.  Using Figure \@ref(fig:normcurve) would enable us only to approximate how high that score is.  To find out more precisely, we have to find out how many standard deviations above the mean 140 is and then go to a more precise normal curve table.
 
 To find out how many standard deviations from the mean an observation is, we calculated a standardized, or __Z-score__.  The formula to convert a raw score to a Z-score is:
 
@@ -54,7 +54,7 @@ Z = \frac{x-\mu}{\sigma}
 
 In this case, the $Z$-score is $140-100/15$ or $2.67$.  Looking at the formula, you can see that a Z-score of zero puts that score at the mean; a $Z$-score of one is one standard deviation above the mean; and a $Z$-score of $2.67$ is $2.67$ standard deviations above the mean.
 
-The next step is to go to a normal curve table to interpret that Z-score.  Table \ref{tab:Normal_Curve} at the end of the chapter contains such a table.  To use the table you combine rows and columns to find the score of 2.67.  Where they cross we see the value .4962.  That value means there is a .4962 probability of scoring between the mean and a $Z$-score of 2.67.  Since there is a .5 probability of scoring below the mean adding the two values together gives a .9962 probability of finding an IQ of 140 or lower or a .0038 probability of someone having an IQ of 140 or better.
+The next step is to go to a normal curve table to interpret that Z-score.  Table \@ref(fig:Normal_Curve) at the end of the chapter contains such a table.  To use the table you combine rows and columns to find the score of 2.67.  Where they cross we see the value .4962.  That value means there is a .4962 probability of scoring between the mean and a $Z$-score of 2.67.  Since there is a .5 probability of scoring below the mean adding the two values together gives a .9962 probability of finding an IQ of 140 or lower or a .0038 probability of someone having an IQ of 140 or better.
 
 #### Bernoulli Probabilities {-}
 We can use a calculation known as the Bernoulli Process to determine the probability of a certain number of successes in a given number of trials.  For example, if you want to know the probability of getting exactly three heads when you flip a coin four times, you can use the Bernoulli calculation.  To perform the calculation you need to determine the number of trials $(n)$, the number of successes you care about $(k)$, the probability of success on a single trial $(p)$, and the probability $(q)$ of not a success $(1-p$ or $q)$.  The operative formula is:
@@ -76,52 +76,6 @@ The Bernoulli process can be used only when both $n * p$ and $n * q$ are greater
 Probabilities are simple statistics but are important when we want to know the likelihood of some event occurring.  There are frequent real world instances where we find that information valuable.  We will see, starting in the next chapter, that probabilities are also central to the concept of inference.
 
 
-% INSERT TABLE HERE // REF: tab:Normal_Curve
-
-\newpage
-\textbf{Appendix 4.1 The Normal Curve Table}
-
-\begin{table}[h]
-\caption{Standard Normal Distribution - Area under the Normal Curve from 0 to X}
-\label{tab_Normal_Curve}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lcccccccccc}
-\hline
-\multicolumn{1}{l}{z} & \multicolumn{1}{c}{0.00} & \multicolumn{1}{c}{0.01} & \multicolumn{1}{c}{0.02} & \multicolumn{1}{c}{0.03} & \multicolumn{1}{c}{0.04} & \multicolumn{1}{c}{0.05} & \multicolumn{1}{c}{0.06} & \multicolumn{1}{c}{0.07} & \multicolumn{1}{c}{0.08} & \multicolumn{1}{c}{0.09} \\ \hline
-0.0 & 0.00000 & 0.00399 & 0.00798 & 0.01197 & 0.01595 & 0.01994 & 0.02392 & 0.02790 & 0.03188 & 0.03586 \\
-0.1 & 0.0398 & 0.04380 & 0.04776 & 0.05172 & 0.05567 & 0.05966 & 0.0636 & 0.06749 & 0.07142 & 0.07535 \\
-0.2 & 0.0793 & 0.08317 & 0.08706 & 0.09095 & 0.09483 & 0.09871 & 0.10257 & 0.10642 & 0.11026 & 0.11409 \\
-0.3 & 0.11791 & 0.12172 & 0.12552 & 0.12930 & 0.13307 & 0.13683 & 0.14058 & 0.14431 & 0.14803 & 0.15173 \\
-0.4 & 0.15542 & 0.15910 & 0.16276 & 0.16640 & 0.17003 & 0.17364 & 0.17724 & 0.18082 & 0.18439 & 0.18793 \\
-0.5 & 0.19146 & 0.19497 & 0.19847 & 0.20194 & 0.20540 & 0.20884 & 0.21226 & 0.21566 & 0.21904 & 0.22240 \\
-0.6 & 0.22575 & 0.22907 & 0.23237 & 0.23565 & 0.23891 & 0.24215 & 0.24537 & 0.24857 & 0.25175 & 0.25490 \\
-0.7 & 0.25804 & 0.26115 & 0.26424 & 0.26730 & 0.27035 & 0.27337 & 0.27637 & 0.27935 & 0.28230 & 0.28524 \\
-0.8 & 0.28814 & 0.29103 & 0.29389 & 0.29673 & 0.29955 & 0.30234 & 0.30511 & 0.30785 & 0.31057 & 0.31327 \\
-0.9 & 0.31594 & 0.31859 & 0.32121 & 0.32381 & 0.32639 & 0.32894 & 0.33147 & 0.33398 & 0.33646 & 0.33891 \\
-1.0 & 0.34134 & 0.34375 & 0.34614 & 0.34849 & 0.35083 & 0.35314 & 0.35543 & 0.35769 & 0.35993 & 0.36214 \\
-1.1 & 0.36433 & 0.36650 & 0.36864 & 0.37076 & 0.37286 & 0.37493 & 0.37698 & 0.37900 & 0.38100 & 0.38298 \\
-1.2 & 0.38493 & 0.38686 & 0.38877 & 0.39065 & 0.39251 & 0.39435 & 0.39617 & 0.39796 & 0.39973 & 0.40147 \\
-1.3 & 0.40320 & 0.40490 & 0.40658 & 0.40824 & 0.40988 & 0.41149 & 0.41308 & 0.41466 & 0.41621 & 0.41774 \\
-1.4 & 0.41924 & 0.42073 & 0.42220 & 0.42364 & 0.42507 & 0.42647 & 0.42785 & 0.42922 & 0.43056 & 0.43189 \\
-1.5 & 0.43319 & 0.43448 & 0.43574 & 0.43699 & 0.43822 & 0.43943 & 0.44062 & 0.44179 & 0.44295 & 0.44408 \\
-1.6 & 0.44520 & 0.44630 & 0.44738 & 0.44845 & 0.44950 & 0.45053 & 0.45154 & 0.45254 & 0.45352 & 0.45449 \\
-1.7 & 0.45543 & 0.45637 & 0.45728 & 0.45818 & 0.45907 & 0.45994 & 0.46080 & 0.46164 & 0.46246 & 0.46327 \\
-1.8 & 0.46407 & 0.46485 & 0.46562 & 0.46638 & 0.46712 & 0.46784 & 0.46856 & 0.46926 & 0.46995 & 0.47062 \\
-1.9 & 0.47128 & 0.47193 & 0.47257 & 0.47320 & 0.47381 & 0.47441 & 0.47500 & 0.47558 & 0.47615 & 0.47670 \\
-2.0 & 0.47725 & 0.47778 & 0.47831 & 0.47882 & 0.47932 & 0.47982 & 0.48030 & 0.48077 & 0.48124 & 0.48169 \\
-2.1 & 0.48214 & 0.48257 & 0.48300 & 0.48341 & 0.48382 & 0.48422 & 0.48461 & 0.48500 & 0.48537 & 0.48574 \\
-2.2 & 0.48610 & 0.48645 & 0.48679 & 0.48713 & 0.48745 & 0.48778 & 0.48809 & 0.48840 & 0.48870 & 0.48899 \\
-2.3 & 0.48928 & 0.48956 & 0.48983 & 0.49010 & 0.49036 & 0.49061 & 0.49086 & 0.49111 & 0.49134 & 0.49158 \\
-2.4 & 0.49180 & 0.49202 & 0.49224 & 0.49245 & 0.49266 & 0.49286 & 0.49305 & 0.49324 & 0.49343 & 0.49361 \\
-2.5 & 0.49379 & 0.49396 & 0.49413 & 0.49430 & 0.49446 & 0.49461 & 0.49477 & 0.49492 & 0.49506 & 0.49520 \\
-2.6 & 0.49534 & 0.49547 & 0.49560 & 0.49573 & 0.49585 & 0.49598 & 0.49609 & 0.49621 & 0.49632 & 0.49643 \\
-2.7 & 0.49653 & 0.49664 & 0.49674 & 0.49683 & 0.49693 & 0.49702 & 0.49711 & 0.49720 & 0.49728 & 0.49736 \\
-2.8 & 0.49744 & 0.49752 & 0.49760 & 0.49767 & 0.49774 & 0.49781 & 0.49788 & 0.49795 & 0.49801 & 0.49807 \\
-2.9 & 0.49813 & 0.49819 & 0.49825 & 0.49831 & 0.49836 & 0.49841 & 0.49846 & 0.49851 & 0.49856 & 0.49861 \\
-3.0 & 0.49865 & 0.49869 & 0.49874 & 0.49878 & 0.49882 & 0.49886 & 0.49889 & 0.49893 & 0.49896 & 0.49900 \\ 
-4.0 & 0.49979 & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{}  \\
-5.0 & 0.4999997 & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\ \hline
-\end{tabular}
-}
-\end{table}
-\FloatBarrier
+```{r Normal_Curve, echo=FALSE, fig.cap="The Normal Curve Table"}
+knitr::include_graphics("Normal-Curve.png")
+```
