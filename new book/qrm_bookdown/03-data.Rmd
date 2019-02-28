@@ -30,29 +30,16 @@ ggplot(ds, aes(age)) +
    stat_function(fun = dnorm, args = list(mean = mean(ds$age, na.rm = T), 
                                             sd = sd(ds$age, na.rm = T)), color = "red") 
 ```
-
-
   
-You can also get an overview of your data using a table known as a frequency distribution. The frequency distribution summarizes how often each value of your variable occurs in the dataset.  If your variable has a limited number of values that it can take on, you can report all values, but if it has a large number of possible values (e.g., age of respondent), then you will want to create categories, or bins, to report those frequencies. In such cases, it is generally easier to make sense of the percentage distribution.  Table \ref{tab:ideology} is a frequency distribution for the ideology variable.  From that table we see, for example, that about one-third of all respondents are moderates. We see the numbers decrease as we move away from that category, but not uniformly.  There are a few more people on the conservative extreme than on the liberal side and that the number of people placing themselves in the penultimate categories on either end is greater than those towards the middle.  The histogram and density curve would, of course, show the same pattern.
+You can also get an overview of your data using a table known as a frequency distribution. The frequency distribution summarizes how often each value of your variable occurs in the dataset.  If your variable has a limited number of values that it can take on, you can report all values, but if it has a large number of possible values (e.g., age of respondent), then you will want to create categories, or bins, to report those frequencies. In such cases, it is generally easier to make sense of the percentage distribution.  Table \@ref(fig:ideo) is a frequency distribution for the ideology variable.  From that table we see, for example, that about one-third of all respondents are moderates. We see the numbers decrease as we move away from that category, but not uniformly.  There are a few more people on the conservative extreme than on the liberal side and that the number of people placing themselves in the penultimate categories on either end is greater than those towards the middle.  The histogram and density curve would, of course, show the same pattern.
 
 The other thing to watch for here (or in the charts) is whether there is an unusual observation.  If one person scored 17 in this table, you could be pretty sure a coding error was made somewhere.  You cannot find all your errors this way, but you can find some, including the ones that have the potential to most seriously adversely affect your analysis.
 
 ```{r ideo, echo=FALSE, fig.cap="Frequency Distribbution for Ideology"}
-tbl2 <- data.frame(
-  Ideology = c("1 Strongly Liberal", "2", "3", "4", "5", "6",
-               "7 Strongly Conservative", "Total"),
-  Frequency = c("122", "279", "185", "571", "328",
-                "688", "351", "2524"),
-  Percentage = c("4.8", "11.1", "7.3", "22.6", "13.0",
-                 "27.3", "13.9", "100"),
-  "Cumulative Percentage" =  c("4.8", "15.9", "23.2", "45.8",
-                             "58.8", "86.1", "100.0", ""))
-
-kable(tbl2, caption = "Common Threats to External Validity")  %>%
-  kable_styling()
+knitr::include_graphics("freq-ideo.png")
 ```
 
-\noindent In R, we can obtain the data for the above table with the following functions:
+In R, we can obtain the data for the above table with the following functions:
 
 ```{r ideo table, echo=TRUE}
 # frequency counts for each level
@@ -183,7 +170,7 @@ S = \frac{\frac{\sum (X-\bar{X})^{3}}{(n-1)}}{(\sqrt{\frac{\sum
 \end{equation}
 
 Specifically, skewness refers to the position of the expected value (i.e., mean) of a variable distribution relative to its median. When the mean and median of a variable are roughly equal, $\bar{Y} \approx Md_{Y}$, then the distribution is considered approximately symmetrical, $S = 0$. This means that an equal proportion of the distribution of the variable lies on either side of the mean. However, when the mean is larger than the median,
-$\bar{Y} > Md_{Y}$, then the distribution has a _positive_ skew, $S > 0$. When the median is larger than the mean, $\bar{Y} < Md_{Y}$, this is a _negative_ skew, $S < 0$. This is illustrated in Figure \ref{fig:disshape}. Note that for a normal distribution, $S=0$. 
+$\bar{Y} > Md_{Y}$, then the distribution has a _positive_ skew, $S > 0$. When the median is larger than the mean, $\bar{Y} < Md_{Y}$, this is a _negative_ skew, $S < 0$. This is illustrated in Figure \@ref(fig:disshape). Note that for a normal distribution, $S=0$. 
  
 ```{r disshape, echo=FALSE, fig.cap="Distributional Shapes"}
 knitr::include_graphics("distroshapes.pdf")
@@ -237,7 +224,7 @@ The interquartile range (IQR) measures the spread of the ordered values. It is c
 
 The IQR contains the middle 50\% of the distribution. 
 
-We can visually examine the order statistics of a variable with a boxplot. A boxplot displays the range of the data, the first and third quartile, the median, and any outliers. The following returns a boxplot (Figure \ref{fig:boxrsk}). 
+We can visually examine the order statistics of a variable with a boxplot. A boxplot displays the range of the data, the first and third quartile, the median, and any outliers. The following returns a boxplot (Figure \@ref(fig:boxrsk)). 
 
 ```{r boxrsk, echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Box-plot of Climate Change Risk"}
 ggplot(ds, aes("", glbcc_risk)) +
@@ -253,14 +240,14 @@ had a lower score. Percentiles can be incorporated with quartiles (and/or other 
 - Second Quartile: 50th percentile (the median) 
 - Third Quartile: 75th percentile 
 
-Another way to compare a variable distribution to a theoretical distribution is with a quantile-comparison plot (qq plot). A qq plot displays the observed percentiles against those that would be expected in a normal distribution. This plot is often useful for examining the tails of the distribution, and deviations of a distribution from normality. This is shown in Figure \ref{fig:qqrsk}. 
+Another way to compare a variable distribution to a theoretical distribution is with a quantile-comparison plot (qq plot). A qq plot displays the observed percentiles against those that would be expected in a normal distribution. This plot is often useful for examining the tails of the distribution, and deviations of a distribution from normality. This is shown in Figure \@ref(fig:qqrsk). 
 
 ```{r qqrsk, echo=TRUE, message=FALSE, warning=FALSE, fig.cap="QQ Plot of Climate Change Risk"}
 ggplot(ds, aes(sample = glbcc_risk)) +
   stat_qq()
 ``` 
 
-The qq plot provides an easy way to observe departures of a distribution from normality. For example, the plot shown in Figure \ref{fig:qqrsk} indicates that the perceived risk measure has more observations in the tails of the distribution than would be expected if the variable was normally distributed.
+The qq plot provides an easy way to observe departures of a distribution from normality. For example, the plot shown in Figure \@ref(fig:qqrsk) indicates that the perceived risk measure has more observations in the tails of the distribution than would be expected if the variable was normally distributed.
 
 `R` provides several ways to examine the central tendency, moments, and order statistics for individual variables and for entire data sets.  The `summary` function produces the minimum value, the first quartile, median, mean, third quartile, max value, and the number of missing values (Na's).
 
