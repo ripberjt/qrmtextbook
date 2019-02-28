@@ -42,6 +42,7 @@ The formula for the residual standard error is as follows:
 
 \begin{equation}
 S_{E}=\sqrt{\frac{\Sigma E^{2}_{i}}{n-2}}
+(\#eq:09-1)
 \end{equation}
 
 To calculate this in `R`, based on the model we just ran,  we create an object called `Se` and use the `sqrt` and `sum` commands. 
@@ -59,6 +60,7 @@ The standard error for $B$, $SE(B)$ is:
 
 \begin{equation}
 SE(B)=\frac{S_{E}}{\sqrt{TSS_{X}}}
+(\#eq:09-2)
 \end{equation}
 
 where $S_E$ is the residual standard error of the regression, (as shown earlier in equation 9.1). $TSS_X$ is the total sum of squares for $X$, that is the total sum of the squared deviations (residuals) of $X$ from its mean $\bar{X}$; $\sum (X_i-\bar{X})^{2}$. Note that the greater the deviation of $X$ around its mean as a proportion of the standard error of the model, the smaller the $SE(B)$. The smaller $SE(B)$ is, the less variation we would expect in repeated estimates of $B$ across multiple samples.
@@ -67,6 +69,7 @@ The standard error for $A$, $SE(A)$, is defined as:
 
 \begin{equation}
 SE(A)=S_{E}*\sqrt{\frac{1}{n}+\frac{\bar X^{2}}{TSS_{X}}}
+(\#eq:09-3)
 \end{equation}
 
 Again, the $SE$ is the residual standard error, as shown in equation 9.1.
@@ -110,6 +113,7 @@ In the following example, we calculate a $95\%$ CI. The CI is calculated as foll
 
 \begin{equation}
   B \pm 1.96(SE(B))
+(\#eq:09-4)
 \end{equation}
 
 We can easily calculate this in `R`. First, we calculate the upper limit then the lower limit and then we use the `confint` function to check.   
@@ -137,6 +141,7 @@ The sample covariance for a simple regression model is defined as:
 
 \begin{equation}
 S_{XY} = \frac {\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{n-1}
+(\#eq:09-5)
 \end{equation}
 
 Intuitively, this measure tells you, on average, whether a higher value of $X$ (relative to its mean) is associated with a higher or lower value of $Y$. Is the association negative or positive? Covariance can be obtained quite simply in `R` by using the the `cov` function.
@@ -153,6 +158,7 @@ The sample correlation, $r$, is found by dividing $S_{XY}$ by the product of the
 \begin{equation}
 r=\frac{S_{XY}}{S_{X}S_{Y}}=\frac{\Sigma(X_{i}-\bar{X})(Y_{i}-\bar
   Y)}{\sqrt{\Sigma(X_{i}-\bar X)^{2} \Sigma(Y_{i}-\bar Y)^{2}}} 
+  (\#eq:09-6)
 \end{equation}
 
 To calculate this in `R`, we first make an object for $S_{X}$ and $S_{Y}$ using the `sd` function. 
@@ -216,7 +222,7 @@ It is the difference between the TSS and the RSS.
   \end{align*}   
 
 
-The components of $R^{2}$ are illustrated in Figure \@ref{fig:rsquared}. As shown, for each observation $Y_{i}$, variation around the mean can be decomposed into that which is "explained" by the regression and that which is not. In Figure \@ref{fig:rsquared}, the deviation between the mean of $Y$ and the predicted value of $Y$, $\hat{Y}$, is the proportion of the variation of  $Y_{i}$ that can be explained (or predicted) by the regression. That is shown as a blue line. The deviation of the observed value of $Y_{i}$ from the predicted value $\hat{Y}$ (aka the residual, as discussed in the previous chapter) is the unexplained deviation, shown in red. Together, the explained and unexplained variation make up the total variation of  $Y_{i}$ around the mean $\hat{Y}$.
+The components of $R^{2}$ are illustrated in Figure \@ref(fig:rsquared). As shown, for each observation $Y_{i}$, variation around the mean can be decomposed into that which is "explained" by the regression and that which is not. In Figure \@ref(fig:rsquared), the deviation between the mean of $Y$ and the predicted value of $Y$, $\hat{Y}$, is the proportion of the variation of  $Y_{i}$ that can be explained (or predicted) by the regression. That is shown as a blue line. The deviation of the observed value of $Y_{i}$ from the predicted value $\hat{Y}$ (aka the residual, as discussed in the previous chapter) is the unexplained deviation, shown in red. Together, the explained and unexplained variation make up the total variation of  $Y_{i}$ around the mean $\hat{Y}$.
 
 ```{r rsquared, echo=FALSE, fig.cap="The Components of $R^{2}$"}
 library(tidyverse)
@@ -288,7 +294,7 @@ The values for $R^{2}$ can range from zero to 1. In the case of simple regressio
 
 ### Visualizing Bivariate Regression
 
-The `ggplot2` package provides a mechanism for viewing the effect of the independent variable, ideology, on the dependent variable, perceived risk of climate change. % Adding `geom_smooth` will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares.  Graphically (Figure \@ref{fig:effectsplot}), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.
+The `ggplot2` package provides a mechanism for viewing the effect of the independent variable, ideology, on the dependent variable, perceived risk of climate change. % Adding `geom_smooth` will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares.  Graphically (Figure \@ref(fig:effectsplot)), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.
 
 ```{r effectsplot, echo=TRUE, fig.cap="Bivariate Regression Plot"}
 ggplot(ds.omit, aes(ideol, glbcc_risk)) +
