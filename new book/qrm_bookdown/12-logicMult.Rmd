@@ -67,19 +67,19 @@ The assumption of fixed values of $X$ means that the value of $X$ in our observa
 
 ## Partial Effects
 
-As noted in Chapter 1, multiple regression ``controls" for the effects of other variables on the dependent variables. This is in order to manage possible spurious relationships, where the variable $Z$ influences the value of both $X$ and $Y$. Figure \@ref{fig:spur} illustrates the nature of spurious relationships between variables. 
+As noted in Chapter 1, multiple regression ``controls" for the effects of other variables on the dependent variables. This is in order to manage possible spurious relationships, where the variable $Z$ influences the value of both $X$ and $Y$. Figure \@ref(fig:spur) illustrates the nature of spurious relationships between variables. 
 
 ```{r spur, echo=FALSE, fig.cap="Spurious Relationships"}
 knitr::include_graphics("spur.pdf")
 ```
 
-To control for spurious relationships, multiple regression accounts for the __partial effects__ of one $X$ on another $X$. Partial effects deal with the shared variance between $Y$ and the $X$'s. This is illustrated in Figure \@ref{fig:partef}.  In this example, the number of deaths resulting from house fires is positively associated with the number of fire trucks that are sent to the scene of the fire. A simple-minded analysis would conclude that if fewer trucks are sent, fewer fire-related deaths would occur. Of course, the number of trucks sent to the fire, and the number of fire-related deaths, are both driven by the magnitude of the fire. An appropriate control for the size of the fire would therefore presumably eliminate the positive association between the number of fire trucks at the scene and the number of deaths (and may even  reverse the direction of the relationship, as the larger number of trucks may more quickly suppress the fire).
+To control for spurious relationships, multiple regression accounts for the __partial effects__ of one $X$ on another $X$. Partial effects deal with the shared variance between $Y$ and the $X$'s. This is illustrated in Figure \@ref(fig:partef).  In this example, the number of deaths resulting from house fires is positively associated with the number of fire trucks that are sent to the scene of the fire. A simple-minded analysis would conclude that if fewer trucks are sent, fewer fire-related deaths would occur. Of course, the number of trucks sent to the fire, and the number of fire-related deaths, are both driven by the magnitude of the fire. An appropriate control for the size of the fire would therefore presumably eliminate the positive association between the number of fire trucks at the scene and the number of deaths (and may even  reverse the direction of the relationship, as the larger number of trucks may more quickly suppress the fire).
 
 ```{r partef, echo=FALSE, fig.cap="Partial Effects"}
 knitr::include_graphics("partef.pdf")
 ```
 
-In Figure \ref{fig:partef}, the Venn diagram on the left shows a pair of $X$s that would jointly predict $Y$ better than either $X$ alone. However, the overlapped area between $X_{1}$ and $X_{2}$ causes some confusion. That would need to be removed to estimate the "pure" effect of $X_{1}$ on $Y$. The diagram on the right represents a dangerous case. Overall, $X_{1}$+$X_2$ explain $Y$ well, but we don`t know how the individual $X_1$ or $X_2$ influence $Y$.  This clouds our ability to see the effects of either of the $Xs$ on $Y$. In the extreme case of wholly overlapping explanations by the IVs, we face the condition of __multicolinearity__ that makes estimation of the partial regression coefficients (the $Bs$) impossible.
+In Figure \ref(fig:partef), the Venn diagram on the left shows a pair of $X$s that would jointly predict $Y$ better than either $X$ alone. However, the overlapped area between $X_{1}$ and $X_{2}$ causes some confusion. That would need to be removed to estimate the "pure" effect of $X_{1}$ on $Y$. The diagram on the right represents a dangerous case. Overall, $X_{1}$+$X_2$ explain $Y$ well, but we don`t know how the individual $X_1$ or $X_2$ influence $Y$.  This clouds our ability to see the effects of either of the $Xs$ on $Y$. In the extreme case of wholly overlapping explanations by the IVs, we face the condition of __multicolinearity__ that makes estimation of the partial regression coefficients (the $Bs$) impossible.
      
 In calculating the effect of $X_1$ on $Y$, we need to remove the effect of the other $X$s on both $X_1$ and $Y$.  While multiple regression does this for us, we will walk through an example to illustrate the concepts. 
 
@@ -161,7 +161,7 @@ summary(ols1)
 
 The results show that the relationship between age and perceived risk (glbccrsk) is negative and insignificant. The relationship between ideology and perceived risk is negative and significant. The coefficients of the $X$'s are interpreted in the same way as with simple regression, except that we are now controlling for the effect of the other $X$'s by removing their influence on the estimated coefficient. Therefore, we say that as ideology increases one unit, perceptions of the risk of climate change (glbccrsk) decrease by \Sexpr{ols1$coef[3]}, controlling for the effect of age.  
 
-As was the case with simple regression, multiple regression finds the intercept and slopes that minimize the sum of the squared residuals. With only one IV the relationship can be represented in a two-dimensional plane (a graph) as a line, but each IV adds another dimension. Two IVs create a regression plane within a cube, as shown in Figure \@ref{fig:scatols}. The Figure shows a scatterplot of perceived climate change risk, age, and ideology coupled with the regression plane. Note that this is a sample of 200 observations from the larger data set. Were we to add more IVs, we would generate a hypercube... and we haven't found a clever way to draw that yet.
+As was the case with simple regression, multiple regression finds the intercept and slopes that minimize the sum of the squared residuals. With only one IV the relationship can be represented in a two-dimensional plane (a graph) as a line, but each IV adds another dimension. Two IVs create a regression plane within a cube, as shown in Figure \@ref(fig:scatols). The Figure shows a scatterplot of perceived climate change risk, age, and ideology coupled with the regression plane. Note that this is a sample of 200 observations from the larger data set. Were we to add more IVs, we would generate a hypercube... and we haven't found a clever way to draw that yet.
 
 ```{r scatols, echo=TRUE, fig.cap="Scatterplot and Regression Plane of gcc risk, age, and ideology"}
 ds200 <- ds.temp[sample(1:nrow(ds.temp), 200, replace=FALSE),]
@@ -205,6 +205,7 @@ To test $H_1$ we first need to find the standard error of the $B$ for ideology, 
 
 \begin{equation}
   SE(B_j) = \frac{S_E}{\sqrt{RSS_j}} 
+  (\#eq:12-1)
 \end{equation}
 
 where $RSS_j =$ the residual sum of squares from the regression of $X_j$ (ideology) on the other $X$s (age, education, income) in the model. $RSS_j$ captures all of the __independent__ variation in $X_j$. Note that the bigger $RSS_j$, the smaller $SE(B_j)$, and the smaller $SE(B_j)$, the more precise the estimate of $B_j$.
@@ -243,6 +244,7 @@ can be calculated. The $t$ value is the ratio of the estimated coefficient to it
 
 \begin{equation}
   t = \frac{B_j}{SE(B_j)}
+  (\#eq:12-2)
 \end{equation}
 
 This can be calculated using `R`.
