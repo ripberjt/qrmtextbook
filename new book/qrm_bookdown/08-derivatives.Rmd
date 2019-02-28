@@ -203,7 +203,9 @@ Let's take an example. For the function $y=f(x,z)=x^{3}+4xz-5z^{2}$, we first ta
  \frac{\partial y}{\partial x} &= \frac{\partial f(x,z)}{\partial x} \\
  &= 3x^{2}+4z
 \end{align*}
+
 Next we take the derivative of $z$ holding $x$ constant. 
+
 \begin{align*}
  \frac{\partial y}{\partial z} &= \frac{\partial f(x,z)}{\partial z} \\
  &= 4x-10z
@@ -238,6 +240,7 @@ Next, set the derivative equal to $0$.
 \end{equation*}
 
 Then, shift non-$\hat{\alpha}$ terms to the other side of the equal sign:
+
 \begin{equation*}
 2n\hat{\alpha} = 2 \sum Y_{i}-2\hat{\beta} \sum X_{i} 
 \end{equation*}
@@ -251,6 +254,7 @@ A &= \frac{\sum Y_{i}}{n}-\hat{\beta}*\frac{\sum X_{i}}{n} \\
 
 \begin{equation}
 \therefore \hat{\alpha} = \bar {Y}-\hat{\beta} \bar{X} 
+(\#eq:08-1)
 \end{equation}
 
 
@@ -299,13 +303,14 @@ The $\hat{\beta}$ term can be rearranged such that:
 
 \begin{equation} 
 \hat{\beta}=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}  
+(\#eq:08-2)
 \end{equation}
 
 Now remember what we are doing here: we used the partial derivatives for $\sum \epsilon^{2}$ with respect to $\hat{\alpha}$ and $\hat{\beta}$ to find the values for $\hat{\alpha}$ and $\hat{\beta}$ that will give us the smallest value for $\sum \epsilon^{2}$.  Put differently, the formulas for $\hat{\beta}$ and $\hat{\alpha}$ allow the calculation of the error-minimizing slope (change in $Y$ given a one unit change in $X$) and intercept (value for $Y$ when $X$ is zero) for any data set representing a bivariate, linear relationship. No other formulas will give us a line, using the same data, that will result in as small a squared-error. Therefore, OLS is referred to as the Best Linear Unbiased Estimator (BLUE).  
 
 ### Interpreting $\hat{\beta}$ and $\hat{\alpha}$
 
-In a regression equation, $Y=\hat{\alpha}+\hat{\beta}X$, where $\hat{\alpha}$ is shown in Equation \ref{eq:A} and $\hat{\beta}$ is shown in Equation \ref{eq:B}. Equation \ref{eq:B} shows that for each 1-unit increase in $X$ you get $\hat{\beta}$ units change in $Y$. Equation \ref{eq:A} shows that when $X$ is $0$, $Y$ is equal to $\hat{\alpha}$. Note that in a regression model with no independent variables, $\hat{\alpha}$ is simply the expected value (i.e., mean) of $Y$. 
+In a regression equation, $Y=\hat{\alpha}+\hat{\beta}X$, where $\hat{\alpha}$ is shown in Equation \@ref(eq:08-1) and $\hat{\beta}$ is shown in Equation \@ref(eq:08-2). Equation \@ref(eq:08-2) shows that for each 1-unit increase in $X$ you get $\hat{\beta}$ units change in $Y$. Equation \@ref(eq:08-1) shows that when $X$ is $0$, $Y$ is equal to $\hat{\alpha}$. Note that in a regression model with no independent variables, $\hat{\alpha}$ is simply the expected value (i.e., mean) of $Y$. 
 
 The intuition behind these formulas can be shown by using `R` to calculate "by hand" the slope ($\hat{\beta}$) and intercept ($\hat{\alpha}$) coefficients. A theoretical simple regression model is structured as
 follows:  
