@@ -132,8 +132,8 @@ As we can see, the Anova test indicates that including the squared terms improve
 A final way to check for non-linearity is Ramsey's Regression Error Specification Test (RESET). This tests the functional form of the model. Similar to our test using squared terms, the RESET tests calculates an $F$ statistic that compares the linear model with a model(s) that raises the IVs to various powers. Specifically, it tests whether there are statistically significant differences in the $R^2$ of each of the models. Similar to a nested $F$ test, it is calculated by: 
 
 \begin{equation}
-  \label{eq:reset}
   F = \frac{\frac{R^2_1-R^2_0}{q}}{\frac{1-R^2_1}{n-k_1}}
+  (\#eq:15-1)
 \end{equation}
 
 where $R^2_0$ is the $R^2$ of the linear model, $R^2_1$ is the $R^2$ of the polynomial model(s), $q$ is the number of new regressors, and $k_1$ is the number of IVs in the polynomial model(s). The null hypothesis is that the functional relationship between the $X$'s and $Y$ is linear, therefore the coefficients of the second and third powers to the IVs are zero.  If there is a low $p$-value (i.e., if we can reject the null hypothesis), non-linear relationships are suspected.  This test can be run using the `resettest` function from the `lmtest` package. Here we are setting the IVs to the second and third powers and we are examining the regressor variables.^[See the `lmtest` package documentation for more options and information.]  
@@ -260,8 +260,8 @@ It is important to note that, while robust estimators can help atone for heteros
 As noted above, we cannot test for the assumption that the error term $E$ is independent of the $X$'s.  However we can test to see whether the error terms, $E_i$, are correlated with each other. One of the assumptions of OLS is that   $E(\epsilon_i) \neq E(\epsilon_j)$ for $i \neq j$. When there is a relationship between the residuals, this is referred to as serial correlation or __autocorrelation__. Autocorrelation is most likely to occur with time-series data, however it can occur with cross-sectional data as well. To test for autocorrelation we use the Durbin-Watson, $d$, test statistic. The $d$ statistic is expressed as:
 
 \begin{equation}
-  \label{eq:dw}
   d = \frac{\sum_{i=2}^{n} (E_i-E_{i-1})^{2}}{\sum_{i=1}^{n} E^{2}_i}
+  (\#eq:15-2)
 \end{equation}
 
 The $d$ statistics ranges from $0$ to $4$; $0 \leq d \leq 4$. A  $0$ indicates perfect positive correction, $4$ indicates perfect negative correlation, and a $2$ indicates no autocorrelation. Therefore, we look for values of $d$ that are close to $2$.  
@@ -312,8 +312,8 @@ gridExtra::grid.arrange(p1, p2, p3, p4, nrow=2, ncol=2)
 It appears from the graphs, on the basis of an ``ocular test", that the residuals are potentially normally distributed.  Therefore, to perform a statistical test for non-normality, we use the Shapiro-Wilk, $W$, test statistic. $W$ is expressed as: 
 
 \begin{equation}
-  \label{eq:sw}
   W = \frac{(\sum_{i=1}^{n} a_i x_{(i)})^{2}}{\sum_{i=1}^{n} (x_i-\bar{x})^{2}}
+  (\#eq:15-3)
 \end{equation}
 
 where $x_{(i)}$ are the ordered sample values and $a_i$ are constants generated from the means, variances, and covariances of the order statistics from a normal distribution. 
@@ -343,7 +343,7 @@ But sometimes we find outliers for reasons other than mis-codes, and identificat
 
 A regression outlier is an observation that has an unusual value on the dependent variable $Y$, conditioned on the values of the independent variables, $X$. Note that an outlier can have a large residual value, but not necessarily affect the estimated slope or intercept. Below we examine a few ways to identify potential outliers, and their effects on our estimated slope coefficients.   
 
-Using the regression example, we first plot the residuals to look for any possible outliers. In this plot we are plotting the raw residuals for each of the $500$ observations. This is shown in Figure \ref{fig:siminresid}.  
+Using the regression example, we first plot the residuals to look for any possible outliers. In this plot we are plotting the raw residuals for each of the $500$ observations. This is shown in Figure \@ref(fig:siminresid).  
 
 ```{r siminresid, echo=TRUE, fig.cap="Index Plot of Residuals: Multiple Regression"}
 ggplot(ds.small, aes(row.names(ds.small), fit.r)) +
@@ -378,8 +378,8 @@ What we really want to know is: does any particular case substantially change th
 DFBETAS measure the influence of case $i$ on the $j$ estimated coefficients. Specifically, it asks by how many standard errors does $B_j$ change when case $i$ is removed DFBETAS are expressed as:
 
 \begin{equation}
-  \label{eq:dfbeta}
   \text{DFBETAS}_{ij} = \frac{B_{j(-i)}-B_j}{SE(B_j)}
+  (\#eq:15-4)
 \end{equation}
 
 Note that if DFBETAS $ > 0$, then case $i$ pulls $B_j$ _up_, and  if DFBETAS $ < 0$, then case $i$ pulls $B_j$ _down_.  In general, if $|\text{DFBETAS}_{ij}| > \frac{2}{\sqrt{n}}$ then these cases warrant further examination. Note that this approach gets the top 5\% of influential cases, given the sample size. For both simple (bi-variate) and  multiple regression models the DFBETA cut-offs can be calculated in `R`.
@@ -503,8 +503,8 @@ There do not appear to be any variables that are so highly correlated that it wo
 We will discuss two more formal ways to check for multicollinearity. First, is the __Variance Inflation Factor__ (VIF), and the second is __tolerance__. The VIF is the  degree to which the variance of other coefficients is increased due to the inclusion of the specified variable. It is expressed as: 
 
 \begin{equation}
-  \label{eq:vif}
   \text{VIF} = \frac{1}{1-R^2_k}
+  (\#eq:15-5)
 \end{equation}
 
 Note that as $R^2_k$ increases the variance of $X_k$ increases. A general rule of thumb is that $\text{VIF} > 5$ is problematic. 
@@ -512,8 +512,8 @@ Note that as $R^2_k$ increases the variance of $X_k$ increases. A general rule o
 Another, and related, way to measure multicollinearity is tolerance. The tolerance of any $X$, $X_k$, is the proportion of its variance not shared with the other $X$'s. 
 
 \begin{equation}
-  \label{eq:tolerance}
   \text{tolerance} = 1-R^2_k 
+  (\#eq:15-6)
 \end{equation}
 
 Note that this is mathematically equivalent to $\frac{1}{VIF}$. The rule of thumb for acceptable tolerance is partly a function of $n$-size:
