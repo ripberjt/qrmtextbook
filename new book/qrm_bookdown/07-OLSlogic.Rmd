@@ -116,14 +116,33 @@ Y_{i} &= \hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i} \\
 \end{align*}
 
 ### Residuals
-Residuals measure prediction errors of how far observation $Y_{i}$ is from predicted $\hat{Y_{i}}$. This is shown in Figure \ref{resid}. 
+Residuals measure prediction errors of how far observation $Y_{i}$ is from predicted $\hat{Y_{i}}$. This is shown in Figure \@ref{resid}. 
 
-\begin{figure}
-  \centering
-  \includegraphics[width=4in]%
-    {07_OLSlogic/resids.pdf}% picture filename
-  \caption{Residuals: Statistical Forensics \label{resid}}
-\end{figure}
+```{r resid, echo=FALSE, fig.cap="Residuals: Statistical Forensics"}
+library(tidyverse)
+library(broom)
+
+set.seed(5)
+y <-rnorm(5)
+x <-1:5
+mod <- lm(y ~ x)
+
+yl <- c("y[1]", "y[2]", "y[3]", "y[4]", "y[5]")
+yhl <- c("hat(y)[1]", "hat(y)[2]", "hat(y)[3]", "hat(y)[4]", "hat(y)[5]")
+sl <- c("hat(epsilon)[1]", "hat(epsilon)[2]", "hat(epsilon)[3]", "hat(epsilon)[4]", "hat(epsilon)[5]")
+df <- augment(mod)
+
+ggplot(df) + 
+  geom_segment(aes(x = x, y = y, xend = x, yend = .fitted), linetype = "dashed", color = "red") +
+  geom_point(aes(x = x, y = y), size = 5, color = "red") +
+  geom_line(aes(x = x, y = .fitted)) +
+  geom_point(aes(x = x, y = .fitted), size = 5) +
+  geom_text(aes(x = x, y = y), label = yl, color = "white", size = 2, parse = TRUE) +
+  geom_text(aes(x = x, y = .fitted), label = yhl, color = "white", size = 2, parse = TRUE) +
+  geom_text(aes(x = x + 0.2, y = (y + .fitted) / 2), label = sl, color = "black", size = 2, parse = TRUE) +
+  ylim(-1.5, 2) + 
+  theme(axis.text = element_blank())
+```
 
 The residual term contains the accumulation (sum) of errors that can result from measurement issues, modeling problems, and irreducible randomness. Ideally, the residual term contains lots of small and independent influences that result in an overall random quality of the distribution of the errors. When that distribution is not random -- that is, when the distribution of error has some systematic quality -- the estimates of $\hat{\alpha}$ and $\hat{\beta}$ may be biased. Thus, when we evaluate our models we will focus on the shape of the distribution of our errors. 
 
