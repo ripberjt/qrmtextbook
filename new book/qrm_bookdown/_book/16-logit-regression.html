@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="16 Logit Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition With Applications in R" />
+<meta property="og:type" content="book" />
+
+
+
+
+
+<meta name="author" content="Hank Jenkins-Smith" />
+<meta name="author" content="Joseph Ripberger" />
+<meta name="author" content="Gary Copeland" />
+<meta name="author" content="Matthew Nowlin" />
+<meta name="author" content="Tyler Hughes" />
+<meta name="author" content="Aaron Fister" />
+<meta name="author" content="Wesley Wehde" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="16 Logit Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition With Applications in R">
+
+<title>16 Logit Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition With Applications in R</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#preface-and-acknowledgments">Preface and Acknowledgments</a><ul>
+<li><a href="copyright.html#copyright">Copyright</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-theories-and-social-science.html#theories-and-social-science"><span class="toc-section-number">1</span> Theories and Social Science</a><ul>
+<li><a href="1-1-the-scientific-method.html#the-scientific-method"><span class="toc-section-number">1.1</span> The Scientific Method</a></li>
+<li class="has-sub"><a href="1-2-theory-and-empirical-research.html#theory-and-empirical-research"><span class="toc-section-number">1.2</span> Theory and Empirical Research</a><ul>
+<li><a href="1-2-theory-and-empirical-research.html#coherent-and-internally-consistent"><span class="toc-section-number">1.2.1</span> Coherent and Internally Consistent</a></li>
+<li><a href="1-2-theory-and-empirical-research.html#theories-and-causality"><span class="toc-section-number">1.2.2</span> Theories and Causality</a></li>
+<li><a href="1-2-theory-and-empirical-research.html#generation-of-testable-hypothesis"><span class="toc-section-number">1.2.3</span> Generation of Testable Hypothesis</a></li>
+</ul></li>
+<li><a href="1-3-theory-and-functions.html#theory-and-functions"><span class="toc-section-number">1.3</span> Theory and Functions</a></li>
+<li><a href="1-4-theory-in-social-science.html#theory-in-social-science"><span class="toc-section-number">1.4</span> Theory in Social Science</a></li>
+<li><a href="1-5-outline-of-the-book.html#outline-of-the-book"><span class="toc-section-number">1.5</span> Outline of the Book</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-research-design.html#research-design"><span class="toc-section-number">2</span> Research Design</a><ul>
+<li><a href="2-1-overview-of-the-research-process.html#overview-of-the-research-process"><span class="toc-section-number">2.1</span> Overview of the Research Process</a></li>
+<li><a href="2-2-internal-and-external-validity.html#internal-and-external-validity"><span class="toc-section-number">2.2</span> Internal and External Validity</a></li>
+<li><a href="2-3-major-classes-of-designs.html#major-classes-of-designs"><span class="toc-section-number">2.3</span> Major Classes of Designs</a></li>
+<li><a href="2-4-threats-to-validity.html#threats-to-validity"><span class="toc-section-number">2.4</span> Threats to Validity</a></li>
+<li><a href="2-5-some-common-designs.html#some-common-designs"><span class="toc-section-number">2.5</span> Some Common Designs</a></li>
+<li><a href="2-6-plan-meets-reality.html#plan-meets-reality"><span class="toc-section-number">2.6</span> Plan Meets Reality</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-exploring-and-visualizing-data.html#exploring-and-visualizing-data"><span class="toc-section-number">3</span> Exploring and Visualizing Data</a><ul>
+<li class="has-sub"><a href="3-1-characterizing-data.html#characterizing-data"><span class="toc-section-number">3.1</span> Characterizing Data</a><ul>
+<li><a href="3-1-characterizing-data.html#central-tendency"><span class="toc-section-number">3.1.1</span> Central Tendency</a></li>
+<li><a href="3-1-characterizing-data.html#level-of-measurement-and-central-tendency"><span class="toc-section-number">3.1.2</span> Level of Measurement and Central Tendency</a></li>
+<li><a href="3-1-characterizing-data.html#moments"><span class="toc-section-number">3.1.3</span> Moments</a></li>
+<li><a href="3-1-characterizing-data.html#first-moment-expected-value"><span class="toc-section-number">3.1.4</span> First Moment – Expected Value</a></li>
+<li><a href="3-1-characterizing-data.html#the-second-moment-variance-and-standard-deviation"><span class="toc-section-number">3.1.5</span> The Second Moment – Variance and Standard Deviation</a></li>
+<li><a href="3-1-characterizing-data.html#the-third-moment-skewness"><span class="toc-section-number">3.1.6</span> The Third Moment – Skewness</a></li>
+<li><a href="3-1-characterizing-data.html#the-fourth-moment-kurtosis"><span class="toc-section-number">3.1.7</span> The Fourth Moment – Kurtosis</a></li>
+<li><a href="3-1-characterizing-data.html#order-statistics"><span class="toc-section-number">3.1.8</span> Order Statistics</a></li>
+</ul></li>
+<li><a href="3-2-summary.html#summary"><span class="toc-section-number">3.2</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-probability.html#probability"><span class="toc-section-number">4</span> Probability</a><ul>
+<li><a href="4-1-finding-probabilities.html#finding-probabilities"><span class="toc-section-number">4.1</span> Finding Probabilities</a></li>
+<li><a href="4-2-finding-probabilities-with-the-normal-curve.html#finding-probabilities-with-the-normal-curve"><span class="toc-section-number">4.2</span> Finding Probabilities with the Normal Curve</a></li>
+<li><a href="4-3-summary-1.html#summary-1"><span class="toc-section-number">4.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-inference.html#inference"><span class="toc-section-number">5</span> Inference</a><ul>
+<li class="has-sub"><a href="5-1-inference-populations-and-samples.html#inference-populations-and-samples"><span class="toc-section-number">5.1</span> Inference: Populations and Samples</a><ul>
+<li><a href="5-1-inference-populations-and-samples.html#populations-and-samples"><span class="toc-section-number">5.1.1</span> Populations and Samples</a></li>
+<li><a href="5-1-inference-populations-and-samples.html#sampling-and-knowing"><span class="toc-section-number">5.1.2</span> Sampling and Knowing</a></li>
+<li><a href="5-1-inference-populations-and-samples.html#sampling-strategies"><span class="toc-section-number">5.1.3</span> Sampling Strategies</a></li>
+<li><a href="5-1-inference-populations-and-samples.html#sampling-techniques"><span class="toc-section-number">5.1.4</span> Sampling Techniques</a></li>
+<li><a href="5-1-inference-populations-and-samples.html#so-how-is-it-that-we-know"><span class="toc-section-number">5.1.5</span> So How is it That We Know?</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-2-the-normal-distribution.html#the-normal-distribution"><span class="toc-section-number">5.2</span> The Normal Distribution</a><ul>
+<li><a href="5-2-the-normal-distribution.html#standardizing-a-normal-distribution-and-z-scores"><span class="toc-section-number">5.2.1</span> Standardizing a Normal Distribution and Z-scores</a></li>
+<li><a href="5-2-the-normal-distribution.html#the-central-limit-theorem"><span class="toc-section-number">5.2.2</span> The Central Limit Theorem</a></li>
+<li><a href="5-2-the-normal-distribution.html#populations-samples-and-symbols"><span class="toc-section-number">5.2.3</span> Populations, Samples and Symbols</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-3-inferences-to-the-population-from-the-sample.html#inferences-to-the-population-from-the-sample"><span class="toc-section-number">5.3</span> Inferences to the Population from the Sample</a><ul>
+<li><a href="5-3-inferences-to-the-population-from-the-sample.html#confidence-intervals"><span class="toc-section-number">5.3.1</span> Confidence Intervals</a></li>
+<li><a href="5-3-inferences-to-the-population-from-the-sample.html#the-logic-of-hypothesis-testing"><span class="toc-section-number">5.3.2</span> The Logic of Hypothesis Testing</a></li>
+<li><a href="5-3-inferences-to-the-population-from-the-sample.html#some-miscellaneous-notes-about-hypothesis-testing"><span class="toc-section-number">5.3.3</span> Some Miscellaneous Notes about Hypothesis Testing</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-4-differences-between-groups.html#differences-between-groups"><span class="toc-section-number">5.4</span> Differences Between Groups</a><ul>
+<li><a href="5-4-differences-between-groups.html#t-tests"><span class="toc-section-number">5.4.1</span> <span class="math inline">\(t\)</span>-tests</a></li>
+</ul></li>
+<li><a href="5-5-summary-2.html#summary-2"><span class="toc-section-number">5.5</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="6-association-of-variables.html#association-of-variables"><span class="toc-section-number">6</span> Association of Variables</a><ul>
+<li class="has-sub"><a href="6-1-cross-tabulation.html#cross-tabulation"><span class="toc-section-number">6.1</span> Cross-Tabulation</a><ul>
+<li><a href="6-1-cross-tabulation.html#crosstabulation-and-control"><span class="toc-section-number">6.1.1</span> Crosstabulation and Control</a></li>
+</ul></li>
+<li><a href="6-2-covariance.html#covariance"><span class="toc-section-number">6.2</span> Covariance</a></li>
+<li><a href="6-3-correlation.html#correlation"><span class="toc-section-number">6.3</span> Correlation</a></li>
+<li><a href="6-4-scatterplots.html#scatterplots"><span class="toc-section-number">6.4</span> Scatterplots</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-the-logic-of-ordinary-least-squares-estimation.html#the-logic-of-ordinary-least-squares-estimation"><span class="toc-section-number">7</span> The Logic of Ordinary Least Squares Estimation</a><ul>
+<li class="has-sub"><a href="7-1-theoretical-models.html#theoretical-models"><span class="toc-section-number">7.1</span> Theoretical Models</a><ul>
+<li><a href="7-1-theoretical-models.html#deterministic-linear-model"><span class="toc-section-number">7.1.1</span> Deterministic Linear Model</a></li>
+<li><a href="7-1-theoretical-models.html#stochastic-linear-model"><span class="toc-section-number">7.1.2</span> Stochastic Linear Model</a></li>
+<li><a href="7-1-theoretical-models.html#assumptions-about-the-error-term"><span class="toc-section-number">7.1.3</span> Assumptions about the Error Term</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-2-estimating-linear-models.html#estimating-linear-models"><span class="toc-section-number">7.2</span> Estimating Linear Models</a><ul>
+<li><a href="7-2-estimating-linear-models.html#residuals"><span class="toc-section-number">7.2.1</span> Residuals</a></li>
+</ul></li>
+<li><a href="7-3-an-example-of-simple-regression.html#an-example-of-simple-regression"><span class="toc-section-number">7.3</span> An Example of Simple Regression</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-linear-estimation-and-minimizing-error.html#linear-estimation-and-minimizing-error"><span class="toc-section-number">8</span> Linear Estimation and Minimizing Error</a><ul>
+<li class="has-sub"><a href="8-1-minimizing-error-using-derivatives.html#minimizing-error-using-derivatives"><span class="toc-section-number">8.1</span> Minimizing Error using Derivatives</a><ul>
+<li><a href="8-1-minimizing-error-using-derivatives.html#rules-of-derivation"><span class="toc-section-number">8.1.1</span> Rules of Derivation</a></li>
+<li><a href="8-1-minimizing-error-using-derivatives.html#critical-points"><span class="toc-section-number">8.1.2</span> Critical Points</a></li>
+<li><a href="8-1-minimizing-error-using-derivatives.html#partial-derivation"><span class="toc-section-number">8.1.3</span> Partial Derivation</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-2-deriving-ols-estimators.html#deriving-ols-estimators"><span class="toc-section-number">8.2</span> Deriving OLS Estimators</a><ul>
+<li><a href="8-2-deriving-ols-estimators.html#ols-derivation-of-hatalpha"><span class="toc-section-number">8.2.1</span> OLS Derivation of <span class="math inline">\(\hat{\alpha}\)</span></a></li>
+<li><a href="8-2-deriving-ols-estimators.html#ols-derivation-of-hatbeta"><span class="toc-section-number">8.2.2</span> OLS Derivation of <span class="math inline">\(\hat{\beta}\)</span></a></li>
+<li><a href="8-2-deriving-ols-estimators.html#interpreting-hatbeta-and-hatalpha"><span class="toc-section-number">8.2.3</span> Interpreting <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span></a></li>
+</ul></li>
+<li><a href="8-3-summary-3.html#summary-3"><span class="toc-section-number">8.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-bi-variate-hypothesis-testing-and-model-fit.html#bi-variate-hypothesis-testing-and-model-fit"><span class="toc-section-number">9</span> Bi-Variate Hypothesis Testing and Model Fit</a><ul>
+<li class="has-sub"><a href="9-1-hypothesis-tests-for-regression-coefficients.html#hypothesis-tests-for-regression-coefficients"><span class="toc-section-number">9.1</span> Hypothesis Tests for Regression Coefficients</a><ul>
+<li><a href="9-1-hypothesis-tests-for-regression-coefficients.html#residual-standard-error"><span class="toc-section-number">9.1.1</span> Residual Standard Error</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-2-measuring-goodness-of-fit.html#measuring-goodness-of-fit"><span class="toc-section-number">9.2</span> Measuring Goodness of Fit</a><ul>
+<li><a href="9-2-measuring-goodness-of-fit.html#sample-covariance-and-correlations"><span class="toc-section-number">9.2.1</span> Sample Covariance and Correlations</a></li>
+<li><a href="9-2-measuring-goodness-of-fit.html#coefficient-of-determination-r2"><span class="toc-section-number">9.2.2</span> Coefficient of Determination: <span class="math inline">\(R^{2}\)</span></a></li>
+<li><a href="9-2-measuring-goodness-of-fit.html#visualizing-bivariate-regression"><span class="toc-section-number">9.2.3</span> Visualizing Bivariate Regression</a></li>
+</ul></li>
+<li><a href="9-3-summary-4.html#summary-4"><span class="toc-section-number">9.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="10-ols-assumptions-and-simple-regression-diagnostics.html#ols-assumptions-and-simple-regression-diagnostics"><span class="toc-section-number">10</span> OLS Assumptions and Simple Regression Diagnostics</a><ul>
+<li><a href="10-1-a-recap-of-modeling-assumptions.html#a-recap-of-modeling-assumptions"><span class="toc-section-number">10.1</span> A Recap of Modeling Assumptions</a></li>
+<li class="has-sub"><a href="10-2-when-things-go-bad-with-residuals.html#when-things-go-bad-with-residuals"><span class="toc-section-number">10.2</span> When Things Go Bad with Residuals</a><ul>
+<li><a href="10-2-when-things-go-bad-with-residuals.html#outlier-data"><span class="toc-section-number">10.2.1</span> “Outlier” Data</a></li>
+<li><a href="10-2-when-things-go-bad-with-residuals.html#non-constant-variance"><span class="toc-section-number">10.2.2</span> Non-Constant Variance</a></li>
+<li><a href="10-2-when-things-go-bad-with-residuals.html#non-linearity-in-the-parameters"><span class="toc-section-number">10.2.3</span> Non-Linearity in the Parameters</a></li>
+</ul></li>
+<li class="has-sub"><a href="10-3-application-of-residual-diagnostics.html#application-of-residual-diagnostics"><span class="toc-section-number">10.3</span> Application of Residual Diagnostics</a><ul>
+<li><a href="10-3-application-of-residual-diagnostics.html#testing-for-non-linearity"><span class="toc-section-number">10.3.1</span> Testing for Non-Linearity</a></li>
+<li><a href="10-3-application-of-residual-diagnostics.html#testing-for-normality-in-model-residuals"><span class="toc-section-number">10.3.2</span> Testing for Normality in Model Residuals</a></li>
+<li><a href="10-3-application-of-residual-diagnostics.html#testing-for-non-constant-variance-in-the-residuals"><span class="toc-section-number">10.3.3</span> Testing for Non-Constant Variance in the Residuals</a></li>
+<li><a href="10-3-application-of-residual-diagnostics.html#examining-outlier-data"><span class="toc-section-number">10.3.4</span> Examining Outlier Data</a></li>
+</ul></li>
+<li><a href="10-4-so-now-what-implications-of-residual-analysis.html#so-now-what-implications-of-residual-analysis"><span class="toc-section-number">10.4</span> So Now What? Implications of Residual Analysis</a></li>
+<li><a href="10-5-summary-5.html#summary-5"><span class="toc-section-number">10.5</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="11-introduction-to-multiple-regression.html#introduction-to-multiple-regression"><span class="toc-section-number">11</span> Introduction to Multiple Regression</a><ul>
+<li><a href="11-1-matrix-algebra-and-multiple-regression.html#matrix-algebra-and-multiple-regression"><span class="toc-section-number">11.1</span> Matrix Algebra and Multiple Regression</a></li>
+<li class="has-sub"><a href="11-2-the-basics-of-matrix-algebra.html#the-basics-of-matrix-algebra"><span class="toc-section-number">11.2</span> The Basics of Matrix Algebra</a><ul>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#matrix-basics"><span class="toc-section-number">11.2.1</span> Matrix Basics</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#vectors"><span class="toc-section-number">11.2.2</span> Vectors</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#matrix-operations"><span class="toc-section-number">11.2.3</span> Matrix Operations</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#transpose"><span class="toc-section-number">11.2.4</span> Transpose</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#adding-matrices"><span class="toc-section-number">11.2.5</span> Adding Matrices</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#multiplication-of-matrices"><span class="toc-section-number">11.2.6</span> Multiplication of Matrices</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#identity-matrices"><span class="toc-section-number">11.2.7</span> Identity Matrices</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#matrix-inversion"><span class="toc-section-number">11.2.8</span> Matrix Inversion</a></li>
+</ul></li>
+<li><a href="11-3-ols-regression-in-matrix-form.html#ols-regression-in-matrix-form"><span class="toc-section-number">11.3</span> OLS Regression in Matrix Form</a></li>
+<li><a href="11-4-summary-6.html#summary-6"><span class="toc-section-number">11.4</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="12-the-logic-of-multiple-regression.html#the-logic-of-multiple-regression"><span class="toc-section-number">12</span> The Logic of Multiple Regression</a><ul>
+<li class="has-sub"><a href="12-1-theoretical-specification.html#theoretical-specification"><span class="toc-section-number">12.1</span> Theoretical Specification</a><ul>
+<li><a href="12-1-theoretical-specification.html#assumptions-of-ols-regression"><span class="toc-section-number">12.1.1</span> Assumptions of OLS Regression</a></li>
+</ul></li>
+<li><a href="12-2-partial-effects.html#partial-effects"><span class="toc-section-number">12.2</span> Partial Effects</a></li>
+<li class="has-sub"><a href="12-3-multiple-regression-example.html#multiple-regression-example"><span class="toc-section-number">12.3</span> Multiple Regression Example</a><ul>
+<li><a href="12-3-multiple-regression-example.html#hypothesis-testing-and-t-tests"><span class="toc-section-number">12.3.1</span> Hypothesis Testing and <span class="math inline">\(t\)</span>-tests</a></li>
+</ul></li>
+<li><a href="12-4-summary-7.html#summary-7"><span class="toc-section-number">12.4</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="13-multiple-regression-and-model-building.html#multiple-regression-and-model-building"><span class="toc-section-number">13</span> Multiple Regression and Model Building</a><ul>
+<li class="has-sub"><a href="13-1-model-building.html#model-building"><span class="toc-section-number">13.1</span> Model Building</a><ul>
+<li><a href="13-1-model-building.html#theory-and-hypotheses"><span class="toc-section-number">13.1.1</span> Theory and Hypotheses</a></li>
+<li><a href="13-1-model-building.html#empirical-indicators"><span class="toc-section-number">13.1.2</span> Empirical Indicators</a></li>
+<li><a href="13-1-model-building.html#risks-in-model-building"><span class="toc-section-number">13.1.3</span> Risks in Model Building</a></li>
+</ul></li>
+<li><a href="13-2-evils-of-stepwise-regression.html#evils-of-stepwise-regression"><span class="toc-section-number">13.2</span> Evils of Stepwise Regression</a></li>
+<li><a href="13-3-summary-8.html#summary-8"><span class="toc-section-number">13.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="14-topics-in-multiple-regression.html#topics-in-multiple-regression"><span class="toc-section-number">14</span> Topics in Multiple Regression</a><ul>
+<li><a href="14-1-dummy-variables.html#dummy-variables"><span class="toc-section-number">14.1</span> Dummy Variables</a></li>
+<li><a href="14-2-interaction-effects.html#interaction-effects"><span class="toc-section-number">14.2</span> Interaction Effects</a></li>
+<li><a href="14-3-standardized-regression-coefficients.html#standardized-regression-coefficients"><span class="toc-section-number">14.3</span> Standardized Regression Coefficients</a></li>
+<li><a href="14-4-summary-9.html#summary-9"><span class="toc-section-number">14.4</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-the-art-of-regression-diagnostics.html#the-art-of-regression-diagnostics"><span class="toc-section-number">15</span> The Art of Regression Diagnostics</a><ul>
+<li><a href="15-1-ols-error-assumptions-revisited.html#ols-error-assumptions-revisited"><span class="toc-section-number">15.1</span> OLS Error Assumptions Revisited</a></li>
+<li class="has-sub"><a href="15-2-ols-diagnostic-techniques.html#ols-diagnostic-techniques"><span class="toc-section-number">15.2</span> OLS Diagnostic Techniques</a><ul>
+<li><a href="15-2-ols-diagnostic-techniques.html#non-linearity"><span class="toc-section-number">15.2.1</span> Non-Linearity</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#non-constant-variance-or-heteroscedasticity"><span class="toc-section-number">15.2.2</span> Non-Constant Variance, or Heteroscedasticity</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#independence-of-e"><span class="toc-section-number">15.2.3</span> Independence of <span class="math inline">\(E\)</span></a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#normality-of-the-residuals"><span class="toc-section-number">15.2.4</span> Normality of the Residuals</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#outliers-leverage-and-influence"><span class="toc-section-number">15.2.5</span> Outliers, Leverage, and Influence</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#outliers"><span class="toc-section-number">15.2.6</span> Outliers</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#multicollinearity"><span class="toc-section-number">15.2.7</span> Multicollinearity</a></li>
+</ul></li>
+<li><a href="15-3-summary-10.html#summary-10"><span class="toc-section-number">15.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="16-logit-regression.html#logit-regression"><span class="toc-section-number">16</span> Logit Regression</a><ul>
+<li><a href="16-1-generalized-linear-models.html#generalized-linear-models"><span class="toc-section-number">16.1</span> Generalized Linear Models</a></li>
+<li class="has-sub"><a href="16-2-logit-estimation.html#logit-estimation"><span class="toc-section-number">16.2</span> Logit Estimation</a><ul>
+<li><a href="16-2-logit-estimation.html#logit-hypothesis-tests"><span class="toc-section-number">16.2.1</span> Logit Hypothesis Tests</a></li>
+<li><a href="16-2-logit-estimation.html#goodness-of-fit"><span class="toc-section-number">16.2.2</span> Goodness of Fit</a></li>
+<li><a href="16-2-logit-estimation.html#interpreting-logits"><span class="toc-section-number">16.2.3</span> Interpreting Logits</a></li>
+</ul></li>
+<li><a href="16-3-summary-11.html#summary-11"><span class="toc-section-number">16.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="17-appendix-basic-r.html#appendix-basic-r"><span class="toc-section-number">17</span> Appendix: Basic R</a><ul>
+<li><a href="17-1-introduction-to-r.html#introduction-to-r"><span class="toc-section-number">17.1</span> Introduction to R</a></li>
+<li><a href="17-2-downloading-r-and-rstudio.html#downloading-r-and-rstudio"><span class="toc-section-number">17.2</span> Downloading R and RStudio</a></li>
+<li><a href="17-3-introduction-to-programming.html#introduction-to-programming"><span class="toc-section-number">17.3</span> Introduction to Programming</a></li>
+<li><a href="17-4-uploadingreading-data.html#uploadingreading-data"><span class="toc-section-number">17.4</span> Uploading/Reading Data</a></li>
+<li><a href="17-5-data-manipulation-in-r.html#data-manipulation-in-r"><span class="toc-section-number">17.5</span> Data Manipulation in R</a></li>
+<li><a href="17-6-savingwriting-data.html#savingwriting-data"><span class="toc-section-number">17.6</span> Saving/Writing Data</a></li>
+<li><a href="17-7-the-tidyverse.html#the-tidyverse"><span class="toc-section-number">17.7</span> The Tidyverse</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="logit-regression" class="section level1">
+<h1><span class="header-section-number">16</span> Logit Regression</h1>
+<p>Logit regression is a part of a larger class of generalized linear models (GLM). In this chapter we first briefly discuss GLMs, and then move on into a more in-depth discussion of logistic regression.</p> 
+</div>
+<p style="text-align: center;">
+<a href="15-3-summary-10.html"><button class="btn btn-default">Previous</button></a>
+<a href="16-1-generalized-linear-models.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

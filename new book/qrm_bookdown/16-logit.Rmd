@@ -9,6 +9,7 @@ GLMs provide a modeling structure that can relate a linear model to response var
 Like OLS, GLMs contain a stochastic component and a systematic component. The systematic component is expressed as: 
 \begin{equation}
   \eta = \alpha + \beta_1 X_{i1} + \beta_2 X_{i2} + \ldots + \beta_k X_{ik}
+  (\#eq:16-1)
 \end{equation}
 
 However, GLMs also contain a ``link function" that relates the response variable, $Y_i$, to the systematic linear component, $\eta$.  Table 16.1 shows the major exponential "families"" of GLM models, and indicates the kinds of link functions involved in each.  Note that OLS models would fall within the Gaussian family.  In the next section we focus on the binomial family, and on logit estimation in particular.
@@ -56,13 +57,13 @@ By reversing the logit we can obtain the predicted
 probability that $Y=1$ for each of the $i$ observations: 
 
 \begin{equation}
-  \label{eq:predprob}
   P_{i} = \frac{1}{1-e^{-L_{i}}}
+  (\#eq:16-2)
 \end{equation}
 
 where $e=2.71828 \ldots$, the base number of natural
 logarithms. Note that $L$ is a linear function, but $P$ is a non-linear
-$S$-shaped function as shown in Figure \@ref{fig:logex}. Also note,
+$S$-shaped function as shown in Figure \@ref(fig:logex). Also note,
 that Equation 16.2 is the link function that relates the
 linear component to the non-linear response variable. 
 
@@ -129,8 +130,8 @@ As we can see, age and gender are both negative and statistically significant pr
 In some ways, hypothesis testing with logit is quite similar to that using OLS. The same use of  $p$-values is employed; however, they differ in how they are derived. The logit analysis makes use of the Wald $z$-statistic, which is similar to the $t$-stat in OLS. The Wald $z$ score compares the estimated coefficient to the asymptotic standard error, (aka the normal distribution). The $p$-value is derived from the asymptotic standard-normal distribution. Each estimated coefficient has a Wald $z$-score and a $p$-value that shows the probability that the null hypothesis is correct, given the data. 
 
 \begin{equation}
-  \label{eq:wald}
   z = \frac{B_j}{SE(B_j)} 
+  (\#eq:16-3)
 \end{equation}
  
 ### Goodness of Fit
@@ -143,21 +144,23 @@ To test for the overall null hypothesis that all $B$'s are equal to zero (simila
 is statistically significant. $G^2$ is expressed as: 
 
  \begin{equation}
-   \label{eq:G}
    G^2 = 2(\text{log}_e L_1 - \text{log}_e L_0)
+   (\#eq:16-4)
 \end{equation}
 
 where $L_1$ is the demographic model and $L_0$ is the null model. The $G^2$ test statistic takes the difference between the log likelihoods of the two models and compares that to a $\chi^2$ distribution with $q$ degrees of freedom, where $q$ is the difference in the number of IVs. We can calculate this in `R`.  First, we run a null model predicting belief that greenhouse gases are causing the climate to change, using only
 the intercept:
 
-```{16logit2, echo=TRUE}
+```{r 16logit2, echo=TRUE}
 logit0 <- glm(glbcc ~ 1, data = ds.temp) 
 summary(logit0)
 ```
 
 We then calculate the log likelihood for the null model, 
 
-\begin{equation}\text{log}_e L_0\end{equation}
+\begin{equation}\text{log}_e L_0
+(\#eq:16-5)
+\end{equation}
 
 ```{r loglik, echo=TRUE}
 logLik(logit0)
@@ -165,9 +168,11 @@ logLik(logit0)
 
 Next, we calculate the log likelihood for the demographic model, 
 
-\begin{equation}\text{log}_e L_0\end{equation}
+\begin{equation}\text{log}_e L_0
+(\#eq:16-6)
+\end{equation}
 
-Recall that we generated this model (dubbed ``logit1") earlier:
+Recall that we generated this model (dubbed "logit1") earlier:
 
 ```{r loglik2, echo=TRUE}
 logLik(logit1)
@@ -201,18 +206,18 @@ A measure that is equivalent to the $R^2$ in OLS does not exist for logit. Remem
 Deviance is analogous to the residual sum of squares for a linear model. It is expressed as:
 
 \begin{equation}
-  \label{eq:dev}
   \text{deviance} = -2(\text{log}_e L)
+  (\#eq:16-7)
 \end{equation}
 
 It is simply the log-likelihood of the model multiplied by a $-2$. The pseudo $R^2$ is $1$ minus the ratio of the deviance of the full model $L_1$ to the deviance of the null model $L_0$:
 
 \begin{equation}
-  \label{eq:psR2}
   \text{pseudo} R^2 = 1-\frac{-2(\text{log}_e L_1)}{-2(\text{log}_e L_0)} 
+  (\#eq:16-8)
 \end{equation}
 
-This can be calculated in \texttt{R} using the full model with ideology. 
+This can be calculated in 'R' using the full model with ideology. 
 
 ```{r pseuddor2, echo=TRUE}
 pseudoR2 <- 1 - (logit2$deviance/logit2$null.deviance)
@@ -227,8 +232,8 @@ Another way to examine goodness-of-fit is the Akaike information criteria (AIC).
 AIC is defined as -2 times the residual deviance of the model plus two times the number of parameters, or $k$ IVs plus the intercept:
 
 \begin{equation}
-  \label{eq:aic}
   \text{AIC} = -2(\text{log}_e L) + 2(k+1) 
+  (\#eq:16-9)
 \end{equation}
 
 Note that smaller values are indicative of a better fit. The AIC is most useful when comparing the fit of alternative (not necessarily nested) models. In `R`, AIC is given as part of the `summary` output for a `glm` object, but we can also calculate it and verify. 
@@ -283,7 +288,7 @@ log.data <- logit2 %>%
 log.data
 ```
 
-The output shows, for each case, the ideology measure for the respondent followed by the estimated probability ($p$) that the individual believes man-made greenhouse gasses are causing climate change.  We can also graph the results with $95\%$ confidence intervals. This is shown in Figure \@ref{fig:logitplot}.
+The output shows, for each case, the ideology measure for the respondent followed by the estimated probability ($p$) that the individual believes man-made greenhouse gasses are causing climate change.  We can also graph the results with $95\%$ confidence intervals. This is shown in Figure \@ref(fig:logitplot).
 
 ```{r logitplot, echo=TRUE, fig.cap="Predicted Probability of believing that Greenhouse Gases cause Climate Change by Ideology"}
 log.df <- log.data %>%

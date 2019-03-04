@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="15.2 OLS Diagnostic Techniques | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition With Applications in R" />
+<meta property="og:type" content="book" />
+
+
+
+
+
+<meta name="author" content="Hank Jenkins-Smith" />
+<meta name="author" content="Joseph Ripberger" />
+<meta name="author" content="Gary Copeland" />
+<meta name="author" content="Matthew Nowlin" />
+<meta name="author" content="Tyler Hughes" />
+<meta name="author" content="Aaron Fister" />
+<meta name="author" content="Wesley Wehde" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="15.2 OLS Diagnostic Techniques | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition With Applications in R">
+
+<title>15.2 OLS Diagnostic Techniques | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition With Applications in R</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#preface-and-acknowledgments">Preface and Acknowledgments</a><ul>
+<li><a href="copyright.html#copyright">Copyright</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-theories-and-social-science.html#theories-and-social-science"><span class="toc-section-number">1</span> Theories and Social Science</a><ul>
+<li><a href="1-1-the-scientific-method.html#the-scientific-method"><span class="toc-section-number">1.1</span> The Scientific Method</a></li>
+<li class="has-sub"><a href="1-2-theory-and-empirical-research.html#theory-and-empirical-research"><span class="toc-section-number">1.2</span> Theory and Empirical Research</a><ul>
+<li><a href="1-2-theory-and-empirical-research.html#coherent-and-internally-consistent"><span class="toc-section-number">1.2.1</span> Coherent and Internally Consistent</a></li>
+<li><a href="1-2-theory-and-empirical-research.html#theories-and-causality"><span class="toc-section-number">1.2.2</span> Theories and Causality</a></li>
+<li><a href="1-2-theory-and-empirical-research.html#generation-of-testable-hypothesis"><span class="toc-section-number">1.2.3</span> Generation of Testable Hypothesis</a></li>
+</ul></li>
+<li><a href="1-3-theory-and-functions.html#theory-and-functions"><span class="toc-section-number">1.3</span> Theory and Functions</a></li>
+<li><a href="1-4-theory-in-social-science.html#theory-in-social-science"><span class="toc-section-number">1.4</span> Theory in Social Science</a></li>
+<li><a href="1-5-outline-of-the-book.html#outline-of-the-book"><span class="toc-section-number">1.5</span> Outline of the Book</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-research-design.html#research-design"><span class="toc-section-number">2</span> Research Design</a><ul>
+<li><a href="2-1-overview-of-the-research-process.html#overview-of-the-research-process"><span class="toc-section-number">2.1</span> Overview of the Research Process</a></li>
+<li><a href="2-2-internal-and-external-validity.html#internal-and-external-validity"><span class="toc-section-number">2.2</span> Internal and External Validity</a></li>
+<li><a href="2-3-major-classes-of-designs.html#major-classes-of-designs"><span class="toc-section-number">2.3</span> Major Classes of Designs</a></li>
+<li><a href="2-4-threats-to-validity.html#threats-to-validity"><span class="toc-section-number">2.4</span> Threats to Validity</a></li>
+<li><a href="2-5-some-common-designs.html#some-common-designs"><span class="toc-section-number">2.5</span> Some Common Designs</a></li>
+<li><a href="2-6-plan-meets-reality.html#plan-meets-reality"><span class="toc-section-number">2.6</span> Plan Meets Reality</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-exploring-and-visualizing-data.html#exploring-and-visualizing-data"><span class="toc-section-number">3</span> Exploring and Visualizing Data</a><ul>
+<li class="has-sub"><a href="3-1-characterizing-data.html#characterizing-data"><span class="toc-section-number">3.1</span> Characterizing Data</a><ul>
+<li><a href="3-1-characterizing-data.html#central-tendency"><span class="toc-section-number">3.1.1</span> Central Tendency</a></li>
+<li><a href="3-1-characterizing-data.html#level-of-measurement-and-central-tendency"><span class="toc-section-number">3.1.2</span> Level of Measurement and Central Tendency</a></li>
+<li><a href="3-1-characterizing-data.html#moments"><span class="toc-section-number">3.1.3</span> Moments</a></li>
+<li><a href="3-1-characterizing-data.html#first-moment-expected-value"><span class="toc-section-number">3.1.4</span> First Moment – Expected Value</a></li>
+<li><a href="3-1-characterizing-data.html#the-second-moment-variance-and-standard-deviation"><span class="toc-section-number">3.1.5</span> The Second Moment – Variance and Standard Deviation</a></li>
+<li><a href="3-1-characterizing-data.html#the-third-moment-skewness"><span class="toc-section-number">3.1.6</span> The Third Moment – Skewness</a></li>
+<li><a href="3-1-characterizing-data.html#the-fourth-moment-kurtosis"><span class="toc-section-number">3.1.7</span> The Fourth Moment – Kurtosis</a></li>
+<li><a href="3-1-characterizing-data.html#order-statistics"><span class="toc-section-number">3.1.8</span> Order Statistics</a></li>
+</ul></li>
+<li><a href="3-2-summary.html#summary"><span class="toc-section-number">3.2</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-probability.html#probability"><span class="toc-section-number">4</span> Probability</a><ul>
+<li><a href="4-1-finding-probabilities.html#finding-probabilities"><span class="toc-section-number">4.1</span> Finding Probabilities</a></li>
+<li><a href="4-2-finding-probabilities-with-the-normal-curve.html#finding-probabilities-with-the-normal-curve"><span class="toc-section-number">4.2</span> Finding Probabilities with the Normal Curve</a></li>
+<li><a href="4-3-summary-1.html#summary-1"><span class="toc-section-number">4.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-inference.html#inference"><span class="toc-section-number">5</span> Inference</a><ul>
+<li class="has-sub"><a href="5-1-inference-populations-and-samples.html#inference-populations-and-samples"><span class="toc-section-number">5.1</span> Inference: Populations and Samples</a><ul>
+<li><a href="5-1-inference-populations-and-samples.html#populations-and-samples"><span class="toc-section-number">5.1.1</span> Populations and Samples</a></li>
+<li><a href="5-1-inference-populations-and-samples.html#sampling-and-knowing"><span class="toc-section-number">5.1.2</span> Sampling and Knowing</a></li>
+<li><a href="5-1-inference-populations-and-samples.html#sampling-strategies"><span class="toc-section-number">5.1.3</span> Sampling Strategies</a></li>
+<li><a href="5-1-inference-populations-and-samples.html#sampling-techniques"><span class="toc-section-number">5.1.4</span> Sampling Techniques</a></li>
+<li><a href="5-1-inference-populations-and-samples.html#so-how-is-it-that-we-know"><span class="toc-section-number">5.1.5</span> So How is it That We Know?</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-2-the-normal-distribution.html#the-normal-distribution"><span class="toc-section-number">5.2</span> The Normal Distribution</a><ul>
+<li><a href="5-2-the-normal-distribution.html#standardizing-a-normal-distribution-and-z-scores"><span class="toc-section-number">5.2.1</span> Standardizing a Normal Distribution and Z-scores</a></li>
+<li><a href="5-2-the-normal-distribution.html#the-central-limit-theorem"><span class="toc-section-number">5.2.2</span> The Central Limit Theorem</a></li>
+<li><a href="5-2-the-normal-distribution.html#populations-samples-and-symbols"><span class="toc-section-number">5.2.3</span> Populations, Samples and Symbols</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-3-inferences-to-the-population-from-the-sample.html#inferences-to-the-population-from-the-sample"><span class="toc-section-number">5.3</span> Inferences to the Population from the Sample</a><ul>
+<li><a href="5-3-inferences-to-the-population-from-the-sample.html#confidence-intervals"><span class="toc-section-number">5.3.1</span> Confidence Intervals</a></li>
+<li><a href="5-3-inferences-to-the-population-from-the-sample.html#the-logic-of-hypothesis-testing"><span class="toc-section-number">5.3.2</span> The Logic of Hypothesis Testing</a></li>
+<li><a href="5-3-inferences-to-the-population-from-the-sample.html#some-miscellaneous-notes-about-hypothesis-testing"><span class="toc-section-number">5.3.3</span> Some Miscellaneous Notes about Hypothesis Testing</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-4-differences-between-groups.html#differences-between-groups"><span class="toc-section-number">5.4</span> Differences Between Groups</a><ul>
+<li><a href="5-4-differences-between-groups.html#t-tests"><span class="toc-section-number">5.4.1</span> <span class="math inline">\(t\)</span>-tests</a></li>
+</ul></li>
+<li><a href="5-5-summary-2.html#summary-2"><span class="toc-section-number">5.5</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="6-association-of-variables.html#association-of-variables"><span class="toc-section-number">6</span> Association of Variables</a><ul>
+<li class="has-sub"><a href="6-1-cross-tabulation.html#cross-tabulation"><span class="toc-section-number">6.1</span> Cross-Tabulation</a><ul>
+<li><a href="6-1-cross-tabulation.html#crosstabulation-and-control"><span class="toc-section-number">6.1.1</span> Crosstabulation and Control</a></li>
+</ul></li>
+<li><a href="6-2-covariance.html#covariance"><span class="toc-section-number">6.2</span> Covariance</a></li>
+<li><a href="6-3-correlation.html#correlation"><span class="toc-section-number">6.3</span> Correlation</a></li>
+<li><a href="6-4-scatterplots.html#scatterplots"><span class="toc-section-number">6.4</span> Scatterplots</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-the-logic-of-ordinary-least-squares-estimation.html#the-logic-of-ordinary-least-squares-estimation"><span class="toc-section-number">7</span> The Logic of Ordinary Least Squares Estimation</a><ul>
+<li class="has-sub"><a href="7-1-theoretical-models.html#theoretical-models"><span class="toc-section-number">7.1</span> Theoretical Models</a><ul>
+<li><a href="7-1-theoretical-models.html#deterministic-linear-model"><span class="toc-section-number">7.1.1</span> Deterministic Linear Model</a></li>
+<li><a href="7-1-theoretical-models.html#stochastic-linear-model"><span class="toc-section-number">7.1.2</span> Stochastic Linear Model</a></li>
+<li><a href="7-1-theoretical-models.html#assumptions-about-the-error-term"><span class="toc-section-number">7.1.3</span> Assumptions about the Error Term</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-2-estimating-linear-models.html#estimating-linear-models"><span class="toc-section-number">7.2</span> Estimating Linear Models</a><ul>
+<li><a href="7-2-estimating-linear-models.html#residuals"><span class="toc-section-number">7.2.1</span> Residuals</a></li>
+</ul></li>
+<li><a href="7-3-an-example-of-simple-regression.html#an-example-of-simple-regression"><span class="toc-section-number">7.3</span> An Example of Simple Regression</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-linear-estimation-and-minimizing-error.html#linear-estimation-and-minimizing-error"><span class="toc-section-number">8</span> Linear Estimation and Minimizing Error</a><ul>
+<li class="has-sub"><a href="8-1-minimizing-error-using-derivatives.html#minimizing-error-using-derivatives"><span class="toc-section-number">8.1</span> Minimizing Error using Derivatives</a><ul>
+<li><a href="8-1-minimizing-error-using-derivatives.html#rules-of-derivation"><span class="toc-section-number">8.1.1</span> Rules of Derivation</a></li>
+<li><a href="8-1-minimizing-error-using-derivatives.html#critical-points"><span class="toc-section-number">8.1.2</span> Critical Points</a></li>
+<li><a href="8-1-minimizing-error-using-derivatives.html#partial-derivation"><span class="toc-section-number">8.1.3</span> Partial Derivation</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-2-deriving-ols-estimators.html#deriving-ols-estimators"><span class="toc-section-number">8.2</span> Deriving OLS Estimators</a><ul>
+<li><a href="8-2-deriving-ols-estimators.html#ols-derivation-of-hatalpha"><span class="toc-section-number">8.2.1</span> OLS Derivation of <span class="math inline">\(\hat{\alpha}\)</span></a></li>
+<li><a href="8-2-deriving-ols-estimators.html#ols-derivation-of-hatbeta"><span class="toc-section-number">8.2.2</span> OLS Derivation of <span class="math inline">\(\hat{\beta}\)</span></a></li>
+<li><a href="8-2-deriving-ols-estimators.html#interpreting-hatbeta-and-hatalpha"><span class="toc-section-number">8.2.3</span> Interpreting <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span></a></li>
+</ul></li>
+<li><a href="8-3-summary-3.html#summary-3"><span class="toc-section-number">8.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-bi-variate-hypothesis-testing-and-model-fit.html#bi-variate-hypothesis-testing-and-model-fit"><span class="toc-section-number">9</span> Bi-Variate Hypothesis Testing and Model Fit</a><ul>
+<li class="has-sub"><a href="9-1-hypothesis-tests-for-regression-coefficients.html#hypothesis-tests-for-regression-coefficients"><span class="toc-section-number">9.1</span> Hypothesis Tests for Regression Coefficients</a><ul>
+<li><a href="9-1-hypothesis-tests-for-regression-coefficients.html#residual-standard-error"><span class="toc-section-number">9.1.1</span> Residual Standard Error</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-2-measuring-goodness-of-fit.html#measuring-goodness-of-fit"><span class="toc-section-number">9.2</span> Measuring Goodness of Fit</a><ul>
+<li><a href="9-2-measuring-goodness-of-fit.html#sample-covariance-and-correlations"><span class="toc-section-number">9.2.1</span> Sample Covariance and Correlations</a></li>
+<li><a href="9-2-measuring-goodness-of-fit.html#coefficient-of-determination-r2"><span class="toc-section-number">9.2.2</span> Coefficient of Determination: <span class="math inline">\(R^{2}\)</span></a></li>
+<li><a href="9-2-measuring-goodness-of-fit.html#visualizing-bivariate-regression"><span class="toc-section-number">9.2.3</span> Visualizing Bivariate Regression</a></li>
+</ul></li>
+<li><a href="9-3-summary-4.html#summary-4"><span class="toc-section-number">9.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="10-ols-assumptions-and-simple-regression-diagnostics.html#ols-assumptions-and-simple-regression-diagnostics"><span class="toc-section-number">10</span> OLS Assumptions and Simple Regression Diagnostics</a><ul>
+<li><a href="10-1-a-recap-of-modeling-assumptions.html#a-recap-of-modeling-assumptions"><span class="toc-section-number">10.1</span> A Recap of Modeling Assumptions</a></li>
+<li class="has-sub"><a href="10-2-when-things-go-bad-with-residuals.html#when-things-go-bad-with-residuals"><span class="toc-section-number">10.2</span> When Things Go Bad with Residuals</a><ul>
+<li><a href="10-2-when-things-go-bad-with-residuals.html#outlier-data"><span class="toc-section-number">10.2.1</span> “Outlier” Data</a></li>
+<li><a href="10-2-when-things-go-bad-with-residuals.html#non-constant-variance"><span class="toc-section-number">10.2.2</span> Non-Constant Variance</a></li>
+<li><a href="10-2-when-things-go-bad-with-residuals.html#non-linearity-in-the-parameters"><span class="toc-section-number">10.2.3</span> Non-Linearity in the Parameters</a></li>
+</ul></li>
+<li class="has-sub"><a href="10-3-application-of-residual-diagnostics.html#application-of-residual-diagnostics"><span class="toc-section-number">10.3</span> Application of Residual Diagnostics</a><ul>
+<li><a href="10-3-application-of-residual-diagnostics.html#testing-for-non-linearity"><span class="toc-section-number">10.3.1</span> Testing for Non-Linearity</a></li>
+<li><a href="10-3-application-of-residual-diagnostics.html#testing-for-normality-in-model-residuals"><span class="toc-section-number">10.3.2</span> Testing for Normality in Model Residuals</a></li>
+<li><a href="10-3-application-of-residual-diagnostics.html#testing-for-non-constant-variance-in-the-residuals"><span class="toc-section-number">10.3.3</span> Testing for Non-Constant Variance in the Residuals</a></li>
+<li><a href="10-3-application-of-residual-diagnostics.html#examining-outlier-data"><span class="toc-section-number">10.3.4</span> Examining Outlier Data</a></li>
+</ul></li>
+<li><a href="10-4-so-now-what-implications-of-residual-analysis.html#so-now-what-implications-of-residual-analysis"><span class="toc-section-number">10.4</span> So Now What? Implications of Residual Analysis</a></li>
+<li><a href="10-5-summary-5.html#summary-5"><span class="toc-section-number">10.5</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="11-introduction-to-multiple-regression.html#introduction-to-multiple-regression"><span class="toc-section-number">11</span> Introduction to Multiple Regression</a><ul>
+<li><a href="11-1-matrix-algebra-and-multiple-regression.html#matrix-algebra-and-multiple-regression"><span class="toc-section-number">11.1</span> Matrix Algebra and Multiple Regression</a></li>
+<li class="has-sub"><a href="11-2-the-basics-of-matrix-algebra.html#the-basics-of-matrix-algebra"><span class="toc-section-number">11.2</span> The Basics of Matrix Algebra</a><ul>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#matrix-basics"><span class="toc-section-number">11.2.1</span> Matrix Basics</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#vectors"><span class="toc-section-number">11.2.2</span> Vectors</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#matrix-operations"><span class="toc-section-number">11.2.3</span> Matrix Operations</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#transpose"><span class="toc-section-number">11.2.4</span> Transpose</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#adding-matrices"><span class="toc-section-number">11.2.5</span> Adding Matrices</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#multiplication-of-matrices"><span class="toc-section-number">11.2.6</span> Multiplication of Matrices</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#identity-matrices"><span class="toc-section-number">11.2.7</span> Identity Matrices</a></li>
+<li><a href="11-2-the-basics-of-matrix-algebra.html#matrix-inversion"><span class="toc-section-number">11.2.8</span> Matrix Inversion</a></li>
+</ul></li>
+<li><a href="11-3-ols-regression-in-matrix-form.html#ols-regression-in-matrix-form"><span class="toc-section-number">11.3</span> OLS Regression in Matrix Form</a></li>
+<li><a href="11-4-summary-6.html#summary-6"><span class="toc-section-number">11.4</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="12-the-logic-of-multiple-regression.html#the-logic-of-multiple-regression"><span class="toc-section-number">12</span> The Logic of Multiple Regression</a><ul>
+<li class="has-sub"><a href="12-1-theoretical-specification.html#theoretical-specification"><span class="toc-section-number">12.1</span> Theoretical Specification</a><ul>
+<li><a href="12-1-theoretical-specification.html#assumptions-of-ols-regression"><span class="toc-section-number">12.1.1</span> Assumptions of OLS Regression</a></li>
+</ul></li>
+<li><a href="12-2-partial-effects.html#partial-effects"><span class="toc-section-number">12.2</span> Partial Effects</a></li>
+<li class="has-sub"><a href="12-3-multiple-regression-example.html#multiple-regression-example"><span class="toc-section-number">12.3</span> Multiple Regression Example</a><ul>
+<li><a href="12-3-multiple-regression-example.html#hypothesis-testing-and-t-tests"><span class="toc-section-number">12.3.1</span> Hypothesis Testing and <span class="math inline">\(t\)</span>-tests</a></li>
+</ul></li>
+<li><a href="12-4-summary-7.html#summary-7"><span class="toc-section-number">12.4</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="13-multiple-regression-and-model-building.html#multiple-regression-and-model-building"><span class="toc-section-number">13</span> Multiple Regression and Model Building</a><ul>
+<li class="has-sub"><a href="13-1-model-building.html#model-building"><span class="toc-section-number">13.1</span> Model Building</a><ul>
+<li><a href="13-1-model-building.html#theory-and-hypotheses"><span class="toc-section-number">13.1.1</span> Theory and Hypotheses</a></li>
+<li><a href="13-1-model-building.html#empirical-indicators"><span class="toc-section-number">13.1.2</span> Empirical Indicators</a></li>
+<li><a href="13-1-model-building.html#risks-in-model-building"><span class="toc-section-number">13.1.3</span> Risks in Model Building</a></li>
+</ul></li>
+<li><a href="13-2-evils-of-stepwise-regression.html#evils-of-stepwise-regression"><span class="toc-section-number">13.2</span> Evils of Stepwise Regression</a></li>
+<li><a href="13-3-summary-8.html#summary-8"><span class="toc-section-number">13.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="14-topics-in-multiple-regression.html#topics-in-multiple-regression"><span class="toc-section-number">14</span> Topics in Multiple Regression</a><ul>
+<li><a href="14-1-dummy-variables.html#dummy-variables"><span class="toc-section-number">14.1</span> Dummy Variables</a></li>
+<li><a href="14-2-interaction-effects.html#interaction-effects"><span class="toc-section-number">14.2</span> Interaction Effects</a></li>
+<li><a href="14-3-standardized-regression-coefficients.html#standardized-regression-coefficients"><span class="toc-section-number">14.3</span> Standardized Regression Coefficients</a></li>
+<li><a href="14-4-summary-9.html#summary-9"><span class="toc-section-number">14.4</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-the-art-of-regression-diagnostics.html#the-art-of-regression-diagnostics"><span class="toc-section-number">15</span> The Art of Regression Diagnostics</a><ul>
+<li><a href="15-1-ols-error-assumptions-revisited.html#ols-error-assumptions-revisited"><span class="toc-section-number">15.1</span> OLS Error Assumptions Revisited</a></li>
+<li class="has-sub"><a href="15-2-ols-diagnostic-techniques.html#ols-diagnostic-techniques"><span class="toc-section-number">15.2</span> OLS Diagnostic Techniques</a><ul>
+<li><a href="15-2-ols-diagnostic-techniques.html#non-linearity"><span class="toc-section-number">15.2.1</span> Non-Linearity</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#non-constant-variance-or-heteroscedasticity"><span class="toc-section-number">15.2.2</span> Non-Constant Variance, or Heteroscedasticity</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#independence-of-e"><span class="toc-section-number">15.2.3</span> Independence of <span class="math inline">\(E\)</span></a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#normality-of-the-residuals"><span class="toc-section-number">15.2.4</span> Normality of the Residuals</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#outliers-leverage-and-influence"><span class="toc-section-number">15.2.5</span> Outliers, Leverage, and Influence</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#outliers"><span class="toc-section-number">15.2.6</span> Outliers</a></li>
+<li><a href="15-2-ols-diagnostic-techniques.html#multicollinearity"><span class="toc-section-number">15.2.7</span> Multicollinearity</a></li>
+</ul></li>
+<li><a href="15-3-summary-10.html#summary-10"><span class="toc-section-number">15.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="16-logit-regression.html#logit-regression"><span class="toc-section-number">16</span> Logit Regression</a><ul>
+<li><a href="16-1-generalized-linear-models.html#generalized-linear-models"><span class="toc-section-number">16.1</span> Generalized Linear Models</a></li>
+<li class="has-sub"><a href="16-2-logit-estimation.html#logit-estimation"><span class="toc-section-number">16.2</span> Logit Estimation</a><ul>
+<li><a href="16-2-logit-estimation.html#logit-hypothesis-tests"><span class="toc-section-number">16.2.1</span> Logit Hypothesis Tests</a></li>
+<li><a href="16-2-logit-estimation.html#goodness-of-fit"><span class="toc-section-number">16.2.2</span> Goodness of Fit</a></li>
+<li><a href="16-2-logit-estimation.html#interpreting-logits"><span class="toc-section-number">16.2.3</span> Interpreting Logits</a></li>
+</ul></li>
+<li><a href="16-3-summary-11.html#summary-11"><span class="toc-section-number">16.3</span> Summary</a></li>
+</ul></li>
+<li class="has-sub"><a href="17-appendix-basic-r.html#appendix-basic-r"><span class="toc-section-number">17</span> Appendix: Basic R</a><ul>
+<li><a href="17-1-introduction-to-r.html#introduction-to-r"><span class="toc-section-number">17.1</span> Introduction to R</a></li>
+<li><a href="17-2-downloading-r-and-rstudio.html#downloading-r-and-rstudio"><span class="toc-section-number">17.2</span> Downloading R and RStudio</a></li>
+<li><a href="17-3-introduction-to-programming.html#introduction-to-programming"><span class="toc-section-number">17.3</span> Introduction to Programming</a></li>
+<li><a href="17-4-uploadingreading-data.html#uploadingreading-data"><span class="toc-section-number">17.4</span> Uploading/Reading Data</a></li>
+<li><a href="17-5-data-manipulation-in-r.html#data-manipulation-in-r"><span class="toc-section-number">17.5</span> Data Manipulation in R</a></li>
+<li><a href="17-6-savingwriting-data.html#savingwriting-data"><span class="toc-section-number">17.6</span> Saving/Writing Data</a></li>
+<li><a href="17-7-the-tidyverse.html#the-tidyverse"><span class="toc-section-number">17.7</span> The Tidyverse</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="ols-diagnostic-techniques" class="section level2">
+<h2><span class="header-section-number">15.2</span> OLS Diagnostic Techniques</h2>
+<p>In this section, we examine the residuals from a multiple regression model for potential problems. Note that we use a subsample of the first 500 observations, drawn from the larger ``tbur.data&quot; dataset, to permit easier evaluation of the plots of residuals. We begin with an evaluation of the assumption of the linearity of the relationship between the <span class="math inline">\(X\)</span>s and <span class="math inline">\(Y\)</span>, and then evaluate assumptions regarding the error term.</p>
+<p>Our multiple regression model predicts survey respondents’ levels of risk perceived of climate change (<span class="math inline">\(Y\)</span>) using political ideology, age, household income, and educational achievement as independent variables (<span class="math inline">\(X\)</span>s). The results of the regression model as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ols1 &lt;-<span class="st">  </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.small)
+<span class="kw">summary</span>(ols1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = glbcc_risk ~ age + education + income + ideol, data = ds.small)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.1617 -1.7131 -0.0584  1.7216  6.8981 
+## 
+## Coefficients:
+##                  Estimate    Std. Error t value            Pr(&gt;|t|)    
+## (Intercept) 12.0848259959  0.7246993630  16.676 &lt;0.0000000000000002 ***
+## age         -0.0055585796  0.0084072695  -0.661               0.509    
+## education   -0.0186146680  0.0697901408  -0.267               0.790    
+## income       0.0000001923  0.0000022269   0.086               0.931    
+## ideol       -1.2235648372  0.0663035792 -18.454 &lt;0.0000000000000002 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.353 on 445 degrees of freedom
+## Multiple R-squared:  0.4365, Adjusted R-squared:  0.4315 
+## F-statistic: 86.19 on 4 and 445 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+<p>On the basis of the <span class="math inline">\(R\)</span> output, the model appears to be quite reasonable, with a statistically significant estimated partial regression coefficient for political ideology. But let’s take a closer look.</p>
+<div id="non-linearity" class="section level3">
+<h3><span class="header-section-number">15.2.1</span> Non-Linearity</h3>
+<p>One of the most critical assumptions of OLS is that the relationships between variables are linear in their functional form. We start with a stylized example (a fancy way of saying we made it up!) of what a linear and nonlinear pattern of residuals would look like. Figure <a href="15-2-ols-diagnostic-techniques.html#fig:convar2">15.2</a> shows an illustration of how the residuals would look with a clearly linear relationship, and Figure <a href="15-2-ols-diagnostic-techniques.html#fig:nonlin">15.3</a> illustrates how the the residuals would look with a clearly non-linear relationship.</p>
+<div class="figure"><span id="fig:convar2"></span>
+<img src="_main_files/figure-html/convar2-1.png" alt="Linear" width="672" />
+<p class="caption">
+Figure 15.2: Linear
+</p>
+</div>
+<div class="figure"><span id="fig:nonlin"></span>
+<img src="_main_files/figure-html/nonlin-1.png" alt="Non-Linear" width="672" />
+<p class="caption">
+Figure 15.3: Non-Linear
+</p>
+</div>
+<p>Now let’s look at the residuals from our example model. We can check the linear nature of the relationship between the DV and the IVs in several ways. First we can plot the residuals by the values of the IVs. We also can add a lowess line to demonstrate the relationship between each of the IVs and the residuals, and add a line at <span class="math inline">\(0\)</span> for comparison.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.small<span class="op">$</span>fit.r &lt;-<span class="st"> </span>ols1<span class="op">$</span>residuals
+ds.small<span class="op">$</span>fit.p &lt;-<span class="st"> </span>ols1<span class="op">$</span>fitted.values</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape2)
+ds.small <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">melt</span>(<span class="dt">measure.vars =</span> <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>, <span class="st">&quot;fit.p&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(value, fit.r, <span class="dt">group =</span> variable)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> loess) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:multlin"></span>
+<img src="_main_files/figure-html/multlin-1.png" alt="Checking for Non-Linearity" width="672" />
+<p class="caption">
+Figure 15.4: Checking for Non-Linearity
+</p>
+</div>
+<p>As we can see in Figure <a href="15-2-ols-diagnostic-techniques.html#fig:multlin">15.4</a>, the plots of residuals by both income and ideology seem to indicate non-linear relationships. We can check this “ocular impression” by squaring each term and using the <code>anova</code> function to compare model fit.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.small<span class="op">$</span>age2 &lt;-<span class="st"> </span>ds.small<span class="op">$</span>age<span class="op">^</span><span class="dv">2</span>
+ds.small<span class="op">$</span>edu2 &lt;-<span class="st"> </span>ds.small<span class="op">$</span>education<span class="op">^</span><span class="dv">2</span>
+ds.small<span class="op">$</span>inc2 &lt;-<span class="st"> </span>ds.small<span class="op">$</span>income<span class="op">^</span><span class="dv">2</span>
+ds.small<span class="op">$</span>ideology2&lt;-ds.small<span class="op">$</span>ideol<span class="op">^</span><span class="dv">2</span>
+ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age<span class="op">+</span>age2<span class="op">+</span>education<span class="op">+</span>edu2<span class="op">+</span>income<span class="op">+</span>inc2<span class="op">+</span>ideol<span class="op">+</span>ideology2, <span class="dt">data=</span>ds.small)
+<span class="kw">summary</span>(ols2)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = glbcc_risk ~ age + age2 + education + edu2 + income + 
+##     inc2 + ideol + ideology2, data = ds.small)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.1563 -1.5894  0.0389  1.4898  7.3417 
+## 
+## Coefficients:
+##                      Estimate        Std. Error t value    Pr(&gt;|t|)    
+## (Intercept)  9.66069872535646  1.93057305147186   5.004 0.000000812 ***
+## age          0.02973349791714  0.05734762412523   0.518    0.604385    
+## age2        -0.00028910659305  0.00050097599702  -0.577    0.564175    
+## education   -0.48137978481400  0.35887879735475  -1.341    0.180499    
+## edu2         0.05131569933892  0.03722361864679   1.379    0.168723    
+## income       0.00000285263412  0.00000534134363   0.534    0.593564    
+## inc2        -0.00000000001131  0.00000000001839  -0.615    0.538966    
+## ideol       -0.05726196851107  0.35319018414228  -0.162    0.871279    
+## ideology2   -0.13270718319750  0.03964680646295  -3.347    0.000886 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.33 on 441 degrees of freedom
+## Multiple R-squared:  0.4528, Adjusted R-squared:  0.4429 
+## F-statistic: 45.61 on 8 and 441 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+<p>The model output indicates that ideology may have a non-linear relationships with risk perceptions of climate change. For ideology, only the squared term is significant, indicating that levels of perceived risk of climate change decline at an increasing rate for those on the most conservative end of the scale. Again, this is consistent with the visual inspection of the relationship between ideology and the residuals in Figure <a href="15-2-ols-diagnostic-techniques.html#fig:multlin">15.4</a>. The question remains whether the introduction of these non-linear (polynomial) terms improves overall model fit. We can check that with an analysis of variance across the simple model (without polynomial terms) and the models with the squared terms.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(ols1,ols2)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: glbcc_risk ~ age + education + income + ideol
+## Model 2: glbcc_risk ~ age + age2 + education + edu2 + income + inc2 + 
+##     ideol + ideology2
+##   Res.Df    RSS Df Sum of Sq      F  Pr(&gt;F)  
+## 1    445 2464.2                              
+## 2    441 2393.2  4    71.059 3.2736 0.01161 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>As we can see, the Anova test indicates that including the squared terms improves model fit, therefore the relationships include nonlinear components.</p>
+<p>A final way to check for non-linearity is Ramsey’s Regression Error Specification Test (RESET). This tests the functional form of the model. Similar to our test using squared terms, the RESET tests calculates an <span class="math inline">\(F\)</span> statistic that compares the linear model with a model(s) that raises the IVs to various powers. Specifically, it tests whether there are statistically significant differences in the <span class="math inline">\(R^2\)</span> of each of the models. Similar to a nested <span class="math inline">\(F\)</span> test, it is calculated by:</p>
+<span class="math display" id="eq:15-1">\[\begin{equation}
+  F = \frac{\frac{R^2_1-R^2_0}{q}}{\frac{1-R^2_1}{n-k_1}}
+  \tag{15.1}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(R^2_0\)</span> is the <span class="math inline">\(R^2\)</span> of the linear model, <span class="math inline">\(R^2_1\)</span> is the <span class="math inline">\(R^2\)</span> of the polynomial model(s), <span class="math inline">\(q\)</span> is the number of new regressors, and <span class="math inline">\(k_1\)</span> is the number of IVs in the polynomial model(s). The null hypothesis is that the functional relationship between the <span class="math inline">\(X\)</span>’s and <span class="math inline">\(Y\)</span> is linear, therefore the coefficients of the second and third powers to the IVs are zero. If there is a low <span class="math inline">\(p\)</span>-value (i.e., if we can reject the null hypothesis), non-linear relationships are suspected. This test can be run using the <code>resettest</code> function from the <code>lmtest</code> package. Here we are setting the IVs to the second and third powers and we are examining the regressor variables.<a href="#fn25" class="footnoteRef" id="fnref25"><sup>25</sup></a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lmtest)
+<span class="kw">resettest</span>(ols1,<span class="dt">power=</span><span class="dv">2</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">type=</span><span class="st">&quot;regressor&quot;</span>)</code></pre></div>
+<pre><code>## 
+##  RESET test
+## 
+## data:  ols1
+## RESET = 2.2752, df1 = 8, df2 = 437, p-value = 0.02157</code></pre>
+<p>Again, the test provides evidence that we have a non-linear relationship.</p>
+<p>What should we do when we identify a nonlinear relationship between our <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>s? The first step is to look closely at the bi-variate plots, to try to discern the correct functional form for each <span class="math inline">\(X\)</span> regressor. If the relationship looks curvilinear, try a polynomial regression in which you include both <span class="math inline">\(X\)</span> and <span class="math inline">\(X^2\)</span> for the relevant IVs. It may also be the case that a skewed DV or IV is causing the problem. This is not unusual when, for example, the income variable plays an important role in the model, and the distribution of income is skewed upward. In such a case, you can try transforming the skewed variable, using an appropriate log form.</p>
+<p>It is possible that variable transformations won’t suffice, however. In that case, you may have no other option by to try non-linear forms of regression. These non-OLS kinds of models typically use maximal likelihood functions (see the next chapter) to fit the model to the data. But that takes us considerably beyond the focus of this book.</p>
+</div>
+<div id="non-constant-variance-or-heteroscedasticity" class="section level3">
+<h3><span class="header-section-number">15.2.2</span> Non-Constant Variance, or Heteroscedasticity</h3>
+<p>Recall that OLS requires constant variance because the even spread of residuals is assumed for both <span class="math inline">\(F\)</span> and <span class="math inline">\(t\)</span> tests. To examine constant variance, we can produce (read as “make up”) a baseline plot to demonstrate what constant variance in the residuals ``should&quot; look like.</p>
+<div class="figure"><span id="fig:convar15"></span>
+<img src="_main_files/figure-html/convar15-1.png" alt="Constant Variance" width="672" />
+<p class="caption">
+Figure 15.5: Constant Variance
+</p>
+</div>
+<p>As we can see in Figure <a href="15-2-ols-diagnostic-techniques.html#fig:convar15">15.5</a>, the residuals are spread evenly and in a seemingly random fashion, much like the ``sneeze plot&quot; discussed in Chapter 10. This is the ideal pattern, indicating that the residuals do not vary systematically over the range of the predicted value for <span class="math inline">\(X\)</span>. The residuals are homoscedastistic, and thus provide the appropriate basis for the <span class="math inline">\(F\)</span> and <span class="math inline">\(t\)</span> tests needed for evaluating your hypotheses.</p>
+<p>We can also present a clearly heteroscedastistic residual term. In this case the residuals do vary systematically over the range of <span class="math inline">\(X\)</span>, indicating that the precision of the estimates of <span class="math inline">\(Y\)</span> will vary considerably over the range of predicted values. Note the distinctive fan shape in Figure <a href="15-2-ols-diagnostic-techniques.html#fig:hetero15">15.6</a>, indicating that predictions of <span class="math inline">\(Y\)</span> lose precision as the value of <span class="math inline">\(X\)</span> increases.</p>
+<div class="figure"><span id="fig:hetero15"></span>
+<img src="_main_files/figure-html/hetero15-1.png" alt="Heteroskedasticity" width="672" />
+<p class="caption">
+Figure 15.6: Heteroskedasticity
+</p>
+</div>
+<p>The first step in determining whether we have constant variance is to plot the the residuals by the fitted values for <span class="math inline">\(Y\)</span>, as follows:<a href="#fn26" class="footnoteRef" id="fnref26"><sup>26</sup></a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.small<span class="op">$</span>fit.r &lt;-<span class="st"> </span>ols1<span class="op">$</span>residuals
+ds.small<span class="op">$</span>fit.p &lt;-<span class="st"> </span>ols1<span class="op">$</span>fitted.values
+<span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.p, fit.r)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Residuals&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Fitted&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:multregres"></span>
+<img src="_main_files/figure-html/multregres-1.png" alt="Multiple Regression Residuals and Fitted Values" width="672" />
+<p class="caption">
+Figure 15.7: Multiple Regression Residuals and Fitted Values
+</p>
+</div>
+<p>Based on the pattern evident in Figure <a href="15-2-ols-diagnostic-techniques.html#fig:multregres">15.7</a>, the residuals appear to show heteroscedasticity. We can test for non-constant error using the Breusch-Pagan (aka Cook-Weisberg) test. This tests the null hypothesis that the error variance is constant, therefore a small p value would indicate that we have heteroscedasticity. In R we can use the ncvTest function from the car package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(car)
+<span class="kw">ncvTest</span>(ols1)</code></pre></div>
+<pre><code>## Non-constant Variance Score Test 
+## Variance formula: ~ fitted.values 
+## Chisquare = 12.70938    Df = 1     p = 0.0003638269</code></pre>
+<p>The non-constant variance test provides confirmation that the residuals from our model are heteroscedastistic.</p>
+<p>What are the implications? Our <span class="math inline">\(t\)</span>-tests for the estimated partial regression coefficients assumed constant variance. With the evidence of heteroscedasticity, we conclude that these tests are unreliable (the precision of our estimates will be greater in some ranges of <span class="math inline">\(X\)</span> than others).</p>
+<p>They are several steps that can be considered when confronted by heteroscedasticity in the residuals. First, we can consider whether we need to re-specify the model, possibly because we have some omitted variables. If model re-specification does not correct the problem, we can use non-OLS regression techniques that include robust estimated standard errors. Robust standard errors are appropriate when error variance is unknown. Robust standard errors do not change the estimate of <span class="math inline">\(B\)</span>, but adjust the estimated standard error of each coefficient, <span class="math inline">\(SE(B)\)</span>, thus giving more accurate <span class="math inline">\(p\)</span> values. In this example, we draw on White’s (1980)<a href="#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a> method to calculate robust standard errors.</p>
+<p>White uses a <strong>heteroscedasticity consistent covariance matrix</strong> (hccm) to calculate standard errors when the error term has non-constant variance. Under the OLS assumption of constant error variance, the covariance matrix of <span class="math inline">\(b\)</span> is:</p>
+<span class="math display">\[\begin{equation*}
+  V(b) = (X&#39;X)^{-1} X&#39;V(y)X(X&#39;X)^{-1}
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(V(y)=\sigma^{2}_{e}I_n\)</span>,</p>
+<p>therefore,</p>
+<p><span class="math inline">\(V(b)=\sigma^{2}_{e}(X&#39;X)^{-1}\)</span>.</p>
+<p>If the error terms have distinct variances, a consistent estimator constrains <span class="math inline">\(\Sigma\)</span> to a diagonal matrix of the squared residuals,</p>
+<p><span class="math inline">\(\Sigma=\text{diag}(\sigma^2_1,\ldots,\sigma^2_n)\)</span></p>
+<p>where <span class="math inline">\(\sigma^2_i\)</span> is estimated by <span class="math inline">\(e^2_i\)</span>. Therefore the hccm estimator is expressed as:</p>
+<span class="math display">\[\begin{equation*}
+ V_{hccm}(b) = (X&#39;X)^{-1} X&#39;\text{diag}(e^2_i,\ldots,e^2_n) X(X&#39;X)^{-1}
+\end{equation*}\]</span>
+<p>We can use the <code>hccm</code> function from the <code>car</code> package to calculate the robust standard errors for our regression model, predicting perceived environmental risk (<span class="math inline">\(Y\)</span>) with political ideology, age, education and income as the <span class="math inline">\(X\)</span> variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(car)
+<span class="kw">hccm</span>(ols1) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diag</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sqrt</span>()</code></pre></div>
+<pre><code>##    (Intercept)            age      education         income          ideol 
+## 0.668778725013 0.008030365625 0.069824489564 0.000002320899 0.060039031426</code></pre>
+<p>Using the <code>hccm</code> function we can create a function in <code>R</code> that will calculate the robust standard errors and the subsequent <span class="math inline">\(t\)</span>-values and <span class="math inline">\(p\)</span>-values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(car)
+robust.se &lt;-<span class="st"> </span><span class="cf">function</span>(model) {
+  s &lt;-<span class="st"> </span><span class="kw">summary</span>(model)
+  wse &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">diag</span>(<span class="kw">hccm</span>(ols1)))
+  t &lt;-<span class="st"> </span>model<span class="op">$</span>coefficients<span class="op">/</span>wse
+  p &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="kw">pnorm</span>(<span class="op">-</span><span class="kw">abs</span>(t))
+  results &lt;-<span class="st"> </span><span class="kw">cbind</span>(model<span class="op">$</span>coefficients, wse, t, p)
+  <span class="kw">dimnames</span>(results) &lt;-<span class="st"> </span><span class="kw">dimnames</span>(s<span class="op">$</span>coefficients)
+  results
+}</code></pre></div>
+<p>We can then compare our results with the original simple regression model results.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ols1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = glbcc_risk ~ age + education + income + ideol, data = ds.small)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.1617 -1.7131 -0.0584  1.7216  6.8981 
+## 
+## Coefficients:
+##                  Estimate    Std. Error t value            Pr(&gt;|t|)    
+## (Intercept) 12.0848259959  0.7246993630  16.676 &lt;0.0000000000000002 ***
+## age         -0.0055585796  0.0084072695  -0.661               0.509    
+## education   -0.0186146680  0.0697901408  -0.267               0.790    
+## income       0.0000001923  0.0000022269   0.086               0.931    
+## ideol       -1.2235648372  0.0663035792 -18.454 &lt;0.0000000000000002 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.353 on 445 degrees of freedom
+## Multiple R-squared:  0.4365, Adjusted R-squared:  0.4315 
+## F-statistic: 86.19 on 4 and 445 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">robust.se</span>(ols1)</code></pre></div>
+<pre><code>##                     Estimate     Std. Error      t value
+## (Intercept) 12.0848259958670 0.668778725013  18.06999168
+## age         -0.0055585796372 0.008030365625  -0.69219509
+## education   -0.0186146679570 0.069824489564  -0.26659225
+## income       0.0000001922905 0.000002320899   0.08285175
+## ideol       -1.2235648372311 0.060039031426 -20.37948994
+##                                                                                                         Pr(&gt;|t|)
+## (Intercept) 0.00000000000000000000000000000000000000000000000000000000000000000000000054921988962793404326183377
+## age         0.48881482326776815039437451559933833777904510498046875000000000000000000000000000000000000000000000
+## education   0.78978312137982031870819810137618333101272583007812500000000000000000000000000000000000000000000000
+## income      0.93396941638148500697269582815351895987987518310546875000000000000000000000000000000000000000000000
+## ideol       0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002542911</code></pre>
+<p>As we see the estimated <span class="math inline">\(B\)</span>’s remain the same, but the estimated standard errors, <span class="math inline">\(t\)</span>-values and <span class="math inline">\(p\)</span>-values are adjusted to reflect the robust estimation. Despite these adjustments, the results of the hypothesis test remain unchanged.</p>
+<p>It is important to note that, while robust estimators can help atone for heteroscedasticity in your models, their use <em>should not</em> be seen as an alternative to careful model construction. The first step should always be to evaluate your model specification and functional form (e.g., the use of polynomials, inclusion of relevant variables), as well as possible measurement error, before resorting to robust estimation.</p>
+</div>
+<div id="independence-of-e" class="section level3">
+<h3><span class="header-section-number">15.2.3</span> Independence of <span class="math inline">\(E\)</span></h3>
+<p>As noted above, we cannot test for the assumption that the error term <span class="math inline">\(E\)</span> is independent of the <span class="math inline">\(X\)</span>’s. However we can test to see whether the error terms, <span class="math inline">\(E_i\)</span>, are correlated with each other. One of the assumptions of OLS is that <span class="math inline">\(E(\epsilon_i) \neq E(\epsilon_j)\)</span> for <span class="math inline">\(i \neq j\)</span>. When there is a relationship between the residuals, this is referred to as serial correlation or <strong>autocorrelation</strong>. Autocorrelation is most likely to occur with time-series data, however it can occur with cross-sectional data as well. To test for autocorrelation we use the Durbin-Watson, <span class="math inline">\(d\)</span>, test statistic. The <span class="math inline">\(d\)</span> statistic is expressed as:</p>
+<span class="math display" id="eq:15-2">\[\begin{equation}
+  d = \frac{\sum_{i=2}^{n} (E_i-E_{i-1})^{2}}{\sum_{i=1}^{n} E^{2}_i}
+  \tag{15.2}
+\end{equation}\]</span>
+<p>The <span class="math inline">\(d\)</span> statistics ranges from <span class="math inline">\(0\)</span> to <span class="math inline">\(4\)</span>; <span class="math inline">\(0 \leq d \leq 4\)</span>. A <span class="math inline">\(0\)</span> indicates perfect positive correction, <span class="math inline">\(4\)</span> indicates perfect negative correlation, and a <span class="math inline">\(2\)</span> indicates no autocorrelation. Therefore, we look for values of <span class="math inline">\(d\)</span> that are close to <span class="math inline">\(2\)</span>.</p>
+<p>We can use the <code>dwtest</code> function in the <code>lmtest</code> package to test the null hypothesis that autocorrelation is <span class="math inline">\(0\)</span>, meaning that we don’t have autocorrelation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lmtest)
+<span class="kw">dwtest</span>(ols1)</code></pre></div>
+<pre><code>## 
+##  Durbin-Watson test
+## 
+## data:  ols1
+## DW = 1.9008, p-value = 0.1441
+## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+<p>Generally, a Durbin-Watson result between 1.5 and 2.5 indicates, that any autocorrelation in the data will not have a discernible effect on your estimates. The test for our example model indicates that we do not have an autocorrelation problem with this model. If we did find autocorrelation, we would need to respecify our model to account for (or estimate) the relationships among the error terms. In time series analysis, where observations are taken sequentially over time, we would typically include a “lag” term (in which the value of <span class="math inline">\(Y\)</span> in period <span class="math inline">\(t\)</span> is predicted by the value of <span class="math inline">\(Y\)</span> in period <span class="math inline">\(t-1\)</span>). This is a typical <span class="math inline">\(AR1\)</span> model, which would be discussed in a time-series analysis course. The entangled residuals can, of course, be much more complex, and require more specialized models (e.g., ARIMA or vector-autoregression models). These approaches are beyond the scope of this text.</p>
+</div>
+<div id="normality-of-the-residuals" class="section level3">
+<h3><span class="header-section-number">15.2.4</span> Normality of the Residuals</h3>
+<p>This is a critical assumption for OLS because (along with homoscedasticity) it is required for hypothesis tests and confidence interval estimation. It is particularly sensitive with small samples. Note that non-normality will increase sample-to-sample variation in model estimates.</p>
+<p>To examine normality of the residuals we first plot the residuals and then run what is known as the Shapiro-Wilk normality test. Here we run the test on our example model, and plot the residuals.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.r)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.r)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(ds.small<span class="op">$</span>fit.r),
+                                         <span class="dt">sd =</span> <span class="kw">sd</span>(ds.small<span class="op">$</span>fit.r)),
+                <span class="dt">color =</span> <span class="st">&quot;dodgerblue&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> .<span class="dv">5</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(<span class="st">&quot;&quot;</span>, fit.r)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p4 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(<span class="dt">sample =</span> fit.r)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_qq</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_qq_line</span>(<span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">alpha =</span> .<span class="dv">5</span>)</code></pre></div>
+<div class="figure"><span id="fig:normresids"></span>
+<img src="_main_files/figure-html/normresids-1.png" alt="Multiple Regression Residuals" width="672" />
+<p class="caption">
+Figure 15.8: Multiple Regression Residuals
+</p>
+</div>
+<p>It appears from the graphs, on the basis of an ``ocular test“, that the residuals are potentially normally distributed. Therefore, to perform a statistical test for non-normality, we use the Shapiro-Wilk, <span class="math inline">\(W\)</span>, test statistic. <span class="math inline">\(W\)</span> is expressed as:</p>
+<span class="math display" id="eq:15-3">\[\begin{equation}
+  W = \frac{(\sum_{i=1}^{n} a_i x_{(i)})^{2}}{\sum_{i=1}^{n} (x_i-\bar{x})^{2}}
+  \tag{15.3}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(x_{(i)}\)</span> are the ordered sample values and <span class="math inline">\(a_i\)</span> are constants generated from the means, variances, and covariances of the order statistics from a normal distribution. The Shapiro-Wilk tests the null hypothesis that the residuals are normally distributed. To perform this test in <code>R</code>, use the <code>shapiro.test</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shapiro.test</span>(ols1<span class="op">$</span>residuals)</code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  ols1$residuals
+## W = 0.99566, p-value = 0.2485</code></pre>
+<p>Since we have a relatively large <span class="math inline">\(p\)</span> value we fail to reject the null hypothesis of normally distributed errors. Our residuals are, accoridng to our visual examination and this test, normally distributed.</p>
+<p>To adjust for non-normal errors we can use robust estimators, as discussed earlier with respect to heteroscedasticity. Robust estimators correct for non-normality, but produce estimated standard errors of the partial regression coefficients that tend to be larger, and hence produce less model precision. Other possible steps, where warranted, include transformation of variables that may have non-linear relationships with <span class="math inline">\(Y\)</span>. Typically this involves taking log transformations of the suspect variables.</p>
+</div>
+<div id="outliers-leverage-and-influence" class="section level3">
+<h3><span class="header-section-number">15.2.5</span> Outliers, Leverage, and Influence</h3>
+<p>Apart from the distributional behavior of residuals, it is also important to examine the residuals for ``unusual&quot; observations. Unusual observations in the data may be cases of mis-coding (e.g., <span class="math inline">\(-99\)</span>), mis-measurement, or perhaps special cases that require different kinds of treatment in the model. All of these may appear as unusual cases that are observed in your diagnostic analysis. The unusual cases that we should be most concerned about are regression outliers, that are potentially influential and that are suspect because of their differences from other cases.</p>
+<p>Why should we worry about outliers? Recall that OLS minimizes the sum of the squared residuals for a model. Unusual cases – which by definition will have large outliers – have the potential to substantially influence our estimates of <span class="math inline">\(B\)</span> because their already large residuals are squared. A large outlier can thus result in OLS estimates that change the model intercept and slope.</p>
+<p>There are several steps that can help identify outliers and their effects on your model. The first – and most obvious – is to examine the range of values in your <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> variables. Do they fall within the appropriate ranges?</p>
+<p>This step – too often omitted even by experienced analysts – can help you avoid often agonizing mis-steps that result from inclusion of miscoded data or missing values (e.g., ``-99“) that need to be recoded before running your model. If you fail to identify these problems, they will show up in your residual analysis as outliers. But it is much easier to catch the problem <em>before</em> you run your model.</p>
+<p>But sometimes we find outliers for reasons other than mis-codes, and identification requires careful examination of your residuals. First we discuss how to find outliers – unusual values of <span class="math inline">\(Y\)</span> – and leverage – unusual values of <span class="math inline">\(X\)</span> – since they are closely related.</p>
+</div>
+<div id="outliers" class="section level3">
+<h3><span class="header-section-number">15.2.6</span> Outliers</h3>
+<p>A regression outlier is an observation that has an unusual value on the dependent variable <span class="math inline">\(Y\)</span>, conditioned on the values of the independent variables, <span class="math inline">\(X\)</span>. Note that an outlier can have a large residual value, but not necessarily affect the estimated slope or intercept. Below we examine a few ways to identify potential outliers, and their effects on our estimated slope coefficients.</p>
+<p>Using the regression example, we first plot the residuals to look for any possible outliers. In this plot we are plotting the raw residuals for each of the <span class="math inline">\(500\)</span> observations. This is shown in Figure <a href="15-2-ols-diagnostic-techniques.html#fig:siminresid">15.9</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(<span class="kw">row.names</span>(ds.small), fit.r)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:siminresid"></span>
+<img src="_main_files/figure-html/siminresid-1.png" alt="Index Plot of Residuals: Multiple Regression" width="672" />
+<p class="caption">
+Figure 15.9: Index Plot of Residuals: Multiple Regression
+</p>
+</div>
+<p>Next, we can sort the residuals and find the case with the largest absolute value and examine that case.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Sort the residuals</span>
+output.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">sort</span>(ols1<span class="op">$</span>residuals)  <span class="co"># smallest first</span>
+output.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">sort</span>(ols1<span class="op">$</span>residuals, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="co"># largest first</span>
+
+<span class="co">#  The head function return the top results, the argument 1 returns 1 variable only</span>
+<span class="kw">head</span>(output.<span class="dv">1</span>, <span class="dv">1</span>) <span class="co"># smallest residual absolute value</span></code></pre></div>
+<pre><code>##       333 
+## -7.161695</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(output.<span class="dv">2</span>, <span class="dv">1</span>) <span class="co"># largest residual absolute value</span></code></pre></div>
+<pre><code>##      104 
+## 6.898077</code></pre>
+<p>Then, we can examine the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> values of those cases on key variables. Here we examine the values across all independent variables in the model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.small[<span class="kw">c</span>(<span class="dv">298</span>,<span class="dv">94</span>),<span class="kw">c</span>(<span class="st">&quot;age&quot;</span>,<span class="st">&quot;education&quot;</span>,<span class="st">&quot;income&quot;</span>,<span class="st">&quot;ideol&quot;</span>,<span class="st">&quot;glbcc_risk&quot;</span>)] <span class="co"># [c(row numbers),c(column numbers)]</span></code></pre></div>
+<pre><code>##     age education income ideol glbcc_risk
+## 333  69         6 100000     2          2
+## 104  55         7  94000     7         10</code></pre>
+<p>By examining the case of 298, we can see that this is outlier because the observed values of <span class="math inline">\(Y\)</span> are far from what would be expected, given the values of <span class="math inline">\(X\)</span>. A wealthy older liberal would most likely rate climate change as riskier than a 2. In case 94, a strong conservaitive rates climate change risk at the lowest possible value. This observation, while not consistent with the estimated relationship between ideology and environmental concern, is certainly not implausible. But the unusual appearance of a case with a strong conservative leaning, and high risk of cliamte change results in a large residual.</p>
+<p>What we really want to know is: does any particular case substantially change the regression results? If a case substantively change the results than it is said to have influence. Individual cases can be outliers, but still be influential. Note that DFBETAS are <strong>case statistics</strong>, therefore a DFBETA value will be calculated for each variable for each case.</p>
+<div id="dfbetas" class="section level4 unnumbered">
+<h4>DFBETAS</h4>
+<p>DFBETAS measure the influence of case <span class="math inline">\(i\)</span> on the <span class="math inline">\(j\)</span> estimated coefficients. Specifically, it asks by how many standard errors does <span class="math inline">\(B_j\)</span> change when case <span class="math inline">\(i\)</span> is removed DFBETAS are expressed as:</p>
+<span class="math display" id="eq:15-4">\[\begin{equation}
+  \text{DFBETAS}_{ij} = \frac{B_{j(-i)}-B_j}{SE(B_j)}
+  \tag{15.4}
+\end{equation}\]</span>
+<p>Note that if DFBETAS $ &gt; 0$, then case <span class="math inline">\(i\)</span> pulls <span class="math inline">\(B_j\)</span> <em>up</em>, and if DFBETAS $ &lt; 0$, then case <span class="math inline">\(i\)</span> pulls <span class="math inline">\(B_j\)</span> <em>down</em>. In general, if <span class="math inline">\(|\text{DFBETAS}_{ij}| &gt; \frac{2}{\sqrt{n}}\)</span> then these cases warrant further examination. Note that this approach gets the top 5% of influential cases, given the sample size. For both simple (bi-variate) and multiple regression models the DFBETA cut-offs can be calculated in <code>R</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">500</span>)
+df</code></pre></div>
+<pre><code>## [1] 0.08944272</code></pre>
+<p>In this case, if <span class="math inline">\(|\text{DFBETAS}| &gt; \Sexpr{df}\)</span> then they can be examined for possible influence. Note, however, than in large datasets this may prove to be difficult, so you should examine the largest DFBETAS first. In our example, we will look only at the largest 5 DFBETAS.</p>
+<p>To calculate the DFBETAS we use the <code>dfbetas</code> function. Then we examine the DFBETA values for the first five rows of our data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.ols1 &lt;-<span class="st"> </span><span class="kw">dfbetas</span>(ols1)
+df.ols1[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</code></pre></div>
+<pre><code>##    (Intercept)          age   education      income        ideol
+## 1 -0.004396485  0.005554545  0.01043817 -0.01548697 -0.005616679
+## 2  0.046302381 -0.007569305 -0.02671961 -0.01401653 -0.042323468
+## 3 -0.002896270  0.018301623 -0.01946054  0.02534233 -0.023111519
+## 5 -0.072106074  0.060263914  0.02966501  0.01243482  0.015464937
+## 7 -0.057608817 -0.005345142 -0.04948456  0.06456577  0.134103149</code></pre>
+<p>We can then plot the DFBETAS for each of the IVs in our regression models, and create lines for <span class="math inline">\(\pm 0.089\)</span>. Figure <a href="15-2-ols-diagnostic-techniques.html#fig:dfbetas">15.10</a> shows the DFBETAS for each variable in the multiple regression model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">melt</span>(df.ols1, <span class="dt">varnames =</span> <span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="st">&quot;variable&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(index, value)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> df) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="op">-</span>df) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:dfbetas"></span>
+<img src="_main_files/figure-html/dfbetas-1.png" alt="Index Plot of DFBETAS: Multiple Regression" width="672" />
+<p class="caption">
+Figure 15.10: Index Plot of DFBETAS: Multiple Regression
+</p>
+</div>
+<p>As can be seen, several cases seem to exceed the <span class="math inline">\(0.089\)</span> cut-off. Next we find the case with the highest absolute DFBETA value, and examine the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> values for that case.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Return Absolute Value dfbeta</span>
+<span class="kw">names</span>(df.ols1) &lt;-<span class="st"> </span><span class="kw">row.names</span>(ds.small)
+df.ols1[<span class="kw">abs</span>(df.ols1) <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(<span class="kw">abs</span>(df.ols1))]  </code></pre></div>
+<pre><code>##      &lt;NA&gt; 
+## 0.4112137</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># a observation name may not be returned - let&#39;s figure out the observation</span>
+
+<span class="co">#  convert df.osl1 from matrix to dataframe </span>
+<span class="kw">class</span>(df.ols1)</code></pre></div>
+<pre><code>## [1] &quot;matrix&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2.ols1 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(df.ols1)
+
+<span class="co">#  add an id variable</span>
+df2.ols1<span class="op">$</span>id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">450</span> <span class="co">#  generate a new observation number</span>
+
+<span class="co">#  head function returns one value, based on ,1</span>
+<span class="co">#  syntax - head(data_set[with(data_set, order(+/-variable)), ], 1)</span>
+
+<span class="co">#  Ideology</span>
+<span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>ideol)), ], <span class="dv">1</span>) <span class="co"># order declining</span></code></pre></div>
+<pre><code>##      (Intercept)        age   education      income     ideol  id
+## 333 -0.001083869 -0.1276632 -0.04252348 -0.07591519 0.2438799 298</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>ideol)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></code></pre></div>
+<pre><code>##     (Intercept)       age   education     income       ideol  id
+## 148  -0.0477082 0.1279219 -0.03641922 0.04291471 -0.09833372 131</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Income</span>
+<span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>income)), ], <span class="dv">1</span>) <span class="co"># order declining</span></code></pre></div>
+<pre><code>##     (Intercept)         age    education    income       ideol  id
+## 494 -0.05137992 -0.01514244 -0.009938873 0.4112137 -0.03873292 445</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>income)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></code></pre></div>
+<pre><code>##     (Intercept)         age  education     income      ideol  id
+## 284  0.06766781 -0.06611698 0.08166577 -0.4001515 0.04501527 254</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Age</span>
+<span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>age)), ], <span class="dv">1</span>) <span class="co"># order declining</span></code></pre></div>
+<pre><code>##    (Intercept)       age  education      income     ideol id
+## 87  -0.2146905 0.1786665 0.04131316 -0.01755352 0.1390403 78</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>age)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></code></pre></div>
+<pre><code>##     (Intercept)        age  education     income     ideol  id
+## 467    0.183455 -0.2193257 -0.1906404 0.02477437 0.1832784 420</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Education - we find the amount - ID 308 for edu</span>
+<span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>education)), ], <span class="dv">1</span>) <span class="co"># order declining</span></code></pre></div>
+<pre><code>##     (Intercept)        age education      income      ideol  id
+## 343  -0.1751724 0.06071469 0.1813973 -0.05557382 0.09717012 308</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>education)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></code></pre></div>
+<pre><code>##     (Intercept)       age  education      income        ideol id
+## 105  0.05091437 0.1062966 -0.2033285 -0.02741242 -0.005880984 95</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  View the output</span>
+df.ols1[<span class="kw">abs</span>(df.ols1) <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(<span class="kw">abs</span>(df.ols1))]  </code></pre></div>
+<pre><code>##      &lt;NA&gt; 
+## 0.4112137</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.ols1[<span class="kw">c</span>(<span class="dv">308</span>),] <span class="co"># dfbeta number is observation 131 - education</span></code></pre></div>
+<pre><code>## (Intercept)         age   education      income       ideol 
+## -0.17517243  0.06071469  0.18139726 -0.05557382  0.09717012</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.small[<span class="kw">c</span>(<span class="dv">308</span>), <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>, <span class="st">&quot;glbcc_risk&quot;</span>)]</code></pre></div>
+<pre><code>##     age education income ideol glbcc_risk
+## 343  51         2  81000     3          4</code></pre>
+<p>Note that this “severe outlier” is indeed an interesting case – a 51 year old with a high school diploma, relatively high income, who is slightly liberal and perceivs low risk for climate change. But this outlier is not implausible, and therefore we can be reassured that – even in this most extreme case – we do not have problematic outliers.</p>
+<p>So, having explored the residuals from our model, we found a number of outliers, some with significant influence on our model results. In inspection of the most extreme outlier gave us no cause to worry that the observations were inappropriately distorting our model results. But what should you do if you find puzzling, implausible observations that may influence your model?</p>
+<p>First, as always, evaluate your theory. Is it possible that the case represented a class of observations that behave systematically differently than the other cases? This is of particular concern if you have a cluster of cases, all determined to be outliers, that have similar properties. You may need to modify your theory to account for this subgroup. One such example can be found in the study of American politics, wherein the Southern states routinely appeared to behave differently than others. Most careful efforts to model state (and individual) political behavior account for the unique aspects of southern politics, in ways ranging from the addition of dummy variables to interaction terms in regression models.</p>
+<p>How would you determine whether the model (and theory) should be revised? Look closely at the deviant cases – what can you learn from them? Try experiments by running the models with controls – dummies and interaction terms. What effects do you observe? If your results suggest theoretical revisions, you will need to collect new data to test your new hypotheses. Remember: In empirical studies, you need to keep your discoveries distinct from your hypothesis tests.</p>
+<p>As a last resort, if you have troubling outliers for which you cannot account in theory, you might decide omit those observations from your model and re-run your analyses. We do not recommend this course of action, because it can appear to be a case of ``jiggering the data&quot; to get the results you want.</p>
+</div>
+</div>
+<div id="multicollinearity" class="section level3">
+<h3><span class="header-section-number">15.2.7</span> Multicollinearity</h3>
+<p>Multicollinearity is the correlation of the IVs in the model. Note that if any <span class="math inline">\(X_i\)</span> is a linear combination of other <span class="math inline">\(X\)</span>’s in the model, <span class="math inline">\(B_i\)</span> cannot be estimated. As discussed previously, the partial regression coefficient strips both the <span class="math inline">\(X\)</span>’s and <span class="math inline">\(Y\)</span> of the overlapping covariation by regressing one <span class="math inline">\(X\)</span> variable on all other <span class="math inline">\(X\)</span> variables:</p>
+<span class="math display">\[\begin{align*}
+  E_{X_{i}|X_{j}} &amp;= X_i - \hat{X}_i \\
+  \hat{X}_i &amp;= A + BX_j 
+\end{align*}\]</span>
+<p>If an X is perfectly predicted by the other <span class="math inline">\(X\)</span>’s, then:</p>
+
+<p>where <span class="math inline">\(R^2_k\)</span> is the <span class="math inline">\(R^2\)</span> obtained from regressing all <span class="math inline">\(X_k\)</span> on all other <span class="math inline">\(X\)</span>’s.</p>
+<p>We rarely find perfect multicollinearity in practice, but high multicollinearity results in loss of statistical resolution. Such as:<br />
+- Large standard errors - Low <span class="math inline">\(t\)</span>-stats, high <span class="math inline">\(p\)</span>-values - This erodes the resolution of our hypothesis tests - Enormous sensitivity to small changes in: - Data - Model specification</p>
+<p>You should always check the correlations between the IVs during the model building process. This is a way to quickly identify possible multicollinearity issues.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(age, education, income, ideol) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">cor</span>()</code></pre></div>
+<pre><code>##                   age   education      income       ideol
+## age        1.00000000 -0.06370223 -0.11853753  0.08535126
+## education -0.06370223  1.00000000  0.30129917 -0.13770584
+## income    -0.11853753  0.30129917  1.00000000  0.04147114
+## ideol      0.08535126 -0.13770584  0.04147114  1.00000000</code></pre>
+<p>There do not appear to be any variables that are so highly correlated that it would result in problems with multicolinearity.</p>
+<p>We will discuss two more formal ways to check for multicollinearity. First, is the <strong>Variance Inflation Factor</strong> (VIF), and the second is <strong>tolerance</strong>. The VIF is the degree to which the variance of other coefficients is increased due to the inclusion of the specified variable. It is expressed as:</p>
+<span class="math display" id="eq:15-5">\[\begin{equation}
+  \text{VIF} = \frac{1}{1-R^2_k}
+  \tag{15.5}
+\end{equation}\]</span>
+<p>Note that as <span class="math inline">\(R^2_k\)</span> increases the variance of <span class="math inline">\(X_k\)</span> increases. A general rule of thumb is that <span class="math inline">\(\text{VIF} &gt; 5\)</span> is problematic.</p>
+<p>Another, and related, way to measure multicollinearity is tolerance. The tolerance of any <span class="math inline">\(X\)</span>, <span class="math inline">\(X_k\)</span>, is the proportion of its variance not shared with the other <span class="math inline">\(X\)</span>’s.</p>
+<span class="math display" id="eq:15-6">\[\begin{equation}
+  \text{tolerance} = 1-R^2_k 
+  \tag{15.6}
+\end{equation}\]</span>
+<p>Note that this is mathematically equivalent to <span class="math inline">\(\frac{1}{VIF}\)</span>. The rule of thumb for acceptable tolerance is partly a function of <span class="math inline">\(n\)</span>-size:</p>
+<ul>
+<li>If <span class="math inline">\(n &lt; 50\)</span>, tolerance should exceed <span class="math inline">\(0.7\)</span></li>
+<li>If <span class="math inline">\(n &lt; 300\)</span>, tolerance should exceed <span class="math inline">\(0.5\)</span></li>
+<li>If <span class="math inline">\(n &lt; 600\)</span>, tolerance should exceed <span class="math inline">\(0.3\)</span></li>
+<li>If <span class="math inline">\(n &lt; 1000\)</span>, tolerance should exceed <span class="math inline">\(0.1\)</span></li>
+</ul>
+<p>Both VIF and tolerance can be calculated in <code>R</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(car)
+<span class="kw">vif</span>(ols1)</code></pre></div>
+<pre><code>##       age education    income     ideol 
+##  1.024094  1.098383  1.101733  1.009105</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">/</span><span class="kw">vif</span>(ols1)</code></pre></div>
+<pre><code>##       age education    income     ideol 
+## 0.9764731 0.9104295 0.9076611 0.9909775</code></pre>
+<p>Note that, for our example model, we are well within acceptable limits on both VIF and tolerance.</p>
+<p>If multicollinearity is suspected, what can you do? One option is to drop one of the highly co-linear variables. However, this may result in model mis-specification. As with other modeling considerations, you must use theory as a guide. A second option would be to add new data, thereby lessening the threat posed by multicolinearity. A third option would be to obtain data from specialized samples that maximize independent variation in the collinear variables (e.g., elite samples may disentangle the effects of income, education, and other SES-related variables).</p>
+<p>Yet another strategy involves reconsidering why your data are so highly correlated. It may be that your measures are in fact different “indicators” of the same underlying theoretical concept. This can happen, for example, when you measure sets of attitudes that are all influenced by a more general attitude or belief system. In such a case, data scaling is a promising option. This can be accomplished by building an additive scale, or using various scaling options in <span class="math inline">\(R\)</span>. Another approach would be to use techniques such as factor analysis to tease out the underlying (or ``latent“) variables represented by your indicator variables. Indeed, the combination of factor analysis and regression modeling is an important and widely used approach, referred to as structural equation modeling (SEM). But that is a topic for another book and another course.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="25">
+<li id="fn25"><p>See the <code>lmtest</code> package documentation for more options and information.<a href="15-2-ols-diagnostic-techniques.html#fnref25">↩</a></p></li>
+<li id="fn26"><p>Note that we jitter the points to make them easier to see.<a href="15-2-ols-diagnostic-techniques.html#fnref26">↩</a></p></li>
+<li id="fn27"><p>H White, 1980. “A Heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity.” <em>Econometrica</em> 48: 817-838.<a href="15-2-ols-diagnostic-techniques.html#fnref27">↩</a></p></li>
+</ol>
+</div>
+<p style="text-align: center;">
+<a href="15-1-ols-error-assumptions-revisited.html"><button class="btn btn-default">Previous</button></a>
+<a href="15-3-summary-10.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

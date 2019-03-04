@@ -40,7 +40,7 @@ knitr::include_graphics("tbl2.png")
 
 In this section we look at some common research designs, the notation used to symbolize them, and then consider the internal and external validity of the designs. We start with the most basic experimental design, the post-test only design Figure \@ref(fig:post). In this design subjects are randomly assigned to one of two groups with one group receiving the experimental treatment.^[The symbol R means there is random assignment to the group. X symbolizes exposure to the experimental treatment. O is an observation or measurement.] There are advantages to this design in that it is relatively inexpensive and eliminates the threats associated with pre-testing. If randomization worked the (unobserved) pre-test measures would be the same so any differences in the observations would be due to the experimental treatment. The problem is that randomization could fail us, especially if the sample size is small.
 
-```{r post, echo=FALSE, fig.cap-"Post-test Only (with a Control Group) Experimental Design"}
+```{r post, echo=FALSE, fig.cap="Post-test Only (with a Control Group) Experimental Design"}
 knitr::include_graphics("post-only.png")
 ```
 

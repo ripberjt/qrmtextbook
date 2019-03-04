@@ -187,7 +187,7 @@ ggplot(ds.small, aes(fit.p, fit.r)) +
 Based on the pattern evident in Figure \@ref(fig:multregres), the residuals
 appear to show heteroscedasticity. We can test for non-constant error using the Breusch-Pagan (aka Cook-Weisberg) test. This tests the null hypothesis that the error variance is constant, therefore a small p value would indicate that we have heteroscedasticity. In R we can use the ncvTest function from the car package.
 
-```{r ncvtest, echo=TRUE}
+```{r ncvtest2, echo=TRUE}
 library(car)
 ncvTest(ols1)
 ```
@@ -319,7 +319,7 @@ It appears from the graphs, on the basis of an ``ocular test", that the residual
 where $x_{(i)}$ are the ordered sample values and $a_i$ are constants generated from the means, variances, and covariances of the order statistics from a normal distribution. 
 The Shapiro-Wilk tests the null hypothesis that the residuals are normally distributed. To perform this test in `R`, use the `shapiro.test` function.  
 
-```{r shapiro, echo=TRUE}
+```{r shapiro2, echo=TRUE}
 shapiro.test(ols1$residuals)
 ```
 

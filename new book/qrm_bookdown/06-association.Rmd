@@ -39,7 +39,7 @@ knitr::include_graphics("iv-dv3.png")
 
 Table \@ref(fig:chiscalc) provides those calculations.   It shows a final chi square of 10.73.  With that chi square, we can go to a chi square table to determine whether to accept or reject the null hypothesis.  Before going to that chi square table, we need to figure out two things.  First, we need to determine the level of significance we want, presumably .05.  Second, we need to determine our degrees of freedom.  We will provide more on that concept as we go on, but for now, know that it is the number of rows minus one times the number of columns minus one.  In this case we have $(2-1)(2-1) = 1$ degree of freedom.  
 	 
-```{r chiscalc, echo=FALSE, fig.cap="Chi Square ($\chi^2$) Calculation"}
+```{r chiscalc, echo=FALSE, fig.cap="Chi Square Calculation"}
 knitr::include_graphics("iv-dv4.png")
 ```
 
