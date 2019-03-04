@@ -14,6 +14,7 @@ Another type of probability that we often want is a joint probability.  A __join
 
 \begin{equation}
   P(A \cap B) = P(A) * P(B|A) or P(B) * P(A|B)
+  (\#eq:04-1)
 \end{equation}
 
 The probability of two events occurring at the same time is the probability that the first one will occur times the probability the second one will occur given that the first one has occurred.  
@@ -23,12 +24,14 @@ If events are independent the calculation is even easier.  Events are independen
 %need to convert this to other style equation
 \begin{equation}
   P(A \cap B) = P(A) * P(B)
+  (\#eq:04-2)
 \end{equation}
 
 The final type of probability is the union of two probabilities.  The __union of two probabilities__ is the probability that either one event will occur or the other will occur -- either, or, it does not matter which one.  You might go into a statistics class with some dread and you might say a little prayer to yourself: ``Please let me either like this class or get an A.  I do not care which one, but please give me at least one of them."  The formula and symbols for that kind of probability is:
 
 \begin{equation}
   P(A \cup B) = P(A) + P(B) - P(A \cap B)
+  (\#eq:04-3)
 \end{equation}
 
 It is easy to understand why we just add the $P(A)$ and the $P(B)$ but it may be less clear why we subtract the joint probability.   The answer is simple - because we counted where they overlap twice (those instances in both A and in B) so we have to subtract out one instance.  
@@ -50,6 +53,7 @@ To find out how many standard deviations from the mean an observation is, we cal
 
 \begin{equation}
 Z = \frac{x-\mu}{\sigma}
+(\#eq:04-4)
 \end{equation}
 
 In this case, the $Z$-score is $140-100/15$ or $2.67$.  Looking at the formula, you can see that a Z-score of zero puts that score at the mean; a $Z$-score of one is one standard deviation above the mean; and a $Z$-score of $2.67$ is $2.67$ standard deviations above the mean.
