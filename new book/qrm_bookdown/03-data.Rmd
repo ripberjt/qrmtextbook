@@ -103,11 +103,13 @@ $E(X) = \bar{X}=\frac{\sum X_{i}}{n}$
 The _expected value_ of a variable is the value you would obtain if you could multiply all possible values within a population by their probability of occurrence. Alternatively, it can be understood as the mean value for a population variable. An expected value is a theoretical number , because we usually cannot observe all possible occurrences of a variable. The mean value for a sample is the average value for the variable $X$, and is calculated by adding the values of $X$ and dividing by the sample size $n$:  
 \begin{equation}
 \bar{X} = \frac{(x_{1}+x_{2}+x_{3}+x_{n})}{n}
+(\#eq:03-1)
 \end{equation}
 
 This can be more compactly expressed as:
 \begin{equation}
 \bar{X}=\frac{\sum X_{i}}{n}
+(\#eq:03-2)
 \end{equation}
 
 The mean of a variable can be calculated in `R` using the `mean` function. Here we illustrate the calculation of means for our measures of `ideology`, `age`, and `perceived risk of climate change`.^[The `na.rm=TRUE` portion of the following code simply tells R to exclude the missing (NA) values from calculation.]
@@ -123,6 +125,7 @@ mean(ds$glbcc_risk, na.rm=TRUE)
 The _variance_ of a variable is a measure that illustrates how a variable is spread, or distributed, around its mean. For samples, it is expressed as: 
 \begin{equation}
 s^{2}_{x}=\frac{\sum (X-\bar{X})^{2}}{(n-1)}
+(\#eq:03-3)
 \end{equation}
 
 The population variance is expressed as: $\sigma^{2}_{X}$. 
@@ -134,16 +137,19 @@ Variance is measured in `squared` deviations from the mean, and the sum of these
 This can be expressed as: 
 \begin{equation}
 TSS_{x} = \sum(X_{i}-\bar{X})^{2}
+(\#eq:03-4)
 \end{equation}
 
 therefore; 
 \begin{equation}
 s^{2}_{x} = \frac{TSS_{x}}{(n-1)}
+(\#eq:03-5)
 \end{equation}
 
 The square root of variance, $\sigma^{2}_{x}$, is the _standard deviation_ (s.d.) of a variable, $\sigma_{x}$. The sample s.d. is expressed as: 
 \begin{equation}
 s_{x} = \sqrt{\frac{\sum(X-\bar{X})^{2}}{(n-1)}}
+(\#eq:03-6)
 \end{equation}
 
 This can also be expressed as $\sqrt{s^2_{x}}$.  The standard deviation of a variable can be obtained in `R` with the `sd` function.^[What's with those (n-1) terms in the denominators? These represent the "degrees of freedom" we need to calculate average squared deviations and variance. We "use up" one of our observations to be able to calculate the first deviation -- because without that first observation, what would there be to deviate from?]
@@ -160,6 +166,7 @@ _Skewness_ is a measure of the asymmetry of a distribution. It is based on the
 third moment and is expressed as: 
 \begin{equation}
 \frac{\sum (X-\bar{X})^{3}}{(n-1)}
+(\#eq:03-7)
 \end{equation}
 
 Skewness is calculated by dividing the third moment by the the cube of
@@ -167,6 +174,7 @@ the s.d.
 \begin{equation}
 S = \frac{\frac{\sum (X-\bar{X})^{3}}{(n-1)}}{(\sqrt{\frac{\sum
     (X-\bar{X})^{2}}{(n-1)})^{3}}}
+    (\#eq:03-8)
 \end{equation}
 
 Specifically, skewness refers to the position of the expected value (i.e., mean) of a variable distribution relative to its median. When the mean and median of a variable are roughly equal, $\bar{Y} \approx Md_{Y}$, then the distribution is considered approximately symmetrical, $S = 0$. This means that an equal proportion of the distribution of the variable lies on either side of the mean. However, when the mean is larger than the median,
@@ -181,11 +189,13 @@ knitr::include_graphics("distroshapes.pdf")
 The _kurtosis_ of a distribution refers to the the peak of a variable (i.e., the mode) and the relative frequency of observations in the tails. It is based on the fourth moment which is expressed as: 
 \begin{equation}
 \frac{\sum (X-\bar{X})^{4}}{(n-1)}
+(\#eq:03-9)
 \end{equation}
 
 Kurtosis is calculated by dividing the fourth moment by the square of the second moment (i.e., variance). 
 \begin{equation}
  K =  \frac{\frac{\sum (X-\bar{X})^{4}}{(n-1)}}{(\frac{\sum (X-\bar{X})^{2}}{(n-1)})^{2}}
+ (\#eq:03-10)
 \end{equation}
 
 In general, higher kurtosis is indicative of a distribution where the variance is a result of low frequency yet more extreme observed values. In addition, when $K < 3$, the distribution is _platykurtic_, which is flatter and/or more "short-tailed" than a normal distribution. When $K > 3$ the distribution is _leptokurtic_, which is a slim, high peak and long tails. In a normal distribution $K=3$. 
@@ -220,6 +230,7 @@ the first 25\% of the distribution. The values of the second quartile, $Q2$, are
 The interquartile range (IQR) measures the spread of the ordered values. It is calculated by subtracting $Q1$ from $Q3$.
 \begin{equation}
  IQR = Q_{3}-Q_{1}
+ (\#eq:03-11)
 \end{equation}
 
 The IQR contains the middle 50\% of the distribution. 
