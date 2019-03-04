@@ -53,6 +53,7 @@ described:
 
 \begin{equation}
   Y \sim N(\mu_Y,\sigma^{2}_Y)
+  (\#eq:05-1)
 \end{equation}
 
 Where $\sim$ stands for "distributed as", $N$ indicates the normal distribution, and mean $\mu_Y$ and variance $\sigma^{2}_Y$ are
@@ -122,6 +123,7 @@ If the values for $\mu$ and $\sigma^{2}$ are known, which might be the case with
 
 \begin{equation}
   Z = \frac{Y-\mu_Y}{\sigma}
+  (\#eq:05-2)
 \end{equation} 
 
 Therefore, if we have a normal distribution with a $\mu$ of 70 and a $\sigma^{2}$ of 9, we can calculate a probability for $i=75$. First we
@@ -184,6 +186,7 @@ To find that confidence interval, we rely on the __standard error of the estimat
 
 \begin{equation}
   SE = \frac{s}{\sqrt{n}}
+  (\#eq:05-3)
 \end{equation}
 
 where
@@ -196,6 +199,7 @@ If our sample size is not large, instead of using z-scores to estimate confidenc
 
 \begin{equation}
   \bar{x}+/- SE_x * t
+  (\#eq:05-4)
 \end{equation}
 
 To find the appropriate value for t, we need to decide what level of confidence we want (generally 95\%) and our __degrees of freedom__ (df), which is $n - 1$.  We can find a confidence interval with R using the t.test function.  By default, t.test will test the hypothesis that the mean of our variable of interest (glbcc_risk) is equal to zero.  It will also find the mean score and a confidence interval for the glbcc_risk variable:
@@ -220,6 +224,7 @@ Suppose a principal wants to cut down on absenteeism in her school and offers an
 
 \begin{equation}
   t = x - \frac{\mu}{se}
+  (\#eq:05-5)
 \end{equation}
 
 If we return to the output presented above on `glbcc_risk`, we can see that R tested the null hypothesis that the true population value for `glbcc_risk` is equal to zero.  It reports t = 97.495  and a p-value of 2.2e-16.  This p-value is less than .05, so we can reject our null hypothesis and be very confident that the true population value is greater than zero.
@@ -281,12 +286,14 @@ change. To test $H_1$ we use the $t$-test, which is calculated:
 
 \begin{equation}
   t = \frac{\bar{X}_m-\bar{X}_f}{SE_d}
+  (\#eq:05-6)
 \end{equation}
 
 Where $SE_d$ is the \textbf{standard error} of the estimated differences between the two groups.  To estimate $SE_d$, we need the SE of the estimated mean for each group. The SE is calculated: 
 
 \begin{equation}
   SE = \frac{s}{\sqrt{n}}
+  (\#eq:05-7)
 \end{equation}
 
 where $s$ is the s.d. of the variable. $H_1$ states that there is a difference between males and females, therefore under $H_1$ it is expected that $t > 0$ since zero is the mean of the $t$ distribution. However, under $H_A$ it is expected that $t = 0$. 
@@ -308,6 +315,7 @@ seF
 Next, we need to calculate the $SE_d$: 
 \begin{equation}
   SE_d = \sqrt{SE^2_M+SE^2_F}  
+  (\#eq:05-8)
 \end{equation}
 
 ```{r seD, echo=TRUE}
