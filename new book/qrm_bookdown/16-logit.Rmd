@@ -224,7 +224,7 @@ pseudoR2 <- 1 - (logit2$deviance/logit2$null.deviance)
 pseudoR2
 ```
 
-The pseudo $R^2$ of the model is \Sexpr{pseudoR2}. Note that the psuedo $R^2$ is only an approximation of explained variance, and should be used in combination with other measures of fit such as AIC.
+The pseudo $R^2$ of the model is 0.2281165. Note that the psuedo $R^2$ is only an approximation of explained variance, and should be used in combination with other measures of fit such as AIC.
 
 #### Akaike Information Criteria {-}
 Another way to examine goodness-of-fit is the Akaike information criteria (AIC). Like the adjusted $R^2$ for OLS, the AIC takes into account the parsimony of the model by penalizing for the number of parameters. But AIC is useful only in a comparative manner -- either with the null model or an alternative model. It does not purport to describe the percent of variance in $Y$ accounted for, as does the pseudo $R^2$.
@@ -246,7 +246,7 @@ logit2$aic
 
 ### Interpreting Logits
 
-The logits, $L$, are logged odds, and therefore the coefficients that are produced must be interpreted as logged odds. This means that for each unit change in ideology, the predicted logged odds of believing climate change has an anthropogenic cause decrease by \Sexpr{logit2$coef[6]}. This interpretation, though mathematically straightforward, is not terribly informative. Below we discuss two ways to make the interpretation of logit analysis more intuitive.   
+The logits, $L$, are logged odds, and therefore the coefficients that are produced must be interpreted as logged odds. This means that for each unit change in ideology, the predicted logged odds of believing climate change has an anthropogenic cause decrease by -0.7900119. This interpretation, though mathematically straightforward, is not terribly informative. Below we discuss two ways to make the interpretation of logit analysis more intuitive.   
 
 #### Calculate Odds {-}
  
@@ -262,7 +262,7 @@ For example, the following retuns odds for all the IVs.
 logit2 %>% coef() %>% exp()
 ```
 
-Therefore, for each 1-unit increase in the ideology scale (i.e., becoming more conservative), the odds of believing that climate change is human caused decrease by \Sexpr{exp(logit2$coef[6])}. 
+Therefore, for each 1-unit increase in the ideology scale (i.e., becoming more conservative), the odds of believing that climate change is human caused decrease by 0.4538394. 
 
 #### Predicted Probabilities {-}
 

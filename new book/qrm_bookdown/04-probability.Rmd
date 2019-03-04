@@ -79,7 +79,6 @@ The Bernoulli process can be used only when both $n * p$ and $n * q$ are greater
 ## Summary
 Probabilities are simple statistics but are important when we want to know the likelihood of some event occurring.  There are frequent real world instances where we find that information valuable.  We will see, starting in the next chapter, that probabilities are also central to the concept of inference.
 
-
-```{r Normal_Curve, echo=FALSE, fig.cap="The Normal Curve Table"}
-knitr::include_graphics("Normal-Curve.png")
+```{r normcurve2, echo=FALSE, fig.cap="The Normal Curve Table"}
+knitr::include_graphics("normal_curve.png")
 ```

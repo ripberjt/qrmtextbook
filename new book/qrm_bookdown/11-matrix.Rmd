@@ -285,7 +285,6 @@ OK -- now we have all the pieces we need to apply matrix algebra to multiple reg
 As was the case with simple regression, we want  to minimize the sum of the squared errors, $e$. In matrix notation, the OLS model is $y=Xb+e$, where $e = y-Xb$. The sum of the squared $e$ is:
 
 \begin{equation}
-  \label{eq:e2}
 \sum e^{2}_i = 
 \begin{bmatrix}
   e_1 & e_2 & \cdots & e_n \\ 
@@ -330,7 +329,6 @@ $-1/2$. This leaves us with:
 To solve for $b$ we multiply both sides by the inverse of $X'X, (X'X)^{-1}$. Note that for matrices this is equivalent to dividing each side by $X'X$. Therefore:
 
 \begin{equation}
-  \label{eq:b}
 b = (X'X)^{-1}X'y  
 (\#eq:11-2)
 \end{equation}

@@ -54,7 +54,7 @@ Se
 
 Note that this result matches the result provided by the `summary` function in `R`, as shown above.  
 
-For our model, the results indicate that: $Y_{i} =$ \Sexpr{ols1$coef[1]} \Sexpr{ols1$coef[2]}$X_{i} + E_{i}$.  Another sample of 2513 observations would almost certainly lead to different estimates for $A$ and $B$.  If we drew many such samples, we'd get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance.  To do that, we calculate the standard error of the slope and intercept coefficients, $SE(B)$ and $SE(A)$. These standard errors are our estimates of how much variation we would expect in the estimates of $B$ and $A$ across different samples. We use them to evaluate whether $B$ and $A$ are larger than would be expected to occur by chance, if the real values of $B$ and/or $A$ are zero (the null hypotheses).
+For our model, the results indicate that: $Y_{i} =$10.8186624-1.0463463$X_{i} + E_{i}$.  Another sample of 2513 observations would almost certainly lead to different estimates for $A$ and $B$.  If we drew many such samples, we'd get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance.  To do that, we calculate the standard error of the slope and intercept coefficients, $SE(B)$ and $SE(A)$. These standard errors are our estimates of how much variation we would expect in the estimates of $B$ and $A$ across different samples. We use them to evaluate whether $B$ and $A$ are larger than would be expected to occur by chance, if the real values of $B$ and/or $A$ are zero (the null hypotheses).
 
 The standard error for $B$, $SE(B)$ is:
 
@@ -104,7 +104,7 @@ t <- ols1$coef[2]/SEb
 t
 ``` 
 
-The $t$ value for our $B$ is \Sexpr{summary(ols1)$coef[2,"t value"]}, meaning that $B$ is \Sexpr{summary(ols1)$coef[2,"t value"]} standard errors away from zero. We can then ask: What is the probability, $p$ _value_, of obtaining this result if $\beta=0$? According to the results shown earlier, $p=2e-16$. That is remarkably close to zero. This result indicates that we can reject the null hypothesis
+The $t$ value for our $B$ is 36.6334214, meaning that $B$ is 36.6334214 standard errors away from zero. We can then ask: What is the probability, $p$ _value_, of obtaining this result if $\beta=0$? According to the results shown earlier, $p=2e-16$. That is remarkably close to zero. This result indicates that we can reject the null hypothesis
 that $\beta=0$. 
 
 In addition, we can calculate the confidence interval (CI) for our estimate of $B$.  This means that in 95 out of 100 repeated applications, the confidence interval will contain $\beta$. 
@@ -125,7 +125,7 @@ Blow
 confint(ols1)
 ```
 
-As shown, the upper limit of our estimated $B$ is \Sexpr{Blow}, which is far below $0$, providing further support for rejecting $H_0$. 
+As shown, the upper limit of our estimated $B$ is -0.9903636, which is far below $0$, providing further support for rejecting $H_0$. 
 
 So, using our example data, we tested the working hypothesis that political ideology is negatively related to perceived risk of global warming to people and the environment. Using simple OLS regression, we find support for this working hypothesis, and can reject the null.
 

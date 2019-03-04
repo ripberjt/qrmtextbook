@@ -113,7 +113,7 @@ ols1 <- lm(glbcc_risk ~ ideol+age, data = ds.temp)
 summary(ols1)
 ```
 
-Note that the estimated coefficient for ideology is \Sexpr{ols1$coef[2]}. To see how multiple regression removes the shared variance we first regress climate change risk on age and create an object `ols2.resids` of the residuals. 
+Note that the estimated coefficient for ideology is -1.0427478. To see how multiple regression removes the shared variance we first regress climate change risk on age and create an object `ols2.resids` of the residuals. 
 
 ```{r 12ols2, echo=TRUE}
 ols2 <- lm(glbcc_risk ~ age, data = ds.temp)
@@ -159,7 +159,7 @@ ols1 <- lm(glbcc_risk ~ age+ideol, data=ds.temp)
 summary(ols1)
 ```
 
-The results show that the relationship between age and perceived risk (glbccrsk) is negative and insignificant. The relationship between ideology and perceived risk is negative and significant. The coefficients of the $X$'s are interpreted in the same way as with simple regression, except that we are now controlling for the effect of the other $X$'s by removing their influence on the estimated coefficient. Therefore, we say that as ideology increases one unit, perceptions of the risk of climate change (glbccrsk) decrease by \Sexpr{ols1$coef[3]}, controlling for the effect of age.  
+The results show that the relationship between age and perceived risk (glbccrsk) is negative and insignificant. The relationship between ideology and perceived risk is negative and significant. The coefficients of the $X$'s are interpreted in the same way as with simple regression, except that we are now controlling for the effect of the other $X$'s by removing their influence on the estimated coefficient. Therefore, we say that as ideology increases one unit, perceptions of the risk of climate change (glbccrsk) decrease by -1.0427478, controlling for the effect of age.  
 
 As was the case with simple regression, multiple regression finds the intercept and slopes that minimize the sum of the squared residuals. With only one IV the relationship can be represented in a two-dimensional plane (a graph) as a line, but each IV adds another dimension. Two IVs create a regression plane within a cube, as shown in Figure \@ref(fig:scatols). The Figure shows a scatterplot of perceived climate change risk, age, and ideology coupled with the regression plane. Note that this is a sample of 200 observations from the larger data set. Were we to add more IVs, we would generate a hypercube... and we haven't found a clever way to draw that yet.
 
@@ -185,7 +185,7 @@ ols2 <- lm(glbcc_risk ~ age + education + ideol, data = ds.temp)
 summary(ols2)
 ```
 
-We see that as a respondent's education increases one unit on the education scale, perceived risk appears to increase by \Sexpr{ols2$coef[3]}, keeping age and ideology constant. However, this result is not significant. In the final example, income is added to the model. Note that the size and  significance of education actually increases once income is included, indicating that education only has  bearing on the perceived risks of climate change once the independent effect of income is considered.
+We see that as a respondent's education increases one unit on the education scale, perceived risk appears to increase by 0.0367752, keeping age and ideology constant. However, this result is not significant. In the final example, income is added to the model. Note that the size and  significance of education actually increases once income is included, indicating that education only has  bearing on the perceived risks of climate change once the independent effect of income is considered.
 
 ```{r 12ols7, echo=TRUE}
 options(scipen = 999) #to turn off scientific notation

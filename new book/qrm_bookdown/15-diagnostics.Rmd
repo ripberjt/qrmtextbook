@@ -389,7 +389,7 @@ df <- 2/sqrt(500)
 df
 ```
 
-In this case, if $|\text{DFBETAS}| > \Sexpr{df}$ then they can be examined for  possible influence. Note, however, than in large datasets this may prove to be difficult,  so you should examine the largest DFBETAS first. In our example, we will look only at the largest 5 DFBETAS.
+In this case, if $|\text{DFBETAS}| > 0.0894427$ then they can be examined for  possible influence. Note, however, than in large datasets this may prove to be difficult,  so you should examine the largest DFBETAS first. In our example, we will look only at the largest 5 DFBETAS.
 
 To calculate the DFBETAS we use the `dfbetas` function. Then we examine the DFBETA values for the first five rows of our data.
 

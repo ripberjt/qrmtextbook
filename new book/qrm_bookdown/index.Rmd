@@ -1,5 +1,5 @@
 --- 
-title: "Quantitative Research Methods for Political Science, Public Policy and Public Administration: 3rd Edition With Applications in R"
+title: "Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R"
 author: 
 - Hank Jenkins-Smith
 - Joseph Ripberger
@@ -9,9 +9,9 @@ author:
 - Aaron Fister
 - Wesley Wehde
 site: bookdown::bookdown_site
-output: bookdown::html_book #bookdown::pdf_book
+output: 
+  bookdown::pdf_book:
 book_filename: "qrmbook"
-always_allow_html: yes
 language:
   ui:
     chapter_name: "Chapter "
@@ -43,4 +43,4 @@ Wesley Wehde
 
 ## Copyright {-}
 
-This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0). You can download this book for free [here](INSERT URL HERE).  
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0).

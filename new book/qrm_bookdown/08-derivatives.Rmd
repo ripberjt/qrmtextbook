@@ -195,7 +195,7 @@ As can be seen, the critical point $(2,1)$ is a minima.
 
 ### Partial Derivation
 
-When an equation includes two variables, one can take a _partial derivative_ with respect to only one variable, while the other variable is simply treated as a constant. This is particularly useful in our case, because the function $\sum \epsilon^{2}$ has two variables -- $\hat{\alpha}$ and ${\hat{\beta}$.
+When an equation includes two variables, one can take a _partial derivative_ with respect to only one variable, while the other variable is simply treated as a constant. This is particularly useful in our case, because the function $\sum \epsilon^{2}$ has two variables -- $\hat{\alpha}$ and $\hat{\beta}$.
 
 Let's take an example. For the function $y=f(x,z)=x^{3}+4xz-5z^{2}$, we first take the derivative of $x$ holding $z$ constant. 
 
@@ -390,7 +390,7 @@ A <- ybar-B*xbar
 A
 ```
 
-To see the relationship, we can produce a scatterplot of `x` and `y` and add our regression line, as shown in Figure \@ref(fig:regex). So, for each unit increase in $x$, $y$ increases by \Sexpr{B} and when $x$ is $0$, $y$ is equal to \Sexpr{A}.  
+To see the relationship, we can produce a scatterplot of `x` and `y` and add our regression line, as shown in Figure \@ref(fig:regex). So, for each unit increase in $x$, $y$ increases by 0.7183099 and when $x$ is $0$, $y$ is equal to 0.3380282.  
 
 ```{r regex, echo=TRUE, fig.cap="Simple Regression of $x$ and $y$"}
 plot(x,y)
