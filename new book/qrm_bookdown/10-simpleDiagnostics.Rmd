@@ -19,10 +19,11 @@ Recall from Chapter 4 that we identified three key assumptions about the error t
 > and 
 >
 >    $E(\epsilon_{i}) \neq E(\epsilon_{j})$ for $i \neq j$
+>
 > - Errors are normally distributed
 >
 >    $\epsilon_{i} \sim N(0,\sigma^2_{\epsilon})$
->include
+
 
 Taken together these assumption mean that the error term has a normal, independent, and identical distribution (normal i.i.d.). Figure \@ref(fig:residdist) shows what these assumptions would imply for the distribution of residuals around the predicted values of $Y$ given $X$.
 
@@ -137,7 +138,7 @@ Testing for normality in the model residuals will involve using many of the tech
 
 Start by creating a histogram of the model residuals.
 
-```{r hisideology, eccho=TRUE, fig.cap="Histogram of Model Residuals"}
+```{r histideology, eccho=TRUE, fig.cap="Histogram of Model Residuals"}
 OLS_env$residuals %>% # Pipe the residuals to a data frame
   data.frame() %>% # Pipe the data frame to ggplot
   ggplot(aes(OLS_env$residuals)) +
@@ -240,9 +241,6 @@ One important take-away from a visual examination of these observations is that 
 ## So Now What? Implications of Residual Analysis
 
 What should you do if you observe patterns in the residuals that seem to violate the assumptions of OLS? If you find deviant cases -- outliers that are shown to be highly influential -- you need to first evaluate the specific cases (observations). Is it possible that the data were miscoded? We hear of many instances in which missing value codes (often "-99") were inadvertently left in the dataset. `R` would treat such values as if they were real data, often generating glaring and influential outliers. Should that be the case, recode the offending variable observation as missing ("NA") and try again.  
-
-%for future reference - http://connectmv.com/tutorials/r-tutorial/investigating-outliers-discrepancies-and-other-influential-points/
-% we can use a process to quickly remove the results.
 
 But what if there is no obvious coding problem? It may be that the influential outlier is appropriately measured, but that the observation is different in some theoretically important way. Suppose, for example, that your model included some respondents who -- rather than diligently answering your questions -- just responded at random to your survey questions. They would introduce noise and error. If you could measure these slackers, you could either exclude them or include a control variable in your model to account for their different patterns of responses. We will discuss inclusion of model controls when we turn to multiple regression modeling in later chapters.
 

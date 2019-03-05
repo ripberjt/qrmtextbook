@@ -350,7 +350,7 @@ ds.small &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span 
 <p>Note that if we omit an <span class="math inline">\(X\)</span> that is related to <span class="math inline">\(Y\)</span> and other <span class="math inline">\(X\)</span>s in the model, we will bias the estimate of the included <span class="math inline">\(X\)</span>s. Also consider the problem of including <span class="math inline">\(X\)</span>s that are related to other <span class="math inline">\(X\)</span>s in the model, but not related to <span class="math inline">\(Y\)</span>. This scenario would reduce the independent variance in <span class="math inline">\(X\)</span> used to predict <span class="math inline">\(Y\)</span>.</p>
 <p>Table <a href="the-art-of-regression-diagnostics.html#fig:olsassum">15.1</a> summarizes the various classes of assumption failures and their implications.</p>
 <div class="figure"><span id="fig:olsassum"></span>
-<img src="olsassum.png" alt="Summary of OLS Assumption Failures and their Implications"  />
+<img src="olsassum.PNG" alt="Summary of OLS Assumption Failures and their Implications" width="282" />
 <p class="caption">
 Figure 15.1: Summary of OLS Assumption Failures and their Implications
 </p>
@@ -695,7 +695,7 @@ output.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">500</span>)
 df</code></pre></div>
 <pre><code>## [1] 0.08944272</code></pre>
-<p>In this case, if <span class="math inline">\(|\text{DFBETAS}| &gt; \Sexpr{df}\)</span> then they can be examined for possible influence. Note, however, than in large datasets this may prove to be difficult, so you should examine the largest DFBETAS first. In our example, we will look only at the largest 5 DFBETAS.</p>
+<p>In this case, if <span class="math inline">\(|\text{DFBETAS}| &gt; 0.0894427\)</span> then they can be examined for possible influence. Note, however, than in large datasets this may prove to be difficult, so you should examine the largest DFBETAS first. In our example, we will look only at the largest 5 DFBETAS.</p>
 <p>To calculate the DFBETAS we use the <code>dfbetas</code> function. Then we examine the DFBETA values for the first five rows of our data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.ols1 &lt;-<span class="st"> </span><span class="kw">dfbetas</span>(ols1)
 df.ols1[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</code></pre></div>
@@ -894,7 +894,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

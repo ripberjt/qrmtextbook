@@ -62,13 +62,13 @@ the parameters. The probability function of the normal distribution is expressed
 > __The Normal Probability Density Function:__ The probability density function (PDF) of a normal
     distribution with mean $\mu$ and 
       standard deviation $\sigma$: 
-
-        $f(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-(x-\mu)^{2}/2\sigma^{2}}$
-
+>
+>        $f(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-(x-\mu)^{2}/2\sigma^{2}}$
+>
 > __The Standard Normal Probability Density Function:__ The
     standard normal PDF has a $\mu=0$ and $\sigma=1$
-
-        $f(x) = \frac{1}{\sqrt{2 \pi}}e^{-x^{2}/2}$
+>
+>        $f(x) = \frac{1}{\sqrt{2 \pi}}e^{-x^{2}/2}$
     
 
 Using the standard normal PDF, we can plot a normal distribution in `R`.
@@ -79,9 +79,9 @@ y <- 1/sqrt(2*pi)*exp(-x^2/2)
 plot(x,y, type="l", lwd=2)
 ```
 
-Note that the the tails go to $\pm \infty$. In addition, the density of a distribution over the range of x is the key to hypothesis testing With a normal distribution, $\sim68\%$ of the observations will fall within $1$ standard deviation of the mean, $\sim 95\%$ will fall within 2 standard deviations, and $\sim 99.7\%$ within 3 standard deviations. This is illustrated in Figure \@ref(fig:normal). 
+Note that the the tails go to $\pm \infty$. In addition, the density of a distribution over the range of x is the key to hypothesis testing With a normal distribution, $\sim68\%$ of the observations will fall within $1$ standard deviation of the mean, $\sim 95\%$ will fall within 2 standard deviations, and $\sim 99.7\%$ within 3 standard deviations. This is illustrated in Figures \@ref(fig:normal68), \@ref(fig:normal95), \@ref(fig:normal100). 
 
-```{r normal168, echo=FALSE, results = "hide"}
+```{r normal68, echo=FALSE, fig.cap="~68%: 1 standard deviation"}
 x <- seq(-4,4,length=200)
 y <- dnorm(x)
 plot(x,y,type="l",lwd=2)
@@ -90,7 +90,7 @@ y <- dnorm(x)
 polygon(c(-1,x,1),c(0,y,0),col="gray")
 ```
 
-```{r normal195, echo=FALSE, results = "hide"}
+```{r normal95, echo=FALSE, fig.cap="~95%: 2 standard deviations"}
 x <- seq(-4,4,length=200)
 y <- dnorm(x)
 plot(x,y,type="l",lwd=2)
@@ -99,7 +99,7 @@ y <- dnorm(x)
 polygon(c(-2,x,2),c(0,y,0),col="gray")
 ```
 
-```{r normal100, echo=FALSE, results = "hide"}
+```{r normal100, echo=FALSE, fig.cap="~99.7%: 3 standard deviations"}
 x <- seq(-4,4,length=200)
 y <- dnorm(x)
 plot(x,y,type="l",lwd=2)
@@ -107,8 +107,6 @@ x <- seq(-3,3,length=200)
 y <- dnorm(x)
 polygon(c(-3,x,3),c(0,y,0),col="gray") 
 ``` 
-
-%%%%%%%FIGURE NEEDED HERE
 
 The normal distribution is characterized by several important properties. The distribution of observations is symmetrical around the mean $\mu$; the frequency of observations is highest (the mode) at $\mu$, with more extreme values occurring with lower frequency (this can be seen in Figure \@ref(fig:normal)); and only the mean and variance are needed to characterize data and test simple hypotheses. 
 
@@ -144,7 +142,7 @@ As shown, a score of $75$ falls just outside two standard deviations ($>0.95$), 
 
 A distribution can be plotted using the raw scores found in the original data.  That plot will have a mean and standard  deviation calculated from the original data. To utilize the normal curve to determine probability functions and for inferential statistics we will want to convert that data so that it is standardized.  We standardize so that the distribution is consistent across all distributions.  That standardization produces a set of scores that have a mean of zero and a standard deviation of one.   A standardized or Z-score of 1.5 means, therefore, that the score is one and a half standard deviations about the mean.  A Z-score of -2.0 means that the score is two standard deviations below the mean.
 
-As formula 5.4 indicated, standardizing is a simple process.  To move the mean from its original value to a mean of zero, all you have to do is subtract the mean from each score.  To standardize the standard deviation to one all that is necessary is to divide each score the standard deviation.
+As formula \@ref(eq:04-4) indicated, standardizing is a simple process.  To move the mean from its original value to a mean of zero, all you have to do is subtract the mean from each score.  To standardize the standard deviation to one all that is necessary is to divide each score the standard deviation.
 
 ### The Central Limit Theorem
 
@@ -202,7 +200,7 @@ If our sample size is not large, instead of using z-scores to estimate confidenc
   (\#eq:05-4)
 \end{equation}
 
-To find the appropriate value for t, we need to decide what level of confidence we want (generally 95\%) and our __degrees of freedom__ (df), which is $n - 1$.  We can find a confidence interval with R using the t.test function.  By default, t.test will test the hypothesis that the mean of our variable of interest (glbcc_risk) is equal to zero.  It will also find the mean score and a confidence interval for the glbcc_risk variable:
+To find the appropriate value for t, we need to decide what level of confidence we want (generally 95\%) and our __degrees of freedom__ (df), which is $n - 1$.  We can find a confidence interval with `R` using the `t.test` function.  By default, `t.test` will test the hypothesis that the mean of our variable of interest (`glbcc_risk`) is equal to zero.  It will also find the mean score and a confidence interval for the `glbcc_risk` variable:
 
 ```{r ttest, echo=TRUE}
 t.test(ds$glbcc_risk)

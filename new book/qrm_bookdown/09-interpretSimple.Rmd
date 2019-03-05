@@ -10,7 +10,10 @@ risk do you think global warming poses for people
 and the environment?"]
 
 Using the data from these questions, we posit the following hypothesis:
+
+>
 > $H_{1}$: On average, as respondents become more politically conservative, they will be less likely to express increased risk associated with global warming.
+>
 
 The null hypothesis, $H_{0}$, is $\beta = 0$, posits that a respondent's ideology has no relationship with their views about the risks of global warming for people and the environment. Our working hypothesis, $H_{1}$, is $\beta < 0$. We expect $\beta$ to be less than zero because we expect a _negative_ slope between our measures of ideology and levels of risk associated with global warming, given that a larger numeric value for ideology indicates a more conservative respondent. Note that this is a _directional_ hypothesis, since we are positing a negative relationship. Typically, a directional hypothesis implies a one-tailed test where the critical value is 0.05 on one side of the distribution. A _non-directional_ hypothesis, $\beta \neq 0$ does not imply a particular direction, it only implies that there is a relationship. This requires a two-tailed test where the critical value is 0.025 on both sides of the distribution.  
 
@@ -54,7 +57,7 @@ Se
 
 Note that this result matches the result provided by the `summary` function in `R`, as shown above.  
 
-For our model, the results indicate that: $Y_{i} =$10.8186624-1.0463463$X_{i} + E_{i}$.  Another sample of 2513 observations would almost certainly lead to different estimates for $A$ and $B$.  If we drew many such samples, we'd get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance.  To do that, we calculate the standard error of the slope and intercept coefficients, $SE(B)$ and $SE(A)$. These standard errors are our estimates of how much variation we would expect in the estimates of $B$ and $A$ across different samples. We use them to evaluate whether $B$ and $A$ are larger than would be expected to occur by chance, if the real values of $B$ and/or $A$ are zero (the null hypotheses).
+For our model, the results indicate that: $Y_{i} =10.8186624-1.0463463X_{i} + E_{i}$.  Another sample of 2513 observations would almost certainly lead to different estimates for $A$ and $B$.  If we drew many such samples, we'd get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance.  To do that, we calculate the standard error of the slope and intercept coefficients, $SE(B)$ and $SE(A)$. These standard errors are our estimates of how much variation we would expect in the estimates of $B$ and $A$ across different samples. We use them to evaluate whether $B$ and $A$ are larger than would be expected to occur by chance, if the real values of $B$ and/or $A$ are zero (the null hypotheses).
 
 The standard error for $B$, $SE(B)$ is:
 
@@ -202,17 +205,15 @@ sum of the squared variance of $Y$
   $\sum E^{2}_{i} = \sum (Y-\hat{Y})^{2} = \sum (Y_{i}-A-BX_{i})^{2}$    
   \end{center}
 - _Explained sum of squares (ESS)_: The variance of $Y$
-  accounted for in the model
-  
-It is the difference between the TSS and the RSS.
+  accounted for in the model. It is the difference between the TSS and the RSS.
   
   \begin{center}
   $ESS = TSS-RSS$  
   \end{center}
-- \textit{$R^{2}$}: The proportion of the total
-  variance of $Y$ explained by the model
-  %it is the ratio of $ESS$ to
-  %$TSS$ 
+  
+- _$R^{2}$_: The proportion of the total
+  variance of $Y$ explained by the model, or the ratio of $ESS$ to $TSS$ 
+  
   \begin{align*}
   R^{2} &= \frac{ESS}{TSS} \\
   \\
@@ -294,7 +295,7 @@ The values for $R^{2}$ can range from zero to 1. In the case of simple regressio
 
 ### Visualizing Bivariate Regression
 
-The `ggplot2` package provides a mechanism for viewing the effect of the independent variable, ideology, on the dependent variable, perceived risk of climate change. % Adding `geom_smooth` will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares.  Graphically (Figure \@ref(fig:effectsplot)), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.
+The `ggplot2` package provides a mechanism for viewing the effect of the independent variable, ideology, on the dependent variable, perceived risk of climate change. Adding `geom_smooth` will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares.  Graphically (Figure \@ref(fig:effectsplot)), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.
 
 ```{r effectsplot, echo=TRUE, fig.cap="Bivariate Regression Plot"}
 ggplot(ds.omit, aes(ideol, glbcc_risk)) +

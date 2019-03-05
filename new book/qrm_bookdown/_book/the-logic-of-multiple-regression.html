@@ -426,7 +426,7 @@ ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## Residual standard error: 2.479 on 2510 degrees of freedom
 ## Multiple R-squared:  0.3488, Adjusted R-squared:  0.3483 
 ## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<p>Note that the estimated coefficient for ideology is . To see how multiple regression removes the shared variance we first regress climate change risk on age and create an object <code>ols2.resids</code> of the residuals.</p>
+<p>Note that the estimated coefficient for ideology is -1.0427478. To see how multiple regression removes the shared variance we first regress climate change risk on age and create an object <code>ols2.resids</code> of the residuals.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> ds.temp)
 <span class="kw">summary</span>(ols2)</code></pre></div>
 <pre><code>## 
@@ -533,7 +533,7 @@ ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## Residual standard error: 2.479 on 2510 degrees of freedom
 ## Multiple R-squared:  0.3488, Adjusted R-squared:  0.3483 
 ## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<p>The results show that the relationship between age and perceived risk (glbccrsk) is negative and insignificant. The relationship between ideology and perceived risk is negative and significant. The coefficients of the <span class="math inline">\(X\)</span>’s are interpreted in the same way as with simple regression, except that we are now controlling for the effect of the other <span class="math inline">\(X\)</span>’s by removing their influence on the estimated coefficient. Therefore, we say that as ideology increases one unit, perceptions of the risk of climate change (glbccrsk) decrease by , controlling for the effect of age.</p>
+<p>The results show that the relationship between age and perceived risk (glbccrsk) is negative and insignificant. The relationship between ideology and perceived risk is negative and significant. The coefficients of the <span class="math inline">\(X\)</span>’s are interpreted in the same way as with simple regression, except that we are now controlling for the effect of the other <span class="math inline">\(X\)</span>’s by removing their influence on the estimated coefficient. Therefore, we say that as ideology increases one unit, perceptions of the risk of climate change (glbccrsk) decrease by -1.0427478, controlling for the effect of age.</p>
 <p>As was the case with simple regression, multiple regression finds the intercept and slopes that minimize the sum of the squared residuals. With only one IV the relationship can be represented in a two-dimensional plane (a graph) as a line, but each IV adds another dimension. Two IVs create a regression plane within a cube, as shown in Figure <a href="the-logic-of-multiple-regression.html#fig:scatols">12.3</a>. The Figure shows a scatterplot of perceived climate change risk, age, and ideology coupled with the regression plane. Note that this is a sample of 200 observations from the larger data set. Were we to add more IVs, we would generate a hypercube… and we haven’t found a clever way to draw that yet.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds200 &lt;-<span class="st"> </span>ds.temp[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(ds.temp), <span class="dv">200</span>, <span class="dt">replace=</span><span class="ot">FALSE</span>),]
 <span class="kw">library</span>(scatterplot3d)  
@@ -576,7 +576,7 @@ ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## Residual standard error: 2.437 on 2268 degrees of freedom
 ## Multiple R-squared:  0.3607, Adjusted R-squared:  0.3598 
 ## F-statistic: 426.5 on 3 and 2268 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<p>We see that as a respondent’s education increases one unit on the education scale, perceived risk appears to increase by , keeping age and ideology constant. However, this result is not significant. In the final example, income is added to the model. Note that the size and significance of education actually increases once income is included, indicating that education only has bearing on the perceived risks of climate change once the independent effect of income is considered.</p>
+<p>We see that as a respondent’s education increases one unit on the education scale, perceived risk appears to increase by 0.0367752, keeping age and ideology constant. However, this result is not significant. In the final example, income is added to the model. Note that the size and significance of education actually increases once income is included, indicating that education only has bearing on the perceived risks of climate change once the independent effect of income is considered.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">999</span>) <span class="co">#to turn off scientific notation</span>
 ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)
 <span class="kw">summary</span>(ols3)</code></pre></div>
@@ -714,7 +714,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

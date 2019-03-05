@@ -10,13 +10,13 @@ In this chapter, we will identify the ways to characterize your data before you 
 
 ## Characterizing Data
 
-What does it mean to characterize your data? First, it means knowing how many observations are contained in your data and the distribution of those observations over the range of your variable(s). What kinds of measures (interval, ordinal, nominal) do you have, and what are the ranges of valid measures for each variable? How many cases of missing (no data) or mis-coded (measures that fall outside the valid range) do you have? What do the coded values represent? While seemingly trivial, checking and evaluating your data for these attributes can save you major headaches later. For example, missing values for an observation often get a special code -- say, ``-99" -- to distinguish them  from valid observations. If you neglect to treat these values properly, R (or any other statistics program) will treat that value as if it were valid and thereby turn your results into a royal hairball. We know of cases in which even seasoned quantitative scholars have made the embarrassing mistake of failing to properly handle missing values in their analyses. In at least one case, a published paper had to be retracted for this reason. So don't skimp on the most basic forms of data characterization!
+What does it mean to characterize your data? First, it means knowing how many observations are contained in your data and the distribution of those observations over the range of your variable(s). What kinds of measures (interval, ordinal, nominal) do you have, and what are the ranges of valid measures for each variable? How many cases of missing (no data) or mis-coded (measures that fall outside the valid range) do you have? What do the coded values represent? While seemingly trivial, checking and evaluating your data for these attributes can save you major headaches later. For example, missing values for an observation often get a special code -- say, "-99" -- to distinguish them  from valid observations. If you neglect to treat these values properly, R (or any other statistics program) will treat that value as if it were valid and thereby turn your results into a royal hairball. We know of cases in which even seasoned quantitative scholars have made the embarrassing mistake of failing to properly handle missing values in their analyses. In at least one case, a published paper had to be retracted for this reason. So don't skimp on the most basic forms of data characterization!
 
 The dataset used for purposes of illustration in this version of this text is taken from a survey of Oklahomans, conducted in 2016, by OU's Center for Risk and Crisis Management. The survey question wording and background will be provided in class. However, for purposes of this chapter, note that the measure of  __ideology__ consists of a self-report of political ideology on a scale that ranges from 1 (strong liberal) to 7 (strong conservative); the measure of the __perceived risk of climate change__ ranges from zero (no risk) to 10 (extreme risk). __Age__ was measured in years. 
 
 It is often useful to graph the variables in your dataset to get a better idea of their distribution. In addition, we may want to compare the distribution of a variable to a theoretical distribution (typically a normal distribution). This can be accomplished in several ways, but we will show two here---a histogram and a density curve---and more will be discussed in later chapters. For now we examine the distribution of the variable measuring age. The red line on the density visualization presents the normal distribution given the mean and standard deviation of our variable.
 
-% Omitted: A histogram creates intervals of equal length, called bins, and displays the frequency of observations in each of the bins. To produce a histogram in R simply use the geom_histogram command in the `ggplot2` package. Next, we  plot the density of the observed data along with a normal curve.  This can be done with the `geom_density` command in the `ggplot2` package. 
+A histogram creates intervals of equal length, called bins, and displays the frequency of observations in each of the bins. To produce a histogram in R simply use the `geom_histogram` command in the `ggplot2` package. Next, we  plot the density of the observed data along with a normal curve.  This can be done with the `geom_density` command in the `ggplot2` package. 
 
 ```{r hist, echo=TRUE, fig.cap="Histogram", warning=FALSE, message=FALSE}
 library(ggplot2)
@@ -77,7 +77,7 @@ One issue, though, is that your ability to use any statistic is dependent on the
 
 ### Moments 
 
-In addition to measures of central tendency, ``moments" are important ways to characterize the shape of the distribution of a sample variable. Moments are applicable when the data measured is interval type (the level of measurement). The first four moments are those that are used most often.  
+In addition to measures of central tendency, "moments" are important ways to characterize the shape of the distribution of a sample variable. Moments are applicable when the data measured is interval type (the level of measurement). The first four moments are those that are used most often.  
 
 #### The First Four Moments {-}
 
@@ -130,7 +130,7 @@ s^{2}_{x}=\frac{\sum (X-\bar{X})^{2}}{(n-1)}
 
 The population variance is expressed as: $\sigma^{2}_{X}$. 
 
-Variance is measured in `squared` deviations from the mean, and the sum of these squared variations is termed the `total sum of squares`. Why squared deviations? Why not just sum the differences? While the latter strategy would seemingly be simpler, it would always sum to zero. By squaring the deviations we make them all positive, so the sum of squares will always be a positive number.
+Variance is measured in _squared_ deviations from the mean, and the sum of these squared variations is termed the __total sum of squares__. Why squared deviations? Why not just sum the differences? While the latter strategy would seemingly be simpler, it would always sum to zero. By squaring the deviations we make them all positive, so the sum of squares will always be a positive number.
 
 >__Total Sum of Squares__ is the squared summed total of the variation of a variable around its mean.
 
@@ -220,7 +220,7 @@ The _median_ is the value at the center of the distribution, therefore 50\% of t
 the median and 50\% will have values below. For samples with a $n$-size that is an odd number, the median is simply the value in the middle. For example, with a sample consisting of the observed values of $1, 2, 3, 4, 5$, the median is $3$. Distributions with an even numbered $n$-size, the median is the average of the two middle values. The median of a sample consisting of the observed values of $1, 2, 3, 4, 5, 6$
 would be $\frac{3+4}{2}$ or 3.5. 
 
-The the median is the order statistic for central tendency. In addition, it is more "robust" in terms of extreme values than the mean. Extremely high values in a distribution can pull the mean higher, and extremely low values pull the mean lower. The median is less sensitive to these extreme values. The median is therefore the basis for ``robust estimators," to be discussed later in this book.
+The the median is the order statistic for central tendency. In addition, it is more "robust" in terms of extreme values than the mean. Extremely high values in a distribution can pull the mean higher, and extremely low values pull the mean lower. The median is less sensitive to these extreme values. The median is therefore the basis for "robust estimators," to be discussed later in this book.
 
 #### Quartiles {-}
 

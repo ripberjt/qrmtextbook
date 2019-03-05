@@ -25,10 +25,13 @@ As described in earlier chapters, there is a set of key assumptions that must be
 > __OLS Assumptions__
 >
 > _Systematic Component_ 
+>
 > - Linearity 
+>
 > - Fixed $X$  
 >
 > _Stochastic Component_
+>
 > - Errors have constant variance across the range of $X$
 >
 >   $E(\epsilon^2_i) = \sigma^2_\epsilon$
@@ -164,7 +167,7 @@ As we can see in Figure \@ref(fig:convar15), the residuals are spread evenly and
 
 We can also present a clearly heteroscedastistic residual term. In this case the residuals do vary systematically over the range of $X$, indicating that the precision of the estimates of $Y$ will vary considerably over the range of predicted values. Note the distinctive fan shape in Figure \@ref(fig:hetero15), indicating that predictions of $Y$ lose precision as the value of $X$ increases. 
 
-```{r hetero15, echo=FALSE, fig.cap="Heteroskedasticity"}
+```{r hetero15, echo=FALSE, fig.cap="Heteroscedasticity"}
 y <- x*rnorm(50)
 plot(x,y)
 abline(h=0)
@@ -196,7 +199,7 @@ The non-constant variance test provides confirmation that the residuals from our
 
 What are the implications? Our $t$-tests for the estimated partial regression  coefficients assumed constant variance. With the evidence of heteroscedasticity, we conclude that these tests are unreliable (the precision of our estimates will be greater in some ranges of $X$ than others). 
 
-They are several steps that can be considered when confronted by heteroscedasticity in the residuals. First, we can consider whether we need to re-specify the model, possibly because we have some omitted variables. If model re-specification does not correct the problem, we can use non-OLS regression techniques that include robust estimated  standard errors.  Robust standard errors are appropriate when error variance is unknown. Robust standard errors do not change the estimate of $B$, but adjust the estimated standard error of each coefficient, $SE(B)$, thus giving more accurate $p$ values. In this example, we draw on White's (1980)^[H White,  1980.  "A Heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity." _Econometrica_ 48: 817-838.] method to calculate robust standard errors.  
+They are several steps that can be considered when confronted by heteroscedasticity in the residuals. First, we can consider whether we need to re-specify the model, possibly because we have some omitted variables. If model re-specification does not correct the problem, we can use non-OLS regression techniques that include robust estimated  standard errors.  Robust standard errors are appropriate when error variance is unknown. Robust standard errors do not change the estimate of $B$, but adjust the estimated standard error of each coefficient, $SE(B)$, thus giving more accurate $p$ values. In this example, we draw on White's (1980)^[H White,  1980.  "A Heteroscedasticity-consistent covariance matrix estimator and a direct test for heteroscedasticity." _Econometrica_ 48: 817-838.] method to calculate robust standard errors.  
 
 White uses a __heteroscedasticity consistent covariance matrix__ (hccm) to calculate standard errors when the error term has non-constant variance. Under the OLS assumption of constant error variance, the covariance matrix of $b$ is:
 
@@ -382,7 +385,7 @@ DFBETAS measure the influence of case $i$ on the $j$ estimated coefficients. Spe
   (\#eq:15-4)
 \end{equation}
 
-Note that if DFBETAS $ > 0$, then case $i$ pulls $B_j$ _up_, and  if DFBETAS $ < 0$, then case $i$ pulls $B_j$ _down_.  In general, if $|\text{DFBETAS}_{ij}| > \frac{2}{\sqrt{n}}$ then these cases warrant further examination. Note that this approach gets the top 5\% of influential cases, given the sample size. For both simple (bi-variate) and  multiple regression models the DFBETA cut-offs can be calculated in `R`.
+Note that if DFBETAS $> 0$, then case $i$ pulls $B_j$ _up_, and  if DFBETAS $< 0$, then case $i$ pulls $B_j$ _down_.  In general, if $|\text{DFBETAS}_{ij}| > \frac{2}{\sqrt{n}}$ then these cases warrant further examination. Note that this approach gets the top 5\% of influential cases, given the sample size. For both simple (bi-variate) and  multiple regression models the DFBETA cut-offs can be calculated in `R`.
 
 ```{r dfbeta, echo=TRUE}
 df <- 2/sqrt(500)
@@ -481,11 +484,17 @@ If an X is perfectly predicted by the other $X$'s, then:
 $X_k$ on all other $X$'s. 
 
 We rarely find perfect multicollinearity in practice, but high multicollinearity results in loss of statistical resolution. Such as:  
+
 - Large standard errors
+
 - Low $t$-stats, high $p$-values
+
   - This erodes the resolution of our hypothesis tests
+  
 - Enormous sensitivity to small changes in:
+
   - Data
+  
   - Model specification
 
 You should always check the correlations between the IVs during the model building process. This is a way to quickly identify possible multicollinearity issues.

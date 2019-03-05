@@ -10,6 +10,7 @@ author:
 - Wesley Wehde
 site: bookdown::bookdown_site
 output: 
+  bookdown::gitbook:
   bookdown::pdf_book:
 book_filename: "qrmbook"
 language:

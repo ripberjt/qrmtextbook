@@ -24,9 +24,13 @@ The formula for the chi square takes the expected frequency for each of the cell
   \end{equation}
 
 where:
+
 $\chi^2$  = The Test Statistic
+
 $\sum$ = The Summation Operator 
+
 $O$ = Observed Frequencies 
+
 $E$ = Expected Frequencies 
 
 ```{r iv-dv2, echo=FALSE, fig.cap="Sample Null-Hypothesized Table Layout as Percentages"}
@@ -43,7 +47,7 @@ Table \@ref(fig:chiscalc) provides those calculations.   It shows a final chi sq
 knitr::include_graphics("iv-dv4.png")
 ```
 
-Table \@ref(tab:chisquaretable) (at the end of this chapter) is a chi square table that shows the critical values for various levels of significance and degrees of freedom.   The critical value for one degree of freedom with a .05 level of significance is 3.84.  Since our chi square is larger than that we can reject our null hypothesis - there is less than a .05 probability that we could have found the results in our sample if there is no relationship in the population.  In fact, if we follow the row for one degree of freedom across, we see we can reject our null hypothesis even at the .005 level of significance and, almost but not quite, at the .001 level of significance.  
+Table \@ref(fig:chisquaretable) (at the end of this chapter) is a chi square table that shows the critical values for various levels of significance and degrees of freedom.   The critical value for one degree of freedom with a .05 level of significance is 3.84.  Since our chi square is larger than that we can reject our null hypothesis - there is less than a .05 probability that we could have found the results in our sample if there is no relationship in the population.  In fact, if we follow the row for one degree of freedom across, we see we can reject our null hypothesis even at the .005 level of significance and, almost but not quite, at the .001 level of significance.  
 
 Having rejected the null hypothesis, we believe there is a relationship between the two variables, but we still want to know how strong that relationship is.   Measures of association are used to determine the strength of a relationship. One type of measure of association relies on a co-variation model as elaborated upon in Sections 6.2 and 6.3.  Co-variation models are directional models and require ordinal or interval level measures; otherwise, the variables have no direction.  Here we consider alternative models. 
 
@@ -165,7 +169,7 @@ We might, though, want to look at gender as a control variable since we know gen
 ds$f.gend <- factor(ds$gend, levels=c(0, 1), labels=c("Women", "Men"))
 ```
 
-We then create the new table.  The R output is shown, in which the line `\#\# ,  ,  = Women" indicates the results for women and "\#\# ,  ,  = Men` displays the results for men.
+We then create the new table.  The R output is shown, in which the line `\#\# ,  ,  = Women` indicates the results for women and `\#\# ,  ,  = Men` displays the results for men.
 
 ```{r glbcctable, echo=TRUE}
 #  3 Two variable table glbcc~ideology+gend
@@ -241,7 +245,7 @@ Note that each variable is perfectly (and positively) correlated with itself - n
 
 ## Scatterplots
 
-As noted earlier, it is often useful to try and see patterns between two variables. We examined the density plots of males and females with regard to climate change risk, then we tested these differences for statistical significance. However, we often want to know more than the mean difference between groups; we may also want to know if differences exist for variables with several possible values. For example, here we examine the relationship between ideology and perceived risk of climate change. One of the more efficient ways to do this is to produce a scatterplot. %Use geom_jitter. This is because ideology and glbcc risk are discrete variables(i.e., whole numbers), so we need to "jitter" the data. If your values are continuous, use `geom_point`.^[That means a "jit" (a very small value) is applied to each observed point on the plot, so you can see observations that are ``stacked" on the same coordinate. Ha! Just kidding; they're not called jits. We don't know what they're called. But they ought to be called jits.] The result is shown in Figure \ref{fig:scatjit}.  
+As noted earlier, it is often useful to try and see patterns between two variables. We examined the density plots of males and females with regard to climate change risk, then we tested these differences for statistical significance. However, we often want to know more than the mean difference between groups; we may also want to know if differences exist for variables with several possible values. For example, here we examine the relationship between ideology and perceived risk of climate change. One of the more efficient ways to do this is to produce a scatterplot. %Use geom_jitter. This is because ideology and glbcc risk are discrete variables(i.e., whole numbers), so we need to "jitter" the data. If your values are continuous, use `geom_point`.^[That means a "jit" (a very small value) is applied to each observed point on the plot, so you can see observations that are "stacked" on the same coordinate. Ha! Just kidding; they're not called jits. We don't know what they're called. But they ought to be called jits.] The result is shown in Figure \ref{fig:scatjit}.  
 
 ```{r scatjit, echo=TRUE, message=FALSE, warning=FALSE, fig.cap="Scatterplot of Ideology and glbcc Risk"}
 ds %>%
@@ -249,7 +253,7 @@ ds %>%
   geom_jitter(shape = 1)
 ```  
 
-We can see that the density of values indicate that strong liberals---$1$'s on the ideology scale---tend to view climate change as quite risky, whereas strong conservatives---$7$'s on the ideology scale---tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a "loess" line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We'll have more to say about the linear estimates when we turn to regression analysis in the next chapter. %We can add to the previous visualization by including `geom_smooth` and indicating a "loess" line or an "lm" line. 
+We can see that the density of values indicate that strong liberals---$1$'s on the ideology scale---tend to view climate change as quite risky, whereas strong conservatives---$7$'s on the ideology scale---tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a "loess" line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We'll have more to say about the linear estimates when we turn to regression analysis in the next chapter. 
 
 ```{r scatjit2, echo=TRUE, fig.cap="Scatterplot of Ideology and GLBCC Risk with Regression Line and Lowess Line"}
 ds %>%

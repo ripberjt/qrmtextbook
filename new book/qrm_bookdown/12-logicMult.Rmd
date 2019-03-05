@@ -197,7 +197,7 @@ summary(ols3)
 
 The logic of hypothesis testing with multiple regression is a straightforward extension from  simple regression as described in Chapter 7. Below we will demonstrate how to use the standard error of the ideology variable to test whether ideology influences perceptions of the perceived risk of global climate change. Specifically, we posit:
 
->{$H_1$}: As respondents become more conservative, they will perceive climate change to be less risky, all else equal. 
+> $H_1$: As respondents become more conservative, they will perceive climate change to be less risky, all else equal. 
 
 Therefore, $\beta_{ideology} < 0$. The null hypothesis is that $\beta_{ideology} = 0$. 
 

@@ -364,7 +364,7 @@ S_{E}=\sqrt{\frac{\Sigma E^{2}_{i}}{n-2}}
 Se</code></pre></div>
 <pre><code>## [1] 2.479022</code></pre>
 <p>Note that this result matches the result provided by the <code>summary</code> function in <code>R</code>, as shown above.</p>
-<p>For our model, the results indicate that: <span class="math inline">\(Y_{i} =\)</span>  <span class="math inline">\(X_{i} + E_{i}\)</span>. Another sample of 2513 observations would almost certainly lead to different estimates for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. If we drew many such samples, we’d get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance. To do that, we calculate the standard error of the slope and intercept coefficients, <span class="math inline">\(SE(B)\)</span> and <span class="math inline">\(SE(A)\)</span>. These standard errors are our estimates of how much variation we would expect in the estimates of <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> across different samples. We use them to evaluate whether <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> are larger than would be expected to occur by chance, if the real values of <span class="math inline">\(B\)</span> and/or <span class="math inline">\(A\)</span> are zero (the null hypotheses).</p>
+<p>For our model, the results indicate that: $Y_{i} =<span class="math inline">\(10.8186624-1.0463463\)</span>X_{i} + E_{i}$. Another sample of 2513 observations would almost certainly lead to different estimates for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. If we drew many such samples, we’d get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance. To do that, we calculate the standard error of the slope and intercept coefficients, <span class="math inline">\(SE(B)\)</span> and <span class="math inline">\(SE(A)\)</span>. These standard errors are our estimates of how much variation we would expect in the estimates of <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> across different samples. We use them to evaluate whether <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> are larger than would be expected to occur by chance, if the real values of <span class="math inline">\(B\)</span> and/or <span class="math inline">\(A\)</span> are zero (the null hypotheses).</p>
 <p>The standard error for <span class="math inline">\(B\)</span>, <span class="math inline">\(SE(B)\)</span> is:</p>
 <span class="math display" id="eq:09-2">\[\begin{equation}
 SE(B)=\frac{S_{E}}{\sqrt{TSS_{X}}}
@@ -395,7 +395,7 @@ SEb</code></pre></div>
 t</code></pre></div>
 <pre><code>##     ideol 
 ## -36.63342</code></pre>
-<p>The <span class="math inline">\(t\)</span> value for our <span class="math inline">\(B\)</span> is , meaning that <span class="math inline">\(B\)</span> is  standard errors away from zero. We can then ask: What is the probability, <span class="math inline">\(p\)</span> <em>value</em>, of obtaining this result if <span class="math inline">\(\beta=0\)</span>? According to the results shown earlier, <span class="math inline">\(p=2e-16\)</span>. That is remarkably close to zero. This result indicates that we can reject the null hypothesis that <span class="math inline">\(\beta=0\)</span>.</p>
+<p>The <span class="math inline">\(t\)</span> value for our <span class="math inline">\(B\)</span> is 36.6334214, meaning that <span class="math inline">\(B\)</span> is 36.6334214 standard errors away from zero. We can then ask: What is the probability, <span class="math inline">\(p\)</span> <em>value</em>, of obtaining this result if <span class="math inline">\(\beta=0\)</span>? According to the results shown earlier, <span class="math inline">\(p=2e-16\)</span>. That is remarkably close to zero. This result indicates that we can reject the null hypothesis that <span class="math inline">\(\beta=0\)</span>.</p>
 <p>In addition, we can calculate the confidence interval (CI) for our estimate of <span class="math inline">\(B\)</span>. This means that in 95 out of 100 repeated applications, the confidence interval will contain <span class="math inline">\(\beta\)</span>.</p>
 <p>In the following example, we calculate a <span class="math inline">\(95\%\)</span> CI. The CI is calculated as follows:</p>
 <span class="math display" id="eq:09-4">\[\begin{equation}
@@ -415,7 +415,7 @@ Blow</code></pre></div>
 <pre><code>##                 2.5 %     97.5 %
 ## (Intercept) 10.540430 11.0968947
 ## ideol       -1.102355 -0.9903377</code></pre>
-<p>As shown, the upper limit of our estimated <span class="math inline">\(B\)</span> is , which is far below <span class="math inline">\(0\)</span>, providing further support for rejecting <span class="math inline">\(H_0\)</span>.</p>
+<p>As shown, the upper limit of our estimated <span class="math inline">\(B\)</span> is -0.9903636, which is far below <span class="math inline">\(0\)</span>, providing further support for rejecting <span class="math inline">\(H_0\)</span>.</p>
 <p>So, using our example data, we tested the working hypothesis that political ideology is negatively related to perceived risk of global warming to people and the environment. Using simple OLS regression, we find support for this working hypothesis, and can reject the null.</p>
 </div>
 </div>
@@ -584,7 +584,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

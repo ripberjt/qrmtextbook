@@ -534,7 +534,7 @@ G</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pseudoR2 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(logit2<span class="op">$</span>deviance<span class="op">/</span>logit2<span class="op">$</span>null.deviance)
 pseudoR2</code></pre></div>
 <pre><code>## [1] 0.2281165</code></pre>
-<p>The pseudo <span class="math inline">\(R^2\)</span> of the model is . Note that the psuedo <span class="math inline">\(R^2\)</span> is only an approximation of explained variance, and should be used in combination with other measures of fit such as AIC.</p>
+<p>The pseudo <span class="math inline">\(R^2\)</span> of the model is 0.2281165. Note that the psuedo <span class="math inline">\(R^2\)</span> is only an approximation of explained variance, and should be used in combination with other measures of fit such as AIC.</p>
 </div>
 <div id="akaike-information-criteria" class="section level4 unnumbered">
 <h4>Akaike Information Criteria</h4>
@@ -554,7 +554,7 @@ aic.logit2</code></pre></div>
 </div>
 <div id="interpreting-logits" class="section level3">
 <h3><span class="header-section-number">16.2.3</span> Interpreting Logits</h3>
-<p>The logits, <span class="math inline">\(L\)</span>, are logged odds, and therefore the coefficients that are produced must be interpreted as logged odds. This means that for each unit change in ideology, the predicted logged odds of believing climate change has an anthropogenic cause decrease by . This interpretation, though mathematically straightforward, is not terribly informative. Below we discuss two ways to make the interpretation of logit analysis more intuitive.</p>
+<p>The logits, <span class="math inline">\(L\)</span>, are logged odds, and therefore the coefficients that are produced must be interpreted as logged odds. This means that for each unit change in ideology, the predicted logged odds of believing climate change has an anthropogenic cause decrease by -0.7900119. This interpretation, though mathematically straightforward, is not terribly informative. Below we discuss two ways to make the interpretation of logit analysis more intuitive.</p>
 <div id="calculate-odds" class="section level4 unnumbered">
 <h4>Calculate Odds</h4>
 <p>Logits can be used to directly calculate odds by taking the antilog of any of the coefficients:</p>
@@ -565,7 +565,7 @@ aic.logit2</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logit2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">coef</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">exp</span>()</code></pre></div>
 <pre><code>## (Intercept)         age      gender   education      income       ideol 
 ##  57.6608736   0.9957225   0.8151353   1.1062128   0.9999990   0.4538394</code></pre>
-<p>Therefore, for each 1-unit increase in the ideology scale (i.e., becoming more conservative), the odds of believing that climate change is human caused decrease by .</p>
+<p>Therefore, for each 1-unit increase in the ideology scale (i.e., becoming more conservative), the odds of believing that climate change is human caused decrease by 0.4538394.</p>
 </div>
 <div id="predicted-probabilities" class="section level4 unnumbered">
 <h4>Predicted Probabilities</h4>
@@ -663,7 +663,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

@@ -469,7 +469,6 @@ A.inverse</code></pre></div>
 <h2><span class="header-section-number">11.3</span> OLS Regression in Matrix Form</h2>
 <p>As was the case with simple regression, we want to minimize the sum of the squared errors, <span class="math inline">\(e\)</span>. In matrix notation, the OLS model is <span class="math inline">\(y=Xb+e\)</span>, where <span class="math inline">\(e = y-Xb\)</span>. The sum of the squared <span class="math inline">\(e\)</span> is:</p>
 <span class="math display" id="eq:11-1">\[\begin{equation}
-  \label{eq:e2}
 \sum e^{2}_i = 
 \begin{bmatrix}
   e_1 &amp; e_2 &amp; \cdots &amp; e_n \\ 
@@ -504,7 +503,6 @@ To solve this we subtract <span class="math inline">\(2X&#39;Xb\)</span> from bo
 \end{equation*}\]</span>
 <p>To solve for <span class="math inline">\(b\)</span> we multiply both sides by the inverse of <span class="math inline">\(X&#39;X, (X&#39;X)^{-1}\)</span>. Note that for matrices this is equivalent to dividing each side by <span class="math inline">\(X&#39;X\)</span>. Therefore:</p>
 <span class="math display" id="eq:11-2">\[\begin{equation}
-  \label{eq:b}
 b = (X&#39;X)^{-1}X&#39;y  
 \tag{11.2}
 \end{equation}\]</span>
@@ -706,7 +704,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

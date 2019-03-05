@@ -197,7 +197,7 @@ data.frame(ols1$residuals) %>%
   geom_histogram(bins = 16)
 ```
 
-```{r residdens, echo=TRUE, fic.cap="Residuals of Simple Regression: Density"}
+```{r residdens, echo=TRUE, fig.cap="Residuals of Simple Regression: Density"}
 data.frame(ols1$residuals) %>%
   ggplot(aes(ols1$residuals)) +
   geom_density(adjust = 1.5) 

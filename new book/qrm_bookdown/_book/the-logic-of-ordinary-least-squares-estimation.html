@@ -466,7 +466,7 @@ Figure 7.3: Residuals: Statistical Forensics
 ##   (34 observations deleted due to missingness)
 ## Multiple R-squared:  0.3483, Adjusted R-squared:  0.348 
 ## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<p>The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span>; the results of hypothesis tests; and overall measures of model ``fit&quot; – all of which we will discuss in detail in later chapters. For now, note that the estimated <span class="math inline">\(B\)</span> for ideology is negative, which indicates that as the value for ideology <em>increases</em>—in our data this means more conservative—the perceived risk of climate change <em>decreases</em>. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by .</p>
+<p>The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span>; the results of hypothesis tests; and overall measures of model ``fit&quot; – all of which we will discuss in detail in later chapters. For now, note that the estimated <span class="math inline">\(B\)</span> for ideology is negative, which indicates that as the value for ideology <em>increases</em>—in our data this means more conservative—the perceived risk of climate change <em>decreases</em>. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by -1.0463463.</p>
 <p>We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:residhist">7.4</a> and Figure <a href="#fig:residdens"><strong>??</strong></a>. Note that we will discuss residual diagnostics in detail in future chapters.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ols1<span class="op">$</span>residuals)) <span class="op">+</span>
@@ -534,7 +534,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

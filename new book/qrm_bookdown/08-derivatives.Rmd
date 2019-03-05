@@ -118,7 +118,7 @@ f'(x)&=(x^{3})'(x-5)+(x^{3})(x-5)' \\
 &=4x^{3}-15x^{2} 
 \end{align*}
 
-In a second example, the product rule is applied the function $y=f(x)=x^{2}-6x+5$. The derivative of this function is $f'(x)=2x-6$. This function can be plotted in `R`.  
+In a second example, the product rule is applied to the function $y=f(x)=x^{2}-6x+5$. The derivative of this function is $f'(x)=2x-6$. This function can be plotted in `R`.  
 
 ```{r prodfun, echo=TRUE, fig.cap="Plot of Function $y=f(x)=x^2-6x+5$"}
 x <- c(-1:7)
@@ -170,14 +170,22 @@ Our goal is to use derivatives to find the values of $\hat{\alpha}$ and $\hat{\b
 
 #### Example: Finding the Critical Points {-}
 
-To find the critical point for the function $y=f(x)=(x^{2}-4x+5)$;
+To find the critical point for the function
+
+$y=f(x)=(x^{2}-4x+5)$;
+
 - First find the derivative; $f'(x)=2x-4$ 
+
 - Set the derivative equal to $0$; $f'(x)=2x-4=0$ 
+
 - Solve for $x$; $x=2$ 
+
 - Substitute $2$ for $x$ into the function and solve for $y$
+
     \begin{center}
       $y=f(2)=2^{2}-4(2)+5=1$ 
     \end{center}
+    
 - Thus, the critical point (there's only one in this case) of the function is $(2,1)$
 
 

@@ -260,7 +260,6 @@ c & d
 
 Set $3a+b=1$ and $2a+4b=0$ and solve for $a$ and $b$. In this case $a = \frac{2}{5}$ and $b = -\frac{1}{5}$. Likewise, set $3c+d=0$ and $2c+4d=1$; solving for $c$ and $d$ produces $c=-\frac{1}{10}$ and $d=\frac{3}{10}$. Therefore,
 
-% update to show how to solve 
 $A^{-1} = 
 \begin{bmatrix}
   \frac{2}{5} & -\frac{1}{10} \\
@@ -362,7 +361,7 @@ Assume a model using $n$ observations, $k$ parameters, and $k-1$, $X_{i}$ (indep
 - $e=n*1$ column vector of $n$ residual values    
 
 
-Using the following steps, we will use `R` to calculate $b$; a vector of regression coefficients, $\hat y$; a vector of predicted $y$ values, and $e$; a vector of residuals. 
+Using the following steps, we will use `R` to calculate $b$, a vector of regression coefficients; $\hat y$, a vector of predicted $y$ values; and $e$, a vector of residuals. 
 
 We want to fit the model $y = Xb+e$ to the following matrices: 
 
@@ -454,8 +453,8 @@ Calculate $e$.
 
 To calculate $e$, the vector of residuals, simply subtract the vector $y$ from the vector $\hat y$. 
 
-```{ r yhat2, echo=TRUE}
-e<-y-y.hat
+```{r yhat2, echo=TRUE}
+e <- y-y.hat
 e
 ```
 
