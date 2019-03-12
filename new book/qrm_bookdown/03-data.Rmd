@@ -181,7 +181,7 @@ Specifically, skewness refers to the position of the expected value (i.e., mean)
 $\bar{Y} > Md_{Y}$, then the distribution has a _positive_ skew, $S > 0$. When the median is larger than the mean, $\bar{Y} < Md_{Y}$, this is a _negative_ skew, $S < 0$. This is illustrated in Figure \@ref(fig:disshape). Note that for a normal distribution, $S=0$. 
  
 ```{r disshape, echo=FALSE, fig.cap="Distributional Shapes"}
-knitr::include_graphics("distroshapes.pdf")
+knitr::include_graphics("distroshapes.jpg")
 ```
 
 ###The Fourth Moment -- Kurtosis

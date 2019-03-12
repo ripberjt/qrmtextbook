@@ -20,7 +20,7 @@ Y_{i} = \alpha + \beta X_{i}
 A deterministic model is __systematic__ and contains no error, therefore _$Y$ is perfectly predicted by $X$_. This is illustrated in Figure \ref(fig:dols). $\alpha$ and $\beta$ are the model parameters, and are constant terms. $\beta$ is the slope; the change in $Y$ over the change in $X$. $\alpha$ is the intercept; the value of $Y$ when $X$ is zero.  
 
 ```{r dols, echo=FALSE, fig.cap="Deterministic Model"}
-knitr::include_graphics("deterols.pdf")
+knitr::include_graphics("deterols.jpg")
 ```
 
 Given that in social science we rarely work with deterministic models, nearly all models contain a stochastic, or random, component. 

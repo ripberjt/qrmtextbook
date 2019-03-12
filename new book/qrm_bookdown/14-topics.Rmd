@@ -28,7 +28,7 @@ It is often the case that there are more than two groups represented by a set of
 The value of the dummy coefficient represents the estimated difference in $Y$ between the dummy group and the reference group. Because the estimated difference is the average over all of the $Y$ observations, the dummy is best understood as a change in the value of the intercept ($A$) for the ``dummied" group. This is illustrated in Figure \@ref(fig:dum). In this illustration, the value of $Y$  is a function of $X_1$ (a continuous variable) and $X_2$ (a dummy variable). When $X_2$ is equal to 0 (the referent case) the top regression line applies. When $X_2 = 1$, the value of $Y$ is reduced to the bottom line. In short, $X_2$ has a negative estimated partial regression coefficient represented by the difference in height between the two regression lines.
 
 ```{r dum, echo=FALSE, fig.cap="Dummy Intercept Variables"}
-knitr::include_graphics("dummy.pdf")
+knitr::include_graphics("dummy.jpg")
 ```
 
 For a case with multiple nominal categories (e.g., region) the procedure is as follows: (a) determine which category will be assigned as the referent group; (b) create a dummy variable for each of the other categories. For example, if you are coding a dummy for four regions (North, South, East and West), you could designate the South as the referent group. Then you would create dummies for the other three regions. Then, all observations from
@@ -60,7 +60,7 @@ However, an interaction model has a multiplicative effect where two of the IVs a
 A ``slope dummy" is a special kind of interaction in which a dummy variable  is interacted with (multiplied by) a scale (ordinal or higher) variable. Suppose, for example, that you hypothesized that the effects of political of ideology on perceived risks of climate change were different for men and women. Perhaps men are more likely than women to consistently integrate ideology into climate change risk perceptions. In such a case, a dummy variable (0=women, 1=men) could be interacted with ideology (1=strong liberal, 7=strong conservative) to predict levels of perceived risk of climate change (0=no risk, 10=extreme risk).  If your hypothesized interaction was correct, you would observe the kind of pattern as shown in Figure \@ref(fig:dumin). 
 
 ```{r dumin, echo=FALSE, fig.cap="Illustration of Slope Interaction"}
-knitr::include_graphics("duminter.pdf")
+knitr::include_graphics("duminter.jpg")
 ```
 
 We can test our hypothesized interaction in `R`, controlling for the effects of age
