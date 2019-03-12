@@ -38,7 +38,7 @@ Now let's walk through an example of an $R$ model with a dummy variable and the 
 
 ```{r 14ols, echo=TRUE}
 ds.temp <- filter(ds) %>% 
-  select("glbcc_risk","age","education","income","ideol","gender") %>% na.omit()
+  dplyr::select("glbcc_risk","age","education","income","ideol","gender") %>% na.omit()
 
 ols1 <- lm(glbcc_risk ~ age + education + income + ideol + gender, data = ds.temp)
 summary(ols1)
@@ -116,7 +116,7 @@ We can use the `scale` function in `R` to calculate a $Z$ score for each of our 
 
 ```{r scale, echo=TRUE}
 stan.ds <- ds.temp %>%
-  select(glbcc_risk, age, education, income, ideol, gender) %>% 
+  dplyr::select(glbcc_risk, age, education, income, ideol, gender) %>% 
   scale %>%
   data.frame()
 

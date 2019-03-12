@@ -42,7 +42,7 @@ The $R^2$ of two models can be compared, as illustrated by the following example
 
 ```{r 13ols, echo=TRUE}
 ds.temp <- filter(ds) %>% 
-  select(glbcc_risk, age, education, income, ideol) %>%
+  dplyr::select(glbcc_risk, age, education, income, ideol) %>%
   na.omit()
 
 ols1 <- lm(glbcc_risk ~ age + education + income, data = ds.temp)

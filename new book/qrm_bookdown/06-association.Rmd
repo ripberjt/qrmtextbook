@@ -237,7 +237,7 @@ Like covariance, correlations can be positive, negative, and zero. The possible 
 from -1, perfect negative relationship to 1, perfect positive relationship. If $r=0$, that indicates no correlation.  Correlations can be calculated in `R`, using the `cor` function. 
 
 ```{r cor1, echo=TRUE}
-ds %>% select(age, education, ideol, glbcc_risk) %>% na.omit() %>%
+ds %>% dplyr::select(education, ideol, age, glbcc_risk) %>% na.omit() %>%
   cor()
 ``` 
 

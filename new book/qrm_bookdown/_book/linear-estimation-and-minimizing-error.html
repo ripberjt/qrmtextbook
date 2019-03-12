@@ -411,7 +411,7 @@ f&#39;(x)&amp;=(x^{3})&#39;(x-5)+(x^{3})(x-5)&#39; \\
 &amp;=3x^{3}-15x^{2}+x^{3}\\
 &amp;=4x^{3}-15x^{2} 
 \end{align*}\]</span>
-<p>In a second example, the product rule is applied the function <span class="math inline">\(y=f(x)=x^{2}-6x+5\)</span>. The derivative of this function is <span class="math inline">\(f&#39;(x)=2x-6\)</span>. This function can be plotted in <code>R</code>.</p>
+<p>In a second example, the product rule is applied to the function <span class="math inline">\(y=f(x)=x^{2}-6x+5\)</span>. The derivative of this function is <span class="math inline">\(f&#39;(x)=2x-6\)</span>. This function can be plotted in <code>R</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span><span class="op">:</span><span class="dv">7</span>)
 x</code></pre></div>
 <pre><code>## [1] -1  0  1  2  3  4  5  6  7</code></pre>
@@ -459,10 +459,15 @@ f&#39;(x)&amp;=5(7x^{2}-2x+13)^{4}*(7x^{2}-2x+13)&#39; \\
 <p>Our goal is to use derivatives to find the values of <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span> that minimize the sum of the squared error. To do this we need to find the <em>minima</em> of a function. The minima is the smallest value that a function takes, whereas the maxima is the largest value. To find the minima and maxima, the <em>critical points</em> are key. The critical point is where the derivative of the function is equal to <span class="math inline">\(0\)</span>, or <span class="math inline">\(f&#39;(x)=0\)</span>. Note that this is equivalent to the slope being equal to <span class="math inline">\(0\)</span>.</p>
 <div id="example-finding-the-critical-points" class="section level4 unnumbered">
 <h4>Example: Finding the Critical Points</h4>
-To find the critical point for the function <span class="math inline">\(y=f(x)=(x^{2}-4x+5)\)</span>; - First find the derivative; <span class="math inline">\(f&#39;(x)=2x-4\)</span> - Set the derivative equal to <span class="math inline">\(0\)</span>; <span class="math inline">\(f&#39;(x)=2x-4=0\)</span> - Solve for <span class="math inline">\(x\)</span>; <span class="math inline">\(x=2\)</span> - Substitute <span class="math inline">\(2\)</span> for <span class="math inline">\(x\)</span> into the function and solve for <span class="math inline">\(y\)</span>
-
+<p>To find the critical point for the function</p>
+<p><span class="math inline">\(y=f(x)=(x^{2}-4x+5)\)</span>;</p>
 <ul>
-<li>Thus, the critical point (there’s only one in this case) of the function is <span class="math inline">\((2,1)\)</span></li>
+<li><p>First find the derivative; <span class="math inline">\(f&#39;(x)=2x-4\)</span></p></li>
+<li><p>Set the derivative equal to <span class="math inline">\(0\)</span>; <span class="math inline">\(f&#39;(x)=2x-4=0\)</span></p></li>
+<li><p>Solve for <span class="math inline">\(x\)</span>; <span class="math inline">\(x=2\)</span></p></li>
+<li><p>Substitute <span class="math inline">\(2\)</span> for <span class="math inline">\(x\)</span> into the function and solve for <span class="math inline">\(y\)</span></p>
+</li>
+<li><p>Thus, the critical point (there’s only one in this case) of the function is <span class="math inline">\((2,1)\)</span></p></li>
 </ul>
 <p>Once a critical point is identified, the next step is to determine whether that point is a minima or a maxima. The most straightforward way to do this is to identify the x,y coordinates and plot. This can be done in <code>R</code>, as we will show using the function <span class="math inline">\(y=f(x)=(x^{2}-4x+5)\)</span>. The plot is shown in Figure <a href="linear-estimation-and-minimizing-error.html#fig:crit">8.3</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">5</span>)
@@ -639,8 +644,8 @@ Figure 8.4: Simple Regression of <span class="math inline">\(x\)</span> and <spa
 </p>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dev.off</span>()</code></pre></div>
-<pre><code>## null device 
-##           1</code></pre>
+<pre><code>## RStudioGD 
+##         2</code></pre>
 </div>
 </div>
 <div id="summary-3" class="section level2">

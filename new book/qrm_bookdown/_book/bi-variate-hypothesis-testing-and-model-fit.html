@@ -321,13 +321,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="hypothesis-tests-for-regression-coefficients" class="section level2">
 <h2><span class="header-section-number">9.1</span> Hypothesis Tests for Regression Coefficients</h2>
 <p>Hypothesis testing is the key to theory building. This chapter is focused on empirical hypothesis testing using OLS regression, with examples drawn from the accompanying class dataset. Here we will use the responses to the political ideology question (ranging from 1=strong liberal, to 7=strong conservative), as well as responses to a question concerning the survey respondents’ level of risk that global warming poses for people and the environment.<a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a></p>
-<p>Using the data from these questions, we posit the following hypothesis: &gt; <span class="math inline">\(H_{1}\)</span>: On average, as respondents become more politically conservative, they will be less likely to express increased risk associated with global warming.</p>
+<p>Using the data from these questions, we posit the following hypothesis:</p>
+<blockquote>
+<p><span class="math inline">\(H_{1}\)</span>: On average, as respondents become more politically conservative, they will be less likely to express increased risk associated with global warming.</p>
+</blockquote>
 <p>The null hypothesis, <span class="math inline">\(H_{0}\)</span>, is <span class="math inline">\(\beta = 0\)</span>, posits that a respondent’s ideology has no relationship with their views about the risks of global warming for people and the environment. Our working hypothesis, <span class="math inline">\(H_{1}\)</span>, is <span class="math inline">\(\beta &lt; 0\)</span>. We expect <span class="math inline">\(\beta\)</span> to be less than zero because we expect a <em>negative</em> slope between our measures of ideology and levels of risk associated with global warming, given that a larger numeric value for ideology indicates a more conservative respondent. Note that this is a <em>directional</em> hypothesis, since we are positing a negative relationship. Typically, a directional hypothesis implies a one-tailed test where the critical value is 0.05 on one side of the distribution. A <em>non-directional</em> hypothesis, <span class="math inline">\(\beta \neq 0\)</span> does not imply a particular direction, it only implies that there is a relationship. This requires a two-tailed test where the critical value is 0.025 on both sides of the distribution.</p>
 <p>To test this hypothesis, we run the following code in <code>R</code>.</p>
 <p>Before we begin, for this chapter we will need to make a special data set that just contains the variables <code>glbcc_risk</code> and <code>ideol</code> with their missing values removed.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Filtering a data set with only variables glbcc_risk and ideol</span>
 ds.omit &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(glbcc_risk,ideol) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk,ideol) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">na.omit</span>()
 <span class="co">#Run the na.omit function to remove the missing values</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.omit)
@@ -341,15 +344,15 @@ ds.omit &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span c
 ## -8.726 -1.633  0.274  1.459  6.506 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 10.81866    0.14189   76.25 &lt;0.0000000000000002 ***
-## ideol       -1.04635    0.02856  -36.63 &lt;0.0000000000000002 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 10.81866    0.14189   76.25   &lt;2e-16 ***
+## ideol       -1.04635    0.02856  -36.63   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.479 on 2511 degrees of freedom
 ## Multiple R-squared:  0.3483, Adjusted R-squared:  0.348 
-## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>To know whether to accept of reject the null hypothesis, we need to first understand the standard error associated with the model and our coefficients. We start, therefore, with consideration of the residual standard error of the regression model.</p>
 <div id="residual-standard-error" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Residual Standard Error</h3>
@@ -364,7 +367,7 @@ S_{E}=\sqrt{\frac{\Sigma E^{2}_{i}}{n-2}}
 Se</code></pre></div>
 <pre><code>## [1] 2.479022</code></pre>
 <p>Note that this result matches the result provided by the <code>summary</code> function in <code>R</code>, as shown above.</p>
-<p>For our model, the results indicate that: $Y_{i} =<span class="math inline">\(10.8186624-1.0463463\)</span>X_{i} + E_{i}$. Another sample of 2513 observations would almost certainly lead to different estimates for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. If we drew many such samples, we’d get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance. To do that, we calculate the standard error of the slope and intercept coefficients, <span class="math inline">\(SE(B)\)</span> and <span class="math inline">\(SE(A)\)</span>. These standard errors are our estimates of how much variation we would expect in the estimates of <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> across different samples. We use them to evaluate whether <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> are larger than would be expected to occur by chance, if the real values of <span class="math inline">\(B\)</span> and/or <span class="math inline">\(A\)</span> are zero (the null hypotheses).</p>
+<p>For our model, the results indicate that: <span class="math inline">\(Y_{i} =10.8186624-1.0463463X_{i} + E_{i}\)</span>. Another sample of 2513 observations would almost certainly lead to different estimates for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. If we drew many such samples, we’d get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance. To do that, we calculate the standard error of the slope and intercept coefficients, <span class="math inline">\(SE(B)\)</span> and <span class="math inline">\(SE(A)\)</span>. These standard errors are our estimates of how much variation we would expect in the estimates of <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> across different samples. We use them to evaluate whether <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> are larger than would be expected to occur by chance, if the real values of <span class="math inline">\(B\)</span> and/or <span class="math inline">\(A\)</span> are zero (the null hypotheses).</p>
 <p>The standard error for <span class="math inline">\(B\)</span>, <span class="math inline">\(SE(B)\)</span> is:</p>
 <span class="math display" id="eq:09-2">\[\begin{equation}
 SE(B)=\frac{S_{E}}{\sqrt{TSS_{X}}}
@@ -469,20 +472,19 @@ rbyR</code></pre></div>
 <li><em>Residual sum of squares(RSS)</em>: The variance of <span class="math inline">\(Y\)</span> not accounted for by the model<br />
 
 </li>
-<li><em>Explained sum of squares (ESS)</em>: The variance of <span class="math inline">\(Y\)</span> accounted for in the model</li>
+<li><em>Explained sum of squares (ESS)</em>: The variance of <span class="math inline">\(Y\)</span> accounted for in the model. It is the difference between the TSS and the RSS.</li>
 </ul>
-<p>It is the difference between the TSS and the RSS.</p>
 
 <ul>
-<li>: The proportion of the total variance of <span class="math inline">\(Y\)</span> explained by the model %it is the ratio of <span class="math inline">\(ESS\)</span> to %<span class="math inline">\(TSS\)</span>
+<li><em><span class="math inline">\(R^{2}\)</span></em>: The proportion of the total variance of <span class="math inline">\(Y\)</span> explained by the model, or the ratio of <span class="math inline">\(ESS\)</span> to <span class="math inline">\(TSS\)</span></li>
+</ul>
 <span class="math display">\[\begin{align*}
   R^{2} &amp;= \frac{ESS}{TSS} \\
   \\
   &amp;= \frac{TSS-RSS}{TSS} \\
   \\
   &amp;= 1-\frac{RSS}{TSS}
-  \end{align*}\]</span></li>
-</ul>
+  \end{align*}\]</span>
 <p>The components of <span class="math inline">\(R^{2}\)</span> are illustrated in Figure <a href="bi-variate-hypothesis-testing-and-model-fit.html#fig:rsquared">9.1</a>. As shown, for each observation <span class="math inline">\(Y_{i}\)</span>, variation around the mean can be decomposed into that which is “explained” by the regression and that which is not. In Figure <a href="bi-variate-hypothesis-testing-and-model-fit.html#fig:rsquared">9.1</a>, the deviation between the mean of <span class="math inline">\(Y\)</span> and the predicted value of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\hat{Y}\)</span>, is the proportion of the variation of <span class="math inline">\(Y_{i}\)</span> that can be explained (or predicted) by the regression. That is shown as a blue line. The deviation of the observed value of <span class="math inline">\(Y_{i}\)</span> from the predicted value <span class="math inline">\(\hat{Y}\)</span> (aka the residual, as discussed in the previous chapter) is the unexplained deviation, shown in red. Together, the explained and unexplained variation make up the total variation of <span class="math inline">\(Y_{i}\)</span> around the mean <span class="math inline">\(\hat{Y}\)</span>.</p>
 <div class="figure"><span id="fig:rsquared"></span>
 <img src="_main_files/figure-html/rsquared-1.png" alt="The Components of $R^{2}$" width="672" />
@@ -512,7 +514,7 @@ R2</code></pre></div>
 </div>
 <div id="visualizing-bivariate-regression" class="section level3">
 <h3><span class="header-section-number">9.2.3</span> Visualizing Bivariate Regression</h3>
-<p>The <code>ggplot2</code> package provides a mechanism for viewing the effect of the independent variable, ideology, on the dependent variable, perceived risk of climate change. % Adding <code>geom_smooth</code> will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares. Graphically (Figure <a href="bi-variate-hypothesis-testing-and-model-fit.html#fig:effectsplot">9.2</a>), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.</p>
+<p>The <code>ggplot2</code> package provides a mechanism for viewing the effect of the independent variable, ideology, on the dependent variable, perceived risk of climate change. Adding <code>geom_smooth</code> will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares. Graphically (Figure <a href="bi-variate-hypothesis-testing-and-model-fit.html#fig:effectsplot">9.2</a>), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ds.omit, <span class="kw">aes</span>(ideol, glbcc_risk)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> lm)</code></pre></div>
 <div class="figure"><span id="fig:effectsplot"></span>

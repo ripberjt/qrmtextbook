@@ -445,7 +445,7 @@ I</code></pre></div>
 <p>To find the inverse of a matrix, the values that will produce the identity matrix, create a second matrix of variables and solve for <span class="math inline">\(I\)</span>.</p>
 <p><span class="math inline">\(A = \begin{bmatrix}  3 &amp; 1 \\  2 &amp; 4 \end{bmatrix} X \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} = \begin{bmatrix}  3a+b &amp; 3c+d \\  2a+4b &amp; 2c+4d \end{bmatrix} = \begin{bmatrix}  1 &amp; 0 \\  0 &amp; 1 \end{bmatrix}\)</span></p>
 <p>Set <span class="math inline">\(3a+b=1\)</span> and <span class="math inline">\(2a+4b=0\)</span> and solve for <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. In this case <span class="math inline">\(a = \frac{2}{5}\)</span> and <span class="math inline">\(b = -\frac{1}{5}\)</span>. Likewise, set <span class="math inline">\(3c+d=0\)</span> and <span class="math inline">\(2c+4d=1\)</span>; solving for <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span> produces <span class="math inline">\(c=-\frac{1}{10}\)</span> and <span class="math inline">\(d=\frac{3}{10}\)</span>. Therefore,</p>
-<p>% update to show how to solve <span class="math inline">\(A^{-1} = \begin{bmatrix}  \frac{2}{5} &amp; -\frac{1}{10} \\  -\frac{1}{5} &amp; \frac{3}{10} \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(A^{-1} = \begin{bmatrix}  \frac{2}{5} &amp; -\frac{1}{10} \\  -\frac{1}{5} &amp; \frac{3}{10} \end{bmatrix}\)</span></p>
 <p>Finding the inverse matrix can also be done in <code>R</code> using the <code>solve</code> command.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>),<span class="dv">2</span>,<span class="dv">2</span>)
 A</code></pre></div>
@@ -532,7 +532,7 @@ Assume a model using <span class="math inline">\(n\)</span> observations, <span 
 <li><span class="math inline">\(b=k*1\)</span> column vector of regression coefficients; first row is <span class="math inline">\(A\)</span></li>
 <li><span class="math inline">\(e=n*1\)</span> column vector of <span class="math inline">\(n\)</span> residual values</li>
 </ul>
-<p>Using the following steps, we will use <code>R</code> to calculate <span class="math inline">\(b\)</span>; a vector of regression coefficients, <span class="math inline">\(\hat y\)</span>; a vector of predicted <span class="math inline">\(y\)</span> values, and <span class="math inline">\(e\)</span>; a vector of residuals.</p>
+<p>Using the following steps, we will use <code>R</code> to calculate <span class="math inline">\(b\)</span>, a vector of regression coefficients; <span class="math inline">\(\hat y\)</span>, a vector of predicted <span class="math inline">\(y\)</span> values; and <span class="math inline">\(e\)</span>, a vector of residuals.</p>
 <p>We want to fit the model <span class="math inline">\(y = Xb+e\)</span> to the following matrices:</p>
 <p><span class="math display">\[
 y = \begin{bmatrix}
@@ -644,7 +644,16 @@ y.hat</code></pre></div>
 ## [7,] 10.109640</code></pre>
 <p>Calculate <span class="math inline">\(e\)</span>.</p>
 <p>To calculate <span class="math inline">\(e\)</span>, the vector of residuals, simply subtract the vector <span class="math inline">\(y\)</span> from the vector <span class="math inline">\(\hat y\)</span>.</p>
-<p><code>{ r yhat2, echo=TRUE} e&lt;-y-y.hat e</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">e &lt;-<span class="st"> </span>y<span class="op">-</span>y.hat
+e</code></pre></div>
+<pre><code>##            [,1]
+## [1,] -0.4841102
+## [2,]  0.9806674
+## [3,] -0.4067797
+## [4,]  0.4923199
+## [5,]  0.1056674
+## [6,] -0.5781250
+## [7,] -0.1096398</code></pre>
 </div>
 </div>
 <div id="summary-6" class="section level2">

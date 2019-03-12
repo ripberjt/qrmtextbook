@@ -116,7 +116,7 @@ The following example uses demographic information to predict beliefs about anth
 
 ```{r 16logit1, echo=TRUE}
 ds.temp <- ds %>%
-  select(glbcc, age, education, income, ideol, gender) %>%
+  dplyr::select(glbcc, age, education, income, ideol, gender) %>%
   na.omit()
 
 logit1 <- glm(glbcc ~ age + gender + education + income, data = ds.temp, family = binomial())

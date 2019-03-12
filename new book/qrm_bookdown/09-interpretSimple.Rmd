@@ -24,7 +24,7 @@ Before we begin, for this chapter we will need to make a special data set that j
 ```{r filter, echo=TRUE}
 #Filtering a data set with only variables glbcc_risk and ideol
 ds.omit <- filter(ds) %>%
-  select(glbcc_risk,ideol) %>%
+  dplyr::select(glbcc_risk,ideol) %>%
   na.omit()
 #Run the na.omit function to remove the missing values
 ``` 

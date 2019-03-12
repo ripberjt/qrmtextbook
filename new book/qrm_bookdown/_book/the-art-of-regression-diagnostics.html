@@ -320,7 +320,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The previous chapters have focused on the mathematical bases of multiple OLS regression, the use of partial regression coefficients, and aspects of model design and construction. This chapter returns our focus to the assessment of the statistical adequacy of our models, first by revisiting the key assumptions necessary for OLS to provide the best, linear, unbiased estimates (BLUE) of the relationships between our model <span class="math inline">\(Xs\)</span> and <span class="math inline">\(Y\)</span>. We will then discuss the “art” of diagnosing the results of OLS for potential violations of the key OLS assumptions. We refer to this diagnostic process as an art because there is no “cook book approach” that defines precisely what to do when problems are detected. Note that the examples in this chapter use a subset dataset. This is a smaller data set, <span class="math inline">\(n=500\)</span>, based on the first 500 observations of the full data set used in prior chapters. We use this smaller dataset in order to be able to illustrate, graphically, the diagnostic results described in this chapter.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  create a new data frame with the first 500 observations</span>
 ds.small &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;glbcc_risk&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="st">&quot;glbcc_risk&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">na.omit</span>()
 
@@ -332,8 +332,15 @@ ds.small &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span 
 <p>As described in earlier chapters, there is a set of key assumptions that must be met to justify the use of the <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span> distributions in the interpretation of OLS model results. In particular, these assumptions are necessary for hypotheses tests and the generation of confidence intervals. When met, the assumptions make OLS more efficient than any other unbiased estimator.</p>
 <blockquote>
 <p><strong>OLS Assumptions</strong></p>
-<p><em>Systematic Component</em> - Linearity - Fixed <span class="math inline">\(X\)</span></p>
-<p><em>Stochastic Component</em> - Errors have constant variance across the range of <span class="math inline">\(X\)</span></p>
+<p><em>Systematic Component</em></p>
+<ul>
+<li><p>Linearity</p></li>
+<li><p>Fixed <span class="math inline">\(X\)</span></p></li>
+</ul>
+<p><em>Stochastic Component</em></p>
+<ul>
+<li>Errors have constant variance across the range of <span class="math inline">\(X\)</span></li>
+</ul>
 <p><span class="math inline">\(E(\epsilon^2_i) = \sigma^2_\epsilon\)</span></p>
 <ul>
 <li><p>Errors are independent of <span class="math inline">\(X\)</span> and other <span class="math inline">\(\epsilon_i\)</span></p>
@@ -468,7 +475,7 @@ ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
   F = \frac{\frac{R^2_1-R^2_0}{q}}{\frac{1-R^2_1}{n-k_1}}
   \tag{15.1}
 \end{equation}\]</span>
-<p>where <span class="math inline">\(R^2_0\)</span> is the <span class="math inline">\(R^2\)</span> of the linear model, <span class="math inline">\(R^2_1\)</span> is the <span class="math inline">\(R^2\)</span> of the polynomial model(s), <span class="math inline">\(q\)</span> is the number of new regressors, and <span class="math inline">\(k_1\)</span> is the number of IVs in the polynomial model(s). The null hypothesis is that the functional relationship between the <span class="math inline">\(X\)</span>’s and <span class="math inline">\(Y\)</span> is linear, therefore the coefficients of the second and third powers to the IVs are zero. If there is a low <span class="math inline">\(p\)</span>-value (i.e., if we can reject the null hypothesis), non-linear relationships are suspected. This test can be run using the <code>resettest</code> function from the <code>lmtest</code> package. Here we are setting the IVs to the second and third powers and we are examining the regressor variables.<a href="#fn25" class="footnoteRef" id="fnref25"><sup>25</sup></a></p>
+<p>where <span class="math inline">\(R^2_0\)</span> is the <span class="math inline">\(R^2\)</span> of the linear model, <span class="math inline">\(R^2_1\)</span> is the <span class="math inline">\(R^2\)</span> of the polynomial model(s), <span class="math inline">\(q\)</span> is the number of new regressors, and <span class="math inline">\(k_1\)</span> is the number of IVs in the polynomial model(s). The null hypothesis is that the functional relationship between the <span class="math inline">\(X\)</span>’s and <span class="math inline">\(Y\)</span> is linear, therefore the coefficients of the second and third powers to the IVs are zero. If there is a low <span class="math inline">\(p\)</span>-value (i.e., if we can reject the null hypothesis), non-linear relationships are suspected. This test can be run using the <code>resettest</code> function from the <code>lmtest</code> package. Here we are setting the IVs to the second and third powers and we are examining the regressor variables.<a href="#fn24" class="footnoteRef" id="fnref24"><sup>24</sup></a></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lmtest)
 <span class="kw">resettest</span>(ols1,<span class="dt">power=</span><span class="dv">2</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">type=</span><span class="st">&quot;regressor&quot;</span>)</code></pre></div>
 <pre><code>## 
@@ -492,12 +499,12 @@ Figure 15.5: Constant Variance
 <p>As we can see in Figure <a href="the-art-of-regression-diagnostics.html#fig:convar15">15.5</a>, the residuals are spread evenly and in a seemingly random fashion, much like the ``sneeze plot&quot; discussed in Chapter 10. This is the ideal pattern, indicating that the residuals do not vary systematically over the range of the predicted value for <span class="math inline">\(X\)</span>. The residuals are homoscedastistic, and thus provide the appropriate basis for the <span class="math inline">\(F\)</span> and <span class="math inline">\(t\)</span> tests needed for evaluating your hypotheses.</p>
 <p>We can also present a clearly heteroscedastistic residual term. In this case the residuals do vary systematically over the range of <span class="math inline">\(X\)</span>, indicating that the precision of the estimates of <span class="math inline">\(Y\)</span> will vary considerably over the range of predicted values. Note the distinctive fan shape in Figure <a href="the-art-of-regression-diagnostics.html#fig:hetero15">15.6</a>, indicating that predictions of <span class="math inline">\(Y\)</span> lose precision as the value of <span class="math inline">\(X\)</span> increases.</p>
 <div class="figure"><span id="fig:hetero15"></span>
-<img src="_main_files/figure-html/hetero15-1.png" alt="Heteroskedasticity" width="672" />
+<img src="_main_files/figure-html/hetero15-1.png" alt="Heteroscedasticity" width="672" />
 <p class="caption">
-Figure 15.6: Heteroskedasticity
+Figure 15.6: Heteroscedasticity
 </p>
 </div>
-<p>The first step in determining whether we have constant variance is to plot the the residuals by the fitted values for <span class="math inline">\(Y\)</span>, as follows:<a href="#fn26" class="footnoteRef" id="fnref26"><sup>26</sup></a></p>
+<p>The first step in determining whether we have constant variance is to plot the the residuals by the fitted values for <span class="math inline">\(Y\)</span>, as follows:<a href="#fn25" class="footnoteRef" id="fnref25"><sup>25</sup></a></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.small<span class="op">$</span>fit.r &lt;-<span class="st"> </span>ols1<span class="op">$</span>residuals
 ds.small<span class="op">$</span>fit.p &lt;-<span class="st"> </span>ols1<span class="op">$</span>fitted.values
 <span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.p, fit.r)) <span class="op">+</span>
@@ -519,7 +526,7 @@ Figure 15.7: Multiple Regression Residuals and Fitted Values
 ## Chisquare = 12.70938    Df = 1     p = 0.0003638269</code></pre>
 <p>The non-constant variance test provides confirmation that the residuals from our model are heteroscedastistic.</p>
 <p>What are the implications? Our <span class="math inline">\(t\)</span>-tests for the estimated partial regression coefficients assumed constant variance. With the evidence of heteroscedasticity, we conclude that these tests are unreliable (the precision of our estimates will be greater in some ranges of <span class="math inline">\(X\)</span> than others).</p>
-<p>They are several steps that can be considered when confronted by heteroscedasticity in the residuals. First, we can consider whether we need to re-specify the model, possibly because we have some omitted variables. If model re-specification does not correct the problem, we can use non-OLS regression techniques that include robust estimated standard errors. Robust standard errors are appropriate when error variance is unknown. Robust standard errors do not change the estimate of <span class="math inline">\(B\)</span>, but adjust the estimated standard error of each coefficient, <span class="math inline">\(SE(B)\)</span>, thus giving more accurate <span class="math inline">\(p\)</span> values. In this example, we draw on White’s (1980)<a href="#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a> method to calculate robust standard errors.</p>
+<p>They are several steps that can be considered when confronted by heteroscedasticity in the residuals. First, we can consider whether we need to re-specify the model, possibly because we have some omitted variables. If model re-specification does not correct the problem, we can use non-OLS regression techniques that include robust estimated standard errors. Robust standard errors are appropriate when error variance is unknown. Robust standard errors do not change the estimate of <span class="math inline">\(B\)</span>, but adjust the estimated standard error of each coefficient, <span class="math inline">\(SE(B)\)</span>, thus giving more accurate <span class="math inline">\(p\)</span> values. In this example, we draw on White’s (1980)<a href="#fn26" class="footnoteRef" id="fnref26"><sup>26</sup></a> method to calculate robust standard errors.</p>
 <p>White uses a <strong>heteroscedasticity consistent covariance matrix</strong> (hccm) to calculate standard errors when the error term has non-constant variance. Under the OLS assumption of constant error variance, the covariance matrix of <span class="math inline">\(b\)</span> is:</p>
 <span class="math display">\[\begin{equation*}
   V(b) = (X&#39;X)^{-1} X&#39;V(y)X(X&#39;X)^{-1}
@@ -691,7 +698,7 @@ output.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">
   \text{DFBETAS}_{ij} = \frac{B_{j(-i)}-B_j}{SE(B_j)}
   \tag{15.4}
 \end{equation}\]</span>
-<p>Note that if DFBETAS $ &gt; 0$, then case <span class="math inline">\(i\)</span> pulls <span class="math inline">\(B_j\)</span> <em>up</em>, and if DFBETAS $ &lt; 0$, then case <span class="math inline">\(i\)</span> pulls <span class="math inline">\(B_j\)</span> <em>down</em>. In general, if <span class="math inline">\(|\text{DFBETAS}_{ij}| &gt; \frac{2}{\sqrt{n}}\)</span> then these cases warrant further examination. Note that this approach gets the top 5% of influential cases, given the sample size. For both simple (bi-variate) and multiple regression models the DFBETA cut-offs can be calculated in <code>R</code>.</p>
+<p>Note that if DFBETAS <span class="math inline">\(&gt; 0\)</span>, then case <span class="math inline">\(i\)</span> pulls <span class="math inline">\(B_j\)</span> <em>up</em>, and if DFBETAS <span class="math inline">\(&lt; 0\)</span>, then case <span class="math inline">\(i\)</span> pulls <span class="math inline">\(B_j\)</span> <em>down</em>. In general, if <span class="math inline">\(|\text{DFBETAS}_{ij}| &gt; \frac{2}{\sqrt{n}}\)</span> then these cases warrant further examination. Note that this approach gets the top 5% of influential cases, given the sample size. For both simple (bi-variate) and multiple regression models the DFBETA cut-offs can be calculated in <code>R</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">500</span>)
 df</code></pre></div>
 <pre><code>## [1] 0.08944272</code></pre>
@@ -792,11 +799,18 @@ df.ols1[<span class="kw">abs</span>(df.ols1) <span class="op">==</span><span cla
 <p>If an X is perfectly predicted by the other <span class="math inline">\(X\)</span>’s, then:</p>
 
 <p>where <span class="math inline">\(R^2_k\)</span> is the <span class="math inline">\(R^2\)</span> obtained from regressing all <span class="math inline">\(X_k\)</span> on all other <span class="math inline">\(X\)</span>’s.</p>
-<p>We rarely find perfect multicollinearity in practice, but high multicollinearity results in loss of statistical resolution. Such as:<br />
-- Large standard errors - Low <span class="math inline">\(t\)</span>-stats, high <span class="math inline">\(p\)</span>-values - This erodes the resolution of our hypothesis tests - Enormous sensitivity to small changes in: - Data - Model specification</p>
+<p>We rarely find perfect multicollinearity in practice, but high multicollinearity results in loss of statistical resolution. Such as:</p>
+<ul>
+<li><p>Large standard errors</p></li>
+<li><p>Low <span class="math inline">\(t\)</span>-stats, high <span class="math inline">\(p\)</span>-values</p></li>
+<li><p>This erodes the resolution of our hypothesis tests</p></li>
+<li><p>Enormous sensitivity to small changes in:</p></li>
+<li><p>Data</p></li>
+<li><p>Model specification</p></li>
+</ul>
 <p>You should always check the correlations between the IVs during the model building process. This is a way to quickly identify possible multicollinearity issues.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(age, education, income, ideol) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, education, income, ideol) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">cor</span>()</code></pre></div>
@@ -845,10 +859,10 @@ df.ols1[<span class="kw">abs</span>(df.ols1) <span class="op">==</span><span cla
 </div>
 <div class="footnotes">
 <hr />
-<ol start="25">
-<li id="fn25"><p>See the <code>lmtest</code> package documentation for more options and information.<a href="the-art-of-regression-diagnostics.html#fnref25">↩</a></p></li>
-<li id="fn26"><p>Note that we jitter the points to make them easier to see.<a href="the-art-of-regression-diagnostics.html#fnref26">↩</a></p></li>
-<li id="fn27"><p>H White, 1980. “A Heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity.” <em>Econometrica</em> 48: 817-838.<a href="the-art-of-regression-diagnostics.html#fnref27">↩</a></p></li>
+<ol start="24">
+<li id="fn24"><p>See the <code>lmtest</code> package documentation for more options and information.<a href="the-art-of-regression-diagnostics.html#fnref24">↩</a></p></li>
+<li id="fn25"><p>Note that we jitter the points to make them easier to see.<a href="the-art-of-regression-diagnostics.html#fnref25">↩</a></p></li>
+<li id="fn26"><p>H White, 1980. “A Heteroscedasticity-consistent covariance matrix estimator and a direct test for heteroscedasticity.” <em>Econometrica</em> 48: 817-838.<a href="the-art-of-regression-diagnostics.html#fnref26">↩</a></p></li>
 </ol>
 </div>
             </section>

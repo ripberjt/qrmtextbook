@@ -361,12 +361,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Where <span class="math inline">\(\sim\)</span> stands for “distributed as”, <span class="math inline">\(N\)</span> indicates the normal distribution, and mean <span class="math inline">\(\mu_Y\)</span> and variance <span class="math inline">\(\sigma^{2}_Y\)</span> are the parameters. The probability function of the normal distribution is expressed below:</p>
 <blockquote>
 <p><strong>The Normal Probability Density Function:</strong> The probability density function (PDF) of a normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>:</p>
-</blockquote>
-<pre><code>    $f(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-(x-\mu)^{2}/2\sigma^{2}}$</code></pre>
-<blockquote>
+<pre><code>   $f(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-(x-\mu)^{2}/2\sigma^{2}}$</code></pre>
 <p><strong>The Standard Normal Probability Density Function:</strong> The standard normal PDF has a <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma=1\)</span></p>
+<pre><code>   $f(x) = \frac{1}{\sqrt{2 \pi}}e^{-x^{2}/2}$</code></pre>
 </blockquote>
-<pre><code>    $f(x) = \frac{1}{\sqrt{2 \pi}}e^{-x^{2}/2}$</code></pre>
 <p>Using the standard normal PDF, we can plot a normal distribution in <code>R</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="dt">length=</span><span class="dv">200</span>)
 y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">*</span>pi)<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>x<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span>)
@@ -377,11 +375,25 @@ y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</spa
 Figure 5.1: The Normal Distribution
 </p>
 </div>
-<p>Note that the the tails go to <span class="math inline">\(\pm \infty\)</span>. In addition, the density of a distribution over the range of x is the key to hypothesis testing With a normal distribution, <span class="math inline">\(\sim68\%\)</span> of the observations will fall within <span class="math inline">\(1\)</span> standard deviation of the mean, <span class="math inline">\(\sim 95\%\)</span> will fall within 2 standard deviations, and <span class="math inline">\(\sim 99.7\%\)</span> within 3 standard deviations. This is illustrated in Figure <a href="#fig:normal"><strong>??</strong></a>.</p>
-<p><img src="_main_files/figure-html/normal168-1.png" width="672" /></p>
-<p><img src="_main_files/figure-html/normal195-1.png" width="672" /></p>
-<p><img src="_main_files/figure-html/normal100-1.png" width="672" /></p>
-<p>%%%%%%%FIGURE NEEDED HERE</p>
+<p>Note that the the tails go to <span class="math inline">\(\pm \infty\)</span>. In addition, the density of a distribution over the range of x is the key to hypothesis testing With a normal distribution, <span class="math inline">\(\sim68\%\)</span> of the observations will fall within <span class="math inline">\(1\)</span> standard deviation of the mean, <span class="math inline">\(\sim 95\%\)</span> will fall within 2 standard deviations, and <span class="math inline">\(\sim 99.7\%\)</span> within 3 standard deviations. This is illustrated in Figures <a href="inference.html#fig:normal68">5.2</a>, <a href="inference.html#fig:normal95">5.3</a>, <a href="inference.html#fig:normal100">5.4</a>.</p>
+<div class="figure"><span id="fig:normal68"></span>
+<img src="_main_files/figure-html/normal68-1.png" alt="~68%: 1 standard deviation" width="672" />
+<p class="caption">
+Figure 5.2: ~68%: 1 standard deviation
+</p>
+</div>
+<div class="figure"><span id="fig:normal95"></span>
+<img src="_main_files/figure-html/normal95-1.png" alt="~95%: 2 standard deviations" width="672" />
+<p class="caption">
+Figure 5.3: ~95%: 2 standard deviations
+</p>
+</div>
+<div class="figure"><span id="fig:normal100"></span>
+<img src="_main_files/figure-html/normal100-1.png" alt="~99.7%: 3 standard deviations" width="672" />
+<p class="caption">
+Figure 5.4: ~99.7%: 3 standard deviations
+</p>
+</div>
 <p>The normal distribution is characterized by several important properties. The distribution of observations is symmetrical around the mean <span class="math inline">\(\mu\)</span>; the frequency of observations is highest (the mode) at <span class="math inline">\(\mu\)</span>, with more extreme values occurring with lower frequency (this can be seen in Figure <a href="#fig:normal"><strong>??</strong></a>); and only the mean and variance are needed to characterize data and test simple hypotheses.</p>
 <div id="the-properties-of-the-normal-distribution" class="section level4 unnumbered">
 <h4>The Properties of the Normal Distribution</h4>
@@ -411,38 +423,38 @@ p</code></pre></div>
 <div id="standardizing-a-normal-distribution-and-z-scores" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Standardizing a Normal Distribution and Z-scores</h3>
 <p>A distribution can be plotted using the raw scores found in the original data. That plot will have a mean and standard deviation calculated from the original data. To utilize the normal curve to determine probability functions and for inferential statistics we will want to convert that data so that it is standardized. We standardize so that the distribution is consistent across all distributions. That standardization produces a set of scores that have a mean of zero and a standard deviation of one. A standardized or Z-score of 1.5 means, therefore, that the score is one and a half standard deviations about the mean. A Z-score of -2.0 means that the score is two standard deviations below the mean.</p>
-<p>As formula 5.4 indicated, standardizing is a simple process. To move the mean from its original value to a mean of zero, all you have to do is subtract the mean from each score. To standardize the standard deviation to one all that is necessary is to divide each score the standard deviation.</p>
+<p>As formula <a href="probability.html#eq:04-4">(4.4)</a> indicated, standardizing is a simple process. To move the mean from its original value to a mean of zero, all you have to do is subtract the mean from each score. To standardize the standard deviation to one all that is necessary is to divide each score the standard deviation.</p>
 </div>
 <div id="the-central-limit-theorem" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> The Central Limit Theorem</h3>
-<p>An important property of samples is associated with the <strong>Central Limit Theorem</strong> (CLT). Imagine for a moment that we have a very large (or even infinite) population, from which we can draw as many samples as we’d like. According to the CLT, as the <span class="math inline">\(n\)</span>-size (number of observations) within a sample drawn from that population increases, the more the distribution of the means taken from samples of that size will resemble a normal distribution. This is illustrated in Figure <a href="inference.html#fig:nnorm">5.2</a>. Also note that the population does not need to have a normal distribution for the CLT to apply. Finally, a distribution of means from a normal population will be approximately normal at any sample size.</p>
+<p>An important property of samples is associated with the <strong>Central Limit Theorem</strong> (CLT). Imagine for a moment that we have a very large (or even infinite) population, from which we can draw as many samples as we’d like. According to the CLT, as the <span class="math inline">\(n\)</span>-size (number of observations) within a sample drawn from that population increases, the more the distribution of the means taken from samples of that size will resemble a normal distribution. This is illustrated in Figure <a href="inference.html#fig:nnorm">5.5</a>. Also note that the population does not need to have a normal distribution for the CLT to apply. Finally, a distribution of means from a normal population will be approximately normal at any sample size.</p>
 <div class="figure"><span id="fig:nnorm"></span>
 <img src="_main_files/figure-html/nnorm-1.png" alt="Normal Distribution and $n$-size" width="672" />
 <p class="caption">
-Figure 5.2: Normal Distribution and <span class="math inline">\(n\)</span>-size
+Figure 5.5: Normal Distribution and <span class="math inline">\(n\)</span>-size
 </p>
 </div>
 </div>
 <div id="populations-samples-and-symbols" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Populations, Samples and Symbols</h3>
-<p>It is important to note that, by convention, the symbols used for representing population parameters and sample statistics have different notation. These differences are shown in Table <a href="inference.html#fig:tab-note">5.3</a>. In short, population parameters are typically identified by using Greek letters and sample statistics are noted by English letters. Unless otherwise noted, the notation used in the remainder of this chapter will be in terms of samples rather than populations.</p>
+<p>It is important to note that, by convention, the symbols used for representing population parameters and sample statistics have different notation. These differences are shown in Table <a href="inference.html#fig:tab-note">5.6</a>. In short, population parameters are typically identified by using Greek letters and sample statistics are noted by English letters. Unless otherwise noted, the notation used in the remainder of this chapter will be in terms of samples rather than populations.</p>
 <div class="figure"><span id="fig:tab-note"></span>
 <img src="tab-note.PNG" alt="Sample and Population Notation" width="268" />
 <p class="caption">
-Figure 5.3: Sample and Population Notation
+Figure 5.6: Sample and Population Notation
 </p>
 </div>
 </div>
 </div>
 <div id="inferences-to-the-population-from-the-sample" class="section level2">
 <h2><span class="header-section-number">5.3</span> Inferences to the Population from the Sample</h2>
-<p>Another key implication of the Central Limit Theorem that is illustrated in Figure <a href="inference.html#fig:nnorm">5.2</a>is that the mean of repeated sample means is the same, regardless of sample size, and that the mean of sample means is the population mean (assuming a large enough number of samples). Those conclusions lead to the important point that the sample mean is the best estimate of the population mean, i.e., the sample mean is an <strong>unbiased estimate</strong> of the population mean. Figure <a href="inference.html#fig:nnorm">5.2</a> also illustrates as the sample size increases, the efficiency of the estimate increases. As the sample size increases, the mean of any particular sample is more likely to approximate the population mean.</p>
+<p>Another key implication of the Central Limit Theorem that is illustrated in Figure <a href="inference.html#fig:nnorm">5.5</a>is that the mean of repeated sample means is the same, regardless of sample size, and that the mean of sample means is the population mean (assuming a large enough number of samples). Those conclusions lead to the important point that the sample mean is the best estimate of the population mean, i.e., the sample mean is an <strong>unbiased estimate</strong> of the population mean. Figure <a href="inference.html#fig:nnorm">5.5</a> also illustrates as the sample size increases, the efficiency of the estimate increases. As the sample size increases, the mean of any particular sample is more likely to approximate the population mean.</p>
 <p>When we begin our research we should have some population in mind - the set of items that we want to draw conclusions about. We might want to know about all adult Americans or about human beings (past, present, and future) or about a specific meteorological condition. There is only one way to know with certainty about that population and that is to examine all cases that fit the definition of our population. Most of the time, though, we cannot do that – in the case of adult Americans it would be very time-consuming, expensive, and logistically quite challenging, and in the other two cases it simply would be impossible. Our research, then, often forces us to rely on samples.</p>
-<p>Because we rely on samples, inferential statistics are probability based. As Figure <a href="inference.html#fig:nnorm">5.2</a> illustrates, our sample could perfectly reflect our population; it could be (and is likely to be) at least a reasonable approximation of the population; or the sample could deviate substantially from the population. Two critical points are being made here: the best estimates we have of our population parameters are our sample statistics, and we never know with certainty how good that estimate is. We make decisions (statistical and real world) based on probabilities.</p>
+<p>Because we rely on samples, inferential statistics are probability based. As Figure <a href="inference.html#fig:nnorm">5.5</a> illustrates, our sample could perfectly reflect our population; it could be (and is likely to be) at least a reasonable approximation of the population; or the sample could deviate substantially from the population. Two critical points are being made here: the best estimates we have of our population parameters are our sample statistics, and we never know with certainty how good that estimate is. We make decisions (statistical and real world) based on probabilities.</p>
 <div id="confidence-intervals" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Confidence Intervals</h3>
 <p>Because we are dealing with probabilities, if we are estimating a population parameter using a sample statistic, we will want to know how much confidence to place in that estimate. If we want to know a population mean, but only have a sample, the best estimate of that population mean is the sample mean. To know how much confidence to have in a sample mean, we put a ``confidence interval&quot; around it. A confidence interval will report both a range for the estimate and the probability the population value falls in that range. We say, for example, that we are 95% confident that the true value is between A and B.</p>
-<p>To find that confidence interval, we rely on the <strong>standard error of the estimate</strong>. Figure <a href="inference.html#fig:nnorm">5.2</a> plots the distribution of sample statistics drawn from repeated samples. As the sample size increases, the estimates cluster closer to the true population value, i.e., the standard deviation is smaller. We could use the standard deviation from repeated samples to determine the confidence we can have in any particular sample, but in reality we are no more likely to draw repeated samples than we are to study the entire population. The standard error, though, provides an estimate of the standard deviation we would have if we did drawn a number of samples. The standard error is based on the sample size and the distribution of observations in our data:</p>
+<p>To find that confidence interval, we rely on the <strong>standard error of the estimate</strong>. Figure <a href="inference.html#fig:nnorm">5.5</a> plots the distribution of sample statistics drawn from repeated samples. As the sample size increases, the estimates cluster closer to the true population value, i.e., the standard deviation is smaller. We could use the standard deviation from repeated samples to determine the confidence we can have in any particular sample, but in reality we are no more likely to draw repeated samples than we are to study the entire population. The standard error, though, provides an estimate of the standard deviation we would have if we did drawn a number of samples. The standard error is based on the sample size and the distribution of observations in our data:</p>
 <span class="math display" id="eq:05-3">\[\begin{equation}
   SE = \frac{s}{\sqrt{n}}
   \tag{5.3}
@@ -454,13 +466,13 @@ Figure 5.3: Sample and Population Notation
   \bar{x}+/- SE_x * t
   \tag{5.4}
 \end{equation}\]</span>
-<p>To find the appropriate value for t, we need to decide what level of confidence we want (generally 95%) and our <strong>degrees of freedom</strong> (df), which is <span class="math inline">\(n - 1\)</span>. We can find a confidence interval with R using the t.test function. By default, t.test will test the hypothesis that the mean of our variable of interest (glbcc_risk) is equal to zero. It will also find the mean score and a confidence interval for the glbcc_risk variable:</p>
+<p>To find the appropriate value for t, we need to decide what level of confidence we want (generally 95%) and our <strong>degrees of freedom</strong> (df), which is <span class="math inline">\(n - 1\)</span>. We can find a confidence interval with <code>R</code> using the <code>t.test</code> function. By default, <code>t.test</code> will test the hypothesis that the mean of our variable of interest (<code>glbcc_risk</code>) is equal to zero. It will also find the mean score and a confidence interval for the <code>glbcc_risk</code> variable:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(ds<span class="op">$</span>glbcc_risk)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
 ## data:  ds$glbcc_risk
-## t = 97.495, df = 2535, p-value &lt; 0.00000000000000022
+## t = 97.495, df = 2535, p-value &lt; 2.2e-16
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
 ##  5.826388 6.065568
@@ -502,7 +514,7 @@ ds <span class="op">%&gt;%</span>
 <div class="figure"><span id="fig:gender"></span>
 <img src="_main_files/figure-html/gender-1.png" alt="Density Plots of Climate Change Risk by Gender" width="672" />
 <p class="caption">
-Figure 5.4: Density Plots of Climate Change Risk by Gender
+Figure 5.7: Density Plots of Climate Change Risk by Gender
 </p>
 </div>
 <p>Based on the density plots, it appears that some differences exist between males and females regarding perceived climate change risk. We can also use the <code>by</code> command to see the mean of climate change risk for males and females.</p>

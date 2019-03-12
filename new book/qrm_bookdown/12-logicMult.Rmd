@@ -106,7 +106,7 @@ In calculating the effect of $X_1$ on $Y$, we need to remove the effect of the o
 As an example, we will use age and ideology to predict perceived climate change risk. 
 
 ```{r 12ols1, echo=TRUE}
-ds.temp <- filter(ds) %>% select(glbcc_risk, ideol, age) %>%
+ds.temp <- filter(ds) %>% dplyr::select(glbcc_risk, ideol, age) %>%
   na.omit()
 
 ols1 <- lm(glbcc_risk ~ ideol+age, data = ds.temp)
@@ -178,7 +178,7 @@ In the next example education is added to the model.
 
 ```{r plused, eccho=TRUE}
 ds.temp <- filter(ds) %>%
-  select(glbcc_risk, age, education, income, ideol) %>%
+  dplyr::select(glbcc_risk, age, education, income, ideol) %>%
   na.omit()
 
 ols2 <- lm(glbcc_risk ~ age + education + ideol, data = ds.temp)

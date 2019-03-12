@@ -340,7 +340,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>The value of the dummy coefficient represents the estimated difference in <span class="math inline">\(Y\)</span> between the dummy group and the reference group. Because the estimated difference is the average over all of the <span class="math inline">\(Y\)</span> observations, the dummy is best understood as a change in the value of the intercept (<span class="math inline">\(A\)</span>) for the ``dummied&quot; group. This is illustrated in Figure <a href="topics-in-multiple-regression.html#fig:dum">14.1</a>. In this illustration, the value of <span class="math inline">\(Y\)</span> is a function of <span class="math inline">\(X_1\)</span> (a continuous variable) and <span class="math inline">\(X_2\)</span> (a dummy variable). When <span class="math inline">\(X_2\)</span> is equal to 0 (the referent case) the top regression line applies. When <span class="math inline">\(X_2 = 1\)</span>, the value of <span class="math inline">\(Y\)</span> is reduced to the bottom line. In short, <span class="math inline">\(X_2\)</span> has a negative estimated partial regression coefficient represented by the difference in height between the two regression lines.</p>
 <div class="figure"><span id="fig:dum"></span>
-<img src="dummy.pdf" alt="Dummy Intercept Variables"  />
+<img src="dummy.jpg" alt="Dummy Intercept Variables"  />
 <p class="caption">
 Figure 14.1: Dummy Intercept Variables
 </p>
@@ -348,7 +348,7 @@ Figure 14.1: Dummy Intercept Variables
 <p>For a case with multiple nominal categories (e.g., region) the procedure is as follows: (a) determine which category will be assigned as the referent group; (b) create a dummy variable for each of the other categories. For example, if you are coding a dummy for four regions (North, South, East and West), you could designate the South as the referent group. Then you would create dummies for the other three regions. Then, all observations from the North would get a value of 1 in the North dummy, and zeros in all others. Similarly, East and West observations would receive a 1 in their respective dummy category and zeros elsewhere. The observations from the South region would be given values of zero in all three categories. The interpretation of the partial regression coefficients for each of the three dummies would then be the estimated difference in <span class="math inline">\(Y\)</span> between observations from the North, East and West and those from the South.</p>
 <p>Now let’s walk through an example of an <span class="math inline">\(R\)</span> model with a dummy variable and the interpretation of that model. We will predict climate change risk using age, education, income, ideology, and “gend”, a dummy variable for gender for which 1 = male and 0 = female.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;glbcc_risk&quot;</span>,<span class="st">&quot;age&quot;</span>,<span class="st">&quot;education&quot;</span>,<span class="st">&quot;income&quot;</span>,<span class="st">&quot;ideol&quot;</span>,<span class="st">&quot;gender&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>()
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="st">&quot;glbcc_risk&quot;</span>,<span class="st">&quot;age&quot;</span>,<span class="st">&quot;education&quot;</span>,<span class="st">&quot;income&quot;</span>,<span class="st">&quot;ideol&quot;</span>,<span class="st">&quot;gender&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>()
 
 ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data =</span> ds.temp)
 <span class="kw">summary</span>(ols1)</code></pre></div>
@@ -385,7 +385,7 @@ ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 <p><span class="math inline">\(Y_i = A + BX_1 + BX_2 + BX_3 * BX_4 + E_i\)</span>.</p>
 <p>A ``slope dummy&quot; is a special kind of interaction in which a dummy variable is interacted with (multiplied by) a scale (ordinal or higher) variable. Suppose, for example, that you hypothesized that the effects of political of ideology on perceived risks of climate change were different for men and women. Perhaps men are more likely than women to consistently integrate ideology into climate change risk perceptions. In such a case, a dummy variable (0=women, 1=men) could be interacted with ideology (1=strong liberal, 7=strong conservative) to predict levels of perceived risk of climate change (0=no risk, 10=extreme risk). If your hypothesized interaction was correct, you would observe the kind of pattern as shown in Figure <a href="topics-in-multiple-regression.html#fig:dumin">14.2</a>.</p>
 <div class="figure"><span id="fig:dumin"></span>
-<img src="duminter.pdf" alt="Illustration of Slope Interaction"  />
+<img src="duminter.jpg" alt="Illustration of Slope Interaction"  />
 <p class="caption">
 Figure 14.2: Illustration of Slope Interaction
 </p>
@@ -454,7 +454,7 @@ Figure 14.3: Interaction of Ideology and Gender
 </ul>
 <p>We can use the <code>scale</code> function in <code>R</code> to calculate a <span class="math inline">\(Z\)</span> score for each of our variables, and then re-run our model.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stan.ds &lt;-<span class="st"> </span>ds.temp <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol, gender) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol, gender) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>scale <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">data.frame</span>()
 

@@ -372,14 +372,14 @@ RSS &amp;= \sum E^{2}_{i} \\
 <h2><span class="header-section-number">12.2</span> Partial Effects</h2>
 <p>As noted in Chapter 1, multiple regression ``controls&quot; for the effects of other variables on the dependent variables. This is in order to manage possible spurious relationships, where the variable <span class="math inline">\(Z\)</span> influences the value of both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. Figure <a href="the-logic-of-multiple-regression.html#fig:spur">12.1</a> illustrates the nature of spurious relationships between variables.</p>
 <div class="figure"><span id="fig:spur"></span>
-<img src="spur.pdf" alt="Spurious Relationships"  />
+<img src="spur.jpg" alt="Spurious Relationships"  />
 <p class="caption">
 Figure 12.1: Spurious Relationships
 </p>
 </div>
 <p>To control for spurious relationships, multiple regression accounts for the <strong>partial effects</strong> of one <span class="math inline">\(X\)</span> on another <span class="math inline">\(X\)</span>. Partial effects deal with the shared variance between <span class="math inline">\(Y\)</span> and the <span class="math inline">\(X\)</span>’s. This is illustrated in Figure <a href="the-logic-of-multiple-regression.html#fig:partef">12.2</a>. In this example, the number of deaths resulting from house fires is positively associated with the number of fire trucks that are sent to the scene of the fire. A simple-minded analysis would conclude that if fewer trucks are sent, fewer fire-related deaths would occur. Of course, the number of trucks sent to the fire, and the number of fire-related deaths, are both driven by the magnitude of the fire. An appropriate control for the size of the fire would therefore presumably eliminate the positive association between the number of fire trucks at the scene and the number of deaths (and may even reverse the direction of the relationship, as the larger number of trucks may more quickly suppress the fire).</p>
 <div class="figure"><span id="fig:partef"></span>
-<img src="partef.pdf" alt="Partial Effects"  />
+<img src="partef.jpg" alt="Partial Effects"  />
 <p class="caption">
 Figure 12.2: Partial Effects
 </p>
@@ -402,7 +402,7 @@ Figure 12.2: Partial Effects
 <p><span class="math inline">\(E_{iY|X_{2}} = 0 + B_3E_{iX_{1}|X_{2}}\)</span> and <span class="math inline">\(B_3E_{iX_{1}|X_{2}} = B_1X_{i1}\)</span></p>
 </blockquote>
 <p>As an example, we will use age and ideology to predict perceived climate change risk.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(glbcc_risk, ideol, age) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, ideol, age) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">na.omit</span>()
 
 ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>ideol<span class="op">+</span>age, <span class="dt">data =</span> ds.temp)
@@ -416,16 +416,16 @@ ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## -8.7913 -1.6252  0.2785  1.4674  6.6075 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 11.096064   0.244640  45.357 &lt;0.0000000000000002 ***
-## ideol       -1.042748   0.028674 -36.366 &lt;0.0000000000000002 ***
-## age         -0.004872   0.003500  -1.392               0.164    
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 11.096064   0.244640  45.357   &lt;2e-16 ***
+## ideol       -1.042748   0.028674 -36.366   &lt;2e-16 ***
+## age         -0.004872   0.003500  -1.392    0.164    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.479 on 2510 degrees of freedom
 ## Multiple R-squared:  0.3488, Adjusted R-squared:  0.3483 
-## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Note that the estimated coefficient for ideology is -1.0427478. To see how multiple regression removes the shared variance we first regress climate change risk on age and create an object <code>ols2.resids</code> of the residuals.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> ds.temp)
 <span class="kw">summary</span>(ols2)</code></pre></div>
@@ -438,9 +438,9 @@ ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## -6.4924 -2.1000  0.0799  2.5376  4.5867 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value             Pr(&gt;|t|)    
-## (Intercept)  6.933835   0.267116  25.958 &lt; 0.0000000000000002 ***
-## age         -0.016350   0.004307  -3.796              0.00015 ***
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  6.933835   0.267116  25.958  &lt; 2e-16 ***
+## age         -0.016350   0.004307  -3.796  0.00015 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -461,15 +461,15 @@ ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## -3.9492 -0.8502  0.2709  1.3480  2.7332 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value             Pr(&gt;|t|)    
-## (Intercept) 3.991597   0.150478  26.526 &lt; 0.0000000000000002 ***
-## age         0.011007   0.002426   4.537           0.00000598 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 3.991597   0.150478  26.526  &lt; 2e-16 ***
+## age         0.011007   0.002426   4.537 5.98e-06 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 1.725 on 2511 degrees of freedom
 ## Multiple R-squared:  0.00813,    Adjusted R-squared:  0.007735 
-## F-statistic: 20.58 on 1 and 2511 DF,  p-value: 0.000005981</code></pre>
+## F-statistic: 20.58 on 1 and 2511 DF,  p-value: 5.981e-06</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ols3.resids &lt;-<span class="st"> </span>ols3<span class="op">$</span>residuals</code></pre></div>
 <p>Finally, we regress the residuals from ols2 on the residuals from ols3. Note that this regression does not include an intercept term.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ols4 &lt;-<span class="st"> </span><span class="kw">lm</span>(ols2.resids <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span>ols3.resids)
@@ -483,14 +483,14 @@ ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## -8.7913 -1.6252  0.2785  1.4674  6.6075 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value            Pr(&gt;|t|)    
-## ols3.resids -1.04275    0.02866  -36.38 &lt;0.0000000000000002 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## ols3.resids -1.04275    0.02866  -36.38   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.478 on 2512 degrees of freedom
 ## Multiple R-squared:  0.3451, Adjusted R-squared:  0.3448 
-## F-statistic:  1324 on 1 and 2512 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic:  1324 on 1 and 2512 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>As shown, the estimated <span class="math inline">\(B\)</span> for <span class="math inline">\(E_{iX_{1}|X_{2}}\)</span>, matches the estimated <span class="math inline">\(B\)</span> for ideology in the first regression. What we have done, and what multiple regression does, is ``clean&quot; both <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_1\)</span> (ideology) of their correlations with <span class="math inline">\(X_2\)</span> (age) by using the residuals from the bivariate regressions.</p>
 </div>
 <div id="multiple-regression-example" class="section level2">
@@ -523,21 +523,22 @@ ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## -8.7913 -1.6252  0.2785  1.4674  6.6075 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 11.096064   0.244640  45.357 &lt;0.0000000000000002 ***
-## age         -0.004872   0.003500  -1.392               0.164    
-## ideol       -1.042748   0.028674 -36.366 &lt;0.0000000000000002 ***
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 11.096064   0.244640  45.357   &lt;2e-16 ***
+## age         -0.004872   0.003500  -1.392    0.164    
+## ideol       -1.042748   0.028674 -36.366   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.479 on 2510 degrees of freedom
 ## Multiple R-squared:  0.3488, Adjusted R-squared:  0.3483 
-## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The results show that the relationship between age and perceived risk (glbccrsk) is negative and insignificant. The relationship between ideology and perceived risk is negative and significant. The coefficients of the <span class="math inline">\(X\)</span>’s are interpreted in the same way as with simple regression, except that we are now controlling for the effect of the other <span class="math inline">\(X\)</span>’s by removing their influence on the estimated coefficient. Therefore, we say that as ideology increases one unit, perceptions of the risk of climate change (glbccrsk) decrease by -1.0427478, controlling for the effect of age.</p>
 <p>As was the case with simple regression, multiple regression finds the intercept and slopes that minimize the sum of the squared residuals. With only one IV the relationship can be represented in a two-dimensional plane (a graph) as a line, but each IV adds another dimension. Two IVs create a regression plane within a cube, as shown in Figure <a href="the-logic-of-multiple-regression.html#fig:scatols">12.3</a>. The Figure shows a scatterplot of perceived climate change risk, age, and ideology coupled with the regression plane. Note that this is a sample of 200 observations from the larger data set. Were we to add more IVs, we would generate a hypercube… and we haven’t found a clever way to draw that yet.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds200 &lt;-<span class="st"> </span>ds.temp[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(ds.temp), <span class="dv">200</span>, <span class="dt">replace=</span><span class="ot">FALSE</span>),]
-<span class="kw">library</span>(scatterplot3d)  
-s3d &lt;-<span class="kw">scatterplot3d</span>(ds200<span class="op">$</span>age,
+<span class="kw">library</span>(scatterplot3d)  </code></pre></div>
+<pre><code>## Warning: package &#39;scatterplot3d&#39; was built under R version 3.5.2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s3d &lt;-<span class="kw">scatterplot3d</span>(ds200<span class="op">$</span>age,
                     ds200<span class="op">$</span>ideol,
                     ds200<span class="op">$</span>glbcc_risk
                     ,<span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">highlight.3d=</span><span class="ot">TRUE</span>,  
@@ -551,7 +552,7 @@ Figure 12.3: Scatterplot and Regression Plane of gcc risk, age, and ideology
 </div>
 <p>In the next example education is added to the model.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">na.omit</span>()
 
 ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)
@@ -565,17 +566,17 @@ ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## -8.8092 -1.6355  0.2388  1.4279  6.6334 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 10.841669   0.308416  35.153 &lt;0.0000000000000002 ***
-## age         -0.003246   0.003652  -0.889               0.374    
-## education    0.036775   0.028547   1.288               0.198    
-## ideol       -1.044827   0.029829 -35.027 &lt;0.0000000000000002 ***
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 10.841669   0.308416  35.153   &lt;2e-16 ***
+## age         -0.003246   0.003652  -0.889    0.374    
+## education    0.036775   0.028547   1.288    0.198    
+## ideol       -1.044827   0.029829 -35.027   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.437 on 2268 degrees of freedom
 ## Multiple R-squared:  0.3607, Adjusted R-squared:  0.3598 
-## F-statistic: 426.5 on 3 and 2268 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic: 426.5 on 3 and 2268 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>We see that as a respondent’s education increases one unit on the education scale, perceived risk appears to increase by 0.0367752, keeping age and ideology constant. However, this result is not significant. In the final example, income is added to the model. Note that the size and significance of education actually increases once income is included, indicating that education only has bearing on the perceived risks of climate change once the independent effect of income is considered.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">999</span>) <span class="co">#to turn off scientific notation</span>
 ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)
@@ -605,7 +606,7 @@ ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 <h3><span class="header-section-number">12.3.1</span> Hypothesis Testing and <span class="math inline">\(t\)</span>-tests</h3>
 <p>The logic of hypothesis testing with multiple regression is a straightforward extension from simple regression as described in Chapter 7. Below we will demonstrate how to use the standard error of the ideology variable to test whether ideology influences perceptions of the perceived risk of global climate change. Specifically, we posit:</p>
 <blockquote>
-<p>{<span class="math inline">\(H_1\)</span>}: As respondents become more conservative, they will perceive climate change to be less risky, all else equal.</p>
+<p><span class="math inline">\(H_1\)</span>: As respondents become more conservative, they will perceive climate change to be less risky, all else equal.</p>
 </blockquote>
 <p>Therefore, <span class="math inline">\(\beta_{ideology} &lt; 0\)</span>. The null hypothesis is that <span class="math inline">\(\beta_{ideology} = 0\)</span>.</p>
 <p>To test <span class="math inline">\(H_1\)</span> we first need to find the standard error of the <span class="math inline">\(B\)</span> for ideology, (<span class="math inline">\(B_j\)</span>).</p>

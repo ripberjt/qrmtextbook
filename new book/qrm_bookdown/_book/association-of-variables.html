@@ -335,7 +335,11 @@ Figure 6.1: Sample Table Layout
 \chi^2  = \sum \frac{(O-E)^2}{E}
 \tag{6.1}
   \end{equation}\]</span>
-<p>where: <span class="math inline">\(\chi^2\)</span> = The Test Statistic <span class="math inline">\(\sum\)</span> = The Summation Operator <span class="math inline">\(O\)</span> = Observed Frequencies <span class="math inline">\(E\)</span> = Expected Frequencies</p>
+<p>where:</p>
+<p><span class="math inline">\(\chi^2\)</span> = The Test Statistic</p>
+<p><span class="math inline">\(\sum\)</span> = The Summation Operator</p>
+<p><span class="math inline">\(O\)</span> = Observed Frequencies</p>
+<p><span class="math inline">\(E\)</span> = Expected Frequencies</p>
 <div class="figure"><span id="fig:iv-dv2"></span>
 <img src="iv-dv2.PNG" alt="Sample Null-Hypothesized Table Layout as Percentages" width="217" />
 <p class="caption">
@@ -355,7 +359,7 @@ Figure 6.3: Sample Null-Hypothesized Table Layout as Counts
 Figure 6.4: Chi Square Calculation
 </p>
 </div>
-<p>Table <a href="#tab:chisquaretable"><strong>??</strong></a> (at the end of this chapter) is a chi square table that shows the critical values for various levels of significance and degrees of freedom. The critical value for one degree of freedom with a .05 level of significance is 3.84. Since our chi square is larger than that we can reject our null hypothesis - there is less than a .05 probability that we could have found the results in our sample if there is no relationship in the population. In fact, if we follow the row for one degree of freedom across, we see we can reject our null hypothesis even at the .005 level of significance and, almost but not quite, at the .001 level of significance.</p>
+<p>Table <a href="association-of-variables.html#fig:chisquaretable">6.9</a> (at the end of this chapter) is a chi square table that shows the critical values for various levels of significance and degrees of freedom. The critical value for one degree of freedom with a .05 level of significance is 3.84. Since our chi square is larger than that we can reject our null hypothesis - there is less than a .05 probability that we could have found the results in our sample if there is no relationship in the population. In fact, if we follow the row for one degree of freedom across, we see we can reject our null hypothesis even at the .005 level of significance and, almost but not quite, at the .001 level of significance.</p>
 <p>Having rejected the null hypothesis, we believe there is a relationship between the two variables, but we still want to know how strong that relationship is. Measures of association are used to determine the strength of a relationship. One type of measure of association relies on a co-variation model as elaborated upon in Sections 6.2 and 6.3. Co-variation models are directional models and require ordinal or interval level measures; otherwise, the variables have no direction. Here we consider alternative models.</p>
 <p>If one or both of our variables is nominal, we cannot specify directional change. Still, we might see a recognizable pattern of change in one variable as the other variable varies. Women might be more concerned about climate change than are men, for example. For that type of case, we may use a reduction in error or a <strong>proportional reduction in error (PRE) model</strong>. We consider how well we predict using a naive model (assuming no relationship) and compare it to how much better we predict when we use our independent variable to make that prediction. These measures of association only range from <span class="math inline">\(0 - 1.0\)</span>, since the sign otherwise indicates direction. Generally, we use this type of measure when at least one our variables is nominal, but we will also use a PRE model measure, <span class="math inline">\(r^2\)</span>, in regression analysis. <strong>Lambda</strong> is a commonly used PRE-based measure of association for nominal level data, but it can underestimate the relationship in some circumstances.</p>
 <p>Another set of measures of association suitable for nominal level data is based on chi square. <strong>Cramer’s V</strong> is a simple chi square based indicator, but like chi square itself, its value is affected by the sample size and the dimensions of the table. <strong>Phi</strong> corrects for sample size, but is appropriate only for a 2 X 2 table. The <strong>contingency coefficient</strong>, C, also corrects for sample size and can be applied to larger tables, but requires a square table, i.e., the same number of rows and columns.</p>
@@ -459,7 +463,7 @@ v2.glbcc.table</code></pre></div>
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  v2.glbcc.table
-## X-squared = 620.76, df = 2, p-value &lt; 0.00000000000000022</code></pre>
+## X-squared = 620.76, df = 2, p-value &lt; 2.2e-16</code></pre>
 <p>The chi square is very large and our p-value is very small. We can therefore reject our null hypothesis with great confidence. Next, we consider the strength of the association using Cramer’s V (since either Phi nor the contingency coefficient is appropriate for a 3 X 2 table):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Cramer&#39;s V</span>
 <span class="kw">library</span>(vcd)
@@ -475,7 +479,7 @@ v2.glbcc.table</code></pre></div>
 <p>We might, though, want to look at gender as a control variable since we know gender is related both to perceptions on the climate and ideology. First we need to generate a new table with the control variable gender added. We start by factoring the gender variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  factor the variables to add labels.</span>
 ds<span class="op">$</span>f.gend &lt;-<span class="st"> </span><span class="kw">factor</span>(ds<span class="op">$</span>gend, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Women&quot;</span>, <span class="st">&quot;Men&quot;</span>))</code></pre></div>
-<p>We then create the new table. The R output is shown, in which the line <code>\#\# ,  ,  = Women&quot; indicates the results for women and &quot;\#\# ,  ,  = Men</code> displays the results for men.</p>
+<p>We then create the new table. The R output is shown, in which the line <code>\#\# ,  ,  = Women</code> indicates the results for women and <code>\#\# ,  ,  = Men</code> displays the results for men.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  3 Two variable table glbcc~ideology+gend</span>
 v3.glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span class="op">$</span>f.glbcc, ds<span class="op">$</span>f.ideol, ds<span class="op">$</span>f.gend) 
 v3.glbcc.table</code></pre></div>
@@ -503,7 +507,7 @@ v3.glbcc.table</code></pre></div>
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  v3.glbcc.table[, , 1]
-## X-squared = 299.39, df = 2, p-value &lt; 0.00000000000000022</code></pre>
+## X-squared = 299.39, df = 2, p-value &lt; 2.2e-16</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">assocstats</span>(v3.glbcc.table[,,<span class="dv">1</span>])</code></pre></div>
 <pre><code>##                     X^2 df P(&gt; X^2)
 ## Likelihood Ratio 326.13  2        0
@@ -523,7 +527,7 @@ v3.glbcc.table</code></pre></div>
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  v3.glbcc.table[, , 2]
-## X-squared = 320.43, df = 2, p-value &lt; 0.00000000000000022</code></pre>
+## X-squared = 320.43, df = 2, p-value &lt; 2.2e-16</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">assocstats</span>(v3.glbcc.table[,,<span class="dv">2</span>])</code></pre></div>
 <pre><code>##                     X^2 df P(&gt; X^2)
 ## Likelihood Ratio 353.24  2        0
@@ -562,13 +566,13 @@ r = \frac{\sum (X-\bar{X})(Y-\bar{Y})/(n-1)}{s_{x}s_{y}}
 \tag{6.5}
 \end{equation}\]</span>
 <p>Like covariance, correlations can be positive, negative, and zero. The possible values of the correlation coefficient <span class="math inline">\(r\)</span>, range from -1, perfect negative relationship to 1, perfect positive relationship. If <span class="math inline">\(r=0\)</span>, that indicates no correlation. Correlations can be calculated in <code>R</code>, using the <code>cor</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(age, education, ideol, glbcc_risk) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(education, ideol, age, glbcc_risk) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">cor</span>()</code></pre></div>
-<pre><code>##                    age   education       ideol  glbcc_risk
-## age         1.00000000 -0.06149090  0.08991177 -0.07514098
-## education  -0.06149090  1.00000000 -0.13246843  0.09115774
-## ideol       0.08991177 -0.13246843  1.00000000 -0.59009431
-## glbcc_risk -0.07514098  0.09115774 -0.59009431  1.00000000</code></pre>
+<pre><code>##              education       ideol         age  glbcc_risk
+## education   1.00000000 -0.13246843 -0.06149090  0.09115774
+## ideol      -0.13246843  1.00000000  0.08991177 -0.59009431
+## age        -0.06149090  0.08991177  1.00000000 -0.07514098
+## glbcc_risk  0.09115774 -0.59009431 -0.07514098  1.00000000</code></pre>
 <p>Note that each variable is perfectly (and positively) correlated with itself - naturally! Age is slightly and surprisingly negatively correlated with education (-0.06) and unsurprisingly positively correlated with political ideology (+0.09). What this means is that, in this dataset and on average, older people are slightly less educated and more conservative than younger people. Now notice the correlation coefficient for the relationship between ideology and perceived risk of climate change (glbcc_risk). This correlation (-0.59) indicates that on average, the more conservative the individual is, the less risky climate change is perceived to be.</p>
 </div>
 <div id="scatterplots" class="section level2">
@@ -583,7 +587,7 @@ r = \frac{\sum (X-\bar{X})(Y-\bar{Y})/(n-1)}{s_{x}s_{y}}
 Figure 6.7: Scatterplot of Ideology and glbcc Risk
 </p>
 </div>
-<p>We can see that the density of values indicate that strong liberals—<span class="math inline">\(1\)</span>’s on the ideology scale—tend to view climate change as quite risky, whereas strong conservatives—<span class="math inline">\(7\)</span>’s on the ideology scale—tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a “loess” line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We’ll have more to say about the linear estimates when we turn to regression analysis in the next chapter. %We can add to the previous visualization by including <code>geom_smooth</code> and indicating a “loess” line or an “lm” line.</p>
+<p>We can see that the density of values indicate that strong liberals—<span class="math inline">\(1\)</span>’s on the ideology scale—tend to view climate change as quite risky, whereas strong conservatives—<span class="math inline">\(7\)</span>’s on the ideology scale—tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a “loess” line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We’ll have more to say about the linear estimates when we turn to regression analysis in the next chapter.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">drop_na</span>(glbcc_risk, ideol) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ideol, glbcc_risk)) <span class="op">+</span>
@@ -610,7 +614,7 @@ Figure 6.9: Chi Square Table
 <hr />
 <ol start="12">
 <li id="fn12"><p>To reiterate the general decision rule: if the probability that we could have a 20% difference in our sample if the null hypothesis is true is less than .05, we will reject our null hypothesis.<a href="association-of-variables.html#fnref12">↩</a></p></li>
-<li id="fn13"><p>That means a “jit” (a very small value) is applied to each observed point on the plot, so you can see observations that are ``stacked&quot; on the same coordinate. Ha! Just kidding; they’re not called jits. We don’t know what they’re called. But they ought to be called jits.<a href="association-of-variables.html#fnref13">↩</a></p></li>
+<li id="fn13"><p>That means a “jit” (a very small value) is applied to each observed point on the plot, so you can see observations that are “stacked” on the same coordinate. Ha! Just kidding; they’re not called jits. We don’t know what they’re called. But they ought to be called jits.<a href="association-of-variables.html#fnref13">↩</a></p></li>
 </ol>
 </div>
             </section>

@@ -9,7 +9,7 @@ ds <- read.csv("Class Data Set.csv")
 ```{r newdf, echo=TRUE, results="hide"}
 #  create a new data frame with the first 500 observations
 ds.small <- filter(ds) %>%
-  select("glbcc_risk", "age", "education", "income", "ideol") %>%
+  dplyr::select("glbcc_risk", "age", "education", "income", "ideol") %>%
   slice(1:500) %>% 
   na.omit()
 
@@ -501,7 +501,7 @@ You should always check the correlations between the IVs during the model buildi
 
 ```{r multcol, echo=TRUE}
 ds %>%
-  select(age, education, income, ideol) %>%
+  dplyr::select(age, education, income, ideol) %>%
   na.omit() %>%
   data.frame() %>%
   cor()
