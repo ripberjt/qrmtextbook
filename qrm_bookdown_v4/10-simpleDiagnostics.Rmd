@@ -138,7 +138,21 @@ One of the primary assumptions of simple OLS regression is that the estimated sl
 If the real relationship between $X$ and $Y$ is not linear, however, the predicted (linear) values for $Y$ will systematically depart from the (curved) relationship that is represented in the data. Figure \@ref(fig:simplenonlin) shows the kind of pattern we would expect in our residuals if the observed relationship between $X$ and $Y$ is a strong curve, when we attempt to model it as if it were linear.
 
 ```{r simplenonlin, echo=FALSE, fig.cap="Non-Linearity in the Residuals"}
-knitr::include_graphics("simplenonlin.jpg")
+set.seed(15)
+x4 <- -20:20
+y4 <- x4^2
+df5 <- data.frame(x4, y4)
+
+ggplot(df5, aes(x = x4, y = y4)) +
+  geom_jitter(width = 3, height = 2, size = 3) +
+  geom_smooth(method = loess, se = FALSE, linetype = "dashed") +
+  lims(y = c(0, 150), x = c(-15, 15)) +
+  labs(x = "Predicted Y", y = "E") +
+  geom_hline(yintercept = 50, color = "black", linetype = "dashed", size = 1) +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_line(color = "black"),
+        panel.background = element_rect(fill = "white"))
 ```
 
 
