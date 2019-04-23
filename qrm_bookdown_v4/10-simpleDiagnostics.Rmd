@@ -38,8 +38,6 @@ set.seed(11)
 x2 <- rnorm(37)
 y2 <- rnorm(37)
 df3 <- data.frame(x2, y2)
-mod2 <- lm(y2 ~ x2)
-df2 <- augment(mod2)
 
 ggplot(df3) +
   geom_point(aes(x2, y2), size = 3) +
@@ -65,7 +63,26 @@ Residual analysis is the process of looking for __signature patterns__ in the re
 Sometimes our data include unusual cases that behave differently from most of our observations. This may happen for a number of reasons. The most typical is that the data have been mis-coded, with some subgroup of the data having numerical values that lead to large residuals. Cases like this can also arise when a subgroup of the cases differ from the others in how $X$ influences $Y$, and that difference has not been captured in the model. This is a problem referred to as the omission of important independent variables.^[Political scientists who study US electoral politics have had to account for unusual observations in the Southern states. Failure in the model to account for these differences would lead to prediction error and ugly patterns in the residuals. Sadly, Professor Gaddie notes that scholars have not been sufficiently careful -- or perhaps well-trained? -- to do this right. Professor Gaddie notes:  "... instead of working to achieve better model specification through the application of theory and careful thought, in the 1960s and 1970s electoral scholars instead just threw out the South and all senate races, creating the perception that the United States had 39 states and a unicameral legislature."] Figure \@ref(fig:unusual1) shows a stylized example, with a cluster of residuals falling at considerable distance from the rest. 
 
 ```{r unusual1, echo=FALSE, fig.cap="Unusual Data Patterns in Residuals"}
-knitr::include_graphics("unusual_dat.jpg")
+x3 <- c(1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 7, 8,
+        9, 9, 9, 10, 11, 11, 12, 14, 15, 16, 17, 18, 20)
+y3 <- c(4, 6, 5, 4, 6, 7, 6, 7, 8, 6, 5, 8, 9,
+        7, 8, 5, 6, 8, 7, 9, 8.8, 9, 8, 10, 7, 9)
+df4 <- data.frame(x3, y3)
+
+ggplot(df4, aes(x = x3, y = y3)) +
+  geom_point(size = 3) +
+  lims(y = c(0, 10), x = c(1, 22)) +
+  geom_point(aes(x = 18.5, y = 2), size = 3) +
+  geom_point(aes(x = 19.4, y = 2.4), size = 3) +
+  geom_point(aes(x = 18.2, y = 2.7), size = 3) +
+  geom_point(aes(x = 18, y = 1.5), size = 3) +
+  geom_hline(yintercept = 6, color = "black", linetype = "dashed", size = 1) +
+  labs(x = "Predicted Y", y = "E") +
+  annotate("text", x = 19, y = 5, label = "Residuals for \nmodel using \nall data", color = "black", size = 4) +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_line(color = "black"),
+        panel.background = element_rect(fill = "white"))
 ```
 
 This is a case of influential outliers. The effect of such outliers can be significant, as the OLS estimates of $A$ and $B$ seek to minimize overall squared error. In the case of Figure \@ref(fig:unusual1), the effect would be to shift the estimate of $B$ to accommodate the unusual observations, as illustrated in Figure \@ref(fig:unusual2). One possible response would be to omit the unusual observations, as shown in Figure \@ref(fig:unusual2). Another would be to consider, theoretically and empirically, why these observations are unusual. Are they, perhaps, miscoded? Or are they codes representing missing values (e.g., "-99")?
@@ -73,7 +90,29 @@ This is a case of influential outliers. The effect of such outliers can be signi
 If they are not mis-codes, perhaps these outlier observations manifest a different kind of relationship between $X$ and $Y$, which might in turn require a revised theory and model. We will address some modeling options to address this possibility when we explore multiple regression, in Part III of this book.
 
 ```{r unusual2, echo=FALSE, fig.cap="Implications of Unusual Data Patterns in Residuals"}
-knitr::include_graphics("unusual_dat2.jpg")
+x3 <- c(1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 7, 8,
+        9, 9, 9, 10, 11, 11, 12, 14, 15, 16, 17, 18, 20)
+y3 <- c(4, 6, 5, 4, 6, 7, 6, 7, 8, 6, 5, 8, 9,
+        7, 8, 5, 6, 8, 7, 9, 8.8, 9, 8, 10, 7, 9)
+df4 <- data.frame(x3, y3)
+
+ggplot(df4, aes(x = x3, y = y3)) +
+  geom_point(size = 3) +
+  lims(y = c(0, 10), x = c(1, 25)) +
+  geom_smooth(method = lm, se = FALSE, linetype = "dashed") +
+  geom_point(aes(x = 18.5, y = 2), size = 3) +
+  geom_point(aes(x = 19.4, y = 2.4), size = 3) +
+  geom_point(aes(x = 18.2, y = 2.7), size = 3) +
+  geom_point(aes(x = 18, y = 1.5), size = 3) +
+  geom_hline(yintercept = 6, color = "black", linetype = "dashed", size = 1) +
+  labs(x = "Predicted Y", y = "E") +
+  annotate("text", x = 23, y = 9, label = "Residuals for \nmodel with \nall outliers deleted", color = "blue", size = 4) +
+  annotate("text", x = 23, y = 5, label = "Residuals for \nmodel using \nall data", color = "black", size = 4) +
+  annotate("text", x = 23, y = 2, label = "Possible \noutliers", color = "red", size = 4) +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_line(color = "black"),
+        panel.background = element_rect(fill = "white"))
 ```
 
 In sum, outlier analysis looks at residuals for patterns in which some observations deviate widely from others. If that deviation is influential, changing estimates of $A$ and $B$ as shown in Figure \@ref(fig:unusual2), then you must examine the observations to determine whether they are mis-coded. If not, you can evaluate whether the cases are theoretically distinct, such that the influence of $X$ on $Y$ is likely to be different than for other cases. If you conclude that this is so, you will need to respecify your model to account for these differences. We will discuss some options for doing that later in this chapter, and again in our discussion of multiple regression.
