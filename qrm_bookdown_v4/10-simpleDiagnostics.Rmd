@@ -34,7 +34,23 @@ knitr::include_graphics("residdist.jpg")
 How can we determine whether our residuals approximate the expected pattern? The most straight-forward approach is to visually examine the distribution of the residuals over the range of the predicted values for $Y$. If all is well, there should be no obvious pattern to the residuals -- they should appear as a "sneeze plot" (i.e.,  it looks like you sneezed on the plot. How gross!) as shown in Figure \@ref(fig:sneeze).
 
 ```{r sneeze, echo=FALSE, fig.cap="Ideal Pattern of Residuals from a Simple OLS Model"}
-knitr::include_graphics("sneeze.jpg")
+set.seed(11)
+x2 <- rnorm(37)
+y2 <- rnorm(37)
+df3 <- data.frame(x2, y2)
+mod2 <- lm(y2 ~ x2)
+df2 <- augment(mod2)
+
+ggplot(df3) +
+  geom_point(aes(x2, y2), size = 3) +
+  geom_hline(yintercept = 0, color = "blue", linetype = "dashed", size = 1) +
+  lims(y = c(-1, 1), x = c(-1.6, 1)) +
+  xlab("Predicted Y") +
+  ylab("E") +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_line(color = "black"),
+        panel.background = element_rect(fill = "white"))
 ```
 
 
@@ -46,21 +62,21 @@ Residual analysis is the process of looking for __signature patterns__ in the re
 
 ### "Outlier" Data
 
-Sometimes our data include unusual cases that behave differently from most of our observations. This may happen for a number of reasons. The most typical is that the data have been mis-coded, with some subgroup of the data having numerical values that lead to large residuals. Cases like this can also arise when a subgroup of the cases differ from the others in how $X$ influences $Y$, and that difference has not been captured in the model. This is a problem referred to as the omission of important independent variables.^[Political scientists who study US electoral politics have had to account for unusual observations in the Southern states. Failure in the model to account for these differences would lead to prediction error and ugly patterns in the residuals. Sadly, Professor Gaddie notes that scholars have not been sufficiently careful -- or perhaps well-trained? -- to do this right. Professor Gaddie notes:  "... instead of working to achieve better model specification through the application of theory and careful thought, in the 1960s and 1970s electoral scholars instead just threw out the South and all senate races, creating the perception that the United States had 39 states and a unicameral legislature."] Figure \@ref(fig:unusual_dat) shows a stylized example, with a cluster of residuals falling at considerable distance from the rest. 
+Sometimes our data include unusual cases that behave differently from most of our observations. This may happen for a number of reasons. The most typical is that the data have been mis-coded, with some subgroup of the data having numerical values that lead to large residuals. Cases like this can also arise when a subgroup of the cases differ from the others in how $X$ influences $Y$, and that difference has not been captured in the model. This is a problem referred to as the omission of important independent variables.^[Political scientists who study US electoral politics have had to account for unusual observations in the Southern states. Failure in the model to account for these differences would lead to prediction error and ugly patterns in the residuals. Sadly, Professor Gaddie notes that scholars have not been sufficiently careful -- or perhaps well-trained? -- to do this right. Professor Gaddie notes:  "... instead of working to achieve better model specification through the application of theory and careful thought, in the 1960s and 1970s electoral scholars instead just threw out the South and all senate races, creating the perception that the United States had 39 states and a unicameral legislature."] Figure \@ref(fig:unusual1) shows a stylized example, with a cluster of residuals falling at considerable distance from the rest. 
 
-```{r unusual_dat, echo=FALSE, fig.cap="Unusual Data Patterns in Residuals"}
+```{r unusual1, echo=FALSE, fig.cap="Unusual Data Patterns in Residuals"}
 knitr::include_graphics("unusual_dat.jpg")
 ```
 
-This is a case of influential outliers. The effect of such outliers can be significant, as the OLS estimates of $A$ and $B$ seek to minimize overall squared error. In the case of Figure \@ref(fig:unusual_dat), the effect would be to shift the estimate of $B$ to accommodate the unusual observations, as illustrated in Figure \@ref(fig:unusual_dat2). One possible response would be to omit the unusual observations, as shown in Figure \@ref(fig:unusual_dat2). Another would be to consider, theoretically and empirically, why these observations are unusual. Are they, perhaps, miscoded? Or are they codes representing missing values (e.g., "-99")?
+This is a case of influential outliers. The effect of such outliers can be significant, as the OLS estimates of $A$ and $B$ seek to minimize overall squared error. In the case of Figure \@ref(fig:unusual1), the effect would be to shift the estimate of $B$ to accommodate the unusual observations, as illustrated in Figure \@ref(fig:unusual2). One possible response would be to omit the unusual observations, as shown in Figure \@ref(fig:unusual2). Another would be to consider, theoretically and empirically, why these observations are unusual. Are they, perhaps, miscoded? Or are they codes representing missing values (e.g., "-99")?
 
 If they are not mis-codes, perhaps these outlier observations manifest a different kind of relationship between $X$ and $Y$, which might in turn require a revised theory and model. We will address some modeling options to address this possibility when we explore multiple regression, in Part III of this book.
 
-```{r unusual_dat2, echo=FALSE, fig.cap="Implications of Unusual Data Patterns in Residuals"}
+```{r unusual2, echo=FALSE, fig.cap="Implications of Unusual Data Patterns in Residuals"}
 knitr::include_graphics("unusual_dat2.jpg")
 ```
 
-In sum, outlier analysis looks at residuals for patterns in which some observations deviate widely from others. If that deviation is influential, changing estimates of $A$ and $B$ as shown in Figure \@ref(fig:unusual_dat2), then you must examine the observations to determine whether they are mis-coded. If not, you can evaluate whether the cases are theoretically distinct, such that the influence of $X$ on $Y$ is likely to be different than for other cases. If you conclude that this is so, you will need to respecify your model to account for these differences. We will discuss some options for doing that later in this chapter, and again in our discussion of multiple regression.
+In sum, outlier analysis looks at residuals for patterns in which some observations deviate widely from others. If that deviation is influential, changing estimates of $A$ and $B$ as shown in Figure \@ref(fig:unusual2), then you must examine the observations to determine whether they are mis-coded. If not, you can evaluate whether the cases are theoretically distinct, such that the influence of $X$ on $Y$ is likely to be different than for other cases. If you conclude that this is so, you will need to respecify your model to account for these differences. We will discuss some options for doing that later in this chapter, and again in our discussion of multiple regression.
 
 ### Non-Constant Variance
 
