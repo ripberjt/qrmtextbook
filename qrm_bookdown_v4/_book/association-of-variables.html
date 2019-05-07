@@ -322,7 +322,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">6.1</span> Cross-Tabulation</h2>
 <p>To determine if there is an association between two variables measured at the nominal or ordinal levels, we use cross-tabulation and a set of supporting statistics. A cross-tabulation (or just crosstab) is a table that looks at the distribution of two variables simultaneously. Table <a href="association-of-variables.html#fig:iv-dv">6.1</a> provides a sample layout of a 2 X 2 table.</p>
 <div class="figure"><span id="fig:iv-dv"></span>
-<img src="iv-dv.PNG" alt="Sample Table Layout" width="217" />
+<img src="iv-dv.PNG" alt="Sample Table Layout" width="75%" />
 <p class="caption">
 Figure 6.1: Sample Table Layout
 </p>
@@ -341,20 +341,20 @@ Figure 6.1: Sample Table Layout
 <p><span class="math inline">\(O\)</span> = Observed Frequencies</p>
 <p><span class="math inline">\(E\)</span> = Expected Frequencies</p>
 <div class="figure"><span id="fig:iv-dv2"></span>
-<img src="iv-dv2.PNG" alt="Sample Null-Hypothesized Table Layout as Percentages" width="217" />
+<img src="iv-dv2.PNG" alt="Sample Null-Hypothesized Table Layout as Percentages" width="75%" />
 <p class="caption">
 Figure 6.2: Sample Null-Hypothesized Table Layout as Percentages
 </p>
 </div>
 <div class="figure"><span id="fig:iv-dv3"></span>
-<img src="iv-dv3.PNG" alt="Sample Null-Hypothesized Table Layout as Counts" width="206" />
+<img src="iv-dv3.PNG" alt="Sample Null-Hypothesized Table Layout as Counts" width="75%" />
 <p class="caption">
 Figure 6.3: Sample Null-Hypothesized Table Layout as Counts
 </p>
 </div>
 <p>Table <a href="association-of-variables.html#fig:chiscalc">6.4</a> provides those calculations. It shows a final chi square of 10.73. With that chi square, we can go to a chi square table to determine whether to accept or reject the null hypothesis. Before going to that chi square table, we need to figure out two things. First, we need to determine the level of significance we want, presumably .05. Second, we need to determine our degrees of freedom. We will provide more on that concept as we go on, but for now, know that it is the number of rows minus one times the number of columns minus one. In this case we have <span class="math inline">\((2-1)(2-1) = 1\)</span> degree of freedom.</p>
 <div class="figure"><span id="fig:chiscalc"></span>
-<img src="iv-dv4.PNG" alt="Chi Square Calculation" width="253" />
+<img src="iv-dv4.PNG" alt="Chi Square Calculation" width="75%" />
 <p class="caption">
 Figure 6.4: Chi Square Calculation
 </p>
@@ -420,13 +420,13 @@ glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span 
 <p>Suppose we hypothesize that people who are contacted about voting are more likely to vote. Table <a href="association-of-variables.html#fig:control1">6.5</a> illustrates what we might find. (Remember all of these data are fabricated to illustrate our points.) According to the first table, people who are contacted are 50% more likely to vote than those who are not. But, a skeptic might say campaigns target previous voters for contact and that previous voters are more likely to vote in subsequent elections. That skeptic is making the argument that the relationship between contact and voting is spurious and that the true cause of voting is voting history. To test that theory, we control for voting history by sorting respondents into two sets – those who voted in the last election and those who did not. We then reconstruct the original table for the two sets of respondents. The new tables indicate that previous voters are 50% more likely to vote when contacted, and that those who did not vote previously are 50% more likely to vote when contacted. The skeptic is wrong; the pattern found in our original data persists even after controlling for the alternative explanation. We still remain reluctant to use causal language because another skeptic might have another alternative explanation (which would require us to go through the same process with the new third variable), but we do have more confidence in the possible causal nature of the relationship between contact and voting.</p>
 <p>The next example tests the hypothesis that those who are optimistic about the future are more likely to vote for the incumbent than those who are pessimistic. Table <a href="association-of-variables.html#fig:control2">6.6</a> shows that optimistic people are 25% more likely to vote for the incumbent than are pessimistic people. But our skeptic friend might argue that feelings about the world are not nearly as important as real life conditions. People with jobs vote for the incumbent more often than those without a job and, of course, those with a job are more likely to feel good about the world. To test that alternative, we control for whether the respondent has a job and reconstruct new tables. When we do, we find that among those with a job, 70% vote for the incumbent - regardless of their level of optimism about the world. And, among those without a job, 40% vote for the incumbent, regardless of their optimism. In other words, after controlling for job status, there is no relationship between level of optimism and voting behavior. The original relationship was spurious.</p>
 <div class="figure"><span id="fig:control1"></span>
-<img src="control1.PNG" alt="Controlling for a Third Variable: Nothing Changes" width="320" />
+<img src="control1.PNG" alt="Controlling for a Third Variable: Nothing Changes" width="100%" />
 <p class="caption">
 Figure 6.5: Controlling for a Third Variable: Nothing Changes
 </p>
 </div>
 <div class="figure"><span id="fig:control2"></span>
-<img src="control2.PNG" alt="Controlling for a Third Variable: Spurious" width="188" />
+<img src="control2.PNG" alt="Controlling for a Third Variable: Spurious" width="75%" />
 <p class="caption">
 Figure 6.6: Controlling for a Third Variable: Spurious
 </p>
@@ -463,7 +463,7 @@ v2.glbcc.table</code></pre></div>
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  v2.glbcc.table
-## X-squared = 620.76, df = 2, p-value &lt; 2.2e-16</code></pre>
+## X-squared = 620.76, df = 2, p-value &lt; 0.00000000000000022</code></pre>
 <p>The chi square is very large and our p-value is very small. We can therefore reject our null hypothesis with great confidence. Next, we consider the strength of the association using Cramer’s V (since either Phi nor the contingency coefficient is appropriate for a 3 X 2 table):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Cramer&#39;s V</span>
 <span class="kw">library</span>(vcd)
@@ -507,7 +507,7 @@ v3.glbcc.table</code></pre></div>
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  v3.glbcc.table[, , 1]
-## X-squared = 299.39, df = 2, p-value &lt; 2.2e-16</code></pre>
+## X-squared = 299.39, df = 2, p-value &lt; 0.00000000000000022</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">assocstats</span>(v3.glbcc.table[,,<span class="dv">1</span>])</code></pre></div>
 <pre><code>##                     X^2 df P(&gt; X^2)
 ## Likelihood Ratio 326.13  2        0
@@ -527,7 +527,7 @@ v3.glbcc.table</code></pre></div>
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  v3.glbcc.table[, , 2]
-## X-squared = 320.43, df = 2, p-value &lt; 2.2e-16</code></pre>
+## X-squared = 320.43, df = 2, p-value &lt; 0.00000000000000022</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">assocstats</span>(v3.glbcc.table[,,<span class="dv">2</span>])</code></pre></div>
 <pre><code>##                     X^2 df P(&gt; X^2)
 ## Likelihood Ratio 353.24  2        0
@@ -542,7 +542,7 @@ v3.glbcc.table</code></pre></div>
 </div>
 <div id="covariance" class="section level2">
 <h2><span class="header-section-number">6.2</span> Covariance</h2>
-<p>Covariance is a simple measure of the way two variables move together, or ``co-vary“. The covariance of two variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, can be expressed in population notation as:</p>
+<p>Covariance is a simple measure of the way two variables move together, or “co-vary”. The covariance of two variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, can be expressed in population notation as:</p>
 <span class="math display" id="eq:06-2">\[\begin{equation}
 cov(X,Y) = E[(X-\mu_{x})(Y-\mu_{y})]
 \tag{6.2}
@@ -602,7 +602,7 @@ Figure 6.8: Scatterplot of Ideology and GLBCC Risk with Regression Line and Lowe
 </div>
 <p>Note that the regression lines both slope downward, with average perceived risk ranging from over 8 for the strong liberals (ideology=1) to less than 5 for strong conservatives (ideology=7). This illustrates how scatterplots can provide information about the nature of the relationship between two variables. We will take the next step – to bivariate regression analysis – in the next chapter.</p>
 <div class="figure"><span id="fig:chisquaretable"></span>
-<img src="chisquaretable.png" alt="Chi Square Table" width="334" />
+<img src="chisquaretable.png" alt="Chi Square Table" width="100%" />
 <p class="caption">
 Figure 6.9: Chi Square Table
 </p>

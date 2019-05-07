@@ -19,7 +19,8 @@ Y_{i} = \alpha + \beta X_{i}
 
 A deterministic model is __systematic__ and contains no error, therefore _$Y$ is perfectly predicted by $X$_. This is illustrated in Figure \@ref(fig:dols). $\alpha$ and $\beta$ are the model parameters, and are constant terms. $\beta$ is the slope, or the change in $Y$ over the change in $X$. $\alpha$ is the intercept, or the value of $Y$ when $X$ is zero.  
 
-```{r dols, echo=FALSE, fig.cap="Deterministic Model"}
+```{r dols, echo=FALSE, warning=FALSE, fig.cap="Deterministic Model"}
+library(broom)
 set.seed(5)
 y <-rnorm(5)
 x <-1:5

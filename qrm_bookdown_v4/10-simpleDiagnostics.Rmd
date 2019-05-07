@@ -28,12 +28,23 @@ Recall from Chapter 4 that we identified three key assumptions about the error t
 Taken together these assumption mean that the error term has a normal, independent, and identical distribution (normal i.i.d.). Figure \@ref(fig:residdist) shows what these assumptions would imply for the distribution of residuals around the predicted values of $Y$ given $X$.
 
 ```{r residdist, echo=FALSE, fig.cap="Assumed Distributions of OLS Residuals"}
-knitr::include_graphics("residdist.jpg")
+plot(c(0,5), c(0,6.5), type = "n", xlab="x", ylab="y")
+abline(h = 0, v = 0, col = "gray60")
+abline(a = 2.5, b = 0.5, lwd = 2)
+x <- 600:3000/600
+y <- dnorm(x, mean = 3, sd = 0.5)
+lines(y + 1.0, x)
+lines(y + 2.5, x + 0.75)
+lines(y + 4.0, x + 1.5)
+abline(v = c(1, 2.5, 4), lty = 2, col = "grey")
+segments(1, 3, 1 + dnorm(0,0,0.5),3, lty = 2, col = "gray")
+segments(2.5, 3.75, 2.5 + dnorm(0,0,0.5), 3.75, lty = 2, col = "gray")
+segments(4,4.5, 4 + dnorm(0,0,0.5),4.5, lty = 2, col = "gray")
 ```
 
 How can we determine whether our residuals approximate the expected pattern? The most straight-forward approach is to visually examine the distribution of the residuals over the range of the predicted values for $Y$. If all is well, there should be no obvious pattern to the residuals -- they should appear as a "sneeze plot" (i.e.,  it looks like you sneezed on the plot. How gross!) as shown in Figure \@ref(fig:sneeze).
 
-```{r sneeze, echo=FALSE, fig.cap="Ideal Pattern of Residuals from a Simple OLS Model"}
+```{r sneeze, echo=FALSE, warning = FALSE, fig.cap="Ideal Pattern of Residuals from a Simple OLS Model"}
 set.seed(11)
 x2 <- rnorm(37)
 y2 <- rnorm(37)
@@ -122,8 +133,31 @@ In sum, outlier analysis looks at residuals for patterns in which some observati
 A second thing to look for in visual diagnostics of residuals is non-constant variance, or
 __heteroscedasticity__. In this case, the variation in the residuals over the range of predicted values for $Y$ should be roughly even. A problem occurs when that variation changes substantially as the predicted value of $Y$ changes, as is illustrated in Figure \@ref(fig:hetero10).
 
-```{r hetero10, echo=FALSE, fig.cap="Non-Constant Variance in the Residuals"}
-knitr::include_graphics("hetero.jpg")
+```{r hetero10, echo=FALSE, warning=FALSE, fig.cap="Non-Constant Variance in the Residuals"}
+set.seed(20)
+y5 <- rnorm(21, mean = 0, sd = 0.1)
+x5 <- 1:21
+z5 <- rep("first", 21)
+df1 <- data.frame(x5, y5, z5)
+df1
+
+y5 <- rnorm(21, mean = 0, sd = 5.5)
+x5 <- 21:41
+z5 <- rep("second", 21)
+df2 <- data.frame(x5, y5, z5)
+df2
+
+df3 <- rbind(df1, df2)
+df3
+
+ggplot(df3, aes(x = x5, y = y5)) +
+  geom_jitter(width = 1, height = 1.5, size = 3) +
+  lims(y = c(-8, 8), x = c(0, 40)) +
+  labs(x = "Predicted Y", y = "E") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_line(color = "black"))
 ```
 
 
@@ -137,7 +171,7 @@ One of the primary assumptions of simple OLS regression is that the estimated sl
 
 If the real relationship between $X$ and $Y$ is not linear, however, the predicted (linear) values for $Y$ will systematically depart from the (curved) relationship that is represented in the data. Figure \@ref(fig:simplenonlin) shows the kind of pattern we would expect in our residuals if the observed relationship between $X$ and $Y$ is a strong curve, when we attempt to model it as if it were linear.
 
-```{r simplenonlin, echo=FALSE, fig.cap="Non-Linearity in the Residuals"}
+```{r simplenonlin, warning=FALSE, echo=FALSE, fig.cap="Non-Linearity in the Residuals"}
 set.seed(15)
 x4 <- -20:20
 y4 <- x4^2

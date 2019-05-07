@@ -391,7 +391,7 @@ B</code></pre></div>
 A_{rXq} * B_{qXc} = C_{rXc}
 \end{equation*}\]</span>
 <p>Then, multiply column elements by the row elements, as shown here:</p>
-<p><span class="math inline">\(A = \begin{bmatrix}  2 &amp; 5 \\  1 &amp; 0 \\  6 &amp; -2 \end{bmatrix} * B = \begin{bmatrix} 4 &amp; 2 &amp; 1 \\ 5 &amp; 7 &amp; 2 \end{bmatrix} = A X B = \begin{bmatrix}  (2 X 4)+(5 X 5) &amp; (2 X 2)+(5 X 7) &amp; (2 X 1)+(5 X 2) \\  (1 X 4)+(0 X 5) &amp; (1 X 2)+(0 X 7) &amp; (1 X 1)+(0 X 2) \\  (6 X 4)+(-2 X 5) &amp; (6 X 2)+(-2 X 7) &amp; (6 X 1)+(-2 X 2) \end{bmatrix} = \begin{bmatrix}  33 &amp; 39 &amp; 12 \\  4 &amp; 2 &amp; 1 \\  14 &amp; -2 &amp; 2 \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(A = \begin{bmatrix}  2 &amp; 5 \\  1 &amp; 0 \\  6 &amp; -2 \end{bmatrix} * B = \begin{bmatrix} 4 &amp; 2 &amp; 1 \\ 5 &amp; 7 &amp; 2 \end{bmatrix} = A X B = \\ \begin{bmatrix}  (2 X 4)+(5 X 5) &amp; (2 X 2)+(5 X 7) &amp; (2 X 1)+(5 X 2) \\  (1 X 4)+(0 X 5) &amp; (1 X 2)+(0 X 7) &amp; (1 X 1)+(0 X 2) \\  (6 X 4)+(-2 X 5) &amp; (6 X 2)+(-2 X 7) &amp; (6 X 1)+(-2 X 2) \end{bmatrix} = \begin{bmatrix}  33 &amp; 39 &amp; 12 \\  4 &amp; 2 &amp; 1 \\  14 &amp; -2 &amp; 2 \end{bmatrix}\)</span></p>
 <p>To multiply matrices in <code>R</code>, create two matrix objects and multiply them using the <code>\%*\%</code> command.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">2</span>)
 A</code></pre></div>

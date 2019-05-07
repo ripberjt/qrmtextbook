@@ -70,16 +70,54 @@ The assumption of fixed values of $X$ means that the value of $X$ in our observa
 As noted in Chapter 1, multiple regression ``controls" for the effects of other variables on the dependent variables. This is in order to manage possible spurious relationships, where the variable $Z$ influences the value of both $X$ and $Y$. Figure \@ref(fig:spur) illustrates the nature of spurious relationships between variables. 
 
 ```{r spur, echo=FALSE, fig.cap="Spurious Relationships"}
-knitr::include_graphics("spur.jpg")
+x1 <- 0:5
+y1 <- 0:5
+df1 <- data.frame(x1, y1)
+
+ggplot(df1, aes(x, y)) +
+  annotate("text", x = 2, y = 2, label = expression("x"[1]), color = "blue", size = 9) +
+  annotate("text", x = 2, y = 1.8, label = "Size of Fire", color = "red", size = 3) +
+  annotate("text", x = 4, y = 2, label = "Y", color = "blue", size = 7) +
+  annotate("text", x = 4, y = 1.75, label = "Number of \nFire Deaths", color = "red", size = 3) +
+  annotate("text", x = 3, y = 3, label = expression("X"[2]), color = "blue", size = 7) +
+  annotate("text", x = 3, y = 3.3, label = "Number of \nFire Trucks", color = "red", size = 3) +
+  geom_segment(aes(x = 2.3, y = 2, xend = 3.7, yend = 2), arrow = arrow(length = unit(0.1, "inches")), color = "black") +
+  geom_segment(aes(x = 2, y = 2.25, xend = 2.75, yend = 2.8), arrow = arrow(ends = "both", length = unit(0.1, "inches")), color = "black") +
+  geom_segment(aes(x = 3.25, y = 2.8, xend = 4, yend = 2.25), linetype = "dashed", arrow = arrow(length = unit(0.1, "inches")), color = "black") +
+  lims(y = c(1,4), x = c(1,5)) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.background = element_rect(fill = "white"))
 ```
 
 To control for spurious relationships, multiple regression accounts for the __partial effects__ of one $X$ on another $X$. Partial effects deal with the shared variance between $Y$ and the $X$'s. This is illustrated in Figure \@ref(fig:partef).  In this example, the number of deaths resulting from house fires is positively associated with the number of fire trucks that are sent to the scene of the fire. A simple-minded analysis would conclude that if fewer trucks are sent, fewer fire-related deaths would occur. Of course, the number of trucks sent to the fire, and the number of fire-related deaths, are both driven by the magnitude of the fire. An appropriate control for the size of the fire would therefore presumably eliminate the positive association between the number of fire trucks at the scene and the number of deaths (and may even  reverse the direction of the relationship, as the larger number of trucks may more quickly suppress the fire).
 
 ```{r partef, echo=FALSE, fig.cap="Partial Effects"}
-knitr::include_graphics("partef.jpg")
+dat = data.frame(x=runif(1), y=runif(1))
+ggplot() + scale_x_continuous(limits = c(0,1.5)) +
+  scale_y_continuous(limits = c(0,1))+
+  geom_point(aes(x=x, y=y), data=dat, size=50, shape=1, color="gold4") +
+  geom_point(aes(x=x-0.1, y=y+0.1), data=dat, size=50, shape=1, color="gold4") +
+  geom_point(aes(x=x-0.2, y=y-0.1), data=dat, size=50, shape=1, color="gold4") +
+  geom_point(aes(x=x+0.5, y=y), data=dat, size=50, shape=1, color="blue") +
+  geom_point(aes(x=x+0.57, y=y+0.03), data=dat, size=50, shape=1, color="blue") +
+  geom_point(aes(x=x+0.57, y=y-0.03), data=dat, size=50, shape=1, color="blue") +
+  annotate("text", x = 0.2, y = 0.2, label = expression("X"[2]), color = "black") +
+  annotate("text", x = 0.3, y = 0.55, label = expression("X"[1]), color = "black") +
+  annotate("text", x = 0.5, y = 0.25, label = "Y", color = "black") +
+  annotate("text", x = 1.1, y = 0.52, label = expression("X"[1]), color = "black") +
+  annotate("text", x = 0.79, y = 0.35, label = expression("X"[2]), color = "black") +
+  annotate("text", x = 1.1, y = 0.19, label = "Y", color = "black") +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.background = element_rect(fill = "white"))
 ```
 
-In Figure \ref(fig:partef), the Venn diagram on the left shows a pair of $X$s that would jointly predict $Y$ better than either $X$ alone. However, the overlapped area between $X_{1}$ and $X_{2}$ causes some confusion. That would need to be removed to estimate the "pure" effect of $X_{1}$ on $Y$. The diagram on the right represents a dangerous case. Overall, $X_{1}$+$X_2$ explain $Y$ well, but we don`t know how the individual $X_1$ or $X_2$ influence $Y$.  This clouds our ability to see the effects of either of the $Xs$ on $Y$. In the extreme case of wholly overlapping explanations by the IVs, we face the condition of __multicolinearity__ that makes estimation of the partial regression coefficients (the $Bs$) impossible.
+In Figure \@ref(fig:partef), the Venn diagram on the left shows a pair of $X$s that would jointly predict $Y$ better than either $X$ alone. However, the overlapped area between $X_{1}$ and $X_{2}$ causes some confusion. That would need to be removed to estimate the "pure" effect of $X_{1}$ on $Y$. The diagram on the right represents a dangerous case. Overall, $X_{1}$+$X_2$ explain $Y$ well, but we don`t know how the individual $X_1$ or $X_2$ influence $Y$.  This clouds our ability to see the effects of either of the $Xs$ on $Y$. In the extreme case of wholly overlapping explanations by the IVs, we face the condition of __multicolinearity__ that makes estimation of the partial regression coefficients (the $Bs$) impossible.
      
 In calculating the effect of $X_1$ on $Y$, we need to remove the effect of the other $X$s on both $X_1$ and $Y$.  While multiple regression does this for us, we will walk through an example to illustrate the concepts. 
 

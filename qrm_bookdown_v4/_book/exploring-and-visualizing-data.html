@@ -322,7 +322,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="characterizing-data" class="section level2">
 <h2><span class="header-section-number">3.1</span> Characterizing Data</h2>
 <p>What does it mean to characterize your data? First, it means knowing how many observations are contained in your data and the distribution of those observations over the range of your variable(s). What kinds of measures (interval, ordinal, nominal) do you have, and what are the ranges of valid measures for each variable? How many cases of missing (no data) or mis-coded (measures that fall outside the valid range) do you have? What do the coded values represent? While seemingly trivial, checking and evaluating your data for these attributes can save you major headaches later. For example, missing values for an observation often get a special code – say, “-99” – to distinguish them from valid observations. If you neglect to treat these values properly, R (or any other statistics program) will treat that value as if it were valid and thereby turn your results into a royal hairball. We know of cases in which even seasoned quantitative scholars have made the embarrassing mistake of failing to properly handle missing values in their analyses. In at least one case, a published paper had to be retracted for this reason. So don’t skimp on the most basic forms of data characterization!</p>
-<p>The dataset used for purposes of illustration in this version of this text is taken from a survey of Oklahomans, conducted in 2016, by OU’s Center for Risk and Crisis Management. The survey question wording and background will be provided in class. However, for purposes of this chapter, note that the measure of <strong>ideology</strong> consists of a self-report of political ideology on a scale that ranges from 1 (strong liberal) to 7 (strong conservative); the measure of the <strong>perceived risk of climate change</strong> ranges from zero (no risk) to 10 (extreme risk). <strong>Age</strong> was measured in years.</p>
+<p>The dataset used for purposes of illustration in this version of this text is taken from a survey of Oklahomans, conducted in 2016, by OU’s Center for Risk and Crisis Management. The survey question wording and background will be provided in class. However, for purposes of this chapter, note that the measure of <code>ideology</code> consists of a self-report of political ideology on a scale that ranges from 1 (strong liberal) to 7 (strong conservative); the measure of the <code>perceived risk of climate change</code> ranges from zero (no risk) to 10 (extreme risk). <code>Age</code> was measured in years.</p>
 <p>It is often useful to graph the variables in your dataset to get a better idea of their distribution. In addition, we may want to compare the distribution of a variable to a theoretical distribution (typically a normal distribution). This can be accomplished in several ways, but we will show two here—a histogram and a density curve—and more will be discussed in later chapters. For now we examine the distribution of the variable measuring age. The red line on the density visualization presents the normal distribution given the mean and standard deviation of our variable.</p>
 <p>A histogram creates intervals of equal length, called bins, and displays the frequency of observations in each of the bins. To produce a histogram in R simply use the <code>geom_histogram</code> command in the <code>ggplot2</code> package. Next, we plot the density of the observed data along with a normal curve. This can be done with the <code>geom_density</code> command in the <code>ggplot2</code> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
@@ -347,7 +347,7 @@ Figure 3.2: Density Curve
 <p>You can also get an overview of your data using a table known as a frequency distribution. The frequency distribution summarizes how often each value of your variable occurs in the dataset. If your variable has a limited number of values that it can take on, you can report all values, but if it has a large number of possible values (e.g., age of respondent), then you will want to create categories, or bins, to report those frequencies. In such cases, it is generally easier to make sense of the percentage distribution. Table <a href="exploring-and-visualizing-data.html#fig:ideo">3.3</a> is a frequency distribution for the ideology variable. From that table we see, for example, that about one-third of all respondents are moderates. We see the numbers decrease as we move away from that category, but not uniformly. There are a few more people on the conservative extreme than on the liberal side and that the number of people placing themselves in the penultimate categories on either end is greater than those towards the middle. The histogram and density curve would, of course, show the same pattern.</p>
 <p>The other thing to watch for here (or in the charts) is whether there is an unusual observation. If one person scored 17 in this table, you could be pretty sure a coding error was made somewhere. You cannot find all your errors this way, but you can find some, including the ones that have the potential to most seriously adversely affect your analysis.</p>
 <div class="figure"><span id="fig:ideo"></span>
-<img src="freq-ideo.png" alt="Frequency Distribbution for Ideology" width="252" />
+<img src="freq-ideo.png" alt="Frequency Distribbution for Ideology" width="100%" />
 <p class="caption">
 Figure 3.3: Frequency Distribbution for Ideology
 </p>
@@ -359,16 +359,8 @@ Figure 3.3: Frequency Distribbution for Ideology
 ##   1   2   3   4   5   6   7 
 ## 122 279 185 571 328 688 351</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To view percentages</span>
-<span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(ds<span class="op">$</span>ideol) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prop.table</span>()</code></pre></div>
+<span class="kw">library</span>(dplyr)
+<span class="kw">table</span>(ds<span class="op">$</span>ideol) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prop.table</span>()</code></pre></div>
 <pre><code>## 
 ##          1          2          3          4          5          6 
 ## 0.04833597 0.11053883 0.07329635 0.22622821 0.12995246 0.27258320 
@@ -488,7 +480,13 @@ S = \frac{\frac{\sum (X-\bar{X})^{3}}{(n-1)}}{(\sqrt{\frac{\sum
 \end{equation}\]</span>
 <p>Specifically, skewness refers to the position of the expected value (i.e., mean) of a variable distribution relative to its median. When the mean and median of a variable are roughly equal, <span class="math inline">\(\bar{Y} \approx Md_{Y}\)</span>, then the distribution is considered approximately symmetrical, <span class="math inline">\(S = 0\)</span>. This means that an equal proportion of the distribution of the variable lies on either side of the mean. However, when the mean is larger than the median, <span class="math inline">\(\bar{Y} &gt; Md_{Y}\)</span>, then the distribution has a <em>positive</em> skew, <span class="math inline">\(S &gt; 0\)</span>. When the median is larger than the mean, <span class="math inline">\(\bar{Y} &lt; Md_{Y}\)</span>, this is a <em>negative</em> skew, <span class="math inline">\(S &lt; 0\)</span>. This is illustrated in Figure <a href="exploring-and-visualizing-data.html#fig:disshape">3.4</a>. Note that for a normal distribution, <span class="math inline">\(S=0\)</span>.</p>
 <div class="figure"><span id="fig:disshape"></span>
-<img src="distroshapes.jpg" alt="Distributional Shapes"  />
+<img src="_main_files/figure-html/disshape-1.png" alt="Distributional Shapes" width="672" />
+<p class="caption">
+Figure 3.4: Distributional Shapes
+</p>
+</div>
+<div class="figure"><span id="fig:disshape"></span>
+<img src="_main_files/figure-html/disshape-2.png" alt="Distributional Shapes" width="672" />
 <p class="caption">
 Figure 3.4: Distributional Shapes
 </p>

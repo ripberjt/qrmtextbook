@@ -151,9 +151,9 @@ B =
 \begin{bmatrix}
 4 & 2 & 1 \\
 5 & 7 & 2
-\end{bmatrix}
+\end{bmatrix} 
 =
-A X B =
+A X B = \\
 \begin{bmatrix}
   (2 X 4)+(5 X 5) & (2 X 2)+(5 X 7) & (2 X 1)+(5 X 2) \\
   (1 X 4)+(0 X 5) & (1 X 2)+(0 X 7) & (1 X 1)+(0 X 2) \\

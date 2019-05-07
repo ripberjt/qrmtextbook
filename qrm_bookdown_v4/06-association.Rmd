@@ -6,7 +6,7 @@ The last chapter focused on the characterization of distributions of a single va
 
 To determine if there is an association between two variables measured at the nominal or ordinal levels, we use cross-tabulation and a set of supporting statistics.  A cross-tabulation (or just crosstab) is a table that looks at the distribution of two variables simultaneously. Table \@ref(fig:iv-dv) provides a sample layout of a 2 X 2 table.
 
-```{r iv-dv, echo=FALSE, fig.cap="Sample Table Layout"}
+```{r iv-dv, echo=FALSE, out.width= "75%", fig.cap="Sample Table Layout"}
 knitr::include_graphics("iv-dv.png")
 ```
 
@@ -33,17 +33,17 @@ $O$ = Observed Frequencies
 
 $E$ = Expected Frequencies 
 
-```{r iv-dv2, echo=FALSE, fig.cap="Sample Null-Hypothesized Table Layout as Percentages"}
+```{r iv-dv2, echo=FALSE, out.width= "75%", fig.cap="Sample Null-Hypothesized Table Layout as Percentages"}
 knitr::include_graphics("iv-dv2.png")
 ```
 
-```{r iv-dv3, echo=FALSE, fig.cap="Sample Null-Hypothesized Table Layout as Counts"}
+```{r iv-dv3, echo=FALSE, out.width= "75%", fig.cap="Sample Null-Hypothesized Table Layout as Counts"}
 knitr::include_graphics("iv-dv3.png")
 ```
 
 Table \@ref(fig:chiscalc) provides those calculations.   It shows a final chi square of 10.73.  With that chi square, we can go to a chi square table to determine whether to accept or reject the null hypothesis.  Before going to that chi square table, we need to figure out two things.  First, we need to determine the level of significance we want, presumably .05.  Second, we need to determine our degrees of freedom.  We will provide more on that concept as we go on, but for now, know that it is the number of rows minus one times the number of columns minus one.  In this case we have $(2-1)(2-1) = 1$ degree of freedom.  
 	 
-```{r chiscalc, echo=FALSE, fig.cap="Chi Square Calculation"}
+```{r chiscalc, echo=FALSE, out.width= "75%", fig.cap="Chi Square Calculation"}
 knitr::include_graphics("iv-dv4.png")
 ```
 
@@ -112,11 +112,11 @@ Suppose we hypothesize that people who are contacted about voting are more likel
 
 The next example tests the hypothesis that those who are optimistic about the future are more likely to vote for the incumbent than those who are pessimistic.  Table \@ref(fig:control2) shows that optimistic people are 25\% more likely to vote for the incumbent than are pessimistic people.   But our skeptic friend might argue that feelings about the world are not nearly as important as real life conditions.  People with jobs vote for the incumbent more often than those without a job and, of course, those with a job are more likely to feel good about the world.  To test that alternative, we control for whether the respondent has a job and reconstruct new tables.  When we do, we find that among those with a job, 70\% vote for the incumbent - regardless of their level of optimism about the world.  And, among those without a job, 40\% vote for the incumbent, regardless of their optimism.  In other words, after controlling for job status, there is no relationship between level of optimism and voting behavior.  The original relationship was spurious.
 
-```{r control1, echo=FALSE, fig.cap="Controlling for a Third Variable: Nothing Changes"}
+```{r control1, echo=FALSE, out.width= "100%", fig.cap="Controlling for a Third Variable: Nothing Changes"}
 knitr::include_graphics("control1.png")
 ```
 
-```{r control2, echo=FALSE, fig.cap="Controlling for a Third Variable: Spurious"}
+```{r control2, echo=FALSE, out.width= "75%", fig.cap="Controlling for a Third Variable: Spurious"}
 knitr::include_graphics("control2.png")
 ```
 
@@ -195,7 +195,7 @@ Crosstabs, chi square, and measures of association are used with nominal and ord
 
 ## Covariance
 
-Covariance is a simple measure of the way two variables move together, or ``co-vary".  The covariance of two variables, $X$ and $Y$, can be expressed in population notation as: 
+Covariance is a simple measure of the way two variables move together, or "co-vary".  The covariance of two variables, $X$ and $Y$, can be expressed in population notation as: 
 
 \begin{equation}
 cov(X,Y) = E[(X-\mu_{x})(Y-\mu_{y})]
@@ -266,6 +266,6 @@ ds %>%
 
 Note that the regression lines both slope downward, with average perceived risk  ranging from over 8 for the strong liberals (ideology=1) to less than 5 for strong conservatives (ideology=7). This illustrates how scatterplots can provide information about the nature of the relationship between two variables. We will take the next step -- to bivariate regression analysis -- in the next chapter.
 
-```{r chisquaretable, echo=FALSE, fig.cap="Chi Square Table"}
+```{r chisquaretable, echo=FALSE, out.width= "100%", fig.cap="Chi Square Table"}
 knitr::include_graphics("chisquaretable.png")
 ```

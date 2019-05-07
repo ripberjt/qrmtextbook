@@ -40,8 +40,41 @@ If, though, the events are mutually exclusive, we do not need to subtract the ov
 ## Finding Probabilities with the Normal Curve
 If we want to find the probability of a score falling in a certain range, e.g., between 3 and 7, or more than 12, we can use the normal to determine that probability.  Our ability to make that determination is based on some known characteristics on the normal curve.  We know that for all normal curves 68.26\% of all scores fall within one standard deviation of the mean, that 95.44\% fall within two standard deviations, and that 99.72\% fall within three standard deviations.  (The normal distribution is dealt with more formally in the next chapter.) So, we know that something that is three or more standard deviations above the mean is pretty rare.  Figure \@ref(fig:normcurve) illustrates the probabilities associated with the normal curve.^[Source availavle [here.](http://whatilearned.wikia.com/wiki/File:Normal_curve_probability.jpg)]
 
-```{r normcurve, echo=FALSE, fig.cap="Area under the Normal Curve"}
-knitr::include_graphics("normal_curve_probability.jpg")
+```{r normcurve, echo=FALSE, out.width= "100%", fig.cap="Area under the Normal Curve"}
+x <- -5:5
+y <- dnorm(x)
+df <- data.frame(x, y)
+ggplot(df, aes(x = x, y = y)) +
+  stat_function(fun=dnorm, args = list(sd = 2)) +
+  lims(x = c(-5,5), y = c(-0.05, 0.25)) +
+  geom_segment(aes(x = -1, y = 0.173, xend = -1, yend = 0), linetype = "dashed", color = "green") +
+  geom_segment(aes(x = 1, y = 0.173, xend = 1, yend = 0), linetype = "dashed", color = "green") +
+  geom_segment(aes(x = -2, y = 0.12, xend = -2, yend = 0), linetype = "dashed", color = "red") +
+  geom_segment(aes(x = 2, y = 0.12, xend = 2, yend = 0), linetype = "dashed", color = "red") +
+  geom_segment(aes(x = -3, y = 0.06, xend = -3, yend = 0), linetype = "dashed", color = "blue") +
+  geom_segment(aes(x = 3, y = 0.06, xend = 3, yend = 0), linetype = "dashed", color = "blue") +
+  geom_segment(aes(x = 0, y = 0.20, xend = 0, yend = 0), linetype = "dashed", color = "black") +
+  annotate("text", x = 0.5, y = 0.02, label = "34.13%", color = "green", size = 3) +
+  annotate("text", x = -0.5, y = 0.02, label = "34.13%", color = "green", size = 3) +
+  annotate("text", x = 1.5, y = 0.02, label = "13.59%", color = "red", size = 3) +
+  annotate("text", x = -1.5, y = 0.02, label = "13.59%", color = "red", size = 3) +
+  annotate("text", x = 2.5, y = 0.02, label = "2.14%", color = "blue", size = 3) +
+  annotate("text", x = -2.5, y = 0.02, label = "2.14%", color = "blue", size = 3) +
+  annotate("text", x = 3.5, y = 0.02, label = "0.13%", color = "gray", size = 3) +
+  annotate("text", x = -3.5, y = 0.02, label = "0.13%", color = "gray", size = 3) +
+  geom_hline(yintercept = 0, color = "black", size = 1) +
+  annotate("text", x = 0, y = -0.01, label = "0", color = "black") +
+  annotate("text", x = -1, y = -0.01, label = "-1", color = "black") +
+  annotate("text", x = 1, y = -0.01, label = "1", color = "black") +
+  annotate("text", x = -2, y = -0.01, label = "-2", color = "black") +
+  annotate("text", x = 2, y = -0.01, label = "2", color = "black") +
+  annotate("text", x = -3, y = -0.01, label = "-3", color = "black") +
+  annotate("text", x = 3, y = -0.01, label = "3", color = "black") +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.background = element_rect(fill = "white"))
 ```
 
 According to Figure \@ref(fig:normcurve), there is a .3413 probability of an observation falling between the mean and one standard deviation above the mean and, therefore, a .6826 probability of a score falling within $(+/-)$ one standard deviation of the mean.   There is also a .8413 probability of a score being one standard deviation above the mean or less (.5 probability of a score falling below the mean and a .3413 probability of a score falling between the mean and one standard deviation above it).   (Using the language we learned in Chapter 3, another way to articulate that finding is to say that a score one standard deviation above the mean is at the 84th percentile.)  There is also a .1587 probability of a score being a standard deviation above the mean or higher $(1.0 - .8413)$. 
@@ -78,6 +111,6 @@ The Bernoulli process can be used only when both $n * p$ and $n * q$ are greater
 ## Summary
 Probabilities are simple statistics but are important when we want to know the likelihood of some event occurring.  There are frequent real world instances where we find that information valuable.  We will see, starting in the next chapter, that probabilities are also central to the concept of inference.
 
-```{r normcurve2, echo=FALSE, fig.cap="The Normal Curve Table"}
+```{r normcurve2, echo=FALSE, out.width= "100%", fig.cap="The Normal Curve Table"}
 knitr::include_graphics("normal_curve.png")
 ```
