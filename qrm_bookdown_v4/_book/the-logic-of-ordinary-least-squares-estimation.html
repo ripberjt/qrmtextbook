@@ -329,9 +329,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 Y_{i} = \alpha + \beta X_{i} 
 \tag{7.1}
 \end{equation}\]</span>
-<p>A deterministic model is <strong>systematic</strong> and contains no error, therefore <em><span class="math inline">\(Y\)</span> is perfectly predicted by <span class="math inline">\(X\)</span></em>. This is illustrated in Figure (fig:dols). <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are the model parameters, and are constant terms. <span class="math inline">\(\beta\)</span> is the slope; the change in <span class="math inline">\(Y\)</span> over the change in <span class="math inline">\(X\)</span>. <span class="math inline">\(\alpha\)</span> is the intercept; the value of <span class="math inline">\(Y\)</span> when <span class="math inline">\(X\)</span> is zero.</p>
+<p>A deterministic model is <strong>systematic</strong> and contains no error, therefore <em><span class="math inline">\(Y\)</span> is perfectly predicted by <span class="math inline">\(X\)</span></em>. This is illustrated in Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:dols">7.1</a>. <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are the model parameters, and are constant terms. <span class="math inline">\(\beta\)</span> is the slope, or the change in <span class="math inline">\(Y\)</span> over the change in <span class="math inline">\(X\)</span>. <span class="math inline">\(\alpha\)</span> is the intercept, or the value of <span class="math inline">\(Y\)</span> when <span class="math inline">\(X\)</span> is zero.</p>
 <div class="figure"><span id="fig:dols"></span>
-<img src="deterols.jpg" alt="Deterministic Model"  />
+<img src="_main_files/figure-html/dols-1.png" alt="Deterministic Model" width="672" />
 <p class="caption">
 Figure 7.1: Deterministic Model
 </p>
@@ -456,16 +456,16 @@ Figure 7.3: Residuals: Statistical Forensics
 ## -8.726 -1.633  0.274  1.459  6.506 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 10.81866    0.14189   76.25   &lt;2e-16 ***
-## ds$ideol    -1.04635    0.02856  -36.63   &lt;2e-16 ***
+##             Estimate Std. Error t value            Pr(&gt;|t|)    
+## (Intercept) 10.81866    0.14189   76.25 &lt;0.0000000000000002 ***
+## ds$ideol    -1.04635    0.02856  -36.63 &lt;0.0000000000000002 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.479 on 2511 degrees of freedom
 ##   (34 observations deleted due to missingness)
 ## Multiple R-squared:  0.3483, Adjusted R-squared:  0.348 
-## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 2.2e-16</code></pre>
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span>; the results of hypothesis tests; and overall measures of model ``fit&quot; – all of which we will discuss in detail in later chapters. For now, note that the estimated <span class="math inline">\(B\)</span> for ideology is negative, which indicates that as the value for ideology <em>increases</em>—in our data this means more conservative—the perceived risk of climate change <em>decreases</em>. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by -1.0463463.</p>
 <p>We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:residhist">7.4</a> and Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:residdens">7.5</a>. Note that we will discuss residual diagnostics in detail in future chapters.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span>

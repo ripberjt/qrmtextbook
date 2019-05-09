@@ -164,7 +164,7 @@ legend("topright",c("n=300","n=100","n=20"), bty="n", lty=c(1,1,1),lwd=4,
 
 It is important to note that, by convention, the symbols used for representing population parameters and sample statistics have different notation. These differences are shown in Table \@ref(fig:tab-note). In short, population parameters are typically identified by using Greek letters and sample statistics are noted by English letters. Unless otherwise noted, the notation used in the remainder of this chapter will be in terms of samples rather than populations.    
  
-```{r tab-note, echo=FALSE, fig.cap="Sample and Population Notation"}
+```{r tab-note, echo=FALSE, out.width= "100%", fig.cap="Sample and Population Notation"}
 knitr::include_graphics("tab-note.png")
 ```
 

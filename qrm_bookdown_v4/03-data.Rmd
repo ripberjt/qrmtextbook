@@ -12,7 +12,7 @@ In this chapter, we will identify the ways to characterize your data before you 
 
 What does it mean to characterize your data? First, it means knowing how many observations are contained in your data and the distribution of those observations over the range of your variable(s). What kinds of measures (interval, ordinal, nominal) do you have, and what are the ranges of valid measures for each variable? How many cases of missing (no data) or mis-coded (measures that fall outside the valid range) do you have? What do the coded values represent? While seemingly trivial, checking and evaluating your data for these attributes can save you major headaches later. For example, missing values for an observation often get a special code -- say, "-99" -- to distinguish them  from valid observations. If you neglect to treat these values properly, R (or any other statistics program) will treat that value as if it were valid and thereby turn your results into a royal hairball. We know of cases in which even seasoned quantitative scholars have made the embarrassing mistake of failing to properly handle missing values in their analyses. In at least one case, a published paper had to be retracted for this reason. So don't skimp on the most basic forms of data characterization!
 
-The dataset used for purposes of illustration in this version of this text is taken from a survey of Oklahomans, conducted in 2016, by OU's Center for Risk and Crisis Management. The survey question wording and background will be provided in class. However, for purposes of this chapter, note that the measure of  __ideology__ consists of a self-report of political ideology on a scale that ranges from 1 (strong liberal) to 7 (strong conservative); the measure of the __perceived risk of climate change__ ranges from zero (no risk) to 10 (extreme risk). __Age__ was measured in years. 
+The dataset used for purposes of illustration in this version of this text is taken from a survey of Oklahomans, conducted in 2016, by OU's Center for Risk and Crisis Management. The survey question wording and background will be provided in class. However, for purposes of this chapter, note that the measure of  `ideology` consists of a self-report of political ideology on a scale that ranges from 1 (strong liberal) to 7 (strong conservative); the measure of the `perceived risk of climate change` ranges from zero (no risk) to 10 (extreme risk). `Age` was measured in years. 
 
 It is often useful to graph the variables in your dataset to get a better idea of their distribution. In addition, we may want to compare the distribution of a variable to a theoretical distribution (typically a normal distribution). This can be accomplished in several ways, but we will show two here---a histogram and a density curve---and more will be discussed in later chapters. For now we examine the distribution of the variable measuring age. The red line on the density visualization presents the normal distribution given the mean and standard deviation of our variable.
 
@@ -35,7 +35,7 @@ You can also get an overview of your data using a table known as a frequency dis
 
 The other thing to watch for here (or in the charts) is whether there is an unusual observation.  If one person scored 17 in this table, you could be pretty sure a coding error was made somewhere.  You cannot find all your errors this way, but you can find some, including the ones that have the potential to most seriously adversely affect your analysis.
 
-```{r ideo, echo=FALSE, fig.cap="Frequency Distribbution for Ideology"}
+```{r ideo, echo=FALSE, out.width= "100%", fig.cap="Frequency Distribbution for Ideology"}
 knitr::include_graphics("freq-ideo.png")
 ```
 
@@ -181,7 +181,37 @@ Specifically, skewness refers to the position of the expected value (i.e., mean)
 $\bar{Y} > Md_{Y}$, then the distribution has a _positive_ skew, $S > 0$. When the median is larger than the mean, $\bar{Y} < Md_{Y}$, this is a _negative_ skew, $S < 0$. This is illustrated in Figure \@ref(fig:disshape). Note that for a normal distribution, $S=0$. 
  
 ```{r disshape, echo=FALSE, fig.cap="Distributional Shapes"}
-knitr::include_graphics("distroshapes.jpg")
+y <- c(2, 2.5, 3, 4, 5.5, 7)
+y.df <- data.frame(y) 
+
+ggplot(y.df, aes(y)) +
+  geom_density() +
+  geom_segment(aes(x = 3, y = 0.19, xend = 3, yend = 0), linetype = "dashed") +
+  geom_segment(aes(x = 4, y = 0.16, xend = 4, yend = 0)) +
+  annotate("text", x = 3.7, y = 0.05, label = "Median", size = 4) +
+  annotate("text", x = 2.7, y = 0.05, label = "Mean", size = 4) +
+  annotate("text", x = 6, y = 0.03, label = "Positive Skew", size = 5) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.background = element_rect(fill = "white"))
+
+y2 <- c(2, 3, 4.5, 5.5, 6, 6.5, 7)
+y.df2 <- data.frame(y2)
+
+ggplot(y.df2, aes(y2)) +
+  geom_density()  +
+  geom_segment(aes(x = 6, y = 0.195, xend = 6, yend = 0), linetype = "dashed") +
+  geom_segment(aes(x = 5, y = 0.17, xend = 5, yend = 0)) +
+  annotate("text", x = 6.4, y = 0.05, label = "Mean", size = 4) +
+  annotate("text", x = 5.3, y = 0.05, label = "Median", size = 4) +
+  annotate("text", x = 3, y = 0.03, label = "Negative Skew", size = 5) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.background = element_rect(fill = "white"))
 ```
 
 ###The Fourth Moment -- Kurtosis

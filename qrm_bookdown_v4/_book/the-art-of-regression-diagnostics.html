@@ -357,7 +357,7 @@ ds.small &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span 
 <p>Note that if we omit an <span class="math inline">\(X\)</span> that is related to <span class="math inline">\(Y\)</span> and other <span class="math inline">\(X\)</span>s in the model, we will bias the estimate of the included <span class="math inline">\(X\)</span>s. Also consider the problem of including <span class="math inline">\(X\)</span>s that are related to other <span class="math inline">\(X\)</span>s in the model, but not related to <span class="math inline">\(Y\)</span>. This scenario would reduce the independent variance in <span class="math inline">\(X\)</span> used to predict <span class="math inline">\(Y\)</span>.</p>
 <p>Table <a href="the-art-of-regression-diagnostics.html#fig:olsassum">15.1</a> summarizes the various classes of assumption failures and their implications.</p>
 <div class="figure"><span id="fig:olsassum"></span>
-<img src="olsassum.PNG" alt="Summary of OLS Assumption Failures and their Implications" width="282" />
+<img src="olsassum.PNG" alt="Summary of OLS Assumption Failures and their Implications" width="100%" />
 <p class="caption">
 Figure 15.1: Summary of OLS Assumption Failures and their Implications
 </p>
@@ -410,13 +410,8 @@ Figure 15.3: Non-Linear
 <p>Now let’s look at the residuals from our example model. We can check the linear nature of the relationship between the DV and the IVs in several ways. First we can plot the residuals by the values of the IVs. We also can add a lowess line to demonstrate the relationship between each of the IVs and the residuals, and add a line at <span class="math inline">\(0\)</span> for comparison.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.small<span class="op">$</span>fit.r &lt;-<span class="st"> </span>ols1<span class="op">$</span>residuals
 ds.small<span class="op">$</span>fit.p &lt;-<span class="st"> </span>ols1<span class="op">$</span>fitted.values</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape2)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;reshape2&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
-## 
-##     smiths</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.small <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape2)
+ds.small <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">melt</span>(<span class="dt">measure.vars =</span> <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>, <span class="st">&quot;fit.p&quot;</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(value, fit.r, <span class="dt">group =</span> variable)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span>

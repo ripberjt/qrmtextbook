@@ -340,14 +340,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </blockquote>
 <p>Taken together these assumption mean that the error term has a normal, independent, and identical distribution (normal i.i.d.). Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:residdist">10.1</a> shows what these assumptions would imply for the distribution of residuals around the predicted values of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>.</p>
 <div class="figure"><span id="fig:residdist"></span>
-<img src="residdist.jpg" alt="Assumed Distributions of OLS Residuals"  />
+<img src="_main_files/figure-html/residdist-1.png" alt="Assumed Distributions of OLS Residuals" width="672" />
 <p class="caption">
 Figure 10.1: Assumed Distributions of OLS Residuals
 </p>
 </div>
 <p>How can we determine whether our residuals approximate the expected pattern? The most straight-forward approach is to visually examine the distribution of the residuals over the range of the predicted values for <span class="math inline">\(Y\)</span>. If all is well, there should be no obvious pattern to the residuals – they should appear as a “sneeze plot” (i.e., it looks like you sneezed on the plot. How gross!) as shown in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:sneeze">10.2</a>.</p>
 <div class="figure"><span id="fig:sneeze"></span>
-<img src="sneeze.jpg" alt="Ideal Pattern of Residuals from a Simple OLS Model"  />
+<img src="_main_files/figure-html/sneeze-1.png" alt="Ideal Pattern of Residuals from a Simple OLS Model" width="672" />
 <p class="caption">
 Figure 10.2: Ideal Pattern of Residuals from a Simple OLS Model
 </p>
@@ -359,46 +359,133 @@ Figure 10.2: Ideal Pattern of Residuals from a Simple OLS Model
 <p>Residual analysis is the process of looking for <strong>signature patterns</strong> in the residuals that are indicative of failure in the underlying assumptions of OLS regression. Different kinds of problems lead to different patterns in the residuals.</p>
 <div id="outlier-data" class="section level3">
 <h3><span class="header-section-number">10.2.1</span> “Outlier” Data</h3>
-<p>Sometimes our data include unusual cases that behave differently from most of our observations. This may happen for a number of reasons. The most typical is that the data have been mis-coded, with some subgroup of the data having numerical values that lead to large residuals. Cases like this can also arise when a subgroup of the cases differ from the others in how <span class="math inline">\(X\)</span> influences <span class="math inline">\(Y\)</span>, and that difference has not been captured in the model. This is a problem referred to as the omission of important independent variables.<a href="#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a> Figure @ref(fig:unusual_dat) shows a stylized example, with a cluster of residuals falling at considerable distance from the rest.</p>
-<div class="figure">
-<img src="unusual_dat.jpg" alt="Unusual Data Patterns in Residuals"  />
+<p>Sometimes our data include unusual cases that behave differently from most of our observations. This may happen for a number of reasons. The most typical is that the data have been mis-coded, with some subgroup of the data having numerical values that lead to large residuals. Cases like this can also arise when a subgroup of the cases differ from the others in how <span class="math inline">\(X\)</span> influences <span class="math inline">\(Y\)</span>, and that difference has not been captured in the model. This is a problem referred to as the omission of important independent variables.<a href="#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a> Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:unusual1">10.3</a> shows a stylized example, with a cluster of residuals falling at considerable distance from the rest.</p>
+<div class="figure"><span id="fig:unusual1"></span>
+<img src="_main_files/figure-html/unusual1-1.png" alt="Unusual Data Patterns in Residuals" width="672" />
 <p class="caption">
-(#fig:unusual_dat)Unusual Data Patterns in Residuals
+Figure 10.3: Unusual Data Patterns in Residuals
 </p>
 </div>
-<p>This is a case of influential outliers. The effect of such outliers can be significant, as the OLS estimates of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> seek to minimize overall squared error. In the case of Figure @ref(fig:unusual_dat), the effect would be to shift the estimate of <span class="math inline">\(B\)</span> to accommodate the unusual observations, as illustrated in Figure @ref(fig:unusual_dat2). One possible response would be to omit the unusual observations, as shown in Figure @ref(fig:unusual_dat2). Another would be to consider, theoretically and empirically, why these observations are unusual. Are they, perhaps, miscoded? Or are they codes representing missing values (e.g., “-99”)?</p>
+<p>This is a case of influential outliers. The effect of such outliers can be significant, as the OLS estimates of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> seek to minimize overall squared error. In the case of Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:unusual1">10.3</a>, the effect would be to shift the estimate of <span class="math inline">\(B\)</span> to accommodate the unusual observations, as illustrated in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:unusual2">10.4</a>. One possible response would be to omit the unusual observations, as shown in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:unusual2">10.4</a>. Another would be to consider, theoretically and empirically, why these observations are unusual. Are they, perhaps, miscoded? Or are they codes representing missing values (e.g., “-99”)?</p>
 <p>If they are not mis-codes, perhaps these outlier observations manifest a different kind of relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, which might in turn require a revised theory and model. We will address some modeling options to address this possibility when we explore multiple regression, in Part III of this book.</p>
-<div class="figure">
-<img src="unusual_dat2.jpg" alt="Implications of Unusual Data Patterns in Residuals"  />
+<div class="figure"><span id="fig:unusual2"></span>
+<img src="_main_files/figure-html/unusual2-1.png" alt="Implications of Unusual Data Patterns in Residuals" width="672" />
 <p class="caption">
-(#fig:unusual_dat2)Implications of Unusual Data Patterns in Residuals
+Figure 10.4: Implications of Unusual Data Patterns in Residuals
 </p>
 </div>
-<p>In sum, outlier analysis looks at residuals for patterns in which some observations deviate widely from others. If that deviation is influential, changing estimates of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> as shown in Figure @ref(fig:unusual_dat2), then you must examine the observations to determine whether they are mis-coded. If not, you can evaluate whether the cases are theoretically distinct, such that the influence of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> is likely to be different than for other cases. If you conclude that this is so, you will need to respecify your model to account for these differences. We will discuss some options for doing that later in this chapter, and again in our discussion of multiple regression.</p>
+<p>In sum, outlier analysis looks at residuals for patterns in which some observations deviate widely from others. If that deviation is influential, changing estimates of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> as shown in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:unusual2">10.4</a>, then you must examine the observations to determine whether they are mis-coded. If not, you can evaluate whether the cases are theoretically distinct, such that the influence of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> is likely to be different than for other cases. If you conclude that this is so, you will need to respecify your model to account for these differences. We will discuss some options for doing that later in this chapter, and again in our discussion of multiple regression.</p>
 </div>
 <div id="non-constant-variance" class="section level3">
 <h3><span class="header-section-number">10.2.2</span> Non-Constant Variance</h3>
-<p>A second thing to look for in visual diagnostics of residuals is non-constant variance, or <strong>heteroscedasticity</strong>. In this case, the variation in the residuals over the range of predicted values for <span class="math inline">\(Y\)</span> should be roughly even. A problem occurs when that variation changes substantially as the predicted value of <span class="math inline">\(Y\)</span> changes, as is illustrated in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:hetero10">10.3</a>.</p>
+<p>A second thing to look for in visual diagnostics of residuals is non-constant variance, or <strong>heteroscedasticity</strong>. In this case, the variation in the residuals over the range of predicted values for <span class="math inline">\(Y\)</span> should be roughly even. A problem occurs when that variation changes substantially as the predicted value of <span class="math inline">\(Y\)</span> changes, as is illustrated in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:hetero10">10.5</a>.</p>
+<pre><code>##    x5           y5    z5
+## 1   1  0.116268529 first
+## 2   2 -0.058592447 first
+## 3   3  0.178546500 first
+## 4   4 -0.133259371 first
+## 5   5 -0.044656677 first
+## 6   6  0.056960612 first
+## 7   7 -0.288971761 first
+## 8   8 -0.086901834 first
+## 9   9 -0.046170268 first
+## 10 10 -0.055554091 first
+## 11 11 -0.002013537 first
+## 12 12 -0.015038222 first
+## 13 13 -0.062812676 first
+## 14 14  0.132322085 first
+## 15 15 -0.152135057 first
+## 16 16 -0.043742787 first
+## 17 17  0.097057758 first
+## 18 18  0.002822264 first
+## 19 19 -0.008578219 first
+## 20 20  0.038921440 first
+## 21 21  0.023668737 first</code></pre>
+<pre><code>##    x5          y5     z5
+## 1  21  -0.7944212 second
+## 2  22   3.9722634 second
+## 3  23   2.0344877 second
+## 4  24  -1.3313647 second
+## 5  25  -8.0963483 second
+## 6  26  -3.2788775 second
+## 7  27  -6.3068507 second
+## 8  28 -13.6105004 second
+## 9  29  -3.3742972 second
+## 10 30  -1.1897133 second
+## 11 31   8.7458017 second
+## 12 32   8.5587880 second
+## 13 33   6.0964799 second
+## 14 34  -6.0353801 second
+## 15 35 -10.2333314 second
+## 16 36  -5.0246837 second
+## 17 37   6.8506290 second
+## 18 38   0.4832010 second
+## 19 39   2.3291504 second
+## 20 40  -4.5016566 second
+## 21 41  -8.4841231 second</code></pre>
+<pre><code>##    x5            y5     z5
+## 1   1   0.116268529  first
+## 2   2  -0.058592447  first
+## 3   3   0.178546500  first
+## 4   4  -0.133259371  first
+## 5   5  -0.044656677  first
+## 6   6   0.056960612  first
+## 7   7  -0.288971761  first
+## 8   8  -0.086901834  first
+## 9   9  -0.046170268  first
+## 10 10  -0.055554091  first
+## 11 11  -0.002013537  first
+## 12 12  -0.015038222  first
+## 13 13  -0.062812676  first
+## 14 14   0.132322085  first
+## 15 15  -0.152135057  first
+## 16 16  -0.043742787  first
+## 17 17   0.097057758  first
+## 18 18   0.002822264  first
+## 19 19  -0.008578219  first
+## 20 20   0.038921440  first
+## 21 21   0.023668737  first
+## 22 21  -0.794421247 second
+## 23 22   3.972263354 second
+## 24 23   2.034487716 second
+## 25 24  -1.331364730 second
+## 26 25  -8.096348251 second
+## 27 26  -3.278877502 second
+## 28 27  -6.306850722 second
+## 29 28 -13.610500382 second
+## 30 29  -3.374297181 second
+## 31 30  -1.189713327 second
+## 32 31   8.745801727 second
+## 33 32   8.558788016 second
+## 34 33   6.096479914 second
+## 35 34  -6.035380147 second
+## 36 35 -10.233331440 second
+## 37 36  -5.024683664 second
+## 38 37   6.850629016 second
+## 39 38   0.483200951 second
+## 40 39   2.329150423 second
+## 41 40  -4.501656591 second
+## 42 41  -8.484123104 second</code></pre>
 <div class="figure"><span id="fig:hetero10"></span>
-<img src="hetero.jpg" alt="Non-Constant Variance in the Residuals"  />
+<img src="_main_files/figure-html/hetero10-1.png" alt="Non-Constant Variance in the Residuals" width="672" />
 <p class="caption">
-Figure 10.3: Non-Constant Variance in the Residuals
+Figure 10.5: Non-Constant Variance in the Residuals
 </p>
 </div>
-<p>As Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:hetero10">10.3</a> shows, the width of the spread of the residuals grows as the predicted value of <span class="math inline">\(Y\)</span> increases, making a fan-shaped pattern. Equally concerning would be a case of a “reverse fan”, or a pattern with a bulge in the middle and very “tight” distributions of residuals at either extreme. These would all be cases in which the assumption of constant-variance in the residuals (or “homoscedasticity”) fails, and are referred to as instances of heteroscedasticity.</p>
+<p>As Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:hetero10">10.5</a> shows, the width of the spread of the residuals grows as the predicted value of <span class="math inline">\(Y\)</span> increases, making a fan-shaped pattern. Equally concerning would be a case of a “reverse fan”, or a pattern with a bulge in the middle and very “tight” distributions of residuals at either extreme. These would all be cases in which the assumption of constant-variance in the residuals (or “homoscedasticity”) fails, and are referred to as instances of heteroscedasticity.</p>
 <p>What are the implications of heteroscedasticity? Our hypothesis tests for the estimated coefficients (<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>) are based on the assumption that the standard errors of the estimates (see the prior chapter) are normally distributed. If inspection of your residuals provides evidence to question that assumption, then the interpretation of the t-values and p-values may be problematic. Intuitively, in such a case the precision of our estimates of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not constant – but rather will depend on the predicted value of <span class="math inline">\(Y\)</span>. So you might be estimating <span class="math inline">\(B\)</span> relatively precisely in some ranges of <span class="math inline">\(Y\)</span>, and less precisely in others. That means you cannot depend on the estimated t and p-values to test your hypotheses.</p>
 </div>
 <div id="non-linearity-in-the-parameters" class="section level3">
 <h3><span class="header-section-number">10.2.3</span> Non-Linearity in the Parameters</h3>
 <p>One of the primary assumptions of simple OLS regression is that the estimated slope parameter (the <span class="math inline">\(B\)</span>) will be constant, and therefore the model will be linear. Put differently, the effect of any change in <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> should be constant over the range of <span class="math inline">\(Y\)</span>. Thus, if our assumption is correct, the pattern of the residuals should be roughly symmetric, above and below zero, over the range of predicted values.</p>
-<p>If the real relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is not linear, however, the predicted (linear) values for <span class="math inline">\(Y\)</span> will systematically depart from the (curved) relationship that is represented in the data. Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:simplenonlin">10.4</a> shows the kind of pattern we would expect in our residuals if the observed relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a strong curve, when we attempt to model it as if it were linear.</p>
+<p>If the real relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is not linear, however, the predicted (linear) values for <span class="math inline">\(Y\)</span> will systematically depart from the (curved) relationship that is represented in the data. Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:simplenonlin">10.6</a> shows the kind of pattern we would expect in our residuals if the observed relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a strong curve, when we attempt to model it as if it were linear.</p>
 <div class="figure"><span id="fig:simplenonlin"></span>
-<img src="simplenonlin.jpg" alt="Non-Linearity in the Residuals"  />
+<img src="_main_files/figure-html/simplenonlin-1.png" alt="Non-Linearity in the Residuals" width="672" />
 <p class="caption">
-Figure 10.4: Non-Linearity in the Residuals
+Figure 10.6: Non-Linearity in the Residuals
 </p>
 </div>
-<p>What are the implications of non-linearity? First, because the slope is non-constant, the estimate of <span class="math inline">\(B\)</span> will be biased. In the illustration shown in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:simplenonlin">10.4</a>, <span class="math inline">\(B\)</span> would underestimate the value of <span class="math inline">\(Y\)</span> in both the low and high ranges of the predicted value of <span class="math inline">\(Y\)</span>, and overestimate it in the mid-range. In addition, the standard errors of the residuals will be large, due to systematic over- and under-estimation of <span class="math inline">\(Y\)</span>, making the model very inefficient (or imprecise).</p>
+<p>What are the implications of non-linearity? First, because the slope is non-constant, the estimate of <span class="math inline">\(B\)</span> will be biased. In the illustration shown in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:simplenonlin">10.6</a>, <span class="math inline">\(B\)</span> would underestimate the value of <span class="math inline">\(Y\)</span> in both the low and high ranges of the predicted value of <span class="math inline">\(Y\)</span>, and overestimate it in the mid-range. In addition, the standard errors of the residuals will be large, due to systematic over- and under-estimation of <span class="math inline">\(Y\)</span>, making the model very inefficient (or imprecise).</p>
 </div>
 </div>
 <div id="application-of-residual-diagnostics" class="section level2">
@@ -417,16 +504,16 @@ Figure 10.4: Non-Linearity in the Residuals
 ## -8.726 -1.633  0.274  1.459  6.506 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 10.81866    0.14189   76.25   &lt;2e-16 ***
-## ds$ideol    -1.04635    0.02856  -36.63   &lt;2e-16 ***
+##             Estimate Std. Error t value            Pr(&gt;|t|)    
+## (Intercept) 10.81866    0.14189   76.25 &lt;0.0000000000000002 ***
+## ds$ideol    -1.04635    0.02856  -36.63 &lt;0.0000000000000002 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.479 on 2511 degrees of freedom
 ##   (34 observations deleted due to missingness)
 ## Multiple R-squared:  0.3483, Adjusted R-squared:  0.348 
-## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 2.2e-16</code></pre>
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>Note that, as was discussed in the prior chapter, the estimated value for <span class="math inline">\(B\)</span> is negative and highly statistically significant. This indicates that the more conservative the survey respondent, the lower the perceived risks attributed to climate change. Now we will use these model results and the associated residuals to evaluate the key assumptions of OLS, beginning with linearity.</p>
 <div id="testing-for-non-linearity" class="section level3">
 <h3><span class="header-section-number">10.3.1</span> Testing for Non-Linearity</h3>
@@ -446,15 +533,15 @@ summary(OLS_env2)</code></pre>
 <div class="figure"><span id="fig:nonlinideology"></span>
 <img src="_main_files/figure-html/nonlinideology-1.png" alt="Residual Plots Examining Model Linearity" width="672" />
 <p class="caption">
-Figure 10.5: Residual Plots Examining Model Linearity
+Figure 10.7: Residual Plots Examining Model Linearity
 </p>
 </div>
 <pre><code>##            Test stat Pr(&gt;|Test stat|)    
-## ds$ideol     -5.0181        5.584e-07 ***
-## Tukey test   -5.0181        5.219e-07 ***
+## ds$ideol     -5.0181     0.0000005584 ***
+## Tukey test   -5.0181     0.0000005219 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>The curved red lines in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:nonlinideology">10.5</a> in the residual plots and significant Tukey test indicate a non-linear relationship in the model. This is a serious violation of a core assumption of OLS regression, which means that the estimate of <span class="math inline">\(B\)</span> is likely to be biased. Our findings suggest that the relationship between ideology and perceived risks of climate change is approximately linear from “strong liberals” to those who are “leaning Republican”. But perceived risks seem to drop off more rapidly as the scale rises toward “strong Republican.”</p>
+<p>The curved red lines in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:nonlinideology">10.7</a> in the residual plots and significant Tukey test indicate a non-linear relationship in the model. This is a serious violation of a core assumption of OLS regression, which means that the estimate of <span class="math inline">\(B\)</span> is likely to be biased. Our findings suggest that the relationship between ideology and perceived risks of climate change is approximately linear from “strong liberals” to those who are “leaning Republican”. But perceived risks seem to drop off more rapidly as the scale rises toward “strong Republican.”</p>
 </div>
 <div id="testing-for-normality-in-model-residuals" class="section level3">
 <h3><span class="header-section-number">10.3.2</span> Testing for Normality in Model Residuals</h3>
@@ -467,10 +554,10 @@ Figure 10.5: Residual Plots Examining Model Linearity
 <div class="figure"><span id="fig:histideology"></span>
 <img src="_main_files/figure-html/histideology-1.png" alt="Histogram of Model Residuals" width="672" />
 <p class="caption">
-Figure 10.6: Histogram of Model Residuals
+Figure 10.8: Histogram of Model Residuals
 </p>
 </div>
-<p>The histogram in figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:histideology">10.6</a> indicates that the residuals are approximately normally distributed, but there appears to be a negative skew. Next, we can create a smoothed density of the model residuals compared to a theoretical normal distribution.</p>
+<p>The histogram in figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:histideology">10.8</a> indicates that the residuals are approximately normally distributed, but there appears to be a negative skew. Next, we can create a smoothed density of the model residuals compared to a theoretical normal distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">OLS_env<span class="op">$</span>residuals <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the residuals to a data frame</span>
 <span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the data frame to ggplot</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(OLS_env<span class="op">$</span>residuals)) <span class="op">+</span>
@@ -481,10 +568,10 @@ Figure 10.6: Histogram of Model Residuals
 <div class="figure"><span id="fig:densityideology"></span>
 <img src="_main_files/figure-html/densityideology-1.png" alt="Smoothed Density Plot of Model Residuals" width="672" />
 <p class="caption">
-Figure 10.7: Smoothed Density Plot of Model Residuals
+Figure 10.9: Smoothed Density Plot of Model Residuals
 </p>
 </div>
-<p>Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:densityideology">10.7</a> indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution. Our final ocular examination of the residuals will be a quartile plot %(using the <code>stat_qq</code> function from the <code>ggplot2</code> package).</p>
+<p>Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:densityideology">10.9</a> indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution. Our final ocular examination of the residuals will be a quartile plot %(using the <code>stat_qq</code> function from the <code>ggplot2</code> package).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">OLS_env<span class="op">$</span>residuals <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the residuals to a data frame</span>
 <span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the data frame to ggplot</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> OLS_env<span class="op">$</span>residuals)) <span class="op">+</span>
@@ -493,40 +580,40 @@ Figure 10.7: Smoothed Density Plot of Model Residuals
 <div class="figure"><span id="fig:QQideology"></span>
 <img src="_main_files/figure-html/QQideology-1.png" alt="Quartile Plot of Model Residuals" width="672" />
 <p class="caption">
-Figure 10.8: Quartile Plot of Model Residuals
+Figure 10.10: Quartile Plot of Model Residuals
 </p>
 </div>
-<p>According to Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:QQideology">10.8</a>, it appears as if the residuals are normally distributed except for the tails of the distribution. Taken together the graphical representations of the residuals suggest modest non-normality. As a final step, we can conduct a formal Shapiro-Wilk test for normality. The null hypothesis for a Shapiro-Wilk test is a normal distribution, so we do not want to see a significant p-value.</p>
+<p>According to Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:QQideology">10.10</a>, it appears as if the residuals are normally distributed except for the tails of the distribution. Taken together the graphical representations of the residuals suggest modest non-normality. As a final step, we can conduct a formal Shapiro-Wilk test for normality. The null hypothesis for a Shapiro-Wilk test is a normal distribution, so we do not want to see a significant p-value.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#a significant value p-value potentially indicates the data is not normally distributed.</span>
 <span class="kw">shapiro.test</span>(OLS_env<span class="op">$</span>residuals)</code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  OLS_env$residuals
-## W = 0.98901, p-value = 5.51e-13</code></pre>
+## W = 0.98901, p-value = 0.000000000000551</code></pre>
 <p>The Shapiro-Wilk test confirms what we observed in the graphical displays of the model residuals – the residuals are not normally distributed. Recall that our dependent variable (gccrsk) appears to have a non-normal distribution. This could be the root of the non-normality found in the model residuals. Given this information, steps must be taken to assure that the model residuals meet the required OLS assumptions. One possibility would be to transform the dependent variable (glbccrisk) in order to induce a normal distribution. Another might be to add a polynomial term to the independent variable (ideology) as was done above. In either case, you would need to recheck the residuals in order to see if the model revisions adequately dealt with the problem. We suggest that you do just that!</p>
 </div>
 <div id="testing-for-non-constant-variance-in-the-residuals" class="section level3">
 <h3><span class="header-section-number">10.3.3</span> Testing for Non-Constant Variance in the Residuals</h3>
-<p>Testing for non-constant variance (heteroscedasticity) in a model is fairly straightforward. We can start by creating a spread-level plot that fits the studentized residuals against the model’s fitted values. A line with a non-zero slope is indicative of heteroscedasticity. Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:spreadlvlideology">10.9</a> displays the spread-level plot from the <code>car</code> package.</p>
+<p>Testing for non-constant variance (heteroscedasticity) in a model is fairly straightforward. We can start by creating a spread-level plot that fits the studentized residuals against the model’s fitted values. A line with a non-zero slope is indicative of heteroscedasticity. Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:spreadlvlideology">10.11</a> displays the spread-level plot from the <code>car</code> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">spreadLevelPlot</span>(OLS_env)</code></pre></div>
 <div class="figure"><span id="fig:spreadlvlideology"></span>
 <img src="_main_files/figure-html/spreadlvlideology-1.png" alt="Spread-Level Plot of Model Residuals" width="672" />
 <p class="caption">
-Figure 10.9: Spread-Level Plot of Model Residuals
+Figure 10.11: Spread-Level Plot of Model Residuals
 </p>
 </div>
 <pre><code>## 
 ## Suggested power transformation:  1.787088</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dev.off</span>() </code></pre></div>
-<pre><code>## null device 
-##           1</code></pre>
-<p>The negative slope on the red line in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:spreadlvlideology">10.9</a> indicates the model may contain heteroscedasticity. We can also perform a formal test for non constant variance. The null hypothesis is constant variance, so we do not want to see a significant p-value.</p>
+<pre><code>## RStudioGD 
+##         2</code></pre>
+<p>The negative slope on the red line in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:spreadlvlideology">10.11</a> indicates the model may contain heteroscedasticity. We can also perform a formal test for non constant variance. The null hypothesis is constant variance, so we do not want to see a significant p-value.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#a significant value indicates potential heteroscedasticity issues.</span>
 <span class="kw">ncvTest</span>(OLS_env)</code></pre></div>
 <pre><code>## Non-constant Variance Score Test 
 ## Variance formula: ~ fitted.values 
-## Chisquare = 68.107    Df = 1     p = 1.548597e-16</code></pre>
+## Chisquare = 68.107    Df = 1     p = 0.0000000000000001548597</code></pre>
 <p>The significant p-value on the non-constant variance test informs us that there is a problem with heteroscedasticity in the model. This is yet another violation of the core assumptions of OLS regression, and it brings into doubt our hypothesis tests.</p>
 </div>
 <div id="examining-outlier-data" class="section level3">
@@ -540,12 +627,12 @@ Figure 10.9: Spread-Level Plot of Model Residuals
 ##      rstudent unadjusted p-value Bonferonni p
 ## 589 -3.530306         0.00042255           NA</code></pre>
 <p>According to the R output, the Bonferroni p-value for the largest (absolute) residual is not statistically significant. While this test is important for identifying a potentially significant outlying observation, it is not a panacea for checking for patterns in outlying data. Next we will examine the model’s df.betas in order to see which observations exert the most influence on the model’s regression coefficients. <span class="math inline">\(Dfbetas\)</span> are measures of how much the regression coefficient changes when observation <span class="math inline">\(i\)</span> is omitted. Larger values indicate an observation that has considerable influence on the model.</p>
-<p>A useful method for finding dfbeta obervations is to use the <code>dfbetaPlots</code> function in the <code>car</code> package. We specify the option <code>id.n=2</code> to show the two largest df.betas. See figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:dfbetaPlots">10.10</a>.</p>
+<p>A useful method for finding dfbeta obervations is to use the <code>dfbetaPlots</code> function in the <code>car</code> package. We specify the option <code>id.n=2</code> to show the two largest df.betas. See figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:dfbetaPlots">10.12</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plotdb&lt;-<span class="kw">dfbetaPlots</span>(OLS_env, <span class="dt">id.n=</span><span class="dv">3</span>)</code></pre></div>
 <div class="figure"><span id="fig:dfbetaPlots"></span>
 <img src="_main_files/figure-html/dfbetaPlots-1.png" alt="Plot of Model dfbetas Values using 'dfbetaPlots' function" width="672" />
 <p class="caption">
-Figure 10.10: Plot of Model dfbetas Values using ‘dfbetaPlots’ function
+Figure 10.12: Plot of Model dfbetas Values using ‘dfbetaPlots’ function
 </p>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Check the observations with high dfbetas.</span>
@@ -556,20 +643,20 @@ ds[<span class="kw">c</span>(<span class="dv">589</span>,<span class="dv">615</s
 ## 589          0     2
 ## 615          0     2</code></pre>
 <p>These observations are interesting because they identify a potential problem in our model specification. Both observations are considered outliers because the respondents self-identified as “liberal” (ideology = 1) and rated their perceived risk of global climate change as 0. These values deviate substantially from the norm for other strong liberals in the dataset. Remember, as we saw earlier, our model has a problem with non-linearity – these outlying observations seem to corroborate this finding. Examination of outliers sheds some light on the issue.</p>
-<p>Finally, we can produce a plot that combines studentized residuals, “hat values”, and Cook’s D distances (these are measures of the amount of influence observations have on the model) using circles as an indicator of influence – the larger the circle, the greater the influence. Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:bubbleideology2">10.11</a> displays the combined influence plot. In addition, the <code>influencePlot</code> function returns the values of greatest influence.</p>
+<p>Finally, we can produce a plot that combines studentized residuals, “hat values”, and Cook’s D distances (these are measures of the amount of influence observations have on the model) using circles as an indicator of influence – the larger the circle, the greater the influence. Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:bubbleideology2">10.13</a> displays the combined influence plot. In addition, the <code>influencePlot</code> function returns the values of greatest influence.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">influencePlot</span>(OLS_env)</code></pre></div>
 <div class="figure"><span id="fig:bubbleideology2"></span>
 <img src="_main_files/figure-html/bubbleideology2-1.png" alt="Influence Bubble Plot" width="672" />
 <p class="caption">
-Figure 10.11: Influence Bubble Plot
+Figure 10.13: Influence Bubble Plot
 </p>
 </div>
-<pre><code>##         StudRes         Hat        CookD
-## 20   0.09192603 0.002172497 9.202846e-06
-## 30   0.09192603 0.002172497 9.202846e-06
-## 589 -3.53030574 0.001334528 8.289419e-03
-## 615 -3.53030574 0.001334528 8.289419e-03</code></pre>
-<p>Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:bubbleideology2">10.11</a> indicates that there are a number of cases that warrant further examination. We are already familiar with 589 and 615 Let’s add 20, 30, 90 and 1052.</p>
+<pre><code>##         StudRes         Hat          CookD
+## 20   0.09192603 0.002172497 0.000009202846
+## 30   0.09192603 0.002172497 0.000009202846
+## 589 -3.53030574 0.001334528 0.008289418537
+## 615 -3.53030574 0.001334528 0.008289418537</code></pre>
+<p>Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:bubbleideology2">10.13</a> indicates that there are a number of cases that warrant further examination. We are already familiar with 589 and 615 Let’s add 20, 30, 90 and 1052.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#review the results</span>
 ds[<span class="kw">c</span>(<span class="dv">589</span>,<span class="dv">615</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">90</span>,<span class="dv">1052</span>),<span class="kw">c</span>(<span class="st">&quot;glbcc_risk&quot;</span>, <span class="st">&quot;ideol&quot;</span>)]</code></pre></div>
 <pre><code>##      glbcc_risk ideol

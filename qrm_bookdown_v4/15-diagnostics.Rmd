@@ -57,7 +57,7 @@ Note that if we omit an $X$ that is related to $Y$ and other $X$s in the model, 
 
 Table \@ref(fig:olsassum) summarizes the various classes of assumption failures and their implications. 
 
-```{r olsassum, echo=FALSE, fig.cap="Summary of OLS Assumption Failures and their Implications"}
+```{r olsassum, echo=FALSE, out.width = "100%", fig.cap="Summary of OLS Assumption Failures and their Implications"}
 knitr::include_graphics("olsassum.png")
 ```
 

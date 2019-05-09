@@ -57,7 +57,7 @@ As can be seen by comparing the model results, the more complex model that inclu
 
 The $F$-test is a test statistic based on the $F$ distribution, in the same way the the $t$-test is based on the $t$ distribution. The $F$ distribution skews right and ranges between $0$ and $\infty$. Just like the $t$ distribution, the $F$ distribution approaches normal as the degrees of freedom increase.^[Note that the $F$ distribution is the square of a $t$-distributed variable with $m$ degrees of freedom. The $F$ distribution has $1$ degree of freedom in the numerator and $m$ degrees of in the denominator: \begin{equation*}
   t^2_m = F_{1,m} 
-\end{equation*}]
+\end{equation*}
 
 $F$-tests are used to test for the statistical significance of the overall model fit. The null hypothesis for an $F$-test is that the model offers no improvement for predicting $Y_i$ over the mean of $Y$,
 $\bar{Y}$. 

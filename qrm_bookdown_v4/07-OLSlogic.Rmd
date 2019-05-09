@@ -17,10 +17,33 @@ Y_{i} = \alpha + \beta X_{i}
 (\#eq:07-1)
 \end{equation}
 
-A deterministic model is __systematic__ and contains no error, therefore _$Y$ is perfectly predicted by $X$_. This is illustrated in Figure \ref(fig:dols). $\alpha$ and $\beta$ are the model parameters, and are constant terms. $\beta$ is the slope; the change in $Y$ over the change in $X$. $\alpha$ is the intercept; the value of $Y$ when $X$ is zero.  
+A deterministic model is __systematic__ and contains no error, therefore _$Y$ is perfectly predicted by $X$_. This is illustrated in Figure \@ref(fig:dols). $\alpha$ and $\beta$ are the model parameters, and are constant terms. $\beta$ is the slope, or the change in $Y$ over the change in $X$. $\alpha$ is the intercept, or the value of $Y$ when $X$ is zero.  
 
-```{r dols, echo=FALSE, fig.cap="Deterministic Model"}
-knitr::include_graphics("deterols.jpg")
+```{r dols, echo=FALSE, warning=FALSE, fig.cap="Deterministic Model"}
+library(broom)
+set.seed(5)
+y <-rnorm(5)
+x <-1:5
+mod <- lm(y ~ x)
+df <- augment(mod)
+
+ggplot(df) + 
+  geom_line(aes(x = x, y = .fitted), size = 1) +
+  geom_segment(aes(x = 1, y = -1, xend = 5, yend = -1), color = "black") +
+  geom_segment(aes(x = 1, y = -1, xend = 1, yend = 1), color = "black") +
+  geom_point(aes(x = 1, y = -0.54), size = 5, color = "blue") +
+  geom_point(aes(x = 1.95, y = -0.2), size = 5, color = "red") +
+  geom_point(aes(x = 4, y = 0.58), size = 5, color = "red") +
+  geom_segment(aes(x = 4, y = 0.58, xend = 4, yend = -0.2), color = "red", size = 0.5) +
+  geom_segment(aes(x = 1.95, y = -0.2, xend = 4, yend = -0.2), color = "red", size = 0.5) +
+  annotate("text", x = 1.15, y = -0.56, label = expression(alpha), color = "blue", size = 6) +
+  annotate("text", x = 4.2, y = 0.2, label = expression(Delta*"Y"), color = "red", size = 6) +
+  annotate("text", x = 3, y = -0.3, label = expression(Delta*"X"), color = "red", size = 6) +
+  annotate("text", x = 2.2, y = 0.5, label = expression("Y = "*alpha + beta*"X"[1]), color = "black", size = 7) +
+  lims(y = c(-1, 1), x = c(1, 5)) + 
+  labs(x = expression("X"[1]), y = expression("Y"[1])) +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank())
 ```
 
 Given that in social science we rarely work with deterministic models, nearly all models contain a stochastic, or random, component. 
