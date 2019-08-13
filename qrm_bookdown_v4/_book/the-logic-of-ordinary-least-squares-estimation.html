@@ -461,8 +461,8 @@ Figure 7.3: Residuals: Statistical Forensics
 <div id="an-example-of-simple-regression" class="section level2">
 <h2><span class="header-section-number">7.3</span> An Example of Simple Regression</h2>
 <p>The following example uses a measure of peoples’ political ideology to predict their perceptions of the risks posed by global climate change. OLS regression can be done using the <code>lm</code> function in <code>R</code>. For this example, we are again using the class data set.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(ds<span class="op">$</span>glbcc_risk<span class="op">~</span>ds<span class="op">$</span>ideol)</a>
-<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="kw">summary</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(ds<span class="op">$</span>glbcc_risk<span class="op">~</span>ds<span class="op">$</span>ideol)</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2"><span class="kw">summary</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = ds$glbcc_risk ~ ds$ideol)
@@ -472,30 +472,30 @@ Figure 7.3: Residuals: Statistical Forensics
 ## -8.726 -1.633  0.274  1.459  6.506 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 10.81866    0.14189   76.25 &lt;0.0000000000000002 ***
-## ds$ideol    -1.04635    0.02856  -36.63 &lt;0.0000000000000002 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 10.81866    0.14189   76.25   &lt;2e-16 ***
+## ds$ideol    -1.04635    0.02856  -36.63   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.479 on 2511 degrees of freedom
 ##   (34 observations deleted due to missingness)
 ## Multiple R-squared:  0.3483, Adjusted R-squared:  0.348 
-## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span>; the results of hypothesis tests; and overall measures of model ``fit&quot; – all of which we will discuss in detail in later chapters. For now, note that the estimated <span class="math inline">\(B\)</span> for ideology is negative, which indicates that as the value for ideology <em>increases</em>—in our data this means more conservative—the perceived risk of climate change <em>decreases</em>. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by -1.0463463.</p>
 <p>We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:residhist">7.4</a> and Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:residdens">7.5</a>. Note that we will discuss residual diagnostics in detail in future chapters.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ols1<span class="op">$</span>residuals)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">16</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ols1<span class="op">$</span>residuals)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb103-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">16</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:residhist"></span>
 <img src="_main_files/figure-html/residhist-1.png" alt="Residuals of Simple Regression: Histogram" width="672" />
 <p class="caption">
 Figure 7.4: Residuals of Simple Regression: Histogram
 </p>
 </div>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb100-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ols1<span class="op">$</span>residuals)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb100-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">adjust =</span> <span class="fl">1.5</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb104-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ols1<span class="op">$</span>residuals)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">adjust =</span> <span class="fl">1.5</span>) </a></code></pre></div>
 <div class="figure"><span id="fig:residdens"></span>
 <img src="_main_files/figure-html/residdens-1.png" alt="Residuals of Simple Regression: Density" width="672" />
 <p class="caption">

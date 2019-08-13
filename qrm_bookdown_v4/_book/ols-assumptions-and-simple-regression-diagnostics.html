@@ -505,9 +505,9 @@ Figure 10.6: Non-Linearity in the Residuals
 <h2><span class="header-section-number">10.3</span> Application of Residual Diagnostics</h2>
 <p>This far we have used rather simple illustrations of residual diagnostics and the kinds of patterns to look for. But you should be warned that, in real applications, the patterns are rarely so clear. So we will walk through an example diagnostic session, using the the <code>tbur</code> data set.</p>
 <p>Our in-class lab example focuses on the relationship between political ideology (“ideology” in our dataset) as a predictor of the perceived risks posed by climate change (“gccrsk”). The model is specified in <code>R</code> as follows:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1">OLS_env &lt;-<span class="st"> </span><span class="kw">lm</span>(ds<span class="op">$</span>glbcc_risk <span class="op">~</span><span class="st"> </span>ds<span class="op">$</span>ideol)</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">OLS_env &lt;-<span class="st"> </span><span class="kw">lm</span>(ds<span class="op">$</span>glbcc_risk <span class="op">~</span><span class="st"> </span>ds<span class="op">$</span>ideol)</a></code></pre></div>
 <p>Using the summary command in <code>R</code>, we can review the results.</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">summary</span>(OLS_env)</a></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="kw">summary</span>(OLS_env)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = ds$glbcc_risk ~ ds$ideol)
@@ -517,32 +517,32 @@ Figure 10.6: Non-Linearity in the Residuals
 ## -8.726 -1.633  0.274  1.459  6.506 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 10.81866    0.14189   76.25 &lt;0.0000000000000002 ***
-## ds$ideol    -1.04635    0.02856  -36.63 &lt;0.0000000000000002 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 10.81866    0.14189   76.25   &lt;2e-16 ***
+## ds$ideol    -1.04635    0.02856  -36.63   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.479 on 2511 degrees of freedom
 ##   (34 observations deleted due to missingness)
 ## Multiple R-squared:  0.3483, Adjusted R-squared:  0.348 
-## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Note that, as was discussed in the prior chapter, the estimated value for <span class="math inline">\(B\)</span> is negative and highly statistically significant. This indicates that the more conservative the survey respondent, the lower the perceived risks attributed to climate change. Now we will use these model results and the associated residuals to evaluate the key assumptions of OLS, beginning with linearity.</p>
 <div id="testing-for-non-linearity" class="section level3">
 <h3><span class="header-section-number">10.3.1</span> Testing for Non-Linearity</h3>
 <p>One way to test for non-linearity is to fit the model to a polynomial functional form. This sounds impressive, but is quite easy to do and understand (really!). All you need to do is include the square of the independent variable as a second predictor in the model. A significant regression coefficient on the squared variable indicates problems with linearity. To do this, we first produce the squared variable.</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="co">#first we square the ideology variable and create a new variable to use in our model.</span></a>
-<a class="sourceLine" id="cb182-2" data-line-number="2">ds<span class="op">$</span>ideology2 &lt;-<span class="st"> </span>ds<span class="op">$</span>ideol<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb182-3" data-line-number="3"><span class="kw">summary</span>(ds<span class="op">$</span>ideology2)</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="co">#first we square the ideology variable and create a new variable to use in our model.</span></a>
+<a class="sourceLine" id="cb186-2" data-line-number="2">ds<span class="op">$</span>ideology2 &lt;-<span class="st"> </span>ds<span class="op">$</span>ideol<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb186-3" data-line-number="3"><span class="kw">summary</span>(ds<span class="op">$</span>ideology2)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##    1.00   16.00   25.00   24.65   36.00   49.00      23</code></pre>
 <p>Next, we run the regression with the original independent variable and our new squared variable. Finally, we check the regression output.</p>
 <pre class="olsenv2"><code>OLS_env2 &lt;- lm(glbcc_risk ~ ideol + ideology2, data = ds)
 summary(OLS_env2)</code></pre>
 <p>A significant coefficient on the squared ideology variable informs us that we probably have a non-linearity problem. The significant and negative coefficient for the square of ideology means that the curve steepens (perceived risks fall faster) as the scale shifts further up on the conservative side of the scale. We can supplement the polynomial regression test by producing a residual plot with a formal Tukey test. The residual plot (<code>car</code> package <code>residualPlots</code> function) displays the Pearson fitted values against the model’s observed values. Ideally, the plots will produce flat red lines; curved lines represent non-linearity. The output for the Tukey test is visible in the <span class="math inline">\(R\)</span> workspace. The null hypothesis for the Tukey test is a linear relationship, so a significant p-value is indicative of non-linearity. The tukey test is reported as part of the <code>residualPlots</code> function in the <code>car</code> package.</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="co">#A significant p-value indicates non-linearity using the Tukey test</span></a>
-<a class="sourceLine" id="cb185-2" data-line-number="2"><span class="kw">library</span>(car)</a>
-<a class="sourceLine" id="cb185-3" data-line-number="3"><span class="kw">residualPlots</span>(OLS_env)</a></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1"><span class="co">#A significant p-value indicates non-linearity using the Tukey test</span></a>
+<a class="sourceLine" id="cb189-2" data-line-number="2"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb189-3" data-line-number="3"><span class="kw">residualPlots</span>(OLS_env)</a></code></pre></div>
 <div class="figure"><span id="fig:nonlinideology"></span>
 <img src="_main_files/figure-html/nonlinideology-1.png" alt="Residual Plots Examining Model Linearity" width="672" />
 <p class="caption">
@@ -550,8 +550,8 @@ Figure 10.7: Residual Plots Examining Model Linearity
 </p>
 </div>
 <pre><code>##            Test stat Pr(&gt;|Test stat|)    
-## ds$ideol     -5.0181     0.0000005584 ***
-## Tukey test   -5.0181     0.0000005219 ***
+## ds$ideol     -5.0181        5.584e-07 ***
+## Tukey test   -5.0181        5.219e-07 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The curved red lines in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:nonlinideology">10.7</a> in the residual plots and significant Tukey test indicate a non-linear relationship in the model. This is a serious violation of a core assumption of OLS regression, which means that the estimate of <span class="math inline">\(B\)</span> is likely to be biased. Our findings suggest that the relationship between ideology and perceived risks of climate change is approximately linear from “strong liberals” to those who are “leaning Republican”. But perceived risks seem to drop off more rapidly as the scale rises toward “strong Republican.”</p>
@@ -560,10 +560,10 @@ Figure 10.7: Residual Plots Examining Model Linearity
 <h3><span class="header-section-number">10.3.2</span> Testing for Normality in Model Residuals</h3>
 <p>Testing for normality in the model residuals will involve using many of the techniques demonstrated in previous chapters. The first step is to graphically display the residuals in order to see how closely the model residuals resemble a normal distribution. A formal test for normality is also included in the demonstration.</p>
 <p>Start by creating a histogram of the model residuals.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">OLS_env<span class="op">$</span>residuals <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the residuals to a data frame</span></a>
-<a class="sourceLine" id="cb187-2" data-line-number="2"><span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the data frame to ggplot</span></a>
-<a class="sourceLine" id="cb187-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(OLS_env<span class="op">$</span>residuals)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb187-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">16</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1">OLS_env<span class="op">$</span>residuals <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the residuals to a data frame</span></a>
+<a class="sourceLine" id="cb191-2" data-line-number="2"><span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the data frame to ggplot</span></a>
+<a class="sourceLine" id="cb191-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(OLS_env<span class="op">$</span>residuals)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb191-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">16</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:histideology"></span>
 <img src="_main_files/figure-html/histideology-1.png" alt="Histogram of Model Residuals" width="672" />
 <p class="caption">
@@ -571,13 +571,13 @@ Figure 10.8: Histogram of Model Residuals
 </p>
 </div>
 <p>The histogram in figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:histideology">10.8</a> indicates that the residuals are approximately normally distributed, but there appears to be a negative skew. Next, we can create a smoothed density of the model residuals compared to a theoretical normal distribution.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">OLS_env<span class="op">$</span>residuals <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the residuals to a data frame</span></a>
-<a class="sourceLine" id="cb188-2" data-line-number="2"><span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the data frame to ggplot</span></a>
-<a class="sourceLine" id="cb188-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(OLS_env<span class="op">$</span>residuals)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb188-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">adjust =</span> <span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb188-5" data-line-number="5"><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(OLS_env<span class="op">$</span>residuals),</a>
-<a class="sourceLine" id="cb188-6" data-line-number="6">                                         <span class="dt">sd =</span> <span class="kw">sd</span>(OLS_env<span class="op">$</span>residuals)),</a>
-<a class="sourceLine" id="cb188-7" data-line-number="7">                <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">OLS_env<span class="op">$</span>residuals <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the residuals to a data frame</span></a>
+<a class="sourceLine" id="cb192-2" data-line-number="2"><span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the data frame to ggplot</span></a>
+<a class="sourceLine" id="cb192-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(OLS_env<span class="op">$</span>residuals)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb192-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">adjust =</span> <span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb192-5" data-line-number="5"><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(OLS_env<span class="op">$</span>residuals),</a>
+<a class="sourceLine" id="cb192-6" data-line-number="6">                                         <span class="dt">sd =</span> <span class="kw">sd</span>(OLS_env<span class="op">$</span>residuals)),</a>
+<a class="sourceLine" id="cb192-7" data-line-number="7">                <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:densityideology"></span>
 <img src="_main_files/figure-html/densityideology-1.png" alt="Smoothed Density Plot of Model Residuals" width="672" />
 <p class="caption">
@@ -585,11 +585,11 @@ Figure 10.9: Smoothed Density Plot of Model Residuals
 </p>
 </div>
 <p>Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:densityideology">10.9</a> indicates the model residuals deviate slightly from a normal distributed because of a slightly negative skew and a mean higher than we would expect in a normal distribution. Our final ocular examination of the residuals will be a quartile plot %(using the <code>stat_qq</code> function from the <code>ggplot2</code> package).</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1">OLS_env<span class="op">$</span>residuals <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the residuals to a data frame</span></a>
-<a class="sourceLine" id="cb189-2" data-line-number="2"><span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the data frame to ggplot</span></a>
-<a class="sourceLine" id="cb189-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> OLS_env<span class="op">$</span>residuals)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb189-4" data-line-number="4"><span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb189-5" data-line-number="5"><span class="st">  </span><span class="kw">stat_qq_line</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">OLS_env<span class="op">$</span>residuals <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the residuals to a data frame</span></a>
+<a class="sourceLine" id="cb193-2" data-line-number="2"><span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Pipe the data frame to ggplot</span></a>
+<a class="sourceLine" id="cb193-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> OLS_env<span class="op">$</span>residuals)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb193-4" data-line-number="4"><span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb193-5" data-line-number="5"><span class="st">  </span><span class="kw">stat_qq_line</span>()</a></code></pre></div>
 <div class="figure"><span id="fig:QQideology"></span>
 <img src="_main_files/figure-html/QQideology-1.png" alt="Quartile Plot of Model Residuals" width="672" />
 <p class="caption">
@@ -597,19 +597,19 @@ Figure 10.10: Quartile Plot of Model Residuals
 </p>
 </div>
 <p>According to Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:QQideology">10.10</a>, it appears as if the residuals are normally distributed except for the tails of the distribution. Taken together the graphical representations of the residuals suggest modest non-normality. As a final step, we can conduct a formal Shapiro-Wilk test for normality. The null hypothesis for a Shapiro-Wilk test is a normal distribution, so we do not want to see a significant p-value.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1"><span class="co">#a significant value p-value potentially indicates the data is not normally distributed.</span></a>
-<a class="sourceLine" id="cb190-2" data-line-number="2"><span class="kw">shapiro.test</span>(OLS_env<span class="op">$</span>residuals)</a></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="co">#a significant value p-value potentially indicates the data is not normally distributed.</span></a>
+<a class="sourceLine" id="cb194-2" data-line-number="2"><span class="kw">shapiro.test</span>(OLS_env<span class="op">$</span>residuals)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  OLS_env$residuals
-## W = 0.98901, p-value = 0.000000000000551</code></pre>
+## W = 0.98901, p-value = 5.51e-13</code></pre>
 <p>The Shapiro-Wilk test confirms what we observed in the graphical displays of the model residuals – the residuals are not normally distributed. Recall that our dependent variable (gccrsk) appears to have a non-normal distribution. This could be the root of the non-normality found in the model residuals. Given this information, steps must be taken to assure that the model residuals meet the required OLS assumptions. One possibility would be to transform the dependent variable (glbccrisk) in order to induce a normal distribution. Another might be to add a polynomial term to the independent variable (ideology) as was done above. In either case, you would need to recheck the residuals in order to see if the model revisions adequately dealt with the problem. We suggest that you do just that!</p>
 </div>
 <div id="testing-for-non-constant-variance-in-the-residuals" class="section level3">
 <h3><span class="header-section-number">10.3.3</span> Testing for Non-Constant Variance in the Residuals</h3>
 <p>Testing for non-constant variance (heteroscedasticity) in a model is fairly straightforward. We can start by creating a spread-level plot that fits the studentized residuals against the model’s fitted values. A line with a non-zero slope is indicative of heteroscedasticity. Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:spreadlvlideology">10.11</a> displays the spread-level plot from the <code>car</code> package.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="kw">spreadLevelPlot</span>(OLS_env)</a></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1"><span class="kw">spreadLevelPlot</span>(OLS_env)</a></code></pre></div>
 <div class="figure"><span id="fig:spreadlvlideology"></span>
 <img src="_main_files/figure-html/spreadlvlideology-1.png" alt="Spread-Level Plot of Model Residuals" width="672" />
 <p class="caption">
@@ -618,60 +618,60 @@ Figure 10.11: Spread-Level Plot of Model Residuals
 </div>
 <pre><code>## 
 ## Suggested power transformation:  1.787088</code></pre>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="kw">dev.off</span>() </a></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1"><span class="kw">dev.off</span>() </a></code></pre></div>
 <pre><code>## null device 
 ##           1</code></pre>
 <p>The negative slope on the red line in Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:spreadlvlideology">10.11</a> indicates the model may contain heteroscedasticity. We can also perform a formal test for non constant variance. The null hypothesis is constant variance, so we do not want to see a significant p-value.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1"><span class="co">#a significant value indicates potential heteroscedasticity issues.</span></a>
-<a class="sourceLine" id="cb196-2" data-line-number="2"><span class="kw">ncvTest</span>(OLS_env)</a></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="co">#a significant value indicates potential heteroscedasticity issues.</span></a>
+<a class="sourceLine" id="cb200-2" data-line-number="2"><span class="kw">ncvTest</span>(OLS_env)</a></code></pre></div>
 <pre><code>## Non-constant Variance Score Test 
 ## Variance formula: ~ fitted.values 
-## Chisquare = 68.107, Df = 1, p = &lt; 0.000000000000000222</code></pre>
+## Chisquare = 68.107, Df = 1, p = &lt; 2.22e-16</code></pre>
 <p>The significant p-value on the non-constant variance test informs us that there is a problem with heteroscedasticity in the model. This is yet another violation of the core assumptions of OLS regression, and it brings into doubt our hypothesis tests.</p>
 </div>
 <div id="examining-outlier-data" class="section level3">
 <h3><span class="header-section-number">10.3.4</span> Examining Outlier Data</h3>
 <p>There are a number of ways to examine outlying observations in an OLS regression. This section briefly illustrates a a subset of analytical tests that will provide a useful assessment of potentially important outliers. The purpose of examining outlier data is twofold. First, we want to make sure there are not any mis-coded or invalid data influencing our regression. For example, an outlying observation with a value of “-99” would very likely bias our results, and obviously needs to be corrected. Second, outlier data may indicate the need to theoretically reconceptualize our model. Perhaps the relationship in the model is mis-specified, with outliers at the extremes of a variable suggesting a non-linear relationship. Or it may be that a subset of cases respond differently to the independent variable, and therefore must be treated as “special cases” in the model. Examining outliers allows us to identify and address these potential problems.</p>
 <p>One of the first things we can do is perform a Bonferroni Outlier Test. The Bonferroni Outlier Tests uses a <span class="math inline">\(t\)</span> distribution to test whether the model’s largest studentized residual value’s outlier status is statistically different from the other observations in the model. A significant p-value indicates an extreme outlier that warrants further examination. We use the <code>outlierTest</code> function in the <code>car</code> package to perform a Bonferroni Outlier Test.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1"><span class="co">#a significant p-value indicates extreme case for review</span></a>
-<a class="sourceLine" id="cb198-2" data-line-number="2"><span class="kw">outlierTest</span>(OLS_env)</a></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1"><span class="co">#a significant p-value indicates extreme case for review</span></a>
+<a class="sourceLine" id="cb202-2" data-line-number="2"><span class="kw">outlierTest</span>(OLS_env)</a></code></pre></div>
 <pre><code>## No Studentized residuals with Bonferroni p &lt; 0.05
 ## Largest |rstudent|:
 ##      rstudent unadjusted p-value Bonferroni p
 ## 589 -3.530306         0.00042255           NA</code></pre>
 <p>According to the R output, the Bonferroni p-value for the largest (absolute) residual is not statistically significant. While this test is important for identifying a potentially significant outlying observation, it is not a panacea for checking for patterns in outlying data. Next we will examine the model’s df.betas in order to see which observations exert the most influence on the model’s regression coefficients. <span class="math inline">\(Dfbetas\)</span> are measures of how much the regression coefficient changes when observation <span class="math inline">\(i\)</span> is omitted. Larger values indicate an observation that has considerable influence on the model.</p>
 <p>A useful method for finding dfbeta obervations is to use the <code>dfbetaPlots</code> function in the <code>car</code> package. We specify the option <code>id.n=2</code> to show the two largest df.betas. See figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:dfbetaPlots">10.12</a>.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">plotdb&lt;-<span class="kw">dfbetaPlots</span>(OLS_env, <span class="dt">id.n=</span><span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">plotdb&lt;-<span class="kw">dfbetaPlots</span>(OLS_env, <span class="dt">id.n=</span><span class="dv">3</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:dfbetaPlots"></span>
 <img src="_main_files/figure-html/dfbetaPlots-1.png" alt="Plot of Model dfbetas Values using 'dfbetaPlots' function" width="672" />
 <p class="caption">
 Figure 10.12: Plot of Model dfbetas Values using ‘dfbetaPlots’ function
 </p>
 </div>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1"><span class="co">#  Check the observations with high dfbetas.</span></a>
-<a class="sourceLine" id="cb201-2" data-line-number="2"><span class="co">#  We see the values 589 and 615 returned.  </span></a>
-<a class="sourceLine" id="cb201-3" data-line-number="3"><span class="co">#  We only want to see results from columns gccrsk and ideology in tbur.data.</span></a>
-<a class="sourceLine" id="cb201-4" data-line-number="4">ds[<span class="kw">c</span>(<span class="dv">589</span>,<span class="dv">615</span>),<span class="kw">c</span>(<span class="st">&quot;glbcc_risk&quot;</span>, <span class="st">&quot;ideol&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="co">#  Check the observations with high dfbetas.</span></a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="co">#  We see the values 589 and 615 returned.  </span></a>
+<a class="sourceLine" id="cb205-3" data-line-number="3"><span class="co">#  We only want to see results from columns gccrsk and ideology in tbur.data.</span></a>
+<a class="sourceLine" id="cb205-4" data-line-number="4">ds[<span class="kw">c</span>(<span class="dv">589</span>,<span class="dv">615</span>),<span class="kw">c</span>(<span class="st">&quot;glbcc_risk&quot;</span>, <span class="st">&quot;ideol&quot;</span>)]</a></code></pre></div>
 <pre><code>##     glbcc_risk ideol
 ## 589          0     2
 ## 615          0     2</code></pre>
 <p>These observations are interesting because they identify a potential problem in our model specification. Both observations are considered outliers because the respondents self-identified as “liberal” (ideology = 1) and rated their perceived risk of global climate change as 0. These values deviate substantially from the norm for other strong liberals in the dataset. Remember, as we saw earlier, our model has a problem with non-linearity – these outlying observations seem to corroborate this finding. Examination of outliers sheds some light on the issue.</p>
 <p>Finally, we can produce a plot that combines studentized residuals, “hat values”, and Cook’s D distances (these are measures of the amount of influence observations have on the model) using circles as an indicator of influence – the larger the circle, the greater the influence. Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:bubbleideology2">10.13</a> displays the combined influence plot. In addition, the <code>influencePlot</code> function returns the values of greatest influence.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">influencePlot</span>(OLS_env)</a></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="kw">influencePlot</span>(OLS_env)</a></code></pre></div>
 <div class="figure"><span id="fig:bubbleideology2"></span>
 <img src="_main_files/figure-html/bubbleideology2-1.png" alt="Influence Bubble Plot" width="672" />
 <p class="caption">
 Figure 10.13: Influence Bubble Plot
 </p>
 </div>
-<pre><code>##         StudRes         Hat          CookD
-## 20   0.09192603 0.002172497 0.000009202846
-## 30   0.09192603 0.002172497 0.000009202846
-## 589 -3.53030574 0.001334528 0.008289418537
-## 615 -3.53030574 0.001334528 0.008289418537</code></pre>
+<pre><code>##         StudRes         Hat        CookD
+## 20   0.09192603 0.002172497 9.202846e-06
+## 30   0.09192603 0.002172497 9.202846e-06
+## 589 -3.53030574 0.001334528 8.289419e-03
+## 615 -3.53030574 0.001334528 8.289419e-03</code></pre>
 <p>Figure <a href="ols-assumptions-and-simple-regression-diagnostics.html#fig:bubbleideology2">10.13</a> indicates that there are a number of cases that warrant further examination. We are already familiar with 589 and 615 Let’s add 20, 30, 90 and 1052.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="co">#review the results</span></a>
-<a class="sourceLine" id="cb205-2" data-line-number="2">ds[<span class="kw">c</span>(<span class="dv">589</span>,<span class="dv">615</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">90</span>,<span class="dv">1052</span>),<span class="kw">c</span>(<span class="st">&quot;glbcc_risk&quot;</span>, <span class="st">&quot;ideol&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="co">#review the results</span></a>
+<a class="sourceLine" id="cb209-2" data-line-number="2">ds[<span class="kw">c</span>(<span class="dv">589</span>,<span class="dv">615</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">90</span>,<span class="dv">1052</span>),<span class="kw">c</span>(<span class="st">&quot;glbcc_risk&quot;</span>, <span class="st">&quot;ideol&quot;</span>)]</a></code></pre></div>
 <pre><code>##      glbcc_risk ideol
 ## 589           0     2
 ## 615           0     2

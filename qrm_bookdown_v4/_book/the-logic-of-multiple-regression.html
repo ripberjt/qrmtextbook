@@ -441,11 +441,11 @@ and
 <span class="math inline">\(B_3E_{iX_{1}|X_{2}} = B_1X_{i1}\)</span></p>
 </blockquote>
 <p>As an example, we will use age and ideology to predict perceived climate change risk.</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, ideol, age) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb258-2" data-line-number="2"><span class="st">  </span><span class="kw">na.omit</span>()</a>
-<a class="sourceLine" id="cb258-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb258-4" data-line-number="4">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>ideol<span class="op">+</span>age, <span class="dt">data =</span> ds.temp)</a>
-<a class="sourceLine" id="cb258-5" data-line-number="5"><span class="kw">summary</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, ideol, age) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb262-2" data-line-number="2"><span class="st">  </span><span class="kw">na.omit</span>()</a>
+<a class="sourceLine" id="cb262-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb262-4" data-line-number="4">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>ideol<span class="op">+</span>age, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb262-5" data-line-number="5"><span class="kw">summary</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ ideol + age, data = ds.temp)
@@ -455,19 +455,19 @@ and
 ## -8.7913 -1.6252  0.2785  1.4674  6.6075 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 11.096064   0.244640  45.357 &lt;0.0000000000000002 ***
-## ideol       -1.042748   0.028674 -36.366 &lt;0.0000000000000002 ***
-## age         -0.004872   0.003500  -1.392               0.164    
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 11.096064   0.244640  45.357   &lt;2e-16 ***
+## ideol       -1.042748   0.028674 -36.366   &lt;2e-16 ***
+## age         -0.004872   0.003500  -1.392    0.164    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.479 on 2510 degrees of freedom
 ## Multiple R-squared:  0.3488, Adjusted R-squared:  0.3483 
-## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Note that the estimated coefficient for ideology is -1.0427478. To see how multiple regression removes the shared variance we first regress climate change risk on age and create an object <code>ols2.resids</code> of the residuals.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> ds.temp)</a>
-<a class="sourceLine" id="cb260-2" data-line-number="2"><span class="kw">summary</span>(ols2)</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb264-2" data-line-number="2"><span class="kw">summary</span>(ols2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age, data = ds.temp)
@@ -477,20 +477,20 @@ and
 ## -6.4924 -2.1000  0.0799  2.5376  4.5867 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value             Pr(&gt;|t|)    
-## (Intercept)  6.933835   0.267116  25.958 &lt; 0.0000000000000002 ***
-## age         -0.016350   0.004307  -3.796              0.00015 ***
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  6.933835   0.267116  25.958  &lt; 2e-16 ***
+## age         -0.016350   0.004307  -3.796  0.00015 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 3.062 on 2511 degrees of freedom
 ## Multiple R-squared:  0.005706,   Adjusted R-squared:  0.00531 
 ## F-statistic: 14.41 on 1 and 2511 DF,  p-value: 0.0001504</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">ols2.resids &lt;-<span class="st"> </span>ols2<span class="op">$</span>residuals </a></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1">ols2.resids &lt;-<span class="st"> </span>ols2<span class="op">$</span>residuals </a></code></pre></div>
 <p>Note that, when modeled alone, the estimated effect of age on glbccrsk is larger (-0.0164) than it was in the multiple regression with ideology (-0.00487). This is because age is correlated with ideology, and – because ideology is also related to glbccrsk – when we don’t “control for” ideology, the age variable carries some of the influence of ideology.</p>
 <p>Next, we regress ideology on age and create an object of the residuals.</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1">ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(ideol <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> ds.temp)</a>
-<a class="sourceLine" id="cb263-2" data-line-number="2"><span class="kw">summary</span>(ols3)</a></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1">ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(ideol <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb267-2" data-line-number="2"><span class="kw">summary</span>(ols3)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = ideol ~ age, data = ds.temp)
@@ -500,19 +500,19 @@ and
 ## -3.9492 -0.8502  0.2709  1.3480  2.7332 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value             Pr(&gt;|t|)    
-## (Intercept) 3.991597   0.150478  26.526 &lt; 0.0000000000000002 ***
-## age         0.011007   0.002426   4.537           0.00000598 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 3.991597   0.150478  26.526  &lt; 2e-16 ***
+## age         0.011007   0.002426   4.537 5.98e-06 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 1.725 on 2511 degrees of freedom
 ## Multiple R-squared:  0.00813,    Adjusted R-squared:  0.007735 
-## F-statistic: 20.58 on 1 and 2511 DF,  p-value: 0.000005981</code></pre>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1">ols3.resids &lt;-<span class="st"> </span>ols3<span class="op">$</span>residuals</a></code></pre></div>
+## F-statistic: 20.58 on 1 and 2511 DF,  p-value: 5.981e-06</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1">ols3.resids &lt;-<span class="st"> </span>ols3<span class="op">$</span>residuals</a></code></pre></div>
 <p>Finally, we regress the residuals from ols2 on the residuals from ols3. Note that this regression does not include an intercept term.</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1">ols4 &lt;-<span class="st"> </span><span class="kw">lm</span>(ols2.resids <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span>ols3.resids)</a>
-<a class="sourceLine" id="cb266-2" data-line-number="2"><span class="kw">summary</span>(ols4)</a></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1">ols4 &lt;-<span class="st"> </span><span class="kw">lm</span>(ols2.resids <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span>ols3.resids)</a>
+<a class="sourceLine" id="cb270-2" data-line-number="2"><span class="kw">summary</span>(ols4)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = ols2.resids ~ 0 + ols3.resids)
@@ -522,21 +522,21 @@ and
 ## -8.7913 -1.6252  0.2785  1.4674  6.6075 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value            Pr(&gt;|t|)    
-## ols3.resids -1.04275    0.02866  -36.38 &lt;0.0000000000000002 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## ols3.resids -1.04275    0.02866  -36.38   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.478 on 2512 degrees of freedom
 ## Multiple R-squared:  0.3451, Adjusted R-squared:  0.3448 
-## F-statistic:  1324 on 1 and 2512 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic:  1324 on 1 and 2512 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>As shown, the estimated <span class="math inline">\(B\)</span> for <span class="math inline">\(E_{iX_{1}|X_{2}}\)</span>, matches the estimated <span class="math inline">\(B\)</span> for ideology in the first regression. What we have done, and what multiple regression does, is ``clean&quot; both <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_1\)</span> (ideology) of their correlations with <span class="math inline">\(X_2\)</span> (age) by using the residuals from the bivariate regressions.</p>
 </div>
 <div id="multiple-regression-example" class="section level2">
 <h2><span class="header-section-number">12.3</span> Multiple Regression Example</h2>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1"><span class="kw">library</span>(psych)</a>
-<a class="sourceLine" id="cb268-2" data-line-number="2"><span class="kw">describe</span>(<span class="kw">data.frame</span>(ds.temp<span class="op">$</span>glbcc_risk,ds.temp<span class="op">$</span>ideol,</a>
-<a class="sourceLine" id="cb268-3" data-line-number="3">                    ds.temp<span class="op">$</span>age))</a></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1"><span class="kw">library</span>(psych)</a>
+<a class="sourceLine" id="cb272-2" data-line-number="2"><span class="kw">describe</span>(<span class="kw">data.frame</span>(ds.temp<span class="op">$</span>glbcc_risk,ds.temp<span class="op">$</span>ideol,</a>
+<a class="sourceLine" id="cb272-3" data-line-number="3">                    ds.temp<span class="op">$</span>age))</a></code></pre></div>
 <pre><code>##                    vars    n  mean    sd median trimmed   mad min max
 ## ds.temp.glbcc_risk    1 2513  5.95  3.07      6    6.14  2.97   0  10
 ## ds.temp.ideol         2 2513  4.66  1.73      5    4.76  1.48   1   7
@@ -545,14 +545,14 @@ and
 ## ds.temp.glbcc_risk    10 -0.32    -0.94 0.06
 ## ds.temp.ideol          6 -0.45    -0.79 0.03
 ## ds.temp.age           81 -0.38    -0.23 0.28</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1"><span class="kw">library</span>(car)</a>
-<a class="sourceLine" id="cb270-2" data-line-number="2"><span class="kw">scatterplotMatrix</span>(<span class="kw">data.frame</span>(ds.temp<span class="op">$</span>glbcc_risk,</a>
-<a class="sourceLine" id="cb270-3" data-line-number="3">                             ds.temp<span class="op">$</span>ideol,ds.temp<span class="op">$</span>age),</a>
-<a class="sourceLine" id="cb270-4" data-line-number="4">                  <span class="dt">diagonal=</span><span class="st">&quot;density&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb274-2" data-line-number="2"><span class="kw">scatterplotMatrix</span>(<span class="kw">data.frame</span>(ds.temp<span class="op">$</span>glbcc_risk,</a>
+<a class="sourceLine" id="cb274-3" data-line-number="3">                             ds.temp<span class="op">$</span>ideol,ds.temp<span class="op">$</span>age),</a>
+<a class="sourceLine" id="cb274-4" data-line-number="4">                  <span class="dt">diagonal=</span><span class="st">&quot;density&quot;</span>)</a></code></pre></div>
 <p><img src="_main_files/figure-html/scatplot-1.png" width="672" /></p>
 <p>In this section, we walk through another example of multiple regression. First, we start with our two IV model.</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age<span class="op">+</span>ideol, <span class="dt">data=</span>ds.temp)</a>
-<a class="sourceLine" id="cb271-2" data-line-number="2"><span class="kw">summary</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age<span class="op">+</span>ideol, <span class="dt">data=</span>ds.temp)</a>
+<a class="sourceLine" id="cb275-2" data-line-number="2"><span class="kw">summary</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + ideol, data = ds.temp)
@@ -562,26 +562,26 @@ and
 ## -8.7913 -1.6252  0.2785  1.4674  6.6075 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 11.096064   0.244640  45.357 &lt;0.0000000000000002 ***
-## age         -0.004872   0.003500  -1.392               0.164    
-## ideol       -1.042748   0.028674 -36.366 &lt;0.0000000000000002 ***
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 11.096064   0.244640  45.357   &lt;2e-16 ***
+## age         -0.004872   0.003500  -1.392    0.164    
+## ideol       -1.042748   0.028674 -36.366   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.479 on 2510 degrees of freedom
 ## Multiple R-squared:  0.3488, Adjusted R-squared:  0.3483 
-## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic: 672.2 on 2 and 2510 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The results show that the relationship between age and perceived risk (glbccrsk) is negative and insignificant. The relationship between ideology and perceived risk is negative and significant. The coefficients of the <span class="math inline">\(X\)</span>’s are interpreted in the same way as with simple regression, except that we are now controlling for the effect of the other <span class="math inline">\(X\)</span>’s by removing their influence on the estimated coefficient. Therefore, we say that as ideology increases one unit, perceptions of the risk of climate change (glbccrsk) decrease by -1.0427478, controlling for the effect of age.</p>
 <p>As was the case with simple regression, multiple regression finds the intercept and slopes that minimize the sum of the squared residuals. With only one IV the relationship can be represented in a two-dimensional plane (a graph) as a line, but each IV adds another dimension. Two IVs create a regression plane within a cube, as shown in Figure <a href="the-logic-of-multiple-regression.html#fig:scatols">12.3</a>. The Figure shows a scatterplot of perceived climate change risk, age, and ideology coupled with the regression plane. Note that this is a sample of 200 observations from the larger data set. Were we to add more IVs, we would generate a hypercube… and we haven’t found a clever way to draw that yet.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1">ds200 &lt;-<span class="st"> </span>ds.temp[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(ds.temp), <span class="dv">200</span>, <span class="dt">replace=</span><span class="ot">FALSE</span>),]</a>
-<a class="sourceLine" id="cb273-2" data-line-number="2"><span class="kw">library</span>(scatterplot3d)  </a>
-<a class="sourceLine" id="cb273-3" data-line-number="3">s3d &lt;-<span class="kw">scatterplot3d</span>(ds200<span class="op">$</span>age,</a>
-<a class="sourceLine" id="cb273-4" data-line-number="4">                    ds200<span class="op">$</span>ideol,</a>
-<a class="sourceLine" id="cb273-5" data-line-number="5">                    ds200<span class="op">$</span>glbcc_risk</a>
-<a class="sourceLine" id="cb273-6" data-line-number="6">                    ,<span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">highlight.3d=</span><span class="ot">TRUE</span>,  </a>
-<a class="sourceLine" id="cb273-7" data-line-number="7"><span class="dt">type=</span><span class="st">&quot;h&quot;</span>, <span class="dt">main=</span><span class="st">&quot;3D Scatterplot&quot;</span>)</a>
-<a class="sourceLine" id="cb273-8" data-line-number="8">s3d<span class="op">$</span><span class="kw">plane3d</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1">ds200 &lt;-<span class="st"> </span>ds.temp[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(ds.temp), <span class="dv">200</span>, <span class="dt">replace=</span><span class="ot">FALSE</span>),]</a>
+<a class="sourceLine" id="cb277-2" data-line-number="2"><span class="kw">library</span>(scatterplot3d)  </a>
+<a class="sourceLine" id="cb277-3" data-line-number="3">s3d &lt;-<span class="kw">scatterplot3d</span>(ds200<span class="op">$</span>age,</a>
+<a class="sourceLine" id="cb277-4" data-line-number="4">                    ds200<span class="op">$</span>ideol,</a>
+<a class="sourceLine" id="cb277-5" data-line-number="5">                    ds200<span class="op">$</span>glbcc_risk</a>
+<a class="sourceLine" id="cb277-6" data-line-number="6">                    ,<span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">highlight.3d=</span><span class="ot">TRUE</span>,  </a>
+<a class="sourceLine" id="cb277-7" data-line-number="7"><span class="dt">type=</span><span class="st">&quot;h&quot;</span>, <span class="dt">main=</span><span class="st">&quot;3D Scatterplot&quot;</span>)</a>
+<a class="sourceLine" id="cb277-8" data-line-number="8">s3d<span class="op">$</span><span class="kw">plane3d</span>(ols1)</a></code></pre></div>
 <div class="figure"><span id="fig:scatols"></span>
 <img src="_main_files/figure-html/scatols-1.png" alt="Scatterplot and Regression Plane of gcc risk, age, and ideology" width="672" />
 <p class="caption">
@@ -589,12 +589,12 @@ Figure 12.3: Scatterplot and Regression Plane of gcc risk, age, and ideology
 </p>
 </div>
 <p>In the next example education is added to the model.</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb274-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb274-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>()</a>
-<a class="sourceLine" id="cb274-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb274-5" data-line-number="5">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)</a>
-<a class="sourceLine" id="cb274-6" data-line-number="6"><span class="kw">summary</span>(ols2)</a></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb278-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb278-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>()</a>
+<a class="sourceLine" id="cb278-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb278-5" data-line-number="5">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb278-6" data-line-number="6"><span class="kw">summary</span>(ols2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + education + ideol, data = ds.temp)
@@ -604,21 +604,21 @@ Figure 12.3: Scatterplot and Regression Plane of gcc risk, age, and ideology
 ## -8.8092 -1.6355  0.2388  1.4279  6.6334 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 10.841669   0.308416  35.153 &lt;0.0000000000000002 ***
-## age         -0.003246   0.003652  -0.889               0.374    
-## education    0.036775   0.028547   1.288               0.198    
-## ideol       -1.044827   0.029829 -35.027 &lt;0.0000000000000002 ***
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 10.841669   0.308416  35.153   &lt;2e-16 ***
+## age         -0.003246   0.003652  -0.889    0.374    
+## education    0.036775   0.028547   1.288    0.198    
+## ideol       -1.044827   0.029829 -35.027   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 2.437 on 2268 degrees of freedom
 ## Multiple R-squared:  0.3607, Adjusted R-squared:  0.3598 
-## F-statistic: 426.5 on 3 and 2268 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## F-statistic: 426.5 on 3 and 2268 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>We see that as a respondent’s education increases one unit on the education scale, perceived risk appears to increase by 0.0367752, keeping age and ideology constant. However, this result is not significant. In the final example, income is added to the model. Note that the size and significance of education actually increases once income is included, indicating that education only has bearing on the perceived risks of climate change once the independent effect of income is considered.</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">999</span>) <span class="co">#to turn off scientific notation</span></a>
-<a class="sourceLine" id="cb276-2" data-line-number="2">ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)</a>
-<a class="sourceLine" id="cb276-3" data-line-number="3"><span class="kw">summary</span>(ols3)</a></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">999</span>) <span class="co">#to turn off scientific notation</span></a>
+<a class="sourceLine" id="cb280-2" data-line-number="2">ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb280-3" data-line-number="3"><span class="kw">summary</span>(ols3)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + education + income + ideol, data = ds.temp)
@@ -658,12 +658,12 @@ Figure 12.3: Scatterplot and Regression Plane of gcc risk, age, and ideology
  S_E = \sqrt{\frac{RSS}{n-k-1}}
 \end{equation*}\]</span></p>
 <p>We can use <code>R</code> to find the <span class="math inline">\(RSS\)</span> for ideology in our model. First we find the <span class="math inline">\(S_E\)</span> of the model:</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1">Se &lt;-<span class="st"> </span><span class="kw">sqrt</span>((<span class="kw">sum</span>(ols3<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span>(<span class="kw">length</span>(ds.temp<span class="op">$</span>ideol)<span class="op">-</span><span class="dv">5-1</span>))</a>
-<a class="sourceLine" id="cb278-2" data-line-number="2">Se</a></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1">Se &lt;-<span class="st"> </span><span class="kw">sqrt</span>((<span class="kw">sum</span>(ols3<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span>(<span class="kw">length</span>(ds.temp<span class="op">$</span>ideol)<span class="op">-</span><span class="dv">5-1</span>))</a>
+<a class="sourceLine" id="cb282-2" data-line-number="2">Se</a></code></pre></div>
 <pre><code>## [1] 2.43312</code></pre>
 <p>Then we find the <span class="math inline">\(RSS\)</span>, for ideology:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1">ols4 &lt;-<span class="st"> </span><span class="kw">lm</span>(ideol <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income, <span class="dt">data =</span> ds.temp)</a>
-<a class="sourceLine" id="cb280-2" data-line-number="2"><span class="kw">summary</span>(ols4)</a></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1">ols4 &lt;-<span class="st"> </span><span class="kw">lm</span>(ideol <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb284-2" data-line-number="2"><span class="kw">summary</span>(ols4)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = ideol ~ age + education + income, data = ds.temp)
@@ -684,12 +684,12 @@ Figure 12.3: Scatterplot and Regression Plane of gcc risk, age, and ideology
 ## Residual standard error: 1.707 on 2268 degrees of freedom
 ## Multiple R-squared:  0.034,  Adjusted R-squared:  0.03272 
 ## F-statistic:  26.6 on 3 and 2268 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1">RSSideol &lt;-<span class="st"> </span><span class="kw">sum</span>(ols4<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb282-2" data-line-number="2">RSSideol</a></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1">RSSideol &lt;-<span class="st"> </span><span class="kw">sum</span>(ols4<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb286-2" data-line-number="2">RSSideol</a></code></pre></div>
 <pre><code>## [1] 6611.636</code></pre>
 <p>Finally, we calculate the <span class="math inline">\(SE\)</span> for ideology:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1">SEideol &lt;-<span class="st"> </span>Se<span class="op">/</span><span class="kw">sqrt</span>(RSSideol)</a>
-<a class="sourceLine" id="cb284-2" data-line-number="2">SEideol</a></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1">SEideol &lt;-<span class="st"> </span>Se<span class="op">/</span><span class="kw">sqrt</span>(RSSideol)</a>
+<a class="sourceLine" id="cb288-2" data-line-number="2">SEideol</a></code></pre></div>
 <pre><code>## [1] 0.02992328</code></pre>
 <p>Once the <span class="math inline">\(SE(B_j)\)</span> is known, the <span class="math inline">\(t\)</span>-test for the ideology coefficient
 can be calculated. The <span class="math inline">\(t\)</span> value is the ratio of the estimated coefficient to its standard error.</p>
@@ -698,7 +698,7 @@ can be calculated. The <span class="math inline">\(t\)</span> value is the ratio
   \tag{12.2}
 \end{equation}\]</span></p>
 <p>This can be calculated using <code>R</code>.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1">ols3<span class="op">$</span>coef[<span class="dv">5</span>]<span class="op">/</span>SEideol</a></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1">ols3<span class="op">$</span>coef[<span class="dv">5</span>]<span class="op">/</span>SEideol</a></code></pre></div>
 <pre><code>##     ideol 
 ## -34.64245</code></pre>
 <p>As we see, the result is statistically significant, and therefore we reject the null hypothesis. Also note that the results match those from the <code>R</code> output for the full model, as was shown earlier.</p>

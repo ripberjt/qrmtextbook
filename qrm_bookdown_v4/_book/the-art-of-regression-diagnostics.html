@@ -332,15 +332,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-art-of-regression-diagnostics" class="section level1">
 <h1><span class="header-section-number">15</span> The Art of Regression Diagnostics</h1>
 <p>The previous chapters have focused on the mathematical bases of multiple OLS regression, the use of partial regression coefficients, and aspects of model design and construction. This chapter returns our focus to the assessment of the statistical adequacy of our models, first by revisiting the key assumptions necessary for OLS to provide the best, linear, unbiased estimates (BLUE) of the relationships between our model <span class="math inline">\(Xs\)</span> and <span class="math inline">\(Y\)</span>. We will then discuss the “art” of diagnosing the results of OLS for potential violations of the key OLS assumptions. We refer to this diagnostic process as an art because there is no “cook book approach” that defines precisely what to do when problems are detected. Note that the examples in this chapter use a subset dataset. This is a smaller data set, <span class="math inline">\(n=500\)</span>, based on the first 500 observations of the full data set used in prior chapters. We use this smaller dataset in order to be able to illustrate, graphically, the diagnostic results described in this chapter.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1"><span class="co">#  create a new data frame with the first 500 observations</span></a>
-<a class="sourceLine" id="cb315-2" data-line-number="2">ds.small &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb315-3" data-line-number="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="st">&quot;glbcc_risk&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb315-4" data-line-number="4"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb315-5" data-line-number="5"><span class="st">  </span><span class="kw">na.omit</span>()</a>
-<a class="sourceLine" id="cb315-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb315-7" data-line-number="7"><span class="co">#  For reference and experimentation here is code </span></a>
-<a class="sourceLine" id="cb315-8" data-line-number="8"><span class="co">#  to randomly draw 500 observations from the subset.</span></a>
-<a class="sourceLine" id="cb315-9" data-line-number="9"><span class="co">#  tbur.data.small &lt;- tbur.data[sample(1:nrow(tbur.data), 500, replace=FALSE),]</span></a></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="co">#  create a new data frame with the first 500 observations</span></a>
+<a class="sourceLine" id="cb319-2" data-line-number="2">ds.small &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb319-3" data-line-number="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="st">&quot;glbcc_risk&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb319-4" data-line-number="4"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb319-5" data-line-number="5"><span class="st">  </span><span class="kw">na.omit</span>()</a>
+<a class="sourceLine" id="cb319-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb319-7" data-line-number="7"><span class="co">#  For reference and experimentation here is code </span></a>
+<a class="sourceLine" id="cb319-8" data-line-number="8"><span class="co">#  to randomly draw 500 observations from the subset.</span></a>
+<a class="sourceLine" id="cb319-9" data-line-number="9"><span class="co">#  tbur.data.small &lt;- tbur.data[sample(1:nrow(tbur.data), 500, replace=FALSE),]</span></a></code></pre></div>
 <div id="ols-error-assumptions-revisited" class="section level2">
 <h2><span class="header-section-number">15.1</span> OLS Error Assumptions Revisited</h2>
 <p>As described in earlier chapters, there is a set of key assumptions that must be met to justify the use of the <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span> distributions in the interpretation of OLS model results. In particular, these assumptions are necessary for hypotheses tests and the generation of confidence intervals. When met, the assumptions make OLS more efficient than any other unbiased estimator.</p>
@@ -382,8 +382,8 @@ Figure 15.1: Summary of OLS Assumption Failures and their Implications
 <h2><span class="header-section-number">15.2</span> OLS Diagnostic Techniques</h2>
 <p>In this section, we examine the residuals from a multiple regression model for potential problems. Note that we use a subsample of the first 500 observations, drawn from the larger ``tbur.data&quot; dataset, to permit easier evaluation of the plots of residuals. We begin with an evaluation of the assumption of the linearity of the relationship between the <span class="math inline">\(X\)</span>s and <span class="math inline">\(Y\)</span>, and then evaluate assumptions regarding the error term.</p>
 <p>Our multiple regression model predicts survey respondents’ levels of risk perceived of climate change (<span class="math inline">\(Y\)</span>) using political ideology, age, household income, and educational achievement as independent variables (<span class="math inline">\(X\)</span>s). The results of the regression model as follows:</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1">ols1 &lt;-<span class="st">  </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.small)</a>
-<a class="sourceLine" id="cb316-2" data-line-number="2"><span class="kw">summary</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1">ols1 &lt;-<span class="st">  </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.small)</a>
+<a class="sourceLine" id="cb320-2" data-line-number="2"><span class="kw">summary</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + education + income + ideol, data = ds.small)
@@ -422,16 +422,21 @@ Figure 15.3: Non-Linear
 </p>
 </div>
 <p>Now let’s look at the residuals from our example model. We can check the linear nature of the relationship between the DV and the IVs in several ways. First we can plot the residuals by the values of the IVs. We also can add a lowess line to demonstrate the relationship between each of the IVs and the residuals, and add a line at <span class="math inline">\(0\)</span> for comparison.</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1">ds.small<span class="op">$</span>fit.r &lt;-<span class="st"> </span>ols1<span class="op">$</span>residuals</a>
-<a class="sourceLine" id="cb318-2" data-line-number="2">ds.small<span class="op">$</span>fit.p &lt;-<span class="st"> </span>ols1<span class="op">$</span>fitted.values</a></code></pre></div>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="kw">library</span>(reshape2)</a>
-<a class="sourceLine" id="cb319-2" data-line-number="2">ds.small <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb319-3" data-line-number="3"><span class="st">  </span><span class="kw">melt</span>(<span class="dt">measure.vars =</span> <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>, <span class="st">&quot;fit.p&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb319-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(value, fit.r, <span class="dt">group =</span> variable)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb319-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb319-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> loess) <span class="op">+</span></a>
-<a class="sourceLine" id="cb319-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb319-8" data-line-number="8"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1">ds.small<span class="op">$</span>fit.r &lt;-<span class="st"> </span>ols1<span class="op">$</span>residuals</a>
+<a class="sourceLine" id="cb322-2" data-line-number="2">ds.small<span class="op">$</span>fit.p &lt;-<span class="st"> </span>ols1<span class="op">$</span>fitted.values</a></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1"><span class="kw">library</span>(reshape2)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;reshape2&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     smiths</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1">ds.small <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb326-2" data-line-number="2"><span class="st">  </span><span class="kw">melt</span>(<span class="dt">measure.vars =</span> <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>, <span class="st">&quot;fit.p&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb326-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(value, fit.r, <span class="dt">group =</span> variable)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb326-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb326-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> loess) <span class="op">+</span></a>
+<a class="sourceLine" id="cb326-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb326-7" data-line-number="7"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:multlin"></span>
 <img src="_main_files/figure-html/multlin-1.png" alt="Checking for Non-Linearity" width="672" />
 <p class="caption">
@@ -439,12 +444,12 @@ Figure 15.4: Checking for Non-Linearity
 </p>
 </div>
 <p>As we can see in Figure <a href="the-art-of-regression-diagnostics.html#fig:multlin">15.4</a>, the plots of residuals by both income and ideology seem to indicate non-linear relationships. We can check this “ocular impression” by squaring each term and using the <code>anova</code> function to compare model fit.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1">ds.small<span class="op">$</span>age2 &lt;-<span class="st"> </span>ds.small<span class="op">$</span>age<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb320-2" data-line-number="2">ds.small<span class="op">$</span>edu2 &lt;-<span class="st"> </span>ds.small<span class="op">$</span>education<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb320-3" data-line-number="3">ds.small<span class="op">$</span>inc2 &lt;-<span class="st"> </span>ds.small<span class="op">$</span>income<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb320-4" data-line-number="4">ds.small<span class="op">$</span>ideology2&lt;-ds.small<span class="op">$</span>ideol<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb320-5" data-line-number="5">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age<span class="op">+</span>age2<span class="op">+</span>education<span class="op">+</span>edu2<span class="op">+</span>income<span class="op">+</span>inc2<span class="op">+</span>ideol<span class="op">+</span>ideology2, <span class="dt">data=</span>ds.small)</a>
-<a class="sourceLine" id="cb320-6" data-line-number="6"><span class="kw">summary</span>(ols2)</a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1">ds.small<span class="op">$</span>age2 &lt;-<span class="st"> </span>ds.small<span class="op">$</span>age<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb327-2" data-line-number="2">ds.small<span class="op">$</span>edu2 &lt;-<span class="st"> </span>ds.small<span class="op">$</span>education<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb327-3" data-line-number="3">ds.small<span class="op">$</span>inc2 &lt;-<span class="st"> </span>ds.small<span class="op">$</span>income<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb327-4" data-line-number="4">ds.small<span class="op">$</span>ideology2&lt;-ds.small<span class="op">$</span>ideol<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb327-5" data-line-number="5">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age<span class="op">+</span>age2<span class="op">+</span>education<span class="op">+</span>edu2<span class="op">+</span>income<span class="op">+</span>inc2<span class="op">+</span>ideol<span class="op">+</span>ideology2, <span class="dt">data=</span>ds.small)</a>
+<a class="sourceLine" id="cb327-6" data-line-number="6"><span class="kw">summary</span>(ols2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + age2 + education + edu2 + income + 
@@ -472,7 +477,7 @@ Figure 15.4: Checking for Non-Linearity
 ## Multiple R-squared:  0.4528, Adjusted R-squared:  0.4429 
 ## F-statistic: 45.61 on 8 and 441 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>The model output indicates that ideology may have a non-linear relationships with risk perceptions of climate change. For ideology, only the squared term is significant, indicating that levels of perceived risk of climate change decline at an increasing rate for those on the most conservative end of the scale. Again, this is consistent with the visual inspection of the relationship between ideology and the residuals in Figure <a href="the-art-of-regression-diagnostics.html#fig:multlin">15.4</a>. The question remains whether the introduction of these non-linear (polynomial) terms improves overall model fit. We can check that with an analysis of variance across the simple model (without polynomial terms) and the models with the squared terms.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1"><span class="kw">anova</span>(ols1,ols2)</a></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1"><span class="kw">anova</span>(ols1,ols2)</a></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: glbcc_risk ~ age + education + income + ideol
@@ -490,8 +495,8 @@ Figure 15.4: Checking for Non-Linearity
   \tag{15.1}
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(R^2_0\)</span> is the <span class="math inline">\(R^2\)</span> of the linear model, <span class="math inline">\(R^2_1\)</span> is the <span class="math inline">\(R^2\)</span> of the polynomial model(s), <span class="math inline">\(q\)</span> is the number of new regressors, and <span class="math inline">\(k_1\)</span> is the number of IVs in the polynomial model(s). The null hypothesis is that the functional relationship between the <span class="math inline">\(X\)</span>’s and <span class="math inline">\(Y\)</span> is linear, therefore the coefficients of the second and third powers to the IVs are zero. If there is a low <span class="math inline">\(p\)</span>-value (i.e., if we can reject the null hypothesis), non-linear relationships are suspected. This test can be run using the <code>resettest</code> function from the <code>lmtest</code> package. Here we are setting the IVs to the second and third powers and we are examining the regressor variables.<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a></p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1"><span class="kw">library</span>(lmtest)</a>
-<a class="sourceLine" id="cb324-2" data-line-number="2"><span class="kw">resettest</span>(ols1,<span class="dt">power=</span><span class="dv">2</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">type=</span><span class="st">&quot;regressor&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1"><span class="kw">library</span>(lmtest)</a>
+<a class="sourceLine" id="cb331-2" data-line-number="2"><span class="kw">resettest</span>(ols1,<span class="dt">power=</span><span class="dv">2</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">type=</span><span class="st">&quot;regressor&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  RESET test
 ## 
@@ -519,13 +524,13 @@ Figure 15.6: Heteroscedasticity
 </p>
 </div>
 <p>The first step in determining whether we have constant variance is to plot the the residuals by the fitted values for <span class="math inline">\(Y\)</span>, as follows:<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a></p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1">ds.small<span class="op">$</span>fit.r &lt;-<span class="st"> </span>ols1<span class="op">$</span>residuals</a>
-<a class="sourceLine" id="cb326-2" data-line-number="2">ds.small<span class="op">$</span>fit.p &lt;-<span class="st"> </span>ols1<span class="op">$</span>fitted.values</a>
-<a class="sourceLine" id="cb326-3" data-line-number="3"><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.p, fit.r)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb326-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb326-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb326-6" data-line-number="6"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Residuals&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb326-7" data-line-number="7"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Fitted&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1">ds.small<span class="op">$</span>fit.r &lt;-<span class="st"> </span>ols1<span class="op">$</span>residuals</a>
+<a class="sourceLine" id="cb333-2" data-line-number="2">ds.small<span class="op">$</span>fit.p &lt;-<span class="st"> </span>ols1<span class="op">$</span>fitted.values</a>
+<a class="sourceLine" id="cb333-3" data-line-number="3"><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.p, fit.r)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb333-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb333-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb333-6" data-line-number="6"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Residuals&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb333-7" data-line-number="7"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Fitted&quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:multregres"></span>
 <img src="_main_files/figure-html/multregres-1.png" alt="Multiple Regression Residuals and Fitted Values" width="672" />
 <p class="caption">
@@ -534,8 +539,8 @@ Figure 15.7: Multiple Regression Residuals and Fitted Values
 </div>
 <p>Based on the pattern evident in Figure <a href="the-art-of-regression-diagnostics.html#fig:multregres">15.7</a>, the residuals
 appear to show heteroscedasticity. We can test for non-constant error using the Breusch-Pagan (aka Cook-Weisberg) test. This tests the null hypothesis that the error variance is constant, therefore a small p value would indicate that we have heteroscedasticity. In R we can use the ncvTest function from the car package.</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1"><span class="kw">library</span>(car)</a>
-<a class="sourceLine" id="cb327-2" data-line-number="2"><span class="kw">ncvTest</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb334-2" data-line-number="2"><span class="kw">ncvTest</span>(ols1)</a></code></pre></div>
 <pre><code>## Non-constant Variance Score Test 
 ## Variance formula: ~ fitted.values 
 ## Chisquare = 12.70938, Df = 1, p = 0.00036383</code></pre>
@@ -558,23 +563,23 @@ matrix of the squared residuals,</p>
  V_{hccm}(b) = (X&#39;X)^{-1} X&#39;\text{diag}(e^2_i,\ldots,e^2_n) X(X&#39;X)^{-1}
 \end{equation*}\]</span></p>
 <p>We can use the <code>hccm</code> function from the <code>car</code> package to calculate the robust standard errors for our regression model, predicting perceived environmental risk (<span class="math inline">\(Y\)</span>) with political ideology, age, education and income as the <span class="math inline">\(X\)</span> variables.</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1"><span class="kw">library</span>(car)</a>
-<a class="sourceLine" id="cb329-2" data-line-number="2"><span class="kw">hccm</span>(ols1) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diag</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sqrt</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="kw">hccm</span>(ols1) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diag</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sqrt</span>()</a></code></pre></div>
 <pre><code>##    (Intercept)            age      education         income          ideol 
 ## 0.668778725013 0.008030365625 0.069824489564 0.000002320899 0.060039031426</code></pre>
 <p>Using the <code>hccm</code> function we can create a function in <code>R</code> that will calculate the robust standard errors and the subsequent <span class="math inline">\(t\)</span>-values and <span class="math inline">\(p\)</span>-values.</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1"><span class="kw">library</span>(car)</a>
-<a class="sourceLine" id="cb331-2" data-line-number="2">robust.se &lt;-<span class="st"> </span><span class="cf">function</span>(model) {</a>
-<a class="sourceLine" id="cb331-3" data-line-number="3">  s &lt;-<span class="st"> </span><span class="kw">summary</span>(model)</a>
-<a class="sourceLine" id="cb331-4" data-line-number="4">  wse &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">diag</span>(<span class="kw">hccm</span>(ols1)))</a>
-<a class="sourceLine" id="cb331-5" data-line-number="5">  t &lt;-<span class="st"> </span>model<span class="op">$</span>coefficients<span class="op">/</span>wse</a>
-<a class="sourceLine" id="cb331-6" data-line-number="6">  p &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="kw">pnorm</span>(<span class="op">-</span><span class="kw">abs</span>(t))</a>
-<a class="sourceLine" id="cb331-7" data-line-number="7">  results &lt;-<span class="st"> </span><span class="kw">cbind</span>(model<span class="op">$</span>coefficients, wse, t, p)</a>
-<a class="sourceLine" id="cb331-8" data-line-number="8">  <span class="kw">dimnames</span>(results) &lt;-<span class="st"> </span><span class="kw">dimnames</span>(s<span class="op">$</span>coefficients)</a>
-<a class="sourceLine" id="cb331-9" data-line-number="9">  results</a>
-<a class="sourceLine" id="cb331-10" data-line-number="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb338-2" data-line-number="2">robust.se &lt;-<span class="st"> </span><span class="cf">function</span>(model) {</a>
+<a class="sourceLine" id="cb338-3" data-line-number="3">  s &lt;-<span class="st"> </span><span class="kw">summary</span>(model)</a>
+<a class="sourceLine" id="cb338-4" data-line-number="4">  wse &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">diag</span>(<span class="kw">hccm</span>(ols1)))</a>
+<a class="sourceLine" id="cb338-5" data-line-number="5">  t &lt;-<span class="st"> </span>model<span class="op">$</span>coefficients<span class="op">/</span>wse</a>
+<a class="sourceLine" id="cb338-6" data-line-number="6">  p &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="kw">pnorm</span>(<span class="op">-</span><span class="kw">abs</span>(t))</a>
+<a class="sourceLine" id="cb338-7" data-line-number="7">  results &lt;-<span class="st"> </span><span class="kw">cbind</span>(model<span class="op">$</span>coefficients, wse, t, p)</a>
+<a class="sourceLine" id="cb338-8" data-line-number="8">  <span class="kw">dimnames</span>(results) &lt;-<span class="st"> </span><span class="kw">dimnames</span>(s<span class="op">$</span>coefficients)</a>
+<a class="sourceLine" id="cb338-9" data-line-number="9">  results</a>
+<a class="sourceLine" id="cb338-10" data-line-number="10">}</a></code></pre></div>
 <p>We can then compare our results with the original simple regression model results.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1"><span class="kw">summary</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1"><span class="kw">summary</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + education + income + ideol, data = ds.small)
@@ -596,7 +601,7 @@ matrix of the squared residuals,</p>
 ## Residual standard error: 2.353 on 445 degrees of freedom
 ## Multiple R-squared:  0.4365, Adjusted R-squared:  0.4315 
 ## F-statistic: 86.19 on 4 and 445 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1"><span class="kw">robust.se</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1"><span class="kw">robust.se</span>(ols1)</a></code></pre></div>
 <pre><code>##                     Estimate     Std. Error      t value
 ## (Intercept) 12.0848259958670 0.668778725013  18.06999168
 ## age         -0.0055585796372 0.008030365625  -0.69219509
@@ -621,8 +626,8 @@ matrix of the squared residuals,</p>
 \end{equation}\]</span></p>
 <p>The <span class="math inline">\(d\)</span> statistics ranges from <span class="math inline">\(0\)</span> to <span class="math inline">\(4\)</span>; <span class="math inline">\(0 \leq d \leq 4\)</span>. A <span class="math inline">\(0\)</span> indicates perfect positive correction, <span class="math inline">\(4\)</span> indicates perfect negative correlation, and a <span class="math inline">\(2\)</span> indicates no autocorrelation. Therefore, we look for values of <span class="math inline">\(d\)</span> that are close to <span class="math inline">\(2\)</span>.</p>
 <p>We can use the <code>dwtest</code> function in the <code>lmtest</code> package to test the null hypothesis that autocorrelation is <span class="math inline">\(0\)</span>, meaning that we don’t have autocorrelation.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1"><span class="kw">library</span>(lmtest)</a>
-<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="kw">dwtest</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1"><span class="kw">library</span>(lmtest)</a>
+<a class="sourceLine" id="cb343-2" data-line-number="2"><span class="kw">dwtest</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -635,18 +640,18 @@ matrix of the squared residuals,</p>
 <h3><span class="header-section-number">15.2.4</span> Normality of the Residuals</h3>
 <p>This is a critical assumption for OLS because (along with homoscedasticity) it is required for hypothesis tests and confidence interval estimation. It is particularly sensitive with small samples. Note that non-normality will increase sample-to-sample variation in model estimates.</p>
 <p>To examine normality of the residuals we first plot the residuals and then run what is known as the Shapiro-Wilk normality test. Here we run the test on our example model, and plot the residuals.</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.r)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb338-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.r)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb339-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_density</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb339-3" data-line-number="3"><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(ds.small<span class="op">$</span>fit.r),</a>
-<a class="sourceLine" id="cb339-4" data-line-number="4">                                         <span class="dt">sd =</span> <span class="kw">sd</span>(ds.small<span class="op">$</span>fit.r)),</a>
-<a class="sourceLine" id="cb339-5" data-line-number="5">                <span class="dt">color =</span> <span class="st">&quot;dodgerblue&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">.5</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1">p3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(<span class="st">&quot;&quot;</span>, fit.r)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb340-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>() </a></code></pre></div>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">p4 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(<span class="dt">sample =</span> fit.r)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb341-2" data-line-number="2"><span class="st">  </span><span class="kw">stat_qq</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb341-3" data-line-number="3"><span class="st">  </span><span class="kw">stat_qq_line</span>(<span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">alpha =</span> <span class="fl">.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.r)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb345-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(fit.r)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb346-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_density</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb346-3" data-line-number="3"><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(ds.small<span class="op">$</span>fit.r),</a>
+<a class="sourceLine" id="cb346-4" data-line-number="4">                                         <span class="dt">sd =</span> <span class="kw">sd</span>(ds.small<span class="op">$</span>fit.r)),</a>
+<a class="sourceLine" id="cb346-5" data-line-number="5">                <span class="dt">color =</span> <span class="st">&quot;dodgerblue&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1">p3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(<span class="st">&quot;&quot;</span>, fit.r)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb347-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>() </a></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1">p4 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(<span class="dt">sample =</span> fit.r)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb348-2" data-line-number="2"><span class="st">  </span><span class="kw">stat_qq</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb348-3" data-line-number="3"><span class="st">  </span><span class="kw">stat_qq_line</span>(<span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">alpha =</span> <span class="fl">.5</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:normresids"></span>
 <img src="_main_files/figure-html/normresids-1.png" alt="Multiple Regression Residuals" width="672" />
 <p class="caption">
@@ -660,7 +665,7 @@ Figure 15.8: Multiple Regression Residuals
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(x_{(i)}\)</span> are the ordered sample values and <span class="math inline">\(a_i\)</span> are constants generated from the means, variances, and covariances of the order statistics from a normal distribution.
 The Shapiro-Wilk tests the null hypothesis that the residuals are normally distributed. To perform this test in <code>R</code>, use the <code>shapiro.test</code> function.</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" data-line-number="1"><span class="kw">shapiro.test</span>(ols1<span class="op">$</span>residuals)</a></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1"><span class="kw">shapiro.test</span>(ols1<span class="op">$</span>residuals)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -681,9 +686,9 @@ The Shapiro-Wilk tests the null hypothesis that the residuals are normally distr
 <h3><span class="header-section-number">15.2.6</span> Outliers</h3>
 <p>A regression outlier is an observation that has an unusual value on the dependent variable <span class="math inline">\(Y\)</span>, conditioned on the values of the independent variables, <span class="math inline">\(X\)</span>. Note that an outlier can have a large residual value, but not necessarily affect the estimated slope or intercept. Below we examine a few ways to identify potential outliers, and their effects on our estimated slope coefficients.</p>
 <p>Using the regression example, we first plot the residuals to look for any possible outliers. In this plot we are plotting the raw residuals for each of the <span class="math inline">\(500\)</span> observations. This is shown in Figure <a href="the-art-of-regression-diagnostics.html#fig:siminresid">15.9</a>.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" data-line-number="1"><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(<span class="kw">row.names</span>(ds.small), fit.r)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb344-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb344-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1"><span class="kw">ggplot</span>(ds.small, <span class="kw">aes</span>(<span class="kw">row.names</span>(ds.small), fit.r)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb351-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb351-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:siminresid"></span>
 <img src="_main_files/figure-html/siminresid-1.png" alt="Index Plot of Residuals: Multiple Regression" width="672" />
 <p class="caption">
@@ -691,19 +696,19 @@ Figure 15.9: Index Plot of Residuals: Multiple Regression
 </p>
 </div>
 <p>Next, we can sort the residuals and find the case with the largest absolute value and examine that case.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1"><span class="co">#  Sort the residuals</span></a>
-<a class="sourceLine" id="cb345-2" data-line-number="2">output<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">sort</span>(ols1<span class="op">$</span>residuals)  <span class="co"># smallest first</span></a>
-<a class="sourceLine" id="cb345-3" data-line-number="3">output<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">sort</span>(ols1<span class="op">$</span>residuals, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="co"># largest first</span></a>
-<a class="sourceLine" id="cb345-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb345-5" data-line-number="5"><span class="co">#  The head function return the top results, the argument 1 returns 1 variable only</span></a>
-<a class="sourceLine" id="cb345-6" data-line-number="6"><span class="kw">head</span>(output<span class="fl">.1</span>, <span class="dv">1</span>) <span class="co"># smallest residual absolute value</span></a></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1"><span class="co">#  Sort the residuals</span></a>
+<a class="sourceLine" id="cb352-2" data-line-number="2">output<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">sort</span>(ols1<span class="op">$</span>residuals)  <span class="co"># smallest first</span></a>
+<a class="sourceLine" id="cb352-3" data-line-number="3">output<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">sort</span>(ols1<span class="op">$</span>residuals, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="co"># largest first</span></a>
+<a class="sourceLine" id="cb352-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb352-5" data-line-number="5"><span class="co">#  The head function return the top results, the argument 1 returns 1 variable only</span></a>
+<a class="sourceLine" id="cb352-6" data-line-number="6"><span class="kw">head</span>(output<span class="fl">.1</span>, <span class="dv">1</span>) <span class="co"># smallest residual absolute value</span></a></code></pre></div>
 <pre><code>##       333 
 ## -7.161695</code></pre>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1"><span class="kw">head</span>(output<span class="fl">.2</span>, <span class="dv">1</span>) <span class="co"># largest residual absolute value</span></a></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1"><span class="kw">head</span>(output<span class="fl">.2</span>, <span class="dv">1</span>) <span class="co"># largest residual absolute value</span></a></code></pre></div>
 <pre><code>##      104 
 ## 6.898077</code></pre>
 <p>Then, we can examine the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> values of those cases on key variables. Here we examine the values across all independent variables in the model.</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1">ds.small[<span class="kw">c</span>(<span class="dv">298</span>,<span class="dv">94</span>),<span class="kw">c</span>(<span class="st">&quot;age&quot;</span>,<span class="st">&quot;education&quot;</span>,<span class="st">&quot;income&quot;</span>,<span class="st">&quot;ideol&quot;</span>,<span class="st">&quot;glbcc_risk&quot;</span>)] <span class="co"># [c(row numbers),c(column numbers)]</span></a></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" data-line-number="1">ds.small[<span class="kw">c</span>(<span class="dv">298</span>,<span class="dv">94</span>),<span class="kw">c</span>(<span class="st">&quot;age&quot;</span>,<span class="st">&quot;education&quot;</span>,<span class="st">&quot;income&quot;</span>,<span class="st">&quot;ideol&quot;</span>,<span class="st">&quot;glbcc_risk&quot;</span>)] <span class="co"># [c(row numbers),c(column numbers)]</span></a></code></pre></div>
 <pre><code>##     age education income ideol glbcc_risk
 ## 333  69         6 100000     2          2
 ## 104  55         7  94000     7         10</code></pre>
@@ -717,13 +722,13 @@ Figure 15.9: Index Plot of Residuals: Multiple Regression
   \tag{15.4}
 \end{equation}\]</span></p>
 <p>Note that if DFBETAS <span class="math inline">\(&gt; 0\)</span>, then case <span class="math inline">\(i\)</span> pulls <span class="math inline">\(B_j\)</span> <em>up</em>, and if DFBETAS <span class="math inline">\(&lt; 0\)</span>, then case <span class="math inline">\(i\)</span> pulls <span class="math inline">\(B_j\)</span> <em>down</em>. In general, if <span class="math inline">\(|\text{DFBETAS}_{ij}| &gt; \frac{2}{\sqrt{n}}\)</span> then these cases warrant further examination. Note that this approach gets the top 5% of influential cases, given the sample size. For both simple (bi-variate) and multiple regression models the DFBETA cut-offs can be calculated in <code>R</code>.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb351-2" data-line-number="2">df</a></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb358-2" data-line-number="2">df</a></code></pre></div>
 <pre><code>## [1] 0.08944272</code></pre>
 <p>In this case, if <span class="math inline">\(|\text{DFBETAS}| &gt; 0.0894427\)</span> then they can be examined for possible influence. Note, however, than in large datasets this may prove to be difficult, so you should examine the largest DFBETAS first. In our example, we will look only at the largest 5 DFBETAS.</p>
 <p>To calculate the DFBETAS we use the <code>dfbetas</code> function. Then we examine the DFBETA values for the first five rows of our data.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1">df.ols1 &lt;-<span class="st"> </span><span class="kw">dfbetas</span>(ols1)</a>
-<a class="sourceLine" id="cb353-2" data-line-number="2">df.ols1[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</a></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1">df.ols1 &lt;-<span class="st"> </span><span class="kw">dfbetas</span>(ols1)</a>
+<a class="sourceLine" id="cb360-2" data-line-number="2">df.ols1[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</a></code></pre></div>
 <pre><code>##    (Intercept)          age   education      income        ideol
 ## 1 -0.004396485  0.005554545  0.01043817 -0.01548697 -0.005616679
 ## 2  0.046302381 -0.007569305 -0.02671961 -0.01401653 -0.042323468
@@ -731,12 +736,12 @@ Figure 15.9: Index Plot of Residuals: Multiple Regression
 ## 5 -0.072106074  0.060263914  0.02966501  0.01243482  0.015464937
 ## 7 -0.057608817 -0.005345142 -0.04948456  0.06456577  0.134103149</code></pre>
 <p>We can then plot the DFBETAS for each of the IVs in our regression models, and create lines for <span class="math inline">\(\pm 0.089\)</span>. Figure <a href="the-art-of-regression-diagnostics.html#fig:dfbetas">15.10</a> shows the DFBETAS for each variable in the multiple regression model.</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1"><span class="kw">melt</span>(df.ols1, <span class="dt">varnames =</span> <span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="st">&quot;variable&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb355-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(index, value)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb355-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb355-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> df) <span class="op">+</span></a>
-<a class="sourceLine" id="cb355-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="op">-</span>df) <span class="op">+</span></a>
-<a class="sourceLine" id="cb355-6" data-line-number="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1"><span class="kw">melt</span>(df.ols1, <span class="dt">varnames =</span> <span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="st">&quot;variable&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb362-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(index, value)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb362-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb362-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> df) <span class="op">+</span></a>
+<a class="sourceLine" id="cb362-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="op">-</span>df) <span class="op">+</span></a>
+<a class="sourceLine" id="cb362-6" data-line-number="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:dfbetas"></span>
 <img src="_main_files/figure-html/dfbetas-1.png" alt="Index Plot of DFBETAS: Multiple Regression" width="672" />
 <p class="caption">
@@ -744,60 +749,60 @@ Figure 15.10: Index Plot of DFBETAS: Multiple Regression
 </p>
 </div>
 <p>As can be seen, several cases seem to exceed the <span class="math inline">\(0.089\)</span> cut-off. Next we find the case with the highest absolute DFBETA value, and examine the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> values for that case.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" data-line-number="1"><span class="co">#  Return Absolute Value dfbeta</span></a>
-<a class="sourceLine" id="cb356-2" data-line-number="2"><span class="kw">names</span>(df.ols1) &lt;-<span class="st"> </span><span class="kw">row.names</span>(ds.small)</a>
-<a class="sourceLine" id="cb356-3" data-line-number="3">df.ols1[<span class="kw">abs</span>(df.ols1) <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(<span class="kw">abs</span>(df.ols1))]  </a></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1"><span class="co">#  Return Absolute Value dfbeta</span></a>
+<a class="sourceLine" id="cb363-2" data-line-number="2"><span class="kw">names</span>(df.ols1) &lt;-<span class="st"> </span><span class="kw">row.names</span>(ds.small)</a>
+<a class="sourceLine" id="cb363-3" data-line-number="3">df.ols1[<span class="kw">abs</span>(df.ols1) <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(<span class="kw">abs</span>(df.ols1))]  </a></code></pre></div>
 <pre><code>##      &lt;NA&gt; 
 ## 0.4112137</code></pre>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1"><span class="co"># a observation name may not be returned - let&#39;s figure out the observation</span></a>
-<a class="sourceLine" id="cb358-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb358-3" data-line-number="3"><span class="co">#  convert df.osl1 from matrix to dataframe </span></a>
-<a class="sourceLine" id="cb358-4" data-line-number="4"><span class="kw">class</span>(df.ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1"><span class="co"># a observation name may not be returned - let&#39;s figure out the observation</span></a>
+<a class="sourceLine" id="cb365-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb365-3" data-line-number="3"><span class="co">#  convert df.osl1 from matrix to dataframe </span></a>
+<a class="sourceLine" id="cb365-4" data-line-number="4"><span class="kw">class</span>(df.ols1)</a></code></pre></div>
 <pre><code>## [1] &quot;matrix&quot;</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1">df2.ols1 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(df.ols1)</a>
-<a class="sourceLine" id="cb360-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb360-3" data-line-number="3"><span class="co">#  add an id variable</span></a>
-<a class="sourceLine" id="cb360-4" data-line-number="4">df2.ols1<span class="op">$</span>id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">450</span> <span class="co">#  generate a new observation number</span></a>
-<a class="sourceLine" id="cb360-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb360-6" data-line-number="6"><span class="co">#  head function returns one value, based on ,1</span></a>
-<a class="sourceLine" id="cb360-7" data-line-number="7"><span class="co">#  syntax - head(data_set[with(data_set, order(+/-variable)), ], 1)</span></a>
-<a class="sourceLine" id="cb360-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb360-9" data-line-number="9"><span class="co">#  Ideology</span></a>
-<a class="sourceLine" id="cb360-10" data-line-number="10"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>ideol)), ], <span class="dv">1</span>) <span class="co"># order declining</span></a></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1">df2.ols1 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(df.ols1)</a>
+<a class="sourceLine" id="cb367-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb367-3" data-line-number="3"><span class="co">#  add an id variable</span></a>
+<a class="sourceLine" id="cb367-4" data-line-number="4">df2.ols1<span class="op">$</span>id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">450</span> <span class="co">#  generate a new observation number</span></a>
+<a class="sourceLine" id="cb367-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb367-6" data-line-number="6"><span class="co">#  head function returns one value, based on ,1</span></a>
+<a class="sourceLine" id="cb367-7" data-line-number="7"><span class="co">#  syntax - head(data_set[with(data_set, order(+/-variable)), ], 1)</span></a>
+<a class="sourceLine" id="cb367-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb367-9" data-line-number="9"><span class="co">#  Ideology</span></a>
+<a class="sourceLine" id="cb367-10" data-line-number="10"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>ideol)), ], <span class="dv">1</span>) <span class="co"># order declining</span></a></code></pre></div>
 <pre><code>##      (Intercept)        age   education      income     ideol  id
 ## 333 -0.001083869 -0.1276632 -0.04252348 -0.07591519 0.2438799 298</code></pre>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>ideol)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></a></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>ideol)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></a></code></pre></div>
 <pre><code>##     (Intercept)       age   education     income       ideol  id
 ## 148  -0.0477082 0.1279219 -0.03641922 0.04291471 -0.09833372 131</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1"><span class="co">#  Income</span></a>
-<a class="sourceLine" id="cb364-2" data-line-number="2"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>income)), ], <span class="dv">1</span>) <span class="co"># order declining</span></a></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" data-line-number="1"><span class="co">#  Income</span></a>
+<a class="sourceLine" id="cb371-2" data-line-number="2"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>income)), ], <span class="dv">1</span>) <span class="co"># order declining</span></a></code></pre></div>
 <pre><code>##     (Intercept)         age    education    income       ideol  id
 ## 494 -0.05137992 -0.01514244 -0.009938873 0.4112137 -0.03873292 445</code></pre>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>income)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></a></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" data-line-number="1"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>income)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></a></code></pre></div>
 <pre><code>##     (Intercept)         age  education     income      ideol  id
 ## 284  0.06766781 -0.06611698 0.08166577 -0.4001515 0.04501527 254</code></pre>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1"><span class="co">#  Age</span></a>
-<a class="sourceLine" id="cb368-2" data-line-number="2"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>age)), ], <span class="dv">1</span>) <span class="co"># order declining</span></a></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" data-line-number="1"><span class="co">#  Age</span></a>
+<a class="sourceLine" id="cb375-2" data-line-number="2"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>age)), ], <span class="dv">1</span>) <span class="co"># order declining</span></a></code></pre></div>
 <pre><code>##    (Intercept)       age  education      income     ideol id
 ## 87  -0.2146905 0.1786665 0.04131316 -0.01755352 0.1390403 78</code></pre>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" data-line-number="1"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>age)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></a></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" data-line-number="1"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>age)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></a></code></pre></div>
 <pre><code>##     (Intercept)        age  education     income     ideol  id
 ## 467    0.183455 -0.2193257 -0.1906404 0.02477437 0.1832784 420</code></pre>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" data-line-number="1"><span class="co">#  Education - we find the amount - ID 308 for edu</span></a>
-<a class="sourceLine" id="cb372-2" data-line-number="2"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>education)), ], <span class="dv">1</span>) <span class="co"># order declining</span></a></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb379-1" data-line-number="1"><span class="co">#  Education - we find the amount - ID 308 for edu</span></a>
+<a class="sourceLine" id="cb379-2" data-line-number="2"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">-</span>education)), ], <span class="dv">1</span>) <span class="co"># order declining</span></a></code></pre></div>
 <pre><code>##     (Intercept)        age education      income      ideol  id
 ## 343  -0.1751724 0.06071469 0.1813973 -0.05557382 0.09717012 308</code></pre>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" data-line-number="1"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>education)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></a></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb381-1" data-line-number="1"><span class="kw">head</span>(df2.ols1[<span class="kw">with</span>(df2.ols1, <span class="kw">order</span>(<span class="op">+</span>education)), ], <span class="dv">1</span>) <span class="co"># order increasing</span></a></code></pre></div>
 <pre><code>##     (Intercept)       age  education      income        ideol id
 ## 105  0.05091437 0.1062966 -0.2033285 -0.02741242 -0.005880984 95</code></pre>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" data-line-number="1"><span class="co">#  View the output</span></a>
-<a class="sourceLine" id="cb376-2" data-line-number="2">df.ols1[<span class="kw">abs</span>(df.ols1) <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(<span class="kw">abs</span>(df.ols1))]  </a></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" data-line-number="1"><span class="co">#  View the output</span></a>
+<a class="sourceLine" id="cb383-2" data-line-number="2">df.ols1[<span class="kw">abs</span>(df.ols1) <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(<span class="kw">abs</span>(df.ols1))]  </a></code></pre></div>
 <pre><code>##      &lt;NA&gt; 
 ## 0.4112137</code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" data-line-number="1">df.ols1[<span class="kw">c</span>(<span class="dv">308</span>),] <span class="co"># dfbeta number is observation 131 - education</span></a></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" data-line-number="1">df.ols1[<span class="kw">c</span>(<span class="dv">308</span>),] <span class="co"># dfbeta number is observation 131 - education</span></a></code></pre></div>
 <pre><code>## (Intercept)         age   education      income       ideol 
 ## -0.17517243  0.06071469  0.18139726 -0.05557382  0.09717012</code></pre>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" data-line-number="1">ds.small[<span class="kw">c</span>(<span class="dv">308</span>), <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>, <span class="st">&quot;glbcc_risk&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb387-1" data-line-number="1">ds.small[<span class="kw">c</span>(<span class="dv">308</span>), <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;ideol&quot;</span>, <span class="st">&quot;glbcc_risk&quot;</span>)]</a></code></pre></div>
 <pre><code>##     age education income ideol glbcc_risk
 ## 343  51         2  81000     3          4</code></pre>
 <p>Note that this “severe outlier” is indeed an interesting case – a 51 year old with a high school diploma, relatively high income, who is slightly liberal and perceivs low risk for climate change. But this outlier is not implausible, and therefore we can be reassured that – even in this most extreme case – we do not have problematic outliers.</p>
@@ -832,11 +837,11 @@ Figure 15.10: Index Plot of DFBETAS: Multiple Regression
 </ul></li>
 </ul>
 <p>You should always check the correlations between the IVs during the model building process. This is a way to quickly identify possible multicollinearity issues.</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" data-line-number="1">ds <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb382-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, education, income, ideol) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb382-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb382-4" data-line-number="4"><span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb382-5" data-line-number="5"><span class="st">  </span><span class="kw">cor</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb389-1" data-line-number="1">ds <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb389-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(age, education, income, ideol) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb389-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb389-4" data-line-number="4"><span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb389-5" data-line-number="5"><span class="st">  </span><span class="kw">cor</span>()</a></code></pre></div>
 <pre><code>##                   age   education      income       ideol
 ## age        1.00000000 -0.06370223 -0.11853753  0.08535126
 ## education -0.06370223  1.00000000  0.30129917 -0.13770584
@@ -862,11 +867,11 @@ Figure 15.10: Index Plot of DFBETAS: Multiple Regression
 <li>If <span class="math inline">\(n &lt; 1000\)</span>, tolerance should exceed <span class="math inline">\(0.1\)</span></li>
 </ul>
 <p>Both VIF and tolerance can be calculated in <code>R</code>.</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" data-line-number="1"><span class="kw">library</span>(car)</a>
-<a class="sourceLine" id="cb384-2" data-line-number="2"><span class="kw">vif</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb391-1" data-line-number="1"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb391-2" data-line-number="2"><span class="kw">vif</span>(ols1)</a></code></pre></div>
 <pre><code>##       age education    income     ideol 
 ##  1.024094  1.098383  1.101733  1.009105</code></pre>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" data-line-number="1"><span class="dv">1</span><span class="op">/</span><span class="kw">vif</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb393-1" data-line-number="1"><span class="dv">1</span><span class="op">/</span><span class="kw">vif</span>(ols1)</a></code></pre></div>
 <pre><code>##       age education    income     ideol 
 ## 0.9764731 0.9104295 0.9076611 0.9909775</code></pre>
 <p>Note that, for our example model, we are well within acceptable limits on both VIF and tolerance.</p>

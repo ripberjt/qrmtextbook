@@ -362,13 +362,13 @@ Example:
  &amp;=6x^{5} 
 \end{align*}\]</span></p>
 <p>A second example can be plotted in <code>R</code>. The function is <span class="math inline">\(f(x)=x^{2}\)</span> and therefore, using the power rule, the derivative is: <span class="math inline">\(f&#39;(x)=2x\)</span>.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb101-2" data-line-number="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb105-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>##  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb103-2" data-line-number="2">y</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb107-2" data-line-number="2">y</a></code></pre></div>
 <pre><code>##  [1] 25 16  9  4  1  0  1  4  9 16 25</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="kw">plot</span>(x,y, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">pch=</span><span class="dv">19</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">plot</span>(x,y, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">pch=</span><span class="dv">19</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:powerfun"></span>
 <img src="_main_files/figure-html/powerfun-1.png" alt="Calculating Slopes for $(x,y)$ Pairs" width="672" />
 <p class="caption">
@@ -419,14 +419,14 @@ f&#39;(x)&amp;=(x^{3})&#39;(x-5)+(x^{3})(x-5)&#39; \\
 &amp;=4x^{3}-15x^{2} 
 \end{align*}\]</span></p>
 <p>In a second example, the product rule is applied to the function <span class="math inline">\(y=f(x)=x^{2}-6x+5\)</span>. The derivative of this function is <span class="math inline">\(f&#39;(x)=2x-6\)</span>. This function can be plotted in <code>R</code>.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span><span class="op">:</span><span class="dv">7</span>)</a>
-<a class="sourceLine" id="cb106-2" data-line-number="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span><span class="op">:</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb110-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>## [1] -1  0  1  2  3  4  5  6  7</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2-6</span><span class="op">*</span>x<span class="op">+</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb108-2" data-line-number="2">y</a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2-6</span><span class="op">*</span>x<span class="op">+</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb112-2" data-line-number="2">y</a></code></pre></div>
 <pre><code>## [1] 12  5  0 -3 -4 -3  0  5 12</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">plot</span>(x,y, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">pch=</span><span class="dv">19</span>)</a>
-<a class="sourceLine" id="cb110-2" data-line-number="2"><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">v=</span><span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">plot</span>(x,y, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">pch=</span><span class="dv">19</span>)</a>
+<a class="sourceLine" id="cb114-2" data-line-number="2"><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">v=</span><span class="dv">0</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:prodfun"></span>
 <img src="_main_files/figure-html/prodfun-1.png" alt="Plot of Function $y=f(x)=x^2-6x+5$" width="672" />
 <p class="caption">
@@ -434,8 +434,8 @@ Figure 8.2: Plot of Function <span class="math inline">\(y=f(x)=x^2-6x+5\)</span
 </p>
 </div>
 <p>We can also use the derivative and <code>R</code> to calculate the slope for each value of <span class="math inline">\(X\)</span>.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">b &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x<span class="dv">-6</span></a>
-<a class="sourceLine" id="cb111-2" data-line-number="2">b</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">b &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x<span class="dv">-6</span></a>
+<a class="sourceLine" id="cb115-2" data-line-number="2">b</a></code></pre></div>
 <pre><code>## [1] -8 -6 -4 -2  0  2  4  6  8</code></pre>
 <p>The values for <span class="math inline">\(X\)</span>, which are shown in Figure <a href="linear-estimation-and-minimizing-error.html#fig:prodfun">8.2</a>, range from -8 to +8 and return derivatives (slopes at a point) ranging from -25 to +25.</p>
 </div>
@@ -476,13 +476,13 @@ f&#39;(x)&amp;=5(7x^{2}-2x+13)^{4}*(7x^{2}-2x+13)&#39; \\
 <li><p>Thus, the critical point (there’s only one in this case) of the function is <span class="math inline">\((2,1)\)</span></p></li>
 </ul>
 <p>Once a critical point is identified, the next step is to determine whether that point is a minima or a maxima. The most straightforward way to do this is to identify the x,y coordinates and plot. This can be done in <code>R</code>, as we will show using the function <span class="math inline">\(y=f(x)=(x^{2}-4x+5)\)</span>. The plot is shown in Figure <a href="linear-estimation-and-minimizing-error.html#fig:crit">8.3</a>.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb113-2" data-line-number="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb117-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>##  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2-4</span><span class="op">*</span>x<span class="op">+</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb115-2" data-line-number="2">y</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2-4</span><span class="op">*</span>x<span class="op">+</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb119-2" data-line-number="2">y</a></code></pre></div>
 <pre><code>##  [1] 50 37 26 17 10  5  2  1  2  5 10</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="kw">plot</span>(x,y, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">pch=</span><span class="dv">19</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="kw">plot</span>(x,y, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">pch=</span><span class="dv">19</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:crit"></span>
 <img src="_main_files/figure-html/crit-1.png" alt="Identification of Critical Points" width="672" />
 <p class="caption">
@@ -608,50 +608,50 @@ coefficient:
 \hat{\beta}=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
 \end{equation*}\]</span></p>
 <p>Using <code>R</code>, this can be accomplished in a few steps. First create a vector of values for <code>x</code> and <code>y</code> (note that we chose these values arbitrarily for the purpose of this example).</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">9</span>)</a>
-<a class="sourceLine" id="cb118-2" data-line-number="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb122-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>## [1] 4 2 4 3 5 7 4 9</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">7</span>)</a>
-<a class="sourceLine" id="cb120-2" data-line-number="2">y</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb124-2" data-line-number="2">y</a></code></pre></div>
 <pre><code>## [1] 2 1 5 3 6 4 2 7</code></pre>
 <p>Then, create objects for <span class="math inline">\(\bar {X}\)</span> and <span class="math inline">\(\bar {Y}\)</span>:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">xbar &lt;-<span class="st"> </span><span class="kw">mean</span>(x)</a>
-<a class="sourceLine" id="cb122-2" data-line-number="2">xbar</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">xbar &lt;-<span class="st"> </span><span class="kw">mean</span>(x)</a>
+<a class="sourceLine" id="cb126-2" data-line-number="2">xbar</a></code></pre></div>
 <pre><code>## [1] 4.75</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">ybar &lt;-<span class="st"> </span><span class="kw">mean</span>(y)</a>
-<a class="sourceLine" id="cb124-2" data-line-number="2">ybar</a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">ybar &lt;-<span class="st"> </span><span class="kw">mean</span>(y)</a>
+<a class="sourceLine" id="cb128-2" data-line-number="2">ybar</a></code></pre></div>
 <pre><code>## [1] 3.75</code></pre>
 <p>Next, create objects for <span class="math inline">\((X-\bar X)\)</span> and <span class="math inline">\((Y-\bar Y)\)</span>, the deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> around their means:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">x.m.xbar &lt;-<span class="st"> </span>x<span class="op">-</span>xbar</a>
-<a class="sourceLine" id="cb126-2" data-line-number="2">x.m.xbar</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">x.m.xbar &lt;-<span class="st"> </span>x<span class="op">-</span>xbar</a>
+<a class="sourceLine" id="cb130-2" data-line-number="2">x.m.xbar</a></code></pre></div>
 <pre><code>## [1] -0.75 -2.75 -0.75 -1.75  0.25  2.25 -0.75  4.25</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">y.m.ybar &lt;-<span class="st"> </span>y<span class="op">-</span>ybar</a>
-<a class="sourceLine" id="cb128-2" data-line-number="2">y.m.ybar</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">y.m.ybar &lt;-<span class="st"> </span>y<span class="op">-</span>ybar</a>
+<a class="sourceLine" id="cb132-2" data-line-number="2">y.m.ybar</a></code></pre></div>
 <pre><code>## [1] -1.75 -2.75  1.25 -0.75  2.25  0.25 -1.75  3.25</code></pre>
 <p>Then, calculate <span class="math inline">\(\hat{\beta}\)</span>:</p>
 <p><span class="math display">\[\begin{equation*}
 \hat{\beta}=\frac{\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{\Sigma(X_{i}-\bar X)^2}
 \end{equation*}\]</span></p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">B &lt;-<span class="st"> </span><span class="kw">sum</span>((x.m.xbar)<span class="op">*</span>(y.m.ybar))<span class="op">/</span><span class="kw">sum</span>((x.m.xbar)<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb130-2" data-line-number="2">B</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">B &lt;-<span class="st"> </span><span class="kw">sum</span>((x.m.xbar)<span class="op">*</span>(y.m.ybar))<span class="op">/</span><span class="kw">sum</span>((x.m.xbar)<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb134-2" data-line-number="2">B</a></code></pre></div>
 <pre><code>## [1] 0.7183099</code></pre>
 <p>Finally, calculate <span class="math inline">\(\hat{\alpha}\)</span></p>
 <p><span class="math display">\[\begin{equation*}
 \hat{\alpha}=\bar Y-\hat{\beta}\bar X 
 \end{equation*}\]</span></p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">A &lt;-<span class="st"> </span>ybar<span class="op">-</span>B<span class="op">*</span>xbar</a>
-<a class="sourceLine" id="cb132-2" data-line-number="2">A</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">A &lt;-<span class="st"> </span>ybar<span class="op">-</span>B<span class="op">*</span>xbar</a>
+<a class="sourceLine" id="cb136-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>## [1] 0.3380282</code></pre>
 <p>To see the relationship, we can produce a scatterplot of <code>x</code> and <code>y</code> and add our regression line, as shown in Figure <a href="linear-estimation-and-minimizing-error.html#fig:regex">8.4</a>. So, for each unit increase in <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> increases by 0.7183099 and when <span class="math inline">\(x\)</span> is <span class="math inline">\(0\)</span>, <span class="math inline">\(y\)</span> is equal to 0.3380282.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="kw">plot</span>(x,y)</a>
-<a class="sourceLine" id="cb134-2" data-line-number="2"><span class="kw">lines</span>(x,A<span class="op">+</span>B<span class="op">*</span>x)</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">plot</span>(x,y)</a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="kw">lines</span>(x,A<span class="op">+</span>B<span class="op">*</span>x)</a></code></pre></div>
 <div class="figure"><span id="fig:regex"></span>
 <img src="_main_files/figure-html/regex-1.png" alt="Simple Regression of $x$ and $y$" width="672" />
 <p class="caption">
 Figure 8.4: Simple Regression of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>
 </p>
 </div>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1"><span class="kw">dev.off</span>()</a></code></pre></div>
 <pre><code>## null device 
 ##           1</code></pre>
 </div>

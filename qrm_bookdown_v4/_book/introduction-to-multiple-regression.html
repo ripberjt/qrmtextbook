@@ -369,12 +369,12 @@ matrix <span class="math inline">\(X\)</span>, are performed on all independent 
 <p>Once transposed is:</p>
 <p><span class="math inline">\(A&#39; = \begin{bmatrix}  10 &amp; -12 \\  5 &amp; 1 \\  8 &amp; 0 \end{bmatrix}\)</span></p>
 <p>Note that the operation “hinges” on the element in the upper right-hand corner of <span class="math inline">\(A\)</span>, <span class="math inline">\(A_{1,1}\)</span>, so the first column of <span class="math inline">\(A\)</span> becomes the first row on <span class="math inline">\(A&#39;\)</span>. To transpose a matrix in <code>R</code>, create a matrix object then simply use the <code>t</code> command.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="op">-</span><span class="dv">12</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">0</span>),<span class="dv">2</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb207-2" data-line-number="2">A</a></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="op">-</span><span class="dv">12</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">0</span>),<span class="dv">2</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb211-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   10    5    8
 ## [2,]  -12    1    0</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="kw">t</span>(A)</a></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">t</span>(A)</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   10  -12
 ## [2,]    5    1
@@ -385,17 +385,17 @@ matrix <span class="math inline">\(X\)</span>, are performed on all independent 
 <p>To add matrices together, they must have the same <em>dimensions</em>, meaning that the matrices must have the same number of rows and columns. Then, you simply add each element to its counterpart by row and column. For example:</p>
 <p><span class="math inline">\(A = \begin{bmatrix} 4 &amp; -3 \\ 2 &amp; 0 \end{bmatrix} + B = \begin{bmatrix} 8 &amp; 1 \\ 4 &amp; -5 \end{bmatrix} = A+B = \begin{bmatrix} 4+8 &amp; -3+1 \\ 2+4 &amp; 0+(-5) \end{bmatrix} = \begin{bmatrix}  12 &amp; -2 \\  6 &amp; -5 \end{bmatrix}\)</span></p>
 <p>To add matrices together in <code>R</code>, simply create two matrix objects and add them together.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">0</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb211-2" data-line-number="2">A</a></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">0</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb215-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    4   -3
 ## [2,]    2    0</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">5</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb213-2" data-line-number="2">B</a></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">5</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb217-2" data-line-number="2">B</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    8    1
 ## [2,]    4   -5</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">A <span class="op">+</span><span class="st"> </span>B</a></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">A <span class="op">+</span><span class="st"> </span>B</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   12   -2
 ## [2,]    6   -5</code></pre>
@@ -411,18 +411,18 @@ A_{rXq} * B_{qXc} = C_{rXc}
 <p>Then, multiply column elements by the row elements, as shown here:</p>
 <p><span class="math inline">\(A = \begin{bmatrix}  2 &amp; 5 \\  1 &amp; 0 \\  6 &amp; -2 \end{bmatrix} * B = \begin{bmatrix} 4 &amp; 2 &amp; 1 \\ 5 &amp; 7 &amp; 2 \end{bmatrix} = A X B = \\ \begin{bmatrix}  (2 X 4)+(5 X 5) &amp; (2 X 2)+(5 X 7) &amp; (2 X 1)+(5 X 2) \\  (1 X 4)+(0 X 5) &amp; (1 X 2)+(0 X 7) &amp; (1 X 1)+(0 X 2) \\  (6 X 4)+(-2 X 5) &amp; (6 X 2)+(-2 X 7) &amp; (6 X 1)+(-2 X 2) \end{bmatrix} = \begin{bmatrix}  33 &amp; 39 &amp; 12 \\  4 &amp; 2 &amp; 1 \\  14 &amp; -2 &amp; 2 \end{bmatrix}\)</span></p>
 <p>To multiply matrices in <code>R</code>, create two matrix objects and multiply them using the <code>\%*\%</code> command.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb217-2" data-line-number="2">A</a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb221-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    2    5
 ## [2,]    1    0
 ## [3,]    6   -2</code></pre>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">2</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb219-2" data-line-number="2">B</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">2</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb223-2" data-line-number="2">B</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4    2    1
 ## [2,]    5    7    2</code></pre>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>B</a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>B</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   33   39   12
 ## [2,]    4    2    1
@@ -434,17 +434,17 @@ A_{rXq} * B_{qXc} = C_{rXc}
 <p><span class="math inline">\(I = \begin{bmatrix}  1 &amp; 0 &amp; 0 &amp; 0 \\  0 &amp; 1 &amp; 0 &amp; 0 \\  0 &amp; 0 &amp; 1 &amp; 0 \\  0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span></p>
 <p>It acts like a 1 in algebra; a matrix (<span class="math inline">\(A\)</span>) times the identity matrix (<span class="math inline">\(I\)</span>) is <span class="math inline">\(A\)</span>. This can be demonstrated
 in <code>R</code>.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb223-2" data-line-number="2">A</a></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb227-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    5    2
 ## [2,]    3    4</code></pre>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">I &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb225-2" data-line-number="2">I</a></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">I &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb229-2" data-line-number="2">I</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    0
 ## [2,]    0    1</code></pre>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>I</a></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>I</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    5    2
 ## [2,]    3    4</code></pre>
@@ -467,17 +467,17 @@ in <code>R</code>.</p>
 <p><span class="math inline">\(A^{-1} = \begin{bmatrix}  \frac{2}{5} &amp; -\frac{1}{10} \\  -\frac{1}{5} &amp; \frac{3}{10} \end{bmatrix}\)</span></p>
 <p>Finding the inverse matrix can also be done in <code>R</code> using the
 <code>solve</code> command.</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb229-2" data-line-number="2">A</a></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb233-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    3    1
 ## [2,]    2    4</code></pre>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1">A.inverse &lt;-<span class="st"> </span><span class="kw">solve</span>(A)</a>
-<a class="sourceLine" id="cb231-2" data-line-number="2">A.inverse</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">A.inverse &lt;-<span class="st"> </span><span class="kw">solve</span>(A)</a>
+<a class="sourceLine" id="cb235-2" data-line-number="2">A.inverse</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]  0.4 -0.1
 ## [2,] -0.2  0.3</code></pre>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>A.inverse</a></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>A.inverse</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    0
 ## [2,]    0    1</code></pre>
@@ -576,8 +576,8 @@ X = \begin{bmatrix}
 \end{bmatrix}
 \]</span></p>
 <p>Create two objects, the <span class="math inline">\(y\)</span> matrix and the <span class="math inline">\(X\)</span> matrix.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">10</span>),<span class="dv">7</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb235-2" data-line-number="2">y</a></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">10</span>),<span class="dv">7</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb239-2" data-line-number="2">y</a></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    6
 ## [2,]   11
@@ -586,8 +586,8 @@ X = \begin{bmatrix}
 ## [5,]    5
 ## [6,]    9
 ## [7,]   10</code></pre>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1">X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">5</span>),<span class="dv">7</span>,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb237-2" data-line-number="2">X</a></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">5</span>),<span class="dv">7</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb241-2" data-line-number="2">X</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    5    4
 ## [2,]    1    7    2    3
@@ -599,32 +599,32 @@ X = \begin{bmatrix}
 <p>Calculate <span class="math inline">\(b\)</span>:
 <span class="math inline">\(b = (X&#39;X)^{-1}X&#39;y\)</span>.</p>
 <p>We can calculate this in <code>R</code> in just a few steps. First, we transpose <span class="math inline">\(X\)</span> to get <span class="math inline">\(X&#39;\)</span>.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">X.prime &lt;-<span class="st"> </span><span class="kw">t</span>(X)</a>
-<a class="sourceLine" id="cb239-2" data-line-number="2">X.prime</a></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">X.prime &lt;-<span class="st"> </span><span class="kw">t</span>(X)</a>
+<a class="sourceLine" id="cb243-2" data-line-number="2">X.prime</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
 ## [1,]    1    1    1    1    1    1    1
 ## [2,]    4    7    2    1    3    7    8
 ## [3,]    5    2    6    9    4    3    2
 ## [4,]    4    3    4    6    5    4    5</code></pre>
 <p>Then we multiply <span class="math inline">\(X\)</span> by <span class="math inline">\(X&#39;\)</span>; (<span class="math inline">\(X&#39;X\)</span>).</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">X.prime.X &lt;-<span class="st"> </span>X.prime <span class="op">%*%</span><span class="st"> </span>X</a>
-<a class="sourceLine" id="cb241-2" data-line-number="2">X.prime.X</a></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">X.prime.X &lt;-<span class="st"> </span>X.prime <span class="op">%*%</span><span class="st"> </span>X</a>
+<a class="sourceLine" id="cb245-2" data-line-number="2">X.prime.X</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    7   32   31   31
 ## [2,]   32  192  104  134
 ## [3,]   31  104  175  146
 ## [4,]   31  134  146  143</code></pre>
 <p>Next, we find the inverse of <span class="math inline">\(X&#39;X\)</span>; <span class="math inline">\(X&#39;X^{-1}\)</span></p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">X.prime.X.inv&lt;-<span class="kw">solve</span>(X.prime.X)</a>
-<a class="sourceLine" id="cb243-2" data-line-number="2">X.prime.X.inv</a></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">X.prime.X.inv&lt;-<span class="kw">solve</span>(X.prime.X)</a>
+<a class="sourceLine" id="cb247-2" data-line-number="2">X.prime.X.inv</a></code></pre></div>
 <pre><code>##            [,1]        [,2]        [,3]        [,4]
 ## [1,] 12.2420551 -1.04528602 -1.01536017 -0.63771186
 ## [2,] -1.0452860  0.12936970  0.13744703 -0.03495763
 ## [3,] -1.0153602  0.13744703  0.18697034 -0.09957627
 ## [4,] -0.6377119 -0.03495763 -0.09957627  0.27966102</code></pre>
 <p>Then, we multiply <span class="math inline">\(X&#39;X^{-1}\)</span> by <span class="math inline">\(X&#39;\)</span>.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">X.prime.X.inv.X.prime&lt;-X.prime.X.inv <span class="op">%*%</span><span class="st"> </span>X.prime</a>
-<a class="sourceLine" id="cb245-2" data-line-number="2">X.prime.X.inv.X.prime</a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">X.prime.X.inv.X.prime&lt;-X.prime.X.inv <span class="op">%*%</span><span class="st"> </span>X.prime</a>
+<a class="sourceLine" id="cb249-2" data-line-number="2">X.prime.X.inv.X.prime</a></code></pre></div>
 <pre><code>##             [,1]        [,2]        [,3]       [,4]       [,5]       [,6]
 ## [1,]  0.43326271  0.98119703  1.50847458 -1.7677436  1.8561970 -0.6718750
 ## [2,]  0.01959746  0.03032309 -0.10169492  0.1113612 -0.2821769  0.1328125
@@ -636,15 +636,15 @@ X = \begin{bmatrix}
 ## [3,] -0.03972458
 ## [4,]  0.28177966</code></pre>
 <p>Finally, to obtain the <span class="math inline">\(b\)</span> vector we multiply <span class="math inline">\(X&#39;X^{-1}X&#39;\)</span> by <span class="math inline">\(y\)</span>.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">b&lt;-X.prime.X.inv.X.prime <span class="op">%*%</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb247-2" data-line-number="2">b</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">b&lt;-X.prime.X.inv.X.prime <span class="op">%*%</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb251-2" data-line-number="2">b</a></code></pre></div>
 <pre><code>##             [,1]
 ## [1,]  3.96239407
 ## [2,]  1.06064619
 ## [3,]  0.04396186
 ## [4,] -0.48516949</code></pre>
 <p>We can use the <code>lm</code> function in <code>R</code> to check and see whether our “by hand” matrix approach gets the same result as does the “canned” multiple regression routine:</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="kw">lm</span>(y<span class="op">~</span><span class="dv">0</span><span class="op">+</span>X)</a></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="kw">lm</span>(y<span class="op">~</span><span class="dv">0</span><span class="op">+</span>X)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ 0 + X)
@@ -655,8 +655,8 @@ X = \begin{bmatrix}
 <p>Calculate <span class="math inline">\(\hat y\)</span>: <span class="math inline">\(\hat y=Xb\)</span>.</p>
 <p>To calculate the <span class="math inline">\(\hat y\)</span> vector in <code>R</code>, simply multiply
 <code>X</code> and <code>b</code>.</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">y.hat &lt;-<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>b </a>
-<a class="sourceLine" id="cb251-2" data-line-number="2">y.hat</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1">y.hat &lt;-<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>b </a>
+<a class="sourceLine" id="cb255-2" data-line-number="2">y.hat</a></code></pre></div>
 <pre><code>##           [,1]
 ## [1,]  6.484110
 ## [2,] 10.019333
@@ -667,8 +667,8 @@ X = \begin{bmatrix}
 ## [7,] 10.109640</code></pre>
 <p>Calculate <span class="math inline">\(e\)</span>.</p>
 <p>To calculate <span class="math inline">\(e\)</span>, the vector of residuals, simply subtract the vector <span class="math inline">\(y\)</span> from the vector <span class="math inline">\(\hat y\)</span>.</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">e &lt;-<span class="st"> </span>y<span class="op">-</span>y.hat</a>
-<a class="sourceLine" id="cb253-2" data-line-number="2">e</a></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">e &lt;-<span class="st"> </span>y<span class="op">-</span>y.hat</a>
+<a class="sourceLine" id="cb257-2" data-line-number="2">e</a></code></pre></div>
 <pre><code>##            [,1]
 ## [1,] -0.4841102
 ## [2,]  0.9806674

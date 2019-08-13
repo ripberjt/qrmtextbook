@@ -421,12 +421,12 @@ Figure 16.2: Predicted Probability as a Logit Function of <span class="math inli
 - Sample size: <span class="math inline">\(n-k-1\)</span> should exceed <span class="math inline">\(100\)</span>
 - Independent covariation between the <span class="math inline">\(X\)</span>s and <span class="math inline">\(Y\)</span> is critical</p>
 <p>The following example uses demographic information to predict beliefs about anthropogenic climate change.</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" data-line-number="1">ds.temp &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb388-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc, age, education, income, ideol, gender) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb388-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>()</a>
-<a class="sourceLine" id="cb388-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb388-5" data-line-number="5">logit1 &lt;-<span class="st"> </span><span class="kw">glm</span>(glbcc <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>gender <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income, <span class="dt">data =</span> ds.temp, <span class="dt">family =</span> <span class="kw">binomial</span>())</a>
-<a class="sourceLine" id="cb388-6" data-line-number="6"><span class="kw">summary</span>(logit1)</a></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb395-1" data-line-number="1">ds.temp &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb395-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc, age, education, income, ideol, gender) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb395-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>()</a>
+<a class="sourceLine" id="cb395-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb395-5" data-line-number="5">logit1 &lt;-<span class="st"> </span><span class="kw">glm</span>(glbcc <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>gender <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income, <span class="dt">data =</span> ds.temp, <span class="dt">family =</span> <span class="kw">binomial</span>())</a>
+<a class="sourceLine" id="cb395-6" data-line-number="6"><span class="kw">summary</span>(logit1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = glbcc ~ age + gender + education + income, family = binomial(), 
@@ -476,8 +476,8 @@ is statistically significant. <span class="math inline">\(G^2\)</span> is expres
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(L_1\)</span> is the demographic model and <span class="math inline">\(L_0\)</span> is the null model. The <span class="math inline">\(G^2\)</span> test statistic takes the difference between the log likelihoods of the two models and compares that to a <span class="math inline">\(\chi^2\)</span> distribution with <span class="math inline">\(q\)</span> degrees of freedom, where <span class="math inline">\(q\)</span> is the difference in the number of IVs. We can calculate this in <code>R</code>. First, we run a null model predicting belief that greenhouse gases are causing the climate to change, using only
 the intercept:</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" data-line-number="1">logit0 &lt;-<span class="st"> </span><span class="kw">glm</span>(glbcc <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data =</span> ds.temp) </a>
-<a class="sourceLine" id="cb390-2" data-line-number="2"><span class="kw">summary</span>(logit0)</a></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb397-1" data-line-number="1">logit0 &lt;-<span class="st"> </span><span class="kw">glm</span>(glbcc <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data =</span> ds.temp) </a>
+<a class="sourceLine" id="cb397-2" data-line-number="2"><span class="kw">summary</span>(logit0)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = glbcc ~ 1, data = ds.temp)
@@ -503,26 +503,26 @@ the intercept:</p>
 <p><span class="math display" id="eq:16-5">\[\begin{equation}\text{log}_e L_0
 \tag{16.5}
 \end{equation}\]</span></p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" data-line-number="1"><span class="kw">logLik</span>(logit0)</a></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" data-line-number="1"><span class="kw">logLik</span>(logit0)</a></code></pre></div>
 <pre><code>## &#39;log Lik.&#39; -1631.548 (df=2)</code></pre>
 <p>Next, we calculate the log likelihood for the demographic model,</p>
 <p><span class="math display" id="eq:16-6">\[\begin{equation}\text{log}_e L_0
 \tag{16.6}
 \end{equation}\]</span></p>
 <p>Recall that we generated this model (dubbed “logit1”) earlier:</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" data-line-number="1"><span class="kw">logLik</span>(logit1)</a></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" data-line-number="1"><span class="kw">logLik</span>(logit1)</a></code></pre></div>
 <pre><code>## &#39;log Lik.&#39; -1523.724 (df=5)</code></pre>
 <p>Finally, we calculate the <span class="math inline">\(G\)</span> statistic and perform the chi-square test for statistical significance:</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" data-line-number="1">G &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(<span class="op">-</span><span class="dv">1523</span> <span class="op">-</span><span class="st"> </span>(<span class="op">-</span><span class="dv">1631</span>))</a>
-<a class="sourceLine" id="cb396-2" data-line-number="2">G</a></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1">G &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(<span class="op">-</span><span class="dv">1523</span> <span class="op">-</span><span class="st"> </span>(<span class="op">-</span><span class="dv">1631</span>))</a>
+<a class="sourceLine" id="cb403-2" data-line-number="2">G</a></code></pre></div>
 <pre><code>## [1] 216</code></pre>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" data-line-number="1"><span class="kw">pchisq</span>(G, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="kw">pchisq</span>(G, <span class="dt">df =</span> <span class="dv">3</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.0000000000000000000000000000000000000000000001470144</code></pre>
 <p>We can see by the very low p-value that the demographic model offers a significant improvement in fit.</p>
 <p>The same approach can be used to compare nested models, similar to nested <span class="math inline">\(F\)</span>-tests in OLS. For example, we can include ideology in the model and use the <code>anova</code> function to see if the ideology variable improves model fit. Note that we specify the <span class="math inline">\(\chi^2\)</span> test.</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" data-line-number="1">logit2 &lt;-<span class="st"> </span><span class="kw">glm</span>(glbcc <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>gender <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol,</a>
-<a class="sourceLine" id="cb400-2" data-line-number="2">              <span class="dt">family =</span> <span class="kw">binomial</span>(), <span class="dt">data =</span> ds.temp)</a>
-<a class="sourceLine" id="cb400-3" data-line-number="3"><span class="kw">summary</span>(logit2)</a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1">logit2 &lt;-<span class="st"> </span><span class="kw">glm</span>(glbcc <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>gender <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol,</a>
+<a class="sourceLine" id="cb407-2" data-line-number="2">              <span class="dt">family =</span> <span class="kw">binomial</span>(), <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb407-3" data-line-number="3"><span class="kw">summary</span>(logit2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = glbcc ~ age + gender + education + income + ideol, 
@@ -550,7 +550,7 @@ the intercept:</p>
 ## AIC: 2416
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1"><span class="kw">anova</span>(logit1, logit2, <span class="dt">test =</span> <span class="st">&quot;Chisq&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1"><span class="kw">anova</span>(logit1, logit2, <span class="dt">test =</span> <span class="st">&quot;Chisq&quot;</span>)</a></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: glbcc ~ age + gender + education + income
@@ -576,8 +576,8 @@ the intercept:</p>
   \tag{16.8}
 \end{equation}\]</span></p>
 <p>This can be calculated in ‘R’ using the full model with ideology.</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1">pseudoR2 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(logit2<span class="op">$</span>deviance<span class="op">/</span>logit2<span class="op">$</span>null.deviance)</a>
-<a class="sourceLine" id="cb404-2" data-line-number="2">pseudoR2</a></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" data-line-number="1">pseudoR2 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(logit2<span class="op">$</span>deviance<span class="op">/</span>logit2<span class="op">$</span>null.deviance)</a>
+<a class="sourceLine" id="cb411-2" data-line-number="2">pseudoR2</a></code></pre></div>
 <pre><code>## [1] 0.2281165</code></pre>
 <p>The pseudo <span class="math inline">\(R^2\)</span> of the model is 0.2281165. Note that the psuedo <span class="math inline">\(R^2\)</span> is only an approximation of explained variance, and should be used in combination with other measures of fit such as AIC.</p>
 </div>
@@ -590,10 +590,10 @@ the intercept:</p>
   \tag{16.9}
 \end{equation}\]</span></p>
 <p>Note that smaller values are indicative of a better fit. The AIC is most useful when comparing the fit of alternative (not necessarily nested) models. In <code>R</code>, AIC is given as part of the <code>summary</code> output for a <code>glm</code> object, but we can also calculate it and verify.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" data-line-number="1">aic.logit2 &lt;-<span class="st"> </span>logit2<span class="op">$</span>deviance <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="dv">6</span></a>
-<a class="sourceLine" id="cb406-2" data-line-number="2">aic.logit2</a></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" data-line-number="1">aic.logit2 &lt;-<span class="st"> </span>logit2<span class="op">$</span>deviance <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb413-2" data-line-number="2">aic.logit2</a></code></pre></div>
 <pre><code>## [1] 2416.002</code></pre>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb408-1" data-line-number="1">logit2<span class="op">$</span>aic</a></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" data-line-number="1">logit2<span class="op">$</span>aic</a></code></pre></div>
 <pre><code>## [1] 2416.002</code></pre>
 </div>
 </div>
@@ -607,7 +607,7 @@ the intercept:</p>
   \textit{anti}\text{log} = e^B 
 \end{equation*}\]</span></p>
 <p>For example, the following retuns odds for all the IVs.</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" data-line-number="1">logit2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">coef</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">exp</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1">logit2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">coef</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">exp</span>()</a></code></pre></div>
 <pre><code>## (Intercept)         age      gender   education      income       ideol 
 ##  57.6608736   0.9957225   0.8151353   1.1062128   0.9999990   0.4538394</code></pre>
 <p>Therefore, for each 1-unit increase in the ideology scale (i.e., becoming more conservative), the odds of believing that climate change is human caused decrease by 0.4538394.</p>
@@ -620,15 +620,15 @@ the intercept:</p>
 \end{equation*}\]</span></p>
 <p>We can then evaluate the change in predicted probabilities that <span class="math inline">\(Y\)</span>=1 across the range of values in <span class="math inline">\(X_i\)</span>.</p>
 <p>This procedure can be demonstrated in two steps. First, create a data frame holding all the variables except ideology at their mean. Second, use the <code>augment</code> function to calculate the predicted probabilities for each level of ideology. Indicate <code>type.predict = &quot;response&quot;</code>.</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1"><span class="kw">library</span>(broom)</a>
-<a class="sourceLine" id="cb412-2" data-line-number="2">log.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">age =</span> <span class="kw">mean</span>(ds.temp<span class="op">$</span>age),</a>
-<a class="sourceLine" id="cb412-3" data-line-number="3">                       <span class="dt">gender =</span> <span class="kw">mean</span>(ds.temp<span class="op">$</span>gender),</a>
-<a class="sourceLine" id="cb412-4" data-line-number="4">                       <span class="dt">education =</span> <span class="kw">mean</span>(ds.temp<span class="op">$</span>education),</a>
-<a class="sourceLine" id="cb412-5" data-line-number="5">                       <span class="dt">income =</span> <span class="kw">mean</span>(ds.temp<span class="op">$</span>income),</a>
-<a class="sourceLine" id="cb412-6" data-line-number="6">                       <span class="dt">ideol =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>)</a>
-<a class="sourceLine" id="cb412-7" data-line-number="7">log.data &lt;-<span class="st"> </span>logit2 <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb412-8" data-line-number="8"><span class="st">  </span><span class="kw">augment</span>(<span class="dt">newdata =</span> log.data, <span class="dt">type.predict =</span> <span class="st">&quot;response&quot;</span>)</a>
-<a class="sourceLine" id="cb412-9" data-line-number="9">log.data</a></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" data-line-number="1"><span class="kw">library</span>(broom)</a>
+<a class="sourceLine" id="cb419-2" data-line-number="2">log.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">age =</span> <span class="kw">mean</span>(ds.temp<span class="op">$</span>age),</a>
+<a class="sourceLine" id="cb419-3" data-line-number="3">                       <span class="dt">gender =</span> <span class="kw">mean</span>(ds.temp<span class="op">$</span>gender),</a>
+<a class="sourceLine" id="cb419-4" data-line-number="4">                       <span class="dt">education =</span> <span class="kw">mean</span>(ds.temp<span class="op">$</span>education),</a>
+<a class="sourceLine" id="cb419-5" data-line-number="5">                       <span class="dt">income =</span> <span class="kw">mean</span>(ds.temp<span class="op">$</span>income),</a>
+<a class="sourceLine" id="cb419-6" data-line-number="6">                       <span class="dt">ideol =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb419-7" data-line-number="7">log.data &lt;-<span class="st"> </span>logit2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb419-8" data-line-number="8"><span class="st">  </span><span class="kw">augment</span>(<span class="dt">newdata =</span> log.data, <span class="dt">type.predict =</span> <span class="st">&quot;response&quot;</span>)</a>
+<a class="sourceLine" id="cb419-9" data-line-number="9">log.data</a></code></pre></div>
 <pre><code>## # A tibble: 7 x 7
 ##     age gender education income ideol .fitted .se.fit
 ##   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -640,13 +640,13 @@ the intercept:</p>
 ## 6  60.1  0.412      5.09 70627.     6   0.357 0.0139 
 ## 7  60.1  0.412      5.09 70627.     7   0.202 0.0141</code></pre>
 <p>The output shows, for each case, the ideology measure for the respondent followed by the estimated probability (<span class="math inline">\(p\)</span>) that the individual believes man-made greenhouse gasses are causing climate change. We can also graph the results with <span class="math inline">\(95\%\)</span> confidence intervals. This is shown in Figure <a href="logit-regression.html#fig:logitplot">16.3</a>.</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1">log.df &lt;-<span class="st"> </span>log.data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb414-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">upper =</span> .fitted <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>.se.fit,</a>
-<a class="sourceLine" id="cb414-3" data-line-number="3">         <span class="dt">lower =</span> .fitted <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>.se.fit)</a>
-<a class="sourceLine" id="cb414-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb414-5" data-line-number="5"><span class="kw">ggplot</span>(log.df, <span class="kw">aes</span>(ideol, .fitted)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb414-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb414-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower, <span class="dt">ymax =</span> upper, <span class="dt">width =</span> <span class="fl">.2</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1">log.df &lt;-<span class="st"> </span>log.data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb421-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">upper =</span> .fitted <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>.se.fit,</a>
+<a class="sourceLine" id="cb421-3" data-line-number="3">         <span class="dt">lower =</span> .fitted <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>.se.fit)</a>
+<a class="sourceLine" id="cb421-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb421-5" data-line-number="5"><span class="kw">ggplot</span>(log.df, <span class="kw">aes</span>(ideol, .fitted)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb421-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb421-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower, <span class="dt">ymax =</span> upper, <span class="dt">width =</span> <span class="fl">.2</span>)) </a></code></pre></div>
 <div class="figure"><span id="fig:logitplot"></span>
 <img src="_main_files/figure-html/logitplot-1.png" alt="Predicted Probability of believing that Greenhouse Gases cause Climate Change by Ideology" width="672" />
 <p class="caption">

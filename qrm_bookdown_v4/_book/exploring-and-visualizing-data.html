@@ -373,15 +373,23 @@ Figure 3.3: Frequency Distribbution for Ideology
 ##   1   2   3   4   5   6   7 
 ## 122 279 185 571 328 688 351</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># To view percentages</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">table</span>(ds<span class="op">$</span>ideol) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prop.table</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">table</span>(ds<span class="op">$</span>ideol) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prop.table</span>()</a></code></pre></div>
 <pre><code>## 
 ##          1          2          3          4          5          6 
 ## 0.04833597 0.11053883 0.07329635 0.22622821 0.12995246 0.27258320 
 ##          7 
 ## 0.13906498</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># multiply the numbers by 100 </span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">table</span>(ds<span class="op">$</span>ideol) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prop.table</span>() <span class="op">*</span><span class="st"> </span><span class="dv">100</span> </a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># multiply the numbers by 100 </span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">table</span>(ds<span class="op">$</span>ideol) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prop.table</span>() <span class="op">*</span><span class="st"> </span><span class="dv">100</span> </a></code></pre></div>
 <pre><code>## 
 ##         1         2         3         4         5         6         7 
 ##  4.833597 11.053883  7.329635 22.622821 12.995246 27.258320 13.906498</code></pre>
@@ -436,11 +444,11 @@ Figure 3.3: Frequency Distribbution for Ideology
 \tag{3.2}
 \end{equation}\]</span></p>
 <p>The mean of a variable can be calculated in <code>R</code> using the <code>mean</code> function. Here we illustrate the calculation of means for our measures of <code>ideology</code>, <code>age</code>, and <code>perceived risk of climate change</code>.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">mean</span>(ds<span class="op">$</span>ideol, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">mean</span>(ds<span class="op">$</span>ideol, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 4.652932</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">mean</span>(ds<span class="op">$</span>age, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">mean</span>(ds<span class="op">$</span>age, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 60.36749</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">mean</span>(ds<span class="op">$</span>glbcc_risk, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">mean</span>(ds<span class="op">$</span>glbcc_risk, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 5.945978</code></pre>
 </div>
 <div id="the-second-moment-variance-and-standard-deviation" class="section level3">
@@ -471,11 +479,11 @@ s_{x} = \sqrt{\frac{\sum(X-\bar{X})^{2}}{(n-1)}}
 \tag{3.6}
 \end{equation}\]</span></p>
 <p>This can also be expressed as <span class="math inline">\(\sqrt{s^2_{x}}\)</span>. The standard deviation of a variable can be obtained in <code>R</code> with the <code>sd</code> function.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">sd</span>(ds<span class="op">$</span>ideol, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">sd</span>(ds<span class="op">$</span>ideol, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 1.731246</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">sd</span>(ds<span class="op">$</span>age, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">sd</span>(ds<span class="op">$</span>age, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 14.20894</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">sd</span>(ds<span class="op">$</span>glbcc_risk, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">sd</span>(ds<span class="op">$</span>glbcc_risk, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 3.071251</code></pre>
 <p>###The Third Moment – Skewness</p>
 <p><em>Skewness</em> is a measure of the asymmetry of a distribution. It is based on the
@@ -548,8 +556,8 @@ the first 25% of the distribution. The values of the second quartile, <span clas
 \end{equation}\]</span></p>
 <p>The IQR contains the middle 50% of the distribution.</p>
 <p>We can visually examine the order statistics of a variable with a boxplot. A boxplot displays the range of the data, the first and third quartile, the median, and any outliers. The following returns a boxplot (Figure <a href="exploring-and-visualizing-data.html#fig:boxrsk">3.6</a>).</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="st">&quot;&quot;</span>, glbcc_risk)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="st">&quot;&quot;</span>, glbcc_risk)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <div class="figure"><span id="fig:boxrsk"></span>
 <img src="_main_files/figure-html/boxrsk-1.png" alt="Box-plot of Climate Change Risk" width="672" />
 <p class="caption">
@@ -565,8 +573,8 @@ had a lower score. Percentiles can be incorporated with quartiles (and/or other 
 - Second Quartile: 50th percentile (the median)
 - Third Quartile: 75th percentile</p>
 <p>Another way to compare a variable distribution to a theoretical distribution is with a quantile-comparison plot (qq plot). A qq plot displays the observed percentiles against those that would be expected in a normal distribution. This plot is often useful for examining the tails of the distribution, and deviations of a distribution from normality. This is shown in Figure <a href="exploring-and-visualizing-data.html#fig:qqrsk">3.7</a>.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">sample =</span> glbcc_risk)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw">stat_qq</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">sample =</span> glbcc_risk)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="st">  </span><span class="kw">stat_qq</span>()</a></code></pre></div>
 <div class="figure"><span id="fig:qqrsk"></span>
 <img src="_main_files/figure-html/qqrsk-1.png" alt="QQ Plot of Climate Change Risk" width="672" />
 <p class="caption">
@@ -575,19 +583,19 @@ Figure 3.7: QQ Plot of Climate Change Risk
 </div>
 <p>The qq plot provides an easy way to observe departures of a distribution from normality. For example, the plot shown in Figure <a href="exploring-and-visualizing-data.html#fig:qqrsk">3.7</a> indicates that the perceived risk measure has more observations in the tails of the distribution than would be expected if the variable was normally distributed.</p>
 <p><code>R</code> provides several ways to examine the central tendency, moments, and order statistics for individual variables and for entire data sets. The <code>summary</code> function produces the minimum value, the first quartile, median, mean, third quartile, max value, and the number of missing values (Na’s).</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">summary</span>(ds<span class="op">$</span>ideol, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">summary</span>(ds<span class="op">$</span>ideol, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##   1.000   4.000   5.000   4.653   6.000   7.000      23</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">summary</span>(ds<span class="op">$</span>age, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">summary</span>(ds<span class="op">$</span>age, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   18.00   52.00   62.00   60.37   70.00   99.00</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">summary</span>(ds<span class="op">$</span>glbcc_risk, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">summary</span>(ds<span class="op">$</span>glbcc_risk, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##   0.000   4.000   6.000   5.946   9.000  10.000      11</code></pre>
 <p>We can also use the <code>describe</code> function in the <code>psych</code> package to obtain more descriptive statistics, including skewness and
 kurtosis.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">library</span>(psych)</a>
-<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw">describe</span>(ds<span class="op">$</span>ideol)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">library</span>(psych)</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="kw">describe</span>(ds<span class="op">$</span>ideol)</a></code></pre></div>
 <pre><code>##    vars    n mean   sd median trimmed  mad min max range  skew kurtosis
 ## X1    1 2524 4.65 1.73      5    4.75 1.48   1   7     6 -0.45     -0.8
 ##      se

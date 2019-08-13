@@ -365,12 +365,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  \tag{13.2}
 \end{equation}\]</span></p>
 <p>The <span class="math inline">\(R^2\)</span> of two models can be compared, as illustrated by the following example. The first (simpler) model consists of basic demographics (age, education, and income) as predictors of climate change risk. The second (more complex) model adds the variable measuring political ideology to the explanation.</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb288-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb288-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>()</a>
-<a class="sourceLine" id="cb288-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb288-5" data-line-number="5">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income, <span class="dt">data =</span> ds.temp)</a>
-<a class="sourceLine" id="cb288-6" data-line-number="6"><span class="kw">summary</span>(ols1)</a></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb292-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb292-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>()</a>
+<a class="sourceLine" id="cb292-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb292-5" data-line-number="5">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb292-6" data-line-number="6"><span class="kw">summary</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + education + income, data = ds.temp)
@@ -391,8 +391,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 3.008 on 2268 degrees of freedom
 ## Multiple R-squared:  0.02565,    Adjusted R-squared:  0.02437 
 ## F-statistic: 19.91 on 3 and 2268 DF,  p-value: 0.0000000000009815</code></pre>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)</a>
-<a class="sourceLine" id="cb290-2" data-line-number="2"><span class="kw">summary</span>(ols2)</a></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb294-2" data-line-number="2"><span class="kw">summary</span>(ols2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + education + income + ideol, data = ds.temp)
@@ -439,26 +439,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(q\)</span> is the difference in the number of IVs between the simpler and the more complex models. The complex model has <span class="math inline">\(k\)</span> IVs (and estimates <span class="math inline">\(k\)</span> parameters), and the simpler model has <span class="math inline">\(k-q\)</span> IVs (and estimates only <span class="math inline">\(k-q\)</span> parameters). <span class="math inline">\(ESS_1\)</span> is the explained sum of squares for the complex model. <span class="math inline">\(RSS_1\)</span> is the residual sum of squares for the complex model. <span class="math inline">\(ESS_0\)</span> is the explained sum of squares for the simpler model. So the nested-F represents the ratio of the additional explanation per added IV, over the residual sum of squares divided by the model degrees of freedom.</p>
 <p>We can use <code>R</code>, to calculate the <span class="math inline">\(F\)</span> statistic based on our previous example.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">TSS &lt;-<span class="st"> </span><span class="kw">sum</span>((ds.temp<span class="op">$</span>glbcc_risk<span class="op">-</span><span class="kw">mean</span>(ds.temp<span class="op">$</span>glbcc_risk))<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb292-2" data-line-number="2">TSS</a></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1">TSS &lt;-<span class="st"> </span><span class="kw">sum</span>((ds.temp<span class="op">$</span>glbcc_risk<span class="op">-</span><span class="kw">mean</span>(ds.temp<span class="op">$</span>glbcc_risk))<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb296-2" data-line-number="2">TSS</a></code></pre></div>
 <pre><code>## [1] 21059.86</code></pre>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">RSS.mod1 &lt;-<span class="st"> </span><span class="kw">sum</span>(ols1<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb294-2" data-line-number="2">RSS.mod1</a></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1">RSS.mod1 &lt;-<span class="st"> </span><span class="kw">sum</span>(ols1<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb298-2" data-line-number="2">RSS.mod1</a></code></pre></div>
 <pre><code>## [1] 20519.57</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1">ESS.mod1 &lt;-<span class="st"> </span>TSS<span class="op">-</span>RSS.mod1</a>
-<a class="sourceLine" id="cb296-2" data-line-number="2">ESS.mod1</a></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1">ESS.mod1 &lt;-<span class="st"> </span>TSS<span class="op">-</span>RSS.mod1</a>
+<a class="sourceLine" id="cb300-2" data-line-number="2">ESS.mod1</a></code></pre></div>
 <pre><code>## [1] 540.2891</code></pre>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1">RSS.mod2 &lt;-<span class="st"> </span><span class="kw">sum</span>(ols2<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb298-2" data-line-number="2">RSS.mod2</a></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1">RSS.mod2 &lt;-<span class="st"> </span><span class="kw">sum</span>(ols2<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb302-2" data-line-number="2">RSS.mod2</a></code></pre></div>
 <pre><code>## [1] 13414.89</code></pre>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1">ESS.mod2 &lt;-<span class="st"> </span>TSS<span class="op">-</span>RSS.mod2</a>
-<a class="sourceLine" id="cb300-2" data-line-number="2">ESS.mod2</a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1">ESS.mod2 &lt;-<span class="st"> </span>TSS<span class="op">-</span>RSS.mod2</a>
+<a class="sourceLine" id="cb304-2" data-line-number="2">ESS.mod2</a></code></pre></div>
 <pre><code>## [1] 7644.965</code></pre>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1">F &lt;-<span class="st"> </span>((ESS.mod2 <span class="op">-</span><span class="st"> </span>ESS.mod1)<span class="op">/</span><span class="dv">1</span>)<span class="op">/</span>(RSS.mod2<span class="op">/</span>(<span class="kw">length</span>(ds.temp<span class="op">$</span>glbcc_risk)<span class="op">-</span><span class="dv">4-1</span>))</a>
-<a class="sourceLine" id="cb302-2" data-line-number="2">F</a></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1">F &lt;-<span class="st"> </span>((ESS.mod2 <span class="op">-</span><span class="st"> </span>ESS.mod1)<span class="op">/</span><span class="dv">1</span>)<span class="op">/</span>(RSS.mod2<span class="op">/</span>(<span class="kw">length</span>(ds.temp<span class="op">$</span>glbcc_risk)<span class="op">-</span><span class="dv">4-1</span>))</a>
+<a class="sourceLine" id="cb306-2" data-line-number="2">F</a></code></pre></div>
 <pre><code>## [1] 1200.629</code></pre>
 <p>Or, you can simply use the <code>anova</code> function in <span class="math inline">\(R\)</span>:</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1"><span class="kw">anova</span>(ols1,ols2) </a></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1"><span class="kw">anova</span>(ols1,ols2) </a></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: glbcc_risk ~ age + education + income
