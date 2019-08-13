@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Association of Variables | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R</title>
-  <meta name="description" content="6 Association of Variables | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="6 Association of Variables | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Association of Variables | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,13 @@
   
   
 
-<meta name="author" content="Hank Jenkins-Smith">
-<meta name="author" content="Joseph Ripberger">
-<meta name="author" content="Gary Copeland">
-<meta name="author" content="Matthew Nowlin">
-<meta name="author" content="Tyler Hughes">
-<meta name="author" content="Aaron Fister">
-<meta name="author" content="Wesley Wehde">
+<meta name="author" content="Hank Jenkins-Smith, Joseph Ripberger, Gary Copeland, Matthew Nowlin, Tyler Hughes, Aaron Fister, Wesley Wehde, and Josie Davis" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="inference.html">
@@ -56,41 +49,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -134,16 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1.3" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#moments"><i class="fa fa-check"></i><b>3.1.3</b> Moments</a></li>
 <li class="chapter" data-level="3.1.4" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#first-moment-expected-value"><i class="fa fa-check"></i><b>3.1.4</b> First Moment – Expected Value</a></li>
 <li class="chapter" data-level="3.1.5" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-second-moment-variance-and-standard-deviation"><i class="fa fa-check"></i><b>3.1.5</b> The Second Moment – Variance and Standard Deviation</a></li>
-<li class="chapter" data-level="3.1.6" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-third-moment-skewness"><i class="fa fa-check"></i><b>3.1.6</b> The Third Moment – Skewness</a></li>
-<li class="chapter" data-level="3.1.7" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-fourth-moment-kurtosis"><i class="fa fa-check"></i><b>3.1.7</b> The Fourth Moment – Kurtosis</a></li>
-<li class="chapter" data-level="3.1.8" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#order-statistics"><i class="fa fa-check"></i><b>3.1.8</b> Order Statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#summary"><i class="fa fa-check"></i><b>3.2</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>4</b> Probability</a><ul>
 <li class="chapter" data-level="4.1" data-path="probability.html"><a href="probability.html#finding-probabilities"><i class="fa fa-check"></i><b>4.1</b> Finding Probabilities</a></li>
 <li class="chapter" data-level="4.2" data-path="probability.html"><a href="probability.html#finding-probabilities-with-the-normal-curve"><i class="fa fa-check"></i><b>4.2</b> Finding Probabilities with the Normal Curve</a></li>
-<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary-1"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
+<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5</b> Inference</a><ul>
 <li class="chapter" data-level="5.1" data-path="inference.html"><a href="inference.html#inference-populations-and-samples"><i class="fa fa-check"></i><b>5.1</b> Inference: Populations and Samples</a><ul>
@@ -166,7 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4" data-path="inference.html"><a href="inference.html#differences-between-groups"><i class="fa fa-check"></i><b>5.4</b> Differences Between Groups</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="inference.html"><a href="inference.html#t-tests"><i class="fa fa-check"></i><b>5.4.1</b> <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-2"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-1"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="association-of-variables.html"><a href="association-of-variables.html"><i class="fa fa-check"></i><b>6</b> Association of Variables</a><ul>
 <li class="chapter" data-level="6.1" data-path="association-of-variables.html"><a href="association-of-variables.html#cross-tabulation"><i class="fa fa-check"></i><b>6.1</b> Cross-Tabulation</a><ul>
@@ -198,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.2" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#ols-derivation-of-hatbeta"><i class="fa fa-check"></i><b>8.2.2</b> OLS Derivation of <span class="math inline">\(\hat{\beta}\)</span></a></li>
 <li class="chapter" data-level="8.2.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#interpreting-hatbeta-and-hatalpha"><i class="fa fa-check"></i><b>8.2.3</b> Interpreting <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-3"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
+<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-2"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html"><i class="fa fa-check"></i><b>9</b> Bi-Variate Hypothesis Testing and Model Fit</a><ul>
 <li class="chapter" data-level="9.1" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#hypothesis-tests-for-regression-coefficients"><i class="fa fa-check"></i><b>9.1</b> Hypothesis Tests for Regression Coefficients</a><ul>
@@ -209,7 +223,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.2.2" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#coefficient-of-determination-r2"><i class="fa fa-check"></i><b>9.2.2</b> Coefficient of Determination: <span class="math inline">\(R^{2}\)</span></a></li>
 <li class="chapter" data-level="9.2.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#visualizing-bivariate-regression"><i class="fa fa-check"></i><b>9.2.3</b> Visualizing Bivariate Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-4"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-3"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html"><i class="fa fa-check"></i><b>10</b> OLS Assumptions and Simple Regression Diagnostics</a><ul>
 <li class="chapter" data-level="10.1" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#a-recap-of-modeling-assumptions"><i class="fa fa-check"></i><b>10.1</b> A Recap of Modeling Assumptions</a></li>
@@ -225,7 +239,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.3.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#examining-outlier-data"><i class="fa fa-check"></i><b>10.3.4</b> Examining Outlier Data</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#so-now-what-implications-of-residual-analysis"><i class="fa fa-check"></i><b>10.4</b> So Now What? Implications of Residual Analysis</a></li>
-<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-5"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-4"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html"><i class="fa fa-check"></i><b>11</b> Introduction to Multiple Regression</a><ul>
 <li class="chapter" data-level="11.1" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-algebra-and-multiple-regression"><i class="fa fa-check"></i><b>11.1</b> Matrix Algebra and Multiple Regression</a></li>
@@ -240,7 +254,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.2.8" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-inversion"><i class="fa fa-check"></i><b>11.2.8</b> Matrix Inversion</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#ols-regression-in-matrix-form"><i class="fa fa-check"></i><b>11.3</b> OLS Regression in Matrix Form</a></li>
-<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-5"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html"><i class="fa fa-check"></i><b>12</b> The Logic of Multiple Regression</a><ul>
 <li class="chapter" data-level="12.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#theoretical-specification"><i class="fa fa-check"></i><b>12.1</b> Theoretical Specification</a><ul>
@@ -250,7 +264,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#multiple-regression-example"><i class="fa fa-check"></i><b>12.3</b> Multiple Regression Example</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#hypothesis-testing-and-t-tests"><i class="fa fa-check"></i><b>12.3.1</b> Hypothesis Testing and <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-7"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
+<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html"><i class="fa fa-check"></i><b>13</b> Multiple Regression and Model Building</a><ul>
 <li class="chapter" data-level="13.1" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#model-building"><i class="fa fa-check"></i><b>13.1</b> Model Building</a><ul>
@@ -259,13 +273,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.1.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#risks-in-model-building"><i class="fa fa-check"></i><b>13.1.3</b> Risks in Model Building</a></li>
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#evils-of-stepwise-regression"><i class="fa fa-check"></i><b>13.2</b> Evils of Stepwise Regression</a></li>
-<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-8"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-7"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html"><i class="fa fa-check"></i><b>14</b> Topics in Multiple Regression</a><ul>
 <li class="chapter" data-level="14.1" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>14.1</b> Dummy Variables</a></li>
 <li class="chapter" data-level="14.2" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#interaction-effects"><i class="fa fa-check"></i><b>14.2</b> Interaction Effects</a></li>
 <li class="chapter" data-level="14.3" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#standardized-regression-coefficients"><i class="fa fa-check"></i><b>14.3</b> Standardized Regression Coefficients</a></li>
-<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-9"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
+<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-8"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html"><i class="fa fa-check"></i><b>15</b> The Art of Regression Diagnostics</a><ul>
 <li class="chapter" data-level="15.1" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#ols-error-assumptions-revisited"><i class="fa fa-check"></i><b>15.1</b> OLS Error Assumptions Revisited</a></li>
@@ -278,7 +292,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.2.6" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#outliers"><i class="fa fa-check"></i><b>15.2.6</b> Outliers</a></li>
 <li class="chapter" data-level="15.2.7" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#multicollinearity"><i class="fa fa-check"></i><b>15.2.7</b> Multicollinearity</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-10"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-9"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="logit-regression.html"><a href="logit-regression.html"><i class="fa fa-check"></i><b>16</b> Logit Regression</a><ul>
 <li class="chapter" data-level="16.1" data-path="logit-regression.html"><a href="logit-regression.html#generalized-linear-models"><i class="fa fa-check"></i><b>16.1</b> Generalized Linear Models</a></li>
@@ -287,7 +301,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="16.2.2" data-path="logit-regression.html"><a href="logit-regression.html#goodness-of-fit"><i class="fa fa-check"></i><b>16.2.2</b> Goodness of Fit</a></li>
 <li class="chapter" data-level="16.2.3" data-path="logit-regression.html"><a href="logit-regression.html#interpreting-logits"><i class="fa fa-check"></i><b>16.2.3</b> Interpreting Logits</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-11"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
+<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-10"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html"><i class="fa fa-check"></i><b>17</b> Appendix: Basic R</a><ul>
 <li class="chapter" data-level="17.1" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html#introduction-to-r"><i class="fa fa-check"></i><b>17.1</b> Introduction to R</a></li>
@@ -328,13 +342,13 @@ Figure 6.1: Sample Table Layout
 </p>
 </div>
 <p>As Table <a href="association-of-variables.html#fig:iv-dv">6.1</a> illustrates, a crosstab is set up so that the independent variable is on the top, forming columns, and the dependent variable is on the side, forming rows. Toward the upper left hand corner of the table are the low, or negative, variable categories. Generally, a table will be displayed in percentage format. The marginals for a table are the column totals and the row totals and are the same as a frequency distribution would be for that variable. Each cross-classification reports how many observations have that shared characteristic. The cross-classification groups are referred to as <strong>cells</strong>, so Table <a href="association-of-variables.html#fig:iv-dv">6.1</a> is a four-celled table.</p>
-<p>A table like Table <a href="association-of-variables.html#fig:iv-dv">6.1</a> provides a basis to begin to answer the question of whether our independent and dependent variables are related. Remember that our null hypothesis says there is no relationship between our IV and our DV. Looking at Table <a href="association-of-variables.html#fig:iv-dv">6.1</a>, we can say of those low on the IV, 60% of them will also be low on the DV; and that those high on the IV will be low on the DV 40% of the time. Our null hypothesis says there should be no difference, but in this case, there is a 20% difference so it appears that our null hypothesis is incorrect. What we learned in our inferential statistics chapter, though, tells us that it is still possible that the null hypothesis is true. The question is how likely is it that we could have a 20% difference in our sample even if the null hypothesis is true?<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a></p>
+<p>A table like Table <a href="association-of-variables.html#fig:iv-dv">6.1</a> provides a basis to begin to answer the question of whether our independent and dependent variables are related. Remember that our null hypothesis says there is no relationship between our IV and our DV. Looking at Table <a href="association-of-variables.html#fig:iv-dv">6.1</a>, we can say of those low on the IV, 60% of them will also be low on the DV; and that those high on the IV will be low on the DV 40% of the time. Our null hypothesis says there should be no difference, but in this case, there is a 20% difference so it appears that our null hypothesis is incorrect. What we learned in our inferential statistics chapter, though, tells us that it is still possible that the null hypothesis is true. The question is how likely is it that we could have a 20% difference in our sample even if the null hypothesis is true?<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a></p>
 <p>We use the <strong>chi square statistic</strong> to test our null hypothesis when using crosstabs. To find chi square (<span class="math inline">\(\chi^2\)</span>), we begin by assuming the null hypothesis to be true and find the expected frequencies for each cell in our table. We do so using a posterior methodology based on the marginals for our dependent variable. We see that 53% of our total sample is low on the dependent variable. If our null hypothesis is correct, then where one is located on the independent variable should not matter: 53% of those who are low on the IV should be low on the DV and 53% of those who are high on the IV should be low on the DV. Table <a href="association-of-variables.html#fig:iv-dv2">6.2</a> &amp; <a href="association-of-variables.html#fig:iv-dv3">6.3</a> illustrate this pattern. To find the expected frequency for each cell, we simply multiply the expected cell percentage times the number of people in each category of the IV: the expected frequency for the low-low cell is <span class="math inline">\(.53 * 200 = 106\)</span>; for the low-high cell, it is <span class="math inline">\(.47 * 200 = 94\)</span>; for the low-high cell it is <span class="math inline">\(.53 * 100 = 53\)</span>; and for the high-high cell, the expected frequency is <span class="math inline">\(.47 * 100 = 47\)</span>. (See Table <a href="association-of-variables.html#fig:iv-dv2">6.2</a> &amp; <a href="association-of-variables.html#fig:iv-dv3">6.3</a>).</p>
 <p>The formula for the chi square takes the expected frequency for each of the cells and subtracts the observed frequency from it, squares those differences, divides by the expected frequency, and sums those values:</p>
-<span class="math display" id="eq:06-1">\[\begin{equation}
+<p><span class="math display" id="eq:06-1">\[\begin{equation}
 \chi^2  = \sum \frac{(O-E)^2}{E}
 \tag{6.1}
-  \end{equation}\]</span>
+  \end{equation}\]</span></p>
 <p>where:</p>
 <p><span class="math inline">\(\chi^2\)</span> = The Test Statistic</p>
 <p><span class="math inline">\(\sum\)</span> = The Summation Operator</p>
@@ -365,16 +379,16 @@ Figure 6.4: Chi Square Calculation
 <p>Another set of measures of association suitable for nominal level data is based on chi square. <strong>Cramer’s V</strong> is a simple chi square based indicator, but like chi square itself, its value is affected by the sample size and the dimensions of the table. <strong>Phi</strong> corrects for sample size, but is appropriate only for a 2 X 2 table. The <strong>contingency coefficient</strong>, C, also corrects for sample size and can be applied to larger tables, but requires a square table, i.e., the same number of rows and columns.</p>
 <p>If we have ordinal level data, we can use a co-variation model, but the specific model developed below in Section 6.3 looks at how observations are distributed around their means. Since we cannot find a mean for ordinal level data, we need an alternative. <strong>Gamma</strong> is commonly used with ordinal level data and provides a summary comparing how many observations fall around the diagonal in the table that supports a positive relationship (e.g. observations in the low-low cell and the high-high cells) as opposed to observations following the negative diagonal (e.g. the low-high cell and the high-low cells). Gamma ranges from <span class="math inline">\(-1.0\)</span> to <span class="math inline">\(+1.0\)</span>.\</p>
 <p>Crosstabulations and their associated statistics can be calculated using R. In this example we continue to use the Global Climate Change dataset (ds). The dataset includes measures of survey respondents: gender (female = 0, male = 1); perceived risk posed by climate change, or glbcc_risk (0 = Not Risk; 10 = extreme risk), and political ideology (1 = strong liberal, 7 = strong conservative). Here we look at whether there is a relationship between gender and the glbcc_risk variable. The glbcc_risk variable has eleven categories; to make the table more manageable, we recode it to five categories.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Factor the gender variable</span>
-ds<span class="op">$</span>f.gend &lt;-<span class="st"> </span><span class="kw">factor</span>(ds<span class="op">$</span>gender, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Women&quot;</span>, <span class="st">&quot;Men&quot;</span>))
-
-<span class="co">#  recode glbcc_risk to five categories</span>
-<span class="kw">library</span>(car)
-ds<span class="op">$</span>r.glbcc_risk &lt;-<span class="st"> </span>car<span class="op">::</span><span class="kw">recode</span>(ds<span class="op">$</span>glbcc_risk, <span class="st">&quot;0:1=1; 2:3=2; 4:6=3; 7:8:=4;</span>
-<span class="st">                          9:10=5; NA=NA&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co">#  Factor the gender variable</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">ds<span class="op">$</span>f.gend &lt;-<span class="st"> </span><span class="kw">factor</span>(ds<span class="op">$</span>gender, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Women&quot;</span>, <span class="st">&quot;Men&quot;</span>))</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb60-4" data-line-number="4"><span class="co">#  recode glbcc_risk to five categories</span></a>
+<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb60-6" data-line-number="6">ds<span class="op">$</span>r.glbcc_risk &lt;-<span class="st"> </span>car<span class="op">::</span><span class="kw">recode</span>(ds<span class="op">$</span>glbcc_risk, <span class="st">&quot;0:1=1; 2:3=2; 4:6=3; 7:8:=4;</span></a>
+<a class="sourceLine" id="cb60-7" data-line-number="7"><span class="st">                          9:10=5; NA=NA&quot;</span>)</a></code></pre></div>
 <p>Using the <code>table</code> function, we produce a frequency table reflecting the relationship between gender and the recoded glbccrisk variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  create the table</span>
-<span class="kw">table</span>(ds<span class="op">$</span>r.glbcc_risk, ds<span class="op">$</span>f.gend)</code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="co">#  create the table</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="kw">table</span>(ds<span class="op">$</span>r.glbcc_risk, ds<span class="op">$</span>f.gend)</a></code></pre></div>
 <pre><code>##    
 ##     Women Men
 ##   1   134 134
@@ -382,11 +396,11 @@ ds<span class="op">$</span>r.glbcc_risk &lt;-<span class="st"> </span>car<span c
 ##   3   480 281
 ##   4   330 208
 ##   5   393 245</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  create the table as an R Object</span>
-glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span class="op">$</span>r.glbcc_risk, ds<span class="op">$</span>f.gend)</code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co">#  create the table as an R Object</span></a>
+<a class="sourceLine" id="cb63-2" data-line-number="2">glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span class="op">$</span>r.glbcc_risk, ds<span class="op">$</span>f.gend)</a></code></pre></div>
 <p>This table is difficult to interpret because of the numbers of men and women are different. To make the table easier to interpret, we convert it to percentages using the <code>prop.table</code> function. Looking at the new table, we can see that there are more men at the lower end of the perceived risk scale and more women at the upper end.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Multiply by 100</span>
-<span class="kw">prop.table</span>(glbcc.table, <span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="co">#  Multiply by 100</span></a>
+<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="kw">prop.table</span>(glbcc.table, <span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
 <pre><code>##    
 ##         Women       Men
 ##   1  8.862434 13.098729
@@ -395,8 +409,8 @@ glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span 
 ##   4 21.825397 20.332356
 ##   5 25.992063 23.949169</code></pre>
 <p>The percentaged table suggests that there is a relationship between the two variables, but also illustrates the challenge of relying on percentage differences to determine the significance of that relationship. So, to test our null hypothesis, we calculate our chi square using the chisq.test function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Chi Square Test</span>
-<span class="kw">chisq.test</span>(glbcc.table)</code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="co">#  Chi Square Test</span></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="kw">chisq.test</span>(glbcc.table)</a></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -404,8 +418,8 @@ glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span 
 ## X-squared = 21.729, df = 4, p-value = 0.0002269</code></pre>
 <p>R reports our chi square to equal 21.73. It also tells us that we have 4 degrees of freedom and a p value of .0002269. Since that p value is substantially less than .05, we can reject our null hypothesis with great confidence. There is, evidently, a relationship between gender and percieved risk of climate change.</p>
 <p>Finally, we want to know how strong the relationship is. We use the <code>assocstats</code> function to get several measures of association. Since the table is not a 2 X 2 table nor square, neither phi not the contingency coefficient is appropriate, but we can report Cramer’s V. Cramer’s V is .093, indicating a relatively weak relationship between gender and the perceived global climate change risk variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(vcd)
-<span class="kw">assocstats</span>(glbcc.table)</code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">library</span>(vcd)</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="kw">assocstats</span>(glbcc.table)</a></code></pre></div>
 <pre><code>##                     X^2 df   P(&gt; X^2)
 ## Likelihood Ratio 21.494  4 0.00025270
 ## Pearson          21.729  4 0.00022695
@@ -433,41 +447,41 @@ Figure 6.6: Controlling for a Third Variable: Spurious
 </div>
 <p>A third outcome of controlling for a third variable might be some form of interaction or specification effect. The third variable affects how the first two are related, but it does not completely undermine the original relationship. For example, we might find the original relationship to be stronger for one category of the control variable than another - or even to be present in one case and not the other. The pattern might also suggest that both variables have an influence on the dependent variable, resembling some form of joint causation. In fact, it is possible for your relationship to appear to be null in your original table, but when you control you might find a positive relationship for one category of your control variable and negative for another.</p>
 <p>Using an example from the Climate and Weather survey, we might hypothesize that liberals are more likely to think that greenhouse gases are causing global warming. We start by recoding ideology from 7 levels to 3, then construct a frequency table and convert it to a percentage table of the relationship.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  recode variables ideology to 3 categories</span>
-<span class="kw">library</span>(car)
-ds<span class="op">$</span>r.ideol&lt;-car<span class="op">::</span><span class="kw">recode</span>(ds<span class="op">$</span>ideol, <span class="st">&quot;1:2=1; 3:5=2; 6:7=3; NA=NA&quot;</span>)
-
-<span class="co">#  factor the variables to add labels.</span>
-ds<span class="op">$</span>f.ideol&lt;-<span class="st"> </span><span class="kw">factor</span>(ds<span class="op">$</span>r.ideol, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Liberal&quot;</span>, 
-                        <span class="st">&quot;Moderate&quot;</span>, <span class="st">&quot;Conservative&quot;</span>))
-ds<span class="op">$</span>f.glbcc &lt;-<span class="st"> </span><span class="kw">factor</span>(ds<span class="op">$</span>glbcc, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), 
-                          <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;GLBCC No&quot;</span>, <span class="st">&quot;GLBCC Yes&quot;</span>))
-
-<span class="co">#  3 Two variable table glbcc~ideology</span>
-v2.glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span class="op">$</span>f.glbcc, ds<span class="op">$</span>f.ideol)
-v2.glbcc.table</code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="co">#  recode variables ideology to 3 categories</span></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb70-3" data-line-number="3">ds<span class="op">$</span>r.ideol&lt;-car<span class="op">::</span><span class="kw">recode</span>(ds<span class="op">$</span>ideol, <span class="st">&quot;1:2=1; 3:5=2; 6:7=3; NA=NA&quot;</span>)</a>
+<a class="sourceLine" id="cb70-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb70-5" data-line-number="5"><span class="co">#  factor the variables to add labels.</span></a>
+<a class="sourceLine" id="cb70-6" data-line-number="6">ds<span class="op">$</span>f.ideol&lt;-<span class="st"> </span><span class="kw">factor</span>(ds<span class="op">$</span>r.ideol, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Liberal&quot;</span>, </a>
+<a class="sourceLine" id="cb70-7" data-line-number="7">                        <span class="st">&quot;Moderate&quot;</span>, <span class="st">&quot;Conservative&quot;</span>))</a>
+<a class="sourceLine" id="cb70-8" data-line-number="8">ds<span class="op">$</span>f.glbcc &lt;-<span class="st"> </span><span class="kw">factor</span>(ds<span class="op">$</span>glbcc, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb70-9" data-line-number="9">                          <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;GLBCC No&quot;</span>, <span class="st">&quot;GLBCC Yes&quot;</span>))</a>
+<a class="sourceLine" id="cb70-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb70-11" data-line-number="11"><span class="co">#  3 Two variable table glbcc~ideology</span></a>
+<a class="sourceLine" id="cb70-12" data-line-number="12">v2.glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span class="op">$</span>f.glbcc, ds<span class="op">$</span>f.ideol)</a>
+<a class="sourceLine" id="cb70-13" data-line-number="13">v2.glbcc.table</a></code></pre></div>
 <pre><code>##            
 ##             Liberal Moderate Conservative
 ##   GLBCC No       26      322          734
 ##   GLBCC Yes     375      762          305</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Percentages by Column</span>
-<span class="kw">prop.table</span>(v2.glbcc.table, <span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co">#  Percentages by Column</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="kw">prop.table</span>(v2.glbcc.table, <span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a></code></pre></div>
 <pre><code>##            
 ##               Liberal  Moderate Conservative
 ##   GLBCC No   6.483791 29.704797    70.644851
 ##   GLBCC Yes 93.516209 70.295203    29.355149</code></pre>
 <p>It appears that our hypothesis is supported, as there is more than a 40% difference between liberals and conservatives with moderates in between. However, let’s consider the chi square before we reject our null hypothesis:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Chi-squared</span>
-<span class="kw">chisq.test</span>(v2.glbcc.table, <span class="dt">correct =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="co">#  Chi-squared</span></a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="kw">chisq.test</span>(v2.glbcc.table, <span class="dt">correct =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  v2.glbcc.table
 ## X-squared = 620.76, df = 2, p-value &lt; 0.00000000000000022</code></pre>
 <p>The chi square is very large and our p-value is very small. We can therefore reject our null hypothesis with great confidence. Next, we consider the strength of the association using Cramer’s V (since either Phi nor the contingency coefficient is appropriate for a 3 X 2 table):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Cramer&#39;s V</span>
-<span class="kw">library</span>(vcd)
-<span class="kw">assocstats</span>(v2.glbcc.table)</code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co">#  Cramer&#39;s V</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="kw">library</span>(vcd)</a>
+<a class="sourceLine" id="cb76-3" data-line-number="3"><span class="kw">assocstats</span>(v2.glbcc.table)</a></code></pre></div>
 <pre><code>##                     X^2 df P(&gt; X^2)
 ## Likelihood Ratio 678.24  2        0
 ## Pearson          620.76  2        0
@@ -477,12 +491,12 @@ v2.glbcc.table</code></pre></div>
 ## Cramer&#39;s V        : 0.496</code></pre>
 <p>The Cramer’s V value of .496 indicates that we have a strong relationship between political ideology and beliefs about climate change.</p>
 <p>We might, though, want to look at gender as a control variable since we know gender is related both to perceptions on the climate and ideology. First we need to generate a new table with the control variable gender added. We start by factoring the gender variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  factor the variables to add labels.</span>
-ds<span class="op">$</span>f.gend &lt;-<span class="st"> </span><span class="kw">factor</span>(ds<span class="op">$</span>gend, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Women&quot;</span>, <span class="st">&quot;Men&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co">#  factor the variables to add labels.</span></a>
+<a class="sourceLine" id="cb78-2" data-line-number="2">ds<span class="op">$</span>f.gend &lt;-<span class="st"> </span><span class="kw">factor</span>(ds<span class="op">$</span>gend, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Women&quot;</span>, <span class="st">&quot;Men&quot;</span>))</a></code></pre></div>
 <p>We then create the new table. The R output is shown, in which the line <code>\#\# ,  ,  = Women</code> indicates the results for women and <code>\#\# ,  ,  = Men</code> displays the results for men.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  3 Two variable table glbcc~ideology+gend</span>
-v3.glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span class="op">$</span>f.glbcc, ds<span class="op">$</span>f.ideol, ds<span class="op">$</span>f.gend) 
-v3.glbcc.table</code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co">#  3 Two variable table glbcc~ideology+gend</span></a>
+<a class="sourceLine" id="cb79-2" data-line-number="2">v3.glbcc.table &lt;-<span class="st"> </span><span class="kw">table</span>(ds<span class="op">$</span>f.glbcc, ds<span class="op">$</span>f.ideol, ds<span class="op">$</span>f.gend) </a>
+<a class="sourceLine" id="cb79-3" data-line-number="3">v3.glbcc.table</a></code></pre></div>
 <pre><code>## , ,  = Women
 ## 
 ##            
@@ -496,19 +510,19 @@ v3.glbcc.table</code></pre></div>
 ##             Liberal Moderate Conservative
 ##   GLBCC No        8      116          358
 ##   GLBCC Yes     136      292          109</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Percentages by Column for Women </span>
-<span class="kw">prop.table</span>(v3.glbcc.table[,,<span class="dv">1</span>], <span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>       </code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="co">#  Percentages by Column for Women </span></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2"><span class="kw">prop.table</span>(v3.glbcc.table[,,<span class="dv">1</span>], <span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>       </a></code></pre></div>
 <pre><code>##            
 ##               Liberal  Moderate Conservative
 ##   GLBCC No   7.003891 30.473373    65.674256
 ##   GLBCC Yes 92.996109 69.526627    34.325744</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(v3.glbcc.table[,,<span class="dv">1</span>])</code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="kw">chisq.test</span>(v3.glbcc.table[,,<span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  v3.glbcc.table[, , 1]
 ## X-squared = 299.39, df = 2, p-value &lt; 0.00000000000000022</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">assocstats</span>(v3.glbcc.table[,,<span class="dv">1</span>])</code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="kw">assocstats</span>(v3.glbcc.table[,,<span class="dv">1</span>])</a></code></pre></div>
 <pre><code>##                     X^2 df P(&gt; X^2)
 ## Likelihood Ratio 326.13  2        0
 ## Pearson          299.39  2        0
@@ -516,19 +530,19 @@ v3.glbcc.table</code></pre></div>
 ## Phi-Coefficient   : NA 
 ## Contingency Coeff.: 0.407 
 ## Cramer&#39;s V        : 0.446</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  Percentages by Column for  Men </span>
-<span class="kw">prop.table</span>(v3.glbcc.table[,,<span class="dv">2</span>], <span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>    </code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co">#  Percentages by Column for  Men </span></a>
+<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="kw">prop.table</span>(v3.glbcc.table[,,<span class="dv">2</span>], <span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>    </a></code></pre></div>
 <pre><code>##            
 ##               Liberal  Moderate Conservative
 ##   GLBCC No   5.555556 28.431373    76.659529
 ##   GLBCC Yes 94.444444 71.568627    23.340471</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(v3.glbcc.table[,,<span class="dv">2</span>])</code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="kw">chisq.test</span>(v3.glbcc.table[,,<span class="dv">2</span>])</a></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  v3.glbcc.table[, , 2]
 ## X-squared = 320.43, df = 2, p-value &lt; 0.00000000000000022</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">assocstats</span>(v3.glbcc.table[,,<span class="dv">2</span>])</code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="kw">assocstats</span>(v3.glbcc.table[,,<span class="dv">2</span>])</a></code></pre></div>
 <pre><code>##                     X^2 df P(&gt; X^2)
 ## Likelihood Ratio 353.24  2        0
 ## Pearson          320.43  2        0
@@ -543,31 +557,39 @@ v3.glbcc.table</code></pre></div>
 <div id="covariance" class="section level2">
 <h2><span class="header-section-number">6.2</span> Covariance</h2>
 <p>Covariance is a simple measure of the way two variables move together, or “co-vary”. The covariance of two variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, can be expressed in population notation as:</p>
-<span class="math display" id="eq:06-2">\[\begin{equation}
+<p><span class="math display" id="eq:06-2">\[\begin{equation}
 cov(X,Y) = E[(X-\mu_{x})(Y-\mu_{y})]
 \tag{6.2}
-\end{equation}\]</span>
-<p>Therefore, the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is simply the product of the variation of <span class="math inline">\(X\)</span> around its expected value, and the variation of <span class="math inline">\(Y\)</span> around its expected value. The sample covariance is expressed as:</p>
-<span class="math display" id="eq:06-3">\[\begin{equation}
+\end{equation}\]</span></p>
+<p>Therefore, the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is simply the product of
+the variation of <span class="math inline">\(X\)</span> around its expected value,
+and the variation of <span class="math inline">\(Y\)</span>
+around its expected value.
+The sample covariance is expressed as:</p>
+<p><span class="math display" id="eq:06-3">\[\begin{equation}
 cov(X,Y) = \frac{\sum (X-\bar{X})(Y-\bar{Y})}{(n-1)}   
 \tag{6.3}
-\end{equation}\]</span>
-<p>Covariance can be positive, negative, or zero. If the covariance is positive <em>both variables move in the same direction</em>, meaning if <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> increases or if <span class="math inline">\(X\)</span> decreases <span class="math inline">\(Y\)</span> decreases. Negative covariance means that the <em>variables move in opposite directions</em>; if <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> decreases. Finally, zero covariance indicates that there is no covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+\end{equation}\]</span></p>
+<p>Covariance can be positive, negative, or zero. If the covariance is positive <em>both variables move in the same direction</em>,
+meaning if <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> increases or if <span class="math inline">\(X\)</span> decreases <span class="math inline">\(Y\)</span> decreases. Negative covariance means that the <em>variables move
+in opposite directions</em>; if <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> decreases. Finally, zero covariance indicates that there is no covariance between <span class="math inline">\(X\)</span> and
+<span class="math inline">\(Y\)</span>.</p>
 </div>
 <div id="correlation" class="section level2">
 <h2><span class="header-section-number">6.3</span> Correlation</h2>
 <p>Correlation is closely related to covariance. In essence, correlation standardizes covariance so it can be compared across variables. Correlation is represented by a correlation coefficient, <span class="math inline">\(\rho\)</span>, and is calculated by dividing the covariance of the two variables by the product of their standard deviations. For populations it is expressed as:</p>
-<span class="math display" id="eq:06-4">\[\begin{equation}
+<p><span class="math display" id="eq:06-4">\[\begin{equation}
 \rho = \frac{cov(X,Y)}{\sigma_{x} \sigma_{y}}  \tag{6.4}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>For samples it is expressed as:</p>
-<span class="math display" id="eq:06-5">\[\begin{equation}
+<p><span class="math display" id="eq:06-5">\[\begin{equation}
 r = \frac{\sum (X-\bar{X})(Y-\bar{Y})/(n-1)}{s_{x}s_{y}} 
 \tag{6.5}
-\end{equation}\]</span>
-<p>Like covariance, correlations can be positive, negative, and zero. The possible values of the correlation coefficient <span class="math inline">\(r\)</span>, range from -1, perfect negative relationship to 1, perfect positive relationship. If <span class="math inline">\(r=0\)</span>, that indicates no correlation. Correlations can be calculated in <code>R</code>, using the <code>cor</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(education, ideol, age, glbcc_risk) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">cor</span>()</code></pre></div>
+\end{equation}\]</span></p>
+<p>Like covariance, correlations can be positive, negative, and zero. The possible values of the correlation coefficient <span class="math inline">\(r\)</span>, range
+from -1, perfect negative relationship to 1, perfect positive relationship. If <span class="math inline">\(r=0\)</span>, that indicates no correlation. Correlations can be calculated in <code>R</code>, using the <code>cor</code> function.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">ds <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(education, ideol, age, glbcc_risk) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="st">  </span><span class="kw">cor</span>()</a></code></pre></div>
 <pre><code>##              education       ideol         age  glbcc_risk
 ## education   1.00000000 -0.13246843 -0.06149090  0.09115774
 ## ideol      -0.13246843  1.00000000  0.08991177 -0.59009431
@@ -577,10 +599,10 @@ r = \frac{\sum (X-\bar{X})(Y-\bar{Y})/(n-1)}{s_{x}s_{y}}
 </div>
 <div id="scatterplots" class="section level2">
 <h2><span class="header-section-number">6.4</span> Scatterplots</h2>
-<p>As noted earlier, it is often useful to try and see patterns between two variables. We examined the density plots of males and females with regard to climate change risk, then we tested these differences for statistical significance. However, we often want to know more than the mean difference between groups; we may also want to know if differences exist for variables with several possible values. For example, here we examine the relationship between ideology and perceived risk of climate change. One of the more efficient ways to do this is to produce a scatterplot. %Use geom_jitter. This is because ideology and glbcc risk are discrete variables(i.e., whole numbers), so we need to “jitter” the data. If your values are continuous, use <code>geom_point</code>.<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a> The result is shown in Figure .</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ideol, glbcc_risk)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">shape =</span> <span class="dv">1</span>)</code></pre></div>
+<p>As noted earlier, it is often useful to try and see patterns between two variables. We examined the density plots of males and females with regard to climate change risk, then we tested these differences for statistical significance. However, we often want to know more than the mean difference between groups; we may also want to know if differences exist for variables with several possible values. For example, here we examine the relationship between ideology and perceived risk of climate change. One of the more efficient ways to do this is to produce a scatterplot. %Use geom_jitter. This is because ideology and glbcc risk are discrete variables(i.e., whole numbers), so we need to “jitter” the data. If your values are continuous, use <code>geom_point</code>.<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a> The result is shown in Figure .</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">ds <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ideol, glbcc_risk)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb95-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">shape =</span> <span class="dv">1</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:scatjit"></span>
 <img src="_main_files/figure-html/scatjit-1.png" alt="Scatterplot of Ideology and glbcc Risk" width="672" />
 <p class="caption">
@@ -588,12 +610,12 @@ Figure 6.7: Scatterplot of Ideology and glbcc Risk
 </p>
 </div>
 <p>We can see that the density of values indicate that strong liberals—<span class="math inline">\(1\)</span>’s on the ideology scale—tend to view climate change as quite risky, whereas strong conservatives—<span class="math inline">\(7\)</span>’s on the ideology scale—tend to view climate change as less risky. Like our previous example, we want to know more about the nature of this relationship. Therefore, we can plot a regression line and a “loess” line. These lines are the linear and nonlinear estimates of the relationship between political ideology and perceived risk of climate change. We’ll have more to say about the linear estimates when we turn to regression analysis in the next chapter.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">drop_na</span>(glbcc_risk, ideol) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ideol, glbcc_risk)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">ds <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="st">  </span><span class="kw">drop_na</span>(glbcc_risk, ideol) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ideol, glbcc_risk)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb96-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">shape =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb96-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb96-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:scatjit2"></span>
 <img src="_main_files/figure-html/scatjit2-1.png" alt="Scatterplot of Ideology and GLBCC Risk with Regression Line and Lowess Line" width="672" />
 <p class="caption">
@@ -602,7 +624,7 @@ Figure 6.8: Scatterplot of Ideology and GLBCC Risk with Regression Line and Lowe
 </div>
 <p>Note that the regression lines both slope downward, with average perceived risk ranging from over 8 for the strong liberals (ideology=1) to less than 5 for strong conservatives (ideology=7). This illustrates how scatterplots can provide information about the nature of the relationship between two variables. We will take the next step – to bivariate regression analysis – in the next chapter.</p>
 <div class="figure"><span id="fig:chisquaretable"></span>
-<img src="chisquaretable.png" alt="Chi Square Table" width="100%" />
+<img src="chisquaretable.PNG" alt="Chi Square Table" width="100%" />
 <p class="caption">
 Figure 6.9: Chi Square Table
 </p>
@@ -613,8 +635,8 @@ Figure 6.9: Chi Square Table
 <div class="footnotes">
 <hr />
 <ol start="12">
-<li id="fn12"><p>To reiterate the general decision rule: if the probability that we could have a 20% difference in our sample if the null hypothesis is true is less than .05, we will reject our null hypothesis.<a href="association-of-variables.html#fnref12">↩</a></p></li>
-<li id="fn13"><p>That means a “jit” (a very small value) is applied to each observed point on the plot, so you can see observations that are “stacked” on the same coordinate. Ha! Just kidding; they’re not called jits. We don’t know what they’re called. But they ought to be called jits.<a href="association-of-variables.html#fnref13">↩</a></p></li>
+<li id="fn12"><p>To reiterate the general decision rule: if the probability that we could have a 20% difference in our sample if the null hypothesis is true is less than .05, we will reject our null hypothesis.<a href="association-of-variables.html#fnref12" class="footnote-back">↩</a></p></li>
+<li id="fn13"><p>That means a “jit” (a very small value) is applied to each observed point on the plot, so you can see observations that are “stacked” on the same coordinate. Ha! Just kidding; they’re not called jits. We don’t know what they’re called. But they ought to be called jits.<a href="association-of-variables.html#fnref13" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -673,7 +695,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

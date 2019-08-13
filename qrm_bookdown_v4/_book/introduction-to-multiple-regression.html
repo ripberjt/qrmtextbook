@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11 Introduction to Multiple Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R</title>
-  <meta name="description" content="11 Introduction to Multiple Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="11 Introduction to Multiple Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11 Introduction to Multiple Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,13 @@
   
   
 
-<meta name="author" content="Hank Jenkins-Smith">
-<meta name="author" content="Joseph Ripberger">
-<meta name="author" content="Gary Copeland">
-<meta name="author" content="Matthew Nowlin">
-<meta name="author" content="Tyler Hughes">
-<meta name="author" content="Aaron Fister">
-<meta name="author" content="Wesley Wehde">
+<meta name="author" content="Hank Jenkins-Smith, Joseph Ripberger, Gary Copeland, Matthew Nowlin, Tyler Hughes, Aaron Fister, Wesley Wehde, and Josie Davis" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="ols-assumptions-and-simple-regression-diagnostics.html">
@@ -56,41 +49,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -134,16 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1.3" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#moments"><i class="fa fa-check"></i><b>3.1.3</b> Moments</a></li>
 <li class="chapter" data-level="3.1.4" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#first-moment-expected-value"><i class="fa fa-check"></i><b>3.1.4</b> First Moment – Expected Value</a></li>
 <li class="chapter" data-level="3.1.5" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-second-moment-variance-and-standard-deviation"><i class="fa fa-check"></i><b>3.1.5</b> The Second Moment – Variance and Standard Deviation</a></li>
-<li class="chapter" data-level="3.1.6" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-third-moment-skewness"><i class="fa fa-check"></i><b>3.1.6</b> The Third Moment – Skewness</a></li>
-<li class="chapter" data-level="3.1.7" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-fourth-moment-kurtosis"><i class="fa fa-check"></i><b>3.1.7</b> The Fourth Moment – Kurtosis</a></li>
-<li class="chapter" data-level="3.1.8" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#order-statistics"><i class="fa fa-check"></i><b>3.1.8</b> Order Statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#summary"><i class="fa fa-check"></i><b>3.2</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>4</b> Probability</a><ul>
 <li class="chapter" data-level="4.1" data-path="probability.html"><a href="probability.html#finding-probabilities"><i class="fa fa-check"></i><b>4.1</b> Finding Probabilities</a></li>
 <li class="chapter" data-level="4.2" data-path="probability.html"><a href="probability.html#finding-probabilities-with-the-normal-curve"><i class="fa fa-check"></i><b>4.2</b> Finding Probabilities with the Normal Curve</a></li>
-<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary-1"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
+<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5</b> Inference</a><ul>
 <li class="chapter" data-level="5.1" data-path="inference.html"><a href="inference.html#inference-populations-and-samples"><i class="fa fa-check"></i><b>5.1</b> Inference: Populations and Samples</a><ul>
@@ -166,7 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4" data-path="inference.html"><a href="inference.html#differences-between-groups"><i class="fa fa-check"></i><b>5.4</b> Differences Between Groups</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="inference.html"><a href="inference.html#t-tests"><i class="fa fa-check"></i><b>5.4.1</b> <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-2"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-1"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="association-of-variables.html"><a href="association-of-variables.html"><i class="fa fa-check"></i><b>6</b> Association of Variables</a><ul>
 <li class="chapter" data-level="6.1" data-path="association-of-variables.html"><a href="association-of-variables.html#cross-tabulation"><i class="fa fa-check"></i><b>6.1</b> Cross-Tabulation</a><ul>
@@ -198,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.2" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#ols-derivation-of-hatbeta"><i class="fa fa-check"></i><b>8.2.2</b> OLS Derivation of <span class="math inline">\(\hat{\beta}\)</span></a></li>
 <li class="chapter" data-level="8.2.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#interpreting-hatbeta-and-hatalpha"><i class="fa fa-check"></i><b>8.2.3</b> Interpreting <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-3"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
+<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-2"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html"><i class="fa fa-check"></i><b>9</b> Bi-Variate Hypothesis Testing and Model Fit</a><ul>
 <li class="chapter" data-level="9.1" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#hypothesis-tests-for-regression-coefficients"><i class="fa fa-check"></i><b>9.1</b> Hypothesis Tests for Regression Coefficients</a><ul>
@@ -209,7 +223,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.2.2" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#coefficient-of-determination-r2"><i class="fa fa-check"></i><b>9.2.2</b> Coefficient of Determination: <span class="math inline">\(R^{2}\)</span></a></li>
 <li class="chapter" data-level="9.2.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#visualizing-bivariate-regression"><i class="fa fa-check"></i><b>9.2.3</b> Visualizing Bivariate Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-4"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-3"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html"><i class="fa fa-check"></i><b>10</b> OLS Assumptions and Simple Regression Diagnostics</a><ul>
 <li class="chapter" data-level="10.1" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#a-recap-of-modeling-assumptions"><i class="fa fa-check"></i><b>10.1</b> A Recap of Modeling Assumptions</a></li>
@@ -225,7 +239,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.3.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#examining-outlier-data"><i class="fa fa-check"></i><b>10.3.4</b> Examining Outlier Data</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#so-now-what-implications-of-residual-analysis"><i class="fa fa-check"></i><b>10.4</b> So Now What? Implications of Residual Analysis</a></li>
-<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-5"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-4"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html"><i class="fa fa-check"></i><b>11</b> Introduction to Multiple Regression</a><ul>
 <li class="chapter" data-level="11.1" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-algebra-and-multiple-regression"><i class="fa fa-check"></i><b>11.1</b> Matrix Algebra and Multiple Regression</a></li>
@@ -240,7 +254,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.2.8" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-inversion"><i class="fa fa-check"></i><b>11.2.8</b> Matrix Inversion</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#ols-regression-in-matrix-form"><i class="fa fa-check"></i><b>11.3</b> OLS Regression in Matrix Form</a></li>
-<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-5"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html"><i class="fa fa-check"></i><b>12</b> The Logic of Multiple Regression</a><ul>
 <li class="chapter" data-level="12.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#theoretical-specification"><i class="fa fa-check"></i><b>12.1</b> Theoretical Specification</a><ul>
@@ -250,7 +264,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#multiple-regression-example"><i class="fa fa-check"></i><b>12.3</b> Multiple Regression Example</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#hypothesis-testing-and-t-tests"><i class="fa fa-check"></i><b>12.3.1</b> Hypothesis Testing and <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-7"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
+<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html"><i class="fa fa-check"></i><b>13</b> Multiple Regression and Model Building</a><ul>
 <li class="chapter" data-level="13.1" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#model-building"><i class="fa fa-check"></i><b>13.1</b> Model Building</a><ul>
@@ -259,13 +273,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.1.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#risks-in-model-building"><i class="fa fa-check"></i><b>13.1.3</b> Risks in Model Building</a></li>
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#evils-of-stepwise-regression"><i class="fa fa-check"></i><b>13.2</b> Evils of Stepwise Regression</a></li>
-<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-8"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-7"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html"><i class="fa fa-check"></i><b>14</b> Topics in Multiple Regression</a><ul>
 <li class="chapter" data-level="14.1" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>14.1</b> Dummy Variables</a></li>
 <li class="chapter" data-level="14.2" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#interaction-effects"><i class="fa fa-check"></i><b>14.2</b> Interaction Effects</a></li>
 <li class="chapter" data-level="14.3" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#standardized-regression-coefficients"><i class="fa fa-check"></i><b>14.3</b> Standardized Regression Coefficients</a></li>
-<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-9"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
+<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-8"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html"><i class="fa fa-check"></i><b>15</b> The Art of Regression Diagnostics</a><ul>
 <li class="chapter" data-level="15.1" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#ols-error-assumptions-revisited"><i class="fa fa-check"></i><b>15.1</b> OLS Error Assumptions Revisited</a></li>
@@ -278,7 +292,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.2.6" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#outliers"><i class="fa fa-check"></i><b>15.2.6</b> Outliers</a></li>
 <li class="chapter" data-level="15.2.7" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#multicollinearity"><i class="fa fa-check"></i><b>15.2.7</b> Multicollinearity</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-10"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-9"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="logit-regression.html"><a href="logit-regression.html"><i class="fa fa-check"></i><b>16</b> Logit Regression</a><ul>
 <li class="chapter" data-level="16.1" data-path="logit-regression.html"><a href="logit-regression.html#generalized-linear-models"><i class="fa fa-check"></i><b>16.1</b> Generalized Linear Models</a></li>
@@ -287,7 +301,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="16.2.2" data-path="logit-regression.html"><a href="logit-regression.html#goodness-of-fit"><i class="fa fa-check"></i><b>16.2.2</b> Goodness of Fit</a></li>
 <li class="chapter" data-level="16.2.3" data-path="logit-regression.html"><a href="logit-regression.html#interpreting-logits"><i class="fa fa-check"></i><b>16.2.3</b> Interpreting Logits</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-11"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
+<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-10"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html"><i class="fa fa-check"></i><b>17</b> Appendix: Basic R</a><ul>
 <li class="chapter" data-level="17.1" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html#introduction-to-r"><i class="fa fa-check"></i><b>17.1</b> Introduction to R</a></li>
@@ -317,11 +331,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="introduction-to-multiple-regression" class="section level1">
 <h1><span class="header-section-number">11</span> Introduction to Multiple Regression</h1>
-<p>In the chapters in Part 3 of this book, we will introduce and develop multiple ordinary least squares regression – that is, linear regression models using two or more independent (or explanatory) variables to predict a dependent variable. Most users simply refer to it as “multiple regression”.<a href="#fn20" class="footnoteRef" id="fnref20"><sup>20</sup></a> This chapter will provide the background in matrix algebra that is necessary to understand both the logic of, and notation commonly used for, multiple regression. As we go, we will apply the matrix form of regression in examples using R to provide a basic understanding of how multiple regression works. Chapter 12 will focus on the key assumptions about the concepts and data that are necessary for OLS regression to provide unbiased and efficient estimates of the relationships of interest, and it will address the key virtue of multiple regressions – the application of “statistical controls” in modeling relationships through the estimation of partial regression coefficients. Chapter 13 will turn to the process and set of choices involved in specifying and estimating multiple regression models, and to some of the automated approaches to model building you’d best avoid (and why). Chapter 13 turns to some more complex uses of multiple regression, such as the use and interpretation of “dummy” (dichotomous) independent variables, and modeling interactions in the effects of the independent variables. Chapter 14 concludes this part of the book with the application of diagnostic evaluations to regression model residuals, which will allow you to assess whether key modeling assumptions have been met and – if not – what the implications are for your model results. By the time you have mastered the chapters in this section, you will be well primed for understanding and using multiple regression analysis.</p>
+<p>In the chapters in Part 3 of this book, we will introduce and develop multiple ordinary least squares regression – that is, linear regression models using two or more independent (or explanatory) variables to predict a dependent variable. Most users simply refer to it as “multiple regression”.<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a> This chapter will provide the background in matrix algebra that is necessary to understand both the logic of, and notation commonly used for, multiple regression. As we go, we will apply the matrix form of regression in examples using R to provide a basic understanding of how multiple regression works. Chapter 12 will focus on the key assumptions about the concepts and data that are necessary for OLS regression to provide unbiased and efficient estimates of the relationships of interest, and it will address the key virtue of multiple regressions – the application of “statistical controls” in modeling relationships through the estimation of partial regression coefficients. Chapter 13 will turn to the process and set of choices involved in specifying and estimating multiple regression models, and to some of the automated approaches to model building you’d best avoid (and why). Chapter 13 turns to some more complex uses of multiple regression, such as the use and interpretation of “dummy” (dichotomous) independent variables, and modeling interactions in the effects of the independent variables. Chapter 14 concludes this part of the book with the application of diagnostic evaluations to regression model residuals, which will allow you to assess whether key modeling assumptions have been met and – if not – what the implications are for your model results. By the time you have mastered the chapters in this section, you will be well primed for understanding and using multiple regression analysis.</p>
 <div id="matrix-algebra-and-multiple-regression" class="section level2">
 <h2><span class="header-section-number">11.1</span> Matrix Algebra and Multiple Regression</h2>
-<p>Matrix algebra is widely used for the derivation of multiple regression because it permits a compact, intuitive depiction of regression analysis. For example, an estimated multiple regression model in scalar notion is expressed as: <span class="math inline">\(Y = A + BX_1 + BX_2 + BX_3 + E\)</span>. Using matrix notation, the same equation can be expressed in a more compact and (believe it or not!) intuitive form: <span class="math inline">\(y = Xb + e\)</span>.</p>
-<p>In addition, matrix notation is flexible in that it can handle any number of independent variables. Operations performed on the model matrix <span class="math inline">\(X\)</span>, are performed on all independent variables simultaneously. Lastly, you will see that matrix expression is widely used in statistical presentations of the results of OLS analysis. For all these reasons, then, we begin with the development of multiple regression in matrix form.</p>
+<p>Matrix algebra is widely used for the derivation of multiple regression because it permits a compact, intuitive depiction of regression analysis. For
+example, an estimated multiple regression model in scalar notion is expressed as: <span class="math inline">\(Y = A + BX_1 + BX_2 + BX_3 + E\)</span>. Using matrix notation,
+the same equation can be expressed in a more compact and (believe it or not!) intuitive form: <span class="math inline">\(y = Xb + e\)</span>.</p>
+<p>In addition, matrix notation is flexible in that it can handle any number of independent variables. Operations performed on the model
+matrix <span class="math inline">\(X\)</span>, are performed on all independent variables simultaneously. Lastly, you will see that matrix expression is widely used in statistical presentations of the results of OLS analysis. For all these reasons, then, we begin with the development of multiple regression in matrix form.</p>
 </div>
 <div id="the-basics-of-matrix-algebra" class="section level2">
 <h2><span class="header-section-number">11.2</span> The Basics of Matrix Algebra</h2>
@@ -347,17 +364,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="transpose" class="section level3">
 <h3><span class="header-section-number">11.2.4</span> Transpose</h3>
-<p>Transposing, or taking the “prime” of a matrix, switches the rows and columns.<a href="#fn21" class="footnoteRef" id="fnref21"><sup>21</sup></a> The matrix</p>
+<p>Transposing, or taking the “prime” of a matrix, switches the rows and columns.<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a> The matrix</p>
 <p><span class="math inline">\(A = \begin{bmatrix}  10 &amp; 5 &amp; 8 \\  -12 &amp; 1 &amp; 0 \end{bmatrix}\)</span></p>
 <p>Once transposed is:</p>
 <p><span class="math inline">\(A&#39; = \begin{bmatrix}  10 &amp; -12 \\  5 &amp; 1 \\  8 &amp; 0 \end{bmatrix}\)</span></p>
 <p>Note that the operation “hinges” on the element in the upper right-hand corner of <span class="math inline">\(A\)</span>, <span class="math inline">\(A_{1,1}\)</span>, so the first column of <span class="math inline">\(A\)</span> becomes the first row on <span class="math inline">\(A&#39;\)</span>. To transpose a matrix in <code>R</code>, create a matrix object then simply use the <code>t</code> command.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="op">-</span><span class="dv">12</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">0</span>),<span class="dv">2</span>,<span class="dv">3</span>)
-A</code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="op">-</span><span class="dv">12</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">0</span>),<span class="dv">2</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb207-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   10    5    8
 ## [2,]  -12    1    0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t</span>(A)</code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="kw">t</span>(A)</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   10  -12
 ## [2,]    5    1
@@ -368,17 +385,17 @@ A</code></pre></div>
 <p>To add matrices together, they must have the same <em>dimensions</em>, meaning that the matrices must have the same number of rows and columns. Then, you simply add each element to its counterpart by row and column. For example:</p>
 <p><span class="math inline">\(A = \begin{bmatrix} 4 &amp; -3 \\ 2 &amp; 0 \end{bmatrix} + B = \begin{bmatrix} 8 &amp; 1 \\ 4 &amp; -5 \end{bmatrix} = A+B = \begin{bmatrix} 4+8 &amp; -3+1 \\ 2+4 &amp; 0+(-5) \end{bmatrix} = \begin{bmatrix}  12 &amp; -2 \\  6 &amp; -5 \end{bmatrix}\)</span></p>
 <p>To add matrices together in <code>R</code>, simply create two matrix objects and add them together.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">0</span>),<span class="dv">2</span>,<span class="dv">2</span>)
-A</code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">0</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb211-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    4   -3
 ## [2,]    2    0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">5</span>),<span class="dv">2</span>,<span class="dv">2</span>)
-B</code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">5</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb213-2" data-line-number="2">B</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    8    1
 ## [2,]    4   -5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A <span class="op">+</span><span class="st"> </span>B</code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">A <span class="op">+</span><span class="st"> </span>B</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   12   -2
 ## [2,]    6   -5</code></pre>
@@ -386,25 +403,26 @@ B</code></pre></div>
 </div>
 <div id="multiplication-of-matrices" class="section level3">
 <h3><span class="header-section-number">11.2.6</span> Multiplication of Matrices</h3>
-<p>To multiply matrices they must be <strong>conformable</strong>, which means the number of <em>columns</em> in the first matrix must match the number of <em>rows</em> in the second matrix.</p>
-<span class="math display">\[\begin{equation*}
+<p>To multiply matrices they must be <strong>conformable</strong>, which means the number of <em>columns</em> in the first matrix must
+match the number of <em>rows</em> in the second matrix.</p>
+<p><span class="math display">\[\begin{equation*}
 A_{rXq} * B_{qXc} = C_{rXc}
-\end{equation*}\]</span>
+\end{equation*}\]</span></p>
 <p>Then, multiply column elements by the row elements, as shown here:</p>
 <p><span class="math inline">\(A = \begin{bmatrix}  2 &amp; 5 \\  1 &amp; 0 \\  6 &amp; -2 \end{bmatrix} * B = \begin{bmatrix} 4 &amp; 2 &amp; 1 \\ 5 &amp; 7 &amp; 2 \end{bmatrix} = A X B = \\ \begin{bmatrix}  (2 X 4)+(5 X 5) &amp; (2 X 2)+(5 X 7) &amp; (2 X 1)+(5 X 2) \\  (1 X 4)+(0 X 5) &amp; (1 X 2)+(0 X 7) &amp; (1 X 1)+(0 X 2) \\  (6 X 4)+(-2 X 5) &amp; (6 X 2)+(-2 X 7) &amp; (6 X 1)+(-2 X 2) \end{bmatrix} = \begin{bmatrix}  33 &amp; 39 &amp; 12 \\  4 &amp; 2 &amp; 1 \\  14 &amp; -2 &amp; 2 \end{bmatrix}\)</span></p>
 <p>To multiply matrices in <code>R</code>, create two matrix objects and multiply them using the <code>\%*\%</code> command.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">2</span>)
-A</code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">2</span>),<span class="dv">3</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb217-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    2    5
 ## [2,]    1    0
 ## [3,]    6   -2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">2</span>,<span class="dv">3</span>)
-B</code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">2</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb219-2" data-line-number="2">B</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4    2    1
 ## [2,]    5    7    2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A <span class="op">%*%</span><span class="st"> </span>B</code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>B</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   33   39   12
 ## [2,]    4    2    1
@@ -414,18 +432,19 @@ B</code></pre></div>
 <h3><span class="header-section-number">11.2.7</span> Identity Matrices</h3>
 <p>The identity matrix is a square matrix with 1’s on the diagonal and 0’s elsewhere. For a 4 x 4 matrix, it looks like this:</p>
 <p><span class="math inline">\(I = \begin{bmatrix}  1 &amp; 0 &amp; 0 &amp; 0 \\  0 &amp; 1 &amp; 0 &amp; 0 \\  0 &amp; 0 &amp; 1 &amp; 0 \\  0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span></p>
-<p>It acts like a 1 in algebra; a matrix (<span class="math inline">\(A\)</span>) times the identity matrix (<span class="math inline">\(I\)</span>) is <span class="math inline">\(A\)</span>. This can be demonstrated in <code>R</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>),<span class="dv">2</span>,<span class="dv">2</span>)
-A</code></pre></div>
+<p>It acts like a 1 in algebra; a matrix (<span class="math inline">\(A\)</span>) times the identity matrix (<span class="math inline">\(I\)</span>) is <span class="math inline">\(A\)</span>. This can be demonstrated
+in <code>R</code>.</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb223-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    5    2
 ## [2,]    3    4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">I &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">2</span>,<span class="dv">2</span>)
-I</code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">I &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb225-2" data-line-number="2">I</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    0
 ## [2,]    0    1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A <span class="op">%*%</span><span class="st"> </span>I</code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>I</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    5    2
 ## [2,]    3    4</code></pre>
@@ -434,9 +453,9 @@ I</code></pre></div>
 <div id="matrix-inversion" class="section level3">
 <h3><span class="header-section-number">11.2.8</span> Matrix Inversion</h3>
 <p>The matrix inversion operation is a bit like dividing any number by itself in algebra. An inverse of the <span class="math inline">\(A\)</span> matrix is denoted <span class="math inline">\(A^{-1}\)</span>. Any matrix multiplied by its inverse is equal to the identity matrix:</p>
-<span class="math display">\[\begin{equation*}
+<p><span class="math display">\[\begin{equation*}
   AA^{-1} = A^{-1}A = I 
-\end{equation*}\]</span>
+\end{equation*}\]</span></p>
 <p>For example,</p>
 <p><span class="math inline">\(A = \begin{bmatrix}  1 &amp; -1 \\  -1 &amp; -1 \end{bmatrix} \text{and } A^{-1} = \begin{bmatrix}  0.5 &amp; -0.5 \\  -0.5 &amp; 0.5 \end{bmatrix} \text{therefore } A*A^{-1} = \begin{bmatrix}  1 &amp; 0 \\  0 &amp; 1 \end{bmatrix}\)</span></p>
 <p>However, matrix inversion is only applicable to a square (i.e., number of rows equals number of columns) matrix; only a square matrix can have an inverse.</p>
@@ -446,18 +465,19 @@ I</code></pre></div>
 <p><span class="math inline">\(A = \begin{bmatrix}  3 &amp; 1 \\  2 &amp; 4 \end{bmatrix} X \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} = \begin{bmatrix}  3a+b &amp; 3c+d \\  2a+4b &amp; 2c+4d \end{bmatrix} = \begin{bmatrix}  1 &amp; 0 \\  0 &amp; 1 \end{bmatrix}\)</span></p>
 <p>Set <span class="math inline">\(3a+b=1\)</span> and <span class="math inline">\(2a+4b=0\)</span> and solve for <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. In this case <span class="math inline">\(a = \frac{2}{5}\)</span> and <span class="math inline">\(b = -\frac{1}{5}\)</span>. Likewise, set <span class="math inline">\(3c+d=0\)</span> and <span class="math inline">\(2c+4d=1\)</span>; solving for <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span> produces <span class="math inline">\(c=-\frac{1}{10}\)</span> and <span class="math inline">\(d=\frac{3}{10}\)</span>. Therefore,</p>
 <p><span class="math inline">\(A^{-1} = \begin{bmatrix}  \frac{2}{5} &amp; -\frac{1}{10} \\  -\frac{1}{5} &amp; \frac{3}{10} \end{bmatrix}\)</span></p>
-<p>Finding the inverse matrix can also be done in <code>R</code> using the <code>solve</code> command.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>),<span class="dv">2</span>,<span class="dv">2</span>)
-A</code></pre></div>
+<p>Finding the inverse matrix can also be done in <code>R</code> using the
+<code>solve</code> command.</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>),<span class="dv">2</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb229-2" data-line-number="2">A</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    3    1
 ## [2,]    2    4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A.inverse &lt;-<span class="st"> </span><span class="kw">solve</span>(A)
-A.inverse</code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1">A.inverse &lt;-<span class="st"> </span><span class="kw">solve</span>(A)</a>
+<a class="sourceLine" id="cb231-2" data-line-number="2">A.inverse</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]  0.4 -0.1
 ## [2,] -0.2  0.3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A <span class="op">%*%</span><span class="st"> </span>A.inverse</code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>A.inverse</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    0
 ## [2,]    0    1</code></pre>
@@ -468,7 +488,7 @@ A.inverse</code></pre></div>
 <div id="ols-regression-in-matrix-form" class="section level2">
 <h2><span class="header-section-number">11.3</span> OLS Regression in Matrix Form</h2>
 <p>As was the case with simple regression, we want to minimize the sum of the squared errors, <span class="math inline">\(e\)</span>. In matrix notation, the OLS model is <span class="math inline">\(y=Xb+e\)</span>, where <span class="math inline">\(e = y-Xb\)</span>. The sum of the squared <span class="math inline">\(e\)</span> is:</p>
-<span class="math display" id="eq:11-1">\[\begin{equation}
+<p><span class="math display" id="eq:11-1">\[\begin{equation}
 \sum e^{2}_i = 
 \begin{bmatrix}
   e_1 &amp; e_2 &amp; \cdots &amp; e_n \\ 
@@ -482,32 +502,34 @@ A.inverse</code></pre></div>
 =
 e&#39;e
 \tag{11.1}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>Therefore, we want to find the <span class="math inline">\(b\)</span> that minimizes this function:</p>
-<span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 e&#39;e &amp;= (y-Xb)&#39;(y-Xb) \\
 &amp;=y&#39;y-b&#39;X&#39;y-y&#39;Xb+b&#39;X&#39;Xb \\
 &amp;=y&#39;y-2b&#39;X&#39;y+b&#39;X&#39;Xb \\
-\end{align*}\]</span>
-<p>To do this we take the derivative of <span class="math inline">\(e&#39;e\)</span> w.r.t <span class="math inline">\(b\)</span> and set it equal to <span class="math inline">\(0\)</span>.</p>
-<span class="math display">\[\begin{equation*}
+\end{align*}\]</span></p>
+<p>To do this we take the derivative of <span class="math inline">\(e&#39;e\)</span>
+w.r.t <span class="math inline">\(b\)</span> and set it equal to <span class="math inline">\(0\)</span>.</p>
+<p><span class="math display">\[\begin{equation*}
 \frac{\partial e&#39;e}{\partial b}=-2X&#39;y+2X&#39;Xb=0   
 \end{equation*}\]</span>
 To solve this we subtract <span class="math inline">\(2X&#39;Xb\)</span> from both sides:
 <span class="math display">\[\begin{equation*}
   -2X&#39;Xb=-2X&#39;y
-\end{equation*}\]</span>
-<p>Then to remove the <span class="math inline">\(-2\)</span>’s, we multiply each side by <span class="math inline">\(-1/2\)</span>. This leaves us with:</p>
-<span class="math display">\[\begin{equation*}
+\end{equation*}\]</span></p>
+<p>Then to remove the <span class="math inline">\(-2\)</span>’s, we multiply each side by
+<span class="math inline">\(-1/2\)</span>. This leaves us with:</p>
+<p><span class="math display">\[\begin{equation*}
 (X&#39;X)b=X&#39;y  
-\end{equation*}\]</span>
+\end{equation*}\]</span></p>
 <p>To solve for <span class="math inline">\(b\)</span> we multiply both sides by the inverse of <span class="math inline">\(X&#39;X, (X&#39;X)^{-1}\)</span>. Note that for matrices this is equivalent to dividing each side by <span class="math inline">\(X&#39;X\)</span>. Therefore:</p>
-<span class="math display" id="eq:11-2">\[\begin{equation}
+<p><span class="math display" id="eq:11-2">\[\begin{equation}
 b = (X&#39;X)^{-1}X&#39;y  
 \tag{11.2}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>The <span class="math inline">\(X&#39;X\)</span> matrix is square, and therefore invertible (i.e., the inverse exists). However, the <span class="math inline">\(X&#39;X\)</span> matrix can be non-invertible (i.e., singular) if <span class="math inline">\(n &lt; k\)</span>—the number of <span class="math inline">\(k\)</span> independent variables exceeds the <span class="math inline">\(n\)</span>-size—or if one or more of the independent variables is perfectly correlated with another independent variable. This is termed perfect <strong>multicollinearity</strong> and will be discussed in more detail in Chapter 14. Also note that the <span class="math inline">\(X&#39;X\)</span> matrix contains the basis for all the necessary means, variances, and covariances among the <span class="math inline">\(X\)</span>’s.</p>
-<span class="math display">\[\begin{equation*}
+<p><span class="math display">\[\begin{equation*}
 X&#39;X =
 \begin{bmatrix}
   n &amp; \sum X_1 &amp; \sum X_2 &amp; \sum X_3 \\
@@ -515,16 +537,15 @@ X&#39;X =
   \sum X_2 &amp; \sum X_2X_1 &amp; \sum X^{2}_2 &amp; \sum X_2X_3 \\
   \sum X_3 &amp; \sum X_3X_1 &amp; \sum X_3X_2 &amp; \sum X^{2}_3 \\ 
 \end{bmatrix}
-\end{equation*}\]</span>
+\end{equation*}\]</span></p>
 <div id="regression-in-matrix-form" class="section level4 unnumbered">
 <h4>Regression in Matrix Form</h4>
-Assume a model using <span class="math inline">\(n\)</span> observations, <span class="math inline">\(k\)</span> parameters, and <span class="math inline">\(k-1\)</span>, <span class="math inline">\(X_{i}\)</span> (independent) variables.<br />
-
+<p>Assume a model using <span class="math inline">\(n\)</span> observations, <span class="math inline">\(k\)</span> parameters, and <span class="math inline">\(k-1\)</span>, <span class="math inline">\(X_{i}\)</span> (independent) variables.<br />
 <span class="math display">\[\begin{align*}
   y &amp;= Xb+e \\
   \hat{y} &amp;= Xb \\
   b &amp;= (X&#39;X)^{-1}X&#39;y
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <ul>
 <li><span class="math inline">\(y=n*1\)</span> column vector of observations of the DV, <span class="math inline">\(Y\)</span></li>
 <li><span class="math inline">\(\hat{y}=n*1\)</span> column vector of predicted <span class="math inline">\(Y\)</span> values</li>
@@ -555,8 +576,8 @@ X = \begin{bmatrix}
 \end{bmatrix}
 \]</span></p>
 <p>Create two objects, the <span class="math inline">\(y\)</span> matrix and the <span class="math inline">\(X\)</span> matrix.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">10</span>),<span class="dv">7</span>,<span class="dv">1</span>)
-y</code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">10</span>),<span class="dv">7</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb235-2" data-line-number="2">y</a></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    6
 ## [2,]   11
@@ -565,8 +586,8 @@ y</code></pre></div>
 ## [5,]    5
 ## [6,]    9
 ## [7,]   10</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">5</span>),<span class="dv">7</span>,<span class="dv">4</span>)
-X</code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1">X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">5</span>),<span class="dv">7</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb237-2" data-line-number="2">X</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    5    4
 ## [2,]    1    7    2    3
@@ -575,34 +596,35 @@ X</code></pre></div>
 ## [5,]    1    3    4    5
 ## [6,]    1    7    3    4
 ## [7,]    1    8    2    5</code></pre>
-<p>Calculate <span class="math inline">\(b\)</span>: <span class="math inline">\(b = (X&#39;X)^{-1}X&#39;y\)</span>.</p>
+<p>Calculate <span class="math inline">\(b\)</span>:
+<span class="math inline">\(b = (X&#39;X)^{-1}X&#39;y\)</span>.</p>
 <p>We can calculate this in <code>R</code> in just a few steps. First, we transpose <span class="math inline">\(X\)</span> to get <span class="math inline">\(X&#39;\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X.prime &lt;-<span class="st"> </span><span class="kw">t</span>(X)
-X.prime</code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">X.prime &lt;-<span class="st"> </span><span class="kw">t</span>(X)</a>
+<a class="sourceLine" id="cb239-2" data-line-number="2">X.prime</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
 ## [1,]    1    1    1    1    1    1    1
 ## [2,]    4    7    2    1    3    7    8
 ## [3,]    5    2    6    9    4    3    2
 ## [4,]    4    3    4    6    5    4    5</code></pre>
 <p>Then we multiply <span class="math inline">\(X\)</span> by <span class="math inline">\(X&#39;\)</span>; (<span class="math inline">\(X&#39;X\)</span>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X.prime.X &lt;-<span class="st"> </span>X.prime <span class="op">%*%</span><span class="st"> </span>X
-X.prime.X</code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">X.prime.X &lt;-<span class="st"> </span>X.prime <span class="op">%*%</span><span class="st"> </span>X</a>
+<a class="sourceLine" id="cb241-2" data-line-number="2">X.prime.X</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    7   32   31   31
 ## [2,]   32  192  104  134
 ## [3,]   31  104  175  146
 ## [4,]   31  134  146  143</code></pre>
 <p>Next, we find the inverse of <span class="math inline">\(X&#39;X\)</span>; <span class="math inline">\(X&#39;X^{-1}\)</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X.prime.X.inv&lt;-<span class="kw">solve</span>(X.prime.X)
-X.prime.X.inv</code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">X.prime.X.inv&lt;-<span class="kw">solve</span>(X.prime.X)</a>
+<a class="sourceLine" id="cb243-2" data-line-number="2">X.prime.X.inv</a></code></pre></div>
 <pre><code>##            [,1]        [,2]        [,3]        [,4]
 ## [1,] 12.2420551 -1.04528602 -1.01536017 -0.63771186
 ## [2,] -1.0452860  0.12936970  0.13744703 -0.03495763
 ## [3,] -1.0153602  0.13744703  0.18697034 -0.09957627
 ## [4,] -0.6377119 -0.03495763 -0.09957627  0.27966102</code></pre>
 <p>Then, we multiply <span class="math inline">\(X&#39;X^{-1}\)</span> by <span class="math inline">\(X&#39;\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X.prime.X.inv.X.prime&lt;-X.prime.X.inv <span class="op">%*%</span><span class="st"> </span>X.prime
-X.prime.X.inv.X.prime</code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">X.prime.X.inv.X.prime&lt;-X.prime.X.inv <span class="op">%*%</span><span class="st"> </span>X.prime</a>
+<a class="sourceLine" id="cb245-2" data-line-number="2">X.prime.X.inv.X.prime</a></code></pre></div>
 <pre><code>##             [,1]        [,2]        [,3]       [,4]       [,5]       [,6]
 ## [1,]  0.43326271  0.98119703  1.50847458 -1.7677436  1.8561970 -0.6718750
 ## [2,]  0.01959746  0.03032309 -0.10169492  0.1113612 -0.2821769  0.1328125
@@ -614,15 +636,15 @@ X.prime.X.inv.X.prime</code></pre></div>
 ## [3,] -0.03972458
 ## [4,]  0.28177966</code></pre>
 <p>Finally, to obtain the <span class="math inline">\(b\)</span> vector we multiply <span class="math inline">\(X&#39;X^{-1}X&#39;\)</span> by <span class="math inline">\(y\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b&lt;-X.prime.X.inv.X.prime <span class="op">%*%</span><span class="st"> </span>y
-b</code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">b&lt;-X.prime.X.inv.X.prime <span class="op">%*%</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb247-2" data-line-number="2">b</a></code></pre></div>
 <pre><code>##             [,1]
 ## [1,]  3.96239407
 ## [2,]  1.06064619
 ## [3,]  0.04396186
 ## [4,] -0.48516949</code></pre>
 <p>We can use the <code>lm</code> function in <code>R</code> to check and see whether our “by hand” matrix approach gets the same result as does the “canned” multiple regression routine:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm</span>(y<span class="op">~</span><span class="dv">0</span><span class="op">+</span>X)</code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="kw">lm</span>(y<span class="op">~</span><span class="dv">0</span><span class="op">+</span>X)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ 0 + X)
@@ -631,9 +653,10 @@ b</code></pre></div>
 ##       X1        X2        X3        X4  
 ##  3.96239   1.06065   0.04396  -0.48517</code></pre>
 <p>Calculate <span class="math inline">\(\hat y\)</span>: <span class="math inline">\(\hat y=Xb\)</span>.</p>
-<p>To calculate the <span class="math inline">\(\hat y\)</span> vector in <code>R</code>, simply multiply <code>X</code> and <code>b</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y.hat &lt;-<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>b 
-y.hat</code></pre></div>
+<p>To calculate the <span class="math inline">\(\hat y\)</span> vector in <code>R</code>, simply multiply
+<code>X</code> and <code>b</code>.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">y.hat &lt;-<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>b </a>
+<a class="sourceLine" id="cb251-2" data-line-number="2">y.hat</a></code></pre></div>
 <pre><code>##           [,1]
 ## [1,]  6.484110
 ## [2,] 10.019333
@@ -644,8 +667,8 @@ y.hat</code></pre></div>
 ## [7,] 10.109640</code></pre>
 <p>Calculate <span class="math inline">\(e\)</span>.</p>
 <p>To calculate <span class="math inline">\(e\)</span>, the vector of residuals, simply subtract the vector <span class="math inline">\(y\)</span> from the vector <span class="math inline">\(\hat y\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">e &lt;-<span class="st"> </span>y<span class="op">-</span>y.hat
-e</code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">e &lt;-<span class="st"> </span>y<span class="op">-</span>y.hat</a>
+<a class="sourceLine" id="cb253-2" data-line-number="2">e</a></code></pre></div>
 <pre><code>##            [,1]
 ## [1,] -0.4841102
 ## [2,]  0.9806674
@@ -656,7 +679,7 @@ e</code></pre></div>
 ## [7,] -0.1096398</code></pre>
 </div>
 </div>
-<div id="summary-6" class="section level2">
+<div id="summary-5" class="section level2">
 <h2><span class="header-section-number">11.4</span> Summary</h2>
 <p>Whew! Now, using matrix algebra <strong>and</strong> calculus, you have derived the squared-error minimizing formula for multiple regression. Not only that, you can use the matrix form, in <code>R</code>, to calculate the estimated slope and intercept coefficients, predict <span class="math inline">\(Y\)</span>, and even calculate the regression residuals. We’re on our way to true Geekdome!</p>
 <p>Next stop: the key assumptions necessary for OLS to provide the best, unbiased, linear estimates (BLUE) and the basis for statistical controls using multiple independent variables in regression models.</p>
@@ -666,8 +689,9 @@ e</code></pre></div>
 <div class="footnotes">
 <hr />
 <ol start="20">
-<li id="fn20"><p>It is useful to keep in mind the difference between “multiple regression” and “multivariate regression”. The latter predicts 2 or more dependent variables using an independent variable.<a href="introduction-to-multiple-regression.html#fnref20">↩</a></p></li>
-<li id="fn21"><p>The use of “prime” in matrix algebra should not be confused with the use of ``prime&quot; in the expression of a derivative, as in <span class="math inline">\(X&#39;\)</span>.<a href="introduction-to-multiple-regression.html#fnref21">↩</a></p></li>
+<li id="fn20"><p>It is useful to keep in mind the difference between “multiple regression” and “multivariate regression”. The latter predicts 2 or more dependent variables using an independent variable.<a href="introduction-to-multiple-regression.html#fnref20" class="footnote-back">↩</a></p></li>
+<li id="fn21"><p>The use of “prime” in matrix algebra should not be confused
+with the use of ``prime&quot; in the expression of a derivative, as in <span class="math inline">\(X&#39;\)</span>.<a href="introduction-to-multiple-regression.html#fnref21" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -726,7 +750,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

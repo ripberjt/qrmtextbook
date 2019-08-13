@@ -1,13 +1,6 @@
 --- 
 title: "Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R"
-author: 
-- Hank Jenkins-Smith
-- Joseph Ripberger
-- Gary Copeland
-- Matthew Nowlin
-- Tyler Hughes
-- Aaron Fister
-- Wesley Wehde
+author: Hank Jenkins-Smith, Joseph Ripberger, Gary Copeland, Matthew Nowlin, Tyler Hughes, Aaron Fister, Wesley Wehde, and Josie Davis
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
@@ -18,29 +11,16 @@ language:
     chapter_name: "Chapter "
 delete_merged_file: true
 ---
+
 # Preface and Acknowledgments {-}
 
 The idea for this book grew over decades of teaching introductory and intermediate quantitative methods classes for graduate students in Political Science and Public Policy at the University of Oklahoma, Texas A\&M, and the University of New Mexico. Despite adopting (and then discarding) a wide range of textbooks, we were frustrated with inconsistent terminology, misaligned emphases, mismatched examples and data, and (especially) poor connections between the presentation of theory and the practice of data analysis. The cost of textbooks and the associated statistics packages for students seemed to us to be, frankly, outrageous. So, we decided to write our own book that students can download as a free PDF, and to couple it with `R`, an open-source (free) statistical program, and data from the Meso-Scale Integrated Socio-geographic Network (M-SISNet), a quarterly survey of approximately 1,500 households in Oklahoma that is conducted with support of the National Science Foundation (Grant No. IIA-1301789). Readers can learn about and download the data [here](http://crcm.ou.edu/epscordata/).
 
 By intent, this book represents an open-ended group project that changes over time as new ideas and new instructors become involved in teaching graduate methods in the University of Oklahoma Political Science Department. The first edition of the book grew from lecture notes and slides that Hank Jenkins-Smith used in his methods classes. The second edition was amended to encompass material from Gary Copeland's introductory graduate methods classes. The third edition (this one!) was updated by Joseph Ripberger, who currently manages and uses the book in his introductory and intermediate quantitative methods courses for Ph.D. students in the University of Oklahoma Political Science Department.
 
-In addition to instructors, the graduate assistants who co-instruct the methods courses are an essential part of the authorship team. The tradition started with Dr. Matthew Nowlin, who assisted in drafting the first edition in LaTeX. Dr. Tyler Hughes and Aaron Fister were instrumental in implementing the changes for the second edition. Wesley Wehde, the current co-instructor, is responsible for much of the third edition. 
+In addition to instructors, the graduate assistants who co-instruct the methods courses are an essential part of the authorship team. The tradition started with Dr. Matthew Nowlin, who assisted in drafting the first edition in \LaTeX. Dr. Tyler Hughes and Aaron Fister were instrumental in implementing the changes for the second edition. Dr. Wesley Wehde was responsible for much of the third edition and Josie Davis did most of the work on the fourth edition.
 
 This book, like politics and policy, constantly changes. Keep an eye on our GitHub [repository]({https://github.com/ripberjt/qrmtextbook}) for modifications and additions. You never know what you might find peering back at you.
-
-Hank Jenkins-Smith
-
-Joseph Ripberger
-
-Gary Copeland
-
-Matthew Nowlin
-
-Tyler Hughes
-
-Aaron Fister
-
-Wesley Wehde
 
 ## Copyright {-}
 

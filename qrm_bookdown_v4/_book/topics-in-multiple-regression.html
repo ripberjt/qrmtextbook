@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14 Topics in Multiple Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R</title>
-  <meta name="description" content="14 Topics in Multiple Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="14 Topics in Multiple Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14 Topics in Multiple Regression | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,13 @@
   
   
 
-<meta name="author" content="Hank Jenkins-Smith">
-<meta name="author" content="Joseph Ripberger">
-<meta name="author" content="Gary Copeland">
-<meta name="author" content="Matthew Nowlin">
-<meta name="author" content="Tyler Hughes">
-<meta name="author" content="Aaron Fister">
-<meta name="author" content="Wesley Wehde">
+<meta name="author" content="Hank Jenkins-Smith, Joseph Ripberger, Gary Copeland, Matthew Nowlin, Tyler Hughes, Aaron Fister, Wesley Wehde, and Josie Davis" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="multiple-regression-and-model-building.html">
@@ -56,41 +49,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -134,16 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1.3" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#moments"><i class="fa fa-check"></i><b>3.1.3</b> Moments</a></li>
 <li class="chapter" data-level="3.1.4" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#first-moment-expected-value"><i class="fa fa-check"></i><b>3.1.4</b> First Moment – Expected Value</a></li>
 <li class="chapter" data-level="3.1.5" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-second-moment-variance-and-standard-deviation"><i class="fa fa-check"></i><b>3.1.5</b> The Second Moment – Variance and Standard Deviation</a></li>
-<li class="chapter" data-level="3.1.6" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-third-moment-skewness"><i class="fa fa-check"></i><b>3.1.6</b> The Third Moment – Skewness</a></li>
-<li class="chapter" data-level="3.1.7" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-fourth-moment-kurtosis"><i class="fa fa-check"></i><b>3.1.7</b> The Fourth Moment – Kurtosis</a></li>
-<li class="chapter" data-level="3.1.8" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#order-statistics"><i class="fa fa-check"></i><b>3.1.8</b> Order Statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#summary"><i class="fa fa-check"></i><b>3.2</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>4</b> Probability</a><ul>
 <li class="chapter" data-level="4.1" data-path="probability.html"><a href="probability.html#finding-probabilities"><i class="fa fa-check"></i><b>4.1</b> Finding Probabilities</a></li>
 <li class="chapter" data-level="4.2" data-path="probability.html"><a href="probability.html#finding-probabilities-with-the-normal-curve"><i class="fa fa-check"></i><b>4.2</b> Finding Probabilities with the Normal Curve</a></li>
-<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary-1"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
+<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5</b> Inference</a><ul>
 <li class="chapter" data-level="5.1" data-path="inference.html"><a href="inference.html#inference-populations-and-samples"><i class="fa fa-check"></i><b>5.1</b> Inference: Populations and Samples</a><ul>
@@ -166,7 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4" data-path="inference.html"><a href="inference.html#differences-between-groups"><i class="fa fa-check"></i><b>5.4</b> Differences Between Groups</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="inference.html"><a href="inference.html#t-tests"><i class="fa fa-check"></i><b>5.4.1</b> <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-2"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-1"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="association-of-variables.html"><a href="association-of-variables.html"><i class="fa fa-check"></i><b>6</b> Association of Variables</a><ul>
 <li class="chapter" data-level="6.1" data-path="association-of-variables.html"><a href="association-of-variables.html#cross-tabulation"><i class="fa fa-check"></i><b>6.1</b> Cross-Tabulation</a><ul>
@@ -198,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.2" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#ols-derivation-of-hatbeta"><i class="fa fa-check"></i><b>8.2.2</b> OLS Derivation of <span class="math inline">\(\hat{\beta}\)</span></a></li>
 <li class="chapter" data-level="8.2.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#interpreting-hatbeta-and-hatalpha"><i class="fa fa-check"></i><b>8.2.3</b> Interpreting <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-3"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
+<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-2"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html"><i class="fa fa-check"></i><b>9</b> Bi-Variate Hypothesis Testing and Model Fit</a><ul>
 <li class="chapter" data-level="9.1" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#hypothesis-tests-for-regression-coefficients"><i class="fa fa-check"></i><b>9.1</b> Hypothesis Tests for Regression Coefficients</a><ul>
@@ -209,7 +223,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.2.2" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#coefficient-of-determination-r2"><i class="fa fa-check"></i><b>9.2.2</b> Coefficient of Determination: <span class="math inline">\(R^{2}\)</span></a></li>
 <li class="chapter" data-level="9.2.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#visualizing-bivariate-regression"><i class="fa fa-check"></i><b>9.2.3</b> Visualizing Bivariate Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-4"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-3"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html"><i class="fa fa-check"></i><b>10</b> OLS Assumptions and Simple Regression Diagnostics</a><ul>
 <li class="chapter" data-level="10.1" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#a-recap-of-modeling-assumptions"><i class="fa fa-check"></i><b>10.1</b> A Recap of Modeling Assumptions</a></li>
@@ -225,7 +239,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.3.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#examining-outlier-data"><i class="fa fa-check"></i><b>10.3.4</b> Examining Outlier Data</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#so-now-what-implications-of-residual-analysis"><i class="fa fa-check"></i><b>10.4</b> So Now What? Implications of Residual Analysis</a></li>
-<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-5"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-4"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html"><i class="fa fa-check"></i><b>11</b> Introduction to Multiple Regression</a><ul>
 <li class="chapter" data-level="11.1" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-algebra-and-multiple-regression"><i class="fa fa-check"></i><b>11.1</b> Matrix Algebra and Multiple Regression</a></li>
@@ -240,7 +254,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.2.8" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-inversion"><i class="fa fa-check"></i><b>11.2.8</b> Matrix Inversion</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#ols-regression-in-matrix-form"><i class="fa fa-check"></i><b>11.3</b> OLS Regression in Matrix Form</a></li>
-<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-5"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html"><i class="fa fa-check"></i><b>12</b> The Logic of Multiple Regression</a><ul>
 <li class="chapter" data-level="12.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#theoretical-specification"><i class="fa fa-check"></i><b>12.1</b> Theoretical Specification</a><ul>
@@ -250,7 +264,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#multiple-regression-example"><i class="fa fa-check"></i><b>12.3</b> Multiple Regression Example</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#hypothesis-testing-and-t-tests"><i class="fa fa-check"></i><b>12.3.1</b> Hypothesis Testing and <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-7"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
+<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html"><i class="fa fa-check"></i><b>13</b> Multiple Regression and Model Building</a><ul>
 <li class="chapter" data-level="13.1" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#model-building"><i class="fa fa-check"></i><b>13.1</b> Model Building</a><ul>
@@ -259,13 +273,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.1.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#risks-in-model-building"><i class="fa fa-check"></i><b>13.1.3</b> Risks in Model Building</a></li>
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#evils-of-stepwise-regression"><i class="fa fa-check"></i><b>13.2</b> Evils of Stepwise Regression</a></li>
-<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-8"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-7"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html"><i class="fa fa-check"></i><b>14</b> Topics in Multiple Regression</a><ul>
 <li class="chapter" data-level="14.1" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>14.1</b> Dummy Variables</a></li>
 <li class="chapter" data-level="14.2" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#interaction-effects"><i class="fa fa-check"></i><b>14.2</b> Interaction Effects</a></li>
 <li class="chapter" data-level="14.3" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#standardized-regression-coefficients"><i class="fa fa-check"></i><b>14.3</b> Standardized Regression Coefficients</a></li>
-<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-9"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
+<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-8"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html"><i class="fa fa-check"></i><b>15</b> The Art of Regression Diagnostics</a><ul>
 <li class="chapter" data-level="15.1" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#ols-error-assumptions-revisited"><i class="fa fa-check"></i><b>15.1</b> OLS Error Assumptions Revisited</a></li>
@@ -278,7 +292,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.2.6" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#outliers"><i class="fa fa-check"></i><b>15.2.6</b> Outliers</a></li>
 <li class="chapter" data-level="15.2.7" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#multicollinearity"><i class="fa fa-check"></i><b>15.2.7</b> Multicollinearity</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-10"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-9"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="logit-regression.html"><a href="logit-regression.html"><i class="fa fa-check"></i><b>16</b> Logit Regression</a><ul>
 <li class="chapter" data-level="16.1" data-path="logit-regression.html"><a href="logit-regression.html#generalized-linear-models"><i class="fa fa-check"></i><b>16.1</b> Generalized Linear Models</a></li>
@@ -287,7 +301,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="16.2.2" data-path="logit-regression.html"><a href="logit-regression.html#goodness-of-fit"><i class="fa fa-check"></i><b>16.2.2</b> Goodness of Fit</a></li>
 <li class="chapter" data-level="16.2.3" data-path="logit-regression.html"><a href="logit-regression.html#interpreting-logits"><i class="fa fa-check"></i><b>16.2.3</b> Interpreting Logits</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-11"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
+<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-10"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html"><i class="fa fa-check"></i><b>17</b> Appendix: Basic R</a><ul>
 <li class="chapter" data-level="17.1" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html#introduction-to-r"><i class="fa fa-check"></i><b>17.1</b> Introduction to R</a></li>
@@ -317,7 +331,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="topics-in-multiple-regression" class="section level1">
 <h1><span class="header-section-number">14</span> Topics in Multiple Regression</h1>
-<p>Thus far we have developed the basis for multiple OLS reression using matrix algebra, delved into the meaning of the estimated partial regression coefficient, and revisited the basis for hypothesis testing in OLS. In this chapter we turn to one of the key strengths of OLS: the robust flexibility of OLS for model specification. First we will discuss how to include binary variables (referred to as ``dummy variables“) as IVs in an OLS model. Next we will show you how to build on dummy variables to model their interactions with other variables in your model. Finally, we will address an alternative way to express the partial regression coefficients – using standardized coefficients – that permit you to compare the magnitudes of the estimated effects of your IVs even when they are measured on different scales. As has been our custom, the examples in this chapter are based on variables from the class data set.</p>
+<p>Thus far we have developed the basis for multiple OLS reression using matrix algebra, delved into the meaning of the estimated partial regression coefficient, and revisited the basis for hypothesis testing in OLS. In this chapter we turn to one of the key strengths of OLS: the robust flexibility of OLS for model specification. First we will discuss how to include binary variables (referred to as ``dummy variables&quot;) as IVs in an OLS model. Next we will show you how to build on dummy variables to model their interactions with other variables in your model. Finally, we will address an alternative way to express the partial regression coefficients – using standardized coefficients – that permit you to compare the magnitudes of the estimated effects of your IVs even when they are measured on different scales. As has been our custom, the examples in this chapter are based on variables from the class data set.</p>
 <div id="dummy-variables" class="section level2">
 <h2><span class="header-section-number">14.1</span> Dummy Variables</h2>
 <p>Thus far, we have considered OLS models that include variables measured on interval level scales (or, in a pinch and with caution, ordinal scales). That is fine when we have variables for which we can develop valid and reliable interval (or ordinal) measures. But in the policy and social science worlds, we often want to include in our analysis concepts that do not readily admit to interval measure – including many cases in which a variable has an “on - off”, or “present - absent” quality. In other cases we want to include a concept that is essentially nominal in nature, such that an observation can be categorized as a subset but not measured on a “high-low” or “more-less” type of scale. In these instances we can utilize what is generally known as a dummy variable, but are also referred to as indicator variables, Boolean variables, or categorical variables.</p>
@@ -325,7 +339,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li>A dichotomous variable, with values of 0 and 1;</li>
 <li>A value of 1 represents the presence of some quality, a zero its absence;</li>
-<li>The 1s are compared to the 0s, who are known as the ``referent group“;</li>
+<li>The 1s are compared to the 0s, who are known as the ``referent group&quot;;</li>
 <li>Dummy variables are often thought of as a proxy for a qualitative variable.</li>
 </ul>
 <p>Dummy variables allow for tests of the differences in overall value of the <span class="math inline">\(Y\)</span> for different nominal groups in the data. They are akin to a difference of means test for the groups identified by the dummy variable. Dummy variables allow for comparisons between an included (the 1s) and an omitted (the 0s) group. Therefore, it is important to be clear about which group is omitted and serving as the ``comparison category.&quot;</p>
@@ -345,13 +359,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 Figure 14.1: Dummy Intercept Variables
 </p>
 </div>
-<p>For a case with multiple nominal categories (e.g., region) the procedure is as follows: (a) determine which category will be assigned as the referent group; (b) create a dummy variable for each of the other categories. For example, if you are coding a dummy for four regions (North, South, East and West), you could designate the South as the referent group. Then you would create dummies for the other three regions. Then, all observations from the North would get a value of 1 in the North dummy, and zeros in all others. Similarly, East and West observations would receive a 1 in their respective dummy category and zeros elsewhere. The observations from the South region would be given values of zero in all three categories. The interpretation of the partial regression coefficients for each of the three dummies would then be the estimated difference in <span class="math inline">\(Y\)</span> between observations from the North, East and West and those from the South.</p>
+<p>For a case with multiple nominal categories (e.g., region) the procedure is as follows: (a) determine which category will be assigned as the referent group; (b) create a dummy variable for each of the other categories. For example, if you are coding a dummy for four regions (North, South, East and West), you could designate the South as the referent group. Then you would create dummies for the other three regions. Then, all observations from
+the North would get a value of 1 in the North dummy, and zeros in all others. Similarly, East and West observations would receive a 1 in their respective dummy category and zeros elsewhere. The observations from the South region would be given values of zero in all three categories. The interpretation of the partial regression coefficients for each of the three dummies would then be the estimated difference in <span class="math inline">\(Y\)</span> between observations from the North, East and West and those from the South.</p>
 <p>Now let’s walk through an example of an <span class="math inline">\(R\)</span> model with a dummy variable and the interpretation of that model. We will predict climate change risk using age, education, income, ideology, and “gend”, a dummy variable for gender for which 1 = male and 0 = female.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="st">&quot;glbcc_risk&quot;</span>,<span class="st">&quot;age&quot;</span>,<span class="st">&quot;education&quot;</span>,<span class="st">&quot;income&quot;</span>,<span class="st">&quot;ideol&quot;</span>,<span class="st">&quot;gender&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>()
-
-ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data =</span> ds.temp)
-<span class="kw">summary</span>(ols1)</code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1">ds.temp &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb306-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="st">&quot;glbcc_risk&quot;</span>,<span class="st">&quot;age&quot;</span>,<span class="st">&quot;education&quot;</span>,<span class="st">&quot;income&quot;</span>,<span class="st">&quot;ideol&quot;</span>,<span class="st">&quot;gender&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>()</a>
+<a class="sourceLine" id="cb306-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb306-4" data-line-number="4">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb306-5" data-line-number="5"><span class="kw">summary</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + education + income + ideol + 
@@ -390,9 +405,10 @@ ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 Figure 14.2: Illustration of Slope Interaction
 </p>
 </div>
-<p>We can test our hypothesized interaction in <code>R</code>, controlling for the effects of age and income.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>gender <span class="op">*</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)
-<span class="kw">summary</span>(ols2)</code></pre></div>
+<p>We can test our hypothesized interaction in <code>R</code>, controlling for the effects of age
+and income.</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1">ols2 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>gender <span class="op">*</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb308-2" data-line-number="2"><span class="kw">summary</span>(ols2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + income + education + gender * 
@@ -418,10 +434,10 @@ Figure 14.2: Illustration of Slope Interaction
 ## Multiple R-squared:  0.3664, Adjusted R-squared:  0.3647 
 ## F-statistic: 218.2 on 6 and 2264 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>The results indicate a negative and significant interaction effect for gender and ideology. Consistent with our hypothesis, this means that the effect of ideology on climate change risk is more pronounced for males than females. Put differently, the slope of ideology is steeper for males than it is for females. This is shown in Figure <a href="topics-in-multiple-regression.html#fig:dummales">14.3</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds.temp<span class="op">$</span>gend.factor &lt;-<span class="st"> </span><span class="kw">factor</span>(ds.temp<span class="op">$</span>gender, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>,<span class="st">&quot;Male&quot;</span>))
-<span class="kw">library</span>(effects)
-ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk<span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>ideol <span class="op">*</span><span class="st"> </span>gend.factor, <span class="dt">data =</span> ds.temp)
-<span class="kw">plot</span>(<span class="kw">effect</span>(<span class="st">&quot;ideol*gend.factor&quot;</span>,ols3),<span class="dt">ylim=</span><span class="dv">0</span><span class="op">:</span><span class="dv">10</span>)</code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">ds.temp<span class="op">$</span>gend.factor &lt;-<span class="st"> </span><span class="kw">factor</span>(ds.temp<span class="op">$</span>gender, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>,<span class="st">&quot;Male&quot;</span>))</a>
+<a class="sourceLine" id="cb310-2" data-line-number="2"><span class="kw">library</span>(effects)</a>
+<a class="sourceLine" id="cb310-3" data-line-number="3">ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk<span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>ideol <span class="op">*</span><span class="st"> </span>gend.factor, <span class="dt">data =</span> ds.temp)</a>
+<a class="sourceLine" id="cb310-4" data-line-number="4"><span class="kw">plot</span>(<span class="kw">effect</span>(<span class="st">&quot;ideol*gend.factor&quot;</span>,ols3),<span class="dt">ylim=</span><span class="dv">0</span><span class="op">:</span><span class="dv">10</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:dummales"></span>
 <img src="_main_files/figure-html/dummales-1.png" alt="Interaction of Ideology and Gender" width="672" />
 <p class="caption">
@@ -434,32 +450,34 @@ Figure 14.3: Interaction of Ideology and Gender
 <h2><span class="header-section-number">14.3</span> Standardized Regression Coefficients</h2>
 <p>In most cases, the various IVs in a model are represented on different measurement scales. For example, ideology ranges from 1 to 7, while age ranges from 18 to over 90 years old. These different scales make comparing the effects of the various IVs difficult. If we want to directly compare the magnitudes of the effects of ideology and age on levels of environmental concern, we would need to <strong>standardize</strong> the variables.</p>
 <p>One way to standardized variables is to create a <span class="math inline">\(Z\)</span>-score based on each variable. Variables are standardized in this way as follows:</p>
-<span class="math display" id="eq:14-1">\[\begin{equation}
+<p><span class="math display" id="eq:14-1">\[\begin{equation}
   Z_i = \frac{X_i-\bar{X}}{s_x} 
   \tag{14.1}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(s_x\)</span> is the s.d. of <span class="math inline">\(X\)</span>. Standardizing the variables by creating <span class="math inline">\(Z\)</span>-scores re-scales them so that each variables has a mean of <span class="math inline">\(0\)</span> and a s.d. of <span class="math inline">\(1\)</span>. Therefore, all variables have the same mean and s.d. It is important to realize (and it is somewhat counter-intuitive) that the standardized variables retain all of the variation that was in the original measure.</p>
 <p>A second way to standardize variables converts the unstandardized <span class="math inline">\(B\)</span>, into a standardized <span class="math inline">\(B&#39;\)</span>.</p>
-<span class="math display" id="eq:14-2">\[\begin{equation}
+<p><span class="math display" id="eq:14-2">\[\begin{equation}
   B&#39;_k = B_k\frac{s_k}{s_Y}  
   \tag{14.2}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(B_k\)</span> is the unstandardized coefficient of <span class="math inline">\(X_k\)</span>, <span class="math inline">\(s_k\)</span> is the s.d. of <span class="math inline">\(X_k\)</span>, and <span class="math inline">\(s_y\)</span> is the s.d. of <span class="math inline">\(Y\)</span>. Standardized regression coefficients, also known as beta weights or “betas”, are those we would get if we regress a standardized <span class="math inline">\(Y\)</span> onto standardized <span class="math inline">\(X\)</span>’s.</p>
 <p><strong>Interpreting Standardized Betas</strong></p>
 <ul>
 <li>The standard deviation change in <span class="math inline">\(Y\)</span> for a one-standard deviation change in <span class="math inline">\(X\)</span></li>
 <li>All <span class="math inline">\(X\)</span>’ss on an equal footing, so one can compare the strength of the effects of the <span class="math inline">\(X\)</span>’s</li>
-<li><em>Cannot be used for comparisons across samples</em></li>
+<li><em>Cannot be used for comparisons across samples</em>
+<ul>
 <li>Variances will differ across different samples</li>
+</ul></li>
 </ul>
 <p>We can use the <code>scale</code> function in <code>R</code> to calculate a <span class="math inline">\(Z\)</span> score for each of our variables, and then re-run our model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stan.ds &lt;-<span class="st"> </span>ds.temp <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol, gender) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>scale <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">data.frame</span>()
-
-ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data =</span> stan.ds)
-<span class="kw">summary</span>(ols3)</code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1">stan.ds &lt;-<span class="st"> </span>ds.temp <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb311-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk, age, education, income, ideol, gender) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb311-3" data-line-number="3"><span class="st">  </span>scale <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb311-4" data-line-number="4"><span class="st">  </span><span class="kw">data.frame</span>()</a>
+<a class="sourceLine" id="cb311-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb311-6" data-line-number="6">ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>income <span class="op">+</span><span class="st"> </span>ideol <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data =</span> stan.ds)</a>
+<a class="sourceLine" id="cb311-7" data-line-number="7"><span class="kw">summary</span>(ols3)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ age + education + income + ideol + 
@@ -491,15 +509,15 @@ ols3 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span c
 ## Multiple R-squared:  0.364,  Adjusted R-squared:  0.3626 
 ## F-statistic: 259.3 on 5 and 2265 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>In addition, we can convert the original unstandardized coefficient for ideology, to a standardized coefficient.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sdX &lt;-<span class="st"> </span><span class="kw">sd</span>(ds.temp<span class="op">$</span>ideol, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)
-sdY &lt;-<span class="st"> </span><span class="kw">sd</span>(ds.temp<span class="op">$</span>glbcc_risk, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)
-ideology.prime &lt;-<span class="st"> </span>ols1<span class="op">$</span>coef[<span class="dv">5</span>]<span class="op">*</span>(sdX<span class="op">/</span>sdY)
-ideology.prime</code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1">sdX &lt;-<span class="st"> </span><span class="kw">sd</span>(ds.temp<span class="op">$</span>ideol, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb313-2" data-line-number="2">sdY &lt;-<span class="st"> </span><span class="kw">sd</span>(ds.temp<span class="op">$</span>glbcc_risk, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb313-3" data-line-number="3">ideology.prime &lt;-<span class="st"> </span>ols1<span class="op">$</span>coef[<span class="dv">5</span>]<span class="op">*</span>(sdX<span class="op">/</span>sdY)</a>
+<a class="sourceLine" id="cb313-4" data-line-number="4">ideology.prime</a></code></pre></div>
 <pre><code>##      ideol 
 ## -0.5882792</code></pre>
 <p>Using either approach, standardized coefficients allow us to compare the magnitudes of the effects of each of the IVs on <span class="math inline">\(Y\)</span>.</p>
 </div>
-<div id="summary-9" class="section level2">
+<div id="summary-8" class="section level2">
 <h2><span class="header-section-number">14.4</span> Summary</h2>
 <p>This chapter has focused on options in designing and using OLS models. We first covered the use of dummy variables to capture the effects of group differences on estimates of <span class="math inline">\(Y\)</span>. We then explained how dummy variables, when interacted with scale variables, can provide estimates of the differences in how the scale variable affects <span class="math inline">\(Y\)</span> across the different subgroups represented by the dummy variable. Finally, we introduced the use of standardized regression coefficients as a means to compare the effects of different <span class="math inline">\(Xs\)</span> on <span class="math inline">\(Y\)</span> when the scales of the <span class="math inline">\(Xs\)</span> differ. Overall, these refinements in the use of OLS permit great flexibility in the application of regression models to estimation and hypothesis testing in policy analysis and social science research.</p>
 
@@ -561,7 +579,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

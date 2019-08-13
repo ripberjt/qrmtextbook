@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9 Bi-Variate Hypothesis Testing and Model Fit | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R</title>
-  <meta name="description" content="9 Bi-Variate Hypothesis Testing and Model Fit | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="9 Bi-Variate Hypothesis Testing and Model Fit | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9 Bi-Variate Hypothesis Testing and Model Fit | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,13 @@
   
   
 
-<meta name="author" content="Hank Jenkins-Smith">
-<meta name="author" content="Joseph Ripberger">
-<meta name="author" content="Gary Copeland">
-<meta name="author" content="Matthew Nowlin">
-<meta name="author" content="Tyler Hughes">
-<meta name="author" content="Aaron Fister">
-<meta name="author" content="Wesley Wehde">
+<meta name="author" content="Hank Jenkins-Smith, Joseph Ripberger, Gary Copeland, Matthew Nowlin, Tyler Hughes, Aaron Fister, Wesley Wehde, and Josie Davis" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="linear-estimation-and-minimizing-error.html">
@@ -56,41 +49,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -134,16 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1.3" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#moments"><i class="fa fa-check"></i><b>3.1.3</b> Moments</a></li>
 <li class="chapter" data-level="3.1.4" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#first-moment-expected-value"><i class="fa fa-check"></i><b>3.1.4</b> First Moment – Expected Value</a></li>
 <li class="chapter" data-level="3.1.5" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-second-moment-variance-and-standard-deviation"><i class="fa fa-check"></i><b>3.1.5</b> The Second Moment – Variance and Standard Deviation</a></li>
-<li class="chapter" data-level="3.1.6" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-third-moment-skewness"><i class="fa fa-check"></i><b>3.1.6</b> The Third Moment – Skewness</a></li>
-<li class="chapter" data-level="3.1.7" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-fourth-moment-kurtosis"><i class="fa fa-check"></i><b>3.1.7</b> The Fourth Moment – Kurtosis</a></li>
-<li class="chapter" data-level="3.1.8" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#order-statistics"><i class="fa fa-check"></i><b>3.1.8</b> Order Statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#summary"><i class="fa fa-check"></i><b>3.2</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>4</b> Probability</a><ul>
 <li class="chapter" data-level="4.1" data-path="probability.html"><a href="probability.html#finding-probabilities"><i class="fa fa-check"></i><b>4.1</b> Finding Probabilities</a></li>
 <li class="chapter" data-level="4.2" data-path="probability.html"><a href="probability.html#finding-probabilities-with-the-normal-curve"><i class="fa fa-check"></i><b>4.2</b> Finding Probabilities with the Normal Curve</a></li>
-<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary-1"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
+<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5</b> Inference</a><ul>
 <li class="chapter" data-level="5.1" data-path="inference.html"><a href="inference.html#inference-populations-and-samples"><i class="fa fa-check"></i><b>5.1</b> Inference: Populations and Samples</a><ul>
@@ -166,7 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4" data-path="inference.html"><a href="inference.html#differences-between-groups"><i class="fa fa-check"></i><b>5.4</b> Differences Between Groups</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="inference.html"><a href="inference.html#t-tests"><i class="fa fa-check"></i><b>5.4.1</b> <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-2"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-1"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="association-of-variables.html"><a href="association-of-variables.html"><i class="fa fa-check"></i><b>6</b> Association of Variables</a><ul>
 <li class="chapter" data-level="6.1" data-path="association-of-variables.html"><a href="association-of-variables.html#cross-tabulation"><i class="fa fa-check"></i><b>6.1</b> Cross-Tabulation</a><ul>
@@ -198,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.2" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#ols-derivation-of-hatbeta"><i class="fa fa-check"></i><b>8.2.2</b> OLS Derivation of <span class="math inline">\(\hat{\beta}\)</span></a></li>
 <li class="chapter" data-level="8.2.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#interpreting-hatbeta-and-hatalpha"><i class="fa fa-check"></i><b>8.2.3</b> Interpreting <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-3"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
+<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-2"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html"><i class="fa fa-check"></i><b>9</b> Bi-Variate Hypothesis Testing and Model Fit</a><ul>
 <li class="chapter" data-level="9.1" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#hypothesis-tests-for-regression-coefficients"><i class="fa fa-check"></i><b>9.1</b> Hypothesis Tests for Regression Coefficients</a><ul>
@@ -209,7 +223,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.2.2" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#coefficient-of-determination-r2"><i class="fa fa-check"></i><b>9.2.2</b> Coefficient of Determination: <span class="math inline">\(R^{2}\)</span></a></li>
 <li class="chapter" data-level="9.2.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#visualizing-bivariate-regression"><i class="fa fa-check"></i><b>9.2.3</b> Visualizing Bivariate Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-4"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-3"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html"><i class="fa fa-check"></i><b>10</b> OLS Assumptions and Simple Regression Diagnostics</a><ul>
 <li class="chapter" data-level="10.1" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#a-recap-of-modeling-assumptions"><i class="fa fa-check"></i><b>10.1</b> A Recap of Modeling Assumptions</a></li>
@@ -225,7 +239,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.3.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#examining-outlier-data"><i class="fa fa-check"></i><b>10.3.4</b> Examining Outlier Data</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#so-now-what-implications-of-residual-analysis"><i class="fa fa-check"></i><b>10.4</b> So Now What? Implications of Residual Analysis</a></li>
-<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-5"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-4"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html"><i class="fa fa-check"></i><b>11</b> Introduction to Multiple Regression</a><ul>
 <li class="chapter" data-level="11.1" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-algebra-and-multiple-regression"><i class="fa fa-check"></i><b>11.1</b> Matrix Algebra and Multiple Regression</a></li>
@@ -240,7 +254,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.2.8" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-inversion"><i class="fa fa-check"></i><b>11.2.8</b> Matrix Inversion</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#ols-regression-in-matrix-form"><i class="fa fa-check"></i><b>11.3</b> OLS Regression in Matrix Form</a></li>
-<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-5"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html"><i class="fa fa-check"></i><b>12</b> The Logic of Multiple Regression</a><ul>
 <li class="chapter" data-level="12.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#theoretical-specification"><i class="fa fa-check"></i><b>12.1</b> Theoretical Specification</a><ul>
@@ -250,7 +264,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#multiple-regression-example"><i class="fa fa-check"></i><b>12.3</b> Multiple Regression Example</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#hypothesis-testing-and-t-tests"><i class="fa fa-check"></i><b>12.3.1</b> Hypothesis Testing and <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-7"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
+<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html"><i class="fa fa-check"></i><b>13</b> Multiple Regression and Model Building</a><ul>
 <li class="chapter" data-level="13.1" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#model-building"><i class="fa fa-check"></i><b>13.1</b> Model Building</a><ul>
@@ -259,13 +273,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.1.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#risks-in-model-building"><i class="fa fa-check"></i><b>13.1.3</b> Risks in Model Building</a></li>
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#evils-of-stepwise-regression"><i class="fa fa-check"></i><b>13.2</b> Evils of Stepwise Regression</a></li>
-<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-8"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-7"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html"><i class="fa fa-check"></i><b>14</b> Topics in Multiple Regression</a><ul>
 <li class="chapter" data-level="14.1" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>14.1</b> Dummy Variables</a></li>
 <li class="chapter" data-level="14.2" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#interaction-effects"><i class="fa fa-check"></i><b>14.2</b> Interaction Effects</a></li>
 <li class="chapter" data-level="14.3" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#standardized-regression-coefficients"><i class="fa fa-check"></i><b>14.3</b> Standardized Regression Coefficients</a></li>
-<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-9"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
+<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-8"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html"><i class="fa fa-check"></i><b>15</b> The Art of Regression Diagnostics</a><ul>
 <li class="chapter" data-level="15.1" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#ols-error-assumptions-revisited"><i class="fa fa-check"></i><b>15.1</b> OLS Error Assumptions Revisited</a></li>
@@ -278,7 +292,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.2.6" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#outliers"><i class="fa fa-check"></i><b>15.2.6</b> Outliers</a></li>
 <li class="chapter" data-level="15.2.7" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#multicollinearity"><i class="fa fa-check"></i><b>15.2.7</b> Multicollinearity</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-10"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-9"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="logit-regression.html"><a href="logit-regression.html"><i class="fa fa-check"></i><b>16</b> Logit Regression</a><ul>
 <li class="chapter" data-level="16.1" data-path="logit-regression.html"><a href="logit-regression.html#generalized-linear-models"><i class="fa fa-check"></i><b>16.1</b> Generalized Linear Models</a></li>
@@ -287,7 +301,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="16.2.2" data-path="logit-regression.html"><a href="logit-regression.html#goodness-of-fit"><i class="fa fa-check"></i><b>16.2.2</b> Goodness of Fit</a></li>
 <li class="chapter" data-level="16.2.3" data-path="logit-regression.html"><a href="logit-regression.html#interpreting-logits"><i class="fa fa-check"></i><b>16.2.3</b> Interpreting Logits</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-11"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
+<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-10"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html"><i class="fa fa-check"></i><b>17</b> Appendix: Basic R</a><ul>
 <li class="chapter" data-level="17.1" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html#introduction-to-r"><i class="fa fa-check"></i><b>17.1</b> Introduction to R</a></li>
@@ -320,7 +334,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The previous chapters discussed the logic of OLS regression and how to derive OLS estimators. Now that simple regression is no longer a mystery, we will shift the focus to bi-variate hypothesis testing and model fit. We recommend that you try the analyses in the chapter as you read.</p>
 <div id="hypothesis-tests-for-regression-coefficients" class="section level2">
 <h2><span class="header-section-number">9.1</span> Hypothesis Tests for Regression Coefficients</h2>
-<p>Hypothesis testing is the key to theory building. This chapter is focused on empirical hypothesis testing using OLS regression, with examples drawn from the accompanying class dataset. Here we will use the responses to the political ideology question (ranging from 1=strong liberal, to 7=strong conservative), as well as responses to a question concerning the survey respondents’ level of risk that global warming poses for people and the environment.<a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a></p>
+<p>Hypothesis testing is the key to theory building. This chapter is focused on empirical hypothesis testing using OLS regression, with examples drawn from the accompanying class dataset. Here we will use the responses to the political ideology question (ranging from 1=strong liberal, to 7=strong conservative), as well as responses to a question concerning the survey respondents’ level of risk that global warming poses for people and the environment.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a></p>
 <p>Using the data from these questions, we posit the following hypothesis:</p>
 <blockquote>
 <p><span class="math inline">\(H_{1}\)</span>: On average, as respondents become more politically conservative, they will be less likely to express increased risk associated with global warming.</p>
@@ -328,13 +342,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The null hypothesis, <span class="math inline">\(H_{0}\)</span>, is <span class="math inline">\(\beta = 0\)</span>, posits that a respondent’s ideology has no relationship with their views about the risks of global warming for people and the environment. Our working hypothesis, <span class="math inline">\(H_{1}\)</span>, is <span class="math inline">\(\beta &lt; 0\)</span>. We expect <span class="math inline">\(\beta\)</span> to be less than zero because we expect a <em>negative</em> slope between our measures of ideology and levels of risk associated with global warming, given that a larger numeric value for ideology indicates a more conservative respondent. Note that this is a <em>directional</em> hypothesis, since we are positing a negative relationship. Typically, a directional hypothesis implies a one-tailed test where the critical value is 0.05 on one side of the distribution. A <em>non-directional</em> hypothesis, <span class="math inline">\(\beta \neq 0\)</span> does not imply a particular direction, it only implies that there is a relationship. This requires a two-tailed test where the critical value is 0.025 on both sides of the distribution.</p>
 <p>To test this hypothesis, we run the following code in <code>R</code>.</p>
 <p>Before we begin, for this chapter we will need to make a special data set that just contains the variables <code>glbcc_risk</code> and <code>ideol</code> with their missing values removed.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Filtering a data set with only variables glbcc_risk and ideol</span>
-ds.omit &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk,ideol) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">na.omit</span>()
-<span class="co">#Run the na.omit function to remove the missing values</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.omit)
-<span class="kw">summary</span>(ols1)</code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="co">#Filtering a data set with only variables glbcc_risk and ideol</span></a>
+<a class="sourceLine" id="cb137-2" data-line-number="2">ds.omit &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb137-3" data-line-number="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(glbcc_risk,ideol) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb137-4" data-line-number="4"><span class="st">  </span><span class="kw">na.omit</span>()</a>
+<a class="sourceLine" id="cb137-5" data-line-number="5"><span class="co">#Run the na.omit function to remove the missing values</span></a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(glbcc_risk <span class="op">~</span><span class="st"> </span>ideol, <span class="dt">data =</span> ds.omit)</a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="kw">summary</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = glbcc_risk ~ ideol, data = ds.omit)
@@ -358,63 +372,64 @@ ds.omit &lt;-<span class="st"> </span><span class="kw">filter</span>(ds) <span c
 <h3><span class="header-section-number">9.1.1</span> Residual Standard Error</h3>
 <p>The residual standard error (or standard error of the regression) measures the spread of our observations around the regression line. As will be discussed below, the residual standard error is used to calculate the standard errors of the regression coefficients, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
 <p>The formula for the residual standard error is as follows:</p>
-<span class="math display" id="eq:09-1">\[\begin{equation}
+<p><span class="math display" id="eq:09-1">\[\begin{equation}
 S_{E}=\sqrt{\frac{\Sigma E^{2}_{i}}{n-2}}
 \tag{9.1}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>To calculate this in <code>R</code>, based on the model we just ran, we create an object called <code>Se</code> and use the <code>sqrt</code> and <code>sum</code> commands.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>(ols1<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="kw">length</span>(ds.omit<span class="op">$</span>glbcc_risk)<span class="op">-</span><span class="dv">2</span>))
-Se</code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">Se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>(ols1<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="kw">length</span>(ds.omit<span class="op">$</span>glbcc_risk)<span class="op">-</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb140-2" data-line-number="2">Se</a></code></pre></div>
 <pre><code>## [1] 2.479022</code></pre>
 <p>Note that this result matches the result provided by the <code>summary</code> function in <code>R</code>, as shown above.</p>
 <p>For our model, the results indicate that: <span class="math inline">\(Y_{i} =10.8186624-1.0463463X_{i} + E_{i}\)</span>. Another sample of 2513 observations would almost certainly lead to different estimates for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. If we drew many such samples, we’d get the sample distribution of the estimates. Because we typically cannot draw many samples, we need to estimate the sample distribution, based on our sample size and variance. To do that, we calculate the standard error of the slope and intercept coefficients, <span class="math inline">\(SE(B)\)</span> and <span class="math inline">\(SE(A)\)</span>. These standard errors are our estimates of how much variation we would expect in the estimates of <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> across different samples. We use them to evaluate whether <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span> are larger than would be expected to occur by chance, if the real values of <span class="math inline">\(B\)</span> and/or <span class="math inline">\(A\)</span> are zero (the null hypotheses).</p>
 <p>The standard error for <span class="math inline">\(B\)</span>, <span class="math inline">\(SE(B)\)</span> is:</p>
-<span class="math display" id="eq:09-2">\[\begin{equation}
+<p><span class="math display" id="eq:09-2">\[\begin{equation}
 SE(B)=\frac{S_{E}}{\sqrt{TSS_{X}}}
 \tag{9.2}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(S_E\)</span> is the residual standard error of the regression, (as shown earlier in equation 9.1). <span class="math inline">\(TSS_X\)</span> is the total sum of squares for <span class="math inline">\(X\)</span>, that is the total sum of the squared deviations (residuals) of <span class="math inline">\(X\)</span> from its mean <span class="math inline">\(\bar{X}\)</span>; <span class="math inline">\(\sum (X_i-\bar{X})^{2}\)</span>. Note that the greater the deviation of <span class="math inline">\(X\)</span> around its mean as a proportion of the standard error of the model, the smaller the <span class="math inline">\(SE(B)\)</span>. The smaller <span class="math inline">\(SE(B)\)</span> is, the less variation we would expect in repeated estimates of <span class="math inline">\(B\)</span> across multiple samples.</p>
 <p>The standard error for <span class="math inline">\(A\)</span>, <span class="math inline">\(SE(A)\)</span>, is defined as:</p>
-<span class="math display" id="eq:09-3">\[\begin{equation}
+<p><span class="math display" id="eq:09-3">\[\begin{equation}
 SE(A)=S_{E}*\sqrt{\frac{1}{n}+\frac{\bar X^{2}}{TSS_{X}}}
 \tag{9.3}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>Again, the <span class="math inline">\(SE\)</span> is the residual standard error, as shown in equation 9.1.</p>
 <p>For <span class="math inline">\(A\)</span>, the larger the data set, and the larger the deviation of <span class="math inline">\(X\)</span> around its mean, the more precise our estimate of <span class="math inline">\(A\)</span> (i.e., the smaller <span class="math inline">\(SE(A)\)</span> will be).</p>
 <p>We can calculate the <span class="math inline">\(SE\)</span> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> in <code>R</code> in a few steps. First, we create an object <code>TSSx</code> that is the total sum of squares for the <span class="math inline">\(X\)</span> variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TSSx &lt;-<span class="st"> </span><span class="kw">sum</span>((ds.omit<span class="op">$</span>ideol<span class="op">-</span><span class="kw">mean</span>(ds.omit<span class="op">$</span>ideol, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))<span class="op">^</span><span class="dv">2</span>)
-TSSx</code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">TSSx &lt;-<span class="st"> </span><span class="kw">sum</span>((ds.omit<span class="op">$</span>ideol<span class="op">-</span><span class="kw">mean</span>(ds.omit<span class="op">$</span>ideol, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb142-2" data-line-number="2">TSSx</a></code></pre></div>
 <pre><code>## [1] 7532.946</code></pre>
 <p>Then, we create an object called <code>SEa</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SEa &lt;-<span class="st"> </span>Se<span class="op">*</span><span class="kw">sqrt</span>((<span class="dv">1</span><span class="op">/</span><span class="kw">length</span>(ds.omit<span class="op">$</span>glbcc_risk))<span class="op">+</span>(<span class="kw">mean</span>(ds.omit<span class="op">$</span>ideol,<span class="dt">na.rm=</span>T)<span class="op">^</span><span class="dv">2</span><span class="op">/</span>TSSx))
-SEa</code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">SEa &lt;-<span class="st"> </span>Se<span class="op">*</span><span class="kw">sqrt</span>((<span class="dv">1</span><span class="op">/</span><span class="kw">length</span>(ds.omit<span class="op">$</span>glbcc_risk))<span class="op">+</span>(<span class="kw">mean</span>(ds.omit<span class="op">$</span>ideol,<span class="dt">na.rm=</span>T)<span class="op">^</span><span class="dv">2</span><span class="op">/</span>TSSx))</a>
+<a class="sourceLine" id="cb144-2" data-line-number="2">SEa</a></code></pre></div>
 <pre><code>## [1] 0.1418895</code></pre>
 <p>Finally, we create <code>SEb</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SEb &lt;-<span class="st"> </span>Se<span class="op">/</span>(<span class="kw">sqrt</span>(TSSx))
-SEb</code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1">SEb &lt;-<span class="st"> </span>Se<span class="op">/</span>(<span class="kw">sqrt</span>(TSSx))</a>
+<a class="sourceLine" id="cb146-2" data-line-number="2">SEb</a></code></pre></div>
 <pre><code>## [1] 0.02856262</code></pre>
 <p>Using the standard errors, we can determine how likely it is that our estimate of <span class="math inline">\(\beta\)</span> differs from <span class="math inline">\(0\)</span>; that is how many standard errors our estimate is away from <span class="math inline">\(0\)</span>. To determine this we use the <span class="math inline">\(t\)</span> value. The <span class="math inline">\(t\)</span> score is derived by dividing the regression coefficient by its standard error. For our model, the <span class="math inline">\(t\)</span> value for <span class="math inline">\(\beta\)</span> is as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span>ols1<span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">/</span>SEb
-t</code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">t &lt;-<span class="st"> </span>ols1<span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">/</span>SEb</a>
+<a class="sourceLine" id="cb148-2" data-line-number="2">t</a></code></pre></div>
 <pre><code>##     ideol 
 ## -36.63342</code></pre>
-<p>The <span class="math inline">\(t\)</span> value for our <span class="math inline">\(B\)</span> is 36.6334214, meaning that <span class="math inline">\(B\)</span> is 36.6334214 standard errors away from zero. We can then ask: What is the probability, <span class="math inline">\(p\)</span> <em>value</em>, of obtaining this result if <span class="math inline">\(\beta=0\)</span>? According to the results shown earlier, <span class="math inline">\(p=2e-16\)</span>. That is remarkably close to zero. This result indicates that we can reject the null hypothesis that <span class="math inline">\(\beta=0\)</span>.</p>
+<p>The <span class="math inline">\(t\)</span> value for our <span class="math inline">\(B\)</span> is 36.6334214, meaning that <span class="math inline">\(B\)</span> is 36.6334214 standard errors away from zero. We can then ask: What is the probability, <span class="math inline">\(p\)</span> <em>value</em>, of obtaining this result if <span class="math inline">\(\beta=0\)</span>? According to the results shown earlier, <span class="math inline">\(p=2e-16\)</span>. That is remarkably close to zero. This result indicates that we can reject the null hypothesis
+that <span class="math inline">\(\beta=0\)</span>.</p>
 <p>In addition, we can calculate the confidence interval (CI) for our estimate of <span class="math inline">\(B\)</span>. This means that in 95 out of 100 repeated applications, the confidence interval will contain <span class="math inline">\(\beta\)</span>.</p>
 <p>In the following example, we calculate a <span class="math inline">\(95\%\)</span> CI. The CI is calculated as follows:</p>
-<span class="math display" id="eq:09-4">\[\begin{equation}
+<p><span class="math display" id="eq:09-4">\[\begin{equation}
   B \pm 1.96(SE(B))
 \tag{9.4}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>We can easily calculate this in <code>R</code>. First, we calculate the upper limit then the lower limit and then we use the <code>confint</code> function to check.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Bhi &lt;-<span class="st"> </span>ols1<span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">-</span><span class="fl">1.96</span><span class="op">*</span>SEb
-Bhi</code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">Bhi &lt;-<span class="st"> </span>ols1<span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">-</span><span class="fl">1.96</span><span class="op">*</span>SEb</a>
+<a class="sourceLine" id="cb150-2" data-line-number="2">Bhi</a></code></pre></div>
 <pre><code>##     ideol 
 ## -1.102329</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Blow &lt;-<span class="st"> </span>ols1<span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">+</span><span class="fl">1.96</span><span class="op">*</span>SEb
-Blow</code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">Blow &lt;-<span class="st"> </span>ols1<span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">+</span><span class="fl">1.96</span><span class="op">*</span>SEb</a>
+<a class="sourceLine" id="cb152-2" data-line-number="2">Blow</a></code></pre></div>
 <pre><code>##      ideol 
 ## -0.9903636</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">confint</span>(ols1)</code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">confint</span>(ols1)</a></code></pre></div>
 <pre><code>##                 2.5 %     97.5 %
 ## (Intercept) 10.540430 11.0968947
 ## ideol       -1.102355 -0.9903377</code></pre>
@@ -424,40 +439,40 @@ Blow</code></pre></div>
 </div>
 <div id="measuring-goodness-of-fit" class="section level2">
 <h2><span class="header-section-number">9.2</span> Measuring Goodness of Fit</h2>
-<p>Once we have constructed a regression model, it is natural to ask: how good is the model at explaining variation in our dependent variable? We can answer this question with a number of statistics that indicate ``model fit“. Basically, these statistics provide measures of the degree to which the estimated relationships account for the variance in the dependent variable, <span class="math inline">\(Y\)</span>.</p>
+<p>Once we have constructed a regression model, it is natural to ask: how good is the model at explaining variation in our dependent variable? We can answer this question with a number of statistics that indicate ``model fit&quot;. Basically, these statistics provide measures of the degree to which the estimated relationships account for the variance in the dependent variable, <span class="math inline">\(Y\)</span>.</p>
 <p>There are several ways to examine how well the model ``explains&quot; the variance in <span class="math inline">\(Y\)</span>. First, we can examine the covariance of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, which is a general measure of the sample variance for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. Then we can use a measure of sample correlation, which is the standardized measure of covariation. Both of these measures provide indicators of the degree to which variation in <span class="math inline">\(X\)</span> can account for variation in <span class="math inline">\(Y\)</span>. Finally, we can examine <span class="math inline">\(R^{2}\)</span>, also know as the coefficient of determination, which is the standard measure of the goodness of fit for OLS models.</p>
 <div id="sample-covariance-and-correlations" class="section level3">
 <h3><span class="header-section-number">9.2.1</span> Sample Covariance and Correlations</h3>
 <p>The sample covariance for a simple regression model is defined as:</p>
-<span class="math display" id="eq:09-5">\[\begin{equation}
+<p><span class="math display" id="eq:09-5">\[\begin{equation}
 S_{XY} = \frac {\Sigma(X_{i}-\bar X)(Y_{i}-\bar Y)}{n-1}
 \tag{9.5}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>Intuitively, this measure tells you, on average, whether a higher value of <span class="math inline">\(X\)</span> (relative to its mean) is associated with a higher or lower value of <span class="math inline">\(Y\)</span>. Is the association negative or positive? Covariance can be obtained quite simply in <code>R</code> by using the the <code>cov</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Sxy &lt;-<span class="st"> </span><span class="kw">cov</span>(ds.omit<span class="op">$</span>ideol, ds.omit<span class="op">$</span>glbcc_risk)
-Sxy</code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">Sxy &lt;-<span class="st"> </span><span class="kw">cov</span>(ds.omit<span class="op">$</span>ideol, ds.omit<span class="op">$</span>glbcc_risk)</a>
+<a class="sourceLine" id="cb156-2" data-line-number="2">Sxy</a></code></pre></div>
 <pre><code>## [1] -3.137767</code></pre>
 <p>The problem with covariance is that its magnitude will be entirely dependent on the scales used to measure <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. That is, it is non-standard, and its meaning will vary depending on what it is that is being measured. In order to compare sample covariation across different samples and different measures, we can use the sample correlation.</p>
 <p>The sample correlation, <span class="math inline">\(r\)</span>, is found by dividing <span class="math inline">\(S_{XY}\)</span> by the product of the standard deviations of <span class="math inline">\(X\)</span>, <span class="math inline">\(S_{X}\)</span>, and <span class="math inline">\(Y\)</span>, <span class="math inline">\(S_{Y}\)</span>.</p>
-<span class="math display" id="eq:09-6">\[\begin{equation}
+<p><span class="math display" id="eq:09-6">\[\begin{equation}
 r=\frac{S_{XY}}{S_{X}S_{Y}}=\frac{\Sigma(X_{i}-\bar{X})(Y_{i}-\bar
   Y)}{\sqrt{\Sigma(X_{i}-\bar X)^{2} \Sigma(Y_{i}-\bar Y)^{2}}} 
   \tag{9.6}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>To calculate this in <code>R</code>, we first make an object for <span class="math inline">\(S_{X}\)</span> and <span class="math inline">\(S_{Y}\)</span> using the <code>sd</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Sx &lt;-<span class="st"> </span><span class="kw">sd</span>(ds.omit<span class="op">$</span>ideol)
-Sx</code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1">Sx &lt;-<span class="st"> </span><span class="kw">sd</span>(ds.omit<span class="op">$</span>ideol)</a>
+<a class="sourceLine" id="cb158-2" data-line-number="2">Sx</a></code></pre></div>
 <pre><code>## [1] 1.7317</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Sy &lt;-<span class="st"> </span><span class="kw">sd</span>(ds.omit<span class="op">$</span>glbcc_risk)
-Sy</code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1">Sy &lt;-<span class="st"> </span><span class="kw">sd</span>(ds.omit<span class="op">$</span>glbcc_risk)</a>
+<a class="sourceLine" id="cb160-2" data-line-number="2">Sy</a></code></pre></div>
 <pre><code>## [1] 3.070227</code></pre>
 <p>Then to find <span class="math inline">\(r\)</span>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">r &lt;-<span class="st"> </span>Sxy<span class="op">/</span>(Sx<span class="op">*</span>Sy)
-r</code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">r &lt;-<span class="st"> </span>Sxy<span class="op">/</span>(Sx<span class="op">*</span>Sy)</a>
+<a class="sourceLine" id="cb162-2" data-line-number="2">r</a></code></pre></div>
 <pre><code>## [1] -0.5901706</code></pre>
 <p>To check this we can use the <code>cor</code> function in <code>R</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rbyR &lt;-<span class="st"> </span><span class="kw">cor</span>(ds.omit<span class="op">$</span>ideol, ds.omit<span class="op">$</span>glbcc_risk)
-rbyR</code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">rbyR &lt;-<span class="st"> </span><span class="kw">cor</span>(ds.omit<span class="op">$</span>ideol, ds.omit<span class="op">$</span>glbcc_risk)</a>
+<a class="sourceLine" id="cb164-2" data-line-number="2">rbyR</a></code></pre></div>
 <pre><code>## [1] -0.5901706</code></pre>
 <p>So what does the correlation coefficient mean? The values range from +1 to -1, with a value of +1 means there is a perfect positive relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. Each increment of increase in <span class="math inline">\(X\)</span> is matched by a constant increase in <span class="math inline">\(Y\)</span> – with all observations lining up neatly on a positive slope. A correlation coefficient of -1, or a perfect negative relationship, would indicate that each increment of increase in <span class="math inline">\(X\)</span> corresponds to a constant decrease in <span class="math inline">\(Y\)</span> – or a negatively sloped line. A correlation coefficient of zero would describe no relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
 </div>
@@ -467,24 +482,23 @@ rbyR</code></pre></div>
 <div id="components-of-r2" class="section level4 unnumbered">
 <h4><strong>Components of <span class="math inline">\(R^{2}\)</span></strong></h4>
 <ul>
-<li><em>Total sum of squares (TSS)</em>: The sum of the squared variance of <span class="math inline">\(Y\)</span>
+<li><em>Total sum of squares (TSS)</em>: The
+sum of the squared variance of <span class="math inline">\(Y\)</span></li>
+<li><em>Residual sum of squares(RSS)</em>: The variance of <span class="math inline">\(Y\)</span> not
+accounted for by the model<br />
 </li>
-<li><em>Residual sum of squares(RSS)</em>: The variance of <span class="math inline">\(Y\)</span> not accounted for by the model<br />
-
-</li>
-<li><em>Explained sum of squares (ESS)</em>: The variance of <span class="math inline">\(Y\)</span> accounted for in the model. It is the difference between the TSS and the RSS.</li>
+<li><p><em>Explained sum of squares (ESS)</em>: The variance of <span class="math inline">\(Y\)</span>
+accounted for in the model. It is the difference between the TSS and the RSS.</p></li>
+<li><p><em><span class="math inline">\(R^{2}\)</span></em>: The proportion of the total
+variance of <span class="math inline">\(Y\)</span> explained by the model, or the ratio of <span class="math inline">\(ESS\)</span> to <span class="math inline">\(TSS\)</span></p>
+<p><span class="math display">\[\begin{align*}
+R^{2} &amp;= \frac{ESS}{TSS} \\
+\\
+&amp;= \frac{TSS-RSS}{TSS} \\
+\\
+&amp;= 1-\frac{RSS}{TSS}
+\end{align*}\]</span></p></li>
 </ul>
-
-<ul>
-<li><em><span class="math inline">\(R^{2}\)</span></em>: The proportion of the total variance of <span class="math inline">\(Y\)</span> explained by the model, or the ratio of <span class="math inline">\(ESS\)</span> to <span class="math inline">\(TSS\)</span></li>
-</ul>
-<span class="math display">\[\begin{align*}
-  R^{2} &amp;= \frac{ESS}{TSS} \\
-  \\
-  &amp;= \frac{TSS-RSS}{TSS} \\
-  \\
-  &amp;= 1-\frac{RSS}{TSS}
-  \end{align*}\]</span>
 <p>The components of <span class="math inline">\(R^{2}\)</span> are illustrated in Figure <a href="bi-variate-hypothesis-testing-and-model-fit.html#fig:rsquared">9.1</a>. As shown, for each observation <span class="math inline">\(Y_{i}\)</span>, variation around the mean can be decomposed into that which is “explained” by the regression and that which is not. In Figure <a href="bi-variate-hypothesis-testing-and-model-fit.html#fig:rsquared">9.1</a>, the deviation between the mean of <span class="math inline">\(Y\)</span> and the predicted value of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\hat{Y}\)</span>, is the proportion of the variation of <span class="math inline">\(Y_{i}\)</span> that can be explained (or predicted) by the regression. That is shown as a blue line. The deviation of the observed value of <span class="math inline">\(Y_{i}\)</span> from the predicted value <span class="math inline">\(\hat{Y}\)</span> (aka the residual, as discussed in the previous chapter) is the unexplained deviation, shown in red. Together, the explained and unexplained variation make up the total variation of <span class="math inline">\(Y_{i}\)</span> around the mean <span class="math inline">\(\hat{Y}\)</span>.</p>
 <div class="figure"><span id="fig:rsquared"></span>
 <img src="_main_files/figure-html/rsquared-1.png" alt="The Components of $R^{2}$" width="672" />
@@ -493,30 +507,30 @@ Figure 9.1: The Components of <span class="math inline">\(R^{2}\)</span>
 </p>
 </div>
 <p>To calculate <span class="math inline">\(R^{2}\)</span> “by hand” in <code>R</code>, we must first determine the total sum of squares, which is the sum of the squared differences of the observed values of <span class="math inline">\(Y\)</span> from the mean of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\Sigma(Y_{i}-\bar Y)^{2}\)</span>. Using <code>R</code>, we can create an object called <code>TSS</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TSS &lt;-<span class="st"> </span><span class="kw">sum</span>((ds.omit<span class="op">$</span>glbcc_risk<span class="op">-</span><span class="kw">mean</span>(ds.omit<span class="op">$</span>glbcc_risk))<span class="op">^</span><span class="dv">2</span>)
-TSS</code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1">TSS &lt;-<span class="st"> </span><span class="kw">sum</span>((ds.omit<span class="op">$</span>glbcc_risk<span class="op">-</span><span class="kw">mean</span>(ds.omit<span class="op">$</span>glbcc_risk))<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb166-2" data-line-number="2">TSS</a></code></pre></div>
 <pre><code>## [1] 23678.85</code></pre>
 <p>Remember that <span class="math inline">\(R^{2}\)</span> is the ratio of the explained sum of squares to the total sum of squares (<em>ESS/TSS</em>). Therefore to calculate <span class="math inline">\(R^{2}\)</span> we need to create an object called <code>RSS</code>, the squared sum of our model residuals.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">RSS &lt;-<span class="st"> </span><span class="kw">sum</span>(ols1<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)
-RSS</code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">RSS &lt;-<span class="st"> </span><span class="kw">sum</span>(ols1<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb168-2" data-line-number="2">RSS</a></code></pre></div>
 <pre><code>## [1] 15431.48</code></pre>
 <p>Next, we create an object called <code>ESS</code>, which is equal to TSS-RSS.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ESS &lt;-<span class="st"> </span>TSS<span class="op">-</span>RSS
-ESS</code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1">ESS &lt;-<span class="st"> </span>TSS<span class="op">-</span>RSS</a>
+<a class="sourceLine" id="cb170-2" data-line-number="2">ESS</a></code></pre></div>
 <pre><code>## [1] 8247.376</code></pre>
 <p>Finally, we calculate the <span class="math inline">\(R^{2}\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R2 &lt;-<span class="st"> </span>ESS<span class="op">/</span>TSS
-R2</code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">R2 &lt;-<span class="st"> </span>ESS<span class="op">/</span>TSS</a>
+<a class="sourceLine" id="cb172-2" data-line-number="2">R2</a></code></pre></div>
 <pre><code>## [1] 0.3483013</code></pre>
 <p>Note–happily–that the <span class="math inline">\(R^{2}\)</span> calculated by “by hand” in <code>R</code> matches the results provided by the <code>summary</code> command.</p>
-<p>The values for <span class="math inline">\(R^{2}\)</span> can range from zero to 1. In the case of simple regression, a value of 1 indicates that the modeled coefficient (<span class="math inline">\(B\)</span>) “accounts for” all of the variation in <span class="math inline">\(Y\)</span>. Put differently, all of the squared deviations in <span class="math inline">\(Y_{i}\)</span> around the mean (<span class="math inline">\(\hat{Y}\)</span>) are in ESS, with none in the residual (RSS).<a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a> A value of zero would indicate that all of the deviations in <span class="math inline">\(Y_{i}\)</span> around the mean are in RSS – all residual or ``error“. Our example shows that the variation in political ideology (our <span class="math inline">\(X\)</span>) accounts for roughly 34.8 percent of the variation in our measure of perceived risk of climate change (<span class="math inline">\(Y\)</span>).</p>
+<p>The values for <span class="math inline">\(R^{2}\)</span> can range from zero to 1. In the case of simple regression, a value of 1 indicates that the modeled coefficient (<span class="math inline">\(B\)</span>) “accounts for” all of the variation in <span class="math inline">\(Y\)</span>. Put differently, all of the squared deviations in <span class="math inline">\(Y_{i}\)</span> around the mean (<span class="math inline">\(\hat{Y}\)</span>) are in ESS, with none in the residual (RSS).<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> A value of zero would indicate that all of the deviations in <span class="math inline">\(Y_{i}\)</span> around the mean are in RSS – all residual or ``error&quot;. Our example shows that the variation in political ideology (our <span class="math inline">\(X\)</span>) accounts for roughly 34.8 percent of the variation in our measure of perceived risk of climate change (<span class="math inline">\(Y\)</span>).</p>
 </div>
 </div>
 <div id="visualizing-bivariate-regression" class="section level3">
 <h3><span class="header-section-number">9.2.3</span> Visualizing Bivariate Regression</h3>
 <p>The <code>ggplot2</code> package provides a mechanism for viewing the effect of the independent variable, ideology, on the dependent variable, perceived risk of climate change. Adding <code>geom_smooth</code> will calculate and visualize a regression line that represents the relationship between yor IV and DV while minimizing the residual sum of squares. Graphically (Figure <a href="bi-variate-hypothesis-testing-and-model-fit.html#fig:effectsplot">9.2</a>), we see as an individual becomes more conservative (ideology = 7), their perception of the risk of global warming decreases.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ds.omit, <span class="kw">aes</span>(ideol, glbcc_risk)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> lm)</code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">ggplot</span>(ds.omit, <span class="kw">aes</span>(ideol, glbcc_risk)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> lm)</a></code></pre></div>
 <div class="figure"><span id="fig:effectsplot"></span>
 <img src="_main_files/figure-html/effectsplot-1.png" alt="Bivariate Regression Plot" width="672" />
 <p class="caption">
@@ -526,11 +540,11 @@ Figure 9.2: Bivariate Regression Plot
 <div id="cleaning-up-the-r-environment" class="section level4 unnumbered">
 <h4>Cleaning up the R Environment</h4>
 <p>If you recall, at the beginning of the chapter, we created several temporary data sets. We should take the time to clear up our workspace for the next chapter. The <code>rm</code> function in <code>R</code> will remove them for us.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(ds.omit) </code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1"><span class="kw">rm</span>(ds.omit) </a></code></pre></div>
 </div>
 </div>
 </div>
-<div id="summary-4" class="section level2">
+<div id="summary-3" class="section level2">
 <h2><span class="header-section-number">9.3</span> Summary</h2>
 <p>This chapter has focused on two key aspects of simple regression models: hypothesis testing and measures of the goodness of model fit. With respect to the former, we focused on the residual standard error and its role in determining the probability that our model estimates, <span class="math inline">\(B\)</span> and <span class="math inline">\(A\)</span>, are just random departures from a population in which <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\alpha\)</span> are zero. We showed, using <code>R</code>, how to calculate the residual standard errors for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and, using them, to calculate the t-statistics and associated probabilities for hypothesis testing. For model fit, we focused on model covariation and correlation, and finished up with a discussion of the coefficient of determination – <span class="math inline">\(R^{2}\)</span>. So you are now in a position to use simple regression, and to wage unremitting geek-war on those whose models are endowed with lesser <span class="math inline">\(R^{2}s\)</span>.</p>
 
@@ -539,8 +553,11 @@ Figure 9.2: Bivariate Regression Plot
 <div class="footnotes">
 <hr />
 <ol start="15">
-<li id="fn15"><p>The question wording was as follows: ``On a scale from zero to ten, where zero means no risk and ten means extreme risk, how much risk do you think global warming poses for people and the environment?“<a href="bi-variate-hypothesis-testing-and-model-fit.html#fnref15">↩</a></p></li>
-<li id="fn16"><p>Note that with a <strong>bivariate model</strong>, <span class="math inline">\(R^{2}\)</span> is equal to the square of the correlation coefficient.<a href="bi-variate-hypothesis-testing-and-model-fit.html#fnref16">↩</a></p></li>
+<li id="fn15"><p>The question wording was as follows: ``On a scale from zero to ten, where zero
+means no risk and ten means extreme risk, how much
+risk do you think global warming poses for people
+and the environment?&quot;<a href="bi-variate-hypothesis-testing-and-model-fit.html#fnref15" class="footnote-back">↩</a></p></li>
+<li id="fn16"><p>Note that with a <strong>bivariate model</strong>, <span class="math inline">\(R^{2}\)</span> is equal to the square of the correlation coefficient.<a href="bi-variate-hypothesis-testing-and-model-fit.html#fnref16" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -599,7 +616,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

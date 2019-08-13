@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 The Logic of Ordinary Least Squares Estimation | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R</title>
-  <meta name="description" content="7 The Logic of Ordinary Least Squares Estimation | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="7 The Logic of Ordinary Least Squares Estimation | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 The Logic of Ordinary Least Squares Estimation | Quantitative Research Methods for Political Science, Public Policy and Public Administration: 4th Edition With Applications in R" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,13 @@
   
   
 
-<meta name="author" content="Hank Jenkins-Smith">
-<meta name="author" content="Joseph Ripberger">
-<meta name="author" content="Gary Copeland">
-<meta name="author" content="Matthew Nowlin">
-<meta name="author" content="Tyler Hughes">
-<meta name="author" content="Aaron Fister">
-<meta name="author" content="Wesley Wehde">
+<meta name="author" content="Hank Jenkins-Smith, Joseph Ripberger, Gary Copeland, Matthew Nowlin, Tyler Hughes, Aaron Fister, Wesley Wehde, and Josie Davis" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="association-of-variables.html">
@@ -56,41 +49,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -134,16 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1.3" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#moments"><i class="fa fa-check"></i><b>3.1.3</b> Moments</a></li>
 <li class="chapter" data-level="3.1.4" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#first-moment-expected-value"><i class="fa fa-check"></i><b>3.1.4</b> First Moment – Expected Value</a></li>
 <li class="chapter" data-level="3.1.5" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-second-moment-variance-and-standard-deviation"><i class="fa fa-check"></i><b>3.1.5</b> The Second Moment – Variance and Standard Deviation</a></li>
-<li class="chapter" data-level="3.1.6" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-third-moment-skewness"><i class="fa fa-check"></i><b>3.1.6</b> The Third Moment – Skewness</a></li>
-<li class="chapter" data-level="3.1.7" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#the-fourth-moment-kurtosis"><i class="fa fa-check"></i><b>3.1.7</b> The Fourth Moment – Kurtosis</a></li>
-<li class="chapter" data-level="3.1.8" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#order-statistics"><i class="fa fa-check"></i><b>3.1.8</b> Order Statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="exploring-and-visualizing-data.html"><a href="exploring-and-visualizing-data.html#summary"><i class="fa fa-check"></i><b>3.2</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>4</b> Probability</a><ul>
 <li class="chapter" data-level="4.1" data-path="probability.html"><a href="probability.html#finding-probabilities"><i class="fa fa-check"></i><b>4.1</b> Finding Probabilities</a></li>
 <li class="chapter" data-level="4.2" data-path="probability.html"><a href="probability.html#finding-probabilities-with-the-normal-curve"><i class="fa fa-check"></i><b>4.2</b> Finding Probabilities with the Normal Curve</a></li>
-<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary-1"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
+<li class="chapter" data-level="4.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5</b> Inference</a><ul>
 <li class="chapter" data-level="5.1" data-path="inference.html"><a href="inference.html#inference-populations-and-samples"><i class="fa fa-check"></i><b>5.1</b> Inference: Populations and Samples</a><ul>
@@ -166,7 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4" data-path="inference.html"><a href="inference.html#differences-between-groups"><i class="fa fa-check"></i><b>5.4</b> Differences Between Groups</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="inference.html"><a href="inference.html#t-tests"><i class="fa fa-check"></i><b>5.4.1</b> <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-2"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="inference.html"><a href="inference.html#summary-1"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="association-of-variables.html"><a href="association-of-variables.html"><i class="fa fa-check"></i><b>6</b> Association of Variables</a><ul>
 <li class="chapter" data-level="6.1" data-path="association-of-variables.html"><a href="association-of-variables.html#cross-tabulation"><i class="fa fa-check"></i><b>6.1</b> Cross-Tabulation</a><ul>
@@ -198,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.2" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#ols-derivation-of-hatbeta"><i class="fa fa-check"></i><b>8.2.2</b> OLS Derivation of <span class="math inline">\(\hat{\beta}\)</span></a></li>
 <li class="chapter" data-level="8.2.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#interpreting-hatbeta-and-hatalpha"><i class="fa fa-check"></i><b>8.2.3</b> Interpreting <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-3"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
+<li class="chapter" data-level="8.3" data-path="linear-estimation-and-minimizing-error.html"><a href="linear-estimation-and-minimizing-error.html#summary-2"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html"><i class="fa fa-check"></i><b>9</b> Bi-Variate Hypothesis Testing and Model Fit</a><ul>
 <li class="chapter" data-level="9.1" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#hypothesis-tests-for-regression-coefficients"><i class="fa fa-check"></i><b>9.1</b> Hypothesis Tests for Regression Coefficients</a><ul>
@@ -209,7 +223,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.2.2" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#coefficient-of-determination-r2"><i class="fa fa-check"></i><b>9.2.2</b> Coefficient of Determination: <span class="math inline">\(R^{2}\)</span></a></li>
 <li class="chapter" data-level="9.2.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#visualizing-bivariate-regression"><i class="fa fa-check"></i><b>9.2.3</b> Visualizing Bivariate Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-4"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+<li class="chapter" data-level="9.3" data-path="bi-variate-hypothesis-testing-and-model-fit.html"><a href="bi-variate-hypothesis-testing-and-model-fit.html#summary-3"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html"><i class="fa fa-check"></i><b>10</b> OLS Assumptions and Simple Regression Diagnostics</a><ul>
 <li class="chapter" data-level="10.1" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#a-recap-of-modeling-assumptions"><i class="fa fa-check"></i><b>10.1</b> A Recap of Modeling Assumptions</a></li>
@@ -225,7 +239,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.3.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#examining-outlier-data"><i class="fa fa-check"></i><b>10.3.4</b> Examining Outlier Data</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#so-now-what-implications-of-residual-analysis"><i class="fa fa-check"></i><b>10.4</b> So Now What? Implications of Residual Analysis</a></li>
-<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-5"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+<li class="chapter" data-level="10.5" data-path="ols-assumptions-and-simple-regression-diagnostics.html"><a href="ols-assumptions-and-simple-regression-diagnostics.html#summary-4"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html"><i class="fa fa-check"></i><b>11</b> Introduction to Multiple Regression</a><ul>
 <li class="chapter" data-level="11.1" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-algebra-and-multiple-regression"><i class="fa fa-check"></i><b>11.1</b> Matrix Algebra and Multiple Regression</a></li>
@@ -240,7 +254,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.2.8" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#matrix-inversion"><i class="fa fa-check"></i><b>11.2.8</b> Matrix Inversion</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#ols-regression-in-matrix-form"><i class="fa fa-check"></i><b>11.3</b> OLS Regression in Matrix Form</a></li>
-<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+<li class="chapter" data-level="11.4" data-path="introduction-to-multiple-regression.html"><a href="introduction-to-multiple-regression.html#summary-5"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html"><i class="fa fa-check"></i><b>12</b> The Logic of Multiple Regression</a><ul>
 <li class="chapter" data-level="12.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#theoretical-specification"><i class="fa fa-check"></i><b>12.1</b> Theoretical Specification</a><ul>
@@ -250,7 +264,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#multiple-regression-example"><i class="fa fa-check"></i><b>12.3</b> Multiple Regression Example</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#hypothesis-testing-and-t-tests"><i class="fa fa-check"></i><b>12.3.1</b> Hypothesis Testing and <span class="math inline">\(t\)</span>-tests</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-7"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
+<li class="chapter" data-level="12.4" data-path="the-logic-of-multiple-regression.html"><a href="the-logic-of-multiple-regression.html#summary-6"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html"><i class="fa fa-check"></i><b>13</b> Multiple Regression and Model Building</a><ul>
 <li class="chapter" data-level="13.1" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#model-building"><i class="fa fa-check"></i><b>13.1</b> Model Building</a><ul>
@@ -259,13 +273,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.1.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#risks-in-model-building"><i class="fa fa-check"></i><b>13.1.3</b> Risks in Model Building</a></li>
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#evils-of-stepwise-regression"><i class="fa fa-check"></i><b>13.2</b> Evils of Stepwise Regression</a></li>
-<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-8"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.3" data-path="multiple-regression-and-model-building.html"><a href="multiple-regression-and-model-building.html#summary-7"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html"><i class="fa fa-check"></i><b>14</b> Topics in Multiple Regression</a><ul>
 <li class="chapter" data-level="14.1" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>14.1</b> Dummy Variables</a></li>
 <li class="chapter" data-level="14.2" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#interaction-effects"><i class="fa fa-check"></i><b>14.2</b> Interaction Effects</a></li>
 <li class="chapter" data-level="14.3" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#standardized-regression-coefficients"><i class="fa fa-check"></i><b>14.3</b> Standardized Regression Coefficients</a></li>
-<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-9"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
+<li class="chapter" data-level="14.4" data-path="topics-in-multiple-regression.html"><a href="topics-in-multiple-regression.html#summary-8"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html"><i class="fa fa-check"></i><b>15</b> The Art of Regression Diagnostics</a><ul>
 <li class="chapter" data-level="15.1" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#ols-error-assumptions-revisited"><i class="fa fa-check"></i><b>15.1</b> OLS Error Assumptions Revisited</a></li>
@@ -278,7 +292,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.2.6" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#outliers"><i class="fa fa-check"></i><b>15.2.6</b> Outliers</a></li>
 <li class="chapter" data-level="15.2.7" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#multicollinearity"><i class="fa fa-check"></i><b>15.2.7</b> Multicollinearity</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-10"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+<li class="chapter" data-level="15.3" data-path="the-art-of-regression-diagnostics.html"><a href="the-art-of-regression-diagnostics.html#summary-9"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="logit-regression.html"><a href="logit-regression.html"><i class="fa fa-check"></i><b>16</b> Logit Regression</a><ul>
 <li class="chapter" data-level="16.1" data-path="logit-regression.html"><a href="logit-regression.html#generalized-linear-models"><i class="fa fa-check"></i><b>16.1</b> Generalized Linear Models</a></li>
@@ -287,7 +301,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="16.2.2" data-path="logit-regression.html"><a href="logit-regression.html#goodness-of-fit"><i class="fa fa-check"></i><b>16.2.2</b> Goodness of Fit</a></li>
 <li class="chapter" data-level="16.2.3" data-path="logit-regression.html"><a href="logit-regression.html#interpreting-logits"><i class="fa fa-check"></i><b>16.2.3</b> Interpreting Logits</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-11"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
+<li class="chapter" data-level="16.3" data-path="logit-regression.html"><a href="logit-regression.html#summary-10"><i class="fa fa-check"></i><b>16.3</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html"><i class="fa fa-check"></i><b>17</b> Appendix: Basic R</a><ul>
 <li class="chapter" data-level="17.1" data-path="appendix-basic-r.html"><a href="appendix-basic-r.html#introduction-to-r"><i class="fa fa-check"></i><b>17.1</b> Introduction to R</a></li>
@@ -325,10 +339,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="deterministic-linear-model" class="section level3">
 <h3><span class="header-section-number">7.1.1</span> Deterministic Linear Model</h3>
 <p>The deterministic linear model serves as the basis for evaluating theoretical models. It is expressed as:</p>
-<span class="math display" id="eq:07-1">\[\begin{equation}
+<p><span class="math display" id="eq:07-1">\[\begin{equation}
 Y_{i} = \alpha + \beta X_{i} 
 \tag{7.1}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>A deterministic model is <strong>systematic</strong> and contains no error, therefore <em><span class="math inline">\(Y\)</span> is perfectly predicted by <span class="math inline">\(X\)</span></em>. This is illustrated in Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:dols">7.1</a>. <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are the model parameters, and are constant terms. <span class="math inline">\(\beta\)</span> is the slope, or the change in <span class="math inline">\(Y\)</span> over the change in <span class="math inline">\(X\)</span>. <span class="math inline">\(\alpha\)</span> is the intercept, or the value of <span class="math inline">\(Y\)</span> when <span class="math inline">\(X\)</span> is zero.</p>
 <div class="figure"><span id="fig:dols"></span>
 <img src="_main_files/figure-html/dols-1.png" alt="Deterministic Model" width="672" />
@@ -341,10 +355,10 @@ Figure 7.1: Deterministic Model
 <div id="stochastic-linear-model" class="section level3">
 <h3><span class="header-section-number">7.1.2</span> Stochastic Linear Model</h3>
 <p>The stochastic, or statistical, linear model contains a systematic component, <span class="math inline">\(Y = \alpha+\beta\)</span>, and a stochastic component called the <strong>error term</strong>. The error term is the difference between the expected value of <span class="math inline">\(Y_i\)</span> and the observed value of <span class="math inline">\(Y_i\)</span>; <span class="math inline">\(Y_i-\mu\)</span>. This model is expressed as:</p>
-<span class="math display" id="eq:07-2">\[\begin{equation}
+<p><span class="math display" id="eq:07-2">\[\begin{equation}
 Y_{i} = \alpha + \beta X_{i} + \epsilon_i
 \tag{7.2}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(\epsilon_i\)</span> is the error term. In the deterministic model, each value of <span class="math inline">\(Y\)</span> fits along the regression line, however in a stochastic model the expected value of <span class="math inline">\(Y\)</span> is conditioned by the values of <span class="math inline">\(X\)</span>. This is illustrated in Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:sols">7.2</a>.</p>
 <div class="figure"><span id="fig:sols"></span>
 <img src="_main_files/figure-html/sols-1.png" alt="Stochastic Linear Model" width="672" />
@@ -353,13 +367,15 @@ Figure 7.2: Stochastic Linear Model
 </p>
 </div>
 <p>Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:sols">7.2</a> shows the conditional population distributions of <span class="math inline">\(Y\)</span> for several values of <span class="math inline">\(X, p(Y|X)\)</span>. The conditional means of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span> are denoted <span class="math inline">\(\mu\)</span>.</p>
-<span class="math display" id="eq:07-3">\[\begin{equation} 
+<p><span class="math display" id="eq:07-3">\[\begin{equation} 
 \mu_{i} \equiv E(Y_{i}) \equiv E(Y|X_{i})=\alpha+\beta X_{i} 
 \tag{7.3}
-\end{equation}\]</span>
-<p>where - <span class="math inline">\(\alpha = E(Y) \equiv \mu\)</span> when <span class="math inline">\(X=0\)</span> - Each 1 unit increase in <span class="math inline">\(X\)</span> increases <span class="math inline">\(E(Y)\)</span> by <span class="math inline">\(\beta\)</span></p>
+\end{equation}\]</span></p>
+<p>where
+- <span class="math inline">\(\alpha = E(Y) \equiv \mu\)</span> when <span class="math inline">\(X=0\)</span>
+- Each 1 unit increase in <span class="math inline">\(X\)</span> increases <span class="math inline">\(E(Y)\)</span> by <span class="math inline">\(\beta\)</span></p>
 <p>However, in the stochastic linear model variation in <span class="math inline">\(Y\)</span> is caused by more than <span class="math inline">\(X\)</span>, it is also caused by the error term <span class="math inline">\(\epsilon\)</span>. The error term is expressed as:</p>
-<span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 \epsilon_i &amp;= Y_{i}-E(Y_{i}) \\
 &amp;= Y_{i}-(\alpha+\beta X_{i}) \\
 &amp;= Y_{i}-\alpha-\beta X_{i}
@@ -368,12 +384,12 @@ Therefore;
 <span class="math display">\[\begin{align*}
 Y_{i} &amp;= E(Y_{i})+\epsilon \\
 &amp;= \alpha+\beta X_{i}+\epsilon_{i} 
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <p>We make several important assumptions about the error term that are discussed in the next section.</p>
 </div>
 <div id="assumptions-about-the-error-term" class="section level3">
 <h3><span class="header-section-number">7.1.3</span> Assumptions about the Error Term</h3>
-<p>There are three key assumptions about the error term; a) errors have identical distributions, b) errors are independent, and c) errors are normally distributed.<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a></p>
+<p>There are three key assumptions about the error term; a) errors have identical distributions, b) errors are independent, and c) errors are normally distributed.<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a></p>
 <div id="error-assumptions" class="section level4 unnumbered">
 <h4>Error Assumptions</h4>
 <ul>
@@ -393,17 +409,17 @@ Y_{i} &amp;= E(Y_{i})+\epsilon \\
 <div id="estimating-linear-models" class="section level2">
 <h2><span class="header-section-number">7.2</span> Estimating Linear Models</h2>
 <p>With stochastic models we don’t know if the error assumptions are met, nor do we know the values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>; therefore we must estimate them, as denoted by a hat (e.g., <span class="math inline">\(\hat{\alpha}\)</span> is the estimate for <span class="math inline">\(\alpha\)</span>). The stochastic model as shown in Equation <a href="the-logic-of-ordinary-least-squares-estimation.html#eq:07-4">(7.4)</a> is estimated as:</p>
-<span class="math display" id="eq:07-4">\[\begin{equation}
+<p><span class="math display" id="eq:07-4">\[\begin{equation}
 Y_{i} = \hat{\alpha} + \hat{\beta} X_{i}+ \epsilon_{i} 
 \tag{7.4}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(\epsilon_i\)</span> is the <strong>residual term</strong>, or the estimated error term. Since no line can perfectly pass through all the data points, we introduce a residual, <span class="math inline">\(\epsilon\)</span>, into the regression equation. Note that the predicted value of <span class="math inline">\(Y\)</span> is denoted <span class="math inline">\(\hat{Y}\)</span> (<span class="math inline">\(y\)</span>-hat).</p>
-<span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 Y_{i} &amp;= \hat{\alpha}+\hat{\beta}X_{i}+\epsilon_{i} \\ 
 &amp;= \hat{Y_{i}} + \epsilon_{i}  \\
 \epsilon_{i} &amp;= Y_i-\hat{Y_{i}} \\
 &amp;= Y_i-\hat{\alpha}-\hat{\beta}X_i
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <div id="residuals" class="section level3">
 <h3><span class="header-section-number">7.2.1</span> Residuals</h3>
 <p>Residuals measure prediction errors of how far observation <span class="math inline">\(Y_{i}\)</span> is from predicted <span class="math inline">\(\hat{Y_{i}}\)</span>. This is shown in Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:resid">7.3</a>.</p>
@@ -435,18 +451,18 @@ Figure 7.3: Residuals: Statistical Forensics
 </blockquote>
 <p>The goal of regression analysis is to minimize the error associated with the model estimates. As noted, the residual term is the estimated error, or overall ``miss&quot; (e.g., <span class="math inline">\(Y_{i}-\hat{Y_{i}}\)</span>). Specifically the goal is to minimize the sum of the squared errors, <span class="math inline">\(\sum \epsilon^{2}\)</span>. Therefore, we need to find the values of <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span> that minimize <span class="math inline">\(\sum \epsilon^{2}\)</span>.</p>
 <p>Note that for a fixed set of data {<span class="math inline">\(\hat{\alpha}\)</span>,<span class="math inline">\(\hat{\alpha}\)</span>}, each possible choice of values for <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span> corresponds to a specific residual sum of squares, <span class="math inline">\(\sum \epsilon^{2}\)</span>. This can be expressed by the following functional form:</p>
-<span class="math display" id="eq:07-5">\[\begin{equation}
+<p><span class="math display" id="eq:07-5">\[\begin{equation}
  S(\hat{\alpha},\hat{\beta})=\sum_{i=1}^{n} \epsilon^{2}_{i}=\sum (Y_{i}-\hat{Y_{i}})^{2}=\sum (Y_{i}-\hat{\alpha}-\hat{\beta}X_{i})^{2}  
  \tag{7.5}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>Minimizing this function requires specifying estimators for <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span> such that <span class="math inline">\(S(\hat{\alpha},\hat{\beta})=\sum \epsilon^{2}\)</span> is at the lowest possible value. Finding this minimum value requires the use of calculus, which will be discussed in the next chapter. Before that we walk through a quick example of simple regression.</p>
 </div>
 </div>
 <div id="an-example-of-simple-regression" class="section level2">
 <h2><span class="header-section-number">7.3</span> An Example of Simple Regression</h2>
 <p>The following example uses a measure of peoples’ political ideology to predict their perceptions of the risks posed by global climate change. OLS regression can be done using the <code>lm</code> function in <code>R</code>. For this example, we are again using the class data set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(ds<span class="op">$</span>glbcc_risk<span class="op">~</span>ds<span class="op">$</span>ideol)
-<span class="kw">summary</span>(ols1)</code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">ols1 &lt;-<span class="st"> </span><span class="kw">lm</span>(ds<span class="op">$</span>glbcc_risk<span class="op">~</span>ds<span class="op">$</span>ideol)</a>
+<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="kw">summary</span>(ols1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = ds$glbcc_risk ~ ds$ideol)
@@ -468,18 +484,18 @@ Figure 7.3: Residuals: Statistical Forensics
 ## F-statistic:  1342 on 1 and 2511 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>The output in R provides a quite a lot of information about the relationship between the measures of ideology and perceived risks of climate change. It provides an overview of the distribution of the residuals; the estimated coefficients for <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span>; the results of hypothesis tests; and overall measures of model ``fit&quot; – all of which we will discuss in detail in later chapters. For now, note that the estimated <span class="math inline">\(B\)</span> for ideology is negative, which indicates that as the value for ideology <em>increases</em>—in our data this means more conservative—the perceived risk of climate change <em>decreases</em>. Specifically, for each one unit increase in the ideology scale, perceived climate change risk decreases by -1.0463463.</p>
 <p>We can also examine the distribution of the residuals, using a histogram and a density curve. This is shown in Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:residhist">7.4</a> and Figure <a href="the-logic-of-ordinary-least-squares-estimation.html#fig:residdens">7.5</a>. Note that we will discuss residual diagnostics in detail in future chapters.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ols1<span class="op">$</span>residuals)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">16</span>)</code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ols1<span class="op">$</span>residuals)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">16</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:residhist"></span>
 <img src="_main_files/figure-html/residhist-1.png" alt="Residuals of Simple Regression: Histogram" width="672" />
 <p class="caption">
 Figure 7.4: Residuals of Simple Regression: Histogram
 </p>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ols1<span class="op">$</span>residuals)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">adjust =</span> <span class="fl">1.5</span>) </code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">data.frame</span>(ols1<span class="op">$</span>residuals) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb100-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ols1<span class="op">$</span>residuals)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">adjust =</span> <span class="fl">1.5</span>) </a></code></pre></div>
 <div class="figure"><span id="fig:residdens"></span>
 <img src="_main_files/figure-html/residdens-1.png" alt="Residuals of Simple Regression: Density" width="672" />
 <p class="caption">
@@ -493,7 +509,7 @@ Figure 7.5: Residuals of Simple Regression: Density
 <div class="footnotes">
 <hr />
 <ol start="14">
-<li id="fn14"><p>Actually, we assume only that the <strong>means</strong> of the errors drawn from repeated samples of observations will be normally distributed – but we will deal with that wrinkle later on.<a href="the-logic-of-ordinary-least-squares-estimation.html#fnref14">↩</a></p></li>
+<li id="fn14"><p>Actually, we assume only that the <strong>means</strong> of the errors drawn from repeated samples of observations will be normally distributed – but we will deal with that wrinkle later on.<a href="the-logic-of-ordinary-least-squares-estimation.html#fnref14" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -552,7 +568,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
