@@ -39,20 +39,31 @@ knitr::include_graphics("tbl2.png")
 
 In this section we look at some common research designs, the notation used to symbolize them, and then consider the internal and external validity of the designs. We start with the most basic experimental design, the post-test only design Figure \@ref(fig:post). In this design subjects are randomly assigned to one of two groups with one group receiving the experimental treatment.^[The symbol R means there is random assignment to the group. X symbolizes exposure to the experimental treatment. O is an observation or measurement.] There are advantages to this design in that it is relatively inexpensive and eliminates the threats associated with pre-testing. If randomization worked the (unobserved) pre-test measures would be the same so any differences in the observations would be due to the experimental treatment. The problem is that randomization could fail us, especially if the sample size is small.
 
-```{r post, echo=FALSE, out.width= "15%", fig.cap="Post-test Only (with a Control Group) Experimental Design"}
-knitr::include_graphics("post-only.png")
+```{r post, echo=FALSE, fig.cap="Post-test Only (with a Control Group) Experimental Design", fig.height=1, fig.width=2}
+par(xaxs = 'i', yaxs = 'i', mar = c(1, 1, 1, 1))
+plot(NA, xlim = c(1, 3), ylim = c(1, 2), axes = FALSE, ann = FALSE)
+text(x = 2, y = 1.8, bquote(paste('R  X  O'['1'])))
+text(x = 2, y = 1.2, bquote(paste('R      O'['2'])))
 ```
 
 Many experimental groups are small and many researchers are not comfortable relying on randomization without empirical verification that the groups are the same, so another common design is the Pre-test, Post-test Design (Figure \@ref(fig:prepost)). By conducting a pre-test, we can be sure that the groups are identical when the experiment begins. The disadvantages are that adding groups drives the cost up (and/or decreases the size of the groups) and that the various threats due to testing start to be a concern. Consider the example used above concerning a news story and views on climate change. If subjects were given a pre-test on their views on climate change and then exposed to the news story, they might become more attentive to the story. If a change occurs, we can say it was due to the story (internal validity), but we have to wonder whether we can generalize to people who had not been sensitized in advance.
 
-```{r prepost, echo=FALSE, out.width= "25%", fig.cap="Pre-test, Post-Test (with a Control Group) Experimental Design"}
-knitr::include_graphics("pre-post.png")
+```{r prepost, echo=FALSE, fig.cap="Pre-test, Post-Test (with a Control Group) Experimental Design", fig.height=1, fig.width=2}
+par(xaxs = 'i', yaxs = 'i', mar = c(1, 1, 1, 1))
+plot(NA, xlim = c(1, 3), ylim = c(1, 2), axes = FALSE, ann = FALSE)
+text(x = 2, y = 1.8, bquote(paste('R  O'['1'], '  X  O'['2'])))
+text(x = 2, y = 1.2, bquote(paste('R  O'['3'], '      O'['4'])))
 ```
 
 A final experimental design deals with all the drawbacks of the previous two by combining them into what is called the Solomon Four Group Design (Figure \@ref(fig:solomon)). Intuitively it is clear that the concerns of the previous two designs are dealt with in this design, but the actual analysis is complicated. Moreover, this design is expensive so while it may represent an ideal, most researchers find it necessary to compromise.
 
-```{r solomon, echo=FALSE, out.width= "25%", fig.cap="Solomon Four Group Experimental Design"}
-knitr::include_graphics("solomon.png")
+```{r solomon, echo=FALSE, fig.cap="Solomon Four Group Experimental Design", fig.height=1.3, fig.width=2}
+par(xaxs = 'i', yaxs = 'i', mar = c(1, 1, 1, 1))
+plot(NA, xlim = c(1, 3), ylim = c(1, 2), axes = FALSE, ann = FALSE)
+text(x = 2, y = 1.8, bquote(paste('R         X  O'['1'])))
+text(x = 2, y = 1.6, bquote(paste('R             O'['2'])))
+text(x = 2, y = 1.4, bquote(paste('R  O'['3 '], '  X  O'['4'])))
+text(x = 2, y = 1.2, bquote(paste('R  O'['5  '], '      O'['6'])))
 ```
 
 Even the Solomon Four Group design does not solve all of our validity problems. It still likely suffers from the artificiality of the experimental setting. Researchers generally try a variety of tactics to minimize the artificiality of the setting through a variety of efforts such as watching the aforementioned news clip in a living room-like setting rather than on a computer monitor in a cubicle or doing jury research in the courthouse rather than the basement of a university building.
@@ -61,8 +72,11 @@ Observational designs lack random assignment, so all of the above designs can be
 
 A final design that is commonly used is the repeated measures or longitudinal research design where repeated observations are made over time and at some point there is an intervention (experimental treatment) and then subsequent observations are made (Figure \@ref(fig:repmeas)).  Selection bias and testing threats are obvious concerns with this design. But there are also concerns about history, maturation, and mortality. Anything that occurs between $O_n$ and $O_{n+1}$ becomes an alternative explanation for any changes we find. This design may also have a control group, which would give clues regarding the threat of history. Because of the extended time involved in this type of design, the researcher has to concerned about experimental mortality and maturation. 
 
-```{r repmeas, echo=FALSE, out.width= "75%", fig.cap="Repeated Measures Experimental Design"}
-knitr::include_graphics("repeated-meas.png")
+```{r repmeas, echo=FALSE, fig.cap="Repeated Measures Experimental Design", fig.height=1, fig.width=3}
+par(xaxs = 'i', yaxs = 'i', mar = c(1, 1, 1, 1))
+plot(NA, xlim = c(1, 3), ylim = c(1, 2), axes = FALSE, ann = FALSE)
+text(x = 2, y = 1.5, bquote(paste('O'['1'], ' O'['2'], ' O'['3'], ' O'['n'], '  X  ', 
+                                   ' O'['n + 1'], ' O'['n + 2'], ' O'['n + 3'])))
 ```
 
 This brief discussion illustrates major research designs and the challenges to maximizing internal and external validity.  With these experimental designs we worry about external validity, but since we have said we seek the ability to make causal statements, it seems that a preference might be given to research via experimental designs. Certainly we see more and more experimental designs in political science with important contributions. But, before we dismiss observational designs, we should note that in later chapters, we will provide an approach to providing statistical controls which, in part, substitutes for the control we get with experimental designs. 
@@ -70,5 +84,4 @@ This brief discussion illustrates major research designs and the challenges to m
 ## Plan Meets Reality
 
 Research design is the process of linking together all the elements of your research project. None of the elements can be taken in isolation, but must all come together to maximize your ability to speak to your theory (and research question) while maximizing internal and external validity within the constraints of your time and budget. The planning process is not straightforward and there are times that you will feel you are taking a step backwards. That kind of ``progress'' is normal. 
-	
 Additionally, there is no single right way to design a piece of research to address your research problem. Different scholars, for a variety of reasons, would end up with quite different designs for the same research problem. Design includes trade-offs, e.g., internal vs. external validity, and compromises based on time, resources, and opportunities. Knowing the subject matter -- both previous research and the subject itself -- helps the researcher understand where a contribution can be made and when opportunities present themselves.

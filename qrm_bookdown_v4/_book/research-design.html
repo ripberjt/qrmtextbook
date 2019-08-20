@@ -48,68 +48,6 @@
 
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 </head>
 
@@ -367,23 +305,23 @@ Figure 2.2: Common Threats to External Validity
 </div>
 <div id="some-common-designs" class="section level2">
 <h2><span class="header-section-number">2.5</span> Some Common Designs</h2>
-<p>In this section we look at some common research designs, the notation used to symbolize them, and then consider the internal and external validity of the designs. We start with the most basic experimental design, the post-test only design Figure <a href="research-design.html#fig:post">2.3</a>. In this design subjects are randomly assigned to one of two groups with one group receiving the experimental treatment.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> There are advantages to this design in that it is relatively inexpensive and eliminates the threats associated with pre-testing. If randomization worked the (unobserved) pre-test measures would be the same so any differences in the observations would be due to the experimental treatment. The problem is that randomization could fail us, especially if the sample size is small.</p>
+<p>In this section we look at some common research designs, the notation used to symbolize them, and then consider the internal and external validity of the designs. We start with the most basic experimental design, the post-test only design Figure <a href="research-design.html#fig:post">2.3</a>. In this design subjects are randomly assigned to one of two groups with one group receiving the experimental treatment.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> There are advantages to this design in that it is relatively inexpensive and eliminates the threats associated with pre-testing. If randomization worked the (unobserved) pre-test measures would be the same so any differences in the observations would be due to the experimental treatment. The problem is that randomization could fail us, especially if the sample size is small.</p>
 <div class="figure"><span id="fig:post"></span>
-<img src="post-only.PNG" alt="Post-test Only (with a Control Group) Experimental Design" width="15%" />
+<img src="_main_files/figure-html/post-1.png" alt="Post-test Only (with a Control Group) Experimental Design" width="192" />
 <p class="caption">
 Figure 2.3: Post-test Only (with a Control Group) Experimental Design
 </p>
 </div>
 <p>Many experimental groups are small and many researchers are not comfortable relying on randomization without empirical verification that the groups are the same, so another common design is the Pre-test, Post-test Design (Figure <a href="research-design.html#fig:prepost">2.4</a>). By conducting a pre-test, we can be sure that the groups are identical when the experiment begins. The disadvantages are that adding groups drives the cost up (and/or decreases the size of the groups) and that the various threats due to testing start to be a concern. Consider the example used above concerning a news story and views on climate change. If subjects were given a pre-test on their views on climate change and then exposed to the news story, they might become more attentive to the story. If a change occurs, we can say it was due to the story (internal validity), but we have to wonder whether we can generalize to people who had not been sensitized in advance.</p>
 <div class="figure"><span id="fig:prepost"></span>
-<img src="pre-post.PNG" alt="Pre-test, Post-Test (with a Control Group) Experimental Design" width="25%" />
+<img src="_main_files/figure-html/prepost-1.png" alt="Pre-test, Post-Test (with a Control Group) Experimental Design" width="192" />
 <p class="caption">
 Figure 2.4: Pre-test, Post-Test (with a Control Group) Experimental Design
 </p>
 </div>
 <p>A final experimental design deals with all the drawbacks of the previous two by combining them into what is called the Solomon Four Group Design (Figure <a href="research-design.html#fig:solomon">2.5</a>). Intuitively it is clear that the concerns of the previous two designs are dealt with in this design, but the actual analysis is complicated. Moreover, this design is expensive so while it may represent an ideal, most researchers find it necessary to compromise.</p>
 <div class="figure"><span id="fig:solomon"></span>
-<img src="solomon.PNG" alt="Solomon Four Group Experimental Design" width="25%" />
+<img src="_main_files/figure-html/solomon-1.png" alt="Solomon Four Group Experimental Design" width="192" />
 <p class="caption">
 Figure 2.5: Solomon Four Group Experimental Design
 </p>
@@ -392,7 +330,7 @@ Figure 2.5: Solomon Four Group Experimental Design
 <p>Observational designs lack random assignment, so all of the above designs can be considered observational designs when assignment to groups is not random. You might, for example, want to consider the affects of a new teaching style on student test scores. One classroom might get the intervention (the new teaching style) and another not be exposed to it (the old teaching style). Since students are not randomly assigned to classrooms it is not experimental and the threats that result from selection bias become a concern (along with all the same concerns we have in the experimental setting). What we gain, of course, is the elimination or minimization of the concern about the experimental setting.</p>
 <p>A final design that is commonly used is the repeated measures or longitudinal research design where repeated observations are made over time and at some point there is an intervention (experimental treatment) and then subsequent observations are made (Figure <a href="research-design.html#fig:repmeas">2.6</a>). Selection bias and testing threats are obvious concerns with this design. But there are also concerns about history, maturation, and mortality. Anything that occurs between <span class="math inline">\(O_n\)</span> and <span class="math inline">\(O_{n+1}\)</span> becomes an alternative explanation for any changes we find. This design may also have a control group, which would give clues regarding the threat of history. Because of the extended time involved in this type of design, the researcher has to concerned about experimental mortality and maturation.</p>
 <div class="figure"><span id="fig:repmeas"></span>
-<img src="repeated-meas.PNG" alt="Repeated Measures Experimental Design" width="75%" />
+<img src="_main_files/figure-html/repmeas-1.png" alt="Repeated Measures Experimental Design" width="288" />
 <p class="caption">
 Figure 2.6: Repeated Measures Experimental Design
 </p>
@@ -401,15 +339,15 @@ Figure 2.6: Repeated Measures Experimental Design
 </div>
 <div id="plan-meets-reality" class="section level2">
 <h2><span class="header-section-number">2.6</span> Plan Meets Reality</h2>
-<p>Research design is the process of linking together all the elements of your research project. None of the elements can be taken in isolation, but must all come together to maximize your ability to speak to your theory (and research question) while maximizing internal and external validity within the constraints of your time and budget. The planning process is not straightforward and there are times that you will feel you are taking a step backwards. That kind of ``progress’’ is normal.</p>
-<p>Additionally, there is no single right way to design a piece of research to address your research problem. Different scholars, for a variety of reasons, would end up with quite different designs for the same research problem. Design includes trade-offs, e.g., internal vs. external validity, and compromises based on time, resources, and opportunities. Knowing the subject matter – both previous research and the subject itself – helps the researcher understand where a contribution can be made and when opportunities present themselves.</p>
+<p>Research design is the process of linking together all the elements of your research project. None of the elements can be taken in isolation, but must all come together to maximize your ability to speak to your theory (and research question) while maximizing internal and external validity within the constraints of your time and budget. The planning process is not straightforward and there are times that you will feel you are taking a step backwards. That kind of ``progress’’ is normal.
+Additionally, there is no single right way to design a piece of research to address your research problem. Different scholars, for a variety of reasons, would end up with quite different designs for the same research problem. Design includes trade-offs, e.g., internal vs. external validity, and compromises based on time, resources, and opportunities. Knowing the subject matter – both previous research and the subject itself – helps the researcher understand where a contribution can be made and when opportunities present themselves.</p>
 
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>The symbol R means there is random assignment to the group. X symbolizes exposure to the experimental treatment. O is an observation or measurement.<a href="research-design.html#fnref4" class="footnote-back">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>The symbol R means there is random assignment to the group. X symbolizes exposure to the experimental treatment. O is an observation or measurement.<a href="research-design.html#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
