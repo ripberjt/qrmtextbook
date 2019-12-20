@@ -41,6 +41,7 @@ If, though, the events are mutually exclusive, we do not need to subtract the ov
 If we want to find the probability of a score falling in a certain range, e.g., between 3 and 7, or more than 12, we can use the normal to determine that probability.  Our ability to make that determination is based on some known characteristics on the normal curve.  We know that for all normal curves 68.26\% of all scores fall within one standard deviation of the mean, that 95.44\% fall within two standard deviations, and that 99.72\% fall within three standard deviations.  (The normal distribution is dealt with more formally in the next chapter.) So, we know that something that is three or more standard deviations above the mean is pretty rare.  Figure \@ref(fig:normcurve) illustrates the probabilities associated with the normal curve.^[Source availavle [here.](http://whatilearned.wikia.com/wiki/File:Normal_curve_probability.jpg)]
 
 ```{r normcurve, echo=FALSE, out.width= "100%", fig.cap="Area under the Normal Curve"}
+library(ggplot2)
 x <- -5:5
 y <- dnorm(x)
 df <- data.frame(x, y)
@@ -114,3 +115,10 @@ Probabilities are simple statistics but are important when we want to know the l
 ```{r normcurve2, echo=FALSE, out.width= "100%", fig.cap="The Normal Curve Table"}
 knitr::include_graphics("normal_curve.png")
 ```
+
+## Chapter 4 Study Questions
+
+1) What is the range of probabilities? If you have a probabilty outside this range, what does that mean?
+2) How is a percentage different than a probability?
+3) The probability that you will like this course and that you will get an A in it, simultaneously, is known as a ______________. (Also, what would your estimate of this probability be?)
+4) What is the formula for a z-score? Define each part. 
