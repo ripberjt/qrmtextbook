@@ -10,9 +10,9 @@ In this chapter, we will identify the ways to characterize your data before you 
 
 ## Characterizing Data
 
-What does it mean to characterize your data? First, it means knowing how many observations are contained in your data and the distribution of those observations over the range of your variable(s). What kinds of measures (interval, ordinal, nominal) do you have, and what are the ranges of valid measures for each variable? How many cases of missing (no data) or mis-coded (measures that fall outside the valid range) do you have? What do the coded values represent? While seemingly trivial, checking and evaluating your data for these attributes can save you major headaches later. For example, missing values for an observation often get a special code -- say, "-99" -- to distinguish them  from valid observations. If you neglect to treat these values properly, R (or any other statistics program) will treat that value as if it were valid and thereby turn your results into a royal hairball. We know of cases in which even seasoned quantitative scholars have made the embarrassing mistake of failing to properly handle missing values in their analyses. In at least one case, a published paper had to be retracted for this reason. So don't skimp on the most basic forms of data characterization!
+What does it mean to characterize your data? First, it means knowing **how many observations** are contained in your data and **the distribution** of those observations over the range of your variable(s). What kinds of measures (interval, ordinal, nominal) do you have, and what are the ranges of valid measures for each variable? How many cases of missing (no data) or mis-coded (measures that fall outside the valid range) do you have? What do the coded values represent? While seemingly trivial, checking and evaluating your data for these attributes can save you major headaches later. For example, missing values for an observation often get a special code -- say, "-99" -- to distinguish them  from valid observations. If you neglect to treat these values properly, R (or any other statistics program) will treat that value as if it were valid and thereby turn your results into a royal hairball. We know of cases in which even seasoned quantitative scholars have made the embarrassing mistake of failing to properly handle missing values in their analyses. In at least one case, a published paper had to be retracted for this reason. So don't skimp on the most basic forms of data characterization!
 
-The dataset used for purposes of illustration in this version of this text is taken from a survey of Oklahomans, conducted in 2016, by OU's Center for Risk and Crisis Management. The survey question wording and background will be provided in class. However, for purposes of this chapter, note that the measure of  `ideology` consists of a self-report of political ideology on a scale that ranges from 1 (strong liberal) to 7 (strong conservative); the measure of the `perceived risk of climate change` ranges from zero (no risk) to 10 (extreme risk). `Age` was measured in years. 
+The dataset used for purposes of illustration in this version of this text is taken from a survey of Oklahomans, conducted in 2016, by the University of Oklahoma's Center for Risk and Crisis Management. The survey question wording and background will be provided in class. However, for purposes of this chapter, note that the measure of  `ideology` consists of a self-report of political ideology on a scale that ranges from 1 (strongly liberal) to 7 (strongly conservative); the measure of the `perceived risk of climate change` ranges from zero (no risk) to 10 (extreme risk). `Age` was measured in years. 
 
 It is often useful to graph the variables in your dataset to get a better idea of their distribution. In addition, we may want to compare the distribution of a variable to a theoretical distribution (typically a normal distribution). This can be accomplished in several ways, but we will show two here---a histogram and a density curve---and more will be discussed in later chapters. For now we examine the distribution of the variable measuring age. The red line on the density visualization presents the normal distribution given the mean and standard deviation of our variable.
 
@@ -71,7 +71,7 @@ We will primarily rely on the mean, because of its efficient property of represe
 
 ### Level of Measurement and Central Tendency
 
-The three measures of central tendency --  the mean, median, and mode -- each tell us something different about our data, but each has some limitations as well (especially when used alone). Knowing the mode tells us what is most common, but we do not know how common and, using it alone, would not even leave us confident that it is an indicator of anything very _central_. When rolling in your data, it is generally a good idea to roll in all the descriptive  statistics that you can to get a good feel for them.
+The three measures of central tendency --  the mean, median, and mode -- each tell us something different about our data, but each has some limitations as well (especially when used alone). Knowing the mode tells us what is most common, but we do not know how common and, using it alone, would not even leave us confident that it is an indicator of anything very _central_. When rolling in your data, it is generally a good idea to roll in all the descriptive statistics that you can to get a good feel for them.
 
 One issue, though, is that your ability to use any statistic is dependent on the level of measurement for the variable.  The mean requires you to add all your observations together. But you cannot perform mathematical functions on ordinal or nominal level measures. Your data must be measured at the interval level to calculate a meaningful mean. (If you ask R to calculate the mean student id number, it will, but what you get will be nonsense.) Finding the middle item in an order listing of your observations (the median) requires the ability to order your data, so your level of measurement must be at least ordinal. Therefore, if you have nominal level data, you can only report the mode (but no median or mean), so it is critical that you also look beyond central tendency to the overall distribution of the data.
 
@@ -160,7 +160,7 @@ sd(ds$age, na.rm=TRUE)
 sd(ds$glbcc_risk, na.rm=TRUE)
 ```
 
-###The Third Moment -- Skewness
+### The Third Moment -- Skewness
 
 _Skewness_ is a measure of the asymmetry of a distribution. It is based on the
 third moment and is expressed as: 
@@ -214,7 +214,7 @@ ggplot(y.df2, aes(y2)) +
         panel.background = element_rect(fill = "white"))
 ```
 
-###The Fourth Moment -- Kurtosis
+### The Fourth Moment -- Kurtosis
 
 The _kurtosis_ of a distribution refers to the the peak of a variable (i.e., the mode) and the relative frequency of observations in the tails. It is based on the fourth moment which is expressed as: 
 \begin{equation}
@@ -230,7 +230,7 @@ Kurtosis is calculated by dividing the fourth moment by the square of the second
 
 In general, higher kurtosis is indicative of a distribution where the variance is a result of low frequency yet more extreme observed values. In addition, when $K < 3$, the distribution is _platykurtic_, which is flatter and/or more "short-tailed" than a normal distribution. When $K > 3$ the distribution is _leptokurtic_, which is a slim, high peak and long tails. In a normal distribution $K=3$. 
  
-###Order Statistics
+### Order Statistics
 
 Apart from central tendency and moments, probability distributions can also be characterized by __order statistics__. Order statistics are based on the position of a value in an ordered list. Typically, the list is ordered from low values to high values.
 
@@ -250,7 +250,7 @@ The _median_ is the value at the center of the distribution, therefore 50\% of t
 the median and 50\% will have values below. For samples with a $n$-size that is an odd number, the median is simply the value in the middle. For example, with a sample consisting of the observed values of $1, 2, 3, 4, 5$, the median is $3$. Distributions with an even numbered $n$-size, the median is the average of the two middle values. The median of a sample consisting of the observed values of $1, 2, 3, 4, 5, 6$
 would be $\frac{3+4}{2}$ or 3.5. 
 
-The the median is the order statistic for central tendency. In addition, it is more "robust" in terms of extreme values than the mean. Extremely high values in a distribution can pull the mean higher, and extremely low values pull the mean lower. The median is less sensitive to these extreme values. The median is therefore the basis for "robust estimators," to be discussed later in this book.
+The the median is the order statistic for central tendency. In addition, it is more "robust" in terms of extreme values than the mean. Extremely high values in a distribution can pull the mean higher, and extremely low values pull the mean lower. The median is less sensitive to these extreme values. The median is therefore the basis for "robust estimators", to be discussed later in this book.
 
 #### Quartiles {-}
 
@@ -306,10 +306,17 @@ library(psych)
 describe(ds$ideol)
 ```
  
-##Summary
+## Summary
  
 It is a serious mistake to begin your data analysis without understanding the basics of your data.  Knowing their range, the general distribution of your data, the shape of that distribution, their central tendency, and so forth will give you important clues as you move through your analysis and interpretation and prevent serious errors from occurring.  Readers also often need to know this information to provide a critical review of your work. 
  
 Overall, this chapter has focused on understanding and characterizing data. We refer to the early process of evaluating a data set as rolling in the data -- getting to know the characteristic shapes of the distributions of each of the variables, the meanings of the scales, and the quality of the observations.  The discussion of central tendency, moments, and order statistics are all tools that you can use for that purpose. As a practicing scholar, policy analyst, or public administration practitioner, this early stage in quantitative analysis is not optional; a failure to carefully and thoroughly understand your data can result in analytical disaster, excruciating embarrassment, and maybe even horrible encounters with the Killer Rabbit of Caerbannog. 
  
 Think of rolling in the data, then, as your version of the Holy Hand Grenade of Antioch.
+
+## Chapter Three Study Questions
+
+1) Define the mean using both mathematical notation and words. 
+2) What measures of central tendency can be applied to continuous (interval and ratio) data? Which measures of central tendency can be applied to ordinal data? Which measures of central tendency can be applied to nominal/categorical data?
+3) Why is digging into the data and the distribution of your data an important first (or early) step in your analysis? 
+4) What are the third and fourth moments of a distribution? What do they tell us?
