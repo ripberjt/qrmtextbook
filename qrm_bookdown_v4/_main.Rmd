@@ -1,3 +1,113 @@
+--- 
+title: "Quantitative Research Methods for Political Science, Public Policy and Public Administration for Undergraduates: 1st Edition With Applications in R"
+author: Wesley Wehde, Hank Jenkins-Smith, Joseph Ripberger, Gary Copeland, Matthew Nowlin, Tyler Hughes, Aaron Fister, and Josie Davis
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+  #bookdown::pdf_book:
+book_filename: "qrmbook"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+---
+
+# Preface and Acknowledgments {-}
+
+The idea for the graduate level version of this book grew over decades of teaching introductory and intermediate quantitative methods classes for graduate students in Political Science and Public Policy at the University of Oklahoma, Texas A\&M, and the University of New Mexico. Despite adopting (and then discarding) a wide range of textbooks, we were frustrated with inconsistent terminology, misaligned emphases, mismatched examples and data, and (especially) poor connections between the presentation of theory and the practice of data analysis. The cost of textbooks and the associated statistics packages for students seemed to us to be, frankly, outrageous. So, we decided to write our own book that students can download as a free PDF, and to couple it with `R`, an open-source (free) statistical program, and data from the Meso-Scale Integrated Socio-geographic Network (M-SISNet), a quarterly survey of approximately 1,500 households in Oklahoma that is conducted with support of the National Science Foundation (Grant No. IIA-1301789). Readers can learn about and download the data [here](http://crcm.ou.edu/epscordata/).
+
+The idea of the undergraduate level of this book floated about amongst these various individuals until Fall 2019 when now Professor Wehde used the graduate level text in his undergraduate research methods course. He realized that, at times, the language of the text was at a higher level than necessary to introduce undergraduates in Political Science to research methods and statistics. This new version of the text omits large portions of the original text that focused on calculus and linear algebra, expands and reorganizes the content on the software system `R` and includes guided study questions at the end of each chapter. 
+
+By intent, this book represents an open-ended group project that changes over time as new ideas and new instructors become involved in teaching graduate and the undergraduate methods in the University of Oklahoma Political Science Department and beyond. The first edition of the book grew from lecture notes and slides that Hank Jenkins-Smith used in his methods classes. The second edition was amended to encompass material from Gary Copeland's introductory graduate methods classes. The fourth (and a half) edition (this one!) was updated by Wesley Wehde, who currently manages and uses the book in his introductory quantitative methods courses for undergraduates in the East Tennessee State Political Science Department. The development of this version of the text was supported by an OER Award from the Sherrod Library at ETSU, as well. 
+
+In addition to instructors, the graduate assistants who co-instruct the methods courses are an essential part of the authorship team. The tradition started with Dr. Matthew Nowlin, who assisted in drafting the first edition in \LaTeX. Dr. Tyler Hughes and Aaron Fister were instrumental in implementing the changes for the second edition. Dr. Wesley Wehde was responsible for much of the third and 4.5 edition and Josie Davis did most of the work on the fourth edition.
+
+This book, like politics and policy, constantly changes. Keep an eye on our GitHub [repository]({https://github.com/ripberjt/qrmtextbook}) for modifications and additions. You never know what you might find peering back at you.
+
+## Copyright {-}
+
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0).
+
+<!--chapter:end:index.Rmd-->
+
+
+# Theories and Social Science
+
+Placeholder
+
+
+## The Scientific Method
+## Theory and Empirical Research
+### Coherent and Internally Consistent
+#### __Concepts and Variables__ 
+#### __Measurement__ 
+#### __Assessing the Quality of a Measure__ 
+#### __Measurement of Different Kinds of Concepts__ {-}
+### Theories and Causality
+#### __The Basis of Causality in Theories__ 
+### Generation of Testable Hypothesis
+## Theory and Functions
+#### __Examples of Functions in Social Science Theories__ {-}
+## Theory in Social Science
+## Outline of the Book
+## Chapter One Study Questions
+
+<!--chapter:end:01-theory.Rmd-->
+
+
+# Research Design
+
+Placeholder
+
+
+## Overview of the Research Process 
+## Internal and External Validity
+## Major Classes of Designs
+## Threats to Validity
+## Some Common Designs
+## Plan Meets Reality
+## Chapter Two Study Questions
+
+<!--chapter:end:02-ResearchDesign.Rmd-->
+
+
+# Exploring and Visualizing Data
+
+Placeholder
+
+
+## Characterizing Data
+### Central Tendency
+### Level of Measurement and Central Tendency
+### Moments 
+#### The First Four Moments {-}
+### First Moment -- Expected Value
+### The Second Moment -- Variance and Standard Deviation
+### The Third Moment -- Skewness
+### The Fourth Moment -- Kurtosis
+### Order Statistics
+#### Median {-}
+#### Quartiles {-}
+#### Percentiles {-}
+## Summary
+## Chapter Three Study Questions
+
+<!--chapter:end:03-data.Rmd-->
+
+
+# Probability
+
+Placeholder
+
+
+## Finding Probabilities
+## Finding Probabilities with the Normal Curve
+#### Bernoulli Probabilities {-}
+## Summary
+## Chapter 4 Study Questions
+
+<!--chapter:end:04-probability.Rmd-->
+
 # Inference
 
 This chapter considers the role of inference---learning about populations from samples---and the practical and theoretical importance of understanding the characteristics of your data before attempting to undertake statistical analysis. As we noted in the prior chapters, it is a vital first step in empirical analysis to "roll in the data."
@@ -336,3 +446,230 @@ For the difference in the percieved risk between women and men, we have a $t$-va
 
 ## Summary
 In this chapter we gained an understanding of inferential statistics, how to use them to place confidence intervals around an estimate, and an overview of how to use them to test hypotheses. In the next chapter we turn, more formally, to testing hypotheses using crosstabs and by comparing means of different groups. We then continue to explore hypothesis testing and model building using regression analysis.
+
+<!--chapter:end:05-inference.Rmd-->
+
+
+# Association of Variables
+
+Placeholder
+
+
+## Cross-Tabulation
+### Crosstabulation and Control
+## Covariance
+## Correlation
+## Scatterplots
+
+<!--chapter:end:06-association.Rmd-->
+
+
+# The Logic of Ordinary Least Squares Estimation
+
+Placeholder
+
+
+## Theoretical Models
+### Deterministic Linear Model
+### Stochastic Linear Model
+### Assumptions about the Error Term
+#### Error Assumptions {-}
+## Estimating Linear Models 
+### Residuals
+## An Example of Simple Regression
+
+<!--chapter:end:07-OLSlogic.Rmd-->
+
+
+# Linear Estimation and Minimizing Error
+
+Placeholder
+
+
+## Minimizing Error using Derivatives
+### Rules of Derivation
+#### Derivative Rules {-}
+#### _Rule 1: The Power Rule_ {-}
+#### _Rule 2: The Constant Rule_ {-}
+#### _Rule 3: A Constant Times a Function_ {-}
+#### _Rule 4: Differentiating a Sum_ {-}
+#### _Rule 5: The Product Rule_ {-}
+#### _Rule 6: the Quotient Rule_ {-}
+#### _Rule 7: the Chain Rule_ {-}
+### Critical Points
+#### Example: Finding the Critical Points {-}
+### Partial Derivation
+## Deriving OLS Estimators
+### OLS Derivation of $\hat{\alpha}$
+### OLS Derivation of $\hat{\beta}$
+### Interpreting $\hat{\beta}$ and $\hat{\alpha}$
+## Summary
+
+<!--chapter:end:08-derivatives.Rmd-->
+
+
+# Bi-Variate Hypothesis Testing and Model Fit
+
+Placeholder
+
+
+## Hypothesis Tests for Regression Coefficients
+### Residual Standard Error
+## Measuring Goodness of Fit
+### Sample Covariance and Correlations
+### Coefficient of Determination: $R^{2}$
+#### __Components of $R^{2}$__ {-}
+### Visualizing Bivariate Regression
+#### Cleaning up the R Environment {-}
+## Summary
+
+<!--chapter:end:09-interpretSimple.Rmd-->
+
+
+# OLS Assumptions and Simple Regression Diagnostics
+
+Placeholder
+
+
+## A Recap of Modeling Assumptions
+## When Things Go Bad with Residuals
+### "Outlier" Data
+### Non-Constant Variance
+### Non-Linearity in the Parameters
+## Application of Residual Diagnostics
+### Testing for Non-Linearity
+### Testing for Normality in Model Residuals
+### Testing for Non-Constant Variance in the Residuals
+### Examining Outlier Data
+## So Now What? Implications of Residual Analysis
+## Summary
+
+<!--chapter:end:10-simpleDiagnostics.Rmd-->
+
+
+# Introduction to Multiple Regression
+
+Placeholder
+
+
+## Matrix Algebra and Multiple Regression
+## The Basics of Matrix Algebra
+### Matrix Basics
+### Vectors
+### Matrix Operations
+### Transpose
+### Adding Matrices
+### Multiplication of Matrices
+### Identity Matrices
+### Matrix Inversion
+#### Finding the Inverse of a Matrix {-}
+## OLS Regression in Matrix Form
+#### Regression in Matrix Form {-}
+## Summary
+
+<!--chapter:end:11-matrix.Rmd-->
+
+
+# The Logic of Multiple Regression
+
+Placeholder
+
+
+## Theoretical Specification
+### Assumptions of OLS Regression
+#### Linearity {-}
+#### Fixed $X$ {-}
+## Partial Effects
+## Multiple Regression Example
+### Hypothesis Testing and $t$-tests
+## Summary
+
+<!--chapter:end:12-logicMult.Rmd-->
+
+
+# Multiple Regression and Model Building 
+
+Placeholder
+
+
+## Model Building
+### Theory and Hypotheses
+### Empirical Indicators
+#### Coefficient of Determination: $R^2$ {-}
+#### $F$-test {-}
+#### Nested $F$-test {-}
+### Risks in Model Building
+## Evils of Stepwise Regression
+## Summary
+
+<!--chapter:end:13-modelFit.Rmd-->
+
+
+# Topics in Multiple Regression
+
+Placeholder
+
+
+## Dummy Variables
+## Interaction Effects
+## Standardized Regression Coefficients
+## Summary
+
+<!--chapter:end:14-topics.Rmd-->
+
+
+# The Art of Regression Diagnostics
+
+Placeholder
+
+
+## OLS Error Assumptions Revisited 
+## OLS Diagnostic Techniques
+### Non-Linearity
+### Non-Constant Variance, or Heteroscedasticity
+### Independence of $E$
+### Normality of the Residuals
+### Outliers, Leverage, and Influence
+### Outliers
+#### DFBETAS {-}
+### Multicollinearity
+## Summary
+
+<!--chapter:end:15-diagnostics.Rmd-->
+
+
+# Logit Regression
+
+Placeholder
+
+
+## Generalized Linear Models
+## Logit Estimation
+### Logit Hypothesis Tests
+### Goodness of Fit
+#### Log-Likelihood {-}
+#### Pseudo $R^2$ {-}
+#### Akaike Information Criteria {-}
+### Interpreting Logits
+#### Calculate Odds {-}
+#### Predicted Probabilities {-}
+## Summary
+
+<!--chapter:end:16-logit.Rmd-->
+
+
+# Appendix: Basic R
+
+Placeholder
+
+
+## Introduction to R
+## Downloading R and RStudio
+## Introduction to Programming
+## Uploading/Reading Data
+## Data Manipulation in R
+## Saving/Writing Data
+## The Tidyverse
+
+<!--chapter:end:17-appendix.Rmd-->
+

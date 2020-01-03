@@ -5,11 +5,11 @@ The book is designed to be used by undergraduate students in introductory course
 
 
 ## The Scientific Method
-<<<<<<< HEAD
+
 Empirical research, as outlined in this book, is based on the scientific method. Science is a particular way that some epistemologists believe we can understand the world around us. Science, as a method, relies on both logic, as  captured by theory, and empirical observation of the world to determine whether the theory we have developed  conforms to what we actually observe. We seek to explain the world with our theories, and we test our theories by  deducing and testing hypotheses. When a __working hypothesis__ is supported, we have more confidence in our theory. When the __null hypothesis__ is supported, it undermines our proposed theory, unless our theory suggests there should be no relationship present. 
-=======
+
 Empirical research, as outlined in this book, is based on the scientific method. Science is a particular way that some epistemologists believe we can understand the world around us. Science, as a method, relies on both logic, as  captured by theory, and empirical observation of the world to determine whether the theory we have developed conforms to what we actually observe. We seek to explain the world with our theories, and we test our theories by  deducing and testing hypotheses. When a __working hypothesis__ is supported, we have more confidence in our theory. When the __null hypothesis__ is supported, it undermines our proposed theory, unless our theory suggested a null or non-existent relationship. 
->>>>>>> d6d4d372c75472f10b0e6a1608089a88783d78e0
+
 
 Science seeks a particular kind of knowledge and has certain biases. When we are engaging in scientific research  we are interested in reaching generalizations. Rather than wanting to explain why President Trump's approval dropped,  we are interested in explaining why presidential approval drops across various presidents, or, better yet, how economic  conditions affect presidential approval. These generalizations should be logical (which is nothing more than saying they  should be grounded in a strong theory) and they should be empirically verified (which, we will see means that we have  tested hypotheses deduced from our theory). That is not to say examining why President Trump's approval rating (or any other president's approval rating) changed is not interesting. Nor are we saying that type of question cannot be use to test a theory; in fact, it very much can be used to test a theory. However, theories, themselves, should be about broader concepts and questions than one such as that. 
 
@@ -38,20 +38,20 @@ This book is concerned with the connection between theoretical claims and empiri
 
 The set of interrelated propositions that constitute a well structured theory are based on __concepts__. In well-developed theories, the expected relationships among these concepts are both coherent and internally consistent. __Coherence__ means the identification of concepts and the specified relationships among them are logical, ordered, and integrated. An __internally consistent__ theory will explain relationships with respect to a set of common underlying causes and conditions, providing for consistency in expected relationships (and avoidance of contradictions). For systematic quantitative research, the relevant theoretical concepts are defined such that they can be measured and quantified. Some concepts are relatively easy to quantify, such as the number of votes cast for the winning Presidential candidate in a specified year or the frequency of arrests for gang-related crimes in a particular region and time period. Others are more difficult, such as the concepts of democratization, political ideology or presidential approval. Concepts that are more difficult to measure must be carefully __operationalized__, which is a process of relating a concept to an observation that can be measured using a defined procedure. For example, political ideology is often operationalized through public opinion surveys that ask respondents to place themselves on a Likert-type scale of ideological categories. 
 
-#### __Concepts and Variables__ {-}
-<<<<<<< HEAD
+#### __Concepts and Variables__ 
+
 A concept is a commonality across observed individual events or cases. It is a regularity that we find in a complex world. Concepts are our  building blocks to understanding the world and to developing theory that explains the world. Once we have identified concepts  we seek to explain them by developing theories based on them. Once we have explained a concept we need to define it. We do so in two steps. First, we give it a dictionary-like definition, called a nominal definition. Then, we develop an operational definition that identifies how we can measure and quantify it. 
-=======
+
 A concept is a commonality across observed individual events or cases. It is a regularity that we find in complex world. Concepts are our building blocks to understanding the world and to developing theory that explains the world. Once we have identified concepts  we seek to explain them by developing theories based on them. Once we have explained a concept we need to define it. We do so in two steps. First, we give it a dictionary-like definition, called a nominal definition. Then, we develop an operational definition that identifies how we can measure and quantify it. 
->>>>>>> d6d4d372c75472f10b0e6a1608089a88783d78e0
+
 
 Once a concept has been operationalised and possibly quantified, it is employed in modeling as a __variable__. In statistical modeling, variables are thought of as either dependent or independent variables. A __dependent variable__, $Y$, is the outcome variable; this is the concept we are trying to explain and/or predict. The __independent variable(s)__, $X$, is the variable(s) that is used to predict or explain the dependent variable. The expected relationships between (and among) the variables are specified by the theory.
 
-#### __Measurement__ {-}
+#### __Measurement__ 
 
 When measuring concepts, the indicators that are used in building and testing theories should be both __valid__ and __reliable__. Validity refers to how well the measurement captures the concept. Face validity, for example, refers to the plausibility and general acceptance of the measure, while the domain validity of the measure concerns the degree to which it captures all relevant aspects of the concept. Reliability, by contrast, refers to how consistent the measure is with repeated applications. A measure is reliable if, when applied to the repeated observations in similar settings, the outcomes are consistent.
 
-#### __Assessing the Quality of a Measure__ {-}
+#### __Assessing the Quality of a Measure__ 
 
 Measurement is, in quantitative research, the process of assigning numbers to the phenomenon or concept that you are interested in. Measurement is straight-forward when we can directly observe the phenomenon. One agrees on a metric, such as inches or pounds, and then figures out how many of those units are present for the case in question. Measurement becomes more challenging when you cannot directly observe the concept of interest. In political science and public policy, some of the things we want to measure are directly observable: how many dollars were spent on a project or how many votes the incumbent receives, but many of our concepts are not observable: is issue X on the public's agenda, how successful is a program, or how much do citizens trust the president. When the concept is not directly observable the operational definition is especially important. The operational definition explains exactly what the researcher will do to assign a number for each subject/case. 
 
@@ -68,7 +68,7 @@ Measurement can be applied to different kinds of concepts, which causes measures
 
 Theories should be causal in nature, meaning that an independent variable is thought to have a causal influence on the dependent variable. In other words, a change in the independent variable _causes_ a change in the dependent variable. Causality can be thought of as the ``motor" that drives the model and provides the basis for explanation and (possibly) prediction.
 
-#### __The Basis of Causality in Theories__ {-}
+#### __The Basis of Causality in Theories__ 
 
   1. Time Ordering: The cause precedes the effect, $X \rightarrow Y$
   2. Co-Variation: Changes in $X$ are associated with changes in $Y$
