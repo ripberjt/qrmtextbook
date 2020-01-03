@@ -1,5 +1,9 @@
 # Inference
 
+```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+ds <- read.csv("Class Data Set.csv")
+```
+
 This chapter considers the role of inference---learning about populations from samples---and the practical and theoretical importance of understanding the characteristics of your data before attempting to undertake statistical analysis. As we noted in the prior chapters, it is a vital first step in empirical analysis to "roll in the data."
 
 ## Inference: Populations and Samples
